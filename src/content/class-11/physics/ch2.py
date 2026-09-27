@@ -8,8 +8,8 @@ CH = {
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 2: Motion in a Straight Line — long + short notes in Hindi, English, Hinglish. Distance, displacement, velocity, acceleration, equations of motion, graphs, free fall, relative velocity.",
  "video": {
-  "youtube": "zZ2EGTOxde0",
-  "dur": "59 sec"
+  "youtube": "Et6bBspbkkU",
+  "dur": "1 min 4 sec"
  },
  "card_tag": "1D motion — speed, velocity, acceleration, graphs aur free fall ka poora khel",
  "card_topics": [
