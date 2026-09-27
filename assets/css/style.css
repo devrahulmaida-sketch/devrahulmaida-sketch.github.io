@@ -157,3 +157,28 @@ details p{color:var(--txt);font-size:.9rem;margin-top:8px}
   .nav-inner{justify-content:center}
   .ch-hero{padding:34px 16px 2px}
 }
+
+
+/* ============================================================
+   v3 additions — edu site (classes, language switch, video-soon)
+   ============================================================ */
+
+/* ---------- language switcher ---------- */
+.lang-switch{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:0 auto 6px;max-width:1080px;padding:0 20px}
+.lang-label{color:var(--dim);font-size:.85rem;font-weight:600}
+.lang-btn{background:var(--card2);border:1.5px solid var(--line);color:var(--muted);border-radius:22px;padding:7px 18px;font-size:.88rem;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:.18s}
+.lang-btn:hover{border-color:var(--teal);color:var(--teal)}
+.lang-btn.active{background:var(--amber);border-color:var(--amber);color:#1a1302}
+.lang-block{margin-top:10px}
+
+/* ---------- class cards ---------- */
+.class-card .ch-num{border-radius:12px;width:48px;height:48px;font-size:1.25rem}
+
+/* ---------- video coming soon ---------- */
+.video-soon{max-width:960px;margin:0 auto;background:var(--card);border:1.5px dashed var(--line);border-radius:18px;padding:44px 26px;text-align:center}
+.video-soon-icon{font-size:2.6rem;margin-bottom:10px}
+.video-soon b{font-size:1.15rem;color:var(--amber);display:block;margin-bottom:8px}
+.video-soon p{color:var(--muted);font-size:.92rem;max-width:520px;margin:0 auto}
+
+/* ---------- subject hero count ---------- */
+.ch-hero .ch-tags .pill{font-size:.78rem}
