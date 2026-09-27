@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 11 — Thermodynamics | Class 11 Chemistry | मईडा Maida</title>
+<meta name="description" content="Class 11 Physics Chapter 11: Thermodynamics — long + short notes in Hindi, English, Hinglish. First law, second law, Carnot engine, isothermal, adiabatic processes, Cp-Cv.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#classes">Classes</a>
+      <a href="/class-11/chemistry/">Class 11 Chemistry</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ch-hero">
+  <p class="crumb"><a href="/">Home</a> / <a href="/class-11/">Class 11</a> / <a href="/class-11/physics/">Physics</a> / Chapter 11</p>
+  <h1>Thermodynamics</h1>
+  <p style="color:var(--violet);margin-top:4px;font-weight:500">ऊष्मागतिकी</p>
+  <p style="color:var(--muted);margin-top:6px">Heat, work aur engines — energy ke flow ke rules</p>
+  <div class="ch-tags">
+    <span class="pill weight-high">JEE Weightage: HIGH</span>
+    <span class="pill">🎬 Video coming soon</span>
+    <span class="pill">📝 Long + Short notes</span>
+    <span class="pill">🌐 Hindi • English • Hinglish</span>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="video-soon">
+    <div class="video-soon-icon">🎬</div>
+    <b>Video ban raha hai</b>
+    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Basics — System, Surroundings aur Zeroth Law</h3>
+    <ul>
+      <li><b>System:</b> jo hum study kar rahe hain (gas in cylinder); <b>surroundings:</b> baaki sab. Boundary dono ko separate karti hai.</li>
+      <li><b>State variables:</b> P, V, T (aur internal energy U) — system ki "photo" kheenchte hain. <b>Equation of state:</b> inka relation (ideal gas: PV = μRT).</li>
+      <li><b>Zeroth law ⭐:</b> agar A aur B dono C ke saath thermal equilibrium me hain, to A aur B bhi aapas me equilibrium me — yahi TEMPERATURE ko define karta hai (thermometer isi pe chalta hai!).</li>
+      <li><b>Internal energy (U):</b> system ke molecules ki total KE + PE — sirf state pe depend karti hai (<b>state function</b>), path pe nahi!</li>
+      <li><b>Heat (Q) aur Work (W):</b> dono energy transfer ke TAREEKE hain — state functions nahi! Same initial-final states, alag path → alag Q aur W (lekin Q − W same, aage dekho).</li>
+    </ul>
+    <p class="small-note">💡 Feel: U = bank balance (state), Q aur W = deposit/withdrawal ke modes (path). Balance same ho sakta hai, transaction history alag!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ First Law of Thermodynamics — Energy Ka Hisaab ⭐</h3>
+    <p><b>ΔU = Q − W</b> — system ko di gayi heat, minus system dwara kiya gaya work = internal energy ka change. (Yehi energy conservation hai thermodynamics me!)</p>
+    <ul>
+      <li><b>Sign convention ⭐:</b> Q positive jab heat SYSTEM me aaye; W positive jab SYSTEM work kare (gas expand ho). Isme W = ∫P dV.</li>
+      <li><b>Isothermal (T constant):</b> ΔU = 0 (ideal gas!) → Q = W. Slow process, piston pe rakh diya heat reservoir.</li>
+      <li><b>Adiabatic (Q = 0):</b> ΔU = −W — gas expand kare to THANDI hoti hai (apni energy se work karti hai). Fast process ya insulated.</li>
+      <li><b>Isochoric (V constant):</b> W = 0 → ΔU = Q. Sab heat internal energy me.</li>
+      <li><b>Isobaric (P constant):</b> W = PΔV; Q = ΔU + PΔV.</li>
+      <li><b>Cyclic process:</b> wapas same state → ΔU = 0 → Q_net = W_net (P-V diagram pe area!).</li>
+    </ul>
+    <p class="small-note">🎯 First law = dukan ka ledger: jo aaya (Q) minus jo gaya (W) = stock change (ΔU).</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Specific Heats of Gas — C_p aur C_v ⭐</h3>
+    <ul>
+      <li><b>C_v (constant volume):</b> poori heat internal energy me (W=0) → Q = μC_vΔT = ΔU.</li>
+      <li><b>C_p (constant pressure):</b> heat = ΔU + work bhi → C_p &gt; C_v. ⭐</li>
+      <li><b>Mayer's relation ⭐:</b> C_p − C_v = R (per mole, ideal gas).</li>
+      <li><b>γ = C_p/C_v:</b> monatomic 5/3 ≈ 1.67, diatomic 7/5 = 1.4, polyatomic ~1.33.</li>
+      <li><b>Adiabatic relations ⭐:</b> PV^γ = constant, TV^(γ−1) = constant, P^(1−γ)T^γ = constant. Adiabatic curve isothermal se STEEP hoti hai!</li>
+      <li><b>Work in adiabatic:</b> W = (P₁V₁ − P₂V₂)/(γ − 1) = μR(T₁ − T₂)/(γ − 1).</li>
+    </ul>
+    <p class="small-note">💡 C_p zyada kyun? Constant pressure me gas ko expand bhi hona padta hai — heat ka ek hissa work me chala jaata hai, isliye same ΔT ke liye zyada heat chahiye!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Second Law — Heat Engines aur Carnot ⭐</h3>
+    <p>First law bolta hai energy conserve hoti hai — lekin DIRECTION nahi batata. Garam chai thandi kyun hoti hai, ulta kyun nahi? Jawab = <b>Second law</b>:</p>
+    <ul>
+      <li><b>Kelvin-Planck statement ⭐:</b> koi engine 100% heat ko work me nahi badal sakta — kuch heat sink me DENI hi padti hai.</li>
+      <li><b>Clausius statement:</b> heat khud-ba-khud cold se hot nahi ja sakti (refrigerator ko work chahiye).</li>
+      <li><b>Heat engine:</b> source (T₁) se Q₁ le, W work kare, sink (T₂) ko Q₂ de. <b>Efficiency ⭐:</b> η = W/Q₁ = 1 − Q₂/Q₁.</li>
+      <li><b>Carnot engine ⭐:</b> ideal reversible engine — 2 isothermal + 2 adiabatic steps. <b>η_Carnot = 1 − T₂/T₁</b> (temperatures Kelvin me!). Isse zyada efficient engine possible NAHI same temperatures ke beech.</li>
+      <li><b>Refrigerator/heat pump:</b> ulta cycle — work daalo, heat cold se hot me pump karo. <b>COP ⭐ = Q₂/W = T₂/(T₁ − T₂)</b> (1 se zyada hota hai!).</li>
+    </ul>
+    <p class="small-note">💡 Feel: second law = traffic police of energy — energy ka flow hot→cold hi naturally hota hai. Carnot = speed limit; koi bhi engine isse tez nahi!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Processes Ka Comparison aur Quick Tricks</h3>
+    <table class="tbl">
+      <tr><th>Process</th><th>Constant</th><th>Q</th><th>W</th><th>ΔU</th></tr>
+      <tr><td>Isothermal</td><td>T</td><td>= W</td><td>μRT ln(V₂/V₁)</td><td>0</td></tr>
+      <tr><td>Adiabatic</td><td>Q=0</td><td>0</td><td>μRΔT/(1−γ)... −ΔU</td><td>μC_vΔT</td></tr>
+      <tr><td>Isochoric</td><td>V</td><td>μC_vΔT</td><td>0</td><td>= Q</td></tr>
+      <tr><td>Isobaric</td><td>P</td><td>μC_pΔT</td><td>PΔV</td><td>μC_vΔT</td></tr>
+    </table>
+    <ul>
+      <li><b>P-V diagram pe area = work ⭐</b> — clockwise cycle = positive net work (engine), anticlockwise = negative (refrigerator).</li>
+      <li><b>Free expansion:</b> vacuum me expand → W = 0, Q = 0 → ΔU = 0 (ideal gas ka T unchanged!). Lekin irreversible hai.</li>
+      <li><b>Reversible process:</b> infinitely slow, quasi-static — har step equilibrium. Real processes irreversible (friction, fast changes).</li>
+      <li>Trick: ΔU har process me μC_vΔT hi hai (ideal gas) — C_v sirf isochoric ke liye nahi! ⭐</li>
+    </ul>
+    <p class="small-note">🎯 Exam hack: pehle process pehchano (kya constant?), phir table se Q/W/ΔU nikalo. Carnot η me temperatures hamesha Kelvin!</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ मूल बातें — निकाय, परिवेश और शून्यवां नियम</h3>
+    <ul>
+      <li><b>निकाय (system):</b> जिसका अध्ययन कर रहे हैं; <b>परिवेश:</b> शेष सब।</li>
+      <li><b>राज्य चर:</b> P, V, T (और आंतरिक ऊर्जा U)। <b>राज्य समीकरण:</b> आदर्श गैस के लिए PV = μRT।</li>
+      <li><b>शून्यवां नियम ⭐:</b> यदि A और B दोनों C के साथ तापीय साम्य में हैं, तो A और B भी परस्पर साम्य में — यही <b>तापमान</b> को परिभाषित करता है।</li>
+      <li><b>आंतरिक ऊर्जा (U):</b> अणुओं की कुल KE + PE — केवल अवस्था पर निर्भर (<b>अवस्था फलन</b>), पथ पर नहीं!</li>
+      <li><b>ऊष्मा (Q) और कार्य (W):</b> ऊर्जा स्थानांतरण के तरीके — अवस्था फलन नहीं!</li>
+    </ul>
+    <p class="small-note">💡 U = बैंक बैलेंस (अवस्था), Q और W = जमा/निकासी के तरीके (पथ)।</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ ऊष्मागतिकी का प्रथम नियम — ऊर्जा का हिसाब ⭐</h3>
+    <p><b>ΔU = Q − W</b> — निकाय को दी गई ऊष्मा, ऋण निकाय द्वारा किया कार्य = आंतरिक ऊर्जा परिवर्तन।</p>
+    <ul>
+      <li><b>चिह्न परिपाटी ⭐:</b> Q धनात्मक जब ऊष्मा निकाय में आए; W धनात्मक जब निकाय कार्य करे। W = ∫P dV।</li>
+      <li><b>समतापीय (T नियत):</b> ΔU = 0 → Q = W।</li>
+      <li><b>रुद्धोष्म (Q = 0):</b> ΔU = −W — प्रसार पर गैस ठंडी होती है।</li>
+      <li><b>समआयतनिक (V नियत):</b> W = 0 → ΔU = Q।</li>
+      <li><b>समदाबीय (P नियत):</b> W = PΔV।</li>
+      <li><b>चक्रीय प्रक्रम:</b> ΔU = 0 → Q_नेट = W_नेट (P-V आरेख का क्षेत्रफल!)।</li>
+    </ul>
+    <p class="small-note">🎯 प्रथम नियम = दुकान का बही-खाता: आया (Q) ऋण गया (W) = स्टॉक परिवर्तन (ΔU)।</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ गैस की विशिष्ट ऊष्माएं — C_p और C_v ⭐</h3>
+    <ul>
+      <li><b>C_v (नियत आयतन):</b> सारी ऊष्मा आंतरिक ऊर्जा में → Q = μC_vΔT = ΔU।</li>
+      <li><b>C_p (नियत दाब):</b> ऊष्मा = ΔU + कार्य भी → C_p &gt; C_v। ⭐</li>
+      <li><b>मेयर संबंध ⭐:</b> C_p − C_v = R (प्रति मोल, आदर्श गैस)।</li>
+      <li><b>γ = C_p/C_v:</b> एकपरमाणुक 5/3, द्विपरमाणुक 7/5 = 1.4।</li>
+      <li><b>रुद्धोष्म संबंध ⭐:</b> PV^γ = नियतांक, TV^(γ−1) = नियतांक। रुद्धोष्म वक्र समतापीय से अधिक खड़ा!</li>
+      <li><b>रुद्धोष्म में कार्य:</b> W = (P₁V₁ − P₂V₂)/(γ − 1)।</li>
+    </ul>
+    <p class="small-note">💡 C_p अधिक क्यों? नियत दाब पर गैस को प्रसारित भी होना है — ऊष्मा का एक हिस्सा कार्य में चला जाता है!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ द्वितीय नियम — ऊष्मा इंजन और कार्नो ⭐</h3>
+    <ul>
+      <li><b>केल्विन-प्लांक कथन ⭐:</b> कोई इंजन 100% ऊष्मा को कार्य में नहीं बदल सकता — कुछ ऊष्मा सिंक में देनी ही पड़ती है।</li>
+      <li><b>क्लॉसियस कथन:</b> ऊष्मा स्वयं ठंडे से गर्म नहीं जा सकती।</li>
+      <li><b>ऊष्मा इंजन:</b> स्रोत (T₁) से Q₁, W कार्य, सिंक (T₂) को Q₂। <b>दक्षता ⭐:</b> η = W/Q₁ = 1 − Q₂/Q₁।</li>
+      <li><b>कार्नो इंजन ⭐:</b> आदर्श उत्क्रमणीय इंजन — 2 समतापीय + 2 रुद्धोष्म चरण। <b>η_कार्नो = 1 − T₂/T₁</b> (केल्विन में!)। इससे अधिक दक्ष इंजन संभव नहीं।</li>
+      <li><b>रेफ्रिजरेटर:</b> उल्टा चक्र — कार्य डालो, ऊष्मा ठंडे से गर्म में पंप करो। <b>COP ⭐ = Q₂/W = T₂/(T₁ − T₂)</b>।</li>
+    </ul>
+    <p class="small-note">💡 द्वितीय नियम = ऊर्जा की ट्रैफिक पुलिस — प्रवाह गर्म→ठंडा ही स्वाभाविक। कार्नो = स्पीड लिमिट!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ प्रक्रमों की तुलना और शीघ्र सूत्र</h3>
+    <table class="tbl">
+      <tr><th>प्रक्रम</th><th>नियत</th><th>Q</th><th>W</th><th>ΔU</th></tr>
+      <tr><td>समतापीय</td><td>T</td><td>= W</td><td>μRT ln(V₂/V₁)</td><td>0</td></tr>
+      <tr><td>रुद्धोष्म</td><td>Q=0</td><td>0</td><td>−ΔU</td><td>μC_vΔT</td></tr>
+      <tr><td>समआयतनिक</td><td>V</td><td>μC_vΔT</td><td>0</td><td>= Q</td></tr>
+      <tr><td>समदाबीय</td><td>P</td><td>μC_pΔT</td><td>PΔV</td><td>μC_vΔT</td></tr>
+    </table>
+    <ul>
+      <li><b>P-V आरेख का क्षेत्रफल = कार्य ⭐</b> — दक्षिणावर्त चक्र = धनात्मक कार्य (इंजन)।</li>
+      <li><b>मुक्त प्रसार:</b> निर्वात में → W = 0, Q = 0 → ΔU = 0 (पर अनुत्क्रमणीय)।</li>
+      <li>ट्रिक: आदर्श गैस में ΔU हमेशा μC_vΔT — C_v केवल समआयतनिक के लिए नहीं! ⭐</li>
+    </ul>
+    <p class="small-note">🎯 पहले प्रक्रम पहचानो, फिर तालिका से Q/W/ΔU। कार्नो में तापमान हमेशा केल्विन!</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Basics — System, Surroundings and the Zeroth Law</h3>
+    <ul>
+      <li><b>System:</b> what we are studying (gas in a cylinder); <b>surroundings:</b> everything else. The boundary separates them.</li>
+      <li><b>State variables:</b> P, V, T (and internal energy U) — they take a snapshot of the system. <b>Equation of state:</b> PV = μRT for an ideal gas.</li>
+      <li><b>Zeroth law ⭐:</b> if A and B are each in thermal equilibrium with C, then A and B are in equilibrium with each other — this is what DEFINES temperature (and why thermometers work!).</li>
+      <li><b>Internal energy (U):</b> the total KE + PE of the molecules — depends only on the state (<b>state function</b>), not the path!</li>
+      <li><b>Heat (Q) and Work (W):</b> both are WAYS of transferring energy — not state functions! Same endpoints, different path → different Q and W (but Q − W stays the same).</li>
+    </ul>
+    <p class="small-note">💡 Feel: U = the bank balance (state), Q and W = the deposit/withdrawal modes (path). Same balance, different transaction history!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ First Law of Thermodynamics — Energy Accounting ⭐</h3>
+    <p><b>ΔU = Q − W</b> — heat given TO the system minus work done BY the system equals the change in internal energy. (This is energy conservation, thermodynamics style!)</p>
+    <ul>
+      <li><b>Sign convention ⭐:</b> Q positive when heat enters the system; W positive when the system does work (gas expands). W = ∫P dV.</li>
+      <li><b>Isothermal (T constant):</b> ΔU = 0 (ideal gas!) → Q = W.</li>
+      <li><b>Adiabatic (Q = 0):</b> ΔU = −W — an expanding gas COOLS (it works using its own energy).</li>
+      <li><b>Isochoric (V constant):</b> W = 0 → ΔU = Q. All heat becomes internal energy.</li>
+      <li><b>Isobaric (P constant):</b> W = PΔV; Q = ΔU + PΔV.</li>
+      <li><b>Cyclic process:</b> back to the same state → ΔU = 0 → Q_net = W_net (the area on the P-V diagram!).</li>
+    </ul>
+    <p class="small-note">🎯 The first law is a shop ledger: what came in (Q) minus what went out (W) equals the stock change (ΔU).</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Specific Heats of a Gas — C_p and C_v ⭐</h3>
+    <ul>
+      <li><b>C_v (constant volume):</b> all heat goes into internal energy (W=0) → Q = μC_vΔT = ΔU.</li>
+      <li><b>C_p (constant pressure):</b> heat covers ΔU AND expansion work → C_p &gt; C_v. ⭐</li>
+      <li><b>Mayer's relation ⭐:</b> C_p − C_v = R (per mole, ideal gas).</li>
+      <li><b>γ = C_p/C_v:</b> monatomic 5/3 ≈ 1.67, diatomic 7/5 = 1.4.</li>
+      <li><b>Adiabatic relations ⭐:</b> PV^γ = constant, TV^(γ−1) = constant. The adiabatic curve is STEEPER than the isothermal!</li>
+      <li><b>Work in adiabatic:</b> W = (P₁V₁ − P₂V₂)/(γ − 1) = μR(T₁ − T₂)/(γ − 1).</li>
+    </ul>
+    <p class="small-note">💡 Why is C_p bigger? At constant pressure the gas must also expand — part of the heat escapes as work, so more heat is needed for the same ΔT!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ The Second Law — Heat Engines and Carnot ⭐</h3>
+    <p>The first law says energy is conserved — but not which WAY it flows. Why does hot tea cool down and never the reverse? The answer is the <b>second law</b>:</p>
+    <ul>
+      <li><b>Kelvin-Planck statement ⭐:</b> no engine can convert 100% of heat into work — some heat MUST be dumped into a sink.</li>
+      <li><b>Clausius statement:</b> heat cannot flow by itself from cold to hot (a refrigerator needs work).</li>
+      <li><b>Heat engine:</b> takes Q₁ from a source (T₁), does work W, dumps Q₂ into a sink (T₂). <b>Efficiency ⭐:</b> η = W/Q₁ = 1 − Q₂/Q₁.</li>
+      <li><b>Carnot engine ⭐:</b> the ideal reversible engine — 2 isothermal + 2 adiabatic steps. <b>η_Carnot = 1 − T₂/T₁</b> (temperatures in kelvin!). No engine between the same two temperatures can beat it.</li>
+      <li><b>Refrigerator/heat pump:</b> the reverse cycle — put in work, pump heat from cold to hot. <b>COP ⭐ = Q₂/W = T₂/(T₁ − T₂)</b> (can exceed 1!).</li>
+    </ul>
+    <p class="small-note">💡 Feel: the second law is the traffic police of energy — the natural flow is hot→cold. Carnot is the speed limit; no engine goes faster!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Comparing the Processes and Quick Tricks</h3>
+    <table class="tbl">
+      <tr><th>Process</th><th>Constant</th><th>Q</th><th>W</th><th>ΔU</th></tr>
+      <tr><td>Isothermal</td><td>T</td><td>= W</td><td>μRT ln(V₂/V₁)</td><td>0</td></tr>
+      <tr><td>Adiabatic</td><td>Q=0</td><td>0</td><td>−ΔU</td><td>μC_vΔT</td></tr>
+      <tr><td>Isochoric</td><td>V</td><td>μC_vΔT</td><td>0</td><td>= Q</td></tr>
+      <tr><td>Isobaric</td><td>P</td><td>μC_pΔT</td><td>PΔV</td><td>μC_vΔT</td></tr>
+    </table>
+    <ul>
+      <li><b>Area on the P-V diagram = work ⭐</b> — clockwise cycle = positive net work (engine), anticlockwise = negative (refrigerator).</li>
+      <li><b>Free expansion:</b> expanding into a vacuum → W = 0, Q = 0 → ΔU = 0 (ideal gas temperature unchanged!). But it is irreversible.</li>
+      <li>Trick: for an ideal gas, ΔU = μC_vΔT in EVERY process — C_v is not just for isochoric! ⭐</li>
+    </ul>
+    <p class="small-note">🎯 Exam hack: first identify the process (what is constant?), then read Q/W/ΔU off the table. Carnot temperatures are always in kelvin!</p>
+  </div>
+</div>
+</section>
+<section id="short-notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics ⭐</h4>
+      <ul><li>Zeroth law → temperature define</li><li>U = state function; Q, W = path functions</li><li>Ideal gas: PV = μRT</li></ul>
+    </div>
+    <div class="shorts-card"><h4>First Law ⭐</h4>
+      <ul><li>ΔU = Q − W</li><li>Q +ve: heat in, W +ve: gas expands</li><li>Cyclic: ΔU=0, Q=W=area</li></ul>
+    </div>
+    <div class="shorts-card"><h4>C_p, C_v ⭐</h4>
+      <ul><li>C_p − C_v = R (Mayer)</li><li>γ = C_p/C_v: mono 1.67, di 1.4</li><li>Adiabatic: PV^γ = const</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Second Law ⭐</h4>
+      <ul><li>100% conversion impossible</li><li>η = 1 − Q₂/Q₁</li><li>Carnot: η = 1 − T₂/T₁ (max)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Processes</h4>
+      <ul><li>Isothermal: ΔU=0, Q=W</li><li>Adiabatic: Q=0, gas cools on expansion</li><li>Isochoric: W=0; Isobaric: W=PΔV</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>मूल ⭐</h4>
+      <ul><li>शून्यवां नियम → तापमान</li><li>U अवस्था फलन; Q, W पथ फलन</li><li>PV = μRT</li></ul>
+    </div>
+    <div class="shorts-card"><h4>प्रथम नियम ⭐</h4>
+      <ul><li>ΔU = Q − W</li><li>Q +ve: ऊष्मा अंदर, W +ve: प्रसार</li><li>चक्रीय: Q=W=क्षेत्रफल</li></ul>
+    </div>
+    <div class="shorts-card"><h4>C_p, C_v ⭐</h4>
+      <ul><li>C_p − C_v = R</li><li>γ: एकपरमाणुक 1.67, द्वि 1.4</li><li>रुद्धोष्म: PV^γ = नियत</li></ul>
+    </div>
+    <div class="shorts-card"><h4>द्वितीय नियम ⭐</h4>
+      <ul><li>100% रूपांतरण असंभव</li><li>η = 1 − Q₂/Q₁</li><li>कार्नो: η = 1 − T₂/T₁</li></ul>
+    </div>
+    <div class="shorts-card"><h4>प्रक्रम</h4>
+      <ul><li>समतापीय: ΔU=0, Q=W</li><li>रुद्धोष्म: प्रसार पर ठंडी</li><li>समदाबीय: W=PΔV</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics ⭐</h4>
+      <ul><li>Zeroth law → defines temperature</li><li>U = state function; Q, W = path functions</li><li>Ideal gas: PV = μRT</li></ul>
+    </div>
+    <div class="shorts-card"><h4>First Law ⭐</h4>
+      <ul><li>ΔU = Q − W</li><li>Q +ve: heat in, W +ve: gas expands</li><li>Cyclic: ΔU=0, Q=W=area</li></ul>
+    </div>
+    <div class="shorts-card"><h4>C_p, C_v ⭐</h4>
+      <ul><li>C_p − C_v = R (Mayer)</li><li>γ = C_p/C_v: mono 1.67, di 1.4</li><li>Adiabatic: PV^γ = const</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Second Law ⭐</h4>
+      <ul><li>100% conversion impossible</li><li>η = 1 − Q₂/Q₁</li><li>Carnot: η = 1 − T₂/T₁ (max)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Processes</h4>
+      <ul><li>Isothermal: ΔU=0, Q=W</li><li>Adiabatic: Q=0, gas cools on expansion</li><li>Isochoric: W=0; Isobaric: W=PΔV</li></ul>
+    </div>
+</div>
+</div>
+</section>
+<section id="practice">
+  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div class="note-sec">
+    <div class="jee-q"><span class="qn">Q1.</span> Gas ko 500 J heat di, usne 200 J work kiya. ΔU?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>ΔU = Q − W = 500 − 200 = <b>300 J</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q2.</span> Isothermal expansion me ideal gas 400 J work karti hai. Kitni heat li?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Isothermal me ΔU = 0 → Q = W = <b>400 J</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q3.</span> Adiabatic expansion me gas thandi kyun hoti hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Q = 0, to work ki energy <b>internal energy se</b> aati hai (ΔU = −W) — T girta hai.</p></details></div>
+    <div class="jee-q"><span class="qn">Q4.</span> Mayer's relation kya hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>C_p − C_v = <b>R</b> (8.314 J/mol·K) — constant pressure me expansion work bhi karna padta hai.</p></details></div>
+    <div class="jee-q"><span class="qn">Q5.</span> Diatomic gas ka γ kitna hota hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>γ = C_p/C_v = 7/5 = <b>1.4</b> (monatomic 5/3 ≈ 1.67).</p></details></div>
+    <div class="jee-q"><span class="qn">Q6.</span> Carnot engine 600 K source aur 300 K sink ke beech. Efficiency?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>η = 1 − T₂/T₁ = 1 − 300/600 = <b>50%</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q7.</span> Engine 1000 J heat le kar 300 J work karta hai. Sink me kitna gaya?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Q₂ = Q₁ − W = 1000 − 300 = <b>700 J</b> (η = 30%).</p></details></div>
+    <div class="jee-q"><span class="qn">Q8.</span> Koi bolta hai usne 100% efficient engine banaya. Possible?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — Kelvin-Planck statement: kuch heat sink me deni hi padti hai.</p></details></div>
+    <div class="jee-q"><span class="qn">Q9.</span> Refrigerator ka COP 4 hai, 200 J work lagaya. Freeze se kitni heat nikali?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>COP = Q₂/W → Q₂ = 4×200 = <b>800 J</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q10.</span> Cyclic process me net ΔU kitna hota hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Zero</b> — wapas same state pe aate hain, U state function hai. Isliye Q_net = W_net = P-V loop ka area.</p></details></div>
+  </div>
+</section>
+<section class="roadmap">
+  <div class="tip-box">🏆 <b>Class 11 Chemistry complete!</b> Revision ke liye short notes + practice dohrao. Class 11 Physics/Biology jaldi.</div>
+</section>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
+    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
+    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+  </div>
+</footer>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
