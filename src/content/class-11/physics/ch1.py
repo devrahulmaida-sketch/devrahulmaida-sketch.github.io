@@ -8,8 +8,8 @@ CH = {
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 1: Units and Measurement — long + short notes in Hindi, English, Hinglish. SI units, dimensional analysis, significant figures, errors, vernier, screw gauge, parallax.",
  "video": {
-  "youtube": "dTC7xOgFKP0",
-  "dur": "1 min 29 sec"
+  "youtube": "ZY4nP8kFJCU",
+  "dur": "1 min 9 sec"
  },
  "card_tag": "Physics ki ABCD — SI units, dimensions, errors aur measurement techniques",
  "card_topics": [
