@@ -1,0 +1,264 @@
+# Class 11 Biology, Chapter 4 - Animal Kingdom
+# Reconstructed from built HTML by tools/scrape_subject.py
+CH = {
+ "num": 4,
+ "title_en": "Animal Kingdom",
+ "title_hi": "प्राणी जगत",
+ "tagline": "Sponge se whale tak — poore animal kingdom ka master map",
+ "jee": "HIGH",
+ "meta_desc": "Class 11 Biology Chapter 4: Animal Kingdom — long + short notes in Hindi, English, Hinglish. Classification basis, all phyla from Porifera to Chordata, vertebrate classes.",
+ "video": None,
+ "card_tag": "Sponge se whale tak — poore animal kingdom ka master map",
+ "card_topics": [
+  "🧽 Basis + symmetry",
+  "🪼 Porifera → Arthropoda",
+  "🐌 Mollusca + Echinodermata",
+  "🦊 Vertebrate classes"
+ ],
+ "long": {
+  "hinglish": [
+   {
+    "h": "1️⃣ Classification Ka Basis — Levels, Symmetry, Germ Layers ⭐",
+    "body": "<ul>\n<li><b>Levels of organisation ⭐:</b> <b>Cellular</b> (Porifera — cells loose, tissue nahi), <b>Tissue</b> (Coelenterata/Cnidaria + Ctenophora), <b>Organ</b> (Platyhelminthes), <b>Organ-system</b> (Annelida se upar sab).</li>\n<li><b>Symmetry ⭐⭐:</b> <b>Asymmetrical</b> (Sponges/Porifera — koi plane nahi!), <b>Radial</b> (Coelenterata, Ctenophora, adult Echinodermata — koi bhi plane centre se kaato to 2 equal halves), <b>Bilateral</b> (Platyhelminthes se Chordata tak — SIRF ek plane se 2 halves, left/right mirror).</li>\n<li><b>Germ layers ⭐⭐:</b> <b>Diploblastic</b> — 2 layers (ectoderm + endoderm), beech me non-cellular <b>mesoglea</b> (Coelenterata, Ctenophora); <b>Triploblastic</b> — 3 layers (+ mesoderm) (Platyhelminthes se Chordata tak).</li>\n<li><b>Coelom (body cavity) ⭐⭐:</b> mesoderm-lined cavity. <b>Acoelomates</b> — cavity nahi (Platyhelminthes); <b>Pseudocoelomates</b> — mesoderm pouches ka jhootha coelom (Aschelminthes/Roundworms); <b>Coelomates/Eucoelomates</b> — true coelom (Annelida, Mollusca, Arthropoda, Echinodermata, Hemichordata, Chordata).</li>\n<li><b>Segmentation ⭐:</b> true segmentation (metameric) sirf <b>Annelida, Arthropoda, Chordata</b> me — body similar segments ki series.</li>\n<li><b>Notochord ⭐:</b> mesodermally derived rod-like structure — chordates me (embryonic); non-chordates me absent.</li>\n</ul>\n<p class=\"small-note\">💡 Feel: ye 6 characters = animal kingdom ki ATM PIN — inhe yaad kiya to poora chapter khol jaayega!</p>"
+   },
+   {
+    "h": "2️⃣ Porifera Se Platyhelminthes — Lower Invertebrates ⭐",
+    "body": "<ul>\n<li><b>Porifera (Sponges) ⭐:</b> cellular level, <b>asymmetrical</b>, aquatic (mostly marine), sessile (attached). Body me pores (ostia) + water canal system (<b>canal system ⭐</b>); choanocytes (collar cells) se water current. Skeleton: spicules (CaCO3/SiO2) ya spongin fibres. Hermaphrodite; asexual = fragmentation/gemmules, sexual bhi. Larva = motile! Examples: Sycon (Scypha), Spongilla (freshwater), Euspongia (bath sponge).</li>\n<li><b>Coelenterata/Cnidaria ⭐⭐:</b> tissue level, <b>radial symmetry</b>, <b>diploblastic</b>, aquatic (mostly marine). <b>Cnidoblasts/stinging cells</b> (tentacles pe — defence + prey capture, naam yahi se!). <b>Polymorphism ⭐:</b> 2 body forms — polyp (sessile: Hydra, Adamsia) aur medusa (free-swimming: Aurelia/jellyfish). Digestion extracellular + intracellular dono. Examples: Hydra, Obelia, Physalia (Portuguese man-of-war), Adamsia (sea anemone), Aurelia, Corals (Meandrina — brain coral!).</li>\n<li><b>Ctenophora (Comb jellies) ⭐:</b> marine, radial, diploblastic. <b>8 comb plates (ciliary plates) ⭐</b> locomotion ke liye — isliye 'sea walnuts/comb jellies'. <b>Bioluminescence ⭐</b> (light emit karte hain!) — unique property. Cnidoblasts NAHI (Cnida se difference!). Examples: Pleurobrachia, Ctenoplana.</li>\n<li><b>Platyhelminthes (Flatworms) ⭐⭐:</b> <b>bilateral symmetry</b>, <b>triploblastic</b>, <b>acoelomate</b>, organ level. Dorsoventrally FLATTENED body (naam = platy=flat, helminth=worm). Mostly parasitic (endoparasites); hooks/suckers present. <b>Flame cells ⭐</b> = excretion + osmoregulation. Hermaphrodite. Examples: Taenia (tapeworm), Fasciola (liver fluke), Planaria.</li>\n</ul>\n<p class=\"small-note\">🎯 Quick traps: Ctenophora me bioluminescence + comb plates par cnidoblasts nahi; Platy me flame cells; Porifera me canal system!</p>"
+   },
+   {
+    "h": "3️⃣ Aschelminthes, Annelida, Arthropoda ⭐",
+    "body": "<ul>\n<li><b>Aschelminthes (Roundworms) ⭐:</b> bilateral, triploblastic, <b>pseudocoelomate</b>, organ-system level. Body cylindrical/round cross-section (naam roundworm); complete digestive tract (mouth + anus). Parasitic mostly; dioecious (sexes separate), females longer than males. Examples: Ascaris, Wuchereria (filaria — elephantiasis!), Ancylostoma (hookworm), Enterobius (pinworm).</li>\n<li><b>Annelida (Segmented worms) ⭐⭐:</b> bilateral, triploblastic, <b>coelomate (eucoelomate)</b>, organ-system. <b>Metameric segmentation ⭐</b> — body true segments me (first phylum with this!). Aquatic + terrestrial. <b>Setae/parapodia ⭐</b> locomotion ke liye. Closed circulatory system. Nephridia excretion. Examples: Nereis (aquatic, parapodia), Pheretima (earthworm), Hirudinaria (leech).</li>\n<li><b>Arthropoda ⭐⭐:</b> <b>LARGEST phylum</b> (2/3 of all species — insects included!). Bilateral, triploblastic, coelomate. <b>Jointed appendages ⭐</b> (naam = arthro+pod), <b>chitinous exoskeleton ⭐</b>. Body: head, thorax, abdomen. Open circulatory system. Compound eyes + antennae. Respiration: gills/trachea/book lungs. Examples: Palaemon (prawn), cockroach, mosquitoes, housefly, spider, scorpion, crab, butterfly, Periplaneta.</li>\n</ul>\n<p class=\"small-note\">💡 Annelida = segmented + setae; Arthropoda = jointed legs + chitin armour. Dono coelomate!</p>"
+   },
+   {
+    "h": "4️⃣ Mollusca, Echinodermata, Hemichordata ⭐",
+    "body": "<ul>\n<li><b>Mollusca ⭐:</b> <b>second largest phylum</b>. Bilateral, triploblastic, coelomate. Soft body (naam = mollis=soft), usually <b>calcareous shell</b>; body = head + muscular foot + visceral hump; visceral hump ko <b>mantle</b> cover karta hai jo shell banata hai. <b>Radula ⭐</b> = rasping feeding organ (rasping tongue). Respiration: gills. Examples: Pila (apple snail), Octopus, Sepia, Loligo, Pinctada (pearl oyster ⭐), Unio.</li>\n<li><b>Echinodermata ⭐⭐:</b> sirf marine! <b>Adults radial symmetry</b> (pentamerous — 5-part), larvae BILATERAL. Triploblastic, coelomate. <b>Water vascular system ⭐⭐</b> — unique! Locomotion + food capture + respiration isse hota hai. <b>Spiny skin</b> (naam = echino=spiny, derma=skin). Calcareous ossicles endoskeleton. Regeneration power! Examples: Asterias (starfish), Echinus (sea urchin), Cucumaria (sea cucumber), Ophiura (brittle star), Antedon (sea lily).</li>\n<li><b>Hemichordata ⭐:</b> marine, worm-like, bilateral, triploblastic, coelomate. Body = proboscis + collar + trunk. <b>Open circulatory system</b>, respiration by gills. Excretion: proboscis gland. Sexes separate. Development indirect. Examples: Balanoglossus, Saccoglossus. (Ye 'connecting link' hai non-chordates aur chordates ke beech!)</li>\n</ul>\n<p class=\"small-note\">🎯 NEET specials: Echinodermata = water vascular system + spiny skin; Mollusca = radula + mantle; Hemichordata = proboscis-collar-trunk!</p>"
+   },
+   {
+    "h": "5️⃣ Chordata — Vertebrates Ka Complete Map ⭐⭐",
+    "body": "<ul>\n<li><b>Chordata ke 3 fundamental characters ⭐⭐:</b> <b>Notochord</b> (flexible rod), <b>dorsal hollow nerve cord</b>, <b>paired pharyngeal gill slits</b> — kisi na kisi life stage me zaroor! Plus: bilateral, triploblastic, coelomate, post-anal tail, closed circulatory, ventral heart.</li>\n<li><b>3 sub-phyla ⭐:</b> <b>Urochordata</b> (notochord sirf larval tail me — Ascidia), <b>Cephalochordata</b> (notochord head se tail tak, life-long — Amphioxus/Branchiostoma), <b>Vertebrata</b> (notochord replace hoke vertebral column banta hai).</li>\n<li><b>Vertebrata ke classes ⭐⭐:</b> <b>Cyclostomata</b> (jawless fishes — sucking circular mouth, scales nahi, 6-15 gill slits; Petromyzon/lamprey, Myxine/hagfish — ectoparasites on fishes!). <b>Chondrichthyes</b> (cartilaginous fishes — cartilage skeleton, placoid scales, ventral mouth, 5-7 gill slits, operculum NAHI, air bladder nahi so constantly swim; Scoliodon/dogfish, sting ray, electric ray/Torpedo). <b>Osteichthyes</b> (bony fishes — bone skeleton, cycloid/ctenoid scales, terminal mouth, 4 gill pairs + operculum, air bladder present; marine = Hippocampus/sea horse, flying fish; freshwater = Labeo/rohu, Catla; aquarium = Betta, Pterophyllum/angelfish).</li>\n<li><b>Amphibia ⭐:</b> land + water dono (naam!), moist skin (scales nahi), 2 pairs limbs, 3-chambered heart (2 auricle + 1 ventricle), cold-blooded, gills (larva) → lungs (adult), external fertilization, indirect development. Examples: Rana (frog), Bufo (toad), Hyla (tree frog), Salamandra, Ichthyophis (limbless!).</li>\n<li><b>Reptilia ⭐:</b> creeping/crawling, dry cornified skin with scales/scutes, 3-chambered heart (Crocodilus me 4-chambered!), cold-blooded (poikilotherms), internal fertilization, terrestrial eggs (calcareous shell). Examples: Chelone (turtle), Chameleon, Calotes (garden lizard), Crocodilus, Hemidactylus (wall lizard), Naja (cobra), Bangarus (krait), Vipera.</li>\n<li><b>Aves ⭐:</b> feathers!, forelimbs = wings, hollow (pneumatic) bones, 4-chambered heart, WARM-blooded (first class with mammals!), beak (teeth nahi), air sacs (double respiration), oviparous. Examples: Corvus (crow), Columba (pigeon), Pavo (peacock), Struthio (ostrich), Psittacula (parrot), Neophron (vulture).</li>\n<li><b>Mammalia ⭐:</b> <b>mammary glands</b> (milk!), hair, external ears (pinnae), 4-chambered heart, warm-blooded, 2 pairs limbs (adapted), viviparous mostly (EXCEPTIONS: Ornithorhynchus/platypus + Echidna = egg-laying mammals ⭐). Examples: humans, kangaroo, Rattus, Felis (cat), Canis (dog), Panthera (lion/tiger), Pteropus (flying fox/bat), Balaenoptera (blue whale), Macropus (kangaroo), Equus (horse), Delphinus (dolphin).</li>\n</ul>\n<p class=\"small-note\">🎯 Heart chambers: fish 2 → amphibian 3 → reptile 3 (crocodile 4!) → aves/mammal 4. Aur platypus = egg-laying mammal — ye 2 exam ke darling hain!</p>"
+   }
+  ],
+  "hi": [
+   {
+    "h": "1️⃣ वर्गीकरण का आधार — स्तर, सममिति, जर्म परतें ⭐",
+    "body": "<ul>\n<li><b>संगठन स्तर ⭐:</b> <b>कोशिकीय</b> (पोरिफेरा), <b>ऊतकीय</b> (सीलेंट्रेटा + टीनोफोरा), <b>अंगीय</b> (प्लेटीहेल्मिंथीज़), <b>अंग-तंत्रीय</b> (ऐनेलिडा से ऊपर)।</li>\n<li><b>सममिति ⭐⭐:</b> <b>असममित</b> (स्पंज), <b>अरीय</b> (सीलेंट्रेटा, टीनोफोरा, वयस्क इकाइनोडर्मेटा), <b>द्विपार्श्वीय</b> (प्लेटीहेल्मिंथीज़ से कॉर्डेटा तक)।</li>\n<li><b>जर्म परतें ⭐⭐:</b> <b>द्विकोरकीय</b> — 2 परतें + मध्य में मीज़ोग्लिया (सीलेंट्रेटा, टीनोफोरा); <b>त्रिकोरकीय</b> — 3 परतें (प्लेटीहेल्मिंथीज़ से कॉर्डेटा तक)।</li>\n<li><b>गुहा (coelom) ⭐⭐:</b> <b>अगुहीय</b> — प्लेटीहेल्मिंथीज़; <b>कूटगुहीय</b> — ऐस्केल्मिंथीज़; <b>सगुहीय</b> — ऐनेलिडा से कॉर्डेटा।</li>\n<li><b>खंडीभवन ⭐:</b> सच्चा खंडीभवन केवल <b>ऐनेलिडा, आर्थ्रोपोडा, कॉर्डेटा</b> में।</li>\n<li><b>पृष्ठरज्जु (notochord) ⭐:</b> मीज़ोडर्म से बनी छड़ — कॉर्डेटा में, अकॉर्डेटा में अनुपस्थित।</li>\n</ul>\n<p class=\"small-note\">💡 ये 6 लक्षण = सम्पूर्ण अध्याय की कुंजी!</p>"
+   },
+   {
+    "h": "2️⃣ पोरिफेरा से प्लेटीहेल्मिंथीज़ ⭐",
+    "body": "<ul>\n<li><b>पोरिफेरा (स्पंज) ⭐:</b> कोशिकीय स्तर, <b>असममित</b>, जलीय (अधिकतर समुद्री), स्थावर। छिद्र (ओस्टिया) + <b>प्रणाल तंत्र (canal system) ⭐</b>; कॉलर कोशिकाएँ (कोएनोसाइट्स)। कंकाल: स्पिक्यूल/स्पंजिन। उभयलिंगी; अलैंगिक = खंडन/जेम्यूल। उदा: साइकॉन, स्पंजिला, यूस्पंजिया।</li>\n<li><b>सीलेंट्रेटा/निडेरिया ⭐⭐:</b> ऊतकीय स्तर, <b>अरीय सममिति</b>, <b>द्विकोरकीय</b>, जलीय। <b>निडोब्लास्ट (डंक कोशिकाएँ) ⭐</b> — शिकार + रक्षा। <b>बहुरूपता ⭐:</b> पॉलिप (स्थावर — हाइड्रा) + मेड्यूसा (मुक्त-तैराक — जेलीफ़िश)। उदा: हाइड्रा, ओबेलिया, फ़िसेलिया, ऑरेलिया, प्रवाल (मिएंड्रिना)।</li>\n<li><b>टीनोफोरा (कंघी-जेली) ⭐:</b> समुद्री, अरीय, द्विकोरकीय। <b>8 कंघी प्लेटें (पक्ष्माभ पट्टिकाएँ) ⭐</b> गमन हेतु; <b>जीव-दीप्ति (bioluminescence) ⭐</b>! निडोब्लास्ट नहीं। उदा: प्लूरोब्रेकिया, टीनोप्लाना।</li>\n<li><b>प्लेटीहेल्मिंथीज़ (चपटे कृमि) ⭐⭐:</b> <b>द्विपार्श्वीय</b>, <b>त्रिकोरकीय</b>, <b>अगुहीय</b>, अंग स्तर। पृष्ठ-अधर समतल शरीर। अधिकतर परजीवी; पंख/चूषक उपस्थित। <b>ज्वाला कोशिकाएँ ⭐</b> = उत्सर्जन + परासरण-नियमन। उभयलिंगी। उदा: टीनिया (फ़ीता कृमि), फ़ैसिओला (यकृत कृमि), प्लेनेरिया।</li>\n</ul>\n<p class=\"small-note\">🎯 टीनोफोरा में जीव-दीप्ति + कंघी प्लेटें, पर निडोब्लास्ट नहीं — क्लासिक जाल!</p>"
+   },
+   {
+    "h": "3️⃣ ऐस्केल्मिंथीज़, ऐनेलिडा, आर्थ्रोपोडा ⭐",
+    "body": "<ul>\n<li><b>ऐस्केल्मिंथीज़ (गोल कृमि) ⭐:</b> द्विपार्श्वीय, त्रिकोरकीय, <b>कूटगुहीय</b>, अंग-तंत्र स्तर। बेलनाकार शरीर; पूर्ण आहारनाल (मुख + गुदा)। अधिकतर परजीवी; लिंग पृथक, मादा नर से लंबी। उदा: ऐस्कारिस, वुचेरेरिया (फ़ाइलेरिया — हाथीपाँव!), ऐन्काइलोस्टोमा, एंटरोबियस।</li>\n<li><b>ऐनेलिडा (खंडित कृमि) ⭐⭐:</b> द्विपार्श्वीय, त्रिकोरकीय, <b>सगुहीय</b>, अंग-तंत्र। <b>खंडीभवन ⭐</b> — शरीर सच्चे खंडों में (प्रथम संघ!)। जलीय + स्थलीय। <b>शूलबाल/पैरापोडिया ⭐</b> गमन हेतु। बंद परिसंचरण तंत्र। उदा: नीरिस, केंचुआ (फ़ेरेटिमा), जोंक।</li>\n<li><b>आर्थ्रोपोडा ⭐⭐:</b> <b>सबसे बड़ा संघ</b> (कुल जातियों का 2/3!)। द्विपार्श्वीय, त्रिकोरकीय, सगुहीय। <b>संधिग्राही उपांग ⭐</b>, <b>काइटिनी बहिःकंकाल ⭐</b>। शरीर: शीर्ष, वक्ष, उदर। खुला परिसंचरण। संयुक्त नेत्र + शृंगिकाएँ। उदा: झींगा, तिलचट्टा, मच्छर, मक्खी, मकड़ी, बिच्छू, केकड़ा, तितली।</li>\n</ul>\n<p class=\"small-note\">💡 ऐनेलिडा = खंड + शूलबाल; आर्थ्रोपोडा = संधिग्राही पैर + काइटिन कवच।</p>"
+   },
+   {
+    "h": "4️⃣ मोलस्का, इकाइनोडर्मेटा, हेमिकॉर्डेटा ⭐",
+    "body": "<ul>\n<li><b>मोलस्का ⭐:</b> <b>द्वितीय बृहत्तम संघ</b>। द्विपार्श्वीय, त्रिकोरकीय, सगुहीय। कोमल शरीर, प्रायः <b>चूना-खोल</b>; शरीर = शीर्ष + पेशीय पद + आन्त्रकपुंज; <b>मैंटल</b> खोल बनाता है। <b>रैड्युला ⭐</b> = रगड़ने वाला आहार अंग। उदा: पिला, ऑक्टोपस, सीपिया, लोलिगो, पिंक्टाडा (मोती सीप ⭐)।</li>\n<li><b>इकाइनोडर्मेटा ⭐⭐:</b> केवल समुद्री! <b>वयस्क अरीय सममिति</b> (पंच-अरीय), डिंभक द्विपार्श्वीय। त्रिकोरकीय, सगुहीय। <b>जल-वाहिका तंत्र ⭐⭐</b> — अद्वितीय! गमन + आहार + श्वसन इसी से। <b>कँटीली त्वचा</b>; चूना-अस्थिकण अन्तःकंकाल; पुनरुद्भवन क्षमता! उदा: ऐस्टेरियस (तारा-मीन), इकाइनस (समुद्री काँटेदार), समुद्री ककड़ी, ऑफ़िओरा, समुद्री लिली।</li>\n<li><b>हेमिकॉर्डेटा ⭐:</b> समुद्री, कृमि-सदृश, द्विपार्श्वीय, त्रिकोरकीय, सगुहीय। शरीर = प्रोबोसिस + कॉलर + त्रंक। <b>खुला परिसंचरण</b>, गिल्स से श्वसन। उदा: बैलेनोग्लॉसस। (अकॉर्डेटा-कॉर्डेटा की 'सेतु कड़ी'!)</li>\n</ul>\n<p class=\"small-note\">🎯 इकाइनोडर्मेटा = जल-वाहिका तंत्र + कँटीली त्वचा; मोलस्का = रैड्युला + मैंटल!</p>"
+   },
+   {
+    "h": "5️⃣ कॉर्डेटा — कशेरुकियों का मानचित्र ⭐⭐",
+    "body": "<ul>\n<li><b>कॉर्डेटा के 3 मूल लक्षण ⭐⭐:</b> <b>पृष्ठरज्जु (notochord)</b>, <b>पृष्ठीय खोखला तंत्रिका-रज्जु</b>, <b>युग्मित ग्रसनी गिल-छिद्र</b> — किसी न किसी अवस्था में अवश्य! साथ में: द्विपार्श्वीय, त्रिकोरकीय, सगुहीय, गुदा-पश्च पूच्छ, बंद परिसंचरण, अधर हृदय।</li>\n<li><b>3 उप-संघ ⭐:</b> <b>यूरोकॉर्डेटा</b> (पृष्ठरज्जु केवल डिंभक-पूच्छ में — ऐसीडिया), <b>सिफैलोकॉर्डेटा</b> (जीवनपर्यंत, शीर्ष से पूच्छ तक — ऐम्फ़िऑक्सस), <b>वर्टीब्रेटा</b> (पृष्ठरज्जु → कशेरुकदंड)।</li>\n<li><b>वर्ग ⭐⭐:</b> <b>चक्रमुखी (Cyclostomata)</b> — बेजबड़ी मछलियाँ, चूषण-मुख, स्केल नहीं; पेट्रोमाइज़ॉन, मिक्सीन। <b>कॉन्ड्रिक्थीज़</b> — उपास्थि मछलियाँ, प्लैकॉइड स्केल, वेंट्रल मुख, ऑपरकुलम नहीं, वायु-थैली नहीं (निरंतर तैरना!); कुत्ता-मछली (स्कोलिओडॉन), स्टिंग रे। <b>ऑस्टिक्थीज़</b> — अस्थि मछलियाँ, चक्रीय/कांटेदार स्केल, ऑपरकुलम उपस्थित, वायु-थैली; हिप्पोकैम्पस (समुद्री घोड़ा), लेबियो (रोहू), कतला, ऐंजलफ़िश।</li>\n<li><b>उभयचर ⭐:</b> स्थल + जल, नम त्वचा (स्केल नहीं), 2 जोड़ी पैर, <b>3-कक्षीय हृदय</b>, शीतरक्ती, बाह्य निषेचन। उदा: मेंढ़क (राना), ब्यूफ़ो, सैलामैंडर, इच्थियोफ़िस।</li>\n<li><b>सरीसृप ⭐:</b> रेंगने वाले, शुष्क स्केलयुक्त त्वचा, 3-कक्षीय हृदय (<b>मगरमच्छ में 4!</b>), शीतरक्ती, आंतरिक निषेचन, कठोर खोल वाले अंडे। उदा: कछुआ, गिरगिट, मगरमच्छ, कोबरा, करैत, वाइपर।</li>\n<li><b>पक्षी ⭐:</b> पंख!, अग्रपद = विंग्स, खोखली (वायुपूर्ण) हड्डियाँ, <b>4-कक्षीय हृदय</b>, <b>उष्णरक्ती</b>, चोंच (दाँत नहीं), वायुकोश, अंडज। उदा: कौवा, कबूतर, मोर, शुतुरमुर्ग, तोता, गिद्ध।</li>\n<li><b>स्तनधारी ⭐:</b> <b>स्तन ग्रंथियाँ</b>, बाल, बाह्य कर्ण (पिन्ना), 4-कक्षीय हृदय, उष्णरक्ती, जरायुज (अपवाद: <b>प्लैटिपस + इकिडना = अंडे देने वाले स्तनधारी ⭐</b>)। उदा: मनुष्य, कंगारू, चूहा, बिल्ली, कुत्ता, शेर, चमगादड़, नील व्हेल, घोड़ा, डॉल्फ़िन।</li>\n</ul>\n<p class=\"small-note\">🎯 हृदय-कक्ष: मछली 2 → उभयचर 3 → सरीसृप 3 (मगरमच्छ 4!) → पक्षी/स्तनधारी 4। प्लैटिपस = अंडज स्तनधारी!</p>"
+   }
+  ],
+  "en": [
+   {
+    "h": "1️⃣ Basis of Classification — Levels, Symmetry, Germ Layers ⭐",
+    "body": "<ul>\n<li><b>Levels of organisation ⭐:</b> <b>Cellular</b> (Porifera), <b>Tissue</b> (Coelenterata + Ctenophora), <b>Organ</b> (Platyhelminthes), <b>Organ-system</b> (Annelida upwards).</li>\n<li><b>Symmetry ⭐⭐:</b> <b>Asymmetrical</b> (sponges), <b>Radial</b> (Coelenterata, Ctenophora, adult echinoderms — any plane through the centre gives 2 halves), <b>Bilateral</b> (Platyhelminthes → Chordata — only ONE plane divides into mirror halves).</li>\n<li><b>Germ layers ⭐⭐:</b> <b>Diploblastic</b> — 2 layers with non-cellular <b>mesoglea</b> between (Coelenterata, Ctenophora); <b>Triploblastic</b> — 3 layers (Platyhelminthes → Chordata).</li>\n<li><b>Coelom ⭐⭐:</b> mesoderm-lined body cavity. <b>Acoelomates</b> — none (Platyhelminthes); <b>Pseudocoelomates</b> — false coelom from mesoderm pouches (Aschelminthes); <b>Coelomates</b> — true coelom (Annelida → Chordata).</li>\n<li><b>Segmentation ⭐:</b> true metameric segmentation only in <b>Annelida, Arthropoda, Chordata</b>.</li>\n<li><b>Notochord ⭐:</b> mesodermally derived rod — present in chordates, absent in non-chordates.</li>\n</ul>\n<p class=\"small-note\">💡 These 6 characters are the master key — learn them and the whole chapter unlocks!</p>"
+   },
+   {
+    "h": "2️⃣ Porifera to Platyhelminthes — Lower Invertebrates ⭐",
+    "body": "<ul>\n<li><b>Porifera (Sponges) ⭐:</b> cellular level, <b>asymmetrical</b>, aquatic (mostly marine), sessile. Body has pores (ostia) with a <b>water canal system ⭐</b>; collar cells (choanocytes) drive water current. Skeleton: spicules or spongin. Hermaphrodite; asexual by fragmentation/gemmules. E.g. Sycon, Spongilla, Euspongia (bath sponge).</li>\n<li><b>Coelenterata/Cnidaria ⭐⭐:</b> tissue level, <b>radial</b>, <b>diploblastic</b>, aquatic. <b>Cnidoblasts/stinging cells ⭐</b> on tentacles for defence and prey capture. <b>Polymorphism ⭐:</b> polyp (sessile — Hydra) and medusa (free-swimming — Aurelia). E.g. Hydra, Obelia, Physalia, Adamsia (sea anemone), Aurelia, corals (Meandrina).</li>\n<li><b>Ctenophora (Comb jellies) ⭐:</b> marine, radial, diploblastic. <b>8 comb plates (ciliary plates) ⭐</b> for locomotion; <b>bioluminescence ⭐</b> — they emit light! No cnidoblasts (key difference from Cnidaria). E.g. Pleurobrachia, Ctenoplana.</li>\n<li><b>Platyhelminthes (Flatworms) ⭐⭐:</b> <b>bilateral</b>, <b>triploblastic</b>, <b>acoelomate</b>, organ level. Dorsoventrally flattened. Mostly parasitic with hooks/suckers. <b>Flame cells ⭐</b> for excretion and osmoregulation. Hermaphrodite. E.g. Taenia (tapeworm), Fasciola (liver fluke), Planaria.</li>\n</ul>\n<p class=\"small-note\">🎯 Quick traps: Ctenophora = comb plates + bioluminescence but NO cnidoblasts; Platy = flame cells; Porifera = canal system!</p>"
+   },
+   {
+    "h": "3️⃣ Aschelminthes, Annelida, Arthropoda ⭐",
+    "body": "<ul>\n<li><b>Aschelminthes (Roundworms) ⭐:</b> bilateral, triploblastic, <b>pseudocoelomate</b>, organ-system level. Cylindrical body; complete digestive tract. Mostly parasitic; sexes separate (females longer than males). E.g. Ascaris, Wuchereria (filaria worm — elephantiasis!), Ancylostoma (hookworm), Enterobius (pinworm).</li>\n<li><b>Annelida (Segmented worms) ⭐⭐:</b> bilateral, triploblastic, <b>coelomate</b>, organ-system. <b>Metameric segmentation ⭐</b> — first phylum with true segments! <b>Setae/parapodia ⭐</b> for locomotion. Closed circulatory system. E.g. Nereis, Pheretima (earthworm), Hirudinaria (leech).</li>\n<li><b>Arthropoda ⭐⭐:</b> <b>LARGEST phylum</b> (2/3 of all species). Bilateral, triploblastic, coelomate. <b>Jointed appendages ⭐</b>, <b>chitinous exoskeleton ⭐</b>. Body: head, thorax, abdomen. Open circulation; compound eyes + antennae. E.g. prawn, cockroach, mosquito, housefly, spider, scorpion, crab, butterfly.</li>\n</ul>\n<p class=\"small-note\">💡 Annelida = segments + setae; Arthropoda = jointed legs + chitin armour. Both coelomates!</p>"
+   },
+   {
+    "h": "4️⃣ Mollusca, Echinodermata, Hemichordata ⭐",
+    "body": "<ul>\n<li><b>Mollusca ⭐:</b> <b>second largest phylum</b>. Bilateral, triploblastic, coelomate. Soft body, usually a <b>calcareous shell</b>; head + muscular foot + visceral hump covered by the <b>mantle</b> (makes the shell). <b>Radula ⭐</b> = rasping feeding organ. E.g. Pila, Octopus, Sepia, Loligo, Pinctada (pearl oyster ⭐), Unio.</li>\n<li><b>Echinodermata ⭐⭐:</b> exclusively marine! <b>Adults radially symmetrical</b> (pentamerous), larvae bilateral. Triploblastic, coelomate. <b>Water vascular system ⭐⭐</b> — unique! Drives locomotion, food capture, respiration. <b>Spiny skin</b>; calcareous ossicle skeleton; can regenerate! E.g. Asterias (starfish), Echinus (sea urchin), sea cucumber, brittle star, sea lily.</li>\n<li><b>Hemichordata ⭐:</b> marine, worm-like, bilateral, triploblastic, coelomate. Body = proboscis + collar + trunk. <b>Open circulation</b>, gill respiration. E.g. Balanoglossus, Saccoglossus. (The 'connecting link' between non-chordates and chordates!)</li>\n</ul>\n<p class=\"small-note\">🎯 NEET specials: Echinodermata = water vascular system; Mollusca = radula + mantle; Hemichordata = proboscis-collar-trunk!</p>"
+   },
+   {
+    "h": "5️⃣ Chordata — The Complete Vertebrate Map ⭐⭐",
+    "body": "<ul>\n<li><b>3 fundamental chordate characters ⭐⭐:</b> <b>Notochord</b>, <b>dorsal hollow nerve cord</b>, <b>paired pharyngeal gill slits</b> — present at SOME life stage! Plus: bilateral, triploblastic, coelomate, post-anal tail, closed circulation, ventral heart.</li>\n<li><b>3 sub-phyla ⭐:</b> <b>Urochordata</b> (notochord only in larval tail — Ascidia), <b>Cephalochordata</b> (notochord lifelong, head to tail — Amphioxus), <b>Vertebrata</b> (notochord replaced by vertebral column).</li>\n<li><b>Vertebrate classes ⭐⭐:</b> <b>Cyclostomata</b> (jawless fishes — sucking circular mouth, no scales; Petromyzon/lamprey, Myxine/hagfish). <b>Chondrichthyes</b> (cartilaginous fishes — cartilage skeleton, placoid scales, ventral mouth, no operculum, no air bladder so they swim constantly; dogfish, sting ray, Torpedo). <b>Osteichthyes</b> (bony fishes — bone skeleton, cycloid/ctenoid scales, operculum present, air bladder; sea horse, rohu, Catla, angelfish, flying fish).</li>\n<li><b>Amphibia ⭐:</b> land + water, moist scale-less skin, 2 limb pairs, <b>3-chambered heart</b>, cold-blooded, external fertilization, indirect development. E.g. Rana (frog), Bufo (toad), Hyla, Salamandra, Ichthyophis (limbless!).</li>\n<li><b>Reptilia ⭐:</b> crawling, dry cornified skin with scales, 3-chambered heart (<b>4-chambered in crocodiles!</b>), cold-blooded, internal fertilization, shelled terrestrial eggs. E.g. turtle, Chameleon, Calotes, crocodile, wall lizard, cobra, krait, viper.</li>\n<li><b>Aves ⭐:</b> feathers!, forelimbs as wings, hollow pneumatic bones, <b>4-chambered heart</b>, <b>warm-blooded</b>, beak (no teeth), air sacs, oviparous. E.g. crow, pigeon, peacock, ostrich, parrot, vulture.</li>\n<li><b>Mammalia ⭐:</b> <b>mammary glands</b>, hair, external ear pinnae, 4-chambered heart, warm-blooded, mostly viviparous (EXCEPTIONS: <b>platypus + Echidna lay eggs ⭐</b>). E.g. humans, kangaroo, rat, cat, dog, lion, bat, blue whale, horse, dolphin.</li>\n</ul>\n<p class=\"small-note\">🎯 Heart chambers: fish 2 → amphibian 3 → reptile 3 (crocodile 4!) → birds/mammals 4. Platypus = egg-laying mammal — both exam darlings!</p>"
+   }
+  ]
+ },
+ "short": {
+  "hinglish": [
+   {
+    "h": "Basis ⭐⭐",
+    "items": [
+     "Porifera asymmetrical; radial Cnida/Cteno/Echino",
+     "Diploblastic: Cnida+Cteno only",
+     "Acoelomate: Platy; Pseudo: Aschel; True: Annelida+"
+    ]
+   },
+   {
+    "h": "Lower ⭐",
+    "items": [
+     "Porifera: canal system, choanocytes",
+     "Cnidaria: cnidoblasts, polyp/medusa",
+     "Ctenophora: 8 comb plates + bioluminescence",
+     "Platy: flat, acoelomate, flame cells"
+    ]
+   },
+   {
+    "h": "Middle ⭐",
+    "items": [
+     "Aschelminthes: round, pseudocoelomate",
+     "Annelida: metameric segments + setae",
+     "Arthropoda: largest, chitin, jointed legs"
+    ]
+   },
+   {
+    "h": "Higher ⭐",
+    "items": [
+     "Mollusca: soft + shell, radula, 2nd largest",
+     "Echino: water vascular system, spiny",
+     "Hemichordata: proboscis+collar+trunk"
+    ]
+   },
+   {
+    "h": "Chordata ⭐⭐",
+    "items": [
+     "3 features: notochord + nerve cord + gill slits",
+     "Heart: 2→3→3(croc 4)→4",
+     "Platypus/Echidna: egg-laying mammals"
+    ]
+   }
+  ],
+  "hi": [
+   {
+    "h": "आधार ⭐⭐",
+    "items": [
+     "पोरिफेरा असममित; अरीय: निडेरिया/टीनो/इकाइनो",
+     "द्विकोरकीय: केवल निडेरिया+टीनोफोरा",
+     "अगुहीय: प्लेटी; कूट: ऐस्केल्मिंथीज़"
+    ]
+   },
+   {
+    "h": "निम्न ⭐",
+    "items": [
+     "पोरिफेरा: प्रणाल तंत्र, कोएनोसाइट्स",
+     "निडेरिया: निडोब्लास्ट, पॉलिप/मेड्यूसा",
+     "टीनोफोरा: 8 कंघी प्लेटें + जीव-दीप्ति",
+     "प्लेटी: चपटे, अगुहीय, ज्वाला कोशिकाएँ"
+    ]
+   },
+   {
+    "h": "मध्य ⭐",
+    "items": [
+     "ऐस्केल्मिंथीज़: गोल, कूटगुहीय",
+     "ऐनेलिडा: खंडीभवन + शूलबाल",
+     "आर्थ्रोपोडा: बृहत्तम, काइटिन, संधिग्राही पैर"
+    ]
+   },
+   {
+    "h": "उच्च ⭐",
+    "items": [
+     "मोलस्का: कोमल + खोल, रैड्युला",
+     "इकाइनो: जल-वाहिका तंत्र, कँटीली त्वचा",
+     "हेमिकॉर्डेटा: प्रोबोसिस+कॉलर+त्रंक"
+    ]
+   },
+   {
+    "h": "कॉर्डेटा ⭐⭐",
+    "items": [
+     "3 लक्षण: पृष्ठरज्जु + तंत्रिका-रज्जु + गिल-छिद्र",
+     "हृदय: 2→3→3(मगर 4)→4",
+     "प्लैटिपस/इकिडना: अंडज स्तनधारी"
+    ]
+   }
+  ],
+  "en": [
+   {
+    "h": "Basis ⭐⭐",
+    "items": [
+     "Porifera asymmetrical; radial: Cnida/Cteno/Echino",
+     "Diploblastic: only Cnida+Cteno",
+     "Acoelomate: Platy; Pseudo: Aschel; True: Annelida+"
+    ]
+   },
+   {
+    "h": "Lower ⭐",
+    "items": [
+     "Porifera: canal system, choanocytes",
+     "Cnidaria: cnidoblasts, polyp/medusa",
+     "Ctenophora: 8 comb plates + bioluminescence",
+     "Platy: flat, acoelomate, flame cells"
+    ]
+   },
+   {
+    "h": "Middle ⭐",
+    "items": [
+     "Aschelminthes: round, pseudocoelomate",
+     "Annelida: metameric segments + setae",
+     "Arthropoda: largest, chitin, jointed legs"
+    ]
+   },
+   {
+    "h": "Higher ⭐",
+    "items": [
+     "Mollusca: soft + shell, radula, 2nd largest",
+     "Echino: water vascular system, spiny skin",
+     "Hemichordata: proboscis+collar+trunk"
+    ]
+   },
+   {
+    "h": "Chordata ⭐⭐",
+    "items": [
+     "3 features: notochord + nerve cord + gill slits",
+     "Heart: 2→3→3(croc 4)→4",
+     "Platypus/Echidna: egg-laying mammals"
+    ]
+   }
+  ]
+ },
+ "practice": [
+  [
+   "Diploblastic aur triploblastic animals me kya farak hai? Examples do.",
+   "Diploblastic me <b>2 germ layers</b> (ectoderm + endoderm, beech me mesoglea) — <b>Coelenterata, Ctenophora</b>. Triploblastic me <b>3 layers</b> (mesoderm bhi) — Platyhelminthes se Chordata tak."
+  ],
+  [
+   "Ctenophora ko Cnidaria se alag karne wale 2 features batao.",
+   "<b>8 comb plates (ciliary plates)</b> locomotion ke liye + <b>bioluminescence</b> (light emission). Aur Ctenophora me <b>cnidoblasts nahi</b> hote!"
+  ],
+  [
+   "Acoelomate, pseudocoelomate aur coelomate — ek-ek example do.",
+   "Acoelomate: <b>Platyhelminthes</b> (Taenia); Pseudocoelomate: <b>Aschelminthes</b> (Ascaris); Coelomate: <b>Annelida</b> (earthworm) aur upar ke phyla."
+  ],
+  [
+   "Arthropoda animal kingdom ka sabse bada phylum kyun hai? Iske 2 defining features batao.",
+   "Kyunki isme <b>2/3 se zyada species</b> hain (insects sahit). Features: <b>jointed appendages + chitinous exoskeleton</b>."
+  ],
+  [
+   "Echinodermata ka sabse unique feature kya hai aur ye kya karta hai?",
+   "<b>Water vascular system</b> — ye <b>locomotion, food capture aur respiration</b> me madad karta hai. Ye sirf echinoderms me hota hai."
+  ],
+  [
+   "Adult echinoderms aur unke larvae ki symmetry me kya difference hai?",
+   "Adults <b>radially symmetrical (pentamerous)</b>, larvae <b>bilaterally symmetrical</b>."
+  ],
+  [
+   "Chordata ke 3 fundamental characters batao.",
+   "<b>Notochord</b>, <b>dorsal hollow nerve cord</b>, <b>paired pharyngeal gill slits</b> — kisi na kisi life stage me present hote hain."
+  ],
+  [
+   "Crocodile ka heart baaki reptiles se alag kyun hai?",
+   "Baaki reptiles me <b>3-chambered</b> heart, par <b>crocodile me 4-chambered</b> — reptiles ka exception!"
+  ],
+  [
+   "Chondrichthyes aur Osteichthyes me 3 differences batao.",
+   "Skeleton: <b>cartilage vs bone</b>; Operculum: <b>absent vs present</b>; Air bladder: <b>absent vs present</b> (isliye cartilaginous fishes constantly swim karti hain)."
+  ],
+  [
+   "Kaunse mammals eggs lay karte hain?",
+   "<b>Ornithorhynchus (platypus) aur Echidna</b> — egg-laying mammals (monotremes). Baaki mammals viviparous hain."
+  ]
+ ],
+ "topic_strip": None,
+ "next": {
+  "href": "/class-11/biology/ch-5/",
+  "title": "Morphology of Flowering Plants"
+ }
+}
