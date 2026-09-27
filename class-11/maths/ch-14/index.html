@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 14 — Probability | Class 11 Chemistry | मईडा Maida</title>
+<meta name="description" content="Class 11 Maths Chapter 14: Probability — long + short notes in Hindi, English, Hinglish. Random experiments, sample space, events, classical probability, addition rule.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#classes">Classes</a>
+      <a href="/class-11/chemistry/">Class 11 Chemistry</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ch-hero">
+  <p class="crumb"><a href="/">Home</a> / <a href="/class-11/">Class 11</a> / <a href="/class-11/maths/">Mathematics</a> / Chapter 14</p>
+  <h1>Probability</h1>
+  <p style="color:var(--violet);margin-top:4px;font-weight:500">प्रायिकता</p>
+  <p style="color:var(--muted);margin-top:6px">Chance ka hisaab — sample space, events aur addition rule</p>
+  <div class="ch-tags">
+    <span class="pill weight-high">JEE Weightage: HIGH</span>
+    <span class="pill">🎬 Video coming soon</span>
+    <span class="pill">📝 Long + Short notes</span>
+    <span class="pill">🌐 Hindi • English • Hinglish</span>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="video-soon">
+    <div class="video-soon-icon">🎬</div>
+    <b>Video ban raha hai</b>
+    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Probability — Uncertainty Ka Measurement</h3>
+    <p>Coin uchhalo — heads ya tails? Dice fenko — 1 se 6 kuch bhi? Life uncertain hai, lekin <b>probability</b> us uncertainty ko NUMBER deta hai: 0 (impossible) se 1 (certain) tak. Ye chapter sochne ka tareeka hai — cards, dice, coins ke through hum real life ke "chance" ko samajhte hain. JEE me probability + permutations ka combo sabse zyada aata hai.</p>
+    <ul>
+      <li><b>Random experiment:</b> jiska result pehle se pakka na ho — coin toss, dice roll, card nikalna.</li>
+      <li><b>Outcome:</b> ek possible result — coin pe H ya T.</li>
+      <li><b>Sample space (S) ⭐:</b> SAARE possible outcomes ka set — dice ke liye S = {1, 2, 3, 4, 5, 6}.</li>
+      <li><b>Event:</b> sample space ka koi subset — "even number aana" = {2, 4, 6}.</li>
+    </ul>
+    <p class="small-note">💡 Feel: sample space = pura menu, event = tumhara order — order menu ka hi hissa ho sakta hai!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Events ke Types ⭐</h3>
+    <ul>
+      <li><b>Simple event:</b> sirf ek outcome — {5} dice pe.</li>
+      <li><b>Compound event:</b> multiple outcomes — {2, 4, 6}.</li>
+      <li><b>Sure event:</b> pura sample space — probability 1.</li>
+      <li><b>Impossible event (φ):</b> koi outcome nahi — probability 0. (Dice pe 7 aana!)</li>
+      <li><b>Complementary event (A′) ⭐:</b> A na hona — "even na aana" = odd aana = {1, 3, 5}.</li>
+      <li><b>Mutually exclusive ⭐:</b> dono saath nahi ho sakte — A ∩ B = φ (coin pe H aur T ek saath?).</li>
+      <li><b>Exhaustive events:</b> milke pura sample space cover karein — {even}, {odd} dice pe.</li>
+    </ul>
+    <p class="small-note">🎯 Mutually exclusive vs independent ALAG cheezein hain (independent 12th me) — abhi sirf exclusive yaad rakho: overlap zero!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Classical Probability — Basic Formula ⭐</h3>
+    <ul>
+      <li><b>Formula ⭐:</b> P(E) = n(E)/n(S) = favourable outcomes ÷ total outcomes — jab sab outcomes EQUALLY likely hon (fair coin, fair dice, well-shuffled cards).</li>
+      <li><b>Coin:</b> P(H) = 1/2. <b>Dice:</b> P(3) = 1/6, P(even) = 3/6 = 1/2.</li>
+      <li><b>Cards (52) ⭐:</b> P(king) = 4/52 = 1/13, P(heart) = 13/52 = 1/4, P(red) = 26/52 = 1/2.</li>
+      <li><b>Range:</b> 0 ≤ P(E) ≤ 1 — iske bahar kabhi nahi!</li>
+      <li><b>Complement rule ⭐:</b> P(A′) = 1 − P(A) — "na hone" ki probability = 1 minus "hone" ki. Bahut kaam aata hai!</li>
+      <li><b>Odds:</b> P(E) = 3/4 to odds in favour = 3:1 (favourable : unfavourable).</li>
+    </ul>
+    <p class="small-note">💡 Cards yaad karo: 52 total, 4 suits (13 each), 26 red + 26 black, 12 face cards (J, Q, K × 4), 4 aces!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Addition Rule — A Ya B Ki Probability ⭐</h3>
+    <ul>
+      <li><b>General rule ⭐:</b> P(A ∪ B) = P(A) + P(B) − P(A ∩ B) — overlap double-count ho jaata hai, isliye minus!</li>
+      <li><b>Mutually exclusive hon to ⭐:</b> P(A ∪ B) = P(A) + P(B) (overlap zero hai hi).</li>
+      <li><b>Three events:</b> P(A∪B∪C) = P(A) + P(B) + P(C) − P(A∩B) − P(B∩C) − P(C∩A) + P(A∩B∩C).</li>
+      <li><b>A but not B:</b> P(A − B) = P(A) − P(A ∩ B).</li>
+      <li><b>Complement se jodo ⭐:</b> P(A ∪ B) = 1 − P(A′ ∩ B′) — "kam se kam ek" wale questions me super useful!</li>
+    </ul>
+    <p class="small-note">🎯 "At least one" dekhte hi complement socho: P(kam se kam ek) = 1 − P(koi bhi nahi) — calculation aadhi!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Exam Patterns — Probability ka Paper</h3>
+    <ul>
+      <li><b>Sample space likho:</b> 2 coins, 2 dice, coin + dice — tabular form fastest (2 dice = 36 outcomes!).</li>
+      <li><b>Direct P(E) = n(E)/n(S) ⭐:</b> count favourable, divide by total — counting chapter yahin kaam aata hai.</li>
+      <li><b>Cards/coins/dice classics:</b> "dono dice pe sum 8", "ek card king ya heart" — addition rule.</li>
+      <li><b>At least one ⭐:</b> complement method.</li>
+      <li><b>Balls from a bag ⭐:</b> "3 red, 4 blue me se 2 balls" — C(n,r) se count karo dono side.</li>
+      <li><b>Letters/digits:</b> "word ke letters arrange, vowels saath" — permutations + probability combo.</li>
+    </ul>
+    <p class="small-note">💡 Probability = counting ÷ counting. P&C chapter strong hai to ye chapter FREE marks hai!</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ प्रायिकता — अनिश्चितता का माप</h3>
+    <p>सिक्का उछालो — चित या पट? जीवन अनिश्चित है, पर <b>प्रायिकता (probability)</b> उस अनिश्चितता को संख्या देती है: 0 (असंभव) से 1 (निश्चित) तक। JEE में प्रायिकता + क्रमचय-संचय का संयोजन सर्वाधिक आता है।</p>
+    <ul>
+      <li><b>यादृच्छिक प्रयोग:</b> जिसका परिणाम पूर्वनिश्चित न हो — सिक्का, पासा, ताश।</li>
+      <li><b>परिणाम (outcome):</b> एक संभव परिणाम।</li>
+      <li><b>प्रतिदर्श समष्टि (S) ⭐:</b> सभी संभव परिणामों का समुच्चय — पासे के लिए S = {1,2,3,4,5,6}।</li>
+      <li><b>घटना (event):</b> प्रतिदर्श समष्टि का उपसमुच्चय — "सम संख्या" = {2,4,6}।</li>
+    </ul>
+    <p class="small-note">💡 प्रतिदर्श समष्टि = पूरा मेन्यू, घटना = आपका ऑर्डर!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ घटनाओं के प्रकार ⭐</h3>
+    <ul>
+      <li><b>सरल घटना:</b> एक परिणाम — {5}।</li>
+      <li><b>मिश्र घटना:</b> अनेक परिणाम — {2,4,6}।</li>
+      <li><b>निश्चित घटना:</b> पूरी समष्टि — P = 1। <b>असंभव (φ):</b> P = 0 (पासे पर 7!)।</li>
+      <li><b>पूरक घटना (A′) ⭐:</b> A न होना — "सम न आना" = विषम = {1,3,5}।</li>
+      <li><b>परस्पर अपवर्जी ⭐:</b> साथ नहीं हो सकतीं — A ∩ B = φ।</li>
+      <li><b>संपूर्ण घटनाएँ:</b> मिलकर पूरी समष्टि — {सम}, {विषम}।</li>
+    </ul>
+    <p class="small-note">🎯 अपवर्जी = overlap शून्य — बस यही याद रखो!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ परंपरागत प्रायिकता — मूल सूत्र ⭐</h3>
+    <ul>
+      <li><b>सूत्र ⭐:</b> P(E) = n(E)/n(S) = अनुकूल परिणाम ÷ कुल परिणाम — जब सभी परिणाम समसंभाव्य हों।</li>
+      <li><b>सिक्का:</b> P(H) = 1/2। <b>पासा:</b> P(सम) = 1/2।</li>
+      <li><b>ताश (52) ⭐:</b> P(बादशाह) = 1/13, P(पान) = 1/4, P(लाल) = 1/2।</li>
+      <li><b>परिसर:</b> 0 ≤ P(E) ≤ 1।</li>
+      <li><b>पूरक नियम ⭐:</b> P(A′) = 1 − P(A)।</li>
+      <li><b>संयोग (odds):</b> P(E) = 3/4 → पक्ष में 3:1।</li>
+    </ul>
+    <p class="small-note">💡 ताश याद रखो: 52, 4 suits × 13, 26 लाल + 26 काले, 12 चेहरा पत्ते, 4 इक्के!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ योग नियम — A या B की प्रायिकता ⭐</h3>
+    <ul>
+      <li><b>सामान्य नियम ⭐:</b> P(A ∪ B) = P(A) + P(B) − P(A ∩ B) — overlap दोबारा जुड़ जाता है, इसलिए घटाओ!</li>
+      <li><b>अपवर्जी हों तो ⭐:</b> P(A ∪ B) = P(A) + P(B)।</li>
+      <li><b>तीन घटनाएँ:</b> P(A∪B∪C) = P(A)+P(B)+P(C) − P(A∩B) − P(B∩C) − P(C∩A) + P(A∩B∩C)।</li>
+      <li><b>A पर B नहीं:</b> P(A − B) = P(A) − P(A ∩ B)।</li>
+      <li><b>पूरक से ⭐:</b> P(A ∪ B) = 1 − P(A′ ∩ B′) — "कम से कम एक" प्रश्नों में!</li>
+    </ul>
+    <p class="small-note">🎯 "कम से कम एक" देखते ही पूरक सोचो: 1 − P(कोई नहीं) — गणना आधी!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ परीक्षा के पैटर्न</h3>
+    <ul>
+      <li><b>प्रतिदर्श समष्टि:</b> 2 सिक्के, 2 पासे — सारणी सबसे तेज़ (2 पासे = 36)।</li>
+      <li><b>सीधा P(E) = n(E)/n(S) ⭐:</b> अनुकूल गिनो, कुल से भाग।</li>
+      <li><b>ताश/सिक्का/पासा क्लासिक:</b> "दोनों पासों पर योग 8", "बादशाह या पान"।</li>
+      <li><b>कम से कम एक ⭐:</b> पूरक विधि।</li>
+      <li><b>थैली से गेंदें ⭐:</b> "3 लाल, 4 नीली में से 2" — C(n,r) से गिनती।</li>
+    </ul>
+    <p class="small-note">💡 प्रायिकता = गिनती ÷ गिनती। P&C पक्की तो यह अध्याय मुफ्त अंक!</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Probability — Measuring Uncertainty</h3>
+    <p>Toss a coin — heads or tails? Roll a die — anything from 1 to 6? Life is uncertain, but <b>probability</b> turns that uncertainty into a NUMBER: from 0 (impossible) to 1 (certain). This chapter is a way of thinking — through cards, dice, and coins we learn to understand "chance" in real life. JEE loves the probability + permutations combo.</p>
+    <ul>
+      <li><b>Random experiment:</b> one whose result isn't fixed in advance — coin toss, dice roll, drawing a card.</li>
+      <li><b>Outcome:</b> a single possible result — H or T on a coin.</li>
+      <li><b>Sample space (S) ⭐:</b> the set of ALL possible outcomes — for a die, S = {1, 2, 3, 4, 5, 6}.</li>
+      <li><b>Event:</b> any subset of the sample space — "getting an even number" = {2, 4, 6}.</li>
+    </ul>
+    <p class="small-note">💡 Feel it: the sample space is the full menu; an event is your order — your order can only come from the menu!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Types of Events ⭐</h3>
+    <ul>
+      <li><b>Simple event:</b> a single outcome — {5} on a die.</li>
+      <li><b>Compound event:</b> multiple outcomes — {2, 4, 6}.</li>
+      <li><b>Sure event:</b> the whole sample space — probability 1.</li>
+      <li><b>Impossible event (φ):</b> no outcomes — probability 0. (Rolling a 7 on a die!)</li>
+      <li><b>Complementary event (A′) ⭐:</b> A not happening — "not even" = odd = {1, 3, 5}.</li>
+      <li><b>Mutually exclusive ⭐:</b> can't happen together — A ∩ B = φ (H and T on one coin toss?).</li>
+      <li><b>Exhaustive events:</b> together they cover the whole sample space — {even}, {odd} on a die.</li>
+    </ul>
+    <p class="small-note">🎯 Mutually exclusive ≠ independent (that's Class 12) — for now: exclusive means zero overlap!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Classical Probability — the Basic Formula ⭐</h3>
+    <ul>
+      <li><b>Formula ⭐:</b> P(E) = n(E)/n(S) = favourable outcomes ÷ total outcomes — valid when all outcomes are EQUALLY likely (fair coin, fair die, well-shuffled cards).</li>
+      <li><b>Coin:</b> P(H) = 1/2. <b>Die:</b> P(3) = 1/6, P(even) = 3/6 = 1/2.</li>
+      <li><b>Cards (52) ⭐:</b> P(king) = 4/52 = 1/13, P(heart) = 13/52 = 1/4, P(red) = 26/52 = 1/2.</li>
+      <li><b>Range:</b> 0 ≤ P(E) ≤ 1 — never outside this!</li>
+      <li><b>Complement rule ⭐:</b> P(A′) = 1 − P(A) — "not happening" = 1 minus "happening". Hugely useful!</li>
+      <li><b>Odds:</b> if P(E) = 3/4, odds in favour are 3:1 (favourable : unfavourable).</li>
+    </ul>
+    <p class="small-note">💡 Memorise the deck: 52 total, 4 suits (13 each), 26 red + 26 black, 12 face cards (J, Q, K × 4), 4 aces!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Addition Rule — Probability of A or B ⭐</h3>
+    <ul>
+      <li><b>General rule ⭐:</b> P(A ∪ B) = P(A) + P(B) − P(A ∩ B) — the overlap gets double-counted, so subtract it!</li>
+      <li><b>If mutually exclusive ⭐:</b> P(A ∪ B) = P(A) + P(B) (overlap is zero anyway).</li>
+      <li><b>Three events:</b> P(A∪B∪C) = P(A) + P(B) + P(C) − P(A∩B) − P(B∩C) − P(C∩A) + P(A∩B∩C).</li>
+      <li><b>A but not B:</b> P(A − B) = P(A) − P(A ∩ B).</li>
+      <li><b>Complement trick ⭐:</b> P(A ∪ B) = 1 − P(A′ ∩ B′) — super useful for "at least one" questions!</li>
+    </ul>
+    <p class="small-note">🎯 The moment you see "at least one", think complement: P(at least one) = 1 − P(none) — half the calculation!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Exam Patterns — Probability in Papers</h3>
+    <ul>
+      <li><b>Write the sample space:</b> 2 coins, 2 dice, coin + die — tabular form is fastest (2 dice = 36 outcomes!).</li>
+      <li><b>Direct P(E) = n(E)/n(S) ⭐:</b> count favourable, divide by total — the counting chapter pays off here.</li>
+      <li><b>Cards/coins/dice classics:</b> "sum of 8 on two dice", "a king or a heart" — addition rule.</li>
+      <li><b>At least one ⭐:</b> complement method.</li>
+      <li><b>Balls from a bag ⭐:</b> "2 balls from 3 red, 4 blue" — count both sides with C(n,r).</li>
+      <li><b>Letters/digits:</b> "letters of a word arranged with vowels together" — permutations + probability combo.</li>
+    </ul>
+    <p class="small-note">💡 Probability = counting ÷ counting. If P&C is strong, this chapter is FREE marks!</p>
+  </div>
+</div>
+</section>
+<section id="short-notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics ⭐</h4>
+      <ul><li>P(E) = n(E)/n(S)</li><li>0 ≤ P ≤ 1</li><li>S = saare outcomes, E = subset</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Events ⭐</h4>
+      <ul><li>Impossible: φ, P=0; Sure: S, P=1</li><li>Mutually exclusive: A∩B = φ</li><li>Complement: P(A′) = 1 − P(A)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Addition ⭐</h4>
+      <ul><li>P(A∪B) = P(A)+P(B)−P(A∩B)</li><li>Exclusive: P(A∪B) = P(A)+P(B)</li><li>A−B: P(A) − P(A∩B)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Cards (52) ⭐</h4>
+      <ul><li>4 suits × 13</li><li>12 face cards, 4 aces</li><li>26 red + 26 black</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Tricks</h4>
+      <ul><li>'At least one' → 1 − P(none)</li><li>2 dice → 36 outcomes table</li><li>P&C se counting</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>आधार ⭐</h4>
+      <ul><li>P(E) = n(E)/n(S)</li><li>0 ≤ P ≤ 1</li><li>S = सभी परिणाम, E = उपसमुच्चय</li></ul>
+    </div>
+    <div class="shorts-card"><h4>घटनाएँ ⭐</h4>
+      <ul><li>असंभव: P=0; निश्चित: P=1</li><li>अपवर्जी: A∩B = φ</li><li>पूरक: P(A′) = 1 − P(A)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>योग ⭐</h4>
+      <ul><li>P(A∪B) = P(A)+P(B)−P(A∩B)</li><li>अपवर्जी: P(A∪B) = P(A)+P(B)</li><li>A−B: P(A) − P(A∩B)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>ताश (52) ⭐</h4>
+      <ul><li>4 suits × 13</li><li>12 चेहरा, 4 इक्के</li><li>26 लाल + 26 काले</li></ul>
+    </div>
+    <div class="shorts-card"><h4>तरकीबें</h4>
+      <ul><li>'कम से कम एक' → 1 − P(कोई नहीं)</li><li>2 पासे → 36 परिणाम</li><li>P&C से गिनती</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics ⭐</h4>
+      <ul><li>P(E) = n(E)/n(S)</li><li>0 ≤ P ≤ 1</li><li>S = all outcomes, E = subset</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Events ⭐</h4>
+      <ul><li>Impossible: φ, P=0; Sure: S, P=1</li><li>Mutually exclusive: A∩B = φ</li><li>Complement: P(A′) = 1 − P(A)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Addition ⭐</h4>
+      <ul><li>P(A∪B) = P(A)+P(B)−P(A∩B)</li><li>Exclusive: P(A∪B) = P(A)+P(B)</li><li>A−B: P(A) − P(A∩B)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Cards (52) ⭐</h4>
+      <ul><li>4 suits × 13</li><li>12 face cards, 4 aces</li><li>26 red + 26 black</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Tricks</h4>
+      <ul><li>'At least one' → 1 − P(none)</li><li>2 dice → 36-outcome table</li><li>Count via P&C</li></ul>
+    </div>
+</div>
+</div>
+</section>
+<section id="practice">
+  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div class="note-sec">
+    <div class="jee-q"><span class="qn">Q1.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+    <div class="jee-q"><span class="qn">Q2.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+    <div class="jee-q"><span class="qn">Q3.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+    <div class="jee-q"><span class="qn">Q4.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+    <div class="jee-q"><span class="qn">Q5.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+    <div class="jee-q"><span class="qn">Q6.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+    <div class="jee-q"><span class="qn">Q7.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+    <div class="jee-q"><span class="qn">Q8.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+    <div class="jee-q"><span class="qn">Q9.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+    <div class="jee-q"><span class="qn">Q10.</span> q<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
+  </div>
+</section>
+<section class="roadmap">
+  <div class="tip-box">🏆 <b>Class 11 Chemistry complete!</b> Revision ke liye short notes + practice dohrao. Class 11 Physics/Biology jaldi.</div>
+</section>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
+    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
+    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+  </div>
+</footer>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
