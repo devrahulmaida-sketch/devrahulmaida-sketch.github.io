@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 1 — Relations and Functions | Class 12 Mathematics | मईडा Maida</title>
+<meta name="description" content="Class 12 Maths Chapter 1: Relations and Functions — long + short notes in Hindi, English, Hinglish. Reflexive, symmetric, transitive, equivalence relations, one-one, onto, bijective functions.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#classes">Classes</a>
+      <a href="/class-11/">Class 11</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ch-hero">
+  <p class="crumb"><a href="/">Home</a> / <a href="/class-12/">Class 12</a> / <a href="/class-12/maths/">Mathematics</a> / Chapter 1</p>
+  <h1>Relations and Functions</h1>
+  <p style="color:var(--violet);margin-top:4px;font-weight:500">संबंध एवं फलन</p>
+  <p style="color:var(--muted);margin-top:6px">Relations ke types, equivalence classes aur one-one/onto ka full game</p>
+  <div class="ch-tags">
+    <span class="pill weight-medium">JEE Weightage: MEDIUM</span>
+    <span class="pill">🎬 Video coming soon</span>
+    <span class="pill">📝 Long + Short notes</span>
+    <span class="pill">🌐 Hindi • English • Hinglish</span>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="video-soon">
+    <div class="video-soon-icon">🎬</div>
+    <b>Video ban raha hai</b>
+    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Relation Kya Hota Hai — Sets Ke Beech Connection</h3>
+    <ul>
+      <li><b>Relation:</b> do sets A aur B ke elements ke beech connection — mathematically, A × B (Cartesian product) ka koi bhi subset ek relation hai. (a, b) ∈ R matlab "a ka b se relation hai".</li>
+      <li><b>Cartesian product A × B:</b> saare ordered pairs (a, b) jahan a ∈ A, b ∈ B. n(A × B) = n(A) × n(B).</li>
+      <li><b>Domain:</b> relation me aa rahe saare first elements. <b>Range:</b> saare second elements. <b>Codomain:</b> poora B set (range ⊆ codomain!).</li>
+      <li>A set pe total relations: agar n(A) = n, to A × A ke 2^(n²) subsets → <b>2^(n²) possible relations</b>!</li>
+    </ul>
+    <p class="small-note">💡 Feel: relation = pairing ka rule. "Is brother of" bhi ek relation hai logon ke set pe!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Relations Ke Types — Reflexive, Symmetric, Transitive ⭐</h3>
+    <ul>
+      <li><b>Empty relation:</b> koi pair nahi. <b>Universal relation:</b> saare pairs (poora A × A).</li>
+      <li><b>Reflexive ⭐:</b> HAR element ka khud se relation — (a, a) ∈ R sab a ke liye. ("Is equal to" reflexive hai; "is sister of" nahi!)</li>
+      <li><b>Symmetric ⭐:</b> (a, b) ∈ R → (b, a) ∈ R — relation dono taraf chale. (a ⊥ b symmetric hai.)</li>
+      <li><b>Transitive ⭐:</b> (a, b) ∈ R aur (b, c) ∈ R → (a, c) ∈ R — chain complete ho. (a &gt; b, b &gt; c → a &gt; c: transitive!)</li>
+      <li>Check karte time: <b>ek bhi counterexample kaafi hai</b> relation todne ke liye; prove karne ke liye SAB pairs check karo.</li>
+    </ul>
+    <p class="small-note">🎯 Symmetric + Transitive ≠ Reflexive zaroori nahi! Empty relation symmetric aur transitive dono hai, par reflexive nahi. Classic trap!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Equivalence Relation aur Equivalence Classes ⭐</h3>
+    <ul>
+      <li><b>Equivalence relation ⭐⭐:</b> jo relation REFLEXIVE + SYMMETRIC + TRANSITIVE teeno ho. Example: "is congruent to" triangles pe, "a − b even hai" integers pe.</li>
+      <li><b>Equivalence class [a]:</b> a se related SAARE elements ka set — [a] = {x : (x, a) ∈ R}. Equivalence classes ya to barabar hoti hain ya disjoint — kabhi partial overlap nahi!</li>
+      <li>Equivalence relation set ko <b>partitions</b> me tod deta hai — har element exactly ek class me.</li>
+      <li>Example: Z pe R = {(a, b) : a − b, 3 se divisible hai} → classes [0], [1], [2] (remainders!). Yehi modulo arithmetic ka base hai.</li>
+    </ul>
+    <p class="small-note">💡 Equivalence relation = "same category" ka formal version. Classes = alag-alag dabbe jisme samaan sort ho jaata hai.</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Functions — One-One aur Onto ⭐</h3>
+    <ul>
+      <li><b>Function f : A → B:</b> har input ka EXACTLY ek output. Har element of A use hona chahiye, aur sirf ek baar map ho.</li>
+      <li><b>One-one (injective) ⭐:</b> alag inputs → alag outputs. f(x₁) = f(x₂) → x₁ = x₂. Horizontal line test: koi horizontal line graph ko ek se zyada baar na kaate.</li>
+      <li><b>Onto (surjective) ⭐:</b> codomain ka HAR element kisi ka image ho — range = codomain. Koi bhi b ∈ B ke liye f(a) = b ka solution mile.</li>
+      <li><b>Bijective ⭐⭐:</b> one-one + onto dono — perfect matching! Tabhi inverse ban sakta hai (par NCERT me inverse function ab deleted hai — bas concept samjho).</li>
+      <li>Many-one: multiple inputs same output (f(x) = x² pe 2 aur −2 dono → 4). Into: kuch codomain elements unused.</li>
+    </ul>
+    <p class="small-note">🎯 f(x) = x²: R → R me one-one NAHI (±2 same image), onto NAHI (negatives ka preimage nahi). Domain/codomain badalte hi answer badal jaata hai — hamesha dono padho!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Functions Ginna aur Smart Checks</h3>
+    <ul>
+      <li>n(A) = m, n(B) = n → total functions A → B: <b>n^m</b> (har element ke n choices).</li>
+      <li>One-one functions (m ≤ n): <b>ⁿPₘ = n!/(n−m)!</b>. m &gt; n ho to ZERO one-one functions!</li>
+      <li>Bijections jab n(A) = n(B) = n: <b>n!</b> — aur tab har onto function apne aap one-one bhi hota hai. ⭐</li>
+      <li>Strictly increasing/decreasing function hamesha <b>one-one</b> hota hai (calculus me yahi use hota hai).</li>
+      <li>Odd function ya even ho sakta hai: f(−x) = −f(x) (odd), f(−x) = f(x) (even) — one-one check me kaam aata hai.</li>
+    </ul>
+    <p class="small-note">💡 Finite sets pe: one-one ⟺ onto ⟺ bijective. Infinite pe ye nahi chalta (f(n) = 2n pe N → even numbers: one-one hai par... socho!)</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ संबंध क्या है — समुच्चयों के बीच कनेक्शन</h3>
+    <ul>
+      <li><b>संबंध (relation):</b> दो समुच्चयों A और B के अवयवों के बीच संबंध — A × B का कोई भी उपसमुच्चय एक संबंध है।</li>
+      <li><b>कार्तीय गुणन A × B:</b> सभी क्रमित युग्म (a, b) जहां a ∈ A, b ∈ B। n(A × B) = n(A) × n(B)।</li>
+      <li><b>प्रांत (domain):</b> सभी प्रथम अवयव। <b>परिसर (range):</b> सभी द्वितीय अवयव। <b>सहप्रांत (codomain):</b> पूरा B।</li>
+      <li>n अवयवों वाले समुच्चय पर कुल संबंध: <b>2^(n²)</b>।</li>
+    </ul>
+    <p class="small-note">💡 संबंध = युग्म बनाने का नियम।</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ संबंधों के प्रकार — स्वतुल्य, सममित, संक्रामक ⭐</h3>
+    <ul>
+      <li><b>रिक्त संबंध:</b> कोई युग्म नहीं। <b>सार्वत्रिक संबंध:</b> सभी युग्म।</li>
+      <li><b>स्वतुल्य ⭐:</b> प्रत्येक अवयव का स्वयं से संबंध — सभी a के लिए (a, a) ∈ R।</li>
+      <li><b>सममित ⭐:</b> (a, b) ∈ R → (b, a) ∈ R — संबंध दोनों ओर चले।</li>
+      <li><b>संक्रामक ⭐:</b> (a, b) ∈ R और (b, c) ∈ R → (a, c) ∈ R।</li>
+      <li>खंडन के लिए <b>एक प्रत्युदाहरण पर्याप्त</b> है; सिद्ध करने के लिए सभी युग्म जांचें।</li>
+    </ul>
+    <p class="small-note">🎯 सममित + संक्रामक ≠ स्वतुल्य आवश्यक नहीं! रिक्त संबंध सममित और संक्रामक है, पर स्वतुल्य नहीं।</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ तुल्यता संबंध और तुल्यता वर्ग ⭐</h3>
+    <ul>
+      <li><b>तुल्यता संबंध ⭐⭐:</b> जो स्वतुल्य + सममित + संक्रामक तीनों हो। उदाहरण: "a − b सम है" पूर्णांकों पर।</li>
+      <li><b>तुल्यता वर्ग [a]:</b> a से संबंधित सभी अवयव — [a] = {x : (x, a) ∈ R}। वर्ग या तो समान होते हैं या असंयुक्त।</li>
+      <li>तुल्यता संबंध समुच्चय को <b>विभाजनों</b> में बांटता है — प्रत्येक अवयव ठीक एक वर्ग में।</li>
+      <li>उदाहरण: Z पर R = {(a, b) : a − b, 3 से विभाज्य} → वर्ग [0], [1], [2]।</li>
+    </ul>
+    <p class="small-note">💡 तुल्यता संबंध = "समान श्रेणी" का औपचारिक रूप।</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ फलन — एकैकी और आच्छादक ⭐</h3>
+    <ul>
+      <li><b>फलन f : A → B:</b> प्रत्येक इनपुट का ठीक एक आउटपुट।</li>
+      <li><b>एकैकी (injective) ⭐:</b> भिन्न इनपुट → भिन्न आउटपुट। f(x₁) = f(x₂) → x₁ = x₂।</li>
+      <li><b>आच्छादक (surjective) ⭐:</b> सहप्रांत का प्रत्येक अवयव किसी का प्रतिबिंब हो — परिसर = सहप्रांत।</li>
+      <li><b>एकैकी आच्छादक (bijective) ⭐⭐:</b> एकैकी + आच्छादक दोनों — पूर्ण मिलान!</li>
+      <li>बहु-एकैकी: कई इनपुट एक ही आउटपुट। अंतःक्षेपी: कुछ सहप्रांत अवयव अप्रयुक्त।</li>
+    </ul>
+    <p class="small-note">🎯 f(x) = x², R → R: एकैकी नहीं, आच्छादक नहीं। प्रांत/सहप्रांत बदलते ही उत्तर बदल जाता है!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ फलनों की गिनती और स्मार्ट जांच</h3>
+    <ul>
+      <li>n(A) = m, n(B) = n → कुल फलन: <b>n^m</b>।</li>
+      <li>एकैकी फलन (m ≤ n): <b>ⁿPₘ = n!/(n−m)!</b>। m &gt; n हो तो शून्य!</li>
+      <li>एकैकी आच्छादक (जब n(A) = n(B) = n): <b>n!</b> — तब प्रत्येक आच्छादक फलन स्वतः एकैकी। ⭐</li>
+      <li>निरंतर वर्धमान/ह्रासमान फलन सदैव <b>एकैकी</b>।</li>
+      <li>विषम फलन: f(−x) = −f(x); सम फलन: f(−x) = f(x)।</li>
+    </ul>
+    <p class="small-note">💡 परिमित समुच्चयों पर: एकैकी ⟺ आच्छादक ⟺ एकैकी आच्छादक।</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ What Is a Relation — Connecting Two Sets</h3>
+    <ul>
+      <li><b>Relation:</b> a connection between elements of sets A and B — mathematically, any subset of A × B (the Cartesian product) is a relation. (a, b) ∈ R means "a is related to b".</li>
+      <li><b>Cartesian product A × B:</b> all ordered pairs (a, b) with a ∈ A, b ∈ B. n(A × B) = n(A) × n(B).</li>
+      <li><b>Domain:</b> all first elements in the relation. <b>Range:</b> all second elements. <b>Codomain:</b> the whole set B (range ⊆ codomain!).</li>
+      <li>Relations on a set with n elements: A × A has 2^(n²) subsets → <b>2^(n²) possible relations</b>!</li>
+    </ul>
+    <p class="small-note">💡 Feel: a relation is a pairing rule. "Is a brother of" is a relation on a set of people!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Types of Relations — Reflexive, Symmetric, Transitive ⭐</h3>
+    <ul>
+      <li><b>Empty relation:</b> no pairs. <b>Universal relation:</b> all pairs (the full A × A).</li>
+      <li><b>Reflexive ⭐:</b> EVERY element relates to itself — (a, a) ∈ R for all a. ("Is equal to" is reflexive; "is sister of" is not!)</li>
+      <li><b>Symmetric ⭐:</b> (a, b) ∈ R → (b, a) ∈ R — the relation runs both ways.</li>
+      <li><b>Transitive ⭐:</b> (a, b) ∈ R and (b, c) ∈ R → (a, c) ∈ R — the chain must complete.</li>
+      <li>While checking: <b>one counterexample is enough</b> to break a property; to prove it, check ALL pairs.</li>
+    </ul>
+    <p class="small-note">🎯 Symmetric + Transitive does NOT force Reflexive! The empty relation is symmetric and transitive, but not reflexive. Classic trap!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Equivalence Relations and Classes ⭐</h3>
+    <ul>
+      <li><b>Equivalence relation ⭐⭐:</b> one that is REFLEXIVE + SYMMETRIC + TRANSITIVE — all three. Example: "a − b is even" on integers.</li>
+      <li><b>Equivalence class [a]:</b> ALL elements related to a — [a] = {x : (x, a) ∈ R}. Two classes are either equal or disjoint — never partially overlapping!</li>
+      <li>An equivalence relation splits the set into <b>partitions</b> — every element lands in exactly one class.</li>
+      <li>Example: R = {(a, b) : a − b divisible by 3} on Z → classes [0], [1], [2] (the remainders!). This is the base of modular arithmetic.</li>
+    </ul>
+    <p class="small-note">💡 An equivalence relation formalizes "same category". Classes = separate boxes into which everything gets sorted.</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Functions — One-One and Onto ⭐</h3>
+    <ul>
+      <li><b>Function f : A → B:</b> every input has EXACTLY one output. Every element of A must be used, exactly once.</li>
+      <li><b>One-one (injective) ⭐:</b> different inputs → different outputs. f(x₁) = f(x₂) → x₁ = x₂. Horizontal line test: no horizontal line cuts the graph more than once.</li>
+      <li><b>Onto (surjective) ⭐:</b> EVERY codomain element is some input's image — range = codomain. For every b ∈ B, f(a) = b has a solution.</li>
+      <li><b>Bijective ⭐⭐:</b> one-one AND onto — a perfect matching!</li>
+      <li>Many-one: several inputs share an output (on f(x) = x², both 2 and −2 map to 4). Into: some codomain elements stay unused.</li>
+    </ul>
+    <p class="small-note">🎯 f(x) = x², R → R: NOT one-one (±2 give the same image), NOT onto (negatives have no preimage). Change the domain/codomain and the answer changes — always read both!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Counting Functions and Smart Checks</h3>
+    <ul>
+      <li>n(A) = m, n(B) = n → total functions A → B: <b>n^m</b> (each element gets n choices).</li>
+      <li>One-one functions (m ≤ n): <b>ⁿPₘ = n!/(n−m)!</b>. If m &gt; n, there are ZERO one-one functions!</li>
+      <li>Bijections when n(A) = n(B) = n: <b>n!</b> — and then every onto function is automatically one-one. ⭐</li>
+      <li>A strictly increasing/decreasing function is always <b>one-one</b> (used heavily in calculus).</li>
+      <li>Odd/even functions: f(−x) = −f(x) (odd), f(−x) = f(x) (even) — handy in one-one checks.</li>
+    </ul>
+    <p class="small-note">💡 On finite sets: one-one ⟺ onto ⟺ bijective. On infinite sets this fails (f(n) = 2n on N → even numbers is one-one but not onto!)</p>
+  </div>
+</div>
+</section>
+<section id="short-notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Relation basics</h4>
+      <ul><li>Relation = A × B ka subset</li><li>Domain = first elements, Range = second</li><li>n elements pe 2^(n²) relations</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Types ⭐</h4>
+      <ul><li>Reflexive: (a,a) sabke liye</li><li>Symmetric: (a,b) → (b,a)</li><li>Transitive: (a,b),(b,c) → (a,c)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Equivalence ⭐</h4>
+      <ul><li>R + S + T teeno chahiye</li><li>Equivalence class [a] = a se related sab</li><li>Classes: barabar ya disjoint</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Functions ⭐</h4>
+      <ul><li>One-one: alag input → alag output</li><li>Onto: range = codomain</li><li>Bijective = one-one + onto</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Counting ⭐</h4>
+      <ul><li>Total functions: n^m</li><li>One-one: ⁿPₘ</li><li>Bijections (equal sets): n!</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>मूल</h4>
+      <ul><li>संबंध = A × B का उपसमुच्चय</li><li>प्रांत = प्रथम अवयव, परिसर = द्वितीय</li><li>n अवयवों पर 2^(n²) संबंध</li></ul>
+    </div>
+    <div class="shorts-card"><h4>प्रकार ⭐</h4>
+      <ul><li>स्वतुल्य: (a,a) सभी के लिए</li><li>सममित: (a,b) → (b,a)</li><li>संक्रामक: (a,b),(b,c) → (a,c)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>तुल्यता ⭐</h4>
+      <ul><li>स्वतुल्य + सममित + संक्रामक</li><li>वर्ग [a] = a से संबंधित सभी</li><li>वर्ग: समान या असंयुक्त</li></ul>
+    </div>
+    <div class="shorts-card"><h4>फलन ⭐</h4>
+      <ul><li>एकैकी: भिन्न इनपुट → भिन्न आउटपुट</li><li>आच्छादक: परिसर = सहप्रांत</li><li>एकैकी आच्छादक = दोनों</li></ul>
+    </div>
+    <div class="shorts-card"><h4>गिनती ⭐</h4>
+      <ul><li>कुल फलन: n^m</li><li>एकैकी: ⁿPₘ</li><li>एकैकी आच्छादक (समान समुच्चय): n!</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Relation basics</h4>
+      <ul><li>Relation = subset of A × B</li><li>Domain = first elements, Range = second</li><li>n elements → 2^(n²) relations</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Types ⭐</h4>
+      <ul><li>Reflexive: (a,a) for all</li><li>Symmetric: (a,b) → (b,a)</li><li>Transitive: (a,b),(b,c) → (a,c)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Equivalence ⭐</h4>
+      <ul><li>Needs R + S + T</li><li>Class [a] = everything related to a</li><li>Classes: equal or disjoint</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Functions ⭐</h4>
+      <ul><li>One-one: distinct inputs → distinct outputs</li><li>Onto: range = codomain</li><li>Bijective = one-one + onto</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Counting ⭐</h4>
+      <ul><li>Total functions: n^m</li><li>One-one: ⁿPₘ</li><li>Bijections (equal sets): n!</li></ul>
+    </div>
+</div>
+</div>
+</section>
+<section id="practice">
+  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div class="note-sec">
+    <div class="jee-q"><span class="qn">Q1.</span> A = {1, 2, 3} pe kitne relations possible hain?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>n(A) = 3 → A × A me 9 pairs → <b>2⁹ = 512</b> relations.</p></details></div>
+    <div class="jee-q"><span class="qn">Q2.</span> R = {(a, b) : a = b} on Z — reflexive hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Haan</b> — har a ke liye (a, a) ∈ R kyunki a = a. (Symmetric aur transitive bhi hai — equivalence relation!)</p></details></div>
+    <div class="jee-q"><span class="qn">Q3.</span> R = {(a, b) : a &lt; b} on R — symmetric hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — 1 &lt; 2 matlab (1, 2) ∈ R, par 2 &lt; 1 false hai, to (2, 1) ∉ R.</p></details></div>
+    <div class="jee-q"><span class="qn">Q4.</span> 'Is friend of' relation symmetric hai par transitive kyun nahi?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>A friend of B aur B friend of C ka matlab ye nahi ki A friend of C — <b>transitive fail</b>. Dosti chain guarantee nahi deti!</p></details></div>
+    <div class="jee-q"><span class="qn">Q5.</span> Equivalence class kya hota hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>[a] = {x : (x, a) ∈ R} — <b>a se related saare elements ka set</b>. Do classes ya to same hoti hain ya disjoint.</p></details></div>
+    <div class="jee-q"><span class="qn">Q6.</span> f(x) = x², f : R → R. One-one hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — f(2) = f(−2) = 4, alag inputs ka same output.</p></details></div>
+    <div class="jee-q"><span class="qn">Q7.</span> f(x) = 2x + 3, f : R → R. Onto hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Haan</b> — koi bhi y ∈ R ke liye x = (y − 3)/2 ∈ R deta hai f(x) = y. Range = codomain. (One-one bhi hai → bijective!)</p></details></div>
+    <div class="jee-q"><span class="qn">Q8.</span> n(A) = 3, n(B) = 5. A → B kitne one-one functions?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>⁵P₃ = 5×4×3 = <b>60</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q9.</span> n(A) = n(B) = 4. Kitne bijective functions?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>4! = <b>24</b> — equal finite sets pe bijection = permutation.</p></details></div>
+    <div class="jee-q"><span class="qn">Q10.</span> Ek relation symmetric aur transitive hai. Kya reflexive zaroor hoga?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Zaroori nahi</b> — empty relation (ya {(a,b),(b,a),(a,a),(b,b)} jaisa partial) counterexample hai. Sab elements ka self-pair hona alag se check karna padta hai.</p></details></div>
+  </div>
+</section>
+<section class="roadmap">
+  <div class="tip-box">🚀 <b>Agla chapter:</b> <a href="/class-12/maths/ch-2/">Inverse Trigonometric Functions</a> — notes ready hain, abhi padho!</div>
+</section>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
+    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
+    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+  </div>
+</footer>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

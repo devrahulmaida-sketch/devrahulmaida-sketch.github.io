@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 5 — Continuity and Differentiability | Class 12 Mathematics | मईडा Maida</title>
+<meta name="description" content="Class 12 Maths Chapter 5: Continuity and Differentiability — long + short notes in Hindi, English, Hinglish. Continuity, differentiability, chain rule, implicit, logarithmic, parametric differentiation, second order derivatives.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#classes">Classes</a>
+      <a href="/class-11/">Class 11</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ch-hero">
+  <p class="crumb"><a href="/">Home</a> / <a href="/class-12/">Class 12</a> / <a href="/class-12/maths/">Mathematics</a> / Chapter 5</p>
+  <h1>Continuity and Differentiability</h1>
+  <p style="color:var(--violet);margin-top:4px;font-weight:500">संतत्य तथा अवकलनीयता</p>
+  <p style="color:var(--muted);margin-top:6px">LHL-RHL se lekar chain rule aur second derivatives tak — calculus ka engine</p>
+  <div class="ch-tags">
+    <span class="pill weight-high">JEE Weightage: HIGH</span>
+    <span class="pill">🎬 Video coming soon</span>
+    <span class="pill">📝 Long + Short notes</span>
+    <span class="pill">🌐 Hindi • English • Hinglish</span>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="video-soon">
+    <div class="video-soon-icon">🎬</div>
+    <b>Video ban raha hai</b>
+    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Continuity — Bina Break Ka Function ⭐⭐</h3>
+    <ul>
+      <li><b>Intuition:</b> graph bina pen uthaye ban jaaye to function continuous hai — koi jump, hole ya break nahi.</li>
+      <li><b>Definition ⭐⭐:</b> f, x = a pe <b>continuous</b> hai agar <b>lim(x→a) f(x) = f(a)</b> — limit ka value = function ka value. Teen cheezein chahiye: limit EXISTS, f(a) DEFINED, dono EQUAL.</li>
+      <li><b>LHL = RHL check ⭐:</b> limit exist karne ke liye Left Hand Limit = Right Hand Limit hona chahiye. Dono nikalo, compare karo!</li>
+      <li>Example: f(x) = |x| at x = 0: LHL = RHL = 0 = f(0) → <b>continuous</b>. (Par differentiable nahi — aage dekho!)</li>
+      <li>Polynomials, sin x, cos x, eˣ HAR JAGAH continuous hain — ye standard results free me use karo.</li>
+    </ul>
+    <p class="small-note">💡 Feel: continuous = road bina speed-breaker. Pen uthaana pada to wahan discontinuity hai!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Discontinuity Ke Types aur Continuous Functions Ka Algebra</h3>
+    <ul>
+      <li><b>Jump discontinuity:</b> LHL ≠ RHL — graph ek level se doosre pe "kood" jaata hai (greatest integer function [x] har integer pe!).</li>
+      <li><b>Missing point:</b> limit exists par f(a) defined nahi ya alag — graph me ek chhota hole.</li>
+      <li><b>Infinite discontinuity:</b> function point ke paas ±∞ ko udd jaata hai (1/x at x = 0).</li>
+      <li><b>Algebra ⭐:</b> continuous functions ka sum, difference, product, scalar multiple sab continuous. Quotient bhi — jahan denominator ≠ 0.</li>
+      <li><b>Composite:</b> g continuous at a + f continuous at g(a) → fog continuous at a.</li>
+      <li>Interval pe continuous = us interval ke HAR point pe continuous.</li>
+    </ul>
+    <p class="small-note">🎯 [x] (greatest integer) har integer pe discontinuous; {x} (fractional part) bhi. Boards ka favourite example!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Differentiability — Slope Har Jagah ⭐⭐</h3>
+    <ul>
+      <li><b>Definition ⭐:</b> f′(a) = lim(h→0) [f(a+h) − f(a)]/h — ye limit EXIST kare to f, a pe differentiable hai. Matlab us point pe unique tangent/slope hai.</li>
+      <li><b>Differentiable ⟹ Continuous ⭐⭐:</b> differentiable hai to continuous ZAROOR hai. Par ULTA TRUE NAHI — continuous hai to differentiable ho, ye guarantee nahi!</li>
+      <li><b>|x| at x = 0 ⭐:</b> continuous HAI (LHL = RHL = 0), par differentiable NAHI — left slope −1, right slope +1, dono alag → sharp corner!</li>
+      <li>Corner, cusp, vertical tangent ya break — in sab points pe differentiability fail hoti hai.</li>
+      <li>Standard: polynomials, sin x, cos x, eˣ har jagah differentiable. |x|, [x] apne break/corner points pe nahi.</li>
+    </ul>
+    <p class="small-note">🎯 Yaad rakhne ka flow: Differentiable → Continuous → (ulta galat!). |x| at 0 = classic counterexample, exam me pakka aata hai.</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Differentiation Ke Rules — Chain, Implicit, Log ⭐⭐</h3>
+    <ul>
+      <li><b>Chain rule ⭐⭐:</b> d/dx[f(g(x))] = f′(g(x))·g′(x) — bahar wale ka derivative × andar wale ka derivative. Example: d/dx sin(x²) = cos(x²)·2x.</li>
+      <li><b>Implicit differentiation ⭐:</b> jab y alag na ho sake (x² + y² = 25), dono taraf x ke respect me differentiate karo, y ke terms me dy/dx lagao, phir solve karo.</li>
+      <li><b>Exponential/Log ⭐:</b> d/dx eˣ = eˣ; d/dx aˣ = aˣ·ln a; d/dx ln x = 1/x; d/dx logₐx = 1/(x ln a).</li>
+      <li><b>Logarithmic differentiation ⭐⭐:</b> jab power me bhi x ho (xˣ, (sin x)^(cos x)) — dono taraf ln lo, power neeche utaro, phir differentiate karo. y = xˣ → dy/dx = xˣ(1 + ln x).</li>
+      <li><b>Parametric ⭐:</b> x = f(t), y = g(t) → dy/dx = (dy/dt)/(dx/dt).</li>
+    </ul>
+    <p class="small-note">💡 Chain rule = "peel the onion" — sabse bahar wala layer pehle, andar tak ek-ek layer.</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Second Order Derivatives aur Syllabus Note</h3>
+    <ul>
+      <li><b>Second derivative ⭐:</b> derivative ka derivative — d²y/dx² = d/dx(dy/dx). Pehla slope batata hai, doosra slope ki CHANGE RATE (concavity!).</li>
+      <li>Parametric me d²y/dx² = d/dx(dy/dx) — dy/dx ko phir se x ke respect me differentiate karo (dy/dt, dx/dt use karke), common mistake: sirf t ke respect me kar dena!</li>
+      <li><b>Syllabus note ⭐:</b> <b>Rolle's Theorem aur Lagrange's Mean Value Theorem</b> rationalized NCERT se <b>DELETE</b> ho chuke hain — unke statements/proofs ab nahi padhne.</li>
+      <li>Inverse trig functions ke derivatives (d/dx sin⁻¹x = 1/√(1−x²) etc.) chapter me hain — integration me bhi yahi reuse hote hain.</li>
+      <li>Board pattern: ek chain-rule 2-marker, ek implicit/log-differentiation 3-marker, ek second-order/parametric 5-marker — ye trio fixed hai.</li>
+    </ul>
+    <p class="small-note">🎯 d²y/dx² me galati 90% students karte hain parametric case me — formula: d/dt(dy/dx) ÷ dx/dt. Practice se pakka karo!</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ संतत्य — बिना ब्रेक का फलन ⭐⭐</h3>
+    <ul>
+      <li><b>अंतर्ज्ञान:</b> आलेख बिना कलम उठाए बन जाए तो फलन <b>संतत (continuous)</b> है — कोई छलांग या छिद्र नहीं।</li>
+      <li><b>परिभाषा ⭐⭐:</b> f, x = a पर संतत है यदि <b>lim(x→a) f(x) = f(a)</b> — तीन शर्तें: सीमा का अस्तित्व, f(a) परिभाषित, दोनों बराबर।</li>
+      <li><b>LHL = RHL जांच ⭐:</b> सीमा के लिए बायीं और दायीं सीमा बराबर होनी चाहिए।</li>
+      <li>उदाहरण: f(x) = |x|, x = 0 पर: LHL = RHL = 0 = f(0) → <b>संतत</b>।</li>
+      <li>बहुपद, sin x, cos x, eˣ <b>सर्वत्र</b> संतत हैं।</li>
+    </ul>
+    <p class="small-note">💡 संतत = बिना उभार की सड़क। कलम उठानी पड़ी तो असंतत्य!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ असंतत्य के प्रकार और संतत फलनों का बीजगणित</h3>
+    <ul>
+      <li><b>छलांग असंतत्य:</b> LHL ≠ RHL — आलेख "कूद" जाता है (महत्तम पूर्णांक फलन [x] प्रत्येक पूर्णांक पर!)।</li>
+      <li><b>छिद्र:</b> सीमा है पर f(a) परिभाषित नहीं या भिन्न।</li>
+      <li><b>अनंत असंतत्य:</b> बिंदु के पास फलन ±∞ की ओर (1/x, x = 0 पर)।</li>
+      <li><b>बीजगणित ⭐:</b> संतत फलनों का योग, अंतर, गुणनफल, अदिश गुणक सब संतत। भागफल भी — जहां हर ≠ 0।</li>
+      <li><b>संयुक्त फलन:</b> g, a पर संतत + f, g(a) पर संतत → fog, a पर संतत।</li>
+    </ul>
+    <p class="small-note">🎯 [x] और {x} प्रत्येक पूर्णांक पर असंतत — बोर्ड का प्रिय उदाहरण!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ अवकलनीयता — हर जगह ढलान ⭐⭐</h3>
+    <ul>
+      <li><b>परिभाषा ⭐:</b> f′(a) = lim(h→0) [f(a+h) − f(a)]/h — यह सीमा <b>मौजूद</b> हो तो f, a पर अवकलनीय।</li>
+      <li><b>अवकलनीय ⟹ संतत ⭐⭐:</b> अवकलनीय है तो संतत <b>अवश्य</b>। पर उल्टा सत्य <b>नहीं</b>!</li>
+      <li><b>|x|, x = 0 पर ⭐:</b> संतत <b>है</b>, पर अवकलनीय <b>नहीं</b> — बायां ढलान −1, दायां +1 → तीखा कोना!</li>
+      <li>कोना, शिखर (cusp), ऊर्ध्व स्पर्शरेखा या ब्रेक — सभी पर अवकलनीयता विफल।</li>
+      <li>बहुपद, sin x, cos x, eˣ सर्वत्र अवकलनीय।</li>
+    </ul>
+    <p class="small-note">🎯 प्रवाह: अवकलनीय → संतत → (उल्टा गलत!)। |x|, 0 पर = क्लासिक प्रत्युदाहरण।</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ अवकलन के नियम — श्रृंखला, अप्रत्यक्ष, लघुगणक ⭐⭐</h3>
+    <ul>
+      <li><b>श्रृंखला नियम ⭐⭐:</b> d/dx[f(g(x))] = f′(g(x))·g′(x)। उदाहरण: d/dx sin(x²) = cos(x²)·2x।</li>
+      <li><b>अप्रत्यक्ष अवकलन ⭐:</b> y अलग न हो सके (x² + y² = 25) तो दोनों ओर x के सापेक्ष अवकलन करो, फिर dy/dx निकालो।</li>
+      <li><b>चरघातांकी/लघुगणक ⭐:</b> d/dx eˣ = eˣ; d/dx aˣ = aˣ·ln a; d/dx ln x = 1/x।</li>
+      <li><b>लघुगणकीय अवकलन ⭐⭐:</b> घात में x हो (xˣ) तो दोनों ओर ln लो। y = xˣ → dy/dx = <b>xˣ(1 + ln x)</b>।</li>
+      <li><b>प्राचलिक ⭐:</b> x = f(t), y = g(t) → dy/dx = (dy/dt)/(dx/dt)।</li>
+    </ul>
+    <p class="small-note">💡 श्रृंखला नियम = "प्याज छीलो" — बाहरी परत पहले, फिर अंदर एक-एक परत।</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ द्वितीय-कोटि अवकलज और पाठ्यक्रम टिप्पणी</h3>
+    <ul>
+      <li><b>द्वितीय अवकलज ⭐:</b> अवकलज का अवकलज — d²y/dx² = d/dx(dy/dx)। ढलान की <b>परिवर्तन दर</b> बताता है।</li>
+      <li>प्राचलिक में d²y/dx² = d/dt(dy/dx) ÷ dx/dt — सामान्य गलती: केवल t के सापेक्ष कर देना!</li>
+      <li><b>पाठ्यक्रम टिप्पणी ⭐:</b> <b>रोले का प्रमेय और लाग्रांज का मध्यमान प्रमेय</b> NCERT से <b>हटाए गए</b> हैं।</li>
+      <li>प्रतिलोम त्रिकोणमितीय फलनों के अवकलज (d/dx sin⁻¹x = 1/√(1−x²)) समाकलन में भी काम आते हैं।</li>
+    </ul>
+    <p class="small-note">🎯 प्राचलिक द्वितीय अवकलज में 90% गलती — सूत्र अभ्यास से पक्का करो!</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Continuity — A Function Without Breaks ⭐⭐</h3>
+    <ul>
+      <li><b>Intuition:</b> if you can draw the graph without lifting your pen, the function is continuous — no jumps, holes or breaks.</li>
+      <li><b>Definition ⭐⭐:</b> f is <b>continuous</b> at x = a if <b>lim(x→a) f(x) = f(a)</b> — three things must hold: the limit EXISTS, f(a) is DEFINED, and the two are EQUAL.</li>
+      <li><b>LHL = RHL check ⭐:</b> for the limit to exist, the Left Hand Limit must equal the Right Hand Limit. Compute both, compare!</li>
+      <li>Example: f(x) = |x| at x = 0: LHL = RHL = 0 = f(0) → <b>continuous</b>. (But not differentiable — see ahead!)</li>
+      <li>Polynomials, sin x, cos x, eˣ are continuous EVERYWHERE — use these standard results freely.</li>
+    </ul>
+    <p class="small-note">💡 Feel: continuous = a road without speed-breakers. If you had to lift the pen, there is a discontinuity there!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Types of Discontinuity and the Algebra of Continuous Functions</h3>
+    <ul>
+      <li><b>Jump discontinuity:</b> LHL ≠ RHL — the graph "jumps" from one level to another (the greatest integer function [x] at every integer!).</li>
+      <li><b>Missing point:</b> the limit exists but f(a) is undefined or different — a small hole in the graph.</li>
+      <li><b>Infinite discontinuity:</b> the function shoots to ±∞ near the point (1/x at x = 0).</li>
+      <li><b>Algebra ⭐:</b> sums, differences, products and scalar multiples of continuous functions are continuous. Quotients too — wherever the denominator ≠ 0.</li>
+      <li><b>Composite:</b> g continuous at a + f continuous at g(a) → fog continuous at a.</li>
+      <li>Continuous on an interval = continuous at EVERY point of that interval.</li>
+    </ul>
+    <p class="small-note">🎯 [x] (greatest integer) is discontinuous at every integer; {x} (fractional part) too. A board favourite!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Differentiability — A Slope Everywhere ⭐⭐</h3>
+    <ul>
+      <li><b>Definition ⭐:</b> f′(a) = lim(h→0) [f(a+h) − f(a)]/h — if this limit EXISTS, f is differentiable at a. It means a unique tangent/slope exists there.</li>
+      <li><b>Differentiable ⟹ Continuous ⭐⭐:</b> differentiability forces continuity. The CONVERSE is NOT true — continuity alone guarantees nothing!</li>
+      <li><b>|x| at x = 0 ⭐:</b> continuous YES (LHL = RHL = 0), differentiable NO — left slope −1, right slope +1, a sharp corner!</li>
+      <li>Corner, cusp, vertical tangent or break — differentiability fails at all such points.</li>
+      <li>Standard: polynomials, sin x, cos x, eˣ are differentiable everywhere. |x|, [x] fail at their break/corner points.</li>
+    </ul>
+    <p class="small-note">🎯 Flow to remember: Differentiable → Continuous → (reverse is false!). |x| at 0 is the classic counterexample, guaranteed in exams.</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Differentiation Rules — Chain, Implicit, Log ⭐⭐</h3>
+    <ul>
+      <li><b>Chain rule ⭐⭐:</b> d/dx[f(g(x))] = f′(g(x))·g′(x) — derivative of the outer × derivative of the inner. Example: d/dx sin(x²) = cos(x²)·2x.</li>
+      <li><b>Implicit differentiation ⭐:</b> when y cannot be isolated (x² + y² = 25), differentiate both sides with respect to x, attach dy/dx to y-terms, then solve.</li>
+      <li><b>Exponential/Log ⭐:</b> d/dx eˣ = eˣ; d/dx aˣ = aˣ·ln a; d/dx ln x = 1/x; d/dx logₐx = 1/(x ln a).</li>
+      <li><b>Logarithmic differentiation ⭐⭐:</b> when x sits in the power (xˣ, (sin x)^(cos x)) — take ln on both sides, bring the power down, then differentiate. y = xˣ → dy/dx = xˣ(1 + ln x).</li>
+      <li><b>Parametric ⭐:</b> x = f(t), y = g(t) → dy/dx = (dy/dt)/(dx/dt).</li>
+    </ul>
+    <p class="small-note">💡 Chain rule = "peel the onion" — outermost layer first, then one layer at a time inward.</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Second Order Derivatives and Syllabus Note</h3>
+    <ul>
+      <li><b>Second derivative ⭐:</b> the derivative of the derivative — d²y/dx² = d/dx(dy/dx). The first gives the slope; the second gives the slope's RATE OF CHANGE (concavity!).</li>
+      <li>In parametric form d²y/dx² = d/dx(dy/dx) — differentiate dy/dx with respect to x again (using dy/dt, dx/dt); common mistake: differentiating only with respect to t!</li>
+      <li><b>Syllabus note ⭐:</b> <b>Rolle's Theorem and Lagrange's Mean Value Theorem</b> are <b>DELETED</b> from rationalized NCERT — skip their statements and proofs.</li>
+      <li>Derivatives of inverse trig functions (d/dx sin⁻¹x = 1/√(1−x²) etc.) are in the chapter — the same results get reused in integration.</li>
+      <li>Board pattern: one chain-rule 2-marker, one implicit/log-differentiation 3-marker, one second-order/parametric 5-marker — this trio is fixed.</li>
+    </ul>
+    <p class="small-note">🎯 90% of mistakes in d²y/dx² happen in the parametric case — the formula is d/dt(dy/dx) ÷ dx/dt. Drill it!</p>
+  </div>
+</div>
+</section>
+<section id="short-notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Continuity ⭐⭐</h4>
+      <ul><li>lim f(x) = f(a) at a</li><li>LHL = RHL = f(a)</li><li>Polynomial, sin, cos, eˣ sab continuous</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Discontinuity</h4>
+      <ul><li>Jump: LHL ≠ RHL</li><li>Hole: limit hai, value nahi</li><li>[x] har integer pe discontinuous</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Differentiability ⭐⭐</h4>
+      <ul><li>f′(a) ka limit exist kare</li><li>Differentiable ⟹ Continuous</li><li>|x| at 0: cont. HAI, diff NAHI</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Rules ⭐⭐</h4>
+      <ul><li>Chain: f′(g)·g′</li><li>Log diff: xˣ type pe ln lo</li><li>Parametric: dy/dx = (dy/dt)/(dx/dt)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Second order ⭐</h4>
+      <ul><li>d²y/dx² = slope ki change rate</li><li>Parametric: d/dt(dy/dx) ÷ dx/dt</li><li>Rolle's & MVT DELETED</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>संतत्य ⭐⭐</h4>
+      <ul><li>lim f(x) = f(a)</li><li>LHL = RHL = f(a)</li><li>बहुपद, sin, cos, eˣ सर्वत्र संतत</li></ul>
+    </div>
+    <div class="shorts-card"><h4>असंतत्य</h4>
+      <ul><li>छलांग: LHL ≠ RHL</li><li>छिद्र: सीमा है, मान नहीं</li><li>[x] प्रत्येक पूर्णांक पर असंतत</li></ul>
+    </div>
+    <div class="shorts-card"><h4>अवकलनीयता ⭐⭐</h4>
+      <ul><li>f′(a) की सीमा मौजूद हो</li><li>अवकलनीय ⟹ संतत</li><li>|x|, 0 पर: संतत हां, अवकलनीय नहीं</li></ul>
+    </div>
+    <div class="shorts-card"><h4>नियम ⭐⭐</h4>
+      <ul><li>श्रृंखला: f′(g)·g′</li><li>लघुगणकीय: xˣ पर ln लो</li><li>प्राचलिक: dy/dx = (dy/dt)/(dx/dt)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>द्वितीय ⭐</h4>
+      <ul><li>d²y/dx² = ढलान की परिवर्तन दर</li><li>प्राचलिक: d/dt(dy/dx) ÷ dx/dt</li><li>रोले व मध्यमान प्रमेय हटाए गए</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Continuity ⭐⭐</h4>
+      <ul><li>lim f(x) = f(a) at a</li><li>LHL = RHL = f(a)</li><li>Polynomials, sin, cos, eˣ all continuous</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Discontinuity</h4>
+      <ul><li>Jump: LHL ≠ RHL</li><li>Hole: limit exists, value missing</li><li>[x] discontinuous at every integer</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Differentiability ⭐⭐</h4>
+      <ul><li>The limit for f′(a) must exist</li><li>Differentiable ⟹ Continuous</li><li>|x| at 0: continuous YES, differentiable NO</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Rules ⭐⭐</h4>
+      <ul><li>Chain: f′(g)·g′</li><li>Log diff: take ln for xˣ type</li><li>Parametric: dy/dx = (dy/dt)/(dx/dt)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Second order ⭐</h4>
+      <ul><li>d²y/dx² = rate of change of slope</li><li>Parametric: d/dt(dy/dx) ÷ dx/dt</li><li>Rolle's & MVT DELETED</li></ul>
+    </div>
+</div>
+</div>
+</section>
+<section id="practice">
+  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div class="note-sec">
+    <div class="jee-q"><span class="qn">Q1.</span> f(x) = |x|, x = 0 pe continuous hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Haan</b> — LHL = RHL = 0 = f(0). Limit = function value, to continuous.</p></details></div>
+    <div class="jee-q"><span class="qn">Q2.</span> f(x) = |x|, x = 0 pe differentiable hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — left slope −1, right slope +1. Corner point pe unique tangent nahi banti.</p></details></div>
+    <div class="jee-q"><span class="qn">Q3.</span> 'Continuous ⟹ differentiable' — sahi hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Galat</b> — ulta sahi hai: differentiable ⟹ continuous. |x| at 0 iska counterexample hai.</p></details></div>
+    <div class="jee-q"><span class="qn">Q4.</span> f(x) = [x] (greatest integer), x = 2 pe continuous?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — LHL = 1, RHL = 2, dono alag → jump discontinuity.</p></details></div>
+    <div class="jee-q"><span class="qn">Q5.</span> d/dx [sin(x²)] nikalo.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Chain rule: <b>cos(x²)·2x</b> — bahar sin ka derivative, andar x² ka.</p></details></div>
+    <div class="jee-q"><span class="qn">Q6.</span> y = xˣ ka dy/dx?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>ln y = x ln x → (1/y)y′ = 1 + ln x → dy/dx = <b>xˣ(1 + ln x)</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q7.</span> x = 2t, y = t² ho to dy/dx?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>dy/dt = 2t, dx/dt = 2 → dy/dx = 2t/2 = <b>t</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q8.</span> d/dx (eˣ) aur d/dx (ln x)?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>d/dx eˣ = <b>eˣ</b>; d/dx ln x = <b>1/x</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q9.</span> x² + y² = 25 pe dy/dx nikalo.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>2x + 2y(dy/dx) = 0 → dy/dx = <b>−x/y</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q10.</span> Rolle's Theorem ab bhi Class 12 syllabus me hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — Rolle's aur Lagrange's MVT dono rationalized NCERT se <b>delete</b> ho chuke hain.</p></details></div>
+  </div>
+</section>
+<section class="roadmap">
+  <div class="tip-box">🚀 <b>Agla chapter:</b> <a href="/class-12/maths/ch-6/">Application of Derivatives</a> — notes ready hain, abhi padho!</div>
+</section>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
+    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
+    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+  </div>
+</footer>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

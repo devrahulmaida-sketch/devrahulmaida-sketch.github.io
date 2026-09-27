@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 7 — Integrals | Class 12 Mathematics | मईडा Maida</title>
+<meta name="description" content="Class 12 Maths Chapter 7: Integrals — long + short notes in Hindi, English, Hinglish. Indefinite integrals, substitution, integration by parts, partial fractions, definite integrals and properties.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#classes">Classes</a>
+      <a href="/class-11/">Class 11</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ch-hero">
+  <p class="crumb"><a href="/">Home</a> / <a href="/class-12/">Class 12</a> / <a href="/class-12/maths/">Mathematics</a> / Chapter 7</p>
+  <h1>Integrals</h1>
+  <p style="color:var(--violet);margin-top:4px;font-weight:500">समाकलन</p>
+  <p style="color:var(--muted);margin-top:6px">Substitution, by parts, partial fractions aur definite integral properties — calculus ka sabse bada chapter</p>
+  <div class="ch-tags">
+    <span class="pill weight-high">JEE Weightage: HIGH</span>
+    <span class="pill">🎬 Video coming soon</span>
+    <span class="pill">📝 Long + Short notes</span>
+    <span class="pill">🌐 Hindi • English • Hinglish</span>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="video-soon">
+    <div class="video-soon-icon">🎬</div>
+    <b>Video ban raha hai</b>
+    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Integration Ka Concept — Differentiation Ka Ulta ⭐</h3>
+    <ul>
+      <li><b>Antiderivative:</b> integration = differentiation ka REVERSE. d/dx(x²) = 2x, to ∫2x dx = x². ∫ f(x) dx ka matlab: wo function jiska derivative f(x) hai.</li>
+      <li><b>+C kyun? ⭐</b> x², x² + 5, x² − 100 — sabka derivative 2x hai! Constant ka derivative 0 hota hai, isliye answer me hamesha <b>arbitrary constant C</b> jodo.</li>
+      <li><b>Power rule ⭐⭐:</b> ∫ xⁿ dx = <b>xⁿ⁺¹/(n+1) + C</b> (n ≠ −1). Power ek badhao, naye power se divide!</li>
+      <li><b>Exception:</b> ∫ (1/x) dx = <b>ln|x| + C</b> — power rule n = −1 pe fail hota hai, yahan log aata hai.</li>
+      <li><b>Must-know formulas:</b> ∫ eˣ dx = eˣ; ∫ aˣ dx = aˣ/ln a; ∫ sin x dx = −cos x; ∫ cos x dx = sin x; ∫ sec²x dx = tan x; ∫ cosec²x dx = −cot x; ∫ sec x tan x dx = sec x; ∫ cosec x cot x dx = −cosec x. (Sab + C!)</li>
+      <li>Sum/difference rule: ∫(f ± g) = ∫f ± ∫g; constant bahar: ∫kf = k∫f.</li>
+    </ul>
+    <p class="small-note">💡 Feel: differentiation neeche ki taraf (break karna), integration upar ki taraf (jodna). Answer ka check: derivative karke wapas f(x) aa jaana chahiye!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Substitution Method — Change Kardo, Easy Banado ⭐⭐</h3>
+    <ul>
+      <li><b>Idea:</b> andar wali complicated cheez ko <b>t</b> maan lo — uska derivative dx ke saath adjust karke integral simple form me aa jaata hai.</li>
+      <li><b>Signal ⭐:</b> integrand me ek function AUR uska derivative dono dikhe (derivative × dx wala pair) → substitution lagao!</li>
+      <li>Example: ∫ 2x·cos(x²) dx → t = x², dt = 2x dx → ∫ cos t dt = sin t = <b>sin(x²) + C</b>.</li>
+      <li><b>Common patterns ⭐:</b> ∫ f′(x)/f(x) dx = <b>ln|f(x)| + C</b> (numerator = denominator ka derivative!); ∫ f′(x)·√f(x) dx = (2/3)f(x)^(3/2); ∫ f′(x)·e^(f(x)) dx = e^(f(x)) + C.</li>
+      <li>Trig identities bhi substitution ke saath milke kaam karti hain — sin 2x = 2 sin x cos x type pehle simplify karo.</li>
+      <li>Definite integral me substitution: <b>limits bhi badlo</b> t ke hisaab se (ya wapas x me aao) — dono tarike sahi, par limits mat bhoolo!</li>
+    </ul>
+    <p class="small-note">🎯 Golden eye: "kya numerator/second factor pehle wale ka derivative hai?" Haan → substitution = 2 line me answer.</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Integration by Parts — Product Ka Ilaj ⭐⭐</h3>
+    <ul>
+      <li><b>Formula ⭐⭐:</b> ∫ u·v dx = <b>u∫v dx − ∫(u′·∫v dx) dx</b> — "pehla function × doosre ka integral − derivative × integral ka integral".</li>
+      <li><b>ILATE ⭐:</b> pehla function (u) kaun? priority order: <b>I</b>nverse trig → <b>L</b>og → <b>A</b>lgebraic → <b>T</b>rig → <b>E</b>xponential. Jo pehle aaye, wo u!</li>
+      <li>Example: ∫ x·eˣ dx → u = x (algebraic), v = eˣ → x·eˣ − ∫1·eˣ dx = <b>eˣ(x − 1) + C</b>.</li>
+      <li><b>ln x akela ho to ⭐:</b> ∫ ln x dx = ∫ ln x · 1 dx → u = ln x, v = 1 → x ln x − x + C. (1 ko second function maano!)</li>
+      <li><b>Loop trick:</b> ∫ eˣ sin x dx jaise me do baar parts lagao — original integral wapas aata hai, phir usse solve karo (algebra!): answer = eˣ(sin x − cos x)/2 + C.</li>
+    </ul>
+    <p class="small-note">💡 ILATE yaad rakho — u galat choose kiya to integral aur complicated ho jaata hai. Sahi u = half battle won.</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Partial Fractions — Rational Functions Todna ⭐</h3>
+    <ul>
+      <li><b>Kab:</b> integrand P(x)/Q(x) ho (polynomial ÷ polynomial) aur degree of P &lt; degree of Q. Pehle factors todo, phir fractions me baanto.</li>
+      <li><b>Linear factors ⭐:</b> 1/[(x−a)(x−b)] = A/(x−a) + B/(x−b) — A, B nikalo (values daal ke ya compare karke), phir har part ka integral ln ban jaata hai!</li>
+      <li><b>Repeated factor:</b> 1/[(x−a)²(x−b)] = A/(x−a) + B/(x−a)² + C/(x−b) — har power ke liye ek term.</li>
+      <li><b>Quadratic factor (irreducible):</b> (px + q)/(ax² + bx + c) wala numerator rakho.</li>
+      <li>Degree of P ≥ Q ho to pehle <b>long division</b> karo — quotient + remainder/Q, phir partial fractions.</li>
+      <li>Example: ∫ dx/[(x−1)(x−2)] = ∫[−1/(x−1) + 1/(x−2)] dx = <b>ln|x−2| − ln|x−1| + C</b>.</li>
+    </ul>
+    <p class="small-note">🎯 Partial fractions = "badi fraction ko chhoti fractions me todo" — har tukda standard ln/1/x² form ban jaata hai.</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Special Integrals — Standard Forms ⭐⭐</h3>
+    <ul>
+      <li><b>∫ dx/(x² + a²) = (1/a) tan⁻¹(x/a) + C</b>; <b>∫ dx/(x² − a²) = (1/2a) ln|(x−a)/(x+a)| + C</b>; <b>∫ dx/(a² − x²) = (1/2a) ln|(a+x)/(a−x)| + C</b>.</li>
+      <li><b>∫ dx/√(a² − x²) = sin⁻¹(x/a) + C</b>; <b>∫ dx/√(x² + a²) = ln|x + √(x² + a²)| + C</b>; <b>∫ dx/√(x² − a²) = ln|x + √(x² − a²)| + C</b>.</li>
+      <li><b>√ ke upar wale ⭐:</b> ∫ √(a² − x²) dx = (x/2)√(a² − x²) + (a²/2) sin⁻¹(x/a) + C; ∫ √(x² ± a²) dx = (x/2)√(x² ± a²) ± (a²/2) ln|x + √(x² ± a²)| + C.</li>
+      <li><b>Quadratic denominator me ⭐:</b> complete the square! x² + 4x + 5 = (x+2)² + 1 → tan⁻¹ form. Ye move 80% questions me chahiye.</li>
+      <li>Numerator = derivative of denominator ka linear combo banake split karo (px + q = A·d(denominator)/dx + B) — quadratic wale integrals ka master key.</li>
+    </ul>
+    <p class="small-note">💡 Ye 8-9 formulas rattne padte hain — par pattern ek: tan⁻¹/sin⁻¹/ln. Square complete karna aaya to sab apply hoga.</p>
+  </div>
+  <div class="note-sec">
+    <h3>6️⃣ Definite Integrals aur Properties ⭐⭐</h3>
+    <ul>
+      <li><b>Definite integral:</b> ∫ₐᵇ f(x) dx = F(b) − F(a) — antiderivative F nikalo, upper limit daalo, lower limit ka minus. <b>No +C needed!</b> (C cancel ho jaata hai.)</li>
+      <li><b>Meaning ⭐:</b> curve ke NEECHE ka area (x-axis ke saath), a se b tak. Negative area bhi possible (axis ke neeche wala part).</li>
+      <li><b>Basic properties:</b> ∫ₐᵇ f = −∫ᵦₐ f (limits swap → sign flip); ∫ₐᵇ f = ∫ₐᶜ f + ∫cᵦ f (tod sakte ho); ∫ₐᵇ kf = k∫ₐᵇ f.</li>
+      <li><b>King property ⭐⭐:</b> ∫₀ᵃ f(x) dx = <b>∫₀ᵃ f(a − x) dx</b> — x ko (a − x) se replace kar sakte ho! Trig integrals me magic karta hai. General: ∫ₐᵇ f(x) dx = ∫ₐᵇ f(a + b − x) dx.</li>
+      <li><b>Even/odd ⭐:</b> ∫₋ₐᵃ f(x) dx = <b>2∫₀ᵃ f(x) dx agar f EVEN</b>; <b>0 agar f ODD</b>. Symmetric limits pe pehle even/odd check karo!</li>
+      <li><b>Syllabus note:</b> definite integral as <b>limit of a sum</b> NCERT se DELETE — properties + evaluation pe focus.</li>
+    </ul>
+    <p class="small-note">🎯 King property use karke ∫₀^(π/2) sinⁿx/(sinⁿx + cosⁿx) dx = π/4 jaisa "impossible-looking" integral 30 seconds me solve hota hai — seekh ke jao!</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ समाकलन की अवधारणा — अवकलन का उल्टा ⭐</h3>
+    <ul>
+      <li><b>प्रतिअवकलज:</b> समाकलन = अवकलन का <b>विपरीत</b>। d/dx(x²) = 2x, तो ∫2x dx = x²।</li>
+      <li><b>+C क्यों? ⭐</b> x², x² + 5 — सबका अवकलज 2x है! इसलिए उत्तर में सदैव <b>अचर C</b> जोड़ो।</li>
+      <li><b>घात नियम ⭐⭐:</b> ∫ xⁿ dx = <b>xⁿ⁺¹/(n+1) + C</b> (n ≠ −1)।</li>
+      <li><b>अपवाद:</b> ∫ (1/x) dx = <b>ln|x| + C</b>।</li>
+      <li><b>आवश्यक सूत्र:</b> ∫ eˣ dx = eˣ; ∫ sin x dx = −cos x; ∫ cos x dx = sin x; ∫ sec²x dx = tan x (सब + C!)।</li>
+    </ul>
+    <p class="small-note">💡 जांच: उत्तर का अवकलन करके f(x) वापस आना चाहिए!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ प्रतिस्थापन विधि — बदलो, सरल बनाओ ⭐⭐</h3>
+    <ul>
+      <li><b>विचार:</b> जटिल भाग को <b>t</b> मानो — उसका अवकलज dx के साथ मिलाकर समाकलन सरल हो जाता है।</li>
+      <li><b>संकेत ⭐:</b> एक फलन <b>और</b> उसका अवकलज दोनों दिखें → प्रतिस्थापन!</li>
+      <li>उदाहरण: ∫ 2x·cos(x²) dx → t = x² → ∫ cos t dt = <b>sin(x²) + C</b>।</li>
+      <li><b>सामान्य पैटर्न ⭐:</b> ∫ f′(x)/f(x) dx = <b>ln|f(x)| + C</b>; ∫ f′(x)·e^(f(x)) dx = e^(f(x)) + C।</li>
+      <li>निश्चित समाकलन में प्रतिस्थापन: <b>सीमाएं भी बदलो</b>!</li>
+    </ul>
+    <p class="small-note">🎯 "क्या अंश हर का अवकलज है?" हां → ln|f(x)| सीधे!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ खंडश: समाकलन — गुणनफल का इलाज ⭐⭐</h3>
+    <ul>
+      <li><b>सूत्र ⭐⭐:</b> ∫ u·v dx = <b>u∫v dx − ∫(u′·∫v dx) dx</b>।</li>
+      <li><b>ILATE ⭐:</b> u की प्राथमिकता: प्रतिलोम त्रिकोणमितीय → लघुगणक → बीजीय → त्रिकोणमितीय → चरघातांकी।</li>
+      <li>उदाहरण: ∫ x·eˣ dx = x·eˣ − ∫eˣ dx = <b>eˣ(x − 1) + C</b>।</li>
+      <li><b>ln x अकेला हो तो ⭐:</b> ∫ ln x dx = <b>x ln x − x + C</b> (1 को दूसरा फलन मानो)।</li>
+      <li><b>चक्र तरकीब:</b> ∫ eˣ sin x dx में दो बार खंडश: — मूल समाकलन लौटता है, बीजगणित से हल: eˣ(sin x − cos x)/2 + C।</li>
+    </ul>
+    <p class="small-note">💡 ILATE याद रखो — सही u = आधी जीत।</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ आंशिक भिन्नें — परिमेय फलन तोड़ना ⭐</h3>
+    <ul>
+      <li><b>कब:</b> P(x)/Q(x) हो और P की घात &lt; Q की घात। पहले गुणनखंड, फिर भिन्नों में बांटो।</li>
+      <li><b>रैखिक गुणनखंड ⭐:</b> 1/[(x−a)(x−b)] = A/(x−a) + B/(x−b) — प्रत्येक भाग का समाकलन ln बनता है!</li>
+      <li><b>दोहराया गुणनखंड:</b> प्रत्येक घात के लिए एक पद: A/(x−a) + B/(x−a)² + ...</li>
+      <li>घात P ≥ Q हो तो पहले <b>भाग</b> दो।</li>
+      <li>उदाहरण: ∫ dx/[(x−1)(x−2)] = <b>ln|x−2| − ln|x−1| + C</b>।</li>
+    </ul>
+    <p class="small-note">🎯 बड़ी भिन्न → छोटी भिन्नें → प्रत्येक मानक रूप।</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ विशिष्ट समाकलन — मानक रूप ⭐⭐</h3>
+    <ul>
+      <li><b>∫ dx/(x² + a²) = (1/a) tan⁻¹(x/a)</b>; <b>∫ dx/(x² − a²) = (1/2a) ln|(x−a)/(x+a)|</b>।</li>
+      <li><b>∫ dx/√(a² − x²) = sin⁻¹(x/a)</b>; <b>∫ dx/√(x² ± a²) = ln|x + √(x² ± a²)|</b>।</li>
+      <li><b>∫ √(a² − x²) dx = (x/2)√(a² − x²) + (a²/2) sin⁻¹(x/a) + C</b>।</li>
+      <li><b>द्विघात हर में ⭐:</b> वर्ग पूर्ण करो! x² + 4x + 5 = (x+2)² + 1 → tan⁻¹ रूप।</li>
+      <li>अंश को हर के अवकलज के रैखिक संयोजन में तोड़ो — द्विघात समाकलनों की कुंजी।</li>
+    </ul>
+    <p class="small-note">💡 8-9 सूत्र कंठस्थ करने ही पड़ते हैं — पैटर्न एक: tan⁻¹/sin⁻¹/ln।</p>
+  </div>
+  <div class="note-sec">
+    <h3>6️⃣ निश्चित समाकलन और गुणधर्म ⭐⭐</h3>
+    <ul>
+      <li><b>निश्चित समाकलन:</b> ∫ₐᵇ f(x) dx = F(b) − F(a) — <b>+C नहीं!</b></li>
+      <li><b>अर्थ ⭐:</b> a से b तक वक्र के <b>नीचे का क्षेत्रफल</b>।</li>
+      <li><b>मूल गुणधर्म:</b> ∫ₐᵇ f = −∫ᵦₐ f; ∫ₐᵇ f = ∫ₐᶜ f + ∫cᵦ f।</li>
+      <li><b>राजा गुणधर्म ⭐⭐:</b> ∫₀ᵃ f(x) dx = <b>∫₀ᵃ f(a − x) dx</b>; सामान्यतः ∫ₐᵇ f(x) dx = ∫ₐᵇ f(a + b − x) dx।</li>
+      <li><b>सम/विषम ⭐:</b> ∫₋ₐᵃ f = <b>2∫₀ᵃ f (सम फलन)</b>; <b>0 (विषम फलन)</b>।</li>
+      <li><b>पाठ्यक्रम टिप्पणी:</b> योग की सीमा के रूप में निश्चित समाकलन NCERT से <b>हटाया गया</b>।</li>
+    </ul>
+    <p class="small-note">🎯 राजा गुणधर्म से "असंभव-लगने वाले" त्रिकोणमितीय समाकलन सेकंडों में हल!</p>
+  </div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ The Concept of Integration — Differentiation in Reverse ⭐</h3>
+    <ul>
+      <li><b>Antiderivative:</b> integration is the REVERSE of differentiation. d/dx(x²) = 2x, so ∫2x dx = x². ∫ f(x) dx means: the function whose derivative is f(x).</li>
+      <li><b>Why +C? ⭐</b> x², x² + 5, x² − 100 — all have derivative 2x! The derivative of a constant is 0, so always attach an <b>arbitrary constant C</b>.</li>
+      <li><b>Power rule ⭐⭐:</b> ∫ xⁿ dx = <b>xⁿ⁺¹/(n+1) + C</b> (n ≠ −1). Raise the power by one, divide by the new power!</li>
+      <li><b>Exception:</b> ∫ (1/x) dx = <b>ln|x| + C</b> — the power rule fails at n = −1; log steps in.</li>
+      <li><b>Must-know formulas:</b> ∫ eˣ dx = eˣ; ∫ aˣ dx = aˣ/ln a; ∫ sin x dx = −cos x; ∫ cos x dx = sin x; ∫ sec²x dx = tan x; ∫ cosec²x dx = −cot x; ∫ sec x tan x dx = sec x; ∫ cosec x cot x dx = −cosec x. (All + C!)</li>
+      <li>Sum/difference rule: ∫(f ± g) = ∫f ± ∫g; constants pull out: ∫kf = k∫f.</li>
+    </ul>
+    <p class="small-note">💡 Feel: differentiation breaks down, integration builds up. Check your answer: its derivative must give back f(x)!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Substitution — Change It, Simplify It ⭐⭐</h3>
+    <ul>
+      <li><b>Idea:</b> call the complicated inner piece <b>t</b> — once its derivative pairs with dx, the integral collapses into a simple form.</li>
+      <li><b>Signal ⭐:</b> you see a function AND its derivative together (derivative × dx pair) → substitute!</li>
+      <li>Example: ∫ 2x·cos(x²) dx → t = x², dt = 2x dx → ∫ cos t dt = sin t = <b>sin(x²) + C</b>.</li>
+      <li><b>Common patterns ⭐:</b> ∫ f′(x)/f(x) dx = <b>ln|f(x)| + C</b> (numerator = derivative of the denominator!); ∫ f′(x)·√f(x) dx = (2/3)f(x)^(3/2); ∫ f′(x)·e^(f(x)) dx = e^(f(x)) + C.</li>
+      <li>Trig identities team up with substitution — simplify first with things like sin 2x = 2 sin x cos x.</li>
+      <li>Substitution in a definite integral: <b>change the limits too</b> into t (or convert back to x) — both fine, but never forget the limits!</li>
+    </ul>
+    <p class="small-note">🎯 Golden eye: "is the numerator/second factor the derivative of the first?" Yes → substitution solves it in 2 lines.</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Integration by Parts — Handling Products ⭐⭐</h3>
+    <ul>
+      <li><b>Formula ⭐⭐:</b> ∫ u·v dx = <b>u∫v dx − ∫(u′·∫v dx) dx</b> — "first function × integral of the second − integral of (derivative × integral)".</li>
+      <li><b>ILATE ⭐:</b> which function is u? Priority order: <b>I</b>nverse trig → <b>L</b>og → <b>A</b>lgebraic → <b>T</b>rig → <b>E</b>xponential. Whichever comes first is u!</li>
+      <li>Example: ∫ x·eˣ dx → u = x (algebraic), v = eˣ → x·eˣ − ∫1·eˣ dx = <b>eˣ(x − 1) + C</b>.</li>
+      <li><b>When ln x stands alone ⭐:</b> ∫ ln x dx = ∫ ln x · 1 dx → u = ln x, v = 1 → x ln x − x + C. (Treat 1 as the second function!)</li>
+      <li><b>Loop trick:</b> for ∫ eˣ sin x dx apply parts twice — the original integral returns, then solve it algebraically: eˣ(sin x − cos x)/2 + C.</li>
+    </ul>
+    <p class="small-note">💡 Remember ILATE — a wrong choice of u makes the integral worse. The right u wins half the battle.</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Partial Fractions — Breaking Rational Functions ⭐</h3>
+    <ul>
+      <li><b>When:</b> the integrand is P(x)/Q(x) (polynomial ÷ polynomial) with degree of P &lt; degree of Q. Factor first, then split into fractions.</li>
+      <li><b>Linear factors ⭐:</b> 1/[(x−a)(x−b)] = A/(x−a) + B/(x−b) — find A, B (plug values or compare), and each part integrates into ln!</li>
+      <li><b>Repeated factor:</b> 1/[(x−a)²(x−b)] = A/(x−a) + B/(x−a)² + C/(x−b) — one term per power.</li>
+      <li><b>Irreducible quadratic factor:</b> use a numerator of the form (px + q).</li>
+      <li>If degree of P ≥ Q, do <b>long division</b> first — quotient + remainder/Q, then partial fractions.</li>
+      <li>Example: ∫ dx/[(x−1)(x−2)] = ∫[−1/(x−1) + 1/(x−2)] dx = <b>ln|x−2| − ln|x−1| + C</b>.</li>
+    </ul>
+    <p class="small-note">🎯 Partial fractions = "break a big fraction into small ones" — each piece becomes a standard ln/1/x² form.</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Special Integrals — Standard Forms ⭐⭐</h3>
+    <ul>
+      <li><b>∫ dx/(x² + a²) = (1/a) tan⁻¹(x/a) + C</b>; <b>∫ dx/(x² − a²) = (1/2a) ln|(x−a)/(x+a)| + C</b>; <b>∫ dx/(a² − x²) = (1/2a) ln|(a+x)/(a−x)| + C</b>.</li>
+      <li><b>∫ dx/√(a² − x²) = sin⁻¹(x/a) + C</b>; <b>∫ dx/√(x² + a²) = ln|x + √(x² + a²)| + C</b>; <b>∫ dx/√(x² − a²) = ln|x + √(x² − a²)| + C</b>.</li>
+      <li><b>Root-on-top forms ⭐:</b> ∫ √(a² − x²) dx = (x/2)√(a² − x²) + (a²/2) sin⁻¹(x/a) + C; ∫ √(x² ± a²) dx = (x/2)√(x² ± a²) ± (a²/2) ln|x + √(x² ± a²)| + C.</li>
+      <li><b>Quadratic denominators ⭐:</b> complete the square! x² + 4x + 5 = (x+2)² + 1 → tan⁻¹ form. This move is needed in 80% of questions.</li>
+      <li>Split the numerator as a linear combo of the denominator's derivative (px + q = A·d(denominator)/dx + B) — the master key for quadratic integrals.</li>
+    </ul>
+    <p class="small-note">💡 These 8-9 formulas must be memorized — but the pattern is one: tan⁻¹/sin⁻¹/ln. Learn to complete the square and everything applies.</p>
+  </div>
+  <div class="note-sec">
+    <h3>6️⃣ Definite Integrals and Their Properties ⭐⭐</h3>
+    <ul>
+      <li><b>Definite integral:</b> ∫ₐᵇ f(x) dx = F(b) − F(a) — find the antiderivative F, plug the upper limit, subtract the lower. <b>No +C needed!</b> (C cancels out.)</li>
+      <li><b>Meaning ⭐:</b> the AREA under the curve (with the x-axis) from a to b. Negative areas exist too (parts below the axis).</li>
+      <li><b>Basic properties:</b> ∫ₐᵇ f = −∫ᵦₐ f (swapping limits flips the sign); ∫ₐᵇ f = ∫ₐᶜ f + ∫cᵦ f (you can split); ∫ₐᵇ kf = k∫ₐᵇ f.</li>
+      <li><b>King property ⭐⭐:</b> ∫₀ᵃ f(x) dx = <b>∫₀ᵃ f(a − x) dx</b> — replace x by (a − x)! Works magic on trig integrals. General: ∫ₐᵇ f(x) dx = ∫ₐᵇ f(a + b − x) dx.</li>
+      <li><b>Even/odd ⭐:</b> ∫₋ₐᵃ f(x) dx = <b>2∫₀ᵃ f(x) dx if f is EVEN</b>; <b>0 if f is ODD</b>. With symmetric limits, check even/odd first!</li>
+      <li><b>Syllabus note:</b> the definite integral as a <b>limit of a sum</b> is DELETED from NCERT — focus on properties + evaluation.</li>
+    </ul>
+    <p class="small-note">🎯 With the king property, scary integrals like ∫₀^(π/2) sinⁿx/(sinⁿx + cosⁿx) dx = π/4 solve in 30 seconds — learn it!</p>
+  </div>
+</div>
+</section>
+<section id="short-notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics ⭐</h4>
+      <ul><li>∫ = differentiation ka ulta</li><li>+C hamesha (indefinite)</li><li>∫xⁿdx = xⁿ⁺¹/(n+1); ∫1/x = ln|x|</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Substitution ⭐⭐</h4>
+      <ul><li>Andar wale ko t maano</li><li>Signal: function + uska derivative</li><li>f′/f → ln|f|</li></ul>
+    </div>
+    <div class="shorts-card"><h4>By parts ⭐⭐</h4>
+      <ul><li>∫uv = u∫v − ∫(u′∫v)</li><li>u choose: ILATE order</li><li>∫ln x = x ln x − x</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Special forms ⭐</h4>
+      <ul><li>1/(x²+a²) → (1/a)tan⁻¹</li><li>1/√(a²−x²) → sin⁻¹</li><li>Quadratic: complete the square</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Definite ⭐⭐</h4>
+      <ul><li>F(b) − F(a), no +C</li><li>King: ∫₀ᵃf(x) = ∫₀ᵃf(a−x)</li><li>Even: 2×half; Odd: 0</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="hi" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>मूल ⭐</h4>
+      <ul><li>∫ = अवकलन का उल्टा</li><li>+C सदैव (अनिश्चित)</li><li>∫xⁿdx = xⁿ⁺¹/(n+1); ∫1/x = ln|x|</li></ul>
+    </div>
+    <div class="shorts-card"><h4>प्रतिस्थापन ⭐⭐</h4>
+      <ul><li>भीतरी भाग को t</li><li>संकेत: फलन + उसका अवकलज</li><li>f′/f → ln|f|</li></ul>
+    </div>
+    <div class="shorts-card"><h4>खंडश: ⭐⭐</h4>
+      <ul><li>∫uv = u∫v − ∫(u′∫v)</li><li>u: ILATE क्रम</li><li>∫ln x = x ln x − x</li></ul>
+    </div>
+    <div class="shorts-card"><h4>मानक रूप ⭐</h4>
+      <ul><li>1/(x²+a²) → (1/a)tan⁻¹</li><li>1/√(a²−x²) → sin⁻¹</li><li>द्विघात: वर्ग पूर्ण करो</li></ul>
+    </div>
+    <div class="shorts-card"><h4>निश्चित ⭐⭐</h4>
+      <ul><li>F(b) − F(a), +C नहीं</li><li>राजा: ∫₀ᵃf(x) = ∫₀ᵃf(a−x)</li><li>सम: 2×आधा; विषम: 0</li></ul>
+    </div>
+</div>
+</div>
+<div class="lang-block" data-lang="en" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics ⭐</h4>
+      <ul><li>∫ = reverse of differentiation</li><li>Always +C (indefinite)</li><li>∫xⁿdx = xⁿ⁺¹/(n+1); ∫1/x = ln|x|</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Substitution ⭐⭐</h4>
+      <ul><li>Set the inner piece = t</li><li>Signal: function + its derivative</li><li>f′/f → ln|f|</li></ul>
+    </div>
+    <div class="shorts-card"><h4>By parts ⭐⭐</h4>
+      <ul><li>∫uv = u∫v − ∫(u′∫v)</li><li>Choose u by ILATE</li><li>∫ln x = x ln x − x</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Special forms ⭐</h4>
+      <ul><li>1/(x²+a²) → (1/a)tan⁻¹</li><li>1/√(a²−x²) → sin⁻¹</li><li>Quadratic: complete the square</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Definite ⭐⭐</h4>
+      <ul><li>F(b) − F(a), no +C</li><li>King: ∫₀ᵃf(x) = ∫₀ᵃf(a−x)</li><li>Even: 2×half; Odd: 0</li></ul>
+    </div>
+</div>
+</div>
+</section>
+<section id="practice">
+  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div class="note-sec">
+    <div class="jee-q"><span class="qn">Q1.</span> ∫ x⁵ dx nikalo.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>x⁶/6 <b>+ C</b> — power ek badhao, naye power se divide.</p></details></div>
+    <div class="jee-q"><span class="qn">Q2.</span> ∫ (1/x) dx kya hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>ln|x| + C</b> — power rule n = −1 pe kaam nahi karta.</p></details></div>
+    <div class="jee-q"><span class="qn">Q3.</span> ∫ 2x·sin(x²) dx kaise karein?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>t = x² → dt = 2x dx → ∫ sin t dt = −cos t = <b>−cos(x²) + C</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q4.</span> ∫ f′(x)/f(x) dx ka direct formula?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>ln|f(x)| + C</b> — numerator denominator ka derivative hai.</p></details></div>
+    <div class="jee-q"><span class="qn">Q5.</span> ∫ x·eˣ dx nikalo (by parts).<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>u = x, v = eˣ → x·eˣ − ∫eˣ dx = <b>eˣ(x − 1) + C</b> (ILATE: algebraic pehle).</p></details></div>
+    <div class="jee-q"><span class="qn">Q6.</span> ∫ ln x dx ka answer?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>x ln x − x + C</b> — 1 ko second function maan ke by parts.</p></details></div>
+    <div class="jee-q"><span class="qn">Q7.</span> ∫ dx/(x² + 9) kya hoga?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>a = 3 → (1/3) <b>tan⁻¹(x/3) + C</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q8.</span> ∫₀¹ x² dx ka value?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>F(x) = x³/3 → F(1) − F(0) = 1/3 − 0 = <b>1/3</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q9.</span> ∫₋₂² x³ dx kya hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>x³ <b>odd</b> function hai, symmetric limits → <b>0</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q10.</span> King property bolo.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>∫₀ᵃ f(x) dx = <b>∫₀ᵃ f(a − x) dx</b> — x ki jagah (a − x) rakh sakte ho, value same.</p></details></div>
+  </div>
+</section>
+<section class="roadmap">
+  <div class="tip-box">🚀 <b>Agla chapter:</b> <a href="/class-12/maths/ch-8/">Application of Integrals</a> — notes ready hain, abhi padho!</div>
+</section>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
+    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
+    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+  </div>
+</footer>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
