@@ -12,7 +12,7 @@ CH = {
  "card_topics": [
   "⭕ Circle equations",
   "🔦 Parabola: focus + directrix",
-  "🪐 Ellipse: e < 1",
+  "🪐 Ellipse: e &lt; 1",
   "♾️ Hyperbola: e > 1"
  ],
  "long": {
@@ -117,7 +117,7 @@ CH = {
     "h": "Ellipse ⭐",
     "items": [
      "x²/a² + y²/b² = 1",
-     "c² = a² − b², e = c/a < 1",
+     "c² = a² − b², e = c/a &lt; 1",
      "Foci (±c, 0), LR = 2b²/a"
     ]
    },
@@ -159,7 +159,7 @@ CH = {
     "h": "दीर्घवृत्त ⭐",
     "items": [
      "x²/a² + y²/b² = 1",
-     "c² = a² − b², e < 1",
+     "c² = a² − b², e &lt; 1",
      "नाभिलंब जीवा = 2b²/a"
     ]
    },
@@ -201,7 +201,7 @@ CH = {
     "h": "Ellipse ⭐",
     "items": [
      "x²/a² + y²/b² = 1",
-     "c² = a² − b², e = c/a < 1",
+     "c² = a² − b², e = c/a &lt; 1",
      "Foci (±c, 0), LR = 2b²/a"
     ]
    },

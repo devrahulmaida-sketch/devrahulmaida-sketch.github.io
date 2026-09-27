@@ -161,7 +161,7 @@ CH = {
     "items": [
      "i = observed/calculated colligative",
      "Dissociation i>1 (NaCl≈2, CaCl₂≈3)",
-     "Association i<1 (acetic acid dimer≈0.5)",
+     "Association i&lt;1 (acetic acid dimer≈0.5)",
      "Non-electrolyte i=1 (glucose)"
     ]
    }
@@ -202,7 +202,7 @@ CH = {
     "h": "van't Hoff i",
     "items": [
      "वियोजन i>1",
-     "संघनन i<1",
+     "संघनन i&lt;1",
      "non-electrolyte i=1"
     ]
    }
@@ -243,7 +243,7 @@ CH = {
     "h": "van't Hoff i",
     "items": [
      "Dissociation i>1",
-     "Association i<1",
+     "Association i&lt;1",
      "Non-electrolyte i=1"
     ]
    }

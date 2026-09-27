@@ -97,7 +97,7 @@ CH = {
     "h": "Photoelectric observations ⭐",
     "items": [
      "Hertz/Lenard: suitable metal pe light daalne se electrons nikalte.",
-     "Threshold f₀: f<f₀ ho to kitni bhi intensity pe emission nahi. Above threshold emission essentially immediate.",
+     "Threshold f₀: f&lt;f₀ ho to kitni bhi intensity pe emission nahi. Above threshold emission essentially immediate.",
      "Current vs intensity: f fixed above f₀, intensity badhao → more electrons/current; maximum kinetic energy nahi badhti."
     ]
    },
@@ -139,7 +139,7 @@ CH = {
     "h": "प्रकाशविद्युत प्रेक्षण ⭐",
     "items": [
      "हर्ट्ज/लेनार्ड: उपयुक्त धातु पर प्रकाश से इलेक्ट्रॉन निकलते हैं।",
-     "देहली आवृत्ति f₀: f<f₀ पर कितनी भी तीव्रता से उत्सर्जन नहीं; उससे ऊपर लगभग तत्काल।",
+     "देहली आवृत्ति f₀: f&lt;f₀ पर कितनी भी तीव्रता से उत्सर्जन नहीं; उससे ऊपर लगभग तत्काल।",
      "धारा व तीव्रता: f नियत व f₀ से अधिक हो तो तीव्रता से धारा बढ़ती, अधिकतम गतिज ऊर्जा नहीं।"
     ]
    },

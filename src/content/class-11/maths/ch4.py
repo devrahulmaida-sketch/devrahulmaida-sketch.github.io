@@ -13,7 +13,7 @@ CH = {
   "🧮 i powers + algebra",
   "📊 Conjugate + modulus",
   "🗺️ Argand plane + polar form",
-  "🔍 D < 0 complex roots"
+  "🔍 D &lt; 0 complex roots"
  ],
  "long": {
   "hinglish": [
@@ -112,7 +112,7 @@ CH = {
    {
     "h": "Quadratic ⭐",
     "items": [
-     "D < 0 → complex conjugate pair",
+     "D &lt; 0 → complex conjugate pair",
      "Sum = −b/a, product = c/a",
      "x² − (sum)x + product = 0"
     ]
@@ -154,7 +154,7 @@ CH = {
    {
     "h": "द्विघात ⭐",
     "items": [
-     "D < 0 → संयुग्मी युग्म",
+     "D &lt; 0 → संयुग्मी युग्म",
      "योग = −b/a, गुणनफल = c/a",
      "x² − (योग)x + गुणनफल = 0"
     ]
@@ -196,7 +196,7 @@ CH = {
    {
     "h": "Quadratic ⭐",
     "items": [
-     "D < 0 → complex conjugate pair",
+     "D &lt; 0 → complex conjugate pair",
      "Sum = −b/a, product = c/a",
      "x² − (sum)x + product = 0"
     ]

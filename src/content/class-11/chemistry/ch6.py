@@ -145,7 +145,7 @@ CH = {
    {
     "h": "Q vs K",
     "items": [
-     "Q < K → aage (products)",
+     "Q &lt; K → aage (products)",
      "Q > K → peeche (reactants)",
      "Q = K → equilibrium"
     ]
@@ -212,7 +212,7 @@ CH = {
    {
     "h": "Q vs K",
     "items": [
-     "Q < K → आगे (products)",
+     "Q &lt; K → आगे (products)",
      "Q > K → पीछे (reactants)",
      "Q = K → equilibrium"
     ]
@@ -279,7 +279,7 @@ CH = {
    {
     "h": "Q vs K",
     "items": [
-     "Q < K → forward (products)",
+     "Q &lt; K → forward (products)",
      "Q > K → backward (reactants)",
      "Q = K → equilibrium"
     ]

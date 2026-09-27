@@ -242,7 +242,7 @@ CH = {
   ],
   [
    "Unbounded region me minimum confirm karne ka extra step?",
-   "Z < m wala <b>half-plane</b> feasible region ko overlap karta hai ya nahi — <b>overlap nahi</b> to min confirmed."
+   "Z &lt; m wala <b>half-plane</b> feasible region ko overlap karta hai ya nahi — <b>overlap nahi</b> to min confirmed."
   ],
   [
    "Answer me sirf Z ka value likhna kaafi hai?",

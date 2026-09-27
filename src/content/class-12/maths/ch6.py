@@ -97,7 +97,7 @@ CH = {
     "h": "Inc/Dec ⭐⭐",
     "items": [
      "f′ > 0 → increasing",
-     "f′ < 0 → decreasing",
+     "f′ &lt; 0 → decreasing",
      "Critical points se sign chart"
     ]
    },
@@ -105,7 +105,7 @@ CH = {
     "h": "Max/Min ⭐⭐",
     "items": [
      "f′ = 0 → candidates",
-     "f″ < 0 → max; f″ > 0 → min",
+     "f″ &lt; 0 → max; f″ > 0 → min",
      "+ se − sign change → max"
     ]
    },
@@ -139,7 +139,7 @@ CH = {
     "h": "वर्धमान/ह्रासमान ⭐⭐",
     "items": [
      "f′ > 0 → वर्धमान",
-     "f′ < 0 → ह्रासमान",
+     "f′ &lt; 0 → ह्रासमान",
      "क्रांतिक बिंदुओं से चिह्न चार्ट"
     ]
    },
@@ -147,7 +147,7 @@ CH = {
     "h": "उच्च/निम्न ⭐⭐",
     "items": [
      "f′ = 0 → उम्मीदवार",
-     "f″ < 0 → उच्चिष्ठ; f″ > 0 → निम्निष्ठ",
+     "f″ &lt; 0 → उच्चिष्ठ; f″ > 0 → निम्निष्ठ",
      "+ से − चिह्न बदलाव → उच्चिष्ठ"
     ]
    },
@@ -181,7 +181,7 @@ CH = {
     "h": "Inc/Dec ⭐⭐",
     "items": [
      "f′ > 0 → increasing",
-     "f′ < 0 → decreasing",
+     "f′ &lt; 0 → decreasing",
      "Sign chart from critical points"
     ]
    },
@@ -189,7 +189,7 @@ CH = {
     "h": "Max/Min ⭐⭐",
     "items": [
      "f′ = 0 → candidates",
-     "f″ < 0 → max; f″ > 0 → min",
+     "f″ &lt; 0 → max; f″ > 0 → min",
      "+ to − sign change → max"
     ]
    },
@@ -221,12 +221,12 @@ CH = {
    "A = πr² → dA/dt = 2πr·dr/dt = 2π(5)(3) = <b>30π cm²/s</b>."
   ],
   [
-   "f′(x) < 0 poore interval me ho to function kaisa hai?",
+   "f′(x) &lt; 0 poore interval me ho to function kaisa hai?",
    "<b>Strictly decreasing</b> — slope negative, graph neeche utar raha hai."
   ],
   [
    "f(x) = x² − 6x + 5 kab decreasing hai?",
-   "f′(x) = 2x − 6 < 0 jab x < 3 → <b>(−∞, 3) me decreasing</b>."
+   "f′(x) = 2x − 6 &lt; 0 jab x &lt; 3 → <b>(−∞, 3) me decreasing</b>."
   ],
   [
    "Critical point pe f″(c) > 0 ho to kya hai?",

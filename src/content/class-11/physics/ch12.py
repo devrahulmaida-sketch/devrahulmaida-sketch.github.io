@@ -104,7 +104,7 @@ CH = {
    {
     "h": "Speeds ⭐",
     "items": [
-     "v_p < v_avg < v_rms",
+     "v_p &lt; v_avg &lt; v_rms",
      "v_rms = √(3RT/M)",
      "Halka gas → zyada speed"
     ]
@@ -146,7 +146,7 @@ CH = {
    {
     "h": "चालें ⭐",
     "items": [
-     "v_p < v_avg < v_rms",
+     "v_p &lt; v_avg &lt; v_rms",
      "v_rms = √(3RT/M)",
      "हल्की गैस → तेज़"
     ]
@@ -188,7 +188,7 @@ CH = {
    {
     "h": "Speeds ⭐",
     "items": [
-     "v_p < v_avg < v_rms",
+     "v_p &lt; v_avg &lt; v_rms",
      "v_rms = √(3RT/M)",
      "Lighter gas → faster"
     ]
@@ -238,7 +238,7 @@ CH = {
   ],
   [
    "v_p, v_avg, v_rms ka order?",
-   "v_p < v_avg < v_rms — <b>√2 : √(8/π) : √3</b> (ya 1 : 1.128 : 1.224)."
+   "v_p &lt; v_avg &lt; v_rms — <b>√2 : √(8/π) : √3</b> (ya 1 : 1.128 : 1.224)."
   ],
   [
    "1 mole ideal gas ki total internal energy (diatomic, 300 K)?",

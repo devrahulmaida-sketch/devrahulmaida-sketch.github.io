@@ -230,7 +230,7 @@ CH = {
   ],
   [
    "Alveoli me gas exchange kaise hota hai?",
-   "<b>Diffusion by partial pressure gradient</b> — O2 alveoli (pO2 104) se blood (40) me; CO2 blood (45) se alveoli (40) me. Diffusion membrane <0.5 mm thin!"
+   "<b>Diffusion by partial pressure gradient</b> — O2 alveoli (pO2 104) se blood (40) me; CO2 blood (45) se alveoli (40) me. Diffusion membrane &lt;0.5 mm thin!"
   ],
   [
    "O2 ka transport kaise hota hai?",

@@ -113,7 +113,7 @@ CH = {
     "h": "Friction ⭐",
     "items": [
      "f_s ≤ μ_s N (self-adjusting), f_k = μ_k N",
-     "μ_k < μ_s hamesha",
+     "μ_k &lt; μ_s hamesha",
      "Incline slip: tanθ > μ_s",
      "Rolling friction sabse kam"
     ]
@@ -156,7 +156,7 @@ CH = {
     "h": "घर्षण ⭐",
     "items": [
      "f_s ≤ μ_s N, f_k = μ_k N",
-     "सदैव μ_k < μ_s",
+     "सदैव μ_k &lt; μ_s",
      "नत तल सर्पण: tanθ > μ_s",
      "लोटनी घर्षण न्यूनतम"
     ]
@@ -199,7 +199,7 @@ CH = {
     "h": "Friction ⭐",
     "items": [
      "f_s ≤ μ_s N (self-adjusting), f_k = μ_k N",
-     "Always μ_k < μ_s",
+     "Always μ_k &lt; μ_s",
      "Incline slip: tanθ > μ_s",
      "Rolling friction smallest"
     ]
@@ -233,7 +233,7 @@ CH = {
   ],
   [
    "Block 5 kg incline pe hai, θ = 30°, μ<sub>s</sub> = 0.6. Slip hoga? (g = 10)",
-   "tan30° = 0.577 < 0.6 → <b>slip NAHI hoga</b>. Friction = mg sinθ = 25 N (self-adjusted)."
+   "tan30° = 0.577 &lt; 0.6 → <b>slip NAHI hoga</b>. Friction = mg sinθ = 25 N (self-adjusted)."
   ],
   [
    "Flat road pe car circular turn leti hai: r = 50 m, μ = 0.4, g = 10. Max safe speed?",

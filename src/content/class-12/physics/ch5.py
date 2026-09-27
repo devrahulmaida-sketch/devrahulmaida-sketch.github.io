@@ -120,7 +120,7 @@ CH = {
    {
     "h": "Materials ⭐⭐",
     "items": [
-     "Dia: weak repel, χ<0",
+     "Dia: weak repel, χ&lt;0",
      "Para: weak attract, χ>0 chhota",
      "Ferro: strong, domains, Curie temp"
     ]
@@ -162,7 +162,7 @@ CH = {
    {
     "h": "पदार्थ ⭐⭐",
     "items": [
-     "प्रति: दुर्बल प्रतिकर्षण, χ<0",
+     "प्रति: दुर्बल प्रतिकर्षण, χ&lt;0",
      "अनु: दुर्बल आकर्षण, χ>0 छोटी",
      "लौह: प्रबल, डोमेन, क्यूरी ताप"
     ]
@@ -204,7 +204,7 @@ CH = {
    {
     "h": "Materials ⭐⭐",
     "items": [
-     "Dia: weak repulsion, χ<0",
+     "Dia: weak repulsion, χ&lt;0",
      "Para: weak attraction, small χ>0",
      "Ferro: strong, domains, Curie temp"
     ]

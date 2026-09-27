@@ -331,7 +331,7 @@ CH = {
  "practice": [
   [
    "Na, Mg, Al, Si me sabse zyada pehli ionization enthalpy kiski?",
-   "<b>Si</b> — period me left→right IE badhti hai (nuclear charge badhta, size ghatta). Order: Na < Mg < Al < Si (Mg > Al ka chhota anomaly: Mg ka full 3s² stable)."
+   "<b>Si</b> — period me left→right IE badhti hai (nuclear charge badhta, size ghatta). Order: Na &lt; Mg &lt; Al &lt; Si (Mg > Al ka chhota anomaly: Mg ka full 3s² stable)."
   ],
   [
    "N³⁻, O²⁻, F⁻, Na⁺, Mg²⁺ (sab isoelectronic, 10 e⁻) ko size ke increasing order me likho.",
@@ -355,7 +355,7 @@ CH = {
   ],
   [
    "Group 17 me upar se neeche atomic radius ka trend aur reason?",
-   "<b>Badhta hai</b> (F < Cl < Br < I) — har step me naya shell add hota hai, shielding badhti hai."
+   "<b>Badhta hai</b> (F &lt; Cl &lt; Br &lt; I) — har step me naya shell add hota hai, shielding badhti hai."
   ],
   [
    "Li aur Mg, Be aur Al — in pairs me similar properties kyun?",

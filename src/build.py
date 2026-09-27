@@ -305,7 +305,7 @@ def render_home(cfg):
 </section>'''
     return (head('मईडा | Maida — Free NCERT/CBSE Study Site (Class 6-12)',
                  'Maida (मईडा) — free NCERT/CBSE study website. Video lectures, long + short notes in Hindi, English, Hinglish. Class 11 & 12 (all subjects) live — Physics, Chemistry, Maths, Biology.')
-            + "\n" + nav() + "\n\n" + body + "\n" + foot() + "\n" + SCRIPTS + "\n</body>\n</html>\n")
+            + "\n" + nav(11) + "\n\n" + body + "\n" + foot() + "\n" + SCRIPTS + "\n</body>\n</html>\n")
 
 # ---------------- build orchestration ----------------
 

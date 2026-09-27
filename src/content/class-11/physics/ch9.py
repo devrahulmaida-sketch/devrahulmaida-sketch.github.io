@@ -97,7 +97,7 @@ CH = {
     "h": "Buoyancy ⭐",
     "items": [
      "F_b = displaced fluid ka weight",
-     "ρ_body < ρ_fluid → float",
+     "ρ_body &lt; ρ_fluid → float",
      "Ice 90% andar, 10% bahar"
     ]
    },
@@ -140,7 +140,7 @@ CH = {
     "h": "उत्प्लावन ⭐",
     "items": [
      "F_b = हटाए तरल का भार",
-     "ρ_वस्तु < ρ_तरल → तैरना",
+     "ρ_वस्तु &lt; ρ_तरल → तैरना",
      "बर्फ 90% अंदर, 10% बाहर"
     ]
    },
@@ -183,7 +183,7 @@ CH = {
     "h": "Buoyancy ⭐",
     "items": [
      "F_b = weight of displaced fluid",
-     "ρ_body < ρ_fluid → floats",
+     "ρ_body &lt; ρ_fluid → floats",
      "Ice: 90% under, 10% above"
     ]
    },

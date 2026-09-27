@@ -221,8 +221,8 @@ CH = {
    "<b>Haan</b> — har a ke liye (a, a) ∈ R kyunki a = a. (Symmetric aur transitive bhi hai — equivalence relation!)"
   ],
   [
-   "R = {(a, b) : a < b} on R — symmetric hai?",
-   "<b>Nahi</b> — 1 < 2 matlab (1, 2) ∈ R, par 2 < 1 false hai, to (2, 1) ∉ R."
+   "R = {(a, b) : a &lt; b} on R — symmetric hai?",
+   "<b>Nahi</b> — 1 &lt; 2 matlab (1, 2) ∈ R, par 2 &lt; 1 false hai, to (2, 1) ∉ R."
   ],
   [
    "'Is friend of' relation symmetric hai par transitive kyun nahi?",

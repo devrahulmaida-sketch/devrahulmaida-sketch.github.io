@@ -283,7 +283,7 @@ CH = {
   ],
   [
    "Ek reaction ka ΔH = +30 kJ, ΔS = +100 J/K. Kis temperature pe spontaneous hogi?",
-   "Spontaneous jab ΔG < 0 → T > ΔH/ΔS = 30000/100 = <b>300 K se upar</b> (27°C ke upar spontaneous)"
+   "Spontaneous jab ΔG &lt; 0 → T > ΔH/ΔS = 30000/100 = <b>300 K se upar</b> (27°C ke upar spontaneous)"
   ],
   [
    "2 mol ideal gas ka isothermal reversible expansion 10 L → 20 L at 300 K. Work nikalo.",

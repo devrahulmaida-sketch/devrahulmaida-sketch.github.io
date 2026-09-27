@@ -104,7 +104,7 @@ CH = {
    {
     "h": "Number Line ⭐",
     "items": [
-     "<, > = open circle ○",
+     "&lt;, > = open circle ○",
      "≤, ≥ = closed ●",
      "AND = overlap, OR = union"
     ]
@@ -112,7 +112,7 @@ CH = {
    {
     "h": "Graphs ⭐",
     "items": [
-     "Pehle line draw (< dashed, ≤ solid)",
+     "Pehle line draw (&lt; dashed, ≤ solid)",
      "Test point (0,0) se side chuno",
      "System = common shaded region"
     ]
@@ -146,7 +146,7 @@ CH = {
    {
     "h": "संख्या रेखा ⭐",
     "items": [
-     "<, > = खुला ○",
+     "&lt;, > = खुला ○",
      "≤, ≥ = भरा ●",
      "AND = अतिव्यापन, OR = संघ"
     ]
@@ -154,7 +154,7 @@ CH = {
    {
     "h": "आलेख ⭐",
     "items": [
-     "पहले रेखा (< dashed, ≤ solid)",
+     "पहले रेखा (&lt; dashed, ≤ solid)",
      "परीक्षण बिंदु से पक्ष चुनो",
      "निकाय = उभयनिष्ठ क्षेत्र"
     ]
@@ -188,7 +188,7 @@ CH = {
    {
     "h": "Number Line ⭐",
     "items": [
-     "<, > = open circle ○",
+     "&lt;, > = open circle ○",
      "≤, ≥ = closed ●",
      "AND = overlap, OR = union"
     ]
@@ -196,7 +196,7 @@ CH = {
    {
     "h": "Graphs ⭐",
     "items": [
-     "Draw line first (< dashed, ≤ solid)",
+     "Draw line first (&lt; dashed, ≤ solid)",
      "Test point (0,0) picks the side",
      "System = common shaded region"
     ]
@@ -213,19 +213,19 @@ CH = {
  },
  "practice": [
   [
-   "Solve: 3x − 7 < 8.",
-   "3x < 15 → x < <b>5</b> = (−∞, 5)."
+   "Solve: 3x − 7 &lt; 8.",
+   "3x &lt; 15 → x &lt; <b>5</b> = (−∞, 5)."
   ],
   [
    "Solve: −2x ≥ 10.",
    "Negative se divide → sign FLIP: x ≤ <b>−5</b>."
   ],
   [
-   "−4 < 3x − 1 ≤ 8 solve karo.",
-   "Sab parts me +1: −3 < 3x ≤ 9 → ÷3: <b>−1 &lt; x ≤ 3</b> = (−1, 3]."
+   "−4 &lt; 3x − 1 ≤ 8 solve karo.",
+   "Sab parts me +1: −3 &lt; 3x ≤ 9 → ÷3: <b>−1 &lt; x ≤ 3</b> = (−1, 3]."
   ],
   [
-   "x < 2 ko number line pe kaise dikhayenge?",
+   "x &lt; 2 ko number line pe kaise dikhayenge?",
    "<b>Open circle (○)</b> at 2, left side shade — 2 included nahi."
   ],
   [
