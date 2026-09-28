@@ -7,7 +7,10 @@ CH = {
  "tagline": "COM, torque, moment of inertia, angular momentum aur rolling ka poora game",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 6: System of Particles and Rotational Motion — long + short notes in Hindi, English, Hinglish. Centre of mass, torque, moment of inertia, angular momentum conservation, rolling motion, equilibrium.",
- "video": None,
+ "video": {
+  "youtube": "ufWc4KnUxzY",
+  "dur": "1 min 12 sec"
+ },
  "card_tag": "COM, torque, moment of inertia, angular momentum aur rolling ka poora game",
  "card_topics": [
   "🎯 Centre of mass",
