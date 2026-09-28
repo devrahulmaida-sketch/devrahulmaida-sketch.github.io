@@ -7,7 +7,10 @@ CH = {
  "tagline": "Heat, expansion, calorimetry aur heat transfer — garmi ka pura hisaab",
  "jee": "MEDIUM",
  "meta_desc": "Class 11 Physics Chapter 10: Thermal Properties of Matter — long + short notes in Hindi, English, Hinglish. Temperature, thermal expansion, specific heat, calorimetry, conduction, convection, radiation.",
- "video": None,
+ "video": {
+  "youtube": "jX3tEZTSOL8",
+  "dur": "1 min 8 sec"
+ },
  "card_tag": "Heat, expansion, calorimetry aur heat transfer — garmi ka pura hisaab",
  "card_topics": [
   "🌡️ Temperature & heat",
