@@ -7,7 +7,10 @@ CH = {
  "tagline": "2D motion — vectors, projectile aur circular motion ka complete game",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 3: Motion in a Plane — long + short notes in Hindi, English, Hinglish. Vectors, projectile motion, uniform circular motion, relative velocity.",
- "video": None,
+ "video": {
+  "youtube": "r0y9dvtB2cs",
+  "dur": "1 min 11 sec"
+ },
  "card_tag": "2D motion — vectors, projectile aur circular motion ka complete game",
  "card_topics": [
   "➕ Vector addition",
