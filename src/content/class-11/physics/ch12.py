@@ -7,7 +7,10 @@ CH = {
  "tagline": "Gas molecules ki race — pressure aur temperature ka asli matlab",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 12: Kinetic Theory — long + short notes in Hindi, English, Hinglish. Kinetic theory of gases, rms speed, equipartition, degrees of freedom, mean free path, Van der Waals.",
- "video": None,
+ "video": {
+  "youtube": "aT4xrIYHHkI",
+  "dur": "1 min 21 sec"
+ },
  "card_tag": "Gas molecules ki race — pressure aur temperature ka asli matlab",
  "card_topics": [
   "💨 Molecular motion + pressure",
