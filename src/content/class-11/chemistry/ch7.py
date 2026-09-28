@@ -7,7 +7,10 @@ CH = {
  "tagline": "Electron ka lena-dena — oxidation number, balancing, types aur electrochemical series",
  "jee": "HIGH",
  "meta_desc": "Class 11 Chemistry Chapter 7: Redox Reactions — long + short notes in Hindi, English, Hinglish. Oxidation number, balancing redox reactions, types, redox titrations, electrochemical series.",
- "video": None,
+ "video": {
+  "youtube": "blrQQufMEj8",
+  "dur": "1 min 17 sec"
+ },
  "card_tag": "Electron ka lena-dena — oxidation number, balancing, types aur electrochemical series",
  "card_topics": [
   "⚡ Oxidation = loss, Reduction = gain",
