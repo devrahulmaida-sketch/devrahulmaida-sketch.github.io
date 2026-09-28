@@ -7,7 +7,10 @@ CH = {
  "tagline": "Newton ke 3 laws — inertia, F = ma, action-reaction, friction aur banking",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 4: Laws of Motion — long + short notes in Hindi, English, Hinglish. Newton's laws, momentum, impulse, free body diagrams, friction, banking of roads.",
- "video": None,
+ "video": {
+  "youtube": "2K7T8sKzF6c",
+  "dur": "1 min 13 sec"
+ },
  "card_tag": "Newton ke 3 laws — inertia, F = ma, action-reaction, friction aur banking",
  "card_topics": [
   "🍎 Newton's 3 laws",
