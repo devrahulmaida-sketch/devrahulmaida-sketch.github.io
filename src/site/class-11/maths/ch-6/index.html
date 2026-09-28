@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 6 — Permutations and Combinations | Class 11 Mathematics | मईडा Maida</title>
+<meta name="description" content="Class 11 Maths Chapter 6: Permutations and Combinations — long + short notes in Hindi, English, Hinglish. Factorial, nPr, nCr, arrangements, selections, restriction problems.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#classes">Classes</a>
+      <a href="/class-11/">Class 11</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ch-hero">
+  <p class="crumb"><a href="/">Home</a> / <a href="/class-11/">Class 11</a> / <a href="/class-11/maths/">Mathematics</a> / Chapter 6</p>
+  <h1>Permutations and Combinations</h1>
+  <p style="color:var(--violet);margin-top:4px;font-weight:500">क्रमचय और संचय</p>
+  <p style="color:var(--muted);margin-top:6px">Counting ka superpower — nPr, nCr aur problem patterns</p>
+  <div class="ch-tags">
+    <span class="pill weight-high">JEE Weightage: HIGH</span>
+    <span class="pill">🎬 Video coming soon</span>
+    <span class="pill">📝 Long + Short notes</span>
+    <span class="pill">🌐 Hindi • English • Hinglish</span>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="video-soon">
+    <div class="video-soon-icon">🎬</div>
+    <b>Video ban raha hai</b>
+    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Counting Principles — Bina Gine Ginna ⭐</h3>
+    <ul>
+<li><b>Fundamental principle of counting (multiplication) ⭐:</b> ek kaam m ways me, doosra n ways me → DONO saath m × n ways me. (3 shirts × 4 pants = 12 outfits!)</li>
+<li><b>Extension:</b> teen cheezein? m × n × p. Passwords, number plates, phone numbers — sab isi se count hote hain.</li>
+<li><b>Addition principle ⭐:</b> ek kaam m ways me YA doosra n ways me (dono SAATH nahi) → m + n ways. OR = add, AND = multiply!</li>
+<li><b>Example:</b> 4 seater car me 4 log baithne ke ways = 4 × 3 × 2 × 1 = 24 (har seat pe ek-ek choice kam hoti gayi).</li>
+<li><b>With/without repetition distinction ⭐:</b> digits repeat allowed → har place pe same choices (10 × 10 × 10); repeat not allowed → choices ghat-ti hain (10 × 9 × 8).</li>
+</ul>
+<p class="small-note">💡 Feel: har "stage" pe kitne options? Multiply karte jao. Stages alag-alag cases hain (ya to ye, ya wo) to add!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Factorial — n! Ka Power</h3>
+    <ul>
+<li><b>n! (n factorial) ⭐:</b> n! = n × (n−1) × (n−2) × ... × 3 × 2 × 1. 5! = 120, 6! = 720.</li>
+<li><b>0! = 1</b> — definition se! (Ek object ko arrange karne ka ek hi tareeka.) ⭐</li>
+<li><b>Key identity:</b> n! = n × (n−1)! — factorial ko chhota tod sakte ho: 7! = 7 × 6!.</li>
+<li><b>Simplification trick ⭐:</b> fractions me factorials cancel karo: 8!/5! = 8×7×6 = 336 (5! upar-neeche kat gaya!). Kabhi poora compute mat karo — pehle cancel!</li>
+<li><b>(n+1)! = (n+1)n!;</b> n!(n+1) = (n+1)! — rearrangements me kaam aata hai.</li>
+<li><b>1! = 1, 2! = 2, 3! = 6, 4! = 24, 5! = 120, 6! = 720, 7! = 5040</b> — ye saat yaad rakho, kaafi hain!</li>
+</ul>
+<p class="small-note">💡 n! = n cheezon ko LINE me lagane ke tareeke. Isliye counting ke har formula me factorial ghoomta hai!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Permutations — Jab ORDER Matter Kare ⭐</h3>
+    <ul>
+<li><b>Permutation:</b> arrangement — order IMPORTANT hai (ABC aur BCA alag-alag!).</li>
+<li><b>nPr formula ⭐⭐:</b> n distinct objects me se r ko arrange karne ke ways = ⁿP_r = n!/(n−r)!.</li>
+<li><b>Full arrangement:</b> n ko n positions pe: ⁿP_n = n!.</li>
+<li><b>Example:</b> 5 books me se 3 ko shelf pe arrange: ⁵P₃ = 5!/2! = 60.</li>
+<li><b>With repetition ⭐:</b> n objects, r positions, repetition allowed → n^r (3-digit codes from 5 digits = 5³ = 125).</li>
+<li><b>Repeating objects wale arrangements ⭐:</b> n objects me p ek jaise, q doosre jaise → n!/(p! q!). ALLAHABAD (10 letters, 4 A, 2 L) = 10!/(4! 2!) = 75600.</li>
+<li><b>Circular permutation:</b> n ko circle me arrange: (n−1)! (ek ko fix kar do — circle ghoom sakta hai!).</li>
+</ul>
+<p class="small-note">🎯 Order matter kare (arrangement, rank, position, seat) → Permutation. Code words: "arrange", "order", "rank", "signals", "numbers banane".</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Combinations — Jab Sirf SELECTION Matter Kare ⭐</h3>
+    <ul>
+<li><b>Combination:</b> selection — order IRRELEVANT ({A, B, C} aur {B, C, A} SAME team!).</li>
+<li><b>nCr formula ⭐⭐:</b> n distinct me se r select karne ke ways = ⁿC_r = n!/(r!(n−r)!).</li>
+<li><b>Connection:</b> ⁿP_r = ⁿC_r × r! — pehle select karo (ⁿC_r), phir arrange (r!). Isliye combination chhota hota hai!</li>
+<li><b>Key properties ⭐:</b> ⁿC_r = ⁿC_(n−r) (10 me se 3 chunna = 7 chhodna!); ⁿC_0 = ⁿC_n = 1; ⁿC_1 = n; ⁿC_r + ⁿC_(r−1) = ⁿ⁺¹C_r (Pascal rule!).</li>
+<li><b>Example:</b> 11 players me se team of 5? Sirf selection → ¹¹C₅ = 462. Captain bhi decide? ¹¹C₅ × 5 (ya pehle captain 11 ways × ¹⁰C₄).</li>
+<li><b>Total subsets connection:</b> ⁿC_0 + ⁿC_1 + ... + ⁿC_n = 2ⁿ (saare possible selections!).</li>
+</ul>
+<p class="small-note">💡 Team, committee, group, selection, hand of cards → Combination. Order ka zikr nahi = order matter nahi karta!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Problem-Solving Strategy — P&C Ke Patterns</h3>
+    <ul>
+<li><b>Pehla sawal ⭐:</b> "Order matter karta hai?" HAAN → permutation, NAHI → combination. Ye ek sawal 80% decide kar deta hai.</li>
+<li><b>Restriction problems (together/not together) ⭐:</b> saath rakhna ho to BUNDLE banao (ek object samjho), phir arrange; saath na ho to total − together (complementary counting!).</li>
+<li><b>Gap method ⭐:</b> "koi do vowels saath na ho" → pehle consonants arrange, phir gaps me vowels place karo (_C_C_C_ ke gaps!).</li>
+<li><b>Committee with conditions:</b> "at least 2 women" → cases banao (2W+3M, 3W+2M, 4W+1M) aur ADD karo (OR = add!).</li>
+<li><b>Complementary counting ⭐:</b> "at least one" → total − none. Kabhi-kabhi ulta sochna 10x easy hai!</li>
+<li><b>Distribution:</b> identical objects alag boxes me vs distinct objects — type pehchano pehle, formula baad me.</li>
+</ul>
+<p class="small-note">💡 P&amp;C me formula yaad karna nahi, PATTERN pehchanna sikhna hai: together? bundle. Not together? gaps. At least? complement ya cases. Bas!</p>
+  </div>
+  </div>
+  <div class="lang-block" data-lang="hi" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ गणना सिद्धांत — बिना गिने गिनना ⭐</h3>
+    <ul>
+<li><b>गणना का मूल सिद्धांत (गुणन) ⭐:</b> एक कार्य m तरीकों से, दूसरा n से → दोनों साथ m × n तरीकों से। (3 शर्ट × 4 पैंट = 12!)</li>
+<li><b>विस्तार:</b> तीन चीजें? m × n × p।</li>
+<li><b>योग सिद्धांत ⭐:</b> एक कार्य m से या दूसरा n से (साथ नहीं) → m + n। OR = जोड़, AND = गुणा!</li>
+<li><b>उदाहरण:</b> 4 लोगों के 4 सीटों पर बैठने के तरीके = 4 × 3 × 2 × 1 = 24।</li>
+<li><b>पुनरावृत्ति ⭐:</b> अनुमति हो → हर स्थान पर समान विकल्प (10 × 10); न हो → विकल्प घटते हैं (10 × 9)।</li>
+</ul>
+<p class="small-note">💡 हर "चरण" पर कितने विकल्प? गुणा करते जाओ। अलग-अलग स्थितियां (या) → जोड़!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ क्रमगुणित — n! की शक्ति</h3>
+    <ul>
+<li><b>n! ⭐:</b> n! = n × (n−1) × ... × 3 × 2 × 1। 5! = 120।</li>
+<li><b>0! = 1</b> — परिभाषा से! ⭐</li>
+<li><b>मुख्य सर्वसमिका:</b> n! = n × (n−1)! — 7! = 7 × 6!।</li>
+<li><b>सरलीकरण ⭐:</b> भिन्नों में काटो: 8!/5! = 8×7×6 = 336। पहले काटो, बाद में गणना!</li>
+<li><b>याद रखो:</b> 1!=1, 2!=2, 3!=6, 4!=24, 5!=120, 6!=720, 7!=5040।</li>
+</ul>
+<p class="small-note">💡 n! = n वस्तुओं को पंक्ति में लगाने के तरीके।</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ क्रमचय — जब क्रम महत्वपूर्ण हो ⭐</h3>
+    <ul>
+<li><b>क्रमचय (permutation):</b> विन्यास — क्रम महत्वपूर्ण (ABC और BCA अलग!)।</li>
+<li><b>ⁿP_r सूत्र ⭐⭐:</b> n भिन्न वस्तुओं में से r को व्यवस्थित करने के तरीके = ⁿP_r = n!/(n−r)!।</li>
+<li><b>पूर्ण विन्यास:</b> ⁿP_n = n!।</li>
+<li><b>उदाहरण:</b> 5 पुस्तकों में से 3 शेल्फ पर: ⁵P₃ = 5!/2! = 60।</li>
+<li><b>पुनरावृत्ति सहित ⭐:</b> n^r।</li>
+<li><b>दोहराई वस्तुएं ⭐:</b> n!/(p! q!) — ALLAHABAD = 10!/(4! 2!) = 75600।</li>
+<li><b>वृत्तीय क्रमचय:</b> (n−1)! (एक को स्थिर करो!)।</li>
+</ul>
+<p class="small-note">🎯 क्रम महत्वपूर्ण → क्रमचय। संकेत शब्द: "व्यवस्थित", "क्रम", "रैंक"।</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ संचय — जब केवल चयन महत्वपूर्ण हो ⭐</h3>
+    <ul>
+<li><b>संचय (combination):</b> चयन — क्रम अप्रासंगिक ({A,B,C} = {B,C,A}!)।</li>
+<li><b>ⁿC_r सूत्र ⭐⭐:</b> ⁿC_r = n!/(r!(n−r)!)।</li>
+<li><b>संबंध:</b> ⁿP_r = ⁿC_r × r! — पहले चुनो, फिर व्यवस्थित करो!</li>
+<li><b>गुण ⭐:</b> ⁿC_r = ⁿC_(n−r); ⁿC_0 = ⁿC_n = 1; ⁿC_1 = n; ⁿC_r + ⁿC_(r−1) = ⁿ⁺¹C_r (पास्कल नियम!)।</li>
+<li><b>उदाहरण:</b> 11 खिलाड़ियों में से 5 की टीम? ¹¹C₅ = 462।</li>
+<li><b>कुल उपसमुच्चय:</b> ⁿC_0 + ... + ⁿC_n = 2ⁿ।</li>
+</ul>
+<p class="small-note">💡 टीम, समिति, चयन → संचय। क्रम का जिक्र नहीं = क्रम अमहत्वपूर्ण!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ समस्या-समाधान रणनीति — P&C के पैटर्न</h3>
+    <ul>
+<li><b>पहला प्रश्न ⭐:</b> "क्रम महत्वपूर्ण?" हां → क्रमचय, नहीं → संचय।</li>
+<li><b>प्रतिबंध प्रश्न ⭐:</b> साथ रखना हो → बंडल बनाओ; साथ न हो → कुल − साथ (पूरक गणना!)।</li>
+<li><b>रिक्ति विधि ⭐:</b> "कोई दो स्वर साथ न हों" → पहले व्यंजन व्यवस्थित करो, फिर रिक्तियों में स्वर।</li>
+<li><b>शर्त सहित समिति:</b> "कम से कम 2 महिलाएं" → स्थितियां बनाओ और जोड़ो।</li>
+<li><b>पूरक गणना ⭐:</b> "कम से कम एक" → कुल − कोई नहीं।</li>
+</ul>
+<p class="small-note">💡 P&amp;C में पैटर्न पहचानो: साथ? बंडल। साथ नहीं? रिक्तियां। कम से कम? पूरक या स्थितियां।</p>
+  </div>
+  </div>
+  <div class="lang-block" data-lang="en" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Counting Principles — Counting Without Counting ⭐</h3>
+    <ul>
+<li><b>Fundamental principle of counting (multiplication) ⭐:</b> if one job can be done m ways and another n ways, then BOTH together can be done m × n ways. (3 shirts × 4 pants = 12 outfits!)</li>
+<li><b>Extension:</b> three things? m × n × p. Passwords, number plates, phone numbers — all counted this way.</li>
+<li><b>Addition principle ⭐:</b> one job in m ways OR another in n ways (not both together) → m + n ways. OR = add, AND = multiply!</li>
+<li><b>Example:</b> 4 people sitting in 4 seats = 4 × 3 × 2 × 1 = 24 (each seat has one fewer choice).</li>
+<li><b>Repetition distinction ⭐:</b> repeats allowed → same choices each place (10 × 10 × 10); not allowed → shrinking choices (10 × 9 × 8).</li>
+</ul>
+<p class="small-note">💡 Feel: how many options at each "stage"? Keep multiplying. Separate cases (either this or that)? Add!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Factorial — The Power of n!</h3>
+    <ul>
+<li><b>n! (n factorial) ⭐:</b> n! = n × (n−1) × (n−2) × ... × 3 × 2 × 1. 5! = 120, 6! = 720.</li>
+<li><b>0! = 1</b> — by definition! (One object can be arranged in exactly one way.) ⭐</li>
+<li><b>Key identity:</b> n! = n × (n−1)! — break factorials down: 7! = 7 × 6!.</li>
+<li><b>Simplification trick ⭐:</b> cancel factorials in fractions: 8!/5! = 8×7×6 = 336 (the 5! cancels!). Never compute fully — cancel first!</li>
+<li><b>Learn these:</b> 1! = 1, 2! = 2, 3! = 6, 4! = 24, 5! = 120, 6! = 720, 7! = 5040 — these seven cover most problems!</li>
+</ul>
+<p class="small-note">💡 n! = the number of ways to line up n things. That is why factorials show up in every counting formula!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Permutations — When ORDER Matters ⭐</h3>
+    <ul>
+<li><b>Permutation:</b> an arrangement — order is IMPORTANT (ABC and BCA are different!).</li>
+<li><b>nPr formula ⭐⭐:</b> arranging r out of n distinct objects = ⁿP_r = n!/(n−r)!.</li>
+<li><b>Full arrangement:</b> n objects in n positions: ⁿP_n = n!.</li>
+<li><b>Example:</b> arrange 3 of 5 books on a shelf: ⁵P₃ = 5!/2! = 60.</li>
+<li><b>With repetition ⭐:</b> n objects, r positions, repetition allowed → n^r (3-digit codes from 5 digits = 5³ = 125).</li>
+<li><b>Arrangements with repeating objects ⭐:</b> n objects with p alike and q alike → n!/(p! q!). ALLAHABAD (10 letters, 4 A's, 2 L's) = 10!/(4! 2!) = 75600.</li>
+<li><b>Circular permutation:</b> arranging n around a circle: (n−1)! (fix one — the circle can rotate!).</li>
+</ul>
+<p class="small-note">🎯 Order matters (arrangement, rank, position, seat) → Permutation. Code words: "arrange", "order", "rank", "signals", "forming numbers".</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Combinations — When Only SELECTION Matters ⭐</h3>
+    <ul>
+<li><b>Combination:</b> a selection — order is IRRELEVANT ({A, B, C} and {B, C, A} are the SAME team!).</li>
+<li><b>nCr formula ⭐⭐:</b> selecting r out of n distinct objects = ⁿC_r = n!/(r!(n−r)!).</li>
+<li><b>The connection:</b> ⁿP_r = ⁿC_r × r! — first select (ⁿC_r), then arrange (r!). That is why combinations are smaller!</li>
+<li><b>Key properties ⭐:</b> ⁿC_r = ⁿC_(n−r) (choosing 3 of 10 = leaving out 7!); ⁿC_0 = ⁿC_n = 1; ⁿC_1 = n; ⁿC_r + ⁿC_(r−1) = ⁿ⁺¹C_r (Pascal's rule!).</li>
+<li><b>Example:</b> a team of 5 from 11 players? Selection only → ¹¹C₅ = 462. Captain too? ¹¹C₅ × 5 (or 11 ways for captain × ¹⁰C₄).</li>
+<li><b>Total subsets connection:</b> ⁿC_0 + ⁿC_1 + ... + ⁿC_n = 2ⁿ (all possible selections!).</li>
+</ul>
+<p class="small-note">💡 Team, committee, group, selection, hand of cards → Combination. No mention of order = order does not matter!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Problem-Solving Strategy — The Patterns of P&C</h3>
+    <ul>
+<li><b>The first question ⭐:</b> "Does order matter?" YES → permutation, NO → combination. This one question decides 80% of the problem.</li>
+<li><b>Restriction problems (together/apart) ⭐:</b> must stay together → make a BUNDLE (treat as one object), then arrange; must not be together → total − together (complementary counting!).</li>
+<li><b>Gap method ⭐:</b> "no two vowels together" → arrange the consonants first, then place vowels in the gaps (_C_C_C_ gaps!).</li>
+<li><b>Committee with conditions:</b> "at least 2 women" → make cases (2W+3M, 3W+2M, 4W+1M) and ADD them (OR = add!).</li>
+<li><b>Complementary counting ⭐:</b> "at least one" → total − none. Sometimes thinking backwards is 10x easier!</li>
+<li><b>Distribution:</b> identical objects into boxes vs distinct objects — identify the type first, formula second.</li>
+</ul>
+<p class="small-note">💡 In P&amp;C you do not memorize formulas, you learn to recognize PATTERNS: together? bundle. Apart? gaps. At least? complement or cases. Done!</p>
+  </div>
+  </div>
+</section>
+<section id="short-notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Counting ⭐</h4>
+      <ul><li>AND (saath) = multiply</li><li>OR (cases) = add</li><li>Repeat allowed: n^r</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Factorial</h4>
+      <ul><li>n! = n×(n−1)×...×1</li><li>0! = 1</li><li>Cancel pehle, compute baad me</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Permutation ⭐⭐</h4>
+      <ul><li>ⁿP_r = n!/(n−r)!</li><li>Order matter kare = P</li><li>Repeats: n!/(p!q!)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Combination ⭐⭐</h4>
+      <ul><li>ⁿC_r = n!/(r!(n−r)!)</li><li>Selection only = C</li><li>ⁿC_r = ⁿC_(n−r)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Patterns ⭐</h4>
+      <ul><li>Together → bundle</li><li>Not together → gaps/complement</li><li>At least → cases ya total−none</li></ul>
+    </div>
+    </div>
+  </div>
+  <div class="lang-block" data-lang="hi" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>गणना ⭐</h4>
+      <ul><li>AND = गुणा</li><li>OR = जोड़</li><li>पुनरावृत्ति: n^r</li></ul>
+    </div>
+    <div class="shorts-card"><h4>क्रमगुणित</h4>
+      <ul><li>n! = n×...×1</li><li>0! = 1</li><li>पहले काटो</li></ul>
+    </div>
+    <div class="shorts-card"><h4>क्रमचय ⭐⭐</h4>
+      <ul><li>ⁿP_r = n!/(n−r)!</li><li>क्रम महत्वपूर्ण = P</li><li>दोहराव: n!/(p!q!)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>संचय ⭐⭐</h4>
+      <ul><li>ⁿC_r = n!/(r!(n−r)!)</li><li>केवल चयन = C</li><li>ⁿC_r = ⁿC_(n−r)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>पैटर्न ⭐</h4>
+      <ul><li>साथ → बंडल</li><li>साथ नहीं → रिक्तियां</li><li>कम से कम → स्थितियां/पूरक</li></ul>
+    </div>
+    </div>
+  </div>
+  <div class="lang-block" data-lang="en" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Counting ⭐</h4>
+      <ul><li>AND (together) = multiply</li><li>OR (cases) = add</li><li>Repeats allowed: n^r</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Factorial</h4>
+      <ul><li>n! = n×(n−1)×...×1</li><li>0! = 1</li><li>Cancel first, compute later</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Permutation ⭐⭐</h4>
+      <ul><li>ⁿP_r = n!/(n−r)!</li><li>Order matters = P</li><li>Repeats: n!/(p!q!)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Combination ⭐⭐</h4>
+      <ul><li>ⁿC_r = n!/(r!(n−r)!)</li><li>Selection only = C</li><li>ⁿC_r = ⁿC_(n−r)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Patterns ⭐</h4>
+      <ul><li>Together → bundle</li><li>Apart → gaps/complement</li><li>At least → cases or total−none</li></ul>
+    </div>
+    </div>
+  </div>
+</section>
+<section id="practice">
+  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div class="note-sec">
+    <div class="jee-q"><span class="qn">Q1.</span> 3 shirts aur 5 pants se kitne outfits?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>AND = multiply → 3 × 5 = <b>15</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q2.</span> 7!/4! simplify karo.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>7×6×5×4!/4! = 7×6×5 = <b>210</b> (cancel pehle!).</p></details></div>
+    <div class="jee-q"><span class="qn">Q3.</span> 5 log kitne tareeke se line me khade ho sakte hain?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>5! = <b>120</b> (order matter karta hai — permutation).</p></details></div>
+    <div class="jee-q"><span class="qn">Q4.</span> 8 players me se 3 ko arrange karna hai (1st, 2nd, 3rd position).<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Order matter → ⁸P₃ = 8!/5! = 8×7×6 = <b>336</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q5.</span> 10 students me se 4 ki committee?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Sirf selection → ¹⁰C₄ = 10!/(4!6!) = <b>210</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q6.</span> ⁿC_r = ⁿC_(n−r) kyun?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>r chunna = n−r CHHODNA — dono ek hi kaam! (10 me se 3 chunna = 7 chhodna.)</p></details></div>
+    <div class="jee-q"><span class="qn">Q7.</span> BANANA ke letters kitne tareeke se arrange honge?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>6 letters, 3 A's, 2 N's → 6!/(3!2!) = 720/12 = <b>60</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q8.</span> 5 friends ko round table pe arrange karna hai.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Circular → (5−1)! = 4! = <b>24</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q9.</span> 'APPLE' me kitne arrangements me dono P saath rahenge?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>PP ko bundle banao → 4 objects (PP, A, L, E) → 4! = <b>24</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q10.</span> 8 me se 3 select karna hai, lekin Ramesh PAKKA ho. Kitne ways?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Ramesh fixed → baaki 7 me se 2 chuno → ⁷C₂ = <b>21</b>.</p></details></div>
+  </div>
+</section>
+<section class="roadmap">
+  <div class="tip-box">🚀 <b>Agla chapter:</b> <a href="/class-11/maths/ch-7/">Binomial Theorem</a> — notes ready hain, abhi padho!</div>
+</section>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
+    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
+    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+  </div>
+</footer>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

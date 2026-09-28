@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 9 — Differential Equations | Class 12 Mathematics | मईडा Maida</title>
+<meta name="description" content="Class 12 Maths Chapter 9: Differential Equations — long + short notes in Hindi, English, Hinglish. Order, degree, general and particular solutions, variable separable, homogeneous and linear differential equations, integrating factor.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#classes">Classes</a>
+      <a href="/class-12/">Class 12</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ch-hero">
+  <p class="crumb"><a href="/">Home</a> / <a href="/class-12/">Class 12</a> / <a href="/class-12/maths/">Mathematics</a> / Chapter 9</p>
+  <h1>Differential Equations</h1>
+  <p style="color:var(--violet);margin-top:4px;font-weight:500">अवकल समीकरण</p>
+  <p style="color:var(--muted);margin-top:6px">Order-degree se lekar variable separable, homogeneous aur linear DE tak</p>
+  <div class="ch-tags">
+    <span class="pill weight-high">JEE Weightage: HIGH</span>
+    <span class="pill">🎬 Video coming soon</span>
+    <span class="pill">📝 Long + Short notes</span>
+    <span class="pill">🌐 Hindi • English • Hinglish</span>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="video-soon">
+    <div class="video-soon-icon">🎬</div>
+    <b>Video ban raha hai</b>
+    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Differential Equation Kya Hai — Derivatives Wali Equation ⭐</h3>
+    <ul>
+<li><b>Definition:</b> equation jisme independent variable (x), dependent variable (y) AUR y ke <b>derivatives</b> (dy/dx, d²y/dx²...) aate hon. Example: dy/dx + 2y = eˣ.</li>
+<li><b>Kahan use hoti hai:</b> population growth, cooling, radioactive decay, motion — jahan "rate of change" ka rule ho, wahan DE!</li>
+<li><b>Order ⭐:</b> equation me sabse HIGH derivative ki order. dy/dx + y = 0 → order <b>1</b>; d²y/dx² + y = 0 → order <b>2</b>.</li>
+<li><b>Degree ⭐:</b> highest derivative ki POWER (equation ko derivatives me polynomial banake, fractions/radicals clear karke!). (d²y/dx²)³ + dy/dx = 0 → order 2, degree <b>3</b>.</li>
+<li><b>Degree kab defined NAHI:</b> jab derivative ke andar sin/log ho — sin(dy/dx) = x ki degree nahi hoti (polynomial nahi ban sakta)!</li>
+</ul>
+<p class="small-note">💡 Feel: order = "kitni baar differentiate kiya", degree = "highest derivative ki ghata". Pehle equation ko saaf-suthra banao, phir count karo!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Solutions — General aur Particular ⭐⭐</h3>
+    <ul>
+<li><b>General solution:</b> DE ka solution jisme <b>arbitrary constants</b> (C₁, C₂...) hon. Order n ki DE ke general solution me EXACTLY <b>n arbitrary constants</b> hote hain! ⭐</li>
+<li><b>Particular solution:</b> general solution me constants ko SPECIFIC values deke mila — initial conditions (jaise y(0) = 2) se nikalte hain.</li>
+<li><b>Verify karna ⭐:</b> diya gaya function solution hai ya nahi — differentiate karke DE me DAAL do, satisfy ho gayi to solution hai. (Boards me direct 2-marker!)</li>
+<li>Example: y = Aeˣ + Be⁻ˣ, d²y/dx² − y = 0 ka solution hai — do baar differentiate karke check karo: y″ = y ✓.</li>
+<li>Solution bhi ek FUNCTION hai, number nahi — family of curves (har C ke liye ek curve!).</li>
+</ul>
+<p class="small-note">🎯 Order = constants ka count. Order 2 DE ka general solution me 2 constants — nahi mile to solution incomplete hai!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Variable Separable — Sabse Pehli Method ⭐⭐</h3>
+    <ul>
+<li><b>Idea:</b> x wali terms + dx ek taraf, y wali terms + dy doosri taraf — phir <b>dono taraf integrate</b> karo. Sabse simple aur sabse zyada use hone wali method!</li>
+<li><b>Steps ⭐:</b> (1) dy/dx = f(x)·g(y) form me lao. (2) dy/g(y) = f(x)dx. (3) ∫ dy/g(y) = ∫ f(x) dx + C. (4) y ke liye solve karo (agar possible ho).</li>
+<li>Example: dy/dx = y → dy/y = dx → ln|y| = x + C → <b>y = Aeˣ</b> (A = e^C — growth/decay equation!).</li>
+<li>Example: dy/dx = x/y → y dy = x dx → y²/2 = x²/2 + C → <b>y² − x² = 2C</b>.</li>
+<li><b>Particular solution:</b> initial condition (x₀, y₀) daal ke C nikalo — wahi 3-marker ka second half hota hai.</li>
+</ul>
+<p class="small-note">💡 Variable separable = "alag-alag karo, phir dono side integral". DE solve karne ka default pehla attempt yahi hona chahiye!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Homogeneous Differential Equations ⭐</h3>
+    <ul>
+<li><b>Pehchan ⭐:</b> dy/dx = F(y/x) form me likhi ja sake — ya har term ki TOTAL DEGREE same ho (x² + y², xy sab degree 2). Ratio y/x hi hero hai.</li>
+<li><b>Method ⭐⭐:</b> substitute <b>y = vx</b> (matlab v = y/x). Tab <b>dy/dx = v + x·dv/dx</b> — ye substitution DE ko variable separable me convert kar deta hai!</li>
+<li><b>Steps:</b> (1) y = vx daalo. (2) v + x dv/dx = F(v) milega. (3) x dv/dx = F(v) − v → separate karo: dv/(F(v) − v) = dx/x. (4) Integrate, phir v = y/x wapas daalo.</li>
+<li>x = vy substitution bhi kabhi-kabhi easy padta hai (dx/dy form me) — dono try kar sakte ho.</li>
+<li>Example: dy/dx = (x² + y²)/(2xy) → y = vx → v + x dv/dx = (1 + v²)/(2v) → x dv/dx = (1 − v²)/(2v) → separable!</li>
+</ul>
+<p class="small-note">🎯 Homogeneous = "har term same degree" → y = vx daalo → separable ban jaata hai. Conversion hi asli trick hai!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Linear Differential Equations — IF Wala Game ⭐⭐</h3>
+    <ul>
+<li><b>Standard form ⭐⭐:</b> <b>dy/dx + P(x)·y = Q(x)</b> — y aur dy/dx dono FIRST power me, saath me multiply nahi (y·dy/dx = NOT linear!).</li>
+<li><b>Integrating Factor (IF) ⭐⭐:</b> <b>IF = e^(∫P dx)</b> — puri equation ko IF se multiply karo, LHS exact derivative ban jaata hai: d/dx[y·IF] = Q·IF.</li>
+<li><b>Solution ⭐⭐:</b> <b>y·IF = ∫(Q·IF) dx + C</b> — formula ratt lo, boards me direct 5-marker!</li>
+<li>Example: dy/dx + y = eˣ → IF = e^∫dx = eˣ → y·eˣ = ∫e²ˣ dx = e²ˣ/2 + C → <b>y = eˣ/2 + Ce⁻ˣ</b>.</li>
+<li><b>Second type:</b> dx/dy + P(y)·x = Q(y) — same game, roles swap: IF = e^∫P dy, solution x·IF = ∫(Q·IF) dy + C.</li>
+<li>Pehle equation ko standard form me LAANA zaroori hai — dy/dx ka coefficient 1 karo, warna P galat banega!</li>
+</ul>
+<p class="small-note">💡 Linear DE ka flow: standard form → P pehchano → IF nikalo → formula lagao → C nikalo. Machine jaisa process, practice se pakka!</p>
+  </div>
+  </div>
+  <div class="lang-block" data-lang="hi" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ अवकल समीकरण क्या है — अवकलजों वाला समीकरण ⭐</h3>
+    <ul>
+<li><b>परिभाषा:</b> समीकरण जिसमें x, y <b>और</b> y के अवकलज (dy/dx, d²y/dx²...) आते हों। उदाहरण: dy/dx + 2y = eˣ।</li>
+<li><b>उपयोग:</b> जनसंख्या वृद्धि, शीतलन, रेडियोधर्मी क्षय, गति — जहां "परिवर्तन दर" का नियम हो।</li>
+<li><b>कोटि (order) ⭐:</b> सबसे उच्च अवकलज की कोटि। d²y/dx² + y = 0 → कोटि <b>2</b>।</li>
+<li><b>घात (degree) ⭐:</b> उच्चतम अवकलज की <b>घात</b> (समीकरण को अवकलजों में बहुपद बनाकर!)। (d²y/dx²)³ → घात <b>3</b>।</li>
+<li><b>घात परिभाषित नहीं:</b> sin(dy/dx) = x जैसे में — बहुपद नहीं बनता!</li>
+</ul>
+<p class="small-note">💡 कोटि = "कितनी बार अवकलन", घात = "उच्चतम अवकलज की घात"।</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ हल — व्यापक और विशिष्ट ⭐⭐</h3>
+    <ul>
+<li><b>व्यापक हल:</b> हल जिसमें <b>स्वेच्छ अचर</b> (C₁, C₂...) हों। कोटि n के समीकरण के व्यापक हल में ठीक <b>n अचर</b>! ⭐</li>
+<li><b>विशिष्ट हल:</b> अचरों को विशिष्ट मान देकर मिला — प्रारंभिक प्रतिबंधों (y(0) = 2) से।</li>
+<li><b>सत्यापन ⭐:</b> दिया फलन हल है या नहीं — अवकलन करके समीकरण में <b>रखो</b>, संतुष्ट हुई तो हल है।</li>
+<li>उदाहरण: y = Aeˣ + Be⁻ˣ, समीकरण d²y/dx² − y = 0 का हल है — y″ = y ✓।</li>
+</ul>
+<p class="small-note">🎯 कोटि = अचरों की संख्या। कोटि 2 → 2 अचर!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ चर-पृथक्करण — सबसे पहली विधि ⭐⭐</h3>
+    <ul>
+<li><b>विचार:</b> x-पद + dx एक ओर, y-पद + dy दूसरी ओर — फिर <b>दोनों ओर समाकलन</b>।</li>
+<li><b>चरण ⭐:</b> (1) dy/dx = f(x)·g(y) रूप में लाओ। (2) dy/g(y) = f(x)dx। (3) दोनों ओर ∫ + C। (4) y के लिए हल करो।</li>
+<li>उदाहरण: dy/dx = y → dy/y = dx → ln|y| = x + C → <b>y = Aeˣ</b>।</li>
+<li>उदाहरण: dy/dx = x/y → y dy = x dx → <b>y² − x² = 2C</b>।</li>
+<li><b>विशिष्ट हल:</b> प्रारंभिक प्रतिबंध (x₀, y₀) से C निकालो।</li>
+</ul>
+<p class="small-note">💡 चर-पृथक्करण = "अलग करो, दोनों ओर समाकलन" — हमेशा पहला प्रयास!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ समघातीय अवकल समीकरण ⭐</h3>
+    <ul>
+<li><b>पहचान ⭐:</b> dy/dx = F(y/x) रूप में लिखी जा सके — या प्रत्येक पद की <b>कुल घात</b> समान हो।</li>
+<li><b>विधि ⭐⭐:</b> प्रतिस्थापन <b>y = vx</b> (अर्थात v = y/x)। तब <b>dy/dx = v + x·dv/dx</b> — समीकरण चर-पृथक्करणीय बन जाता है!</li>
+<li><b>चरण:</b> (1) y = vx रखो। (2) v + x dv/dx = F(v) मिलेगा। (3) dv/(F(v) − v) = dx/x। (4) समाकलन करके v = y/x वापस रखो।</li>
+<li>x = vy प्रतिस्थापन भी कभी आसान पड़ता है।</li>
+</ul>
+<p class="small-note">🎯 समघातीय = "हर पद समान घात" → y = vx → पृथक्करणीय। रूपांतरण ही असली चाल!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ रैखिक अवकल समीकरण — IF का खेल ⭐⭐</h3>
+    <ul>
+<li><b>मानक रूप ⭐⭐:</b> <b>dy/dx + P(x)·y = Q(x)</b> — y और dy/dx दोनों प्रथम घात में, साथ गुणित नहीं।</li>
+<li><b>समाकलन गुणक (IF) ⭐⭐:</b> <b>IF = e^(∫P dx)</b> — गुणा करने पर बायां पक्ष ठीक अवकलज बनता है: d/dx[y·IF] = Q·IF।</li>
+<li><b>हल ⭐⭐:</b> <b>y·IF = ∫(Q·IF) dx + C</b> — सूत्र कंठस्थ करो, सीधा 5-अंकीय!</li>
+<li>उदाहरण: dy/dx + y = eˣ → IF = eˣ → y·eˣ = e²ˣ/2 + C → <b>y = eˣ/2 + Ce⁻ˣ</b>।</li>
+<li><b>दूसरा रूप:</b> dx/dy + P(y)·x = Q(y) — IF = e^∫P dy, हल x·IF = ∫(Q·IF) dy + C।</li>
+</ul>
+<p class="small-note">💡 प्रवाह: मानक रूप → P पहचानो → IF निकालो → सूत्र → C।</p>
+  </div>
+  </div>
+  <div class="lang-block" data-lang="en" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ What Is a Differential Equation — An Equation with Derivatives ⭐</h3>
+    <ul>
+<li><b>Definition:</b> an equation containing the independent variable (x), dependent variable (y) AND <b>derivatives</b> of y (dy/dx, d²y/dx²...). Example: dy/dx + 2y = eˣ.</li>
+<li><b>Where it is used:</b> population growth, cooling, radioactive decay, motion — wherever there is a rule about a "rate of change", there is a DE!</li>
+<li><b>Order ⭐:</b> the order of the HIGHEST derivative in the equation. dy/dx + y = 0 → order <b>1</b>; d²y/dx² + y = 0 → order <b>2</b>.</li>
+<li><b>Degree ⭐:</b> the POWER of the highest derivative (after writing the equation as a polynomial in derivatives — clear fractions and radicals!). (d²y/dx²)³ + dy/dx = 0 → order 2, degree <b>3</b>.</li>
+<li><b>Degree NOT defined when:</b> a derivative sits inside sin/log — sin(dy/dx) = x has no degree (it is not a polynomial in derivatives)!</li>
+</ul>
+<p class="small-note">💡 Feel: order = "how many times differentiated", degree = "the power of the highest derivative". Clean the equation first, then count!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Solutions — General and Particular ⭐⭐</h3>
+    <ul>
+<li><b>General solution:</b> a solution containing <b>arbitrary constants</b> (C₁, C₂...). A DE of order n has EXACTLY <b>n arbitrary constants</b> in its general solution! ⭐</li>
+<li><b>Particular solution:</b> obtained by giving the constants SPECIFIC values — computed from initial conditions (like y(0) = 2).</li>
+<li><b>Verifying ⭐:</b> to check whether a given function is a solution — differentiate it and PLUG it into the DE. Satisfied? It is a solution. (A direct 2-marker in boards!)</li>
+<li>Example: y = Aeˣ + Be⁻ˣ solves d²y/dx² − y = 0 — differentiate twice and check: y″ = y ✓.</li>
+<li>A solution is a FUNCTION, not a number — a family of curves (one curve per C!).</li>
+</ul>
+<p class="small-note">🎯 Order = count of constants. The general solution of an order-2 DE holds 2 constants — missing one means the solution is incomplete!</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Variable Separable — The First Method to Try ⭐⭐</h3>
+    <ul>
+<li><b>Idea:</b> push x-terms + dx to one side, y-terms + dy to the other — then <b>integrate both sides</b>. The simplest and most-used method!</li>
+<li><b>Steps ⭐:</b> (1) Bring the DE to dy/dx = f(x)·g(y). (2) Write dy/g(y) = f(x)dx. (3) ∫ dy/g(y) = ∫ f(x) dx + C. (4) Solve for y (if possible).</li>
+<li>Example: dy/dx = y → dy/y = dx → ln|y| = x + C → <b>y = Aeˣ</b> (A = e^C — the growth/decay equation!).</li>
+<li>Example: dy/dx = x/y → y dy = x dx → y²/2 = x²/2 + C → <b>y² − x² = 2C</b>.</li>
+<li><b>Particular solution:</b> plug the initial condition (x₀, y₀) to find C — that is the second half of a 3-marker.</li>
+</ul>
+<p class="small-note">💡 Variable separable = "separate, then integrate both sides". This should always be your first attempt at solving a DE!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Homogeneous Differential Equations ⭐</h3>
+    <ul>
+<li><b>Identifying ⭐:</b> the DE can be written as dy/dx = F(y/x) — or every term has the same TOTAL DEGREE (x² + y², xy are all degree 2). The ratio y/x is the hero.</li>
+<li><b>Method ⭐⭐:</b> substitute <b>y = vx</b> (so v = y/x). Then <b>dy/dx = v + x·dv/dx</b> — this substitution converts the DE into a variable-separable one!</li>
+<li><b>Steps:</b> (1) Plug y = vx. (2) You get v + x dv/dx = F(v). (3) So x dv/dx = F(v) − v → separate: dv/(F(v) − v) = dx/x. (4) Integrate, then put v = y/x back.</li>
+<li>Substituting x = vy can also be easier at times (the dx/dy form) — both are worth trying.</li>
+<li>Example: dy/dx = (x² + y²)/(2xy) → y = vx → v + x dv/dx = (1 + v²)/(2v) → x dv/dx = (1 − v²)/(2v) → separable!</li>
+</ul>
+<p class="small-note">🎯 Homogeneous = "every term has the same degree" → plug y = vx → it turns separable. The conversion is the real trick!</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Linear Differential Equations — The IF Game ⭐⭐</h3>
+    <ul>
+<li><b>Standard form ⭐⭐:</b> <b>dy/dx + P(x)·y = Q(x)</b> — y and dy/dx both in the FIRST power, never multiplied together (y·dy/dx = NOT linear!).</li>
+<li><b>Integrating Factor (IF) ⭐⭐:</b> <b>IF = e^(∫P dx)</b> — multiplying the whole equation by IF turns the LHS into an exact derivative: d/dx[y·IF] = Q·IF.</li>
+<li><b>Solution ⭐⭐:</b> <b>y·IF = ∫(Q·IF) dx + C</b> — memorize the formula; a direct 5-marker in boards!</li>
+<li>Example: dy/dx + y = eˣ → IF = e^∫dx = eˣ → y·eˣ = ∫e²ˣ dx = e²ˣ/2 + C → <b>y = eˣ/2 + Ce⁻ˣ</b>.</li>
+<li><b>Second type:</b> dx/dy + P(y)·x = Q(y) — same game with swapped roles: IF = e^∫P dy, solution x·IF = ∫(Q·IF) dy + C.</li>
+<li>You MUST bring the equation to standard form first — make the coefficient of dy/dx equal to 1, otherwise P will be wrong!</li>
+</ul>
+<p class="small-note">💡 Linear DE flow: standard form → identify P → find IF → apply the formula → find C. A machine-like process; drill it!</p>
+  </div>
+  </div>
+</section>
+<section id="short-notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics ⭐</h4>
+      <ul><li>DE = derivatives wali equation</li><li>Order = highest derivative</li><li>Degree = highest derivative ki power</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Solutions ⭐</h4>
+      <ul><li>General: n order → n constants</li><li>Particular: initial condition se</li><li>Verify: DE me daal ke check</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Separable ⭐⭐</h4>
+      <ul><li>x ek taraf, y doosri taraf</li><li>dy/g(y) = f(x)dx → integrate</li><li>dy/dx = y → y = Aeˣ</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Homogeneous ⭐</h4>
+      <ul><li>F(y/x) form ya same degree</li><li>y = vx substitute karo</li><li>dy/dx = v + x dv/dx</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Linear ⭐⭐</h4>
+      <ul><li>dy/dx + Py = Q</li><li>IF = e^∫P dx</li><li>y·IF = ∫(Q·IF)dx + C</li></ul>
+    </div>
+    </div>
+  </div>
+  <div class="lang-block" data-lang="hi" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>मूल ⭐</h4>
+      <ul><li>DE = अवकलजों वाला समीकरण</li><li>कोटि = उच्चतम अवकलज</li><li>घात = उच्चतम अवकलज की घात</li></ul>
+    </div>
+    <div class="shorts-card"><h4>हल ⭐</h4>
+      <ul><li>व्यापक: कोटि n → n अचर</li><li>विशिष्ट: प्रारंभिक प्रतिबंध से</li><li>सत्यापन: समीकरण में रखो</li></ul>
+    </div>
+    <div class="shorts-card"><h4>पृथक्करण ⭐⭐</h4>
+      <ul><li>x एक ओर, y दूसरी ओर</li><li>dy/g(y) = f(x)dx → समाकलन</li><li>dy/dx = y → y = Aeˣ</li></ul>
+    </div>
+    <div class="shorts-card"><h4>समघातीय ⭐</h4>
+      <ul><li>F(y/x) रूप</li><li>y = vx प्रतिस्थापन</li><li>dy/dx = v + x dv/dx</li></ul>
+    </div>
+    <div class="shorts-card"><h4>रैखिक ⭐⭐</h4>
+      <ul><li>dy/dx + Py = Q</li><li>IF = e^∫P dx</li><li>y·IF = ∫(Q·IF)dx + C</li></ul>
+    </div>
+    </div>
+  </div>
+  <div class="lang-block" data-lang="en" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics ⭐</h4>
+      <ul><li>DE = equation with derivatives</li><li>Order = highest derivative</li><li>Degree = power of the highest derivative</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Solutions ⭐</h4>
+      <ul><li>General: order n → n constants</li><li>Particular: from initial conditions</li><li>Verify: plug into the DE</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Separable ⭐⭐</h4>
+      <ul><li>x one side, y the other</li><li>dy/g(y) = f(x)dx → integrate</li><li>dy/dx = y → y = Aeˣ</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Homogeneous ⭐</h4>
+      <ul><li>F(y/x) form or same degree</li><li>Substitute y = vx</li><li>dy/dx = v + x dv/dx</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Linear ⭐⭐</h4>
+      <ul><li>dy/dx + Py = Q</li><li>IF = e^∫P dx</li><li>y·IF = ∫(Q·IF)dx + C</li></ul>
+    </div>
+    </div>
+  </div>
+</section>
+<section id="practice">
+  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div class="note-sec">
+    <div class="jee-q"><span class="qn">Q1.</span> d²y/dx² + (dy/dx)³ + y = 0 ka order aur degree?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Order <b>2</b> (highest derivative d²y/dx²), degree <b>1</b> (uski power 1).</p></details></div>
+    <div class="jee-q"><span class="qn">Q2.</span> (dy/dx)² + sin(dy/dx) = 0 ki degree kya hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Defined nahi</b> — sin(dy/dx) ki wajah se derivatives me polynomial nahi banta.</p></details></div>
+    <div class="jee-q"><span class="qn">Q3.</span> Order 3 ki DE ke general solution me kitne arbitrary constants?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>3</b> — order hi constants ka count hota hai.</p></details></div>
+    <div class="jee-q"><span class="qn">Q4.</span> y = 3eˣ solution hai kya dy/dx = y ka?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Haan</b> — dy/dx = 3eˣ = y ✓. (Ye particular solution hai, C = 3.)</p></details></div>
+    <div class="jee-q"><span class="qn">Q5.</span> dy/dx = x/y ko solve karo.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>y dy = x dx → y²/2 = x²/2 + C → <b>y² = x² + 2C</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q6.</span> dy/dx = y ka general solution?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>dy/y = dx → ln|y| = x + C → <b>y = Aeˣ</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q7.</span> Homogeneous DE me kaunsa substitution lagate hain?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>y = vx</b> — phir dy/dx = v + x·dv/dx, aur equation separable ban jaati hai.</p></details></div>
+    <div class="jee-q"><span class="qn">Q8.</span> dy/dx + 2y = 0 ka IF kya hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>IF = e^∫2 dx = <b>e²ˣ</b>. (Solution: y = Ce⁻²ˣ.)</p></details></div>
+    <div class="jee-q"><span class="qn">Q9.</span> Linear DE ka standard form bolo.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>dy/dx + P(x)·y = Q(x)</b> — aur solution y·IF = ∫(Q·IF) dx + C, jahan IF = e^∫P dx.</p></details></div>
+    <div class="jee-q"><span class="qn">Q10.</span> dy/dx + y = eˣ solve karo.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>IF = eˣ → y·eˣ = ∫e²ˣ dx = e²ˣ/2 + C → <b>y = eˣ/2 + Ce⁻ˣ</b>.</p></details></div>
+  </div>
+</section>
+<section class="roadmap">
+  <div class="tip-box">🚀 <b>Agla chapter:</b> <a href="/class-12/maths/ch-10/">Vector Algebra</a> — notes ready hain, abhi padho!</div>
+</section>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
+    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
+    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+  </div>
+</footer>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

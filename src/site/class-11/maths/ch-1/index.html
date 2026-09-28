@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 1 — Sets | Class 11 Mathematics | मईडा Maida</title>
+<meta name="description" content="Class 11 Maths Chapter 1: Sets — long + short notes in Hindi, English, Hinglish. Sets, subsets, power set, Venn diagrams, union, intersection, De Morgan's laws.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#classes">Classes</a>
+      <a href="/class-11/">Class 11</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ch-hero">
+  <p class="crumb"><a href="/">Home</a> / <a href="/class-11/">Class 11</a> / <a href="/class-11/maths/">Mathematics</a> / Chapter 1</p>
+  <h1>Sets</h1>
+  <p style="color:var(--violet);margin-top:4px;font-weight:500">समुच्चय</p>
+  <p style="color:var(--muted);margin-top:6px">Collections ka ganit — subsets, Venn diagrams aur De Morgan</p>
+  <div class="ch-tags">
+    <span class="pill weight-high">JEE Weightage: HIGH</span>
+    <span class="pill">🎬 Video coming soon</span>
+    <span class="pill">📝 Long + Short notes</span>
+    <span class="pill">🌐 Hindi • English • Hinglish</span>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="video-soon">
+    <div class="video-soon-icon">🎬</div>
+    <b>Video ban raha hai</b>
+    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Set Kya Hota Hai — Collection Ka Rulebook</h3>
+    <ul>
+<li><b>Set:</b> well-defined objects ka collection — "well-defined" matlab kisi ko bhi pata chale kaun andar hai, kaun bahar. ("5 vowels" = set; "5 achhe students" = set NAHI — subjective!)</li>
+<li><b>Elements/members:</b> set ke objects. a ∈ A (a belongs to A), b ∉ A.</li>
+<li><b>Roster form:</b> saare elements list karo — V = {a, e, i, o, u}. <b>Set-builder form ⭐:</b> property likho — V = {x : x is a vowel in English alphabet}.</li>
+<li><b>Order matter nahi karta</b> — {1, 2, 3} = {3, 2, 1}. Repetition ka koi matlab nahi — {1, 1, 2} = {1, 2}.</li>
+<li><b>Important sets ⭐:</b> N (natural: 1, 2, 3...), W (whole: 0, 1, 2...), Z (integers: ...−2, −1, 0, 1...), Q (rationals: p/q form), R (reals: sab kuch number line pe).</li>
+</ul>
+<p class="small-note">💡 Feel: set = club with clear membership rules. Rule clear hai to set hai, rule fuzzy hai to nahi!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Sets Ke Types — Empty Se Universal Tak ⭐</h3>
+    <ul>
+<li><b>Empty/null set (φ ya {}):</b> koi element nahi — {x : x even prime &gt; 2} = φ. (Sirf ek hi empty set hai!)</li>
+<li><b>Finite set:</b> elements count ho jaate hain — {days of week} (7). <b>Infinite set:</b> count khatam nahi hota — N, Z, R.</li>
+<li><b>Equal sets ⭐:</b> SAME elements — {1,2,3} = {3,2,1}. <b>Equivalent sets:</b> same COUNT (cardinality), elements alag ho sakte hain — {1,2,3} aur {a,b,c}.</li>
+<li><b>Singleton set:</b> sirf 1 element — {0}, {5}.</li>
+<li><b>Universal set (U):</b> context ka sabse bada set jisme sab aa jaaye — numbers ki baat ho to U = R.</li>
+<li><b>Cardinal number:</b> set me kitne elements — n(A). n(φ) = 0.</li>
+</ul>
+<p class="small-note">🎯 Equal vs equivalent = exam favourite confusion! Equal = same members; equivalent = same count only.</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Subsets aur Power Set ⭐</h3>
+    <ul>
+<li><b>Subset (⊆):</b> A ke saare elements B me hon → A ⊆ B. Har set apna subset hota hai; φ HAR set ka subset hai! ⭐</li>
+<li><b>Proper subset (⊂):</b> A ⊆ B lekin A ≠ B — B me kuch extra hai.</li>
+<li><b>Intervals bhi subsets hain R ke:</b> (a, b) = open (endpoints excluded), [a, b] = closed (included), (a, b] = half-open.</li>
+<li><b>Power set P(A) ⭐:</b> A ke SAARE subsets ka set. Agar n(A) = n → <b>n(P(A)) = 2ⁿ</b>. {a, b} ka power set: {φ, {a}, {b}, {a,b}} — 4 = 2²!</li>
+<li>Proper subsets ka count: 2ⁿ − 1; non-empty proper: 2ⁿ − 2.</li>
+</ul>
+<p class="small-note">💡 2ⁿ kyun? Har element ke paas 2 choice — subset me aao ya na aao. n elements → 2×2×... (n baar) = 2ⁿ!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Venn Diagrams aur Operations — Union, Intersection ⭐</h3>
+    <ul>
+<li><b>Venn diagram:</b> sets ko circles se dikhana, universal set rectangle — visualize karne ka best tool!</li>
+<li><b>Union (A ∪ B):</b> jo A me YA B me YA dono me — sab elements mila do (repeat mat likho!).</li>
+<li><b>Intersection (A ∩ B):</b> jo DONO me common ho — overlap wala hissa.</li>
+<li><b>Disjoint sets ⭐:</b> A ∩ B = φ — kuch common nahi (even aur odd numbers).</li>
+<li><b>Difference (A − B):</b> jo A me ho par B me NA ho. A − B ≠ B − A generally!</li>
+<li><b>Complement (A′ ya Aᶜ) ⭐:</b> U me jo A me NAHI — U − A. (A′)′ = A — double negative!</li>
+<li><b>Counting formula ⭐:</b> n(A ∪ B) = n(A) + n(B) − n(A ∩ B) — intersection double-count ho jaata hai, isliye minus!</li>
+</ul>
+<p class="small-note">💡 Union = OR (kisi me bhi), Intersection = AND (dono me), Complement = NOT (uske bahar sab).</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Laws of Set Operations — Algebra Jaisa Game</h3>
+    <ul>
+<li><b>Commutative:</b> A ∪ B = B ∪ A, A ∩ B = B ∩ A.</li>
+<li><b>Associative:</b> (A ∪ B) ∪ C = A ∪ (B ∪ C); same intersection ke liye.</li>
+<li><b>Distributive ⭐:</b> A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C); A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C).</li>
+<li><b>De Morgan's laws ⭐⭐:</b> (A ∪ B)′ = A′ ∩ B′ aur (A ∩ B)′ = A′ ∪ B′ — complement andar jaake sign FLIP kar deta hai (∪ ↔ ∩)!</li>
+<li><b>Identity laws:</b> A ∪ φ = A, A ∩ U = A, A ∪ U = U, A ∩ φ = φ.</li>
+<li><b>Idempotent:</b> A ∪ A = A, A ∩ A = A.</li>
+<li><b>Three sets counting:</b> n(A∪B∪C) = n(A)+n(B)+n(C) − n(A∩B) − n(B∩C) − n(A∩C) + n(A∩B∩C) ⭐</li>
+</ul>
+<p class="small-note">🎯 De Morgan = sabse zyada pucha jaane wala law: "union ka complement = complements ka intersection" (aur vice versa).</p>
+  </div>
+  </div>
+  <div class="lang-block" data-lang="hi" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ समुच्चय क्या है — संग्रह का नियम</h3>
+    <ul>
+<li><b>समुच्चय (set):</b> सुपरिभाषित वस्तुओं का संग्रह — "सुपरिभाषित" यानी स्पष्ट हो कौन सदस्य है, कौन नहीं। ("5 स्वर" = समुच्चय; "5 अच्छे विद्यार्थी" = नहीं!)</li>
+<li><b>अवयव:</b> समुच्चय की वस्तुएं। a ∈ A, b ∉ A।</li>
+<li><b>रोस्टर रूप:</b> सभी अवयव सूचीबद्ध — V = {a, e, i, o, u}। <b>समुच्चय-निर्माता रूप ⭐:</b> गुण लिखो — V = {x : x अंग्रेजी वर्णमाला का स्वर है}।</li>
+<li><b>क्रम महत्वहीन</b> — {1,2,3} = {3,2,1}। पुनरावृत्ति का अर्थ नहीं।</li>
+<li><b>महत्वपूर्ण समुच्चय ⭐:</b> N (प्राकृत), W (पूर्ण), Z (पूर्णांक), Q (परिमेय), R (वास्तविक)।</li>
+</ul>
+<p class="small-note">💡 समुच्चय = स्पष्ट सदस्यता नियमों वाला क्लब। नियम स्पष्ट → समुच्चय!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ समुच्चयों के प्रकार — रिक्त से सार्वत्रिक तक ⭐</h3>
+    <ul>
+<li><b>रिक्त समुच्चय (φ):</b> कोई अवयव नहीं। (केवल एक ही रिक्त समुच्चय है!)</li>
+<li><b>परिमित:</b> अवयव गिने जा सकें। <b>अपरिमित:</b> गिनती समाप्त न हो — N, Z, R।</li>
+<li><b>समान समुच्चय ⭐:</b> समान अवयव। <b>तुल्य समुच्चय:</b> समान संख्या (कार्डिनैलिटी), अवयव भिन्न हो सकते हैं।</li>
+<li><b>एकल समुच्चय:</b> केवल 1 अवयव — {0}।</li>
+<li><b>सार्वत्रिक समुच्चय (U):</b> संदर्भ का सबसे बड़ा समुच्चय।</li>
+<li><b>परिणाम संख्या:</b> n(A) — अवयवों की संख्या।</li>
+</ul>
+<p class="small-note">🎯 समान बनाम तुल्य — परीक्षा प्रिय! समान = समान अवयव; तुल्य = केवल समान संख्या।</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ उपसमुच्चय और घात समुच्चय ⭐</h3>
+    <ul>
+<li><b>उपसमुच्चय (⊆):</b> A के सभी अवयव B में हों → A ⊆ B। प्रत्येक समुच्चय स्वयं का उपसमुच्चय; φ <b>प्रत्येक</b> समुच्चय का उपसमुच्चय! ⭐</li>
+<li><b>उचित उपसमुच्चय (⊂):</b> A ⊆ B परंतु A ≠ B।</li>
+<li><b>अंतराल:</b> (a, b) = खुला, [a, b] = बंद, (a, b] = अर्ध-खुला।</li>
+<li><b>घात समुच्चय P(A) ⭐:</b> A के सभी उपसमुच्चयों का समुच्चय। n(A) = n → <b>n(P(A)) = 2ⁿ</b>।</li>
+<li>उचित उपसमुच्चय: 2ⁿ − 1; अरिक्त उचित: 2ⁿ − 2।</li>
+</ul>
+<p class="small-note">💡 2ⁿ क्यों? प्रत्येक अवयव के 2 विकल्प — आए या न आए। n अवयव → 2ⁿ!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ वेन आरेख और संक्रियाएं — संघ, सर्वनिष्ठ ⭐</h3>
+    <ul>
+<li><b>वेन आरेख:</b> समुच्चयों को वृत्तों से, सार्वत्रिक को आयत से दर्शाना।</li>
+<li><b>संघ (A ∪ B):</b> जो A में या B में या दोनों में।</li>
+<li><b>सर्वनिष्ठ (A ∩ B):</b> जो दोनों में उभयनिष्ठ हों।</li>
+<li><b>असंयुक्त समुच्चय ⭐:</b> A ∩ B = φ — कुछ उभयनिष्ठ नहीं।</li>
+<li><b>अंतर (A − B):</b> जो A में हों पर B में नहीं।</li>
+<li><b>पूरक (A′) ⭐:</b> U में जो A में नहीं। (A′)′ = A।</li>
+<li><b>गिनती सूत्र ⭐:</b> n(A ∪ B) = n(A) + n(B) − n(A ∩ B)।</li>
+</ul>
+<p class="small-note">💡 संघ = OR, सर्वनिष्ठ = AND, पूरक = NOT।</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ संक्रियाओं के नियम — बीजगणित जैसा खेल</h3>
+    <ul>
+<li><b>क्रमविनिमेय:</b> A ∪ B = B ∪ A।</li>
+<li><b>साहचर्य:</b> (A ∪ B) ∪ C = A ∪ (B ∪ C)।</li>
+<li><b>वितरण ⭐:</b> A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)।</li>
+<li><b>डी मॉर्गन नियम ⭐⭐:</b> (A ∪ B)′ = A′ ∩ B′ और (A ∩ B)′ = A′ ∪ B′ — पूरक अंदर जाकर चिह्न बदल देता है!</li>
+<li><b>तत्समक:</b> A ∪ φ = A, A ∩ U = A।</li>
+<li><b>तीन समुच्चयों की गिनती:</b> n(A∪B∪C) = n(A)+n(B)+n(C) − n(A∩B) − n(B∩C) − n(A∩C) + n(A∩B∩C) ⭐</li>
+</ul>
+<p class="small-note">🎯 डी मॉर्गन = सबसे अधिक पूछा जाने वाला नियम!</p>
+  </div>
+  </div>
+  <div class="lang-block" data-lang="en" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ What Is a Set — The Rulebook of Collections</h3>
+    <ul>
+<li><b>Set:</b> a well-defined collection of objects — "well-defined" means anyone can tell what is in and what is out. ("The 5 vowels" = a set; "5 good students" = NOT a set — subjective!)</li>
+<li><b>Elements/members:</b> the objects in the set. a ∈ A (a belongs to A), b ∉ A.</li>
+<li><b>Roster form:</b> list all elements — V = {a, e, i, o, u}. <b>Set-builder form ⭐:</b> state the property — V = {x : x is a vowel in the English alphabet}.</li>
+<li><b>Order does not matter</b> — {1, 2, 3} = {3, 2, 1}. Repetition means nothing — {1, 1, 2} = {1, 2}.</li>
+<li><b>Important sets ⭐:</b> N (natural: 1, 2, 3...), W (whole: 0, 1, 2...), Z (integers), Q (rationals: p/q form), R (reals).</li>
+</ul>
+<p class="small-note">💡 Feel: a set is a club with clear membership rules. Clear rule, valid set; fuzzy rule, no set!</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Types of Sets — From Empty to Universal ⭐</h3>
+    <ul>
+<li><b>Empty/null set (φ or {}):</b> no elements — {x : x is an even prime &gt; 2} = φ. (There is only ONE empty set!)</li>
+<li><b>Finite set:</b> elements can be counted — {days of the week} (7). <b>Infinite set:</b> counting never ends — N, Z, R.</li>
+<li><b>Equal sets ⭐:</b> the SAME elements — {1,2,3} = {3,2,1}. <b>Equivalent sets:</b> the same COUNT (cardinality), possibly different elements — {1,2,3} and {a,b,c}.</li>
+<li><b>Singleton set:</b> exactly 1 element — {0}, {5}.</li>
+<li><b>Universal set (U):</b> the biggest set in the context, holding everything under discussion.</li>
+<li><b>Cardinal number:</b> how many elements — n(A). n(φ) = 0.</li>
+</ul>
+<p class="small-note">🎯 Equal vs equivalent is a favourite exam confusion! Equal = same members; equivalent = same count only.</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Subsets and the Power Set ⭐</h3>
+    <ul>
+<li><b>Subset (⊆):</b> every element of A is in B → A ⊆ B. Every set is its own subset; φ is a subset of EVERY set! ⭐</li>
+<li><b>Proper subset (⊂):</b> A ⊆ B but A ≠ B — B has something extra.</li>
+<li><b>Intervals are subsets of R:</b> (a, b) = open (endpoints excluded), [a, b] = closed (included), (a, b] = half-open.</li>
+<li><b>Power set P(A) ⭐:</b> the set of ALL subsets of A. If n(A) = n → <b>n(P(A)) = 2ⁿ</b>. The power set of {a, b}: {φ, {a}, {b}, {a,b}} — 4 = 2²!</li>
+<li>Proper subsets: 2ⁿ − 1; non-empty proper subsets: 2ⁿ − 2.</li>
+</ul>
+<p class="small-note">💡 Why 2ⁿ? Every element has 2 choices — be in the subset or not. n elements → 2×2×... (n times) = 2ⁿ!</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Venn Diagrams and Operations — Union, Intersection ⭐</h3>
+    <ul>
+<li><b>Venn diagram:</b> sets as circles inside a universal-set rectangle — the best visualization tool!</li>
+<li><b>Union (A ∪ B):</b> whatever is in A OR B OR both — merge everything (no repeats!).</li>
+<li><b>Intersection (A ∩ B):</b> whatever is in BOTH — the overlap.</li>
+<li><b>Disjoint sets ⭐:</b> A ∩ B = φ — nothing in common (even and odd numbers).</li>
+<li><b>Difference (A − B):</b> what is in A but NOT in B. Generally A − B ≠ B − A!</li>
+<li><b>Complement (A′ or Aᶜ) ⭐:</b> everything in U NOT in A — U − A. (A′)′ = A — a double negative!</li>
+<li><b>Counting formula ⭐:</b> n(A ∪ B) = n(A) + n(B) − n(A ∩ B) — the intersection gets double-counted, so subtract it!</li>
+</ul>
+<p class="small-note">💡 Union = OR (in either), Intersection = AND (in both), Complement = NOT (everything outside).</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Laws of Set Operations — An Algebra-like Game</h3>
+    <ul>
+<li><b>Commutative:</b> A ∪ B = B ∪ A, A ∩ B = B ∩ A.</li>
+<li><b>Associative:</b> (A ∪ B) ∪ C = A ∪ (B ∪ C); same for intersection.</li>
+<li><b>Distributive ⭐:</b> A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C); A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C).</li>
+<li><b>De Morgan's laws ⭐⭐:</b> (A ∪ B)′ = A′ ∩ B′ and (A ∩ B)′ = A′ ∪ B′ — the complement flips the sign as it moves in (∪ ↔ ∩)!</li>
+<li><b>Identity laws:</b> A ∪ φ = A, A ∩ U = A, A ∪ U = U, A ∩ φ = φ.</li>
+<li><b>Three-set counting:</b> n(A∪B∪C) = n(A)+n(B)+n(C) − n(A∩B) − n(B∩C) − n(A∩C) + n(A∩B∩C) ⭐</li>
+</ul>
+<p class="small-note">🎯 De Morgan is the most-asked law: "the complement of a union is the intersection of the complements" (and vice versa).</p>
+  </div>
+  </div>
+</section>
+<section id="short-notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics</h4>
+      <ul><li>Set = well-defined collection</li><li>Roster: {a,e,i,o,u}; Set-builder: {x: property}</li><li>Order/repetition matter nahi</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Types ⭐</h4>
+      <ul><li>φ = empty; singleton = 1 element</li><li>Equal = same elements; equivalent = same count</li><li>N ⊂ W ⊂ Z ⊂ Q ⊂ R</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Subsets ⭐</h4>
+      <ul><li>φ har set ka subset</li><li>Power set: 2ⁿ subsets</li><li>Proper subsets: 2ⁿ − 1</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Operations ⭐</h4>
+      <ul><li>∪ = OR, ∩ = AND, ′ = NOT</li><li>A−B: A me, B me nahi</li><li>n(A∪B) = n(A)+n(B)−n(A∩B)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Laws ⭐</h4>
+      <ul><li>De Morgan: (A∪B)′ = A′∩B′</li><li>(A∩B)′ = A′∪B′</li><li>Distributive dono taraf</li></ul>
+    </div>
+    </div>
+  </div>
+  <div class="lang-block" data-lang="hi" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>मूल</h4>
+      <ul><li>समुच्चय = सुपरिभाषित संग्रह</li><li>रोस्टर vs समुच्चय-निर्माता</li><li>क्रम/पुनरावृत्ति महत्वहीन</li></ul>
+    </div>
+    <div class="shorts-card"><h4>प्रकार ⭐</h4>
+      <ul><li>φ = रिक्त; एकल = 1 अवयव</li><li>समान = समान अवयव; तुल्य = समान संख्या</li><li>N ⊂ W ⊂ Z ⊂ Q ⊂ R</li></ul>
+    </div>
+    <div class="shorts-card"><h4>उपसमुच्चय ⭐</h4>
+      <ul><li>φ प्रत्येक का उपसमुच्चय</li><li>घात समुच्चय: 2ⁿ</li><li>उचित: 2ⁿ − 1</li></ul>
+    </div>
+    <div class="shorts-card"><h4>संक्रियाएं ⭐</h4>
+      <ul><li>∪ = OR, ∩ = AND, ′ = NOT</li><li>A−B: A में, B में नहीं</li><li>n(A∪B) = n(A)+n(B)−n(A∩B)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>नियम ⭐</h4>
+      <ul><li>डी मॉर्गन: (A∪B)′ = A′∩B′</li><li>(A∩B)′ = A′∪B′</li><li>वितरण दोनों ओर</li></ul>
+    </div>
+    </div>
+  </div>
+  <div class="lang-block" data-lang="en" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Basics</h4>
+      <ul><li>Set = well-defined collection</li><li>Roster: {a,e,i,o,u}; Set-builder: {x: property}</li><li>Order/repetition do not matter</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Types ⭐</h4>
+      <ul><li>φ = empty; singleton = 1 element</li><li>Equal = same elements; equivalent = same count</li><li>N ⊂ W ⊂ Z ⊂ Q ⊂ R</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Subsets ⭐</h4>
+      <ul><li>φ is a subset of every set</li><li>Power set: 2ⁿ subsets</li><li>Proper subsets: 2ⁿ − 1</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Operations ⭐</h4>
+      <ul><li>∪ = OR, ∩ = AND, ′ = NOT</li><li>A−B: in A, not in B</li><li>n(A∪B) = n(A)+n(B)−n(A∩B)</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Laws ⭐</h4>
+      <ul><li>De Morgan: (A∪B)′ = A′∩B′</li><li>(A∩B)′ = A′∪B′</li><li>Distributive both ways</li></ul>
+    </div>
+    </div>
+  </div>
+</section>
+<section id="practice">
+  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div class="note-sec">
+    <div class="jee-q"><span class="qn">Q1.</span> {x : x² = 9, x ∈ Z} ko roster form me likho.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>x² = 9 → x = 3 ya −3 → <b>{−3, 3}</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q2.</span> '5 achhe cricket players' set hai ya nahi?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — 'achhe' subjective hai, well-defined nahi. Set ke liye rule clear hona chahiye.</p></details></div>
+    <div class="jee-q"><span class="qn">Q3.</span> A = {1, 2, 3, 4}. Power set me kitne elements?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>n(P(A)) = 2⁴ = <b>16</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q4.</span> φ kya har set ka subset hota hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Haan</b> — empty set har set ka subset hai (aur har set apna bhi subset hai).</p></details></div>
+    <div class="jee-q"><span class="qn">Q5.</span> n(A) = 15, n(B) = 12, n(A∩B) = 5. n(A∪B)?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>n(A∪B) = 15 + 12 − 5 = <b>22</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q6.</span> A = {1, 2, 3}, B = {3, 4, 5}. A − B aur B − A?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>A − B = <b>{1, 2}</b>, B − A = <b>{4, 5}</b> — barabar nahi hote!</p></details></div>
+    <div class="jee-q"><span class="qn">Q7.</span> De Morgan ka first law bolo.<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>(A ∪ B)′ = <b>A′ ∩ B′</b> — union ka complement = complements ka intersection.</p></details></div>
+    <div class="jee-q"><span class="qn">Q8.</span> U = {1..10}, A = {1, 3, 5, 7, 9}. A′ kya hai?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>A′ = <b>{2, 4, 6, 8, 10}</b> — U me jo A me nahi.</p></details></div>
+    <div class="jee-q"><span class="qn">Q9.</span> Do sets disjoint kab hote hain?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Jab <b>A ∩ B = φ</b> — kuch bhi common na ho (jaise even aur odd numbers).</p></details></div>
+    <div class="jee-q"><span class="qn">Q10.</span> 50 students me 30 cricket, 25 football, 10 dono khelte hain. Kitne koi bhi nahi khelte?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>n(C∪F) = 30 + 25 − 10 = 45 → koi nahi = 50 − 45 = <b>5</b>.</p></details></div>
+  </div>
+</section>
+<section class="roadmap">
+  <div class="tip-box">🚀 <b>Agla chapter:</b> <a href="/class-11/maths/ch-2/">Relations and Functions</a> — notes ready hain, abhi padho!</div>
+</section>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
+    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
+    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+  </div>
+</footer>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

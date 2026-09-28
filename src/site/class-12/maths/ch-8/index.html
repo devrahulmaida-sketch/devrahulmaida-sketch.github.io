@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 8 — Application of Integrals | Class 12 Mathematics | मईडा Maida</title>
+<meta name="description" content="Class 12 Maths Chapter 8: Application of Integrals — long + short notes in Hindi, English, Hinglish. Area under curves, area between curve and line, circle, ellipse, parabola areas by integration.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/#classes">Classes</a>
+      <a href="/class-12/">Class 12</a>
+      <a href="/#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ch-hero">
+  <p class="crumb"><a href="/">Home</a> / <a href="/class-12/">Class 12</a> / <a href="/class-12/maths/">Mathematics</a> / Chapter 8</p>
+  <h1>Application of Integrals</h1>
+  <p style="color:var(--violet);margin-top:4px;font-weight:500">समाकलनों के अनुप्रयोग</p>
+  <p style="color:var(--muted);margin-top:6px">Curves ke neeche aur beech ka area — integral ko geometry me badalna</p>
+  <div class="ch-tags">
+    <span class="pill weight-high">JEE Weightage: HIGH</span>
+    <span class="pill">🎬 Video coming soon</span>
+    <span class="pill">📝 Long + Short notes</span>
+    <span class="pill">🌐 Hindi • English • Hinglish</span>
+  </div>
+</section>
+<section style="padding-top:14px">
+  <div class="video-soon">
+    <div class="video-soon-icon">🎬</div>
+    <b>Video ban raha hai</b>
+    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Area = Integral — Core Concept ⭐</h3>
+    <ul>
+<li><b>Basic idea:</b> curve y = f(x) ke NEECHE, x-axis ke saath, x = a se x = b tak ka area = <b>∫ₐᵇ f(x) dx</b> — definite integral hi area hai!</li>
+<li><b>Kyun kaam karta hai:</b> area ko patli-patli vertical strips (width dx, height f(x)) me todo — har strip ka area f(x)dx, sabka sum = integral.</li>
+<li><b>Axis ke NEECHE wala area ⭐:</b> integral NEGATIVE aata hai — area hamesha POSITIVE chahiye, to <b>|integral|</b> lo. Sign ka dhyan!</li>
+<li><b>y-axis ke saath area:</b> x = g(y) type curve ho to <b>∫cᵈ g(y) dy</b> — horizontal strips, y ke respect me integrate.</li>
+<li>Curve axis ko kaate to intervals todo — har piece ka area alag nikal ke POSITIVE values add karo.</li>
+</ul>
+<p class="small-note">💡 Feel: integral = lakhs of thin strips ka sum. Slice karo, add karo — yahi calculus ka area mantra hai.</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Simple Areas — Curve + Axis ⭐⭐</h3>
+    <ul>
+<li><b>Steps ⭐:</b> (1) Curve ka rough sketch banao (intersections dhundo!). (2) Limits fix karo (a, b). (3) ∫ₐᵇ f(x) dx evaluate karo. (4) Negative aaya to absolute value.</li>
+<li>Example: y = x², 0 se 2: area = ∫₀² x² dx = [x³/3]₀² = <b>8/3 sq units</b>.</li>
+<li><b>Line ke neeche ka area:</b> y = x, 0 se 1 → ∫₀¹ x dx = 1/2 — triangle (½·1·1 = 0.5 ✓) — geometry se verify ho jaata hai!</li>
+<li><b>Symmetric curves ⭐:</b> even function (y = x², y = cos x) ho to <b>2 × ∫₀ᵃ</b> — half area ka double. Kaam aadha!</li>
+<li>sin x ka 0 se π tak area = ∫₀^π sin x dx = [−cos x]₀^π = <b>2</b> (ek arch ka area 2 square units — classic result!).</li>
+</ul>
+<p class="small-note">🎯 Sketch ZAROOR banao — bina figure ke limits galat padte hain. 1 minute ka sketch = full marks ka insurance.</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Do Curves / Curve aur Line Ke Beech Ka Area ⭐⭐</h3>
+    <ul>
+<li><b>Rule ⭐⭐:</b> area between = <b>∫ₐᵇ [UPPER curve − LOWER curve] dx</b> — upar wali minus neeche wali, integrate karo.</li>
+<li><b>Limits kahan se?</b> Dono curves ke <b>INTERSECTION POINTS</b> — equations barabar karke solve karo, wahi a aur b bante hain.</li>
+<li>Example: y = x² aur y = x: intersection x² = x → x = 0, 1. 0 se 1 me line upar: area = ∫₀¹ (x − x²) dx = [x²/2 − x³/3]₀¹ = <b>1/6</b>.</li>
+<li><b>Kaun upar? ⭐</b> Interval ka koi test point (jaise x = 0.5) dono me daal ke compare karo — sketch se bhi clear hota hai.</li>
+<li><b>Syllabus note ⭐:</b> rationalized NCERT me "area between any two curves" ka general case delete hua; boards me <b>curve + line</b> ya simple pairs (parabola-line, circle-line) aate hain — method same hai.</li>
+</ul>
+<p class="small-note">💡 Upper minus lower = height of each strip. Intersection = strips ki shuruaat aur khatam hone ki jagah.</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Standard Curves Ke Areas — Circle, Parabola, Ellipse ⭐</h3>
+    <ul>
+<li><b>Circle x² + y² = a² ka area ⭐:</b> quadrant ka area × 4: 4∫₀ᵃ √(a² − x²) dx = 4·(πa²/4) = <b>πa²</b> — integration se πa² PROOF hota hai (favourite 5-marker!).</li>
+<li><b>Ellipse x²/a² + y²/b² = 1:</b> same method → area = <b>πab</b>. Circle hi special case (a = b)!</li>
+<li><b>Parabola y² = 4ax aur line x = b:</b> area = 2∫₀ᵇ √(4ax) dx (upar-neeche symmetric!) = (8/3)b√(ab) type.</li>
+<li><b>Parabola vs chord:</b> y² = 4ax aur y = mx ka bounded region — intersection points se limits, upper − lower.</li>
+<li>Symmetry ka FULL use karo: circle/ellipse me 4×, parabola me 2× — integration half ya quarter me khatam!</li>
+</ul>
+<p class="small-note">🎯 Circle ka area integration se nikalna NCERT ka flagship example hai — steps ratt lo, exam me same aata hai.</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Exam Strategy aur Common Mistakes</h3>
+    <ul>
+<li><b>Fixed pattern:</b> boards me 5-marker — "find the area bounded by..." — sketch + intersection + integral + answer with sq units.</li>
+<li><b>Mistake 1:</b> intersection points solve kiye bina limits guess karna. <b>Mistake 2:</b> upper-lower ulta lena (negative area aa jaata hai!).</li>
+<li><b>Mistake 3:</b> symmetric region me multiply karna bhool jaana (2× ya 4×). <b>Mistake 4:</b> units na likhna.</li>
+<li><b>Check karna:</b> answer ka rough estimate geometry se karo (triangle/rectangle se compare) — negative ya absurd bada answer = kahin galti hai.</li>
+<li>Chapter chhota hai — integrals (Ch 7) strong hain to ye FREE marks hain. √(a² − x²) ka formula yaad rakho, circle problems usi pe chalte hain.</li>
+</ul>
+<p class="small-note">💡 AOI = "integral ko geometry me translate karna". Ch 7 mehnat yahan double returns deti hai.</p>
+  </div>
+  </div>
+  <div class="lang-block" data-lang="hi" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ क्षेत्रफल = समाकलन — मूल अवधारणा ⭐</h3>
+    <ul>
+<li><b>मूल विचार:</b> वक्र y = f(x) के नीचे, x-अक्ष के साथ, x = a से b तक का क्षेत्रफल = <b>∫ₐᵇ f(x) dx</b>।</li>
+<li><b>क्यों:</b> क्षेत्रफल को पतली ऊर्ध्व पट्टियों (चौड़ाई dx, ऊंचाई f(x)) में बांटो — सबका योग = समाकलन।</li>
+<li><b>अक्ष के नीचे ⭐:</b> समाकलन ऋणात्मक आता है — क्षेत्रफल सदैव धनात्मक, तो <b>|समाकलन|</b> लो।</li>
+<li><b>y-अक्ष के साथ:</b> x = g(y) हो तो <b>∫cᵈ g(y) dy</b> — क्षैतिज पट्टियां।</li>
+<li>वक्र अक्ष काटे तो अंतराल बांटो — प्रत्येक भाग का धनात्मक क्षेत्रफल जोड़ो।</li>
+</ul>
+<p class="small-note">💡 समाकलन = लाखों पतली पट्टियों का योग।</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ सरल क्षेत्रफल — वक्र + अक्ष ⭐⭐</h3>
+    <ul>
+<li><b>चरण ⭐:</b> (1) रफ आरेख बनाओ। (2) सीमाएं तय करो। (3) ∫ₐᵇ f(x) dx निकालो। (4) ऋणात्मक आए तो निरपेक्ष मान।</li>
+<li>उदाहरण: y = x², 0 से 2: क्षेत्रफल = ∫₀² x² dx = [x³/3]₀² = <b>8/3 वर्ग इकाई</b>।</li>
+<li><b>सममित वक्र ⭐:</b> सम फलन हो तो <b>2 × ∫₀ᵃ</b> — आधा काम!</li>
+<li>sin x का 0 से π क्षेत्रफल = [−cos x]₀^π = <b>2</b> (क्लासिक परिणाम!)।</li>
+</ul>
+<p class="small-note">🎯 आरेख अवश्य बनाओ — बिना आकृति के सीमाएं गलत पड़ती हैं।</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ वक्र और रेखा के बीच का क्षेत्रफल ⭐⭐</h3>
+    <ul>
+<li><b>नियम ⭐⭐:</b> क्षेत्रफल = <b>∫ₐᵇ [ऊपरी वक्र − निचला वक्र] dx</b>।</li>
+<li><b>सीमाएं कहां से?</b> दोनों के <b>प्रतिच्छेदन बिंदुओं</b> से — समीकरण बराबर करके हल करो।</li>
+<li>उदाहरण: y = x² और y = x: प्रतिच्छेदन x = 0, 1। क्षेत्रफल = ∫₀¹ (x − x²) dx = <b>1/6</b>।</li>
+<li><b>कौन ऊपर? ⭐</b> अंतराल का परीक्षण बिंदु दोनों में रखकर तुलना करो।</li>
+<li><b>पाठ्यक्रम टिप्पणी ⭐:</b> "किन्हीं दो वक्रों के बीच क्षेत्रफल" का सामान्य रूप हटाया गया; बोर्ड में वक्र + रेखा आता है — विधि वही है।</li>
+</ul>
+<p class="small-note">💡 ऊपर − नीचे = प्रत्येक पट्टी की ऊंचाई।</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ मानक वक्रों के क्षेत्रफल — वृत्त, परवलय, दीर्घवृत्त ⭐</h3>
+    <ul>
+<li><b>वृत्त x² + y² = a² ⭐:</b> चतुर्थांश × 4: 4∫₀ᵃ √(a² − x²) dx = <b>πa²</b> — समाकलन से प्रमाण (प्रिय 5-अंकीय!)।</li>
+<li><b>दीर्घवृत्त x²/a² + y²/b² = 1:</b> क्षेत्रफल = <b>πab</b>।</li>
+<li><b>परवलय y² = 4ax और रेखा x = b:</b> क्षेत्रफल = 2∫₀ᵇ √(4ax) dx (सममिति!)।</li>
+<li>सममिति का पूरा उपयोग करो: वृत्त/दीर्घवृत्त में 4×, परवलय में 2×।</li>
+</ul>
+<p class="small-note">🎯 समाकलन से वृत्त का क्षेत्रफल = NCERT का प्रमुख उदाहरण — चरण कंठस्थ करो।</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ परीक्षा रणनीति और सामान्य गलतियां</h3>
+    <ul>
+<li><b>निश्चित पैटर्न:</b> बोर्ड में 5-अंकीय — आरेख + प्रतिच्छेदन + समाकलन + वर्ग इकाइयों में उत्तर।</li>
+<li><b>गलती 1:</b> प्रतिच्छेदन हल किए बिना सीमाएं अनुमान करना। <b>गलती 2:</b> ऊपर-नीचे उल्टा लेना।</li>
+<li><b>गलती 3:</b> सममिति का गुणक (2×/4×) भूलना। <b>गलती 4:</b> इकाइयां न लिखना।</li>
+<li><b>जांच:</b> ज्यामिति से मोटा अनुमान करो — ऋणात्मक उत्तर = कहीं गलती।</li>
+<li>अध्याय छोटा है — समाकलन (अध्याय 7) मजबूत हो तो ये मुफ्त अंक हैं।</li>
+</ul>
+<p class="small-note">💡 AOI = "समाकलन को ज्यामिति में बदलना"।</p>
+  </div>
+  </div>
+  <div class="lang-block" data-lang="en" hidden>
+  <div class="note-sec">
+    <h3>1️⃣ Area = Integral — The Core Concept ⭐</h3>
+    <ul>
+<li><b>Basic idea:</b> the area UNDER the curve y = f(x), with the x-axis, from x = a to x = b is <b>∫ₐᵇ f(x) dx</b> — the definite integral IS the area!</li>
+<li><b>Why it works:</b> slice the area into thin vertical strips (width dx, height f(x)) — each strip has area f(x)dx, and their sum is the integral.</li>
+<li><b>Area BELOW the axis ⭐:</b> the integral comes out NEGATIVE — area must always be POSITIVE, so take <b>|integral|</b>. Watch the sign!</li>
+<li><b>Area with the y-axis:</b> for a curve of the form x = g(y), use <b>∫cᵈ g(y) dy</b> — horizontal strips, integrate in y.</li>
+<li>If the curve crosses the axis, split into intervals — compute each piece and add POSITIVE values.</li>
+</ul>
+<p class="small-note">💡 Feel: an integral is the sum of lakhs of thin strips. Slice it, add it — that is the calculus mantra for area.</p>
+  </div>
+  <div class="note-sec">
+    <h3>2️⃣ Simple Areas — Curve + Axis ⭐⭐</h3>
+    <ul>
+<li><b>Steps ⭐:</b> (1) Draw a rough sketch (find intersections!). (2) Fix the limits (a, b). (3) Evaluate ∫ₐᵇ f(x) dx. (4) Negative? Take the absolute value.</li>
+<li>Example: y = x² from 0 to 2: area = ∫₀² x² dx = [x³/3]₀² = <b>8/3 sq units</b>.</li>
+<li><b>Area under a line:</b> y = x from 0 to 1 → ∫₀¹ x dx = 1/2 — a triangle (½·1·1 = 0.5 ✓) — verifiable by geometry!</li>
+<li><b>Symmetric curves ⭐:</b> for an even function (y = x², y = cos x) use <b>2 × ∫₀ᵃ</b> — double the half. Half the work!</li>
+<li>Area under sin x from 0 to π = ∫₀^π sin x dx = [−cos x]₀^π = <b>2</b> (one arch = 2 square units — a classic!).</li>
+</ul>
+<p class="small-note">🎯 ALWAYS sketch — without a figure, limits read wrong. A 1-minute sketch is insurance for full marks.</p>
+  </div>
+  <div class="note-sec">
+    <h3>3️⃣ Area Between a Curve and a Line ⭐⭐</h3>
+    <ul>
+<li><b>Rule ⭐⭐:</b> area between = <b>∫ₐᵇ [UPPER curve − LOWER curve] dx</b> — top minus bottom, then integrate.</li>
+<li><b>Where do limits come from?</b> The <b>INTERSECTION POINTS</b> of the two curves — set the equations equal and solve; those are a and b.</li>
+<li>Example: y = x² and y = x: intersection x² = x → x = 0, 1. From 0 to 1 the line is above: area = ∫₀¹ (x − x²) dx = [x²/2 − x³/3]₀¹ = <b>1/6</b>.</li>
+<li><b>Which is upper? ⭐</b> Plug any test point of the interval (like x = 0.5) into both and compare — the sketch also makes it clear.</li>
+<li><b>Syllabus note ⭐:</b> the general "area between any two curves" case is deleted in rationalized NCERT; boards ask <b>curve + line</b> or simple pairs (parabola-line, circle-line) — the method stays the same.</li>
+</ul>
+<p class="small-note">💡 Upper minus lower = the height of each strip. Intersections = where the strips start and end.</p>
+  </div>
+  <div class="note-sec">
+    <h3>4️⃣ Areas of Standard Curves — Circle, Parabola, Ellipse ⭐</h3>
+    <ul>
+<li><b>Area of the circle x² + y² = a² ⭐:</b> quadrant area × 4: 4∫₀ᵃ √(a² − x²) dx = 4·(πa²/4) = <b>πa²</b> — integration PROVES πa² (a favourite 5-marker!).</li>
+<li><b>Ellipse x²/a² + y²/b² = 1:</b> same method → area = <b>πab</b>. The circle is the special case (a = b)!</li>
+<li><b>Parabola y² = 4ax with the line x = b:</b> area = 2∫₀ᵇ √(4ax) dx (symmetric above-below!) = (8/3)b√(ab) type.</li>
+<li><b>Parabola vs chord:</b> the region bounded by y² = 4ax and y = mx — limits from intersection points, upper − lower.</li>
+<li>Use symmetry FULLY: 4× for circles/ellipses, 2× for parabolas — the integration finishes in a half or a quarter!</li>
+</ul>
+<p class="small-note">🎯 Finding the circle's area by integration is NCERT's flagship example — memorize the steps; the exam repeats it.</p>
+  </div>
+  <div class="note-sec">
+    <h3>5️⃣ Exam Strategy and Common Mistakes</h3>
+    <ul>
+<li><b>Fixed pattern:</b> a 5-marker in boards — "find the area bounded by..." — sketch + intersections + integral + answer in sq units.</li>
+<li><b>Mistake 1:</b> guessing limits without solving intersections. <b>Mistake 2:</b> swapping upper-lower (you get a negative area!).</li>
+<li><b>Mistake 3:</b> forgetting the symmetry multiplier (2× or 4×). <b>Mistake 4:</b> skipping units.</li>
+<li><b>How to check:</b> estimate the answer roughly from geometry (compare with a triangle/rectangle) — a negative or absurdly large answer means an error somewhere.</li>
+<li>A small chapter — if integrals (Ch 7) are strong, these are FREE marks. Keep the √(a² − x²) formula ready; circle problems run on it.</li>
+</ul>
+<p class="small-note">💡 AOI = "translating integrals into geometry". The effort of Ch 7 pays double here.</p>
+  </div>
+  </div>
+</section>
+<section id="short-notes">
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="lang-switch" role="group" aria-label="Notes language">
+  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div>
+  <div class="lang-block" data-lang="hinglish" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Concept ⭐</h4>
+      <ul><li>Area = ∫ₐᵇ f(x) dx</li><li>Strips ka sum = integral</li><li>Negative integral → |value|</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Simple areas ⭐</h4>
+      <ul><li>Sketch → limits → integrate</li><li>Even function: 2 × half</li><li>sin x, 0-π ka area = 2</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Between curves ⭐⭐</h4>
+      <ul><li>∫(upper − lower) dx</li><li>Limits = intersection points</li><li>Test point se upar/neeche check</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Standard ⭐</h4>
+      <ul><li>Circle: πa² (4× quadrant)</li><li>Ellipse: πab</li><li>Parabola: symmetry 2× use karo</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Exam tips</h4>
+      <ul><li>5-marker fixed pattern</li><li>Units likho (sq units)</li><li>Area between 2 curves ka general case DELETED</li></ul>
+    </div>
+    </div>
+  </div>
+  <div class="lang-block" data-lang="hi" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>अवधारणा ⭐</h4>
+      <ul><li>क्षेत्रफल = ∫ₐᵇ f(x) dx</li><li>पट्टियों का योग = समाकलन</li><li>ऋणात्मक → |मान|</li></ul>
+    </div>
+    <div class="shorts-card"><h4>सरल क्षेत्रफल ⭐</h4>
+      <ul><li>आरेख → सीमाएं → समाकलन</li><li>सम फलन: 2 × आधा</li><li>sin x, 0-π = 2</li></ul>
+    </div>
+    <div class="shorts-card"><h4>वक्रों के बीच ⭐⭐</h4>
+      <ul><li>∫(ऊपरी − निचला) dx</li><li>सीमाएं = प्रतिच्छेदन बिंदु</li><li>परीक्षण बिंदु से जांच</li></ul>
+    </div>
+    <div class="shorts-card"><h4>मानक ⭐</h4>
+      <ul><li>वृत्त: πa² (4× चतुर्थांश)</li><li>दीर्घवृत्त: πab</li><li>परवलय: सममिति 2×</li></ul>
+    </div>
+    <div class="shorts-card"><h4>परीक्षा</h4>
+      <ul><li>5-अंकीय निश्चित पैटर्न</li><li>वर्ग इकाइयां लिखो</li><li>दो वक्रों का सामान्य रूप हटाया गया</li></ul>
+    </div>
+    </div>
+  </div>
+  <div class="lang-block" data-lang="en" hidden>
+<div class="shorts-grid">
+    <div class="shorts-card"><h4>Concept ⭐</h4>
+      <ul><li>Area = ∫ₐᵇ f(x) dx</li><li>Sum of strips = integral</li><li>Negative integral → |value|</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Simple areas ⭐</h4>
+      <ul><li>Sketch → limits → integrate</li><li>Even function: 2 × half</li><li>Area under sin x, 0-π = 2</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Between curves ⭐⭐</h4>
+      <ul><li>∫(upper − lower) dx</li><li>Limits = intersection points</li><li>Use a test point for up/down</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Standard ⭐</h4>
+      <ul><li>Circle: πa² (4× quadrant)</li><li>Ellipse: πab</li><li>Parabola: use 2× symmetry</li></ul>
+    </div>
+    <div class="shorts-card"><h4>Exam tips</h4>
+      <ul><li>Fixed 5-marker pattern</li><li>Write units (sq units)</li><li>General two-curve case DELETED</li></ul>
+    </div>
+    </div>
+  </div>
+</section>
+<section id="practice">
+  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div class="note-sec">
+    <div class="jee-q"><span class="qn">Q1.</span> y = x² ke neeche 0 se 3 tak ka area?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>∫₀³ x² dx = [x³/3]₀³ = 27/3 = <b>9 sq units</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q2.</span> Curve x-axis ke neeche ho to area kaise nikalein?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>Integral negative aayega — <b>|∫ f(x) dx|</b> lo, area hamesha positive hota hai.</p></details></div>
+    <div class="jee-q"><span class="qn">Q3.</span> y = x² aur y = x ke beech ka area (0 se 1)?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>∫₀¹ (x − x²) dx = 1/2 − 1/3 = <b>1/6</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q4.</span> Do curves ke beech area ke liye limits kahan se aati hain?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Intersection points</b> se — dono equations barabar karke solve karo.</p></details></div>
+    <div class="jee-q"><span class="qn">Q5.</span> x² + y² = a² wale circle ka area integration se?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>4∫₀ᵃ √(a² − x²) dx = 4 × (πa²/4) = <b>πa²</b>.</p></details></div>
+    <div class="jee-q"><span class="qn">Q6.</span> Ellipse x²/a² + y²/b² = 1 ka area?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>πab</b> — circle ka general version.</p></details></div>
+    <div class="jee-q"><span class="qn">Q7.</span> ∫₀^π sin x dx ka value?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>[−cos x]₀^π = −(−1) − (−1) = <b>2</b> — ek arch ka area.</p></details></div>
+    <div class="jee-q"><span class="qn">Q8.</span> Even function ka −a se a area ka shortcut?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>2∫₀ᵃ f(x) dx</b> — aadha nikalo, double karo.</p></details></div>
+    <div class="jee-q"><span class="qn">Q9.</span> y² = 4x aur x = 1 se bana area?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p>2∫₀¹ 2√x dx = 4·[x^(3/2)/(3/2)]₀¹ = <b>8/3</b> sq units (symmetry use ki!).</p></details></div>
+    <div class="jee-q"><span class="qn">Q10.</span> Area ka answer negative aa jaaye to kya matlab?<br>
+      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Upper-lower ulta liya hai</b> ya curve axis ke neeche hai — absolute value lo, limits/curve order dobara check karo.</p></details></div>
+  </div>
+</section>
+<section class="roadmap">
+  <div class="tip-box">🚀 <b>Agla chapter:</b> <a href="/class-12/maths/ch-9/">Differential Equations</a> — notes ready hain, abhi padho!</div>
+</section>
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
+    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
+    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+  </div>
+</footer>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
