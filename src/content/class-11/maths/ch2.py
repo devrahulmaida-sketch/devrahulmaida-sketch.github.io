@@ -7,7 +7,10 @@ CH = {
  "tagline": "Ordered pairs se functions tak — domain, range aur graphs",
  "jee": "HIGH",
  "meta_desc": "Class 11 Maths Chapter 2: Relations and Functions — long + short notes in Hindi, English, Hinglish. Cartesian product, relations, functions, domain, range, modulus, greatest integer function.",
- "video": None,
+  "video": {
+  "youtube": "GKNCyfXAZMY",
+  "dur": "1 min 14 sec"
+ },
  "card_tag": "Ordered pairs se functions tak — domain, range aur graphs",
  "card_topics": [
   "🔗 Cartesian product",

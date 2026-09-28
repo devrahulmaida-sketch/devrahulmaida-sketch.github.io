@@ -7,7 +7,10 @@ CH = {
  "tagline": "AP, GP aur special sums — pattern pehchano, formula lagao",
  "jee": "HIGH",
  "meta_desc": "Class 11 Maths Chapter 8: Sequences and Series — long + short notes in Hindi, English, Hinglish. AP, GP, AM-GM, sum of squares and cubes, infinite series.",
- "video": None,
+  "video": {
+  "youtube": "TTn5df_h88k",
+  "dur": "1 min 12 sec"
+ },
  "card_tag": "AP, GP aur special sums — pattern pehchano, formula lagao",
  "card_topics": [
   "➕ AP: aₙ aur Sₙ",

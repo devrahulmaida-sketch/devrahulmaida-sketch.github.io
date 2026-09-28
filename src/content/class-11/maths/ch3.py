@@ -7,7 +7,10 @@ CH = {
  "tagline": "Radians, unit circle aur identities — trig ka complete toolkit",
  "jee": "HIGH",
  "meta_desc": "Class 11 Maths Chapter 3: Trigonometric Functions — long + short notes in Hindi, English, Hinglish. Radians, unit circle, ASTC signs, sum-difference formulas, double angle, graphs.",
- "video": None,
+  "video": {
+  "youtube": "Ghn7hhP_IuQ",
+  "dur": "1 min 17 sec"
+ },
  "card_tag": "Radians, unit circle aur identities — trig ka complete toolkit",
  "card_topics": [
   "📐 Radians + conversion",

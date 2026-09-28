@@ -7,7 +7,10 @@ CH = {
  "tagline": "Counting ka superpower — nPr, nCr aur problem patterns",
  "jee": "HIGH",
  "meta_desc": "Class 11 Maths Chapter 6: Permutations and Combinations — long + short notes in Hindi, English, Hinglish. Factorial, nPr, nCr, arrangements, selections, restriction problems.",
- "video": None,
+  "video": {
+  "youtube": "Sh3lpnwEcrs",
+  "dur": "58 sec"
+ },
  "card_tag": "Counting ka superpower — nPr, nCr aur problem patterns",
  "card_topics": [
   "🔢 Counting principles",

@@ -7,7 +7,10 @@ CH = {
  "tagline": "i = √−1 ki duniya — Argand plane, conjugates aur complex roots",
  "jee": "HIGH",
  "meta_desc": "Class 11 Maths Chapter 4: Complex Numbers and Quadratic Equations — long + short notes in Hindi, English, Hinglish. Imaginary unit i, complex algebra, modulus, Argand plane, quadratic equations with complex roots.",
- "video": None,
+  "video": {
+  "youtube": "c_0OsLZtyAQ",
+  "dur": "1 min 20 sec"
+ },
  "card_tag": "i = √−1 ki duniya — Argand plane, conjugates aur complex roots",
  "card_topics": [
   "🧮 i powers + algebra",

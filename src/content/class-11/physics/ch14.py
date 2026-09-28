@@ -7,7 +7,10 @@ CH = {
  "tagline": "Sound, strings aur standing waves — energy ka musical safar",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 14: Waves — long + short notes in Hindi, English, Hinglish. Transverse and longitudinal waves, wave speed, superposition, standing waves, beats, Doppler effect.",
- "video": None,
+  "video": {
+  "youtube": "AniXShZu1WE",
+  "dur": "1 min 11 sec"
+ },
  "card_tag": "Sound, strings aur standing waves — energy ka musical safar",
  "card_topics": [
   "🌊 Transverse vs longitudinal",

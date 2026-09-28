@@ -7,7 +7,10 @@ CH = {
  "tagline": "(a+b)ⁿ ka superpower — general term, middle term aur coefficient tricks",
  "jee": "HIGH",
  "meta_desc": "Class 11 Maths Chapter 7: Binomial Theorem — long + short notes in Hindi, English, Hinglish. Expansion, general term, middle term, greatest coefficient, remainder tricks.",
- "video": None,
+  "video": {
+  "youtube": "8yzRUcZebVw",
+  "dur": "1 min 24 sec"
+ },
  "card_tag": "(a+b)ⁿ ka superpower — general term, middle term aur coefficient tricks",
  "card_topics": [
   "🚀 Binomial expansion (a+b)ⁿ",

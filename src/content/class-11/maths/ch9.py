@@ -7,7 +7,10 @@ CH = {
  "tagline": "Slope, equations aur distances — coordinate geometry ki neev",
  "jee": "HIGH",
  "meta_desc": "Class 11 Maths Chapter 9: Straight Lines — long + short notes in Hindi, English, Hinglish. Slope, parallel and perpendicular lines, five forms of equation, distance formulas.",
- "video": None,
+  "video": {
+  "youtube": "LHWUaAhubWc",
+  "dur": "1 min 5 sec"
+ },
  "card_tag": "Slope, equations aur distances — coordinate geometry ki neev",
  "card_topics": [
   "📐 Slope + parallel/perpendicular",

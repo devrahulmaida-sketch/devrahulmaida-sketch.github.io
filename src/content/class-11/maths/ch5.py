@@ -7,7 +7,10 @@ CH = {
  "tagline": "Inequalities ke rules, number line aur graphical solutions",
  "jee": "MEDIUM",
  "meta_desc": "Class 11 Maths Chapter 5: Linear Inequalities — long + short notes in Hindi, English, Hinglish. Inequality rules, sign flip, number line solutions, graphical solutions, word problems.",
- "video": None,
+  "video": {
+  "youtube": "qoUsItGCIK0",
+  "dur": "1 min 24 sec"
+ },
  "card_tag": "Inequalities ke rules, number line aur graphical solutions",
  "card_topics": [
   "⚖️ Inequality rules + sign flip",

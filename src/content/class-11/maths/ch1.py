@@ -7,7 +7,10 @@ CH = {
  "tagline": "Collections ka ganit — subsets, Venn diagrams aur De Morgan",
  "jee": "HIGH",
  "meta_desc": "Class 11 Maths Chapter 1: Sets — long + short notes in Hindi, English, Hinglish. Sets, subsets, power set, Venn diagrams, union, intersection, De Morgan's laws.",
- "video": None,
+  "video": {
+  "youtube": "Up-IQQaCVME",
+  "dur": "1 min 18 sec"
+ },
  "card_tag": "Collections ka ganit — subsets, Venn diagrams aur De Morgan",
  "card_topics": [
   "📦 Sets + roster/set-builder",

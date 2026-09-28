@@ -7,7 +7,10 @@ CH = {
  "tagline": "Circle, parabola, ellipse, hyperbola — cone ki chaar kahaniyan",
  "jee": "HIGH",
  "meta_desc": "Class 11 Maths Chapter 10: Conic Sections — long + short notes in Hindi, English, Hinglish. Circle, parabola, ellipse, hyperbola equations, foci, eccentricity, latus rectum.",
- "video": None,
+  "video": {
+  "youtube": "p-P-tHFlhhY",
+  "dur": "1 min 6 sec"
+ },
  "card_tag": "Circle, parabola, ellipse, hyperbola — cone ki chaar kahaniyan",
  "card_topics": [
   "⭕ Circle equations",

@@ -7,7 +7,10 @@ CH = {
  "tagline": "SHM, pendulum aur resonance — jhoolne ka pura physics",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 13: Oscillations — long + short notes in Hindi, English, Hinglish. Simple harmonic motion, spring-mass, pendulum, energy in SHM, damped and forced oscillations, resonance.",
- "video": None,
+  "video": {
+  "youtube": "TwK7W6Wh2i8",
+  "dur": "1 min 20 sec"
+ },
  "card_tag": "SHM, pendulum aur resonance — jhoolne ka pura physics",
  "card_topics": [
   "🔄 SHM + equations",
