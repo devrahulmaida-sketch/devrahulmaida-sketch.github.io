@@ -7,7 +7,10 @@ CH = {
  "tagline": "Kaam, capacity aur speed — W = Fs cosθ, KE+PE conservation, collisions",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 5: Work, Energy and Power — long + short notes in Hindi, English, Hinglish. Work-energy theorem, conservation of energy, elastic and inelastic collisions, power.",
- "video": None,
+ "video": {
+  "youtube": "SO_OO3O-7lY",
+  "dur": "1 min 7 sec"
+ },
  "card_tag": "Kaam, capacity aur speed — W = Fs cosθ, KE+PE conservation, collisions",
  "card_topics": [
   "⚒️ Work + Work-Energy theorem",
