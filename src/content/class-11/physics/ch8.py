@@ -7,7 +7,10 @@ CH = {
  "tagline": "Stress, strain, Hooke's law aur Young's modulus — solids bhi stretch hote hain",
  "jee": "MEDIUM",
  "meta_desc": "Class 11 Physics Chapter 8: Mechanical Properties of Solids — long + short notes in Hindi, English, Hinglish. Stress, strain, Hooke's law, Young's modulus, bulk modulus, shear modulus, elastic energy.",
- "video": None,
+ "video": {
+  "youtube": "8X2oGc2Gbtg",
+  "dur": "1 min 10 sec"
+ },
  "card_tag": "Stress, strain, Hooke's law aur Young's modulus — solids bhi stretch hote hain",
  "card_topics": [
   "⚖️ Stress & strain",
