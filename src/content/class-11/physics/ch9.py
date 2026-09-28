@@ -7,7 +7,10 @@ CH = {
  "tagline": "Pressure, buoyancy, Bernoulli aur viscosity — tairne aur udne ka physics",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 9: Mechanical Properties of Fluids — long + short notes in Hindi, English, Hinglish. Pressure, Pascal's law, Archimedes, Bernoulli, viscosity, Stokes' law, surface tension.",
- "video": None,
+ "video": {
+  "youtube": "Fe3hwFh1DW8",
+  "dur": "1 min 7 sec"
+ },
  "card_tag": "Pressure, buoyancy, Bernoulli aur viscosity — tairne aur udne ka physics",
  "card_topics": [
   "💧 Pressure + Pascal",
