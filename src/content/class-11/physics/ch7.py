@@ -7,7 +7,10 @@ CH = {
  "tagline": "F = GMm/r² se satellites tak — g variation, escape velocity, Kepler ke laws",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 7: Gravitation — long + short notes in Hindi, English, Hinglish. Universal law of gravitation, variation of g, escape velocity, satellites, Kepler's laws.",
- "video": None,
+ "video": {
+  "youtube": "myepnfROUcc",
+  "dur": "1 min 17 sec"
+ },
  "card_tag": "F = GMm/r² se satellites tak — g variation, escape velocity, Kepler ke laws",
  "card_topics": [
   "🌍 Universal law (F = GMm/r²)",
