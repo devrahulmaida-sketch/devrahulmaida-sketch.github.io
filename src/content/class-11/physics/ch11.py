@@ -7,7 +7,10 @@ CH = {
  "tagline": "Heat, work aur engines — energy ke flow ke rules",
  "jee": "HIGH",
  "meta_desc": "Class 11 Physics Chapter 11: Thermodynamics — long + short notes in Hindi, English, Hinglish. First law, second law, Carnot engine, isothermal, adiabatic processes, Cp-Cv.",
- "video": None,
+ "video": {
+  "youtube": "6WqhlzygthU",
+  "dur": "1 min 16 sec"
+ },
  "card_tag": "Heat, work aur engines — energy ke flow ke rules",
  "card_topics": [
   "🔥 Zeroth + first law",
