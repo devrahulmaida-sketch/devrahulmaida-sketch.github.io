@@ -41,7 +41,7 @@ PLANNED_SUBJECTS = {
 # Homepage class cards: status per class (live classes link, planned show Coming soon)
 LIVE_CLASSES = [11, 12]
 CLASS_CARD_TOPICS = {
-    11: '📚 Physics, Chemistry, Maths, Biology live — 56 chapters, 3 languages',
-    12: '📚 Physics, Chemistry, Maths, Biology live — 50 chapters, 3 languages',
+    11: 'Physics, Chemistry, Maths, Biology live — 56 chapters',
+    12: 'Physics, Chemistry, Maths, Biology live — 50 chapters',
 }
-PLANNED_CARD_TOPIC = '📚 5 subjects planned (NCERT/CBSE)'
+PLANNED_CARD_TOPIC = '5 subjects planned (NCERT/CBSE)'

@@ -5,20 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ch 12 — Linear Programming | Class 12 Mathematics | मईडा Maida</title>
 <meta name="description" content="Class 12 Maths Chapter 12: Linear Programming — long + short notes in Hindi, English, Hinglish. Objective function, constraints, feasible region, corner point method, bounded and unbounded regions.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+  </div>
+</div>
+<div class="masthead">
+  <div class="masthead-inner">
+    <span class="emblem">म</span>
+    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
+  </div>
+</div>
 <header class="nav">
   <div class="nav-inner">
-    <a href="/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></a>
     <nav>
       <a href="/">Home</a>
-      <a href="/#classes">Classes</a>
+      <a href="/class-11/">Class 11</a>
       <a href="/class-12/">Class 12</a>
+      <a href="/#classes">All Classes</a>
       <a href="/#about">About</a>
     </nav>
   </div>
@@ -27,27 +40,26 @@
 <section class="ch-hero">
   <p class="crumb"><a href="/">Home</a> / <a href="/class-12/">Class 12</a> / <a href="/class-12/maths/">Mathematics</a> / Chapter 12</p>
   <h1>Linear Programming</h1>
-  <p style="color:var(--violet);margin-top:4px;font-weight:500">रैखिक प्रोग्रामन</p>
+  <p style="color:var(--saffron);margin-top:4px;font-weight:600">रैखिक प्रोग्रामन</p>
   <p style="color:var(--muted);margin-top:6px">Graph banao, corners dhundo, best answer pao — sabse scoring chapter</p>
   <div class="ch-tags">
     <span class="pill weight-medium">JEE Weightage: MEDIUM</span>
-    <span class="pill">🎬 Video coming soon</span>
-    <span class="pill">📝 Long + Short notes</span>
-    <span class="pill">🌐 Hindi • English • Hinglish</span>
+    <span class="pill">Video coming soon</span>
+    <span class="pill">Long + Short notes</span>
+    <span class="pill">Hindi • English • Hinglish</span>
   </div>
 </section>
-<section style="padding-top:14px">
+<section style="padding-top:20px">
   <div class="video-soon">
-    <div class="video-soon-icon">🎬</div>
-    <b>Video ban raha hai</b>
-    <p>Is chapter ka board-style video jaldi aa raha hai. Tab tak neeche ke notes se padho — woh bhi video-feel mein likhe hain. 👇</p>
+    <b>Video jald aa raha hai</b>
+    <p>Is chapter ka video abhi ban raha hai. Tab tak neeche ke notes se padhen.</p>
   </div>
 </section>
 
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="📖 Full Explanation (Long Notes)" data-hi="📖 पूरा Explanation (Long Notes)" data-en="📖 Full Explanation (Long Notes)">📖 Full Explanation (Long Notes)</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
   <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
   <div class="lang-block" data-lang="hinglish" hidden>
   <div class="note-sec">
@@ -218,9 +230,9 @@
   </div>
 </section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="⚡ Short Notes — Revision in 5 min" data-hi="⚡ Short Notes — 5 min Revision" data-en="⚡ Short Notes — 5-min Revision">⚡ Short Notes — Revision in 5 min</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
+  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
   <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">🌐 Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
   <div class="lang-block" data-lang="hinglish" hidden>
 <div class="shorts-grid">
@@ -281,41 +293,41 @@
   </div>
 </section>
 <section id="practice">
-  <div class="sec-head"><h2>🏆 JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div class="note-sec">
-    <div class="jee-q"><span class="qn">Q1.</span> LPP me objective function kya hota hai?<br>
+  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
+  <div>
+    <div class="jee-q"><span class="qn">Q1</span> LPP me objective function kya hota hai?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p><b>Z = ax + by</b> — jo cheez maximize/minimize karni hai (profit, cost...).</p></details></div>
-    <div class="jee-q"><span class="qn">Q2.</span> x ≥ 0, y ≥ 0 kyun likhte hain?<br>
+    <div class="jee-q"><span class="qn">Q2</span> x ≥ 0, y ≥ 0 kyun likhte hain?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p><b>Non-negativity constraints</b> — real life me cheezein negative nahi ban sakti. Isse region first quadrant me aata hai.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3.</span> Inequality ka kaunsa side shade karein kaise pata?<br>
+    <div class="jee-q"><span class="qn">Q3</span> Inequality ka kaunsa side shade karein kaise pata?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p>Test point <b>(0, 0)</b> inequality me daalo — true → origin side, false → opposite side.</p></details></div>
-    <div class="jee-q"><span class="qn">Q4.</span> Feasible region kya hai?<br>
+    <div class="jee-q"><span class="qn">Q4</span> Feasible region kya hai?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p>SAARI constraints (inequalities) ka <b>common region</b> — jahan sab conditions ek saath satisfy hoti hain.</p></details></div>
-    <div class="jee-q"><span class="qn">Q5.</span> Bounded region me max/min kahan milta hai?<br>
+    <div class="jee-q"><span class="qn">Q5</span> Bounded region me max/min kahan milta hai?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p>Hamesha kisi <b>corner point</b> pe — feasible region ke vertices pe Z check karo.</p></details></div>
-    <div class="jee-q"><span class="qn">Q6.</span> Z = 4x + 3y ke corners (0,0), (5,0), (0,6) pe values?<br>
+    <div class="jee-q"><span class="qn">Q6</span> Z = 4x + 3y ke corners (0,0), (5,0), (0,6) pe values?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p>Z: 0, 20, 18 → <b>max = 20 at (5, 0)</b>; min = 0 at (0, 0).</p></details></div>
-    <div class="jee-q"><span class="qn">Q7.</span> Corner points kaise nikalte hain?<br>
+    <div class="jee-q"><span class="qn">Q7</span> Corner points kaise nikalte hain?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p>Do-do boundary lines ki equations <b>simultaneously solve</b> karke — intersections hi corners hain.</p></details></div>
-    <div class="jee-q"><span class="qn">Q8.</span> Unbounded region me minimum confirm karne ka extra step?<br>
+    <div class="jee-q"><span class="qn">Q8</span> Unbounded region me minimum confirm karne ka extra step?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p>Z &lt; m wala <b>half-plane</b> feasible region ko overlap karta hai ya nahi — <b>overlap nahi</b> to min confirmed.</p></details></div>
-    <div class="jee-q"><span class="qn">Q9.</span> Answer me sirf Z ka value likhna kaafi hai?<br>
+    <div class="jee-q"><span class="qn">Q9</span> Answer me sirf Z ka value likhna kaafi hai?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — point (x, y) bhi likhna zaroori hai jahan optimum milta hai.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10.</span> Diet problem type formulation questions ab aate hain?<br>
+    <div class="jee-q"><span class="qn">Q10</span> Diet problem type formulation questions ab aate hain?<br>
       <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — mathematical formulation of LPP rationalized syllabus se <b>delete</b> ho gaya. Ready-made problems solve karne hain.</p></details></div>
   </div>
 </section>
 <section class="roadmap">
-  <div class="tip-box">🚀 <b>Agla chapter:</b> <a href="/class-12/maths/ch-13/">Probability</a> — notes ready hain, abhi padho!</div>
+  <div class="tip-box"><b>Agla chapter:</b> <a href="/class-12/maths/ch-13/">Probability</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
   <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">MAIDA</span></div>
-    <p>NCERT / CBSE • Class 6-12 • Video + Long Notes + Short Notes — Hindi, English, Hinglish</p>
-    <p class="foot-note">Made with ❤️ for students • Ek-ek chapter karke, concept by concept.</p>
+    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+    <p class="foot-note">Made for students • Free forever</p>
   </div>
 </footer>
-<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 <script src="/assets/js/main.js"></script>
 </body>
 </html>
