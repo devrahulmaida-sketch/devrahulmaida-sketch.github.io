@@ -7,7 +7,10 @@ CH = {
  "tagline": "(x, y, z) ka khel — octants, distance aur section formula",
  "jee": "MEDIUM",
  "meta_desc": "Class 11 Maths Chapter 11: Introduction to Three Dimensional Geometry — long + short notes in Hindi, English, Hinglish. Coordinates, octants, distance and section formulas in 3D.",
- "video": None,
+  "video": {
+  "youtube": "z4VFuGr_jEo",
+  "dur": "1 min 7 sec"
+ },
  "card_tag": "(x, y, z) ka khel — octants, distance aur section formula",
  "card_topics": [
   "🧊 (x,y,z) coordinates + octants",
