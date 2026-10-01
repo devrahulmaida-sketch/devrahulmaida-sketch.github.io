@@ -49,12 +49,12 @@
     <span class="pill">Hindi • English • Hinglish</span>
   </div>
 </section>
-<section class="featured" id="video-toggle" style="padding-top:20px" data-default="en">
+<section class="featured" id="video-toggle" style="padding-top:20px" data-default="hi">
   <div class="vt-tabs" role="tablist" style="display:flex;gap:8px;margin-bottom:12px">
     <button type="button" class="btn btn-ghost vt-btn" data-pane="vt-hi" role="tab">Hinglish</button>
     <button type="button" class="btn btn-ghost vt-btn" data-pane="vt-en" role="tab">English</button>
   </div>
-  <div class="vt-pane" id="vt-hi" hidden><div class="video-soon"><b>Hinglish version jald aa raha hai</b><p>Tab tak English version dekhein ya neeche ke notes padhein.</p></div></div>
+  <div class="vt-pane" id="vt-hi" hidden><div class="player-wrap"><iframe class="yt-embed" src="https://www.youtube.com/embed/RfqoMiiQero" title="Vidai-Sambhashan - Hinglish" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="featured-actions"><a class="btn btn-ghost" href="https://www.youtube.com/watch?v=RfqoMiiQero" target="_blank" rel="noopener">Watch on YouTube</a></div></div>
   <div class="vt-pane" id="vt-en" hidden><div class="player-wrap"><iframe class="yt-embed" src="https://www.youtube.com/embed/gn7pS8U5Ugs" title="Vidai-Sambhashan - English" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="featured-actions"><a class="btn btn-ghost" href="https://www.youtube.com/watch?v=gn7pS8U5Ugs" target="_blank" rel="noopener">Watch on YouTube</a></div></div>
   <script>(function(){var s=document.getElementById("video-toggle");function show(id){s.querySelectorAll(".vt-pane").forEach(function(p){p.hidden=p.id!==id});s.querySelectorAll(".vt-btn").forEach(function(b){var on=b.dataset.pane===id;b.setAttribute("aria-selected",on);b.style.fontWeight=on?"700":"400";b.style.outline=on?"2px solid currentColor":"none"})}s.querySelectorAll(".vt-btn").forEach(function(b){b.addEventListener("click",function(){show(b.dataset.pane)})});show("vt-"+s.dataset.default)})();</script>
 </section>
