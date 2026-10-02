@@ -1,0 +1,13 @@
+00:00 Intro - System of Particles and Rotational Motion
+01:03 Centre of Mass (COM)
+02:14 COM numerical (two masses)
+02:57 Rotational motion = mirror of linear motion
+03:38 Torque
+04:09 Moment of Inertia
+04:49 Moment of Inertia of a rod (NEET/JEE favourite)
+05:32 Angular Momentum and its Conservation
+05:55 Ice skater example
+07:14 Rolling Motion
+07:54 Disc vs ring race down an incline
+09:05 Equilibrium of rigid bodies (stable / unstable)
+10:04 Recap and Conclusion
