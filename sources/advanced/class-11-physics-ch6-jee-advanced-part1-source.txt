@@ -1,0 +1,13 @@
+NARRATION KI BHASHA: Yeh poora video Hinglish mein hoga (Hindi grammar + common English words), ek dost ki tarah. Poore English sentences nahi. Class 11 Physics, System of Particles and Rotational Motion, JEE ADVANCED level questions with full step-by-step solutions.
+PART 1: Centre of Mass aur Moment of Inertia - JEE Advanced Problems
+
+Q1. M mass aur R radius ki uniform disc hai. Isme R/2 radius ka circular hole kata gaya hai, jiska centre disc ke centre se R/2 door hai (hole disc ke centre aur kinare ko touch karta hai). Bacha hua hissa: (a) centre of mass kahan hai? (b) disc ke centre se guzarti perpendicular axis ke bare mein moment of inertia kitna hai?
+Solution: Area ratio se hole ka mass m = M/4 (kyunki area R/2 ka (1/4) hota hai). Bacha mass = 3M/4. Superposition principle: poori disc = bacha hissa + hole. COM: (3M/4)x + (M/4)(R/2) = 0, isliye x = -R/6, yaani centre se hole ki ulti taraf R/6 door. MoI: poori disc ka I = MR^2/2. Hole ka I (disc ke centre O ke bare mein) parallel axis theorem se = (1/2)m(R/2)^2 + m(R/2)^2 = (M/4)(R^2/8 + R^2/4) = 3MR^2/32. Bacha hissa I = MR^2/2 - 3MR^2/32 = 13MR^2/32. Trap: hole ka MoI negative nahi, hum subtract karte hain. Aur COM wali axis ka I nahi pucha, O wali axis ka pucha hai.
+
+Q2. Ek patla square frame hai, har bhuja ka mass m aur lambai a. Moment of inertia nikalo: (a) centre se guzarti perpendicular axis, (b) diagonal axis (plane mein).
+Solution: Ek bhuja ka apne centre se guzarti perpendicular axis (parallel to the rod's plane perpendicular) ka I = ma^2/12 aur uski centre frame ke centre se a/2 door hai. Parallel axis: ma^2/12 + m(a/2)^2 = ma^2/3. Chaar bhujaon ka I_z = 4ma^2/3. Diagonal: perpendicular axis theorem I_z = I_x + I_y. Symmetry se dono diagonals ke I barabar, isliye I_diag = I_z/2 = 2ma^2/3. Trap: perpendicular axis theorem sirf planar (flat) bodies par lagta hai.
+
+Q3. L lambai ki rod ka linear density lambda = kx hai (x ek chhor se naapa gaya). Nikalo: total mass, COM, aur x = 0 wale chhor ke bare mein I.
+Solution: M = integral 0 to L of kx dx = kL^2/2. COM = integral(x * kx dx)/M = (kL^3/3)/(kL^2/2) = 2L/3. I = integral of x^2 * kx dx = kL^4/4 = (kL^2/2)(L^2/2) = ML^2/2. Dhyan do: uniform rod mein ML^2/3 hota hai, yahan heavy end door hai isliye I zyada.
+
+Q4. Conceptual trap: Ring aur disc dono ka mass M aur radius R hai. Dono ka kisi tangent axis (plane mein) ke bare mein I? Ring: MR^2/2 + MR^2 = 3MR^2/2. Disc: MR^2/4 + MR^2 = 5MR^2/4. Parallel axis theorem sirf COM se guzarti axis se parallel axis par lagta hai. Do non-COM axes ke beech seedha parallel axis theorem lagana galat hai, pehle COM wale I par aao. JEE Advanced mein ye galti aam hai.

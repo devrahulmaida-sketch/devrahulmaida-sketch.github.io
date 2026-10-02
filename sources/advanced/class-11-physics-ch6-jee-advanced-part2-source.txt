@@ -1,0 +1,14 @@
+NARRATION KI BHASHA: Yeh poora video Hinglish mein hoga (Hindi grammar + common English words), ek dost ki tarah. Poore English sentences nahi. Class 11 Physics, System of Particles and Rotational Motion, JEE ADVANCED level questions with full step-by-step solutions.
+PART 2: Torque aur Rotational Dynamics - JEE Advanced Problems
+
+Q5. M mass aur R radius ki disc ek fixed horizontal axis par ghoom sakti hai. Uski rim par lipti rassi se m mass ka block latka hai. Rassi disc par slip nahi karti. Block ka acceleration aur tension?
+Solution: Block: mg - T = ma. Disc: torque T*R = I*alpha = (1/2)MR^2 * (a/R), isliye T = Ma/2. Joro to mg = (m + M/2)a, a = mg/(m + M/2) = 2mg/(2m + M). T = Mmg/(2m + M). Check: M = 0 par a = g, M bahut bada ho to a ~ 0. Trap: T = mg nahi hota.
+
+Q6. L lambai aur M mass ki uniform rod ek chhor par frictionless hinge se lagi hai. Isse horizontal se chhoda gaya. (a) abhi chhodte hi angular acceleration, (b) vertical position par angular speed, (c) horizontal position par hinge ka reaction, (d) vertical position par hinge ka reaction.
+Solution: (a) torque = Mg(L/2), I = ML^2/3, alpha = 3g/(2L). (b) Energy conservation: Mg(L/2) = (1/2)(ML^2/3)w^2, w^2 = 3g/L. (c) COM ka acceleration a = alpha*(L/2) = 3g/4 neeche ki taraf, Mg - N = M(3g/4), N = Mg/4 upar. (d) Vertical par COM ka centripetal acceleration w^2 * L/2 = 3g/2 upar (hinge ki taraf). N - Mg = M(3g/2), N = 5Mg/2. Concept: hinge reaction se horizontal aur vertical dono components alag-alag nikalo.
+
+Q7. Atwood machine: m1 > m2 do blocks, pulley ek disc hai mass M aur radius R, rassi slip nahi karti. Acceleration aur dono tension?
+Solution: m1 g - T1 = m1 a, T2 - m2 g = m2 a, (T1 - T2)R = (1/2)MR^2 (a/R), isliye T1 - T2 = Ma/2. Teeno joro: (m1 - m2)g = (m1 + m2 + M/2)a. a = (m1 - m2)g/(m1 + m2 + M/2). T1 aur T2 alag honge, yehi pulley ko ghumata hai. Trap: massless pulley ka assumption yahan nahi chalta.
+
+Q8. Yo-yo: M mass, R radius ki solid cylinder par ek rassi lipti hai, rassi ka ek siraa chhat se bandha hai. Cylinder chhodi jaati hai. Acceleration aur tension?
+Solution: Mg - T = Ma, torque T*R = (1/2)MR^2 * (a/R) => T = Ma/2. a = 2g/3, T = Mg/3. Rassi ka instantaneous contact point rest mein hota hai, isliye hum energy se bhi check kar sakte hain. Hollow cylinder (ring) hota to a = g/2.

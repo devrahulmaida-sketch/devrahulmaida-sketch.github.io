@@ -1,0 +1,14 @@
+NARRATION KI BHASHA: Yeh poora video Hinglish mein hoga (Hindi grammar + common English words), ek dost ki tarah. Poore English sentences nahi. Class 11 Physics, System of Particles and Rotational Motion, JEE ADVANCED level questions with full step-by-step solutions.
+PART 4: Rolling Motion aur Equilibrium - JEE Advanced Problems
+
+Q13. Mass M, radius R, radius of gyration k wala ek rolling body theta incline par bina slip ke niche aata hai. Acceleration, friction aur minimum mu?
+Solution: Energy ya torque se: a = g sin(theta) / (1 + k^2/R^2). Friction f = M g sin(theta) (k^2/R^2)/(1 + k^2/R^2). Bina slip rolling ke liye f <= mu N = mu M g cos(theta), isliye mu >= tan(theta) (k^2/R^2)/(1 + k^2/R^2). Solid sphere (k^2/R^2 = 2/5): a = (5/7) g sin(theta), mu >= (2/7) tan(theta). Race: sabse chhota k^2/R^2 jeetega, yaani solid sphere pehle, phir disc, phir ring. Mass aur radius se koi farak nahi padta.
+
+Q14. M mass, R radius ki solid cylinder rough horizontal zameen par bina slip ke ruling kar rahi hai. Ek horizontal force F (a) centre par, (b) sabse upar ke point par lagaya jaata hai. Acceleration aur friction?
+Solution: (a) F - f = Ma (f peeche), torque f R = (1/2)MR^2 (a/R), f = Ma/2. F = 3Ma/2, a = 2F/(3M), f = F/3 (peeche). (b) Friction aage maano. F + f = Ma, torque (F - f)R = (1/2)MR^2 (a/R), F - f = Ma/2. Jodo: 2F = 3Ma/2, a = 4F/(3M), f = F/3 aage ki taraf. Dhyan do, ek hi cylinder mein friction ki direction force lagne ki jagah se badal sakti hai.
+
+Q15. Billiard ball (solid sphere, mass M, radius R) rough table par rest mein hai. Ek cue se horizontal impulse J ball ke centre se h upar diya jaata hai. h kitna ho to ball turant bina slip ke roll kare?
+Solution: Linear: J = Mv. Angular momentum COM ke bare mein: J h = I omega = (2/5)MR^2 omega. Rolling ke liye v = omega R. Isliye Mv h = (2/5)MR^2 (v/R), h = 2R/5, yaani zameen se 7R/5 upar. h kam ho to ball pehle slip karke baad mein roll karti hai (backspin ya topspin ke saath). Sabse pehle impulse ke dauran friction ignore karte hain kyunki impulse bahut kam samay ka hai.
+
+Q16. a lambai ka ek uniform cube rough horizontal floor par hai. Ek horizontal force F upar ki surface se h height par lagaya jaata hai. Cube phisalne se pehle toppling ke liye mu ki condition?
+Solution: Phislne ki sthiti: F = mu M g. Toppling ki sthiti: edge ke bare mein torque, F h = M g a/2, F = M g a/(2h). Cube pehle topple hoga agar topple wala F kam ho: M g a/(2h) < mu M g, yaani mu > a/(2h). h = a (upar wali edge par) ke liye mu > 1/2. Floor se kam height par force lagayen to cube slide karega, topple nahi. Real exam trap: normal reaction ka point of application bhi shift hota hai, jo toppling ke edge ki taraf ho jaata hai.
