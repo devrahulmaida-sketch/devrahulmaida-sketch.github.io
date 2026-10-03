@@ -1,0 +1,14 @@
+00:00 Intro and roadmap
+01:05 System, surroundings, state variables
+01:50 Zeroth Law and temperature
+02:16 Internal energy
+02:37 Work done and sign convention
+03:25 First Law of Thermodynamics
+04:01 Mayer's relation and Cp, Cv, gamma
+04:25 Thermodynamic processes: isothermal, adiabatic, isochoric, isobaric
+05:10 PV graphs and work as area under curve
+05:36 Second Law of Thermodynamics
+06:16 Heat engine, refrigerator and heat pump
+07:14 Carnot engine and efficiency
+08:01 Numerical problem, step by step
+08:36 Recap and exam tips

@@ -1,0 +1,14 @@
+00:00 Intro and roadmap
+00:44 What is a gas, random molecular motion
+01:27 Gas laws and Avogadro's number
+02:07 Kinetic theory assumptions
+02:58 Pressure from molecular collisions
+03:10 Temperature and kinetic energy of molecules
+04:08 Maxwell distribution and molecular speeds
+04:34 Vp, V average and V rms comparison
+05:26 Monatomic vs diatomic gases, degrees of freedom
+06:06 Law of equipartition of energy
+06:31 Mean free path and real gases
+07:04 Exam-style numerical
+08:05 Real gas deviations and Van der Waals idea
+08:38 Recap and exam tricks
