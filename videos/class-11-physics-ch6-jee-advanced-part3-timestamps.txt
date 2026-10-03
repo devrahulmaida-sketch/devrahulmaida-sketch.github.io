@@ -1,0 +1,6 @@
+00:00 Intro and 4 problems
+00:36 Q9 Turntable and man walking to centre (angular momentum conservation)
+02:26 Q10 Particle hits free rod (COM, angular velocity, 20% KE loss)
+04:21 Q11 Hinged rod impulse (hinge impulse, centre of percussion)
+06:29 Q12 Angular momentum of a projectile
+07:53 Recap
