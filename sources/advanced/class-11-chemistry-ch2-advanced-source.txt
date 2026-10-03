@@ -1,0 +1,22 @@
+NARRATION KI BHASHA: Poori narration Hinglish mein (Hindi grammar + common English words), ek dost ki tarah. Poore English sentences nahi.
+Class 11 Chemistry Chapter 2: Structure of Atom - JEE Advanced level, sabse mushkil concepts bilkul simple tareeke se, solved questions ke saath.
+
+CONCEPT 1: Bohr model (hydrogen jaisi species ke liye). Radius r = 0.529 x n^2 / Z angstrom. Energy E = -13.6 x Z^2 / n^2 eV. Speed v proportional Z/n. Yaad rakho: n badhne par radius badhta hai, energy kam negative hoti hai (upar jaati hai), speed kam hoti hai.
+Solved Q1: Li2+ (Z = 3) ke n = 2 level ki energy aur radius? E = -13.6 x 9 / 4 = -30.6 eV. r = 0.529 x 4 / 3 = 0.705 angstrom.
+Solved Q2: Hydrogen ki Balmer series ki pehli line (n = 3 se n = 2). 1/lambda = R Z^2 (1/n1^2 - 1/n2^2) = 1.097 x 10^7 x (1/4 - 1/9) = 1.097 x 10^7 x 5/36 = 1.524 x 10^6 per meter. lambda = 656 nm (laal rang, visible). Trap: Lyman series ultraviolet (n1 = 1), Balmer visible (n1 = 2), Paschen infrared (n1 = 3).
+Spectral lines ki sankhya: jab electron n-th level se neeche aata hai to total lines = n(n-1)/2. Q: n = 4 se kitni lines? 4 x 3 / 2 = 6.
+Photon energy shortcut: E (eV) = 12400 / lambda (angstrom).
+
+CONCEPT 2: Photoelectric effect. KE max = h x nu - phi. Light ki intensity badhane se electrons ki sankhya badhti hai, unki energy nahi. Energy sirf frequency se badhti hai.
+Solved Q3: 2000 angstrom ka photon, metal ka work function 4.2 eV. Photon energy = 12400 / 2000 = 6.2 eV. KE max = 6.2 - 4.2 = 2.0 eV.
+
+CONCEPT 3: de Broglie aur Heisenberg. lambda = h / (m v). Heisenberg: delta x x delta p >= h / (4 pi). Yeh sirf chhote particles (electron) ke liye matter karta hai, cricket ball ke liye nahi.
+Solved Q4: Electron ki speed 10^6 m/s, lambda? lambda = 6.626 x 10^-34 / (9.1 x 10^-31 x 10^6) = 7.28 x 10^-10 m = 0.728 nm.
+
+CONCEPT 4: Quantum numbers. n principal (shell, 1, 2, 3...), l azimuthal (0 se n-1, shape: s, p, d, f), m_l magnetic (-l se +l, orientation, total 2l + 1), m_s spin (+1/2 ya -1/2). Shell mein orbitals n^2, electrons 2 n^2.
+Nodes: radial nodes = n - l - 1, angular nodes = l, total nodes = n - 1. Q5: 3p orbital mein radial nodes? 3 - 1 - 1 = 1, angular nodes 1, total 2. Q6: 4d mein total nodes 3 (radial 1, angular 2).
+Trap: n = 2 mein l = 2 allowed nahi hai. 2d orbital exist nahi karta.
+
+CONCEPT 5: Electronic configuration ke rules. Aufbau (n + l ka minimum pehle bharta hai, barabar ho to chhota n pehle), Pauli (ek orbital mein max 2 electrons, opposite spin), Hund (degenerate orbitals mein pehle ek ek electron, same spin). Exceptions: Cr = [Ar] 3d5 4s1 aur Cu = [Ar] 3d10 4s1, kyunki half-filled aur fully-filled d subshell zyada stable hai. Ion banate waqt electron pehle 4s se nikalta hai, 3d se nahi (Fe3+ = [Ar] 3d5).
+Solved Q7: Fe3+ ka magnetic moment. Unpaired electrons n = 5. mu = sqrt(n(n+2)) = sqrt(35) = 5.92 BM.
+Solved Q8: Cr mein kitne electrons ka m_s = +1/2 (Hund ke hisaab se) = 6 (3d5 ke paanch aur 4s1 ka ek, sab same spin).
