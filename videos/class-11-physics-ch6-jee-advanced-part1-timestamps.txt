@@ -1,0 +1,6 @@
+00:00 Intro and 4 problems
+00:51 Q1 Disc with a hole: COM and moment of inertia
+03:17 Q2 Square frame: moment of inertia about centre and diagonal
+05:03 Q3 Non-uniform rod: mass, COM and MoI
+07:02 Q4 Parallel axis theorem trap (ring vs disc)
+08:23 Recap
