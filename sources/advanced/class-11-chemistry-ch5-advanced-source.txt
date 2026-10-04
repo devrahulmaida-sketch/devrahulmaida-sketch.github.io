@@ -1,0 +1,19 @@
+NARRATION KI BHASHA: Poori narration Hinglish mein (Hindi grammar + common English words), ek dost ki tarah. Poore English sentences nahi.
+Class 11 Chemistry Chapter 5: Thermodynamics - JEE Advanced level, sabse mushkil concepts bilkul simple tareeke se, solved questions ke saath.
+
+CONCEPT 1: Sign convention aur First Law. delta U = q + w (IUPAC): system ko heat mile to q positive, system par kaam ho to w positive. Gas expand kare to w negative. Isothermal ideal gas mein delta U = 0, isliye q = -w. Adiabatic mein q = 0, isliye delta U = w.
+Solved Q1: Ek gas ne 200 J heat li aur 120 J kaam kiya. delta U = 200 + (-120) = +80 J.
+Solved Q2: Gas ko 1 atm par 2 L se 5 L tak irreversible expand kiya. w = -P delta V = -1 x 3 = -3 L atm = -3 x 101.3 = -304 J.
+
+CONCEPT 2: Enthalpy. H = U + PV. delta H = delta U + delta n_g R T. delta n_g = gaseous products ke moles minus gaseous reactants ke moles.
+Solved Q3: N2(g) + 3H2(g) -> 2NH3(g), 298 K par delta U = -87 kJ. delta n_g = 2 - 4 = -2. delta H = -87 + (-2)(8.314 x 10^-3)(298) = -87 - 4.96 = -91.96 kJ (lagbhag -92 kJ).
+Trap: Solid ya liquid ke moles delta n_g mein nahi ginte.
+
+CONCEPT 3: Hess ka law aur enthalpy of formation. delta H reaction = sum(delta Hf products) - sum(delta Hf reactants). Reaction ko ulta karo to sign badal jaata hai, n guna karo to delta H bhi n guna.
+Solved Q4: C(graphite) + O2 -> CO2, delta H = -393.5 kJ. H2 + 1/2 O2 -> H2O(l), delta H = -285.8 kJ. CH4 ka combustion = -890.3 kJ. CH4 ki formation enthalpy? CH4 + 2O2 -> CO2 + 2H2O, delta H = [-393.5 + 2(-285.8)] - [Hf(CH4)] = -890.3. Isliye -965.1 - Hf(CH4) = -890.3, Hf(CH4) = -74.8 kJ/mol.
+
+CONCEPT 4: Entropy aur Gibbs energy. delta G = delta H - T delta S. Spontaneous jab delta G < 0. Equilibrium par delta G = 0, isliye T = delta H / delta S. delta G standard = -R T ln K = -2.303 R T log K.
+Solved Q5: Reaction ka delta H = +30 kJ, delta S = +100 J/K. Kis temperature se upar spontaneous? T > 30000 / 100 = 300 K.
+Solved Q6: delta G standard = -11.4 kJ at 300 K ho to log K = 11400 / (2.303 x 8.314 x 300) = 11400 / 5744 = 1.98, K lagbhag 96.
+Isothermal reversible work: w = -2.303 n R T log(V2/V1). Adiabatic ya free expansion (vacuum mein) mein w = 0 aur delta U = 0 (ideal gas).
+Spontaneity table: delta H negative aur delta S positive = hamesha spontaneous, delta H positive aur delta S negative = kabhi nahi.

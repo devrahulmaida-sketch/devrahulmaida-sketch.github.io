@@ -1,0 +1,20 @@
+NARRATION KI BHASHA: Poori narration Hinglish mein (Hindi grammar + common English words), ek dost ki tarah. Poore English sentences nahi.
+Class 11 Chemistry Chapter 3: Classification of Elements and Periodicity in Properties - JEE Advanced level, sabse mushkil concepts bilkul simple tareeke se, solved questions ke saath.
+
+CONCEPT 1: Effective nuclear charge (Zeff) aur Slater ke rules. Zeff = Z - S. S (shielding) ginte waqt, jis electron ka Zeff nikalna hai uske same shell ke dusre electrons 0.35 har ek (1s mein 0.30), us se ek shell andar (n-1) ke electrons 0.85 har ek, aur usse bhi andar ke (n-2 aur andar) 1.00 har ek.
+Solved Q1: Na (Z = 11) ke 3s electron ka Zeff. Configuration 1s2 2s2 2p6 3s1. (n-1) shell mein 8 electrons x 0.85 = 6.8, (n-2) shell mein 2 electrons x 1.00 = 2.0. S = 8.8, Zeff = 11 - 8.8 = 2.2.
+Isi Zeff se samjho: period mein left se right Zeff badhta hai, isliye atomic size ghatta hai aur ionisation energy badhti hai.
+
+CONCEPT 2: Isoelectronic species ka size. Same number of electrons, to jiska nuclear charge (Z) zyada, uska radius chhota.
+Solved Q2: S2-, Cl-, K+, Ca2+ (sab mein 18 electrons). Z = 16, 17, 19, 20. Radius order: S2- > Cl- > K+ > Ca2+.
+Solved Q3: N3-, O2-, F-, Na+, Mg2+, Al3+ (sab 10 electrons). Radius: N3- > O2- > F- > Na+ > Mg2+ > Al3+.
+
+CONCEPT 3: Ionisation enthalpy (IE) ke exceptions. Period 2 ka order: Li < B < Be < C < O < N < F < Ne. Be > B kyunki Be ka 2s fully filled hai aur B ka electron 2p mein hai (2p, 2s se door aur kam penetrate). N > O kyunki N ka 2p3 half-filled stable hai, O mein paired electrons ki repulsion hai.
+Successive IE jump trick: jahan IE mein achanak bahut bada jump aaye, wahi valence electrons ki sankhya hai.
+Solved Q4: Ek element ki IE1, IE2, IE3 = 738, 1451, 7733 kJ/mol. IE2 se IE3 mein bada jump, matlab 2 valence electrons, yani group 2 ka element (Mg).
+
+CONCEPT 4: Electron gain enthalpy. Cl ki electron gain enthalpy F se zyada negative hai (Cl = -349, F = -328 kJ/mol), kyunki F bahut chhota hai aur electron-electron repulsion zyada hai. Order: Cl > F > Br > I. Noble gases aur Be, N ki lagbhag zero ya positive hoti hai.
+
+CONCEPT 5: Electronegativity aur character. Pauling scale: left se right badhti hai, group mein neeche ghatti hai. Metallic character ghatta hai left se right. Oxides: Na2O aur MgO basic, Al2O3 amphoteric (dono acid aur base se react), SiO2, P4O10, SO2, Cl2O7 acidic. Period mein left se right oxides ki acidity badhti hai.
+Diagonal relationship: Li - Mg, Be - Al, B - Si, kyunki charge/size ratio similar hota hai.
+Solved Q5: Be(OH)2 amphoteric kyun hai? Diagonal relationship ki wajah se Al(OH)3 jaisa. Q6: Cl2O7 aur Na2O mein kaun zyada acidic? Cl2O7.
