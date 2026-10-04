@@ -1,0 +1,14 @@
+NARRATION KI BHASHA: Poori narration Hinglish mein (Hindi grammar + common English words), ek dost ki tarah. Poore English sentences nahi.
+Class 11 Chemistry Chapter 8: Organic Chemistry - Some Basic Principles and Techniques - JEE Advanced level, solved questions ke saath.
+
+CONCEPT 1: Carbocation stability. 3 degree > 2 degree > 1 degree > methyl. Reason: hyperconjugation aur +I effect. Allyl aur benzyl carbocation resonance ki wajah se bahut stable hote hain, aksar 3 degree se bhi zyada.
+Solved Q1: Stability order: (CH3)3C+ > (CH3)2CH+ > CH3CH2+ > CH3+. (CH3)3C+ mein 9 alpha C-H bonds hain, to 9 hyperconjugative structures. (CH3)2CH+ mein 6, CH3CH2+ mein 3.
+
+CONCEPT 2: Hyperconjugation. No. of hyperconjugative structures = no. of alpha hydrogens. Isliye alkene stability bhi zyada alpha H wale mein zyada.
+Solved Q2: CH3-CH=CH2 mein alpha H = 3, to 3 structures. (CH3)2C=CH2 mein alpha H = 6, to 6 structures, zyada stable.
+
+CONCEPT 3: Acidity aur electronic effects. -I group acidity badhata hai, +I group kam karta hai. Conjugate base jitna stable, acid utna strong.
+Solved Q3: Acid strength: FCH2COOH > ClCH2COOH > BrCH2COOH > CH3COOH, kyunki F ka -I effect sabse zyada hai.
+
+CONCEPT 4: IUPAC naming aur isomerism. Longest chain, lowest locants. Structural isomers ka matlab same molecular formula, alag structure. C4H10 ke 2 isomers hain, C5H12 ke 3, C6H14 ke 5.
+Solved Q4: C5H12 ke 3 isomers: n-pentane, isopentane (2-methylbutane), neopentane (2,2-dimethylpropane).
