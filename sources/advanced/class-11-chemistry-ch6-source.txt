@@ -1,0 +1,14 @@
+NARRATION KI BHASHA: Poori narration Hinglish mein (Hindi grammar + common English words), ek dost ki tarah. Poore English sentences nahi.
+Class 11 Chemistry Chapter 6: Equilibrium - JEE Advanced level, sabse mushkil concepts bilkul simple tareeke se, solved questions ke saath.
+
+CONCEPT 1: Kp aur Kc ka relation. Kp = Kc (RT)^delta n_g. delta n_g = gaseous products ke moles minus gaseous reactants ke moles. Solid aur liquid ki concentration constant hoti hai, Kc mein nahi aate.
+Solved Q1: N2 + 3H2 <-> 2NH3, Kc = 0.5 at 400 K. delta n_g = -2. Kp = 0.5 x (0.0821 x 400)^-2 = 0.5 / 1078.5 = 4.6 x 10^-4.
+
+CONCEPT 2: ICE table aur degree of dissociation. PCl5 <-> PCl3 + Cl2. Agar 1 mol PCl5 ka dissociation alpha ho, to equilibrium par PCl5 = 1 - alpha, PCl3 = alpha, Cl2 = alpha, total moles = 1 + alpha. Kp = alpha^2 P / (1 - alpha^2).
+Solved Q2: PCl5 ka alpha = 0.5 at total pressure 2 atm. Kp = (0.25 x 2) / (1 - 0.25) = 0.5/0.75 = 0.667 atm.
+
+CONCEPT 3: Le Chatelier aur Q vs K. Q < K to reaction forward jaata hai, Q > K to backward, Q = K equilibrium. Pressure badhao to wo taraf jaata hai jahan gas ke moles kam hain. Catalyst sirf speed badhata hai, K nahi badalta. Temperature badalne se hi K badalta hai.
+
+CONCEPT 4: Ionic equilibrium. pH = -log[H+]. Weak acid ke liye [H+] = sqrt(Ka x C). Buffer: pH = pKa + log([salt]/[acid]) (Henderson). Ksp: AgCl ke liye s = sqrt(Ksp).
+Solved Q3: 0.1 M CH3COOH, Ka = 1.8 x 10^-5. [H+] = sqrt(1.8 x 10^-6) = 1.34 x 10^-3, pH = 2.87.
+Solved Q4: Buffer mein 0.2 M acetic acid aur 0.4 M sodium acetate, pKa = 4.74. pH = 4.74 + log 2 = 4.74 + 0.30 = 5.04.
