@@ -1,0 +1,13 @@
+NARRATION KI BHASHA: Poori narration Hinglish mein (Hindi grammar + common English words), ek dost ki tarah. Poore English sentences nahi.
+Class 11 Chemistry Chapter 9: Hydrocarbons - JEE Advanced level, solved questions ke saath.
+
+CONCEPT 1: Markovnikov rule aur peroxide effect. HX alkene par add hota hai to H us carbon par jaata hai jis par pehle se zyada H hain, kyunki zyada stable carbocation banta hai. Peroxide ki presence mein sirf HBr ke saath anti-Markovnikov addition hota hai (free radical mechanism).
+Solved Q1: Propene + HBr -> 2-bromopropane (Markovnikov). Propene + HBr (peroxide) -> 1-bromopropane (anti-Markovnikov).
+
+CONCEPT 2: Ozonolysis se alkene ka structure. Alkene + O3, phir Zn/H2O: C=C tootkar dono taraf C=O banta hai. Product dekhkar alkene wapas bana sakte ho.
+Solved Q2: Ozonolysis ke baad sirf CH3CHO milta hai (2 mol). To alkene 2-butene hai, CH3CH=CHCH3.
+
+CONCEPT 3: Alkyne ka acidic hydrogen. Terminal alkyne (R-C triple bond C-H) acidic hota hai, kyunki sp carbon zyada electronegative hai (50% s-character). Isliye NaNH2 aur ammoniacal AgNO3 ke saath react karta hai, internal alkyne nahi karta.
+
+CONCEPT 4: Aromaticity (Huckel rule). Planar, cyclic, fully conjugated aur (4n + 2) pi electrons. Benzene 6 pi e-, aromatic. Cyclobutadiene 4 pi e-, anti-aromatic. Cyclopentadienyl anion 6 pi e-, aromatic.
+Solved Q3: Tropylium cation (C7H7+) mein 6 pi electrons, planar, cyclic, to aromatic.
