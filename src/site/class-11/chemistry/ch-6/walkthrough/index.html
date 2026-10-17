@@ -183,7 +183,7 @@ function draw1(t,dt){
   S1.parts.forEach(p=>{
     if(p.b)nb++;else na++;
     dot(g,p.x,p.y,5,p.b?'#22d3ee':'#f87171');
-    if(t-p.flash<0.8){g.strokeStyle='#fbbf24';g.lineWidth=2;g.beginPath();g.arc(p.x,p.y,10+(t-p.flash)*8,0,7);g.stroke()}
+    if(t-p.flash<0.8){g.strokeStyle='#fbbf24';g.lineWidth=2;g.beginPath();g.arc(p.x,p.y,Math.max(2,10+(t-p.flash)*8),0,7);g.stroke()}
   });
   // counters + rates (right side)
   const rf=KF*na,rb=KB*nb;
