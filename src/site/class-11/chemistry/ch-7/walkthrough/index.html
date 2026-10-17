@@ -336,8 +336,8 @@ function draw5(t,dt){
   const bx=120,by=40,bh=250;
   g.fillStyle='#12121f';g.fillRect(bx,by,26,bh);
   g.strokeStyle='#33334f';g.strokeRect(bx,by,26,bh);
-  label(g,'strong REDUCING agent (e⁻ daan me generous)',bx+40,by+4,'#f87171');
-  label(g,'strong OXIDISING agent (e⁻ lene wala)',bx+40,by+bh-4,'#4ade80');
+  label(g,'strong REDUCING agent (e⁻ daan me generous)',bx+40,by-12,'#f87171');
+  label(g,'strong OXIDISING agent (e⁻ lene wala)',bx+40,by+bh+22,'#4ade80');
   const yOf=i=>by+8+i*(bh-16)/(METALS.length-1);
   METALS.forEach((m,i)=>{
     const y=yOf(i);
