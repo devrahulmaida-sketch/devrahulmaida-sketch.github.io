@@ -152,7 +152,7 @@ const R=(a,b)=>a+Math.random()*(b-a);
 function pvmap(gx,gy,gw,gh){return {X:v=>gx+(v-0.5)/4.5*gw, Y:p=>gy-p/5*gh}}
 function axes(g,gx,gy,gw,gh){
   g.strokeStyle='#3c3c5c';g.lineWidth=1.5;g.strokeRect(gx,gy-gh,gw,gh);
-  label(g,'P',gx-14,gy-gh+14,'#8f8fb8');label(g,'V →',gx+gw-24,gy+18,'#8f8fb8');
+  label(g,'P',gx-14,gy-gh+14,'#8f8fb8');label(g,'V →',gx+gw+6,gy+16,'#8f8fb8');
   [1,2,3,4,5].forEach(v=>{if(v<=5)label(g,''+v,gx+(v-0.5)/4.5*gw-3,gy+16,'#5c5c78')});
   [1,2,3,4].forEach(p=>label(g,''+p,gx-14,gy-p/5*gh+4,'#5c5c78'));
 }
@@ -182,7 +182,7 @@ function draw1(t,dt){
   const gx=60,gy=300,gw=380,gh=260;
   const m={X:v=>gx+(v-0.5)/2.5*gw,Y:p=>gy-p/5*gh};
   g.strokeStyle='#3c3c5c';g.lineWidth=1.5;g.strokeRect(gx,gy-gh,gw,gh);
-  label(g,'P',gx-14,gy-gh+14,'#8f8fb8');label(g,'V →',gx+gw-24,gy+18,'#8f8fb8');
+  label(g,'P',gx-14,gy-gh+14,'#8f8fb8');label(g,'V →',gx+gw+6,gy+16,'#8f8fb8');
   [1,2,3].forEach(v=>label(g,''+v,m.X(v)-3,gy+16,'#5c5c78'));
   [1,2,3,4].forEach(p=>label(g,''+p,gx-14,m.Y(p)+4,'#5c5c78'));
   if(S1.prog<1)S1.prog=Math.min(1,S1.prog+dt/1.4);
@@ -320,7 +320,7 @@ function draw3(t,dt){
     label(g,'W = '+pl.Wv.toFixed(2),gx+gw-70,gy-gh+14,'#fbbf24');
   });
   // center status
-  if(V===2)panel(g,[['Isothermal W = 2.77 > Adiabatic W = 2.42','#fbbf24']],215,40);
+  if(V===2)panel(g,[['Isothermal W = 2.77 > Adiabatic W = 2.42','#fbbf24']],215,184);
   document.getElementById('v3read').innerHTML='V = <b>'+V.toFixed(2)+'</b> · Isothermal: <b style="color:#22d3ee">400K, W='+ (4*Math.log(V)).toFixed(2)+'</b> · Adiabatic: <b style="color:#e879f9">'+Math.round(Tad)+'K, W='+((4-4*Math.pow(V,1-GAM))/(GAM-1)).toFixed(2)+'</b>'+(V===2?' · ADIABATIC STEEP + THANDI (apni U se work!)':'');
 }
 
@@ -382,10 +382,10 @@ const cycD={v:Math.pow(T1c/T2c,1/(GAM-1)),p:0};
 cycD.p=3/cycD.v;
 function legPts(f,v1,v2,n){const pts=[];for(let i=0;i<=n;i++){const v=v1+(v2-v1)*i/n;pts.push([v,f(v)])}return pts}
 const LEGS=[
- {pts:legPts(v=>4/v,1,2,40),col:'#22d3ee',cap:'1. ISOTHERMAL expansion @ 400K - reservoir se heat Q₁ = 2.77 andar'},
- {pts:legPts(v=>2*Math.pow(2/v,GAM),2,cycC.v,40),col:'#e879f9',cap:'2. ADIABATIC expansion - insulated! Gas thandi: 400 → 300K'},
- {pts:legPts(v=>3/v,cycC.v,cycD.v,40),col:'#5eead4',cap:'3. ISOTHERMAL compression @ 300K - sink ko heat Q₂ = 2.08 bahar'},
- {pts:legPts(v=>cycD.p*Math.pow(cycD.v/v,GAM),cycD.v,1,40),col:'#fbbf24',cap:'4. ADIABATIC compression - wapas 400K! Cycle poora, ΔU = 0'}
+ {pts:legPts(v=>4/v,1,2,40),col:'#22d3ee',cap:'1. ISOTHERMAL expansion @ 400K - reservoir se heat Q₁ = 2.77 andar',lines:['1. ISOTHERMAL exp @ 400K:','reservoir se heat Q₁','= 2.77 units ANDAR']},
+ {pts:legPts(v=>2*Math.pow(2/v,GAM),2,cycC.v,40),col:'#e879f9',cap:'2. ADIABATIC expansion - insulated! Gas thandi: 400 → 300K',lines:['2. ADIABATIC expansion:','insulated! Gas THANDI','400 → 300K']},
+ {pts:legPts(v=>3/v,cycC.v,cycD.v,40),col:'#5eead4',cap:'3. ISOTHERMAL compression @ 300K - sink ko heat Q₂ = 2.08 bahar',lines:['3. ISOTHERMAL comp @ 300K:','sink ko heat Q₂','= 2.08 units BAHAR']},
+ {pts:legPts(v=>cycD.p*Math.pow(cycD.v/v,GAM),cycD.v,1,40),col:'#fbbf24',cap:'4. ADIABATIC compression - wapas 400K! Cycle poora, ΔU = 0',lines:['4. ADIABATIC compression:','wapas 400K! ΔU = 0,','cycle POORA']}
 ];
 const S5={seg:0,segT:0,play:true};
 document.getElementById('cplay').onclick=e=>{S5.play=!S5.play;e.target.textContent=S5.play?'Pause':'Play'};
@@ -419,8 +419,7 @@ function draw5(t,dt){
   // caption box
   g.fillStyle='#12121fcc';g.fillRect(560,90,190,120);
   g.strokeStyle=L.col;g.strokeRect(560,90,190,120);
-  const cap=L.cap;
-  for(let i=0;i<cap.length;i+=26)label(g,cap.slice(i,i+26),568,112+i/26*20,L.col);
+  L.lines.forEach((ln,i)=>label(g,ln,568,112+i*22,L.col));
   panel(g,[['T₁ = 400K, T₂ = 300K','#8f8fb8'],['η = 1 − 300/400 = 25%','#fbbf24'],['Q₁=2.77 · W=0.69 · Q₂=2.08','#8f8fb8'],['clockwise = engine!','#5eead4']],560,240);
   document.getElementById('v5read').textContent=L.cap;
 }
