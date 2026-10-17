@@ -198,7 +198,7 @@ function draw2(t,dt){
   }
   label(g,'steel rail, L = 1 m (ΔL ×600 exaggerated!)',railX,railY-14,'#8f8fb8');
   label(g,'α_steel = 1.2×10⁻⁵ /°C',railX,railY+railH+22,'#8f8fb8');
-  label(g,'railway tracks me gap isliye!',560,railY+16,'#f0f0fa');
+  label(g,'railway tracks me gap isliye!',560,railY+railH+22,'#f0f0fa');
   // bimetallic strip
   const bx=110,by=210;
   const aCu=1.7e-5,aFe=1.2e-5;
@@ -277,7 +277,7 @@ function draw3(t,dt){
   }
   label(g,'T = '+T.toFixed(0)+' °C',Math.min(px+12,640),py-12,'#fbbf24');
   // state annotation
-  panel(g,[[phase,'#f0f0fa'],['ice: 42 J to 0°C','#8f8fb8'],['melt: 334 J (plateau)','#8f8fb8'],['water: 418.6 J to 100°C','#8f8fb8'],['boil: 2260 J (BADA!)','#8f8fb8']],536,40);
+  panel(g,[[phase,'#f0f0fa'],['ice: 42 J to 0°C','#8f8fb8'],['melt: 334 J (plateau)','#8f8fb8'],['water: 418.6 J to 100°C','#8f8fb8'],['boil: 2260 J (BADA!)','#8f8fb8']],300,180);
   document.getElementById('v3read').innerHTML='Q = <b>'+S3.Q+' J</b> · T = <b style="color:#fbbf24">'+T.toFixed(0)+' °C</b> · <b style="color:'+(plateau?'#e879f9':'#22d3ee')+'">'+phase+'</b>';
 }
 
@@ -303,7 +303,7 @@ function draw4(t,dt){
     g.fillStyle=grd;
     if(front>0)g.fillRect(rx,r.y,front,rh);
     g.strokeStyle=r.col;g.lineWidth=2;g.strokeRect(rx,r.y,rw,rh);
-    label(g,r.nm,rx,r.y-8,r.col);
+    label(g,r.nm,rx+12,r.y-8,r.col);
     // thermometers at 1/3 and 2/3
     [0.33,0.66,0.98].forEach(f=>{
       const tx=rx+rw*f,lit=front>=rw*f;
@@ -342,7 +342,7 @@ function draw5(t,dt){
   g.fillStyle=grd;g.beginPath();g.arc(cx,cy,glow,0,7);g.fill();
   dot(g,cx,cy,34,bbColor(S5.T));
   g.strokeStyle='#e8e8f044';g.lineWidth=1.5;g.beginPath();g.arc(cx,cy,34,0,7);g.stroke();
-  label(g,'filament',cx-26,cy+56,'#8f8fb8');
+  label(g,'filament',cx-26,cy+132,'#8f8fb8');
   // rays
   const nrays=Math.min(24,4+Math.round(Math.log10(Math.max(1,P))*3));
   g.strokeStyle=bbColor(S5.T);g.lineWidth=2;
