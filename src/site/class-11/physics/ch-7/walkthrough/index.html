@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gravitation Ka Visual Walkthrough - Class 11 Physics Ch 7</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .scene h2 .num{color:#22d3ee}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .fact b{color:#fff}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:440px;font-size:1rem;padding:10px}
+  .readout{font-size:.88rem;color:#fbbf24;flex-basis:100%;min-height:1.2em}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Physics - Chapter 7 - Gravitation</span>
+  <h1>Gravitation Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - inverse square se escape velocity tak. Force ghatao, g map karo, orbit me phenko, Kepler ke areas dekho.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> Inverse Square - Distance Double, Force 1/4</h2>
+  <p class="sub"><b>F = G·m₁m₂/r²</b> - har cheez har cheez ko kheenchti hai! Distance ka slider ghumao: r double → force <b>1/4</b>, triple → <b>1/9</b>. Force hamesha attractive, dono pe barabar (third law pair!).</p>
+  <canvas id="cv1" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <div class="slider">distance r = <input type="range" id="rslider" min="1" max="5" value="1" step="0.1"> <span id="rval">1.0</span>×</div>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="fact"><b>G = 6.674 × 10⁻¹¹ N·m²/kg²</b> (Cavendish ne measure kiya). Earth tumhe jitne force se kheenchti hai, <b>tum bhi Earth ko utne hi force se</b> kheench rahe ho - bas tumhara acceleration dikhta hai, Earth ka nahi! g = GM/R² - mass cancel, isliye vacuum me feather = hammer.</div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> g Ka Variation - Upar Bhi Kam, Andar Bhi Kam</h2>
+  <p class="sub">Ball ko slider se ghumao: center (r=0) se surface (R) tak, phir 3R tak door. Andar: <b>g ∝ r</b> (sirf andar wala mass khinchta hai). Bahar: <b>g ∝ 1/r²</b>. Center pe g = ZERO - sab taraf se pull cancel!</p>
+  <canvas id="cv2" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <div class="slider">position r = <input type="range" id="gslider" min="0" max="3" value="1" step="0.02"> <span id="gval">1.00</span>×R</div>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="fact"><b>Height h pe:</b> g' = g(1 − 2h/R) &nbsp;|&nbsp; <b>Depth d pe:</b> g' = g(1 − d/R) - height pe g FASTER ghatta hai (factor 2!). Exam favourite: g sabse zyada <b>poles</b> pe (rotation + shape), center pe <b>zero</b>.</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Newton Ka Cannonball - Kitni Tez Phenko?</h2>
+  <p class="sub">Pahaad se topu horizontal chalaao. Slow = gir jaayegi. <b>7.9 km/s = orbit!</b> (satellite lagatar Earth KI TARAF gir raha hai, bas aage itna tez ki Earth "chhoot" jaati hai). <b>11.2 km/s = escape</b> - kabhi wapas nahi!</p>
+  <canvas id="cv3" width="760" height="360"></canvas>
+  <div class="ctrl">
+    <button class="btn" data-v="5.5">5.5 km/s</button>
+    <button class="btn" data-v="7.0">7.0 km/s</button>
+    <button class="btn hot" data-v="7.9">7.9 (orbit)</button>
+    <button class="btn" data-v="9.5">9.5 km/s</button>
+    <button class="btn" data-v="11.2">11.2 (escape)</button>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="fact"><b>v &lt; v_e → bound (ellipse)</b>, v = v_e → parabola, v &gt; v_e → hyperbola. Near-Earth orbit: v<sub>o</sub> = √(GM/r) ≈ 7.9 km/s = <b>v<sub>e</sub>/√2</b>. Weightlessness: satellite me sab same g se free fall me - gravity wahan ~90% hai, zero NAHI!</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> Kepler Ka Area Law - Paas Fast, Door Slow</h2>
+  <p class="sub">Planet ellipse me ghoomta hai, Sun ek <b>focus</b> pe (center pe nahi!). Equal time ke shaded wedges dekho - sab <b>equal area</b>! Perihelion (paas) = fast, aphelion (door) = slow. Angular momentum conserved!</p>
+  <canvas id="cv4" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="fact"><b>Law 3: T² ∝ a³</b> - door ke planets ke BAHUT lambe years: Mercury 0.24 yr, Earth 1 yr, Neptune 165 years! Ye laws Moon aur artificial satellites pe bhi lagte hain. T² = 4π²r³/GM.</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> Escape Velocity - Kuen Se Bahar Ka Kick</h2>
+  <p class="sub">Gravity ek kuen (well) hai: U = −GMm/r batata hai tum kitne andar ho. <b>v<sub>e</sub> = √(2GM/R)</b> woh kick hai jo bahar phenk de. Planet chuno, rocket launch karo - v_e se kam pe wapas gir jaayega!</p>
+  <canvas id="cv5" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" data-p="earth">Earth</button>
+    <button class="btn" data-p="moon">Moon</button>
+    <button class="btn" data-p="jupiter">Jupiter</button>
+    <button class="btn" id="b5go">Launch Rocket 🚀</button>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="fact">Earth: v<sub>e</sub> = <b>11.2 km/s</b>, v<sub>o</sub> = 7.9 &nbsp;|&nbsp; Moon: 2.4 &nbsp;|&nbsp; Jupiter: 60 km/s! Escape velocity <b>angle ya rocket ke mass pe depend NAHI karti</b> - sirf planet ke M aur R pe. Satellite energy: E = −GMm/2r (negative = bound).</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">F = Gm₁m₂/r² &nbsp;|&nbsp; G = 6.674 × 10⁻¹¹ N·m²/kg²</div>
+  <div class="formula">g = GM/R² &nbsp;|&nbsp; upar: g(1−2h/R) · andar: g(1−d/R)</div>
+  <div class="formula">U = −GMm/r &nbsp;|&nbsp; V = −GM/r &nbsp;|&nbsp; E<sub>field</sub> = GM/r²</div>
+  <div class="formula">v<sub>e</sub> = √(2GM/R) = √(2gR) = 11.2 km/s</div>
+  <div class="formula">v<sub>o</sub> = √(GM/r) = v<sub>e</sub>/√2 ≈ 7.9 km/s</div>
+  <div class="formula">T² = 4π²r³/GM &nbsp;|&nbsp; E<sub>sat</sub> = −GMm/2r</div>
+  <p style="margin-top:18px">Gravity ka khel samjha? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Physics Ch 7 - Gravitation | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,r,0,7);g.fill()}
+function panel(g,lines,x,y){lines.forEach((L,i)=>label(g,L[0],x,y+i*22,L[1]))}
+const R=(a,b)=>a+Math.random()*(b-a);
+
+// ---------- SCENE 1: inverse square ----------
+const S1={r:1};
+document.getElementById('rslider').oninput=e=>{S1.r=+e.target.value;document.getElementById('rval').textContent=S1.r.toFixed(1)};
+function draw1(t,dt){
+  const[c,g]=ctx('cv1'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  // left: two masses
+  const m1x=90,m2x=90+S1.r*70,my=120;
+  const F=1/(S1.r*S1.r);
+  dot(g,m1x,my,26,'#22d3ee');
+  label(g,'m₁',m1x-8,my+5,'#06222a');
+  dot(g,m2x,my,14,'#e879f9');
+  label(g,'m₂',m2x-8,my+4,'#06222a');
+  // force arrows (equal-opposite)
+  const al=8+44*F;
+  g.strokeStyle='#fbbf24';g.lineWidth=3;
+  g.beginPath();g.moveTo(m1x+30,my);g.lineTo(m1x+30+al,my);g.stroke();
+  g.beginPath();g.moveTo(m1x+30+al,my-5);g.lineTo(m1x+30+al+8,my);g.lineTo(m1x+30+al,my+5);g.stroke();
+  g.beginPath();g.moveTo(m2x-18,my);g.lineTo(m2x-18-al,my);g.stroke();
+  g.beginPath();g.moveTo(m2x-18-al,my-5);g.lineTo(m2x-18-al-8,my);g.lineTo(m2x-18-al,my+5);g.stroke();
+  label(g,'F',m1x+34+al,my-8,'#fbbf24');
+  label(g,'F (same!)',m2x-20-al-60,my-8,'#fbbf24');
+  label(g,'r = '+S1.r.toFixed(1)+' units',90,my+52,'#8f8fb8');
+  // right: 1/r^2 curve
+  const gx=470,gy=280,gw=240,gh=210;
+  g.strokeStyle='#3c3c5c';g.lineWidth=1.5;g.strokeRect(gx,gy-gh,gw,gh);
+  label(g,'F',gx-16,gy-gh+14,'#8f8fb8');
+  label(g,'r →',gx+gw-24,gy+18,'#8f8fb8');
+  label(g,'F ∝ 1/r²',gx+60,gy-gh+18,'#8f8fb8');
+  g.strokeStyle='#22d3ee';g.lineWidth=2.5;g.beginPath();
+  for(let x=1;x<=5;x+=0.05){const px=gx+(x-1)/4*gw,py=gy-(1/(x*x))*gh;x===1?g.moveTo(px,py):g.lineTo(px,py)}
+  g.stroke();
+  [1,2,3,4,5].forEach(x=>{const px=gx+(x-1)/4*gw;label(g,x+'',px-3,gy+18,'#8f8fb8')});
+  const px=gx+(S1.r-1)/4*gw,py=gy-F*gh;
+  dot(g,px,py,6,'#fbbf24');
+  label(g,'(' +S1.r.toFixed(1)+', '+(Math.round(F*100)/100)+')',Math.min(px+10,gx+gw-80),py-10,'#fbbf24');
+  panel(g,[['F = F₀/r²','#5eead4'],['r = '+S1.r.toFixed(1)+' → F = '+(Math.round(F*100)/100)+' F₀','#fbbf24'],[S1.r>=2?'vs r=1: '+(Math.round(F*100))+'% bacha!':'r=1 pe full F₀','#8f8fb8']],60,240);
+  document.getElementById('v1read').innerHTML='r = <b>'+S1.r.toFixed(1)+'</b> → F = <b style="color:#5eead4">'+(Math.round(F*1000)/1000)+' F₀</b> · r double = 1/4, r triple = 1/9 (inverse square!)';
+}
+
+// ---------- SCENE 2: g variation ----------
+const S2={r:1};
+document.getElementById('gslider').oninput=e=>{S2.r=+e.target.value;document.getElementById('gval').textContent=S2.r.toFixed(2)};
+function draw2(t,dt){
+  const[c,g]=ctx('cv2'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  // Earth cross-section
+  const ex=170,ey=165,ER=110;
+  const grd=g.createRadialGradient(ex,ey,10,ex,ey,ER);
+  grd.addColorStop(0,'#1d4ed8');grd.addColorStop(1,'#0d0d18');
+  g.fillStyle=grd;g.beginPath();g.arc(ex,ey,ER,0,7);g.fill();
+  g.strokeStyle='#22d3ee';g.lineWidth=2;g.beginPath();g.arc(ex,ey,ER,0,7);g.stroke();
+  label(g,'R',ex+ER/2,ey-6,'#5eead4');
+  g.strokeStyle='#5eead466';g.beginPath();g.moveTo(ex,ey);g.lineTo(ex+ER/1.41,ey-ER/1.41);g.stroke();
+  // ball position (angle -45 deg direction)
+  const br=S2.r*ER,bx=ex+br/1.41,by=ey-br/1.41;
+  dot(g,bx,by,8,'#fbbf24');
+  label(g,'tum',bx+12,by+4,'#fbbf24');
+  if(S2.r<1)label(g,'andar: sirf yeh mass khinchega',60,310,'#8f8fb8');
+  else label(g,'bahar: poora Earth khinchta hai',60,310,'#8f8fb8');
+  // graph g vs r
+  const gx=420,gy=280,gw=300,gh=200;
+  g.strokeStyle='#3c3c5c';g.lineWidth=1.5;g.strokeRect(gx,gy-gh,gw,gh);
+  label(g,'g',gx-14,gy-gh+14,'#8f8fb8');label(g,'r (R units) →',gx+gw-86,gy+18,'#8f8fb8');
+  label(g,'g₀',gx-24,gy-gh+16,'#5eead4');
+  // curve: linear to r=1 then 1/r^2
+  g.strokeStyle='#22d3ee';g.lineWidth=2.5;g.beginPath();
+  for(let x=0;x<=3;x+=0.03){
+    const gv=x<=1?x:1/(x*x);
+    const px=gx+x/3*gw,py=gy-gv*gh;
+    x===0?g.moveTo(px,py):g.lineTo(px,py);
+  }
+  g.stroke();
+  // surface marker
+  const sx=gx+gw/3;
+  g.strokeStyle='#5eead455';g.setLineDash([4,4]);g.beginPath();g.moveTo(sx,gy);g.lineTo(sx,gy-gh);g.stroke();g.setLineDash([]);
+  label(g,'surface (r=R)',sx-38,gy+32,'#5eead4');
+  const gv=S2.r<=1?S2.r:1/(S2.r*S2.r);
+  const px=gx+S2.r/3*gw,py=gy-gv*gh;
+  dot(g,px,py,6,'#fbbf24');
+  panel(g,[['r = '+S2.r.toFixed(2)+' R','#fbbf24'],["g = "+(Math.round(gv*100)/100)+" g₀",'#5eead4'],[S2.r<0.98?'ANDAR: g ∝ r (linear)':(S2.r<=1.02?'SURFACE: full g₀':'BAHAR: g ∝ 1/r² (crash!)'),'#8f8fb8']],60,30);
+  document.getElementById('v2read').innerHTML='r = <b>'+S2.r.toFixed(2)+' R</b> → g = <b style="color:#5eead4">'+(Math.round(gv*100)/100)+' g₀</b>'+(S2.r<0.02?' · CENTER pe g = 0!':'');
+}
+
+// ---------- SCENE 3: Newton cannonball ----------
+const GM=3.986e5, RE=6371; // km^3/s^2, km
+const S3={v:7.9,run:null,trail:[],status:'speed chuno aur fire!'}
+const CX=330,CY=180,PR=0.012; // px per km
+document.querySelectorAll('.scene')[2].querySelectorAll('.btn[data-v]').forEach(b=>{
+  b.onclick=e=>{
+    S3.v=+b.dataset.v;
+    document.querySelectorAll('.scene')[2].querySelectorAll('.btn').forEach(x=>x.classList.remove('hot'));
+    e.target.classList.add('hot');
+    S3.run={x:0,y:-RE,vx:S3.v,vy:0};
+    S3.trail=[];S3.status='chala...';
+  };
+});
+function draw3(t,dt){
+  const[c,g]=ctx('cv3'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  // Earth
+  const grd=g.createRadialGradient(CX-20,CY-20,10,CX,CY,RE*PR);
+  grd.addColorStop(0,'#1d4ed8');grd.addColorStop(1,'#0a2a5e');
+  g.fillStyle=grd;g.beginPath();g.arc(CX,CY,RE*PR,0,7);g.fill();
+  g.strokeStyle='#22d3ee66';g.lineWidth=1.5;g.beginPath();g.arc(CX,CY,RE*PR,0,7);g.stroke();
+  label(g,'EARTH',CX-24,CY+4,'#bfdbfe');
+  // mountain/cannon
+  dot(g,CX,CY-RE*PR,4,'#8f8fb8');
+  // integrate
+  if(S3.run){
+    const steps=Math.max(1,Math.round(dt*60*30));
+    const h=dt*60/steps*8;
+    for(let i=0;i<steps*8&&S3.run;i++){
+      const s=S3.run;
+      const r2=s.x*s.x+s.y*s.y,r=Math.sqrt(r2);
+      const a=-GM/(r2);
+      s.vx+=a*s.x/r*h;s.vy+=a*s.y/r*h;
+      s.x+=s.vx*h;s.y+=s.vy*h;
+      const rr=Math.sqrt(s.x*s.x+s.y*s.y);
+      if(rr<=RE){S3.status='GIR GAYA - Earth se takraya! ('+S3.v+' km/s bahut slow)';S3.run=null;S3.trail.push([CX+s.x,CY+s.y]);}
+      else if(rr>RE*7){S3.status='BHAAG GAYA - escape! ('+S3.v+' km/s ≥ v_e pe kabhi wapas nahi)';S3.run=null;}
+      else if(i%40===0)S3.trail.push([CX+s.x,CY+s.y]);
+      if(S3.trail.length>900)S3.trail.shift();
+    }
+    if(S3.run&&S3.trail.length>850&&!S3.orbMsg){S3.orbMsg=true}
+  }
+  // trail
+  if(S3.trail.length>1){
+    g.strokeStyle='#fbbf24';g.lineWidth=2;g.beginPath();
+    S3.trail.forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.stroke();
+  }
+  if(S3.run){dot(g,CX+S3.run.x,CY+S3.run.y,5,'#fbbf24');dot(g,CX+S3.run.x,CY+S3.run.y,2,'#fff7d6')}
+  // status-based ring
+  const orbiting=S3.run&&S3.trail.length>400;
+  panel(g,[['v = '+S3.v+' km/s','#fbbf24'],['v_o (orbit) = 7.9','#5eead4'],['v_e (escape) = 11.2','#f87171'],[orbiting?'ORBIT chal raha! ✓':S3.status,'#8f8fb8']],560,40);
+  document.getElementById('v3read').textContent=orbiting?'ORBIT! v = '+S3.v+' km/s - lagatar Earth ki taraf gir raha, bas kabhi pahunchta nahi!':S3.status;
+}
+
+// ---------- SCENE 4: Kepler equal areas ----------
+const S4={th:0,wedges:[],acc:0,lastW:0,areaT:0};
+function draw4(t,dt){
+  const[c,g]=ctx('cv4'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const cx=300,cy=170,a=200,b=118,e=0.72;
+  const fx=cx-a*e; // focus (sun)
+  // orbit path
+  g.strokeStyle='#3c3c5c';g.lineWidth=1.5;g.beginPath();
+  for(let i=0;i<=64;i++){const an=i/64*6.2832;const px=cx+a*Math.cos(an),py=cy+b*Math.sin(an);i?g.lineTo(px,py):g.moveTo(px,py)}
+  g.stroke();
+  // sun at focus
+  dot(g,fx,cy,9,'#fbbf24');
+  label(g,'SUN (focus!)',fx-34,cy+26,'#fbbf24');
+  // planet: angular speed ~ 1/r^2 from focus
+  const spd=2.2;
+  const px0=cx+a*Math.cos(S4.th),py0=cy+b*Math.sin(S4.th);
+  const r0=Math.hypot(px0-fx,py0-cy);
+  S4.th+=spd*dt*(Math.pow(160,2)/Math.pow(Math.max(40,r0),2))*0.55;
+  const px=cx+a*Math.cos(S4.th),py=cy+b*Math.sin(S4.th);
+  // wedge accumulation: every 0.55 rad of sweep close a wedge
+  S4.acc+=dt;
+  if(!S4.wStart)S4.wStart={th:S4.th,pts:[[fx,cy]]};
+  S4.wStart.pts.push([px,py]);
+  if(S4.acc>1.15){
+    S4.acc=0;
+    S4.wedges.push(S4.wStart.pts.slice());
+    S4.wStart={th:S4.th,pts:[[fx,cy],[px,py]]};
+    if(S4.wedges.length>4)S4.wedges.shift();
+  }
+  // draw wedges
+  const wcols=['#22d3ee33','#e879f933','#fbbf2433','#4ade8033','#f8717133'];
+  S4.wedges.forEach((w,i)=>{
+    g.fillStyle=wcols[i%5];
+    g.beginPath();g.moveTo(w[0][0],w[0][1]);
+    w.forEach(p=>g.lineTo(p[0],p[1]));
+    g.closePath();g.fill();
+  });
+  // planet + velocity arrow
+  const v=spd*(Math.pow(160,2)/Math.pow(Math.max(40,r0),2))*0.55;
+  dot(g,px,py,7,'#22d3ee');
+  const vx=-a*Math.sin(S4.th),vy=b*Math.cos(S4.th);
+  const vm=Math.hypot(vx,vy);
+  const al2=10+v*40;
+  g.strokeStyle='#5eead4';g.lineWidth=2.5;g.beginPath();
+  g.moveTo(px,py);g.lineTo(px+vx/vm*al2,py+vy/vm*al2);g.stroke();
+  // peri/ap markers
+  const perX=cx-a,apX=cx+a;
+  label(g,'perihelion (FAST)',perX-56,cy+b+24,'#5eead4');
+  label(g,'aphelion (SLOW)',apX-52,cy+b+24,'#8f8fb8');
+  panel(g,[['equal time wedges','#fbbf24'],['= EQUAL AREA ✓','#5eead4'],['paas → fast, door → slow','#8f8fb8'],['T² ∝ a³ (Law 3)','#e879f9'],['Neptune year = 165 Earth yr!','#8f8fb8']],560,50);
+  document.getElementById('v4read').textContent='planet speed abhi '+(r0<160?'ZYADA (perihelion ke paas)':'KAM (aphelion ke paas)')+' - par swept area same!';
+}
+
+// ---------- SCENE 5: escape velocity ----------
+const PLANETS={earth:{n:'Earth',ve:11.2,vo:7.9,col:'#22d3ee',pr:46},moon:{n:'Moon',ve:2.4,vo:1.7,col:'#8f8fb8',pr:22},jupiter:{n:'Jupiter',ve:60,vo:42,col:'#fbbf24',pr:88}};
+const S5={p:'earth',rocket:null,msg:'planet chuno, phir Launch!'};
+document.querySelectorAll('.scene')[4].querySelectorAll('.btn[data-p]').forEach(b=>{
+  b.onclick=e=>{S5.p=b.dataset.p;S5.rocket=null;S5.msg='Launch dabao!';document.querySelectorAll('.scene')[4].querySelectorAll('.btn').forEach(x=>x.classList.remove('hot'));e.target.classList.add('hot')};
+});
+document.getElementById('b5go').onclick=()=>{
+  const pl=PLANETS[S5.p];
+  S5.rocket={y:0,vy:200,escTried:false}; // first: sub-escape kick -> falls back
+  S5.msg='rocket 0.55 × v_e se gaya...';
+};
+function draw5(t,dt){
+  const[c,g]=ctx('cv5'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const pl=PLANETS[S5.p];
+  // planet
+  const py=300-pl.pr;
+  const grd=g.createRadialGradient(150,py-10,6,150,py,pl.pr);
+  grd.addColorStop(0,pl.col);grd.addColorStop(1,'#0d0d18');
+  g.fillStyle=grd;g.beginPath();g.arc(150,py,pl.pr,0,7);g.fill();
+  g.strokeStyle=pl.col;g.lineWidth=1.5;g.beginPath();g.arc(150,py,pl.pr,0,7);g.stroke();
+  label(g,pl.n,150-pl.n.length*3.5,py+4,'#0a0a12');
+  // rocket animation
+  const gy=py-pl.pr;
+  if(S5.rocket){
+    const rk=S5.rocket;
+    rk.y+=rk.vy*dt;
+    rk.vy-=(rk.escTried?26:240)*dt; // escape kick: gravity barely slows it; sub-escape: pulls it back
+    if(rk.vy<0&&rk.y<=0){
+      if(rk.escTried){S5.rocket=null;S5.msg='wapas GIR GAYA - v_e chahiye thi!'}
+      else{rk.y=0;rk.vy=265;rk.escTried=true;S5.msg='ab FULL v_e = '+pl.ve+' km/s se!';}
+    }
+    if(rk.y>330){S5.rocket=null;S5.msg='ESCAPE! v_e = '+pl.ve+' km/s pe kabhi wapas nahi! ✓'}
+    if(S5.rocket){dot(g,150,gy-rk.y,5,'#f87171');g.strokeStyle='#f8717166';g.lineWidth=2;g.beginPath();g.moveTo(150,gy-rk.y+7);g.lineTo(150,gy-rk.y+18);g.stroke()}
+  }
+  // bars: v_o and v_e
+  const bx=430,maxv=62,bw=340;
+  const bar=(lbl,v,col,y)=>{
+    g.fillStyle='#1b1b2e';g.fillRect(bx,y,v/maxv*bw,26);
+    g.fillStyle=col;g.fillRect(bx,y,v/maxv*bw,26);
+    label(g,lbl+' = '+v+' km/s',bx+8,y+17,'#0a0a12');
+  };
+  bar('v_o (orbit)',pl.vo,'#5eead4',150);
+  bar('v_e (escape)',pl.ve,'#f87171',200);
+  label(g,'v_e = √2 × v_o hamesha!',bx,250,'#fbbf24');
+  panel(g,[[pl.n,'#fbbf24'],['v_o = √(GM/R) = '+pl.vo,'#5eead4'],['v_e = √(2GM/R) = '+pl.ve,'#f87171'],[S5.msg,'#8f8fb8']],430,50);
+  document.getElementById('v5read').textContent=pl.n+': v_e = '+pl.ve+' km/s · '+S5.msg;
+}
+
+// ---------- main loop ----------
+let lastTs=0;
+function loop(ts){const t=ts/1000;const dt=Math.min(0.12,(ts-lastTs)/1000||0.016);lastTs=ts;
+  if(cur===0)draw1(t,dt);else if(cur===1)draw2(t,dt);else if(cur===2)draw3(t,dt);else if(cur===3)draw4(t,dt);else if(cur===4)draw5(t,dt);
+  requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
