@@ -349,7 +349,7 @@ document.querySelectorAll('.scene')[4].querySelectorAll('.btn[data-p]').forEach(
 document.getElementById('b5go').onclick=()=>{
   const pl=PLANETS[S5.p];
   S5.rocket={y:0,vy:200,escTried:false}; // first: sub-escape kick -> falls back
-  S5.msg='rocket 0.55 × v_e se gaya...';
+  S5.msg='rocket 0.75 × v_e se gaya...';
 };
 function draw5(t,dt){
   const[c,g]=ctx('cv5'),W=c.width,H=c.height;
@@ -378,9 +378,11 @@ function draw5(t,dt){
   // bars: v_o and v_e
   const bx=430,maxv=62,bw=340;
   const bar=(lbl,v,col,y)=>{
-    g.fillStyle='#1b1b2e';g.fillRect(bx,y,v/maxv*bw,26);
-    g.fillStyle=col;g.fillRect(bx,y,v/maxv*bw,26);
-    label(g,lbl+' = '+v+' km/s',bx+8,y+17,'#0a0a12');
+    const w=v/maxv*bw;
+    g.fillStyle='#26263e';g.fillRect(bx,y,bw,26);
+    g.fillStyle=col;g.fillRect(bx,y,w,26);
+    if(w>150)label(g,lbl+' = '+v+' km/s',bx+8,y+17,'#0a0a12');
+    else label(g,lbl+' = '+v+' km/s',bx+w+8,y+17,col);
   };
   bar('v_o (orbit)',pl.vo,'#5eead4',150);
   bar('v_e (escape)',pl.ve,'#f87171',200);
