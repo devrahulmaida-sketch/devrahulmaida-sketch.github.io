@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trig Ka Visual Walkthrough - Class 11 Maths Ch 3</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:520px;font-size:1rem;padding:10px}
+  .readout{font-size:.88rem;color:#fbbf24;flex-basis:100%;min-height:1.2em}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Mathematics - Chapter 3 - Trigonometric Functions</span>
+  <h1>Trig Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - radians se compound angles tak. Radius ko circle pe lapeto, unit circle pe sin/cos dekho, wave ko circle se nikalo, bade angles ko todo, sin(x+y) khud banao.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> Radian - Arc Ko Radius Se Naapo</h2>
+  <p class="sub"><b>1 radian = jab arc ki length radius ke BARABAR ho.</b> Slider ghumao: kitne radius lambi arc bani? Utne radians! Pura circle = exactly <b>2π radian = 360°</b>. <b>π rad = 180°</b>, 1 rad ≈ 57.3°.</p>
+  <canvas id="cv1" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <div class="slider">θ = <input type="range" id="r1" min="0" max="360" value="57" step="1"> <span id="r1v">57</span>°</div>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="fact"><b>Radian kyun, degree kyun nahi?</b> Degree me 360 koi natural number nahi - purani convention hai. Radian me arc formula <b>l = rθ</b> DIRECT chalta hai (degree me galat answer!). Isliye JEE/CBSE me radian default hai. Yaad rakho: 30° = π/6, 45° = π/4, 60° = π/3, 90° = π/2.</div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> Unit Circle - sin θ = y, cos θ = x</h2>
+  <p class="sub">Radius 1 wale circle pe angle θ ka point <b>P(x, y)</b>: <b>cos θ = x, sin θ = y</b> - yehi DEFINITION hai, 90°+ ke liye bhi! Slider 720° tak ghumao (angles kitne bhi bade ho sakte hain). Quadrant badalte hi signs dekho - <b>ASTC</b>!</p>
+  <canvas id="cv2" width="760" height="360"></canvas>
+  <div class="ctrl">
+    <div class="slider">θ = <input type="range" id="u2" min="0" max="720" value="30" step="1"> <span id="u2v">30</span>°</div>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="fact"><b>ASTC = "All Students Take Chemistry":</b> Q1 me SAB positive, Q2 me sirf Sin, Q3 me sirf Tan, Q4 me sirf Cos. Aur hamesha <b>sin²θ + cos²θ = 1</b> - Pythagoras hi hai (x² + y² = r², r = 1)! tan undefined jahan cos = 0 (90°, 270°).</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Wave Kahan Se Aati Hai - Circle Se!</h2>
+  <p class="sub">Point circle pe ghoomta hai, uski <b>height ko right pe plot</b> karo - ban gayi <b>sine wave</b>! Play dabao aur dekho circle aur wave EXACTLY sync me. <b>Period = 2π</b> (ek pura chakra = ek pura wave). Cos = sin ko π/2 aage shift!</p>
+  <canvas id="cv3" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="s3play">Chalao ▶</button>
+    <button class="btn" id="s3cos">cos dikhao</button>
+    <div class="slider">θ = <input type="range" id="s3th" min="0" max="720" value="0" step="1"> <span id="s3thv">0</span>°</div>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="fact"><b>Range yaad rakho:</b> −1 ≤ sin x, cos x ≤ 1 hamesha (circle ki height 1 se upar kabhi nahi!). Par tan x KUCH BHI ho sakta hai (−∞, ∞). sin aur cos ka period 2π, tan ka sirf π. sin wave 0 se start, cos 1 se!</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> Bade Angles Ka Machine - Reference Angle</h2>
+  <p class="sub">Koi bhi bada angle (720° tak!) do steps me solve: <b>(1) reference angle</b> nikalo (nearest x-axis se chhota angle), <b>(2) quadrant se sign</b> lagao (ASTC). Machine khud todti hai - slider ghumao!</p>
+  <canvas id="cv4" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <div class="slider">θ = <input type="range" id="b4" min="0" max="720" value="210" step="5"> <span id="b4v">210</span>°</div>
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="fact"><b>Trick:</b> angle ko π/2 ke multiples me todo - EVEN multiple pe function SAME, ODD multiple pe cofunction (sin↔cos). Example: sin(7π/6) = sin(π + π/6) = <b>−sin(π/6) = −1/2</b> (Q3 me sin negative!). sin(π − x) = sin x, sin(π + x) = −sin x.</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> Compound Angle Lab - sin(x+y) Khud Banao</h2>
+  <p class="sub"><b>sin(x+y) = sin x cos y + cos x sin y</b> - yaad karne ki jagah VERIFY karo! x aur y sliders ghumao: direct sin(x+y) aur expansion ke do bars HAMESHA barabar. <b>75° button</b> dabao: sin 75° ka exact value!</p>
+  <canvas id="cv5" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <div class="slider">x = <input type="range" id="c5x" min="0" max="90" value="45" step="1"> <span id="c5xv">45</span>°</div>
+    <div class="slider">y = <input type="range" id="c5y" min="0" max="90" value="30" step="1"> <span id="c5yv">30</span>°</div>
+    <button class="btn hot" id="b75">sin 75° = sin(45+30)</button>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="fact"><b>Memory trick:</b> cos me sign FLIP hota hai (cos(x+y) = cos x cos y − sin x sin y - plus andar, MINUS bahar), sin me SAME rehta hai. sin 75° = (√6 + √2)/4 ≈ 0.966 - compound angle se EXACT values nikalte hain, calculator nahi chahiye!</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">π rad = 180° &nbsp;|&nbsp; arc: l = rθ (θ radian me hi!)</div>
+  <div class="formula">Unit circle: cos θ = x, sin θ = y &nbsp;|&nbsp; sin²θ + cos²θ = 1</div>
+  <div class="formula">ASTC: Q1 sab +, Q2 sin, Q3 tan, Q4 cos</div>
+  <div class="formula">sin(x±y) = sin x cos y ± cos x sin y &nbsp;|&nbsp; cos(x+y) = cos x cos y − sin x sin y</div>
+  <div class="formula">sin 2x = 2 sin x cos x &nbsp;|&nbsp; cos 2x = cos²x − sin²x = 1 − 2sin²x</div>
+  <div class="formula">Period: sin, cos = 2π &nbsp;|&nbsp; tan = π &nbsp;|&nbsp; −1 ≤ sin, cos ≤ 1</div>
+  <p style="margin-top:18px">Circle aur wave ka connection pakka? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Maths Ch 3 - Trigonometric Functions | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
+function panel(g,lines,x,y){lines.forEach((L,i)=>label(g,L[0],x,y+i*22,L[1]))}
+const D2R=Math.PI/180;
+function fmt(x){return (Math.abs(x)<0.0005?0:x).toFixed(3)}
+
+// ---------- SCENE 1: radians ----------
+const [c1,g1]=ctx('cv1');
+const S1={deg:57};
+document.getElementById('r1').oninput=e=>{S1.deg=+e.target.value;document.getElementById('r1v').textContent=S1.deg};
+function draw1(t,dt){
+  const g=g1,W=c1.width,H=c1.height;
+  g.clearRect(0,0,W,H);
+  const cx=225,cy=170,r=120;
+  const th=S1.deg*D2R;
+  // circle
+  g.strokeStyle='#3a3a58';g.lineWidth=2;g.beginPath();g.arc(cx,cy,r,0,7);g.stroke();
+  // full-circle ghost arc ticks at each radian
+  for(let k=0;k<6;k++){const a=-k*1;const x1=cx+Math.cos(a)*(r-5),y1=cy+Math.sin(a)*(r-5),x2=cx+Math.cos(a)*(r+5),y2=cy+Math.sin(a)*(r+5);
+    g.strokeStyle='#2c2c44';g.lineWidth=2;g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke()}
+  // highlighted arc from 0 to th (anticlockwise = negative canvas angle)
+  g.strokeStyle='#e879f9';g.lineWidth=7;g.beginPath();g.arc(cx,cy,r,0,-th,true);g.stroke();
+  // radii
+  g.strokeStyle='#4a4a6e';g.lineWidth=2;g.beginPath();g.moveTo(cx,cy);g.lineTo(cx+r,cy);g.stroke();
+  const px=cx+Math.cos(-th)*r,py=cy+Math.sin(-th)*r;
+  g.strokeStyle='#22d3ee';g.lineWidth=2.5;g.beginPath();g.moveTo(cx,cy);g.lineTo(px,py);g.stroke();
+  dot(g,px,py,6,'#22d3ee');
+  label(g,'r',cx+r/2-4,cy-8,'#8f8fb8');
+  // arc length readout on circle
+  const radii=S1.deg*Math.PI/180;
+  // right info
+  panel(g,[
+    ['θ = '+S1.deg+'°','#f0f0fa'],
+    ['θ = '+radii.toFixed(3)+' radian','#fbbf24'],
+    ['arc = '+radii.toFixed(3)+' × radius','#e879f9'],
+    ['(kyunki l = rθ, r = 1)','#8f8fb8'],
+    ['','#8f8fb8'],
+    ['π rad = 180°','#22d3ee'],
+    ['1 radian ≈ 57.30°','#22d3ee'],
+    ['pura circle = 2π rad','#22d3ee']
+  ],430,70);
+  // special marker when near 57-58 deg
+  if(S1.deg>=56&&S1.deg<=58) label(g,'← yahi 1 RADIAN hai: arc = 1 radius!',430,260,'#4ade80');
+  if(S1.deg==180) label(g,'← π radian: arc = π ≈ 3.14 radius!',430,260,'#4ade80');
+  if(S1.deg==360) label(g,'← 2π radian: puri circle = 2π radius lambi!',430,260,'#4ade80');
+  label(g,'magenta arc ko radius se naapo',430,300,'#8f8fb8');
+  document.getElementById('v1read').innerHTML='θ = <b>'+S1.deg+'°</b> = <b style="color:#e879f9">'+radii.toFixed(3)+' rad</b> · arc length = <b>'+radii.toFixed(3)+' r</b> · conversion: '+S1.deg+' × π/180';
+}
+
+// ---------- SCENE 2: unit circle ----------
+const [c2,g2]=ctx('cv2');
+const S2={deg:30};
+document.getElementById('u2').oninput=e=>{S2.deg=+e.target.value;document.getElementById('u2v').textContent=S2.deg};
+function draw2(t,dt){
+  const g=g2,W=c2.width,H=c2.height;
+  g.clearRect(0,0,W,H);
+  const cx=235,cy=180,r=130;
+  const eff=((S2.deg%360)+360)%360, th=eff*D2R;
+  const turns=Math.floor(S2.deg/360);
+  // axes
+  g.strokeStyle='#26263e';g.lineWidth=1;
+  g.beginPath();g.moveTo(cx-r-25,cy);g.lineTo(cx+r+25,cy);g.stroke();
+  g.beginPath();g.moveTo(cx,cy-r-25);g.lineTo(cx,cy+r+25);g.stroke();
+  g.strokeStyle='#3a3a58';g.lineWidth=2;g.beginPath();g.arc(cx,cy,r,0,7);g.stroke();
+  const cs=Math.cos(th),sn=Math.sin(th);
+  const px=cx+cs*r,py=cy-sn*r;
+  // cos = x (cyan, along x-axis), sin = y (magenta, vertical at P)
+  g.strokeStyle='#22d3ee';g.lineWidth=5;g.beginPath();g.moveTo(cx,cy);g.lineTo(px,cy);g.stroke();
+  g.strokeStyle='#e879f9';g.lineWidth=5;g.beginPath();g.moveTo(px,cy);g.lineTo(px,py);g.stroke();
+  g.strokeStyle='#6e6e92';g.lineWidth=1.5;g.setLineDash([4,4]);g.beginPath();g.moveTo(px,py);g.lineTo(cx,py);g.stroke();g.setLineDash([]);
+  g.strokeStyle='#f0f0fa';g.lineWidth=2;g.beginPath();g.moveTo(cx,cy);g.lineTo(px,py);g.stroke();
+  dot(g,px,py,6,'#fbbf24');
+  label(g,'P(x, y)',px+10,py-6,'#fbbf24');
+  label(g,'cos θ',cx+(px-cx)/2-20,cy+(cs>=0?16:-8),'#22d3ee');
+  label(g,'sin θ',px+8,cy+(py-cy)/2,'#e879f9');
+  const quad=eff<90?1:eff<180?2:eff<270?3:4;
+  // ASTC grid
+  const gx=470,gy=60,bw=105,bh=46;
+  const cells=[['Q2: SIN +','#e879f9',2],['Q1: ALL +','#4ade80',1],['Q3: TAN +','#fbbf24',3],['Q4: COS +','#22d3ee',4]];
+  cells.forEach((cell,i)=>{
+    const row=Math.floor(i/2),col=i%2;
+    const x=gx+col*bw,y=gy+row*bh;
+    g.fillStyle=cell[2]===quad?'#1e2a1e':'#12121f';
+    if(cell[2]===quad)g.fillStyle='#22303a';
+    g.fillRect(x,y,bw-6,bh-6);
+    g.strokeStyle=cell[2]===quad?cell[1]:'#2c2c44';g.lineWidth=2;g.strokeRect(x,y,bw-6,bh-6);
+    label(g,cell[0],x+8,y+24,cell[2]===quad?cell[1]:'#5c5c78');
+  });
+  label(g,'ASTC - kaun positive?',gx,gy-14,'#8f8fb8');
+  const tanV=Math.abs(cs)<0.005?'UNDEFINED (cos=0)':fmt(sn/cs);
+  panel(g,[
+    ['θ = '+S2.deg+'°'+(turns>0?' ('+turns+' pura chakra + '+eff+'°)':''),'#f0f0fa'],
+    ['cos θ = x = '+fmt(cs),'#22d3ee'],
+    ['sin θ = y = '+fmt(sn),'#e879f9'],
+    ['tan θ = y/x = '+tanV,'#fbbf24'],
+    ['quadrant: Q'+quad,'#4ade80'],
+    ['sin²θ + cos²θ = '+(cs*cs+sn*sn).toFixed(3),'#8f8fb8']
+  ],470,200);
+  document.getElementById('v2read').innerHTML='cos θ = <b style="color:#22d3ee">'+fmt(cs)+'</b> · sin θ = <b style="color:#e879f9">'+fmt(sn)+'</b> · tan θ = <b>'+tanV+'</b> · <b>Q'+quad+'</b> · sin²θ + cos²θ = <b style="color:#4ade80">1</b> hamesha!';
+}
+
+// ---------- SCENE 3: wave unwrapping ----------
+const [c3,g3]=ctx('cv3');
+const S3={deg:0,playing:false,mode:'sin'};
+document.getElementById('s3play').onclick=()=>{S3.playing=!S3.playing;document.getElementById('s3play').textContent=S3.playing?'Ruko ⏸':'Chalao ▶'};
+document.getElementById('s3cos').onclick=()=>{S3.mode=S3.mode==='sin'?'cos':'sin';document.getElementById('s3cos').textContent=S3.mode==='sin'?'cos dikhao':'sin dikhao'};
+document.getElementById('s3th').oninput=e=>{S3.deg=+e.target.value;document.getElementById('s3thv').textContent=S3.deg};
+function draw3(t,dt){
+  const g=g3,W=c3.width,H=c3.height;
+  g.clearRect(0,0,W,H);
+  if(S3.playing){S3.deg=(S3.deg+dt*90)%720;document.getElementById('s3th').value=S3.deg;document.getElementById('s3thv').textContent=Math.round(S3.deg)}
+  const cx=160,cy=170,r=105;
+  const th=S3.deg*D2R;
+  const val=S3.mode==='sin'?Math.sin(th):Math.cos(th);
+  // circle
+  g.strokeStyle='#3a3a58';g.lineWidth=2;g.beginPath();g.arc(cx,cy,r,0,7);g.stroke();
+  const px=cx+Math.cos(th)*r,py=cy-Math.sin(th)*r;
+  g.strokeStyle='#f0f0fa';g.lineWidth=2;g.beginPath();g.moveTo(cx,cy);g.lineTo(px,py);g.stroke();
+  dot(g,px,py,6,'#fbbf24');
+  // wave area
+  const wx=330,wlen=400,wcy=170,amp=105;
+  const kx=wlen/(2*Math.PI); // px per radian
+  g.strokeStyle='#26263e';g.lineWidth=1;g.beginPath();g.moveTo(wx,wcy);g.lineTo(wx+wlen+10,wcy);g.stroke();
+  // x labels: 0, π/2, π, 3π/2, 2π
+  const marks=[['0',0],['π/2',Math.PI/2],['π',Math.PI],['3π/2',3*Math.PI/2],['2π',2*Math.PI]];
+  marks.forEach(m=>{const x=wx+m[1]*kx;
+    g.strokeStyle='#2c2c44';g.beginPath();g.moveTo(x,wcy-4);g.lineTo(x,wcy+4);g.stroke();
+    label(g,m[0],x-6,wcy+20,'#8f8fb8')});
+  // amplitude guides
+  g.strokeStyle='#1e1e30';g.setLineDash([3,4]);
+  g.beginPath();g.moveTo(wx,wcy-amp);g.lineTo(wx+wlen,wcy-amp);g.stroke();
+  g.beginPath();g.moveTo(wx,wcy+amp);g.lineTo(wx+wlen,wcy+amp);g.stroke();g.setLineDash([]);
+  label(g,'+1',wx-24,wcy-amp+4,'#5c5c78');label(g,'−1',wx-24,wcy+amp+4,'#5c5c78');
+  // wave path up to current th (drawn left of pen: pen angle decreases)
+  g.strokeStyle=S3.mode==='sin'?'#e879f9':'#22d3ee';g.lineWidth=2.5;g.beginPath();
+  const thDraw=Math.min(th,2*Math.PI);
+  for(let a=0;a<=thDraw;a+=0.02){
+    const v=S3.mode==='sin'?Math.sin(a):Math.cos(a);
+    const x=wx+a*kx,y=wcy-v*amp;
+    if(a===0)g.moveTo(x,y);else g.lineTo(x,y);
+  }
+  g.stroke();
+  // pen position + sync line
+  const penA=thDraw;
+  const penV=S3.mode==='sin'?Math.sin(penA):Math.cos(penA);
+  const penX=wx+penA*kx,penY=wcy-penV*amp;
+  g.strokeStyle='#4ade80';g.lineWidth=1.5;g.setLineDash([5,4]);g.beginPath();g.moveTo(px,py);g.lineTo(penX,penY);g.stroke();g.setLineDash([]);
+  dot(g,penX,penY,5,'#4ade80');
+  if(th>2*Math.PI) label(g,'ek pura chakra ho gaya - wave repeat!',wx+120,40,'#4ade80');
+  label(g,'unit circle',cx-34,cy+r+24,'#8f8fb8');
+  label(g,S3.mode+'(x) wave - circle ki height hi plot ho rahi hai',wx+60,wcy+amp+28,'#8f8fb8');
+  document.getElementById('v3read').innerHTML='θ = <b>'+Math.round(S3.deg)+'°</b> ('+(thDraw/Math.PI).toFixed(2)+'π) · '+S3.mode+' θ = <b style="color:'+(S3.mode==='sin'?'#e879f9':'#22d3ee')+'">'+fmt(val)+'</b> · period = <b>2π</b> · green line: circle ↔ wave sync';
+}
+
+// ---------- SCENE 4: reference angle machine ----------
+const [c4,g4]=ctx('cv4');
+const S4={deg:210};
+document.getElementById('b4').oninput=e=>{S4.deg=+e.target.value;document.getElementById('b4v').textContent=S4.deg};
+function draw4(t,dt){
+  const g=g4,W=c4.width,H=c4.height;
+  g.clearRect(0,0,W,H);
+  const cx=225,cy=170,r=120;
+  const eff=((S4.deg%360)+360)%360, th=eff*D2R;
+  const turns=Math.floor(S4.deg/360);
+  g.strokeStyle='#26263e';g.lineWidth=1;
+  g.beginPath();g.moveTo(cx-r-25,cy);g.lineTo(cx+r+25,cy);g.stroke();
+  g.beginPath();g.moveTo(cx,cy-r-25);g.lineTo(cx,cy+r+25);g.stroke();
+  g.strokeStyle='#3a3a58';g.lineWidth=2;g.beginPath();g.arc(cx,cy,r,0,7);g.stroke();
+  const quad=eff<90?1:eff<180?2:eff<270?3:4;
+  const ref=quad===1?eff:quad===2?180-eff:quad===3?eff-180:360-eff;
+  // full angle arc (magenta, from 0 to θ)
+  g.strokeStyle='#e879f9';g.lineWidth=5;g.beginPath();g.arc(cx,cy,r-14,0,-th,true);g.stroke();
+  // reference angle arc (green, from nearest x-axis to θ)
+  const baseA=quad===1?0:quad===2?Math.PI:quad===3?Math.PI:2*Math.PI;
+  g.strokeStyle='#4ade80';g.lineWidth=5;
+  g.beginPath();
+  if(quad===1||quad===3) g.arc(cx,cy,r-26,-baseA,-th,quad===1);
+  else g.arc(cx,cy,r-26,-th,-baseA,quad===2);
+  g.stroke();
+  const px=cx+Math.cos(th)*r,py=cy-Math.sin(th)*r;
+  g.strokeStyle='#f0f0fa';g.lineWidth=2;g.beginPath();g.moveTo(cx,cy);g.lineTo(px,py);g.stroke();
+  dot(g,px,py,6,'#fbbf24');
+  label(g,'θ = '+eff+'°',cx+10,cy-r-6,'#e879f9');
+  label(g,'ref = '+ref+'°',cx+10,cy+r+20,'#4ade80');
+  const cs=Math.cos(th),sn=Math.sin(th);
+  const sgnS=quad<=2?'+':'−', sgnC=(quad===1||quad===4)?'+':'−', sgnT=(quad===1||quad===3)?'+':'−';
+  panel(g,[
+    ['STEP 1: reference angle','#4ade80'],
+    [(turns>0?turns+' chakra hatao → ':'')+'θ = '+eff+'°, Q'+quad,'#f0f0fa'],
+    ['ref angle = '+ref+'°','#f0f0fa'],
+    ['','#8f8fb8'],
+    ['STEP 2: ASTC se sign','#e879f9'],
+    ['sin('+S4.deg+'°) = '+sgnS+'sin('+ref+'°) = '+fmt(sn),'#fbbf24'],
+    ['cos('+S4.deg+'°) = '+sgnC+'cos('+ref+'°) = '+fmt(cs),'#22d3ee'],
+    ['tan = '+(Math.abs(cs)<0.005?'UNDEFINED':fmt(sn/cs)),'#8f8fb8']
+  ],430,60);
+  document.getElementById('v4read').innerHTML='sin('+S4.deg+'°) = '+sgnS+'sin('+ref+'°) = <b style="color:#fbbf24">'+fmt(sn)+'</b> · cos = <b style="color:#22d3ee">'+fmt(cs)+'</b> · Q'+quad+' me sin '+(quad<=2?'POSITIVE':'NEGATIVE');
+}
+
+// ---------- SCENE 5: compound angle lab ----------
+const [c5,g5]=ctx('cv5');
+const S5={x:45,y:30};
+document.getElementById('c5x').oninput=e=>{S5.x=+e.target.value;document.getElementById('c5xv').textContent=S5.x};
+document.getElementById('c5y').oninput=e=>{S5.y=+e.target.value;document.getElementById('c5yv').textContent=S5.y};
+document.getElementById('b75').onclick=()=>{S5.x=45;S5.y=30;document.getElementById('c5x').value=45;document.getElementById('c5y').value=30;document.getElementById('c5xv').textContent=45;document.getElementById('c5yv').textContent=30};
+function draw5(t,dt){
+  const g=g5,W=c5.width,H=c5.height;
+  g.clearRect(0,0,W,H);
+  const xr=S5.x*D2R,yr=S5.y*D2R;
+  const direct=Math.sin(xr+yr);
+  const expand=Math.sin(xr)*Math.cos(yr)+Math.cos(xr)*Math.sin(yr);
+  const base=280,scale=210;
+  // bars
+  const bw=100;
+  g.strokeStyle='#26263e';g.lineWidth=1;g.beginPath();g.moveTo(60,base);g.lineTo(700,base);g.stroke();
+  const h1=direct*scale,h2=expand*scale;
+  g.fillStyle='#e879f9';g.fillRect(280,base-h1,bw,h1);
+  g.strokeStyle='#e879f9';g.strokeRect(280,base-h1,bw,h1);
+  g.fillStyle='#22d3ee';g.fillRect(540,base-h2,bw,h2);
+  g.strokeStyle='#22d3ee';g.strokeRect(540,base-h2,bw,h2);
+  label(g,'sin('+(S5.x+S5.y)+'°) direct',280,base-h1-12,'#e879f9');
+  label(g,'= '+fmt(direct),280,base-h1-30,'#f0f0fa');
+  label(g,'sin x cos y + cos x sin y',540,base-h2-12,'#22d3ee');
+  label(g,'= '+fmt(expand),540,base-h2-30,'#f0f0fa');
+  label(g,'BARABAR! formula kaam karta hai',60,36,'#4ade80');
+  if(S5.x===45&&S5.y===30){
+    panel(g,[
+      ['sin 75° = sin(45+30)','#fbbf24'],
+      ['= sin45 cos30 + cos45 sin30','#f0f0fa'],
+      ['= (1/√2)(√3/2) + (1/√2)(1/2)','#f0f0fa'],
+      ['= (√6 + √2)/4 ≈ 0.966','#4ade80']
+    ],60,70);
+  }
+  label(g,'x = '+S5.x+'°, y = '+S5.y+'°',60,base+24,'#8f8fb8');
+  document.getElementById('v5read').innerHTML='sin('+S5.x+'°+'+S5.y+'°) = <b style="color:#e879f9">'+fmt(direct)+'</b> = sin x cos y + cos x sin y = <b style="color:#22d3ee">'+fmt(expand)+'</b> · '+(S5.x===45&&S5.y===30?'<b style="color:#4ade80">(√6+√2)/4 ≈ 0.966 exact!</b>':'difference: '+Math.abs(direct-expand).toFixed(6));
+}
+
+// ---------- main loop ----------
+let lastTs=0;
+function loop(ts){const t=ts/1000;const dt=Math.min(0.12,(ts-lastTs)/1000||0.016);lastTs=ts;
+  if(cur===0)draw1(t,dt);else if(cur===1)draw2(t,dt);else if(cur===2)draw3(t,dt);else if(cur===3)draw4(t,dt);else if(cur===4)draw5(t,dt);
+  requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
