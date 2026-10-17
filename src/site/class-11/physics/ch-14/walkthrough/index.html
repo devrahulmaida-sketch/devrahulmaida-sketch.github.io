@@ -177,7 +177,7 @@ function draw1(t){
     for(let i=0;i<=N;i++){const x=cx0+i*dx,y=mid+Math.sin((x/W)*Math.PI*3 - t*2.2)*70;
       g.fillStyle=i%6==0?'#e879f9':'#5eead4';g.beginPath();g.arc(x,y,i%6==0?6:4,0,7);g.fill();
       g.strokeStyle='#26263e';g.beginPath();g.moveTo(x,mid);g.lineTo(x,y);g.stroke()}
-    label(g,'crest',120,mid-86,'#8f8fb8');label(g,'trough',330,mid+100,'#8f8fb8');
+    label(g,'crest (peak)',26,mid-86,'#8f8fb8');label(g,'trough (khadda)',26,mid+100,'#8f8fb8');
   }else{
     for(let i=0;i<=N;i++){const rest=cx0+i*dx,off=Math.sin((rest/W)*Math.PI*3 - t*2.2)*26,x=rest+off;
       const density=Math.cos((rest/W)*Math.PI*3 - t*2.2);
@@ -276,10 +276,9 @@ function draw4(t){
   let prev=env4(0,S4.open,n);
   for(let i=1;i<=200;i++){
     const u=i/200,e=env4(u,S4.open,n);
-    if(prev*e<0){const x=x0+u*(x1-x0);g.fillStyle='#f87171';g.beginPath();g.arc(x,mid,5,0,7);g.fill()}
+    if(prev*e<0){const x=x0+u*(x1-x0);g.fillStyle='#f87171';g.beginPath();g.arc(x,mid,5,0,7);g.fill();g.font='11px sans-serif';g.fillText('N',x-4,mid+20)}
     prev=e}
   label(g,S4.open?'OPEN pipe - dono ends ANTINODE':'CLOSED pipe - band end = NODE',x0,top-30,'#8f8fb8');
-  label(g,'N',x0-6,mid-56,'#f87171');
   const v=340,f1=S4.open? v/2 : v/4; // L=1m
   document.getElementById('v4read').innerHTML=S4.open
     ? ('harmonic n='+n+' → ν = '+n+' × (v/2L = '+f1+') = <b style="color:#22d3ee">'+(n*f1)+' Hz</b> (L=1m) - SAARE harmonics allowed')
@@ -294,28 +293,30 @@ document.getElementById('b5file').onclick=()=>{S5.b=Math.min(230,S5.b+2);documen
 function draw5(t){
   const[c,g]=ctx('cv5'),W=c.width,H=c.height;
   g.clearRect(0,0,W,H);
-  const mid1=70,mid2=210,A=26,k=2*Math.PI/90;
-  const w1=k*S5.a/10,w2=k*S5.b/10; // visual angular speeds proportional to freq
+  const mid1=70,mid2=210,A=26,k0=2*Math.PI/90;
+  const k1=k0*(1+(S5.a-202)/30),k2=k0*(1+(S5.b-202)/30);
+  const w1=k1*8,w2=k2*8;
   g.strokeStyle='#f87171';g.lineWidth=1.4;g.beginPath();
-  for(let x=0;x<=W;x+=2){const y=mid1+A*Math.sin(k*x-w1*t);x?g.lineTo(x,y):g.moveTo(x,y)}
+  for(let x=0;x<=W;x+=2){const y=mid1+A*Math.sin(k1*x-w1*t);x?g.lineTo(x,y):g.moveTo(x,y)}
   g.stroke();
   g.strokeStyle='#60a5fa';g.lineWidth=1.4;g.beginPath();
-  for(let x=0;x<=W;x+=2){const y=mid1+A*Math.sin(k*x-w2*t);x?g.lineTo(x,y):g.moveTo(x,y)}
+  for(let x=0;x<=W;x+=2){const y=mid1+A*Math.sin(k2*x-w2*t);x?g.lineTo(x,y):g.moveTo(x,y)}
   g.stroke();
   label(g,'ν1='+S5.a+' Hz',8,mid1-42,'#f87171');label(g,'ν2='+S5.b+' Hz',120,mid1-42,'#60a5fa');
   // sum + envelope
   g.strokeStyle='#2e2e4a';g.beginPath();g.moveTo(0,mid2);g.lineTo(W,mid2);g.stroke();
   g.strokeStyle='#5eead4';g.lineWidth=2.6;g.beginPath();
   for(let x=0;x<=W;x+=2){
-    const y=mid2+A*(Math.sin(k*x-w1*t)+Math.sin(k*x-w2*t));
+    const y=mid2+A*(Math.sin(k1*x-w1*t)+Math.sin(k2*x-w2*t));
     x?g.lineTo(x,y):g.moveTo(x,y)}
   g.stroke();
+  const dk=(k1-k2)/2,dw=(w1-w2)/2;
   g.strokeStyle='#fbbf24';g.lineWidth=1.2;g.setLineDash([5,5]);g.beginPath();
   for(let x=0;x<=W;x+=2){
-    const e=2*A*Math.abs(Math.cos((w1-w2)*t/2 - (k-k)*x));
-    const env=2*A*Math.abs(Math.cos(((w1-w2)/2)*(t - x*(1)/90)));
+    const env=2*A*Math.cos(dk*x-dw*t);
     x?g.lineTo(x,mid2-env):g.moveTo(x,mid2-env)}
   g.stroke();g.setLineDash([]);
+  label(g,'envelope = wah-wah',W-150,mid2-2*A-8,'#fbbf24');
   const beats=Math.abs(S5.a-S5.b);
   document.getElementById('v5read').innerHTML='beats = |ν1 − ν2| = |'+S5.a+' − '+S5.b+'| = <b style="color:#fbbf24">'+beats+' per second</b>'+(beats===0?' - PERFECT UNISON (tuned!)':'')+(beats>15?' - bahut alag, beats count karna mushkil':'');
 }
