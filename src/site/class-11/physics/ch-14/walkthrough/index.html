@@ -278,6 +278,7 @@ function draw4(t){
     const u=i/200,e=env4(u,S4.open,n);
     if(prev*e<0){const x=x0+u*(x1-x0);g.fillStyle='#f87171';g.beginPath();g.arc(x,mid,5,0,7);g.fill();g.font='11px sans-serif';g.fillText('N',x-4,mid+20)}
     prev=e}
+  if(!S4.open){g.fillStyle='#f87171';g.beginPath();g.arc(x1-4,mid,5,0,7);g.fill();g.font='11px sans-serif';g.fillText('N',x1-24,mid+20)}
   label(g,S4.open?'OPEN pipe - dono ends ANTINODE':'CLOSED pipe - band end = NODE',x0,top-30,'#8f8fb8');
   const v=340,f1=S4.open? v/2 : v/4; // L=1m
   document.getElementById('v4read').innerHTML=S4.open
