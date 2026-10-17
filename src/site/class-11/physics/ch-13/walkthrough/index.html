@@ -328,14 +328,13 @@ function draw5(t){
   g.strokeStyle='#22d3ee';g.lineWidth=2.2;g.beginPath();
   for(let x=0;x<=W;x+=2){
     const tt=t-(W-x)/130;
-    const env=A0*Math.exp(-beta*Math.max(0,(t-tt)+0)); // careful: env should decay with tt increasing
-    const y=mid1+A0*Math.exp(-beta*((W-x)/130))*Math.cos(w*tt);
+    const y=mid1+A0*Math.exp(-beta*(x/130))*Math.cos(w*tt);
     x?g.lineTo(x,y):g.moveTo(x,y)}
   g.stroke();
   // envelope dashed
   g.strokeStyle='#fbbf24';g.setLineDash([5,5]);g.lineWidth=1.2;g.beginPath();
   for(let x=0;x<=W;x+=4){
-    const y=mid1-A0*Math.exp(-beta*((W-x)/130));
+    const y=mid1-A0*Math.exp(-beta*(x/130));
     x?g.lineTo(x,y):g.moveTo(x,y)}
   g.stroke();g.setLineDash([]);
   label(g,'damped: A(t) = A₀e^(−bt/2m)',10,mid1-A0-12,'#fbbf24');
