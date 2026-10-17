@@ -409,15 +409,15 @@ function draw5(t){
     }
   }
   // antibonding stars note
-  label(g,'* = antibonding (yahan e⁻ jaaye to bond KAMZOR)',W/2-180,base-LV.length*dy+30,'#f87171');
+  label(g,'* = antibonding (yahan e⁻ jaaye to bond KAMZOR)',W/2-180,base+26,'#f87171');
   // result panel
   const bo=MO_BO[S5.mol];
-  label(g,MO_NAME[S5.mol],70,base-LV.length*dy+30,'#8f8fb8');
+  label(g,MO_NAME[S5.mol],60,72,'#8f8fb8');
   if(S5.filled>=1){
-    label(g,'Bond Order = (Nb − Na)/2 = '+bo,70,base-LV.length*dy+56,'#fbbf24');
-    if(S5.mol==='o2')label(g,'π* me 2 UNPAIRED e⁻ → PARAMAGNETIC! (Lewis fail, MOT win)',70,base-LV.length*dy+80,'#f87171');
-    if(S5.mol==='he2')label(g,'BO = 0 → He₂ exist NAHI karta!',70,base-LV.length*dy+80,'#f87171');
-    if(S5.mol==='n2')label(g,'BO = 3 → triple bond, sabse strong (s-p mixing: π2p neeche!)',70,base-LV.length*dy+80,'#5eead4');
+    label(g,'Bond Order = (Nb − Na)/2 = '+bo,60,98,'#fbbf24');
+    if(S5.mol==='o2')label(g,'π* me 2 UNPAIRED e⁻ → PARAMAGNETIC! (Lewis fail, MOT win)',60,124,'#f87171');
+    if(S5.mol==='he2')label(g,'BO = 0 → He₂ exist NAHI karta!',60,124,'#f87171');
+    if(S5.mol==='n2')label(g,'BO = 3 → triple bond, sabse strong (s-p mixing: π2p neeche!)',60,124,'#5eead4');
   }
   document.getElementById('v5read').innerHTML='<b style="color:#fbbf24">'+MO_NAME[S5.mol]+'</b> → Bond Order = <b style="color:#fbbf24">'+bo+'</b>'+(S5.mol==='o2'?' · 2 unpaired e⁻ = <b style="color:#f87171">paramagnetic</b>':'')+(S5.mol==='he2'?' · BO=0 = <b style="color:#f87171">molecule banta hi nahi</b>':'');
 }
