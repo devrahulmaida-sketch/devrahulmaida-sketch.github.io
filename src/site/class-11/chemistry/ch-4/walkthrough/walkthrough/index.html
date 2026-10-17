@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemical Bonding Ka Visual Walkthrough - Class 11 Physics Ch 14</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .scene h2 .num{color:#22d3ee}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .fact b{color:#fff}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:420px;font-size:1rem;padding:10px}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Chemistry - Chapter 4 - Chemical Bonding</span>
+  <h1>Chemical Bonding Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - electron transfer se MOT tak. Shapes ghumao, angles naapo, formulas feel karo.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> Bond Kyun Banta Hai - Octet Ka Khel</h2>
+  <p class="sub">Na ke paas 1 extra electron, Cl ko 1 chahiye. <b>Transfer</b> button dabao (ionic bond) ya <b>Share</b> dekho (covalent, H₂). Dono ka maqsad: 8 valence electrons ka settled life!</p>
+  <canvas id="cv1" width="760" height="310"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b1ionic">Ionic (Na + Cl)</button>
+    <button class="btn" id="b1covalent">Covalent (H + H)</button>
+    <button class="btn" id="b1go">Transfer / Share Karo</button>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="takeaway"><b>Octet rule:</b> atom 8 valence e⁻ chahta hai - transfer karke (<b>ionic</b>: metal + non-metal) ya share karke (<b>covalent</b>: 2 non-metals). Exceptions exam favourite: BF₃ (6 e⁻), PCl₅ (10 e⁻), SF₆ (12 e⁻), NO/NO₂ (odd e⁻ radicals).</div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> VSEPR Shape Machine - Lone Pairs Dabate Hain</h2>
+  <p class="sub">Central atom ke <b>bond pairs</b> aur <b>lone pairs</b> chuno. Electron pairs ek-doosre ko dhakka dete hain → shape banti hai. Dekho lone pairs angles ko kaise DABA dete hain!</p>
+  <canvas id="cv2" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn" id="v20">2+0 Linear</button>
+    <button class="btn" id="v30">3+0 Trigonal</button>
+    <button class="btn hot" id="v40">4+0 Tetrahedral</button>
+    <button class="btn" id="v31">3+1 Pyramidal</button>
+    <button class="btn" id="v22">2+2 Bent</button>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="takeaway">Repulsion: <b>lp-lp &gt; lp-bp &gt; bp-bp</b>. Angles: CH₄ <span class="formula">109.5°</span> &gt; NH₃ <span class="formula">~107°</span> &gt; H₂O <span class="formula">~104.5°</span> - lone pairs zyada jagah gherte hain, bonds ko dabate hain. Linear 180°, Trigonal planar 120°.</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Polarity - Dipole Vectors Ka Hisaab</h2>
+  <p class="sub">Bond polar hona alag, MOLECULE polar hona alag! Symmetric shape me dipole vectors <b style="color:#5eead4">CANCEL</b> (CO₂), asymmetric me <b style="color:#f87171">ADD</b> (H₂O). Dono pe click karke dekho.</p>
+  <canvas id="cv3" width="760" height="320"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="p3co2">CO₂ (linear)</button>
+    <button class="btn" id="p3h2o">H₂O (bent)</button>
+    <button class="btn" id="p3nh3">NH₃ (pyramidal)</button>
+    <button class="btn" id="p3bf3">BF₃ (trigonal)</button>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="takeaway">Electronegativity difference → bond dipole (arrow non-metal ki taraf). <b>μ = vectors ka sum</b>: CO₂/BF₃/CCl₄ symmetric → cancel → NON-POLAR. H₂O bent, NH₃ pyramidal → survive → POLAR. Isliye paani duniya ka best solvent! Trap: CO₂ ke bonds polar, molecule non-polar.</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> Sigma vs Pi - Overlap Ka Farak</h2>
+  <p class="sub">σ bond = <b>head-on</b> overlap (seedha, strong). π bond = <b>side-by-side</b> (weak). Animate karo: orbitals kaise milte hain. Double bond = 1σ + 1π, triple = 1σ + 2π!</p>
+  <canvas id="cv4" width="760" height="320"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b4sigma">σ (head-on)</button>
+    <button class="btn" id="b4pi">π (side-by-side)</button>
+    <button class="btn" id="b4sp">sp</button>
+    <button class="btn" id="b4sp2">sp²</button>
+    <button class="btn" id="b4sp3">sp³</button>
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="takeaway"><b>Hybridization trick:</b> VSEPR count (bp+lp) hi batati hai - 2=sp (linear), 3=sp² (trigonal), 4=sp³ (tetrahedral), 5=sp³d, 6=sp³d². NH₃ aur H₂O dono <b>sp³</b> (lone pairs bhi count!). Har single bond σ hota hai.</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> MOT - Bond Order Machine</h2>
+  <p class="sub">Molecule banne pe atomic orbitals milke <b>molecular orbitals</b> banate hain. Electrons fill karo (button), bond order nikalo: <b>(bonding − antibonding)/2</b>. O₂ ka kamaal: 2 UNPAIRED electrons = paramagnetic!</p>
+  <canvas id="cv5" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="m5n2">N₂</button>
+    <button class="btn" id="m5o2">O₂</button>
+    <button class="btn" id="m5f2">F₂</button>
+    <button class="btn" id="m5he2">He₂</button>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="takeaway"><span class="formula">Bond order = (N<sub>b</sub> − N<sub>a</sub>)/2</span> - N₂ = 3 (triple, super strong), O₂ = 2, F₂ = 1, He₂ = 0 (<b>exist hi nahi karta!</b>). Antibonding (σ*, π*) me electron = bond KAMZOR. O₂ ke π* me 2 unpaired e⁻ → paramagnetic (MOT hi iska proof hai, VBT fail!).</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">Octet: 8 valence e⁻ - ionic (transfer) ya covalent (share)</div>
+  <div class="formula">VSEPR: lp-lp &gt; lp-bp &gt; bp-bp | 109.5° &gt; 107° &gt; 104.5°</div>
+  <div class="formula">Hybridization: 2=sp, 3=sp², 4=sp³, 5=sp³d, 6=sp³d²</div>
+  <div class="formula">Double = 1σ+1π | Triple = 1σ+2π</div>
+  <div class="formula">Bond order = (N<sub>b</sub> − N<sub>a</sub>)/2 &nbsp;|&nbsp; O₂ paramagnetic!</div>
+  <div class="formula">μ = dipole vectors ka sum &nbsp;|&nbsp; symmetric → non-polar</div>
+  <p style="margin-top:18px">Bonds samajh aaye? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Chemistry Ch 4 - Chemical Bonding | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function atom(g,x,y,r,col,name){g.fillStyle=col;g.beginPath();g.arc(x,y,r,0,7);g.fill();g.fillStyle='#0a0a12';g.font='bold 15px sans-serif';g.textAlign='center';g.fillText(name,x,y+5);g.textAlign='left'}
+
+// ---------- SCENE 1: ionic vs covalent ----------
+const S1={mode:'ionic',prog:0,lastBtn:0};
+document.getElementById('b1ionic').onclick=e=>{S1.mode='ionic';S1.prog=0;e.target.classList.add('hot');document.getElementById('b1covalent').classList.remove('hot')};
+document.getElementById('b1covalent').onclick=e=>{S1.mode='covalent';S1.prog=0;e.target.classList.add('hot');document.getElementById('b1ionic').classList.remove('hot')};
+document.getElementById('b1go').onclick=()=>{S1.prog=0.0001;S1.lastBtn=performance.now()};
+function draw1(t){
+  const[c,g]=ctx('cv1'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  if(S1.prog>0&&S1.prog<1)S1.prog=Math.min(1,S1.prog+0.012);
+  const p=S1.prog;
+  const cy=H/2+10;
+  if(S1.mode==='ionic'){
+    const ax=W/2-150,bx=W/2+150;
+    const move=p; // electron travels Na -> Cl
+    atom(g,ax,cy,44,'#22d3ee','Na');
+    atom(g,bx,cy,52,'#5eead4','Cl');
+    // Na: 1 valence dot; Cl: 7 dots
+    const ex=ax+Math.cos(-0.5)*58, ey=cy+Math.sin(-0.5)*58;
+    for(let i=0;i<7;i++){const a=i/7*Math.PI*2;g.fillStyle='#0a0a12';g.beginPath();g.arc(bx+Math.cos(a)*64,cy+Math.sin(a)*64,4.5,0,7);g.fill()}
+    if(p>0){
+      const ex2=ax+(bx-ax)*p+Math.cos(-0.5)*58*(1-p)+20*p, ey2=cy+Math.sin(-0.5)*58*(1-p)-40*Math.sin(p*Math.PI);
+      g.fillStyle='#fbbf24';g.beginPath();g.arc(ex2,ey2,6,0,7);g.fill();
+    }else{
+      g.fillStyle='#fbbf24';g.beginPath();g.arc(ex,ey,6,0,7);g.fill();
+    }
+    if(p>=1){
+      label(g,'Na⁺ (2,8 = stable octet)',ax-70,cy+80,'#22d3ee');
+      label(g,'Cl⁻ (2,8,8 = stable octet)',bx-80,cy+90,'#5eead4');
+      label(g,'+ aur − chipak gaye = IONIC BOND',W/2-130,cy-110,'#fbbf24');
+    }else label(g,'Na: 1 valence e⁻ (dena aasaan) | Cl: 7 valence e⁻ (1 chahiye)',W/2-210,cy-110,'#8f8fb8');
+  }else{
+    const ax=W/2-70+p*30,bx=W/2+70-p*30;
+    atom(g,ax,cy,40,'#e879f9','H');
+    atom(g,bx,cy,40,'#e879f9','H');
+    // shared pair between them
+    const mx=(ax+bx)/2;
+    if(p>=1){
+      g.fillStyle='#fbbf24';g.beginPath();g.arc(mx-8,cy-14,6,0,7);g.fill();
+      g.beginPath();g.arc(mx+8,cy-14,6,0,7);g.fill();
+      label(g,'shared pair - dono ke 2-2 e⁻ poore (H₂ single bond!)',W/2-170,cy-100,'#fbbf24');
+    }else{
+      g.fillStyle='#fbbf24';g.beginPath();g.arc(ax+46,cy-16,6,0,7);g.fill();
+      g.beginPath();g.arc(bx-46,cy-16,6,0,7);g.fill();
+      label(g,'dono H ko 1-1 e⁻ chahiye - TRANSFER se kaam nahi, SHARE karo!',W/2-200,cy-100,'#8f8fb8');
+    }
+  }
+  document.getElementById('v1read').innerHTML=S1.mode==='ionic'
+    ? (S1.prog>=1?'Na⁺ + Cl⁻ → <b style="color:#fbbf24">NaCl</b>. Electrovalency = 1 (Na ne 1 e⁻ diya)':'Transfer dabao - electron ka safar dekho')
+    : (S1.prog>=1?'<b style="color:#fbbf24">H₂</b> - covalency = 1 pair shared. O₂ me 2 pairs (double), N₂ me 3 (triple - bahut strong!)':'Share dabao - atoms kareeb aayenge');
+}
+
+// ---------- SCENE 2: VSEPR ----------
+const S2={cfg:'40'};
+[['v20','20'],['v30','30'],['v40','40'],['v31','31'],['v22','22']].forEach(([id,k])=>{document.getElementById(id).onclick=e=>{S2.cfg=k;document.querySelectorAll('.scene')[1].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+const VCFG={
+ '20':{name:'Linear (CO₂, BeCl₂)',angle:180,bp:2,lp:0},
+ '30':{name:'Trigonal Planar (BF₃)',angle:120,bp:3,lp:0},
+ '40':{name:'Tetrahedral (CH₄)',angle:109.5,bp:4,lp:0},
+ '31':{name:'Pyramidal (NH₃)',angle:107,bp:3,lp:1},
+ '22':{name:'Bent/V-shape (H₂O)',angle:104.5,bp:2,lp:2},
+};
+function draw2(t){
+  const[c,g]=ctx('cv2'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const cfg=VCFG[S2.cfg];
+  const cx=W/2,cy=H/2+16,R=95;
+  const total=cfg.bp+cfg.lp;
+  // arrange positions: lp on top (drawn as lobes), bp as bonds - simplified 2D arrangement
+  // base spread for bp depends on shape
+  let angles=[];
+  if(S2.cfg==='20')angles=[0,180];
+  else if(S2.cfg==='30')angles=[90,210,330];
+  else if(S2.cfg==='40')angles=[90,200,290,340]; // pseudo-3D tetrahedron 2D sketch
+  else if(S2.cfg==='31'){angles=[90,215,325]} // lp at top? convention: lp up
+  else{angles=[120,240]} // bent
+  const lpAngles=(S2.cfg==='31')?[0]:(S2.cfg==='22')?[0,300]:[];
+  // wobble animation
+  const wob=Math.sin(t*2)*2;
+  // central atom
+  atom(g,cx,cy,26,'#22d3ee',S2.cfg==='22'?'O':S2.cfg==='31'?'N':S2.cfg==='30'?'B':S2.cfg==='20'?'C':'C');
+  // bonds + terminal atoms
+  angles.forEach((a,i)=>{
+    const ar=(a-90)*Math.PI/180;
+    const x2=cx+Math.cos(ar)*R, y2=cy+Math.sin(ar)*R;
+    g.strokeStyle='#8f8fb8';g.lineWidth=6;g.beginPath();g.moveTo(cx,cy);g.lineTo(x2,y2);g.stroke();
+    const nm=S2.cfg==='20'?'O':S2.cfg==='30'?'F':S2.cfg==='40'?'H':S2.cfg==='31'?'H':'H';
+    atom(g,x2,y2,16,'#e879f9',nm);
+  });
+  // lone pairs as lobes
+  lpAngles.forEach(a=>{
+    const ar=(a-90)*Math.PI/180;
+    const lx=cx+Math.cos(ar)*(R-20),ly=cy+Math.sin(ar)*(R-20);
+    g.fillStyle='#fbbf2455';g.beginPath();g.ellipse(lx,ly,26,36,ar+Math.PI/2,0,7);g.fill();
+    g.fillStyle='#fbbf24';g.beginPath();g.arc(lx-7,ly-6,5,0,7);g.arc(lx+7,ly+6,5,0,7);g.fill();
+    label(g,'lone pair',lx-32,ly-46,'#fbbf24');
+  });
+  // angle arc between first two bonds
+  if(angles.length>=2){
+    const a1=(angles[0]-90)*Math.PI/180,a2=(angles[1]-90)*Math.PI/180;
+    g.strokeStyle='#5eead4';g.lineWidth=1.5;g.beginPath();g.arc(cx,cy,42,Math.min(a1,a2),Math.max(a1,a2));g.stroke();
+  }
+  label(g,cfg.name,W/2-110,34,'#8f8fb8');
+  const squeeze=(S2.cfg==='31'||S2.cfg==='22');
+  document.getElementById('v2read').innerHTML=cfg.bp+' bond pairs + '+cfg.lp+' lone pairs → <b style="color:#22d3ee">'+cfg.name+'</b>, angle ≈ <b style="color:#fbbf24">'+cfg.angle+'°</b>'+(squeeze?' - lone pair ne angle <b style="color:#f87171">DABA diya</b> (109.5° se neeche!)':'');
+}
+
+// ---------- SCENE 3: polarity ----------
+const S3={mol:'co2'};
+[['p3co2','co2'],['p3h2o','h2o'],['p3nh3','nh3'],['p3bf3','bf3']].forEach(([id,k])=>{document.getElementById(id).onclick=e=>{S3.mol=k;document.querySelectorAll('.scene')[2].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+function arrow(g,x1,y1,x2,y2,col){
+  g.strokeStyle=col;g.lineWidth=3;g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);
+  const a=Math.atan2(y2-y1,x2-x1);
+  g.moveTo(x2,y2);g.lineTo(x2-10*Math.cos(a-0.42),y2-10*Math.sin(a-0.42));
+  g.moveTo(x2,y2);g.lineTo(x2-10*Math.cos(a+0.42),y2-10*Math.sin(a+0.42));
+  g.stroke();
+}
+function draw3(t){
+  const[c,g]=ctx('cv3'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const cx=W/2-120,cy=H/2,R=88;
+  const M={
+    co2:{atoms:[[-R,0,'O','#5eead4'],[R,0,'O','#5eead4']],center:'C',dips:[[0,0,-R+18,0],[0,0,R-18,0]],net:null,name:'CO₂ - LINEAR'},
+    h2o:{atoms:[[-R*0.7,R*0.72,'H','#e879f9'],[R*0.7,R*0.72,'H','#e879f9']],center:'O',dips:[[-R*0.7,R*0.72,-R*0.31,R*0.32],[R*0.7,R*0.72,R*0.31,R*0.32]],net:[0,-1],name:'H₂O - BENT'},
+    nh3:{atoms:[[-R,0,'H','#e879f9'],[R,0,'H','#e879f9'],[0,R*0.85,'H','#e879f9']],center:'N',dips:[[-R,0,-R*0.42,-R*0.1],[R,0,R*0.42,-R*0.1],[0,R*0.85,0,R*0.3]],net:[0,-1],name:'NH₃ - PYRAMIDAL'},
+    bf3:{atoms:[[0,-R,'F','#5eead4'],[-R*0.87,R*0.5,'F','#5eead4'],[R*0.87,R*0.5,'F','#5eead4']],center:'B',dips:[[0,0,0,-R+18],[0,0,-R*0.87+16,R*0.5-9],[0,0,R*0.87-16,R*0.5-9]],net:null,name:'BF₃ - TRIGONAL PLANAR'},
+  }[S3.mol];
+  // bonds + atoms
+  M.atoms.forEach(([dx,dy])=>{g.strokeStyle='#8f8fb8';g.lineWidth=5;g.beginPath();g.moveTo(cx,cy);g.lineTo(cx+dx,cy+dy);g.stroke()});
+  atom(g,cx,cy,24,'#22d3ee',M.center);
+  M.atoms.forEach(([dx,dy,nm,col])=>atom(g,cx+dx,cy+dy,17,col,nm));
+  // dipole arrows (H/C/B -> O/F i.e. toward electronegative)
+  M.dips.forEach(d=>arrow(g,cx+d[0],cy+d[1],cx+d[2],cy+d[3],'#f87171'));
+  // net dipole panel
+  const px=W-300;
+  label(g,M.name,px-40,50,'#8f8fb8');
+  if(M.net){
+    arrow(g,px+40,cy+40,px+40,cy-40,'#fbbf24');
+    label(g,'NET dipole ≠ 0',px-30,cy+70,'#fbbf24');
+    label(g,'→ POLAR molecule',px-30,cy+92,'#f87171');
+  }else{
+    g.strokeStyle='#5eead4';g.lineWidth=3;g.beginPath();g.moveTo(px+20,cy-30);g.lineTo(px+60,cy+30);g.moveTo(px+60,cy-30);g.lineTo(px+20,cy+30);g.stroke();
+    label(g,'vectors CANCEL',px-30,cy+70,'#5eead4');
+    label(g,'→ NON-POLAR molecule',px-30,cy+92,'#5eead4');
+  }
+  document.getElementById('v3read').innerHTML=M.net
+    ? '<b style="color:#f87171">POLAR</b>: asymmetric shape - dipoles ka sum zero NAHI (bonds polar + molecule polar)'
+    : '<b style="color:#5eead4">NON-POLAR</b>: symmetric! har dipole ka partner usko CANCEL karta hai (bonds polar, molecule non-polar)';
+}
+// ---------- SCENE 4: sigma vs pi + hybridization ----------
+const S4={mode:'sigma',bump:0};
+[['b4sigma','sigma'],['b4pi','pi'],['b4sp','sp'],['b4sp2','sp2'],['b4sp3','sp3']].forEach(([id,k])=>{document.getElementById(id).onclick=e=>{S4.mode=k;S4.bump=0.0001;document.querySelectorAll('.scene')[3].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+function draw4(t){
+  const[c,g]=ctx('cv4'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const cy=H/2;
+  if(S4.bump>0&&S4.bump<1)S4.bump=Math.min(1,S4.bump+0.01);
+  const sep=S4.bump?140*(1-S4.bump)+46:140;
+  if(S4.mode==='sigma'){
+    const ax=W/2-sep,bx=W/2+sep;
+    // two spheres head-on
+    g.fillStyle='#22d3ee';g.beginPath();g.arc(ax,cy,34,0,7);g.fill();
+    g.fillStyle='#e879f9';g.beginPath();g.arc(bx,cy,34,0,7);g.fill();
+    label(g,'A',ax-6,cy+5,'#0a0a12');label(g,'B',bx-5,cy+5,'#0a0a12');
+    if(S4.bump>=1){
+      g.fillStyle='#fbbf2455';g.beginPath();g.ellipse(W/2,cy,26,30,0,0,7);g.fill();
+      label(g,'HEAD-ON overlap (s-s / s-p / p-p along axis)',W/2-160,cy-90,'#fbbf24');
+      label(g,'→ σ bond: STRONG, nucleus-to-nucleus line pe electron density',W/2-200,cy+96,'#5eead4');
+    }else label(g,'Atoms kareeb aa rahe hain...',W/2-80,cy-90,'#8f8fb8');
+  }else if(S4.mode==='pi'){
+    const ax=W/2-sep*0.6,bx=W/2+sep*0.6;
+    g.fillStyle='#22d3ee';g.beginPath();g.arc(ax,cy,26,0,7);g.fill();
+    g.fillStyle='#e879f9';g.beginPath();g.arc(bx,cy,26,0,7);g.fill();
+    label(g,'A',ax-6,cy+5,'#0a0a12');label(g,'B',bx-5,cy+5,'#0a0a12');
+    // p lobes above and below
+    const lp=S4.bump>=1?1:S4.bump;
+    [[-1,-1],[-1,1],[1,-1],[1,1]].forEach(([sx,sy])=>{
+      const lx=sx<0?ax:bx;
+      g.fillStyle='#5eead455';g.beginPath();g.ellipse(lx+ (sx<0?20:-20)*lp, cy+sy*46, 34*Math.max(lp,0.3),20,0,0,7);g.fill();
+    });
+    if(S4.bump>=1){
+      g.fillStyle='#fbbf2455';g.beginPath();g.ellipse(W/2,cy-46,16,22,0,0,7);g.fill();
+      g.beginPath();g.ellipse(W/2,cy+46,16,22,0,0,7);g.fill();
+      label(g,'SIDEWAYS (lateral) overlap - upar + neeche dono taraf',W/2-170,cy-110,'#fbbf24');
+      label(g,'→ π bond: WEAKER (σ kamzor nahi hota pehle banne me, lekin π σ se weak)',W/2-210,cy+104,'#5eead4');
+    }
+  }else{
+    // hybridization shapes
+    const cfg={
+      sp:{name:'sp (CO₂, C₂H₂) - LINEAR 180°',lobes:[[0,1],[Math.PI,1]]},
+      sp2:{name:'sp² (BF₃, C₂H₄) - TRIGONAL PLANAR 120°',lobes:[[-Math.PI/2,1],[Math.PI*5/6,1],[Math.PI/6,1]]},
+      sp3:{name:'sp³ (CH₄, NH₃, H₂O) - TETRAHEDRAL 109.5°',lobes:[[-Math.PI/2,1],[Math.PI*0.8,0.9],[Math.PI*1.45,0.9],[Math.PI*0.15,0.9]]},
+    }[S4.mode];
+    atom(g,W/2,cy,24,'#22d3ee','X');
+    cfg.lobes.forEach(([a,s])=>{
+      const lx=W/2+Math.cos(a)*105*s, ly=cy+Math.sin(a)*105*s;
+      g.fillStyle='#fbbf2455';g.beginPath();g.ellipse((W/2+lx)/2+Math.cos(a)*30,(cy+ly)/2+Math.sin(a)*30,52*s,22,a,0,7);g.fill();
+      g.fillStyle='#fbbf24';g.beginPath();g.arc(lx,ly,7,0,7);g.fill();
+    });
+    label(g,cfg.name,W/2-170,40,'#fbbf24');
+    label(g,'ek s + p orbitals MIX ho gaye = same energy ke hybrid orbitals',W/2-210,cy+150,'#8f8fb8');
+  }
+  document.getElementById('v4read').innerHTML={
+    sigma:'σ bond: orbitals <b style="color:#fbbf24">nuclei jodne wali line</b> ke along head-on overlap. Free rotation possible!',
+    pi:'π bond: p orbitals <b style="color:#5eead4">side-by-side</b> overlap. Rotation NAHI (tabhi double bond wale alkenes rigid).',
+    sp:'Hybridization count <b style="color:#fbbf24">2 = sp</b> → linear 180°. (count = σ bonds + lone pairs)',
+    sp2:'Hybridization count <b style="color:#fbbf24">3 = sp²</b> → trigonal planar 120°. ethene C=C me carbon sp²!',
+    sp3:'Hybridization count <b style="color:#fbbf24">4 = sp³</b> → tetrahedral 109.5°. CH₄, NH₃ (3bp+1lp), H₂O (2bp+2lp) sab sp³!',
+  }[S4.mode];
+}
+
+// ---------- SCENE 5: MO diagram ----------
+const S5={mol:'n2',filled:0,fillTarget:0};
+[['m5n2','n2'],['m5o2','o2'],['m5f2','f2'],['m5he2','he2']].forEach(([id,k])=>{document.getElementById(id).onclick=e=>{S5.mol=k;S5.filled=0;S5.fillTarget=0;setTimeout(()=>S5.fillTarget=1,50);document.querySelectorAll('.scene')[4].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+// energy levels: label, electrons capacity order for N2-type ordering (simplified visual)
+const MO_LEVELS=['σ2s','σ*2s','σ2p(z)','π2p(x)=π2p(y)','π*2p(x)=π*2p(y)','σ*2p(z)'];
+const MO_ORDER_O2=['σ2s','σ*2s','σ2p(z)','π2p','π2p','π*2p','π*2p','σ*2p'];
+const MO_COUNT={n2:10,o2:12,f2:14,he2:4}; // valence electrons only (2s+2p)
+const MO_ELEC={n2:[2,2,2,4,0,0],o2:[2,2,2,4,2,0],f2:[2,2,2,4,4,0],he2:[2,2,0,0,0,0]};
+const MO_BO={n2:3,o2:2,f2:1,he2:0};
+const MO_NAME={n2:'N₂ (10 valence e⁻)',o2:'O₂ (12 valence e⁻)',f2:'F₂ (14 valence e⁻)',he2:'He₂ (4 valence e⁻)'};
+function draw5(t){
+  const[c,g]=ctx('cv5'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  if(S5.fillTarget&&S5.filled<1)S5.filled=Math.min(1,S5.filled+0.02);
+  const e=MO_ELEC[S5.mol],maxShow=S5.filled*MO_COUNT[S5.mol];
+  // draw energy ladder bottom-up
+  const base=H-70,dy=54;
+  let shown=0;
+  // side atoms panels
+  label(g,'atom A',60,40,'#8f8fb8');label(g,'atom B',W-110,40,'#8f8fb8');
+  label(g,'MOLECULAR ORBITALS (valence shell)',W/2-150,30,'#8f8fb8');
+  for(let i=0;i<6;i++){
+    const y=base-i*dy;
+    const wide=(i===3||i===4);
+    const lw=wide?170:110;
+    g.strokeStyle='#8f8fb8';g.lineWidth=2;
+    g.beginPath();g.moveTo(W/2-lw/2,y);g.lineTo(W/2+lw/2,y);g.stroke();
+    label(g,MO_LEVELS[i],W/2+lw/2+10,y+4,i<2?'#5eead4':(i<4?'#fbbf24':'#f87171'));
+    if(wide){g.beginPath();g.moveTo(W/2-45,y-16);g.lineTo(W/2+45,y-16);g.stroke()} // degenerate second line
+    // electrons
+    const cap=e[i];let placed=0;
+    for(let k=0;k<cap&&shown<maxShow;k++){
+      placed++;shown++;
+      const pair=(wide&&k>=2&&cap===4)?[k-2,1]:(wide?[k%2,k>=2?1:0]:[k>0?1:0,0]);
+      const px=wide?(W/2-60+pair[0]*120+(pair[1]?28:0)):(W/2-14+k*28);
+      const py=(wide&&pair[1])?y-16:y;
+      g.fillStyle='#fbbf24';
+      g.beginPath();g.arc(px,py-10,6,0,7);g.fill();
+      // arrow direction
+      g.strokeStyle='#0a0a12';g.lineWidth=1.5;
+      g.beginPath();g.moveTo(px,py-13);g.lineTo(px,py-7);g.stroke();
+    }
+  }
+  // antibonding stars note
+  label(g,'* = antibonding (yahan e⁻ jaaye to bond KAMZOR)',W/2-180,base-6*dy+30,'#f87171');
+  // result panel
+  const bo=MO_BO[S5.mol];
+  label(g,MO_NAME[S5.mol],70,base-6*dy+30,'#8f8fb8');
+  if(S5.filled>=1){
+    label(g,'Bond Order = (Nb − Na)/2 = '+bo,70,base-6*dy+56,'#fbbf24');
+    if(S5.mol==='o2')label(g,'π* me 2 UNPAIRED e⁻ → PARAMAGNETIC! (Lewis fail, MOT win)',70,base-6*dy+80,'#f87171');
+    if(S5.mol==='he2')label(g,'BO = 0 → He₂ exist NAHI karta!',70,base-6*dy+80,'#f87171');
+    if(S5.mol==='n2')label(g,'BO = 3 → triple bond, sabse strong',70,base-6*dy+80,'#5eead4');
+  }
+  document.getElementById('v5read').innerHTML='<b style="color:#fbbf24">'+MO_NAME[S5.mol]+'</b> → Bond Order = <b style="color:#fbbf24">'+bo+'</b>'+(S5.mol==='o2'?' · 2 unpaired e⁻ = <b style="color:#f87171">paramagnetic</b>':'')+(S5.mol==='he2'?' · BO=0 = <b style="color:#f87171">molecule banta hi nahi</b>':'');
+}
+
+// ---------- main loop ----------
+function loop(ts){const t=ts/1000;
+  if(cur===0)draw1(t);else if(cur===1)draw2(t);else if(cur===2)draw3(t);else if(cur===3)draw4(t);else draw5(t);
+  requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
