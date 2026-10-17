@@ -198,9 +198,11 @@ function draw1(t,dt){
   g.fillStyle='#26263e';g.fillRect(480,255-120*bscale,34,120*bscale);
   g.fillStyle='#e879f9';g.fillRect(480,255-P2*bscale,34,P2*bscale);
   label(g,'P₂ = '+P2.toFixed(0)+' kPa',455,272,'#e879f9');
-  // delta P arrow
-  g.strokeStyle='#fbbf24';g.lineWidth=2;g.beginPath();g.moveTo(160,255-P2*bscale);g.lineTo(160,255-P1*bscale);g.stroke();
-  label(g,'ΔP = '+dP.toFixed(0)+' kPa',168,255-P1*bscale+((P1-P2)*bscale)/2+4,'#fbbf24');
+  // delta P bracket below the gauges, clear of the particle area
+  const yB=294;
+  g.strokeStyle='#fbbf24';g.lineWidth=2;g.beginPath();g.moveTo(137,yB);g.lineTo(497,yB);g.stroke();
+  g.beginPath();g.moveTo(137,yB-5);g.lineTo(137,yB+5);g.moveTo(497,yB-5);g.lineTo(497,yB+5);g.stroke();
+  label(g,'ΔP = '+dP.toFixed(0)+' kPa',285,yB+20,'#fbbf24');
   panel(g,[['speed × '+ratio.toFixed(1)+' → pressure DROP!','#fbbf24'],['P + ½ρv² = same dono jagah','#8f8fb8']],560,40);
   document.getElementById('v1read').innerHTML='v₂ = <b style="color:#e879f9">'+(2*ratio).toFixed(1)+' m/s</b> (A₁v₁=A₂v₂) · P₂ = <b style="color:#e879f9">'+P2.toFixed(0)+' kPa</b> · patli pipe = tez speed = <b>KAM pressure</b>!';
 }
