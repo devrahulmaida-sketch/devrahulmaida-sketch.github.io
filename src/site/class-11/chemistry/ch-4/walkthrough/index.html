@@ -173,7 +173,7 @@ function draw1(t){
     atom(g,bx,cy,52,'#5eead4','Cl');
     // Na: 1 valence dot; Cl: 7 dots
     const ex=ax+Math.cos(-0.5)*58, ey=cy+Math.sin(-0.5)*58;
-    for(let i=0;i<7;i++){const a=i/7*Math.PI*2;g.fillStyle='#0a0a12';g.beginPath();g.arc(bx+Math.cos(a)*64,cy+Math.sin(a)*64,4.5,0,7);g.fill()}
+    for(let i=0;i<7;i++){const a=i/7*Math.PI*2;g.fillStyle='#5eead4';g.beginPath();g.arc(bx+Math.cos(a)*64,cy+Math.sin(a)*64,4.5,0,7);g.fill()}
     if(p>0){
       const ex2=ax+(bx-ax)*p+Math.cos(-0.5)*58*(1-p)+20*p, ey2=cy+Math.sin(-0.5)*58*(1-p)-40*Math.sin(p*Math.PI);
       g.fillStyle='#fbbf24';g.beginPath();g.arc(ex2,ey2,6,0,7);g.fill();
@@ -345,7 +345,7 @@ function draw4(t){
     const cfg={
       sp:{name:'sp (CO₂, C₂H₂) - LINEAR 180°',lobes:[[0,1],[Math.PI,1]]},
       sp2:{name:'sp² (BF₃, C₂H₄) - TRIGONAL PLANAR 120°',lobes:[[-Math.PI/2,1],[Math.PI*5/6,1],[Math.PI/6,1]]},
-      sp3:{name:'sp³ (CH₄, NH₃, H₂O) - TETRAHEDRAL 109.5°',lobes:[[-Math.PI/2,1],[Math.PI*0.8,0.9],[Math.PI*1.45,0.9],[Math.PI*0.15,0.9]]},
+      sp3:{name:'sp³ (CH₄, NH₃, H₂O) - TETRAHEDRAL 109.5°',lobes:[[-Math.PI/2,1],[Math.PI*0.83,0.9],[Math.PI*0.17,0.9],[Math.PI*1.25,0.85]]},
     }[S4.mode];
     atom(g,W/2,cy,24,'#22d3ee','X');
     cfg.lobes.forEach(([a,s])=>{
@@ -369,10 +369,10 @@ function draw4(t){
 const S5={mol:'n2',filled:0,fillTarget:0};
 [['m5n2','n2'],['m5o2','o2'],['m5f2','f2'],['m5he2','he2']].forEach(([id,k])=>{document.getElementById(id).onclick=e=>{S5.mol=k;S5.filled=0;S5.fillTarget=0;setTimeout(()=>S5.fillTarget=1,50);document.querySelectorAll('.scene')[4].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
 // energy levels: label, electrons capacity order for N2-type ordering (simplified visual)
-const MO_LEVELS=['σ2s','σ*2s','σ2p(z)','π2p(x)=π2p(y)','π*2p(x)=π*2p(y)','σ*2p(z)'];
+const MO_LEVELS_OF={n2:['σ2s','σ*2s','π2p(x)=π2p(y)','σ2p(z)','π*2p(x)=π*2p(y)','σ*2p(z)'],o2:['σ2s','σ*2s','σ2p(z)','π2p(x)=π2p(y)','π*2p(x)=π*2p(y)','σ*2p(z)'],f2:['σ2s','σ*2s','σ2p(z)','π2p(x)=π2p(y)','π*2p(x)=π*2p(y)','σ*2p(z)'],he2:['σ1s','σ*1s']};
 const MO_ORDER_O2=['σ2s','σ*2s','σ2p(z)','π2p','π2p','π*2p','π*2p','σ*2p'];
 const MO_COUNT={n2:10,o2:12,f2:14,he2:4}; // valence electrons only (2s+2p)
-const MO_ELEC={n2:[2,2,2,4,0,0],o2:[2,2,2,4,2,0],f2:[2,2,2,4,4,0],he2:[2,2,0,0,0,0]};
+const MO_ELEC={n2:[2,2,4,2,0,0],o2:[2,2,2,4,2,0],f2:[2,2,2,4,4,0],he2:[2,2,0,0,0,0]};
 const MO_BO={n2:3,o2:2,f2:1,he2:0};
 const MO_NAME={n2:'N₂ (10 valence e⁻)',o2:'O₂ (12 valence e⁻)',f2:'F₂ (14 valence e⁻)',he2:'He₂ (4 valence e⁻)'};
 function draw5(t){
@@ -381,18 +381,18 @@ function draw5(t){
   if(S5.fillTarget&&S5.filled<1)S5.filled=Math.min(1,S5.filled+0.02);
   const e=MO_ELEC[S5.mol],maxShow=S5.filled*MO_COUNT[S5.mol];
   // draw energy ladder bottom-up
-  const base=H-70,dy=54;
+  const base=H-56,dy=46;const LV=MO_LEVELS_OF[S5.mol];
   let shown=0;
   // side atoms panels
   label(g,'atom A',60,40,'#8f8fb8');label(g,'atom B',W-110,40,'#8f8fb8');
   label(g,'MOLECULAR ORBITALS (valence shell)',W/2-150,30,'#8f8fb8');
-  for(let i=0;i<6;i++){
+  for(let i=0;i<LV.length;i++){
     const y=base-i*dy;
-    const wide=(i===3||i===4);
+    const wide=LV[i].startsWith('π');
     const lw=wide?170:110;
     g.strokeStyle='#8f8fb8';g.lineWidth=2;
     g.beginPath();g.moveTo(W/2-lw/2,y);g.lineTo(W/2+lw/2,y);g.stroke();
-    label(g,MO_LEVELS[i],W/2+lw/2+10,y+4,i<2?'#5eead4':(i<4?'#fbbf24':'#f87171'));
+    label(g,LV[i],W/2+lw/2+10,y+4,LV[i].includes('*')?'#f87171':'#fbbf24');
     if(wide){g.beginPath();g.moveTo(W/2-45,y-16);g.lineTo(W/2+45,y-16);g.stroke()} // degenerate second line
     // electrons
     const cap=e[i];let placed=0;
@@ -409,15 +409,15 @@ function draw5(t){
     }
   }
   // antibonding stars note
-  label(g,'* = antibonding (yahan e⁻ jaaye to bond KAMZOR)',W/2-180,base-6*dy+30,'#f87171');
+  label(g,'* = antibonding (yahan e⁻ jaaye to bond KAMZOR)',W/2-180,base-LV.length*dy+30,'#f87171');
   // result panel
   const bo=MO_BO[S5.mol];
-  label(g,MO_NAME[S5.mol],70,base-6*dy+30,'#8f8fb8');
+  label(g,MO_NAME[S5.mol],70,base-LV.length*dy+30,'#8f8fb8');
   if(S5.filled>=1){
-    label(g,'Bond Order = (Nb − Na)/2 = '+bo,70,base-6*dy+56,'#fbbf24');
-    if(S5.mol==='o2')label(g,'π* me 2 UNPAIRED e⁻ → PARAMAGNETIC! (Lewis fail, MOT win)',70,base-6*dy+80,'#f87171');
-    if(S5.mol==='he2')label(g,'BO = 0 → He₂ exist NAHI karta!',70,base-6*dy+80,'#f87171');
-    if(S5.mol==='n2')label(g,'BO = 3 → triple bond, sabse strong',70,base-6*dy+80,'#5eead4');
+    label(g,'Bond Order = (Nb − Na)/2 = '+bo,70,base-LV.length*dy+56,'#fbbf24');
+    if(S5.mol==='o2')label(g,'π* me 2 UNPAIRED e⁻ → PARAMAGNETIC! (Lewis fail, MOT win)',70,base-LV.length*dy+80,'#f87171');
+    if(S5.mol==='he2')label(g,'BO = 0 → He₂ exist NAHI karta!',70,base-LV.length*dy+80,'#f87171');
+    if(S5.mol==='n2')label(g,'BO = 3 → triple bond, sabse strong (s-p mixing: π2p neeche!)',70,base-LV.length*dy+80,'#5eead4');
   }
   document.getElementById('v5read').innerHTML='<b style="color:#fbbf24">'+MO_NAME[S5.mol]+'</b> → Bond Order = <b style="color:#fbbf24">'+bo+'</b>'+(S5.mol==='o2'?' · 2 unpaired e⁻ = <b style="color:#f87171">paramagnetic</b>':'')+(S5.mol==='he2'?' · BO=0 = <b style="color:#f87171">molecule banta hi nahi</b>':'');
 }
