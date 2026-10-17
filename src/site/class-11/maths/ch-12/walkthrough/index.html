@@ -252,7 +252,7 @@ function draw3(t){
   g.strokeStyle='#8f8fb8';g.setLineDash([3,3]);g.beginPath();g.moveTo(X(P[0]),oy+16);g.lineTo(X(Q[0]),oy+16);g.stroke();g.setLineDash([]);
   label(g,'h = '+h.toFixed(2),(X(P[0])+X(Q[0]))/2-20,oy+32,'#8f8fb8');
   const mTan=df(x0);
-  document.getElementById('v3read').innerHTML='secant slope = <b style="color:#e879f9">'+mSec.toFixed(3)+'</b> &nbsp;→&nbsp; tangent slope f′('+x0.toFixed(1)+') = <b style="color:#fbbf24">'+mTan.toFixed(3)+'</b>'+(h<0.06?' - <b style="color:#fbbf24">h ≈ 0: secant BAN GAYI tangent!</b>':' (h slider ko zero karo)');
+  document.getElementById('v3read').innerHTML='secant slope = <b style="color:#e879f9">'+mSec.toFixed(3)+'</b> &nbsp;→&nbsp; tangent slope f′('+x0.toFixed(2)+') = <b style="color:#fbbf24">'+mTan.toFixed(3)+'</b>'+(h<0.06?' - <b style="color:#fbbf24">h ≈ 0: secant BAN GAYI tangent!</b>':' (h slider ko zero karo)');
 }
 // ---------- SCENE 4: derivative machine ----------
 const S4={fn:'pow',n:3,x:60};
