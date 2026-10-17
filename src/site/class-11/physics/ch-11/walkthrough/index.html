@@ -152,7 +152,7 @@ const R=(a,b)=>a+Math.random()*(b-a);
 function pvmap(gx,gy,gw,gh){return {X:v=>gx+(v-0.5)/4.5*gw, Y:p=>gy-p/5*gh}}
 function axes(g,gx,gy,gw,gh){
   g.strokeStyle='#3c3c5c';g.lineWidth=1.5;g.strokeRect(gx,gy-gh,gw,gh);
-  label(g,'P',gx-14,gy-gh+14,'#8f8fb8');label(g,'V →',gx+gw+6,gy+16,'#8f8fb8');
+  label(g,'P',gx-14,gy-gh+14,'#8f8fb8');label(g,'V →',gx+gw-28,gy-gh+14,'#8f8fb8');
   [1,2,3,4,5].forEach(v=>{if(v<=5)label(g,''+v,gx+(v-0.5)/4.5*gw-3,gy+16,'#5c5c78')});
   [1,2,3,4].forEach(p=>label(g,''+p,gx-14,gy-p/5*gh+4,'#5c5c78'));
 }
@@ -182,7 +182,7 @@ function draw1(t,dt){
   const gx=60,gy=300,gw=380,gh=260;
   const m={X:v=>gx+(v-0.5)/2.5*gw,Y:p=>gy-p/5*gh};
   g.strokeStyle='#3c3c5c';g.lineWidth=1.5;g.strokeRect(gx,gy-gh,gw,gh);
-  label(g,'P',gx-14,gy-gh+14,'#8f8fb8');label(g,'V →',gx+gw+6,gy+16,'#8f8fb8');
+  label(g,'P',gx-14,gy-gh+14,'#8f8fb8');label(g,'V →',gx+gw-28,gy-gh+14,'#8f8fb8');
   [1,2,3].forEach(v=>label(g,''+v,m.X(v)-3,gy+16,'#5c5c78'));
   [1,2,3,4].forEach(p=>label(g,''+p,gx-14,m.Y(p)+4,'#5c5c78'));
   if(S1.prog<1)S1.prog=Math.min(1,S1.prog+dt/1.4);
