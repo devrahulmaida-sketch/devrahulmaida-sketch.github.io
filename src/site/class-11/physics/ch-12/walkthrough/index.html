@@ -201,7 +201,7 @@ function draw2(t,dt){
     dot(g,m.x,m.y,i===0?7:4,i===0?'#fbbf24':'#22d3ee');
   });
   // speedometer bar
-  const bx=520,bw=60,maxH=200;
+  const bx=520,bw=60,maxH=140;
   const bars=[['100K',1,'#5eead4'],['300K',1.732,'#fbbf24'],['600K',2.449,'#f87171']];
   bars.forEach((b,i)=>{
     const X=bx+i*72,full=b[1]/2.449*maxH;
@@ -213,7 +213,7 @@ function draw2(t,dt){
     if(sel){g.strokeStyle=b[2];g.lineWidth=2.5;g.strokeRect(X-2,280-full-2,52,full+4)}
     label(g,b[0],X+4,298,sel?b[2]:'#8f8fb8');
   });
-  label(g,'speed ∝ √T',bx+30,40,'#8f8fb8');
+
   const ke=(1.5*1.38e-23*S2.T).toExponential(2);
   panel(g,[['T = '+S2.T+' K','#fbbf24'],['v ∝ √T = '+(vScale.toFixed(2))+'×','#22d3ee'],['KE = (3/2)k_BT','#e8e8f0'],['= '+ke+' J','#5eead4']],520,50);
   label(g,'0 K pe KE = 0 → sab RUK jaayenge (unreachable!)',40,H-14,'#f87171');
