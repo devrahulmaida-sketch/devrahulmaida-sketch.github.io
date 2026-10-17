@@ -75,12 +75,12 @@
 <!-- SCENE 3 -->
 <section class="scene">
   <h2><span>3.</span> Newton Ka Cannonball - Kitni Tez Phenko?</h2>
-  <p class="sub">Pahaad se topu horizontal chalaao. Slow = gir jaayegi. <b>~8 km/s = orbit shuru!</b> (satellite lagatar Earth KI TARAF gir raha hai, bas aage itna tez ki Earth "chhoot" jaati hai). <b>11.2 km/s = escape</b> - kabhi wapas nahi!</p>
+  <p class="sub">Newton ka thought experiment: itni oonchi tower (~190 km, atmosphere se upar!) se topu horizontal chalaao. Slow = gir jaayegi. <b>~7.8 km/s = orbit shuru!</b> (satellite lagatar Earth KI TARAF gir raha hai, bas aage itna tez ki Earth "chhoot" jaati hai). <b>~11 km/s = escape</b> - kabhi wapas nahi! (Surface se: v&#8339; = 7.9, v&#8337; = 11.2 km/s.)</p>
   <canvas id="cv3" width="760" height="360"></canvas>
   <div class="ctrl">
     <button class="btn" data-v="5.5">5.5 km/s</button>
     <button class="btn" data-v="7.0">7.0 km/s</button>
-    <button class="btn hot" data-v="8.2">8.2 (orbit)</button>
+    <button class="btn hot" data-v="7.8">7.8 (orbit)</button>
     <button class="btn" data-v="9.5">9.5 km/s</button>
     <button class="btn" data-v="11.2">11.2 (escape)</button>
     <div class="readout" id="v3read"></div>
@@ -232,7 +232,7 @@ function draw2(t,dt){
 }
 
 // ---------- SCENE 3: Newton cannonball ----------
-const GM=3.986e5, RE=6371; // km^3/s^2, km
+const GM=3.986e5, RE=6371, R0=RE*1.03; // km^3/s^2, km - tower ~190 km upar (atmosphere se upar)
 const S3={v:8.2,run:null,trail:[],status:'speed chuno aur fire!'}
 const CX=330,CY=180,PR=0.012; // px per km
 document.querySelectorAll('.scene')[2].querySelectorAll('.btn[data-v]').forEach(b=>{
@@ -240,7 +240,7 @@ document.querySelectorAll('.scene')[2].querySelectorAll('.btn[data-v]').forEach(
     S3.v=+b.dataset.v;
     document.querySelectorAll('.scene')[2].querySelectorAll('.btn').forEach(x=>x.classList.remove('hot'));
     e.target.classList.add('hot');
-    S3.run={x:0,y:-RE,vx:S3.v,vy:0};
+    S3.run={x:0,y:-R0,vx:S3.v,vy:0};
     S3.trail=[];S3.status='chala...';
   };
 });
@@ -253,12 +253,13 @@ function draw3(t,dt){
   g.fillStyle=grd;g.beginPath();g.arc(CX,CY,RE*PR,0,7);g.fill();
   g.strokeStyle='#22d3ee66';g.lineWidth=1.5;g.beginPath();g.arc(CX,CY,RE*PR,0,7);g.stroke();
   label(g,'EARTH',CX-24,CY+4,'#bfdbfe');
-  // mountain/cannon
-  dot(g,CX,CY-RE*PR,4,'#8f8fb8');
+  // tower + cannon (atmosphere se upar ~190 km)
+  g.strokeStyle='#8f8fb855';g.lineWidth=2;g.beginPath();g.moveTo(CX,CY-RE*PR);g.lineTo(CX,CY-R0*PR);g.stroke();
+  dot(g,CX,CY-R0*PR,5,'#cbd5e1');dot(g,CX,CY-R0*PR,2,'#f8fafc');
   // integrate
   if(S3.run){
     const steps=Math.max(1,Math.round(dt*60*30));
-    const h=dt*60/steps*8;
+    const h=dt*600/(steps*8); // 600x time: orbit ~9s wall, crash arcs visible
     for(let i=0;i<steps*8&&S3.run;i++){
       const s=S3.run;
       const r2=s.x*s.x+s.y*s.y,r=Math.sqrt(r2);
@@ -268,7 +269,7 @@ function draw3(t,dt){
       const rr=Math.sqrt(s.x*s.x+s.y*s.y);
       if(rr<=RE){S3.status='GIR GAYA (slow!)';S3.run=null;S3.trail.push([CX+s.x*PR,CY+s.y*PR]);}
       else if(rr>RE*7){S3.status='BHAAG GAYA (escape!)';S3.run=null;}
-      else if(i%40===0)S3.trail.push([CX+s.x*PR,CY+s.y*PR]);
+      else if(i%150===0)S3.trail.push([CX+s.x*PR,CY+s.y*PR]);
       if(S3.trail.length>900)S3.trail.shift();
     }
     if(S3.run&&S3.trail.length>850&&!S3.orbMsg){S3.orbMsg=true}
@@ -280,8 +281,8 @@ function draw3(t,dt){
   }
   if(S3.run){dot(g,CX+S3.run.x*PR,CY+S3.run.y*PR,5,'#fbbf24');dot(g,CX+S3.run.x*PR,CY+S3.run.y*PR,2,'#fff7d6')}
   // status-based ring
-  const orbiting=S3.run&&S3.trail.length>400;
-  panel(g,[['v = '+S3.v+' km/s','#fbbf24'],['v_o ≈ 7.9 (surface)','#5eead4'],['v_e = 11.2 km/s','#f87171'],[orbiting?'ORBIT chal raha! ✓':S3.status,'#8f8fb8']],560,40);
+  const orbiting=S3.run&&S3.trail.length>350;
+  panel(g,[['v = '+S3.v+' km/s','#fbbf24'],['v_o ≈ 7.8 (yahan)','#5eead4'],['v_e ≈ 11.0 (yahan)','#f87171'],[orbiting?'ORBIT chal raha! ✓':S3.status,'#8f8fb8']],560,40);
   document.getElementById('v3read').textContent=orbiting?'ORBIT! v = '+S3.v+' km/s - lagatar Earth ki taraf gir raha, bas kabhi pahunchta nahi!':(S3.status+' · v = '+S3.v+' km/s');
 }
 
