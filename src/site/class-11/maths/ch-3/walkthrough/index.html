@@ -315,8 +315,8 @@ function draw4(t,dt){
   const baseA=quad===1?0:quad===2?Math.PI:quad===3?Math.PI:2*Math.PI;
   g.strokeStyle='#4ade80';g.lineWidth=5;
   g.beginPath();
-  if(quad===1||quad===3) g.arc(cx,cy,r-26,-baseA,-th,quad===1);
-  else g.arc(cx,cy,r-26,-th,-baseA,quad===2);
+  if(quad===1||quad===3) g.arc(cx,cy,r-26,-baseA,-th,true);
+  else g.arc(cx,cy,r-26,-th,-baseA,true);
   g.stroke();
   const px=cx+Math.cos(th)*r,py=cy-Math.sin(th)*r;
   g.strokeStyle='#f0f0fa';g.lineWidth=2;g.beginPath();g.moveTo(cx,cy);g.lineTo(px,py);g.stroke();
