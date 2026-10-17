@@ -78,7 +78,7 @@
 <section class="scene">
   <h2><span>3.</span> Hydrogen Spectrum - Continuous Rainbow NAHI, Sirf Lines</h2>
   <p class="sub">Electron upar phir neeche gira → light nikli → prism ne <b>alag-alag LINES</b> dikhayi. Series badlo aur dekho lines kahan padti hain: <b>1/λ = R(1/n₁² − 1/n₂²)</b>, R = 109,677 cm⁻¹. Sirf Balmer (n₁=2) visible hai!</p>
-  <canvas id="cv3" width="760" height="330"></canvas>
+  <canvas id="cv3" width="760" height="360"></canvas>
   <div class="ctrl">
     <button class="btn" id="b3lyman">Lyman (n₁=1, UV)</button>
     <button class="btn hot" id="b3balmer">Balmer (n₁=2, Visible)</button>
@@ -240,16 +240,18 @@ document.getElementById('b2drop').onclick=()=>{if(S2.n>1)jump(1)};
 function draw2(t,dt){
   const[c,g]=ctx('cv2'),W=c.width,H=c.height;
   g.clearRect(0,0,W,H);
-  // level lines
-  for(let n=1;n<=5;n++){
-    const y=lvY(E6[n-1],H);
-    g.strokeStyle='#3c3c5c';g.lineWidth=2;g.beginPath();g.moveTo(90,y);g.lineTo(560,y);g.stroke();
-    label(g,'n = '+n,40,y+4,'#8f8fb8');
-    label(g,E6[n-1]+' eV',572,y+4,'#5eead4');
-  }
-  const y0=lvY(0,H);
-  g.strokeStyle='#3c3c5c';g.setLineDash([4,4]);g.beginPath();g.moveTo(90,y0);g.lineTo(560,y0);g.stroke();g.setLineDash([]);
-  label(g,'n = ∞',40,y0+4,'#8f8fb8');label(g,'0 eV (FREE!)',572,y0+4,'#5eead4');
+  // level lines (true positions) + decluttered labels
+  const lv=[];
+  for(let n=1;n<=5;n++)lv.push({y:lvY(E6[n-1],H),lt:'n = '+n,rt:E6[n-1]+' eV',dash:false});
+  lv.push({y:lvY(0,H),lt:'n = ∞',rt:'0 eV (FREE!)',dash:true});
+  lv.forEach(L=>{
+    g.strokeStyle='#3c3c5c';g.lineWidth=2;
+    if(L.dash)g.setLineDash([4,4]);
+    g.beginPath();g.moveTo(90,L.y);g.lineTo(560,L.y);g.stroke();g.setLineDash([]);
+  });
+  lv.sort((a,b)=>a.y-b.y);
+  for(let i=1;i<lv.length;i++)if(lv[i].y<lv[i-1].y+15)lv[i].y=lv[i-1].y+15;
+  lv.forEach(L=>{label(g,L.lt,40,L.y+4,'#8f8fb8');label(g,L.rt,572,L.y+4,'#5eead4')});
   // photon animation
   const ey=lvY(E6[S2.n-1],H);
   if(S2.photon){
@@ -290,7 +292,7 @@ function draw3(t,dt){
   const axisY=250;
   g.strokeStyle='#3c3c5c';g.lineWidth=2;g.beginPath();g.moveTo(60,axisY);g.lineTo(W-60,axisY);g.stroke();
   [200,400,600,800,1000,1200,1400,1600,1800,2000].forEach(L=>{const x=lamX(L,W);g.beginPath();g.moveTo(x,axisY-5);g.lineTo(x,axisY+5);g.stroke();label(g,L+'',x-12,axisY+22,'#8f8fb8')});
-  label(g,'λ (nm) →',W-120,axisY+22,'#8f8fb8');
+  label(g,'λ (nm) →',W-140,32,'#8f8fb8');
   // visible band 380-750
   const vx1=lamX(380,W),vx2=lamX(750,W);
   // rainbow gradient
@@ -313,7 +315,7 @@ function draw3(t,dt){
   });
   const sname=seriesOf(n1);
   const first=Math.round(lines[0].lam),second=Math.round(lines[1].lam);
-  panel(g,[[sname+' series (n₁ = '+n1+')','#fbbf24'],['pehli line: '+first+' nm ('+regionOf(first)+')','#5eead4'],['doosri: '+second+' nm','#22d3ee'],[regionOf(first)==='VISIBLE'?'aankh se dikhti hai!':(regionOf(first)==='UV'?'UV me - aankh se NAHI dikhti':'IR me - garmi jaisi, dikhti nahi'),'#8f8fb8']],60,286);
+  panel(g,[[sname+' series (n₁ = '+n1+')','#fbbf24'],['pehli line: '+first+' nm ('+regionOf(first)+')','#5eead4'],['doosri: '+second+' nm','#22d3ee'],[regionOf(first)==='VISIBLE'?'aankh se dikhti hai!':(regionOf(first)==='UV'?'UV me - aankh se NAHI dikhti':'IR me - garmi jaisi, dikhti nahi'),'#8f8fb8']],60,302);
   document.getElementById('v3read').innerHTML=sname+': n = '+(n1+1)+','+(n1+2)+','+(n1+3)+'… → '+n1+' &nbsp;|&nbsp; pehli line λ = <b>'+first+' nm</b> ('+regionOf(first)+') - 1/λ = R(1/'+n1+'² − 1/n₂²)';
 }
 
