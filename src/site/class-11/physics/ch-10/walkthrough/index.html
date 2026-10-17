@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermal Properties Ka Visual Walkthrough - Class 11 Physics Ch 10</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:480px;font-size:1rem;padding:10px}
+  .readout{font-size:.88rem;color:#fbbf24;flex-basis:100%;min-height:1.2em}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Physics - Chapter 10 - Thermal Properties of Matter</span>
+  <h1>Garmi Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - absolute zero se Stefan-Boltzmann tak. Molecules ko freeze karo, bimetallic strip mudao, ice ko steam banao, conduction race lagao, filament ko chamkao.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> Temperature vs Heat - Absolute Zero Tak</h2>
+  <p class="sub">Temperature = molecules ki <b>average kinetic energy</b> ka indicator. Slider se °C badlo: molecules tez/mande hote dekho, teeno scales (°C, °F, K) saath dekho. <b>0 K pe motion MINIMUM</b> - isse neeche kuch nahi!</p>
+  <canvas id="cv1" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <div class="slider">T = <input type="range" id="tslider" min="-273" max="100" value="25" step="1"> <span id="tval">25</span> °C</div>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="fact"><b>Temperature alag, heat alag!</b> Temperature = paani ka "level", heat = behta hua paani. Chhota cup aur bada bucket dono 25°C ho sakte hain, par bucket me zyada heat ENERGY hai. Kelvin absolute kyun: 0 K pe molecular motion minimum - negative Kelvin possible nahi!</div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> Thermal Expansion - Garmi Me Phailna</h2>
+  <p class="sub"><b>ΔL = αLΔT</b> - garm karo, lambai badhti hai. Upar: steel rail (expansion chhota par REAL - isliye railway tracks me gaps!). Neeche: <b>bimetallic strip</b> - do metals, alag α → garm karne pe MUD jaati hai. Thermostat ka heart!</p>
+  <canvas id="cv2" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <div class="slider">ΔT = <input type="range" id="dtslider" min="0" max="50" value="0" step="1"> <span id="dtval">0</span> °C</div>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="fact"><b>β ≈ 2α, γ ≈ 3α</b> (area aur volume expansion) - exam favourite! Pendulum clock garmi me SLOW chalti hai (lambai badhi → time period badha). Aur paani 0-4°C me ULTA karta hai - garm karne pe SIKUDTA hai (4°C pe density max, isliye barf tairti hai!).</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Latent Heat - Temperature RUK Jaata Hai</h2>
+  <p class="sub">1 g ice (-20°C) ko heat do. Slider se heat daalo: T badhta hai... phir <b>0°C pe RUK jaata hai</b> (melting!), phir 100°C pe RUK jaata hai (boiling!). Plateau pe heat kahan ja rahi hai? <b>State todne me!</b></p>
+  <canvas id="cv3" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <div class="slider">Heat daali = <input type="range" id="qslider" min="0" max="3300" value="0" step="10"> <span id="qval">0</span> J</div>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="fact"><b>Steam burns khatarnak kyun:</b> 100°C steam pehle L_v = 2260 J/g release karti hai, PHIR paani ki tarah cool hoti hai - double damage! Melting plateau (334 J/g) boiling plateau (2260 J/g) se bahut CHHOTA hai - graph pe dekho!</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> Conduction Race - Copper vs Wood</h2>
+  <p class="sub"><b>H = kA(T₁−T₂)/d</b> - conduction rate thermal conductivity k par depend. Dono rods ka left end garam (100°C): heat front KITNI TEZI se aage badhta hai? <b>k_copper = 400, k_wood = 0.4</b> - 1000 guna ka fark!</p>
+  <canvas id="cv4" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="racebtn">Race Shuru!</button>
+    <button class="btn" id="racereset">Reset</button>
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="fact"><b>Metals me free electrons heat bhi carry karte hain</b> - isliye achhe electrical conductors achhe thermal bhi! Cooking utensils metal ke, handles lakdi/plastic ke. Convection alag hai: garam fluid KHUD upar uthta hai (sea breeze, room heater) - courier service, relay race nahi!</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> Radiation - T⁴ Ka Kamaal</h2>
+  <p class="sub"><b>Stefan-Boltzmann: P = eσAT⁴</b> - har body radiate karti hai, medium ki zaroorat NAHI (suraj ki dhoop isi se!). Slider se filament ka T badlo: <b>T double → radiation 16 guna!</b> Color bhi badalta hai (red → orange → white).</p>
+  <canvas id="cv5" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <div class="slider">T = <input type="range" id="kslider" min="300" max="3000" value="800" step="50"> <span id="kval">800</span> K</div>
+    <button class="btn" id="dblbtn">T Double Karo</button>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="fact"><b>Good absorbers are good emitters!</b> Dark clothes garmi me jaldi garam, thandi jagah jaldi thande bhi. Bulb ka filament 2500 K pe hai - isliye itna chamakta hai. Newton's cooling: chai TAB sabse tez thandi hoti hai jab sabse garam ho (rate ∝ T difference)!</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">T_F = 9T_C/5 + 32 &nbsp;|&nbsp; T_K = T_C + 273.15</div>
+  <div class="formula">ΔL = αLΔT &nbsp;|&nbsp; β ≈ 2α &nbsp;|&nbsp; γ ≈ 3α</div>
+  <div class="formula">Q = msΔT &nbsp;|&nbsp; Q = mL (state change, T constant)</div>
+  <div class="formula">Calorimetry: heat lost = heat gained</div>
+  <div class="formula">Conduction: H = kA(T₁−T₂)/d &nbsp;|&nbsp; R = d/(kA)</div>
+  <div class="formula">Stefan-Boltzmann: P = eσAT⁴ &nbsp;|&nbsp; Newton: rate ∝ ΔT</div>
+  <p style="margin-top:18px">Garmi ka khel samjha? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Physics Ch 10 - Thermal Properties of Matter | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
+function panel(g,lines,x,y){lines.forEach((L,i)=>label(g,L[0],x,y+i*22,L[1]))}
+const R=(a,b)=>a+Math.random()*(b-a);
+
+// ---------- SCENE 1: temperature & absolute zero ----------
+const S1={Tc:25,parts:[]};
+for(let i=0;i<40;i++)S1.parts.push({x:R(80,440),y:R(70,270),a:R(0,6.3)});
+document.getElementById('tslider').oninput=e=>{S1.Tc=+e.target.value;document.getElementById('tval').textContent=S1.Tc};
+function draw1(t,dt){
+  const[c,g]=ctx('cv1'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const TK=S1.Tc+273.15;
+  const spd=Math.sqrt(Math.max(0,TK)/373)*70; // px/s, 70 at 100°C
+  g.strokeStyle='#3c3c5c';g.lineWidth=3;g.strokeRect(60,50,400,240);
+  label(g,'closed box of gas',180,42,'#8f8fb8');
+  S1.parts.forEach(p=>{
+    p.x+=Math.cos(p.a)*spd*dt;p.y+=Math.sin(p.a)*spd*dt;
+    if(p.x<70||p.x>450){p.a=Math.PI-p.a;p.x=Math.max(70,Math.min(450,p.x))}
+    if(p.y<60||p.y>280){p.a=-p.a;p.y=Math.max(60,Math.min(280,p.y))}
+    if(Math.random()<0.01)p.a+=R(-0.5,0.5);
+    const hot=Math.min(1,TK/373);
+    dot(g,p.x,p.y,4,'rgb('+Math.round(80+175*hot)+','+Math.round(200-140*hot)+','+Math.round(238-150*hot)+')');
+  });
+  if(TK<=0.5)label(g,'0 K - motion MINIMUM (frozen!)',170,170,'#e879f9');
+  // thermometers
+  const TF=9*S1.Tc/5+32;
+  panel(g,[['T = '+S1.Tc+' °C','#f0f0fa'],['T = '+TF.toFixed(0)+' °F','#f0f0fa'],['T = '+TK.toFixed(1)+' K','#fbbf24']],520,60);
+  // K bar
+  g.fillStyle='#26263e';g.fillRect(520,120,200,16);
+  g.fillStyle='#fbbf24';g.fillRect(520,120,Math.max(0,Math.min(200,TK/373*200)),16);
+  label(g,'0 K',516,152,'#8f8fb8');label(g,'373 K (100°C)',628,152,'#8f8fb8');
+  label(g,'absolute zero = −273.15 °C',520,180,'#e879f9');
+  label(g,'speed ∝ √T (Kelvin!)',520,206,'#8f8fb8');
+  document.getElementById('v1read').innerHTML='T = <b>'+S1.Tc+' °C</b> = <b>'+TF.toFixed(0)+' °F</b> = <b style="color:#fbbf24">'+TK.toFixed(1)+' K</b>'+(TK<=0.5?' · <b style="color:#e879f9">ABSOLUTE ZERO!</b>':'');
+}
+
+// ---------- SCENE 2: thermal expansion + bimetallic ----------
+const S2={dT:0};
+document.getElementById('dtslider').oninput=e=>{S2.dT=+e.target.value;document.getElementById('dtval').textContent=S2.dT};
+function draw2(t,dt){
+  const[c,g]=ctx('cv2'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const alpha=1.2e-5,L0=1; // steel, 1 m
+  const dL=alpha*L0*S2.dT; // real meters
+  const ex=600; // exaggeration x600 so 0.6mm -> visible
+  const grow=dL*ex*200; // px (200px = 1m rail drawn at 200px/m... rail drawn 400px = 1m? see below)
+  // rail: 400px represents 1 m
+  const railX=80,railY=60,railW=400,railH=22;
+  const growPx=dL*ex*railW/L0/1000*1000; // = dL*ex*400 px per meter
+  const gw=dL*ex*railW;
+  g.fillStyle='#8a94a6';g.fillRect(railX,railY,railW+gw,railH);
+  g.strokeStyle='#c9d2e0';g.lineWidth=1.5;g.strokeRect(railX,railY,railW+gw,railH);
+  // gap marker at original end
+  g.strokeStyle='#4ade80';g.setLineDash([4,4]);g.beginPath();g.moveTo(railX+railW,railY-10);g.lineTo(railX+railW,railY+railH+10);g.stroke();g.setLineDash([]);
+  if(gw>0.5){
+    g.fillStyle='#4ade80';g.fillRect(railX+railW,railY,gw,railH);
+    label(g,'ΔL = '+(dL*1000).toFixed(2)+' mm',railX+railW+8,railY-14,'#4ade80');
+  }
+  label(g,'steel rail, L = 1 m (ΔL ×600 exaggerated!)',railX,railY-14,'#8f8fb8');
+  label(g,'α_steel = 1.2×10⁻⁵ /°C',railX,railY+railH+22,'#8f8fb8');
+  label(g,'railway tracks me gap isliye!',560,railY+16,'#f0f0fa');
+  // bimetallic strip
+  const bx=110,by=210;
+  const aCu=1.7e-5,aFe=1.2e-5;
+  const bend=(aCu-aFe)*S2.dT*2.0e3; // exaggerated curvature (0.5 rad at 50°C)
+  // draw two stacked arcs bending toward iron (downward->upward curve)
+  const segs=40,L=340;
+  let x=bx,y1=by,y2=by+14,ang=0;
+  g.lineWidth=7;
+  let px=bx,py1=by,py2=by+14,pa=0;
+  for(let i=0;i<segs;i++){
+    const dAng=bend/segs;
+    const nx=px+Math.cos(pa)*L/segs;
+    const ny1=py1+Math.sin(pa)*L/segs;
+    const ny2=py2+Math.sin(pa)*L/segs;
+    g.strokeStyle='#f59e0b';g.beginPath();g.moveTo(px,py1);g.lineTo(nx,ny1);g.stroke(); // copper top
+    g.strokeStyle='#94a3b8';g.beginPath();g.moveTo(px,py2);g.lineTo(nx,ny2);g.stroke(); // iron bottom
+    px=nx;py1=ny1;py2=ny2;pa+=dAng;
+  }
+  // clamp
+  g.fillStyle='#3c3c5c';g.fillRect(bx-16,by-14,16,50);
+  label(g,'clamp',bx-14,by+52,'#8f8fb8');
+  label(g,'copper (α = 1.7×10⁻⁵)',px+12,py1+4,'#f59e0b');
+  label(g,'iron (α = 1.2×10⁻⁵)',px+12,py2+4,'#94a3b8');
+  if(S2.dT>0)label(g,'copper zyada phaila → strip MUD gayi!',bx,by+80,'#fbbf24');
+  else label(g,'ΔT badhao - strip mudegi!',bx,by+80,'#8f8fb8');
+  label(g,'bimetallic = thermostat ka heart',480,by+118,'#f0f0fa');
+  document.getElementById('v2read').innerHTML='ΔT = <b>'+S2.dT+' °C</b> · ΔL = αLΔT = <b style="color:#4ade80">'+(dL*1000).toFixed(2)+' mm</b> · strip bend ∝ (α_Cu − α_Fe)ΔT';
+}
+
+// ---------- SCENE 3: latent heat heating curve ----------
+const S3={Q:0};
+document.getElementById('qslider').oninput=e=>{S3.Q=+e.target.value;document.getElementById('qval').textContent=S3.Q};
+// 1 g: ice -20->0: 42J | melt: 334J | water 0->100: 418.6J | boil: 2260J | steam 100->120: 40J
+const SEG=[[0,42,-20,0,'ICE garam ho raha'],[42,376,0,0,'MELTING! T frozen'],[376,794.6,0,100,'PAANI garam ho raha'],[794.6,3054.6,100,100,'BOILING! T frozen'],[3054.6,3300,100,120,'STEAM garam ho raha']];
+function qToT(Q){
+  for(const s of SEG){const q0=+s[0],q1=+s[1];if(Q<=q1){const f=q1>q0?(Q-q0)/(q1-q0):0;return [s[2]+(s[3]-s[2])*f,s[4],q0,q1]}}
+  return [120,'STEAM',3054.6,3300];
+}
+function draw3(t,dt){
+  const[c,g]=ctx('cv3'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  // axes: x = Q (0..3300), y = T (-20..130)
+  const ox=70,oy=290,xw=620,yh=250;
+  const X=q=>ox+q/3300*xw, Y=T=>oy-(T+20)/150*yh;
+  g.strokeStyle='#3c3c5c';g.lineWidth=2;
+  g.beginPath();g.moveTo(ox,oy);g.lineTo(ox+xw,oy);g.moveTo(ox,oy);g.lineTo(ox,oy-yh);g.stroke();
+  label(g,'heat daali (J) →',ox+xw/2-40,oy+24,'#8f8fb8');
+  label(g,'T (°C)',ox-46,oy-yh/2,'#8f8fb8');
+  [0,100].forEach(T=>{label(g,''+T,ox-18,Y(T)+4,'#8f8fb8');g.strokeStyle='#22223a';g.beginPath();g.moveTo(ox,Y(T));g.lineTo(ox+xw,Y(T));g.stroke()});
+  label(g,'-20',ox-26,Y(-20)+4,'#8f8fb8');
+  // full curve faint
+  g.strokeStyle='#2c2c44';g.lineWidth=2;g.beginPath();
+  SEG.forEach((s,i)=>{const q0=+s[0],q1=+s[1];if(i===0)g.moveTo(X(q0),Y(s[2]));g.lineTo(X(q1),Y(s[3]))});
+  g.stroke();
+  // filled curve up to Q
+  g.strokeStyle='#22d3ee';g.lineWidth=3;g.beginPath();
+  let started=false;
+  SEG.forEach(s=>{
+    const q0=+s[0],q1=+s[1];
+    if(S3.Q>=q0){
+      if(!started){g.moveTo(X(q0),Y(s[2]));started=true}
+      const qe=Math.min(S3.Q,q1);
+      const fr=(qe-q0)/(q1-q0);
+      g.lineTo(X(qe),Y(s[2]+(s[3]-s[2])*Math.max(0,fr)));
+    }
+  });
+  g.stroke();
+  const[T,phase,q0,q1]=qToT(S3.Q);
+  const px=X(S3.Q),py=Y(T);
+  dot(g,px,py,7,'#fbbf24');
+  // phase label + plateau highlight
+  const plateau=phase.includes('frozen');
+  if(plateau){
+    g.strokeStyle='#e879f9';g.lineWidth=2;g.strokeRect(X(q0)-4,Y(T)-14,X(q1)-X(q0)+8,28);
+    label(g,'PLATEAU: heat state tod rahi hai, T SAME!',X(q0)+6,Y(T)-22,'#e879f9');
+  }
+  label(g,'T = '+T.toFixed(0)+' °C',Math.min(px+12,640),py-12,'#fbbf24');
+  // state annotation
+  panel(g,[[phase,'#f0f0fa'],['ice: 42 J to 0°C','#8f8fb8'],['melt: 334 J (plateau)','#8f8fb8'],['water: 418.6 J to 100°C','#8f8fb8'],['boil: 2260 J (BADA!)','#8f8fb8']],536,40);
+  document.getElementById('v3read').innerHTML='Q = <b>'+S3.Q+' J</b> · T = <b style="color:#fbbf24">'+T.toFixed(0)+' °C</b> · <b style="color:'+(plateau?'#e879f9':'#22d3ee')+'">'+phase+'</b>';
+}
+
+// ---------- SCENE 4: conduction race ----------
+const S4={run:false,T:0};
+document.getElementById('racebtn').onclick=()=>{S4.run=true;S4.T=0};
+document.getElementById('racereset').onclick=()=>{S4.run=false;S4.T=0};
+function draw4(t,dt){
+  const[c,g]=ctx('cv4'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  if(S4.run)S4.T+=dt;
+  const rods=[{y:90,k:400,nm:'COPPER (k = 400)',col:'#f59e0b',sc:1},{y:220,k:0.4,nm:'WOOD (k = 0.4)',col:'#a3734a',sc:1}];
+  rods.forEach(r=>{
+    const rx=120,rw=520,rh=26;
+    g.fillStyle='#26263e';g.fillRect(rx,r.y,rw,rh);
+    // hot plate
+    g.fillStyle='#f87171';g.fillRect(rx-24,r.y-10,16,rh+20);
+    label(g,'100°C',rx-26,r.y-18,'#f87171');
+    // heat front: position ∝ k * time (scaled so copper crosses in ~8s)
+    const front=S4.run?Math.min(rw,S4.T*r.k*0.12):0;
+    const grd=g.createLinearGradient(rx,0,rx+Math.max(1,front),0);
+    grd.addColorStop(0,'#f87171');grd.addColorStop(1,r.col+'55');
+    g.fillStyle=grd;
+    if(front>0)g.fillRect(rx,r.y,front,rh);
+    g.strokeStyle=r.col;g.lineWidth=2;g.strokeRect(rx,r.y,rw,rh);
+    label(g,r.nm,rx,r.y-8,r.col);
+    // thermometers at 1/3 and 2/3
+    [0.33,0.66,0.98].forEach(f=>{
+      const tx=rx+rw*f,lit=front>=rw*f;
+      dot(g,tx,r.y+rh+16,5,lit?'#f87171':'#334155');
+      label(g,lit?'garam!':'...',tx-14,r.y+rh+34,lit?'#f87171':'#5c5c78');
+    });
+    if(S4.run&&front>=rw)label(g,'POHANCH GAYA!',rx+rw-110,r.y-8,'#4ade80');
+  });
+  label(g,'front speed ∝ k → copper 1000× faster!',120,290,'#fbbf24');
+  document.getElementById('v4read').textContent=S4.run?(S4.T*400*0.12>=520?'Copper NE JEET LI! Wood abhi start bhi nahi hua practically (k 1000× kam).':'Race chal rahi hai... copper ka front dekho!'):'';
+}
+
+// ---------- SCENE 5: Stefan-Boltzmann ----------
+const S5={T:800};
+document.getElementById('kslider').oninput=e=>{S5.T=+e.target.value;document.getElementById('kval').textContent=S5.T};
+document.getElementById('dblbtn').onclick=()=>{if(S5.T*2>3000){document.getElementById('v5read').textContent='3000 K max hai - pehle T kam karo, phir double!';return}S5.T*=2;document.getElementById('kslider').value=S5.T;document.getElementById('kval').textContent=S5.T};
+function bbColor(T){
+  if(T<700)return '#7f1d1d';
+  if(T<1000)return '#dc2626';
+  if(T<1600)return '#f97316';
+  if(T<2200)return '#fbbf24';
+  if(T<2800)return '#fde68a';
+  return '#ffffff';
+}
+function draw5(t,dt){
+  const[c,g]=ctx('cv5'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const sig=5.67e-8;
+  const P=sig*Math.pow(S5.T,4); // W/m^2 at e=1
+  const cx=210,cy=170;
+  // glow ∝ P (log scale)
+  const glow=Math.min(120,20+Math.log10(Math.max(1,P))*18);
+  const grd=g.createRadialGradient(cx,cy,10,cx,cy,glow);
+  grd.addColorStop(0,bbColor(S5.T));
+  grd.addColorStop(1,'#0d0d1800');
+  g.fillStyle=grd;g.beginPath();g.arc(cx,cy,glow,0,7);g.fill();
+  dot(g,cx,cy,34,bbColor(S5.T));
+  g.strokeStyle='#e8e8f044';g.lineWidth=1.5;g.beginPath();g.arc(cx,cy,34,0,7);g.stroke();
+  label(g,'filament',cx-26,cy+56,'#8f8fb8');
+  // rays
+  const nrays=Math.min(24,4+Math.round(Math.log10(Math.max(1,P))*3));
+  g.strokeStyle=bbColor(S5.T);g.lineWidth=2;
+  for(let i=0;i<nrays;i++){
+    const a=i/nrays*6.283+t*0.3;
+    g.beginPath();g.moveTo(cx+Math.cos(a)*42,cy+Math.sin(a)*42);g.lineTo(cx+Math.cos(a)*52,cy+Math.sin(a)*52);g.stroke();
+  }
+  // readout panel
+  const Pk=P>=1e6?(P/1e6).toFixed(2)+' MW/m²':P>=1e3?(P/1e3).toFixed(1)+' kW/m²':P.toFixed(1)+' W/m²';
+  panel(g,[['T = '+S5.T+' K','#f0f0fa'],['P = σT⁴ = '+Pk,'#fbbf24'],['(per m², e = 1)','#8f8fb8'],['T × 2 → P × 16!','#e879f9'],['dark red → white = T badh raha','#8f8fb8']],470,60);
+  // P comparison bar (log)
+  g.fillStyle='#26263e';g.fillRect(470,210,220,14);
+  const frac=(Math.log10(Math.max(1,P))-3)/(7.5-3);
+  g.fillStyle='#fbbf24';g.fillRect(470,210,Math.max(0,Math.min(220,frac*220)),14);
+  label(g,'log P: room temp (300K) se 3000K tak',470,240,'#8f8fb8');
+  document.getElementById('v5read').innerHTML='T = <b>'+S5.T+' K</b> · P = eσAT⁴ → <b style="color:#fbbf24">'+Pk+'</b> · T double karo, P <b style="color:#e879f9">16×</b>!';
+}
+
+// ---------- main loop ----------
+let lastTs=0;
+function loop(ts){const t=ts/1000;const dt=Math.min(0.12,(ts-lastTs)/1000||0.016);lastTs=ts;
+  if(cur===0)draw1(t,dt);else if(cur===1)draw2(t,dt);else if(cur===2)draw3(t,dt);else if(cur===3)draw4(t,dt);else if(cur===4)draw5(t,dt);
+  requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
