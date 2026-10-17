@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structure of Atom Ka Visual Walkthrough - Class 11 Chemistry Ch 2</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .scene h2 .num{color:#22d3ee}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .fact b{color:#fff}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:440px;font-size:1rem;padding:10px}
+  .readout{font-size:.88rem;color:#fbbf24;flex-basis:100%;min-height:1.2em}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Chemistry - Chapter 2 - Structure of Atom</span>
+  <h1>Atom Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - gold foil se orbital clouds tak. Alpha maaro, electron kudao, spectrum dekho, configuration bharo.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> Rutherford Gold-Foil - Atom Mostly KHAALI Hai</h2>
+  <p class="sub">α-particles (positive) ko sonay ki foil pe maaro. <b>Zyada tar seedha nikal gaye</b> (atom khali!), kuch thode mude (beech me positive charge), aur 20,000 me ~1 <b>wapas aa gaya</b> (chhota dense nucleus ~10⁻¹⁵ m!).</p>
+  <canvas id="cv1" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b1slow">Dheere (slow)</button>
+    <button class="btn" id="b1fast">Tez (fast)</button>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="fact"><b>Conclusions:</b> atom ~10⁻¹⁰ m, nucleus sirf ~10⁻¹⁵ m me poora positive mass. <b>Par Rutherford model ka drawback:</b> ghoomta electron accelerate hota hai → energy radiate karke nucleus me GIR jaana chahiye tha (par girte nahi!) - yahi problem Bohr ne solve ki.</div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> Bohr Ki Energy Ladder - Fixed Seedhi Ke Paidaan</h2>
+  <p class="sub">Electron <b>kahin bhi nahi</b> reh sakta - sirf fixed levels (n = 1, 2, 3...). Level pe click karo: neeche girega toh <b>photon emit</b> hoga (ΔE = hν), upar jaane ke liye energy absorb karni padegi. E<sub>n</sub> = −13.6/n² eV.</p>
+  <canvas id="cv2" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn" id="b2up">Energy Do (upar ↑)</button>
+    <button class="btn hot" id="b2drop">Gir Jaa (emit ↓)</button>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="fact"><b>Bohr ke postulates:</b> fixed orbit me energy radiate NAHI hoti; angular momentum mvr = nh/2π quantized; photon tabhi jab jump ho. n = ∞ matlab electron FREE (ionization, 13.6 eV). <b>Limit:</b> sirf 1-electron species (H, He⁺, Li²⁺) pe kaam karta hai.</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Hydrogen Spectrum - Continuous Rainbow NAHI, Sirf Lines</h2>
+  <p class="sub">Electron upar phir neeche gira → light nikli → prism ne <b>alag-alag LINES</b> dikhayi. Series badlo aur dekho lines kahan padti hain: <b>1/λ = R(1/n₁² − 1/n₂²)</b>, R = 109,677 cm⁻¹. Sirf Balmer (n₁=2) visible hai!</p>
+  <canvas id="cv3" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn" id="b3lyman">Lyman (n₁=1, UV)</button>
+    <button class="btn hot" id="b3balmer">Balmer (n₁=2, Visible)</button>
+    <button class="btn" id="b3paschen">Paschen (n₁=3, IR)</button>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="fact"><b>Series yaad rakho:</b> Lyman = 1 (UV), Balmer = 2 (visible - isliye H ka red-cyan-violet glow!), Paschen/Brackett/Pfund = 3, 4, 5 (sab IR). Pehli Balmer line 656 nm (H-alpha, <b>red</b>) - universe ki sabse common spectrum line!</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> Orbit NAHI, Orbital - Probability Ka Cloud</h2>
+  <p class="sub">Heisenberg: position aur momentum ek saath exact NAHI naap sakte (Δx·Δp ≥ h/4π) - toh fixed orbit ka concept khatam! Electron <b>probability cloud</b> hai. Dots jama hote dekho - jahan zyada dots, wahan zyada chance. Shape badlo:</p>
+  <canvas id="cv4" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b4s1">1s (sphere)</button>
+    <button class="btn" id="b4s2">2s (node!)</button>
+    <button class="btn" id="b4p">2p (dumbbell)</button>
+    <button class="btn" id="b4d">3d (4 lobes)</button>
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="fact"><b>Quantum numbers = electron ka address:</b> n (shell/size), l (shape: 0=s, 1=p, 2=d), m (orientation), s (spin ±½). 2s me beech ka khaali ring = <b>radial node</b> - wahan electron MILNA impossible hai! Colors = wave ka phase (+ / −).</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> Aufbau Race - Electrons Kaise Bharte Hain</h2>
+  <p class="sub">Rules: <b>Aufbau</b> (pehle low energy, (n+l) chhota wala), <b>Pauli</b> (ek orbital me max 2, opposite spins), <b>Hund</b> (same energy me pehle 1-1 parallel). Z slider ghumao aur filling dekho - Cr/Cu pe EXCEPTION dekho!</p>
+  <canvas id="cv5" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <div class="slider">Z = <input type="range" id="zslider" min="1" max="30" value="8" step="1"> <span id="zval">8</span></div>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="fact"><b>Order:</b> 1s → 2s → 2p → 3s → 3p → 4s → 3d → 4p. <b>Exceptions ratta maaro:</b> Cr (24) = [Ar] 3d⁵ 4s¹, Cu (29) = [Ar] 3d¹⁰ 4s¹ - half/full d extra stable! Electrons nikaalte waqt 4s PEHLE nikalta hai (Fe²⁺ = 3d⁶, 3d⁶4s⁰ nahi... wohi 4s² wala hisaab!).</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">E<sub>n</sub> = −13.6 × Z²/n² eV &nbsp;|&nbsp; r<sub>n</sub> = 0.529 × n²/Z Å</div>
+  <div class="formula">1/λ = R(1/n₁² − 1/n₂²) &nbsp;|&nbsp; R = 109,677 cm⁻¹</div>
+  <div class="formula">E = hν &nbsp;|&nbsp; c = νλ &nbsp;|&nbsp; h = 6.626 × 10⁻³⁴ J·s</div>
+  <div class="formula">λ = h/mv (de Broglie) &nbsp;|&nbsp; Δx·Δp ≥ h/4π</div>
+  <div class="formula">mvr = nh/2π &nbsp;|&nbsp; max e⁻ in shell = 2n²</div>
+  <div class="formula">subshell capacity: s = 2, p = 6, d = 10, f = 14</div>
+  <p style="margin-top:18px">Electron ka address samajh aaya? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Chemistry Ch 2 - Structure of Atom | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,r,0,7);g.fill()}
+function panel(g,lines,x,y){lines.forEach((L,i)=>label(g,L[0],x,y+i*22,L[1]))}
+const R=(a,b)=>a+Math.random()*(b-a);
+
+// ---------- SCENE 1: Rutherford gold foil ----------
+const S1={parts:[],straight:0,bent:0,back:0,spawn:0,rate:1.6,flash:0};
+const NUC={x:500,y:165};
+document.getElementById('b1slow').onclick=e=>{S1.rate=1.6;document.querySelectorAll('.scene')[0].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')};
+document.getElementById('b1fast').onclick=e=>{S1.rate=6;document.querySelectorAll('.scene')[0].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')};
+function draw1(t,dt){
+  const[c,g]=ctx('cv1'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  // gold foil atoms (small dots grid) + one big nucleus
+  g.fillStyle='#3a3a12';
+  g.fillRect(430,30,120,270);
+  for(let i=0;i<6;i++)for(let j=0;j<9;j++){if(i===2&&j===4)continue;dot(g,448+i*20,45+j*28,2.5,'#8a7a2a')}
+  // nucleus
+  const pl=S1.flash>0?1+S1.flash*2:1;
+  dot(g,NUC.x,NUC.y,9*pl,'#fbbf24');
+  g.strokeStyle='#fbbf24';g.lineWidth=1.5;g.beginPath();g.arc(NUC.x,NUC.y,14*pl,0,7);g.stroke();
+  label(g,'NUCLEUS (+)',NUC.x-38,NUC.y+34,'#fbbf24');
+  label(g,'gold foil',438,314,'#8a7a2a');
+  // source
+  g.fillStyle='#1b1b2e';g.fillRect(20,130,64,70);
+  g.strokeStyle='#33334f';g.strokeRect(20,130,64,70);
+  label(g,'α source',24,126,'#f87171');
+  label(g,'(helium',28,158,'#8f8fb8');label(g,'nuclei +2)',26,174,'#8f8fb8');
+  // spawn
+  S1.spawn-=dt*S1.rate;
+  if(S1.spawn<=0){
+    S1.spawn=1;
+    const aimY=NUC.y+R(-95,95);
+    const d0=Math.abs(aimY-NUC.y);
+    const fate=d0<6?2:(d0<30?1:0); // 0 straight, 1 bent, 2 back
+    S1.parts.push({x:88,y:aimY,vy:0,state:0,fate});
+  }
+  const spd=340;
+  S1.parts.forEach(p=>{
+    if(p.state===0){
+      p.x+=spd*dt;
+      const dy=p.y-NUC.y;
+      if(p.x>430&&p.fate===2){ // direct hit -> bounce back
+        p.state=2;p.vx=-spd*R(0.5,0.85);p.vy=(dy>0?1:-1)*spd*R(0.2,0.6);S1.back++;S1.flash=0.5;
+      } else if(p.x>430&&p.fate===1){ // near miss -> deflect
+        p.state=1;p.vx=spd;p.vy=(dy>0?1:-1)*spd*R(0.3,0.8);S1.bent++;
+      } else if(p.x>W+20){p.state=3;S1.straight++}
+    } else if(p.state===1){
+      p.x+=p.vx*dt;p.y+=p.vy*dt;
+      if(p.x>W+20)p.state=3;
+    } else if(p.state===2){
+      p.x+=p.vx*dt;p.y+=p.vy*dt;
+      if(p.x<-20||p.y<-20||p.y>H+20)p.state=3;
+    }
+  });
+  S1.parts=S1.parts.filter(p=>p.state!==3);
+  S1.parts.forEach(p=>{dot(g,p.x,p.y,4,'#f87171');dot(g,p.x,p.y,1.6,'#fecaca')});
+  S1.flash=Math.max(0,S1.flash-dt);
+  // screen
+  g.strokeStyle='#22d3ee55';g.lineWidth=3;g.beginPath();g.moveTo(716,30);g.lineTo(716,300);g.stroke();
+  label(g,'screen',694,318,'#22d3ee');
+  const tot=S1.straight+S1.bent+S1.back;
+  panel(g,[['α fired: '+tot,'#e8e8f0'],['seedha (khali!): '+S1.straight,'#5eead4'],['thoda mude (+ charge): '+S1.bent,'#fbbf24'],['WAPAS (nucleus!): '+S1.back,'#f87171'],['~1 in 20,000 wapas','#8f8fb8']],556,48);
+  document.getElementById('v1read').innerHTML='Seedha = <b style="color:#5eead4">'+S1.straight+'</b> · mude = <b style="color:#fbbf24">'+S1.bent+'</b> · wapas = <b style="color:#f87171">'+S1.back+'</b> → atom mostly KHAALI, mass ek chhote nucleus me!';
+}
+
+// ---------- SCENE 2: Bohr energy ladder ----------
+const E6=[-13.6,-3.4,-1.51,-0.85,-0.54,0]; // n=1..5, inf
+const S2={n:1,photon:null,lastJump:'ground state'};
+function lvY(E,H){return H-36-(E+14.4)/14.9*(H-72)}
+function lamFor(nf,ni){const dE=E6[ni-1]-E6[nf-1];return Math.round(1240/Math.abs(dE))}
+function seriesOf(nf){return ['','Lyman','Balmer','Paschen','Brackett','Pfund'][nf]||''}
+function regionOf(lam){return lam<380?'UV':lam<=750?'VISIBLE':'IR'}
+function colFor(lam){
+  if(lam<380)return '#8f8fb8';
+  if(lam<=450)return '#8b5cf6';
+  if(lam<=495)return '#22d3ee';
+  if(lam<=570)return '#4ade80';
+  if(lam<=620)return '#fbbf24';
+  if(lam<=750)return '#ef4444';
+  return '#8f8fb8';
+}
+function jump(nf){
+  const ni=S2.n;
+  if(nf===ni)return;
+  const dir=nf>ni?'absorb':'emit';
+  const lam=lamFor(Math.min(nf,ni),Math.max(nf,ni));
+  S2.photon={x:300,y:0,dir,lam,t0:0,from:ni,to:nf};
+  S2.lastJump=(dir==='emit'?'n='+ni+' → n='+nf+' EMIT':'n='+ni+' → n='+nf+' ABSORB')+' · λ = '+lam+' nm ('+regionOf(lam)+(dir==='emit'&&nf<=5?', '+seriesOf(nf)+' series':'')+')';
+  S2.n=nf;
+}
+document.getElementById('b2up').onclick=()=>jump(Math.min(5,S2.n+1));
+document.getElementById('b2drop').onclick=()=>{if(S2.n>1)jump(1)};
+function draw2(t,dt){
+  const[c,g]=ctx('cv2'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  // level lines
+  for(let n=1;n<=5;n++){
+    const y=lvY(E6[n-1],H);
+    g.strokeStyle='#3c3c5c';g.lineWidth=2;g.beginPath();g.moveTo(90,y);g.lineTo(560,y);g.stroke();
+    label(g,'n = '+n,40,y+4,'#8f8fb8');
+    label(g,E6[n-1]+' eV',572,y+4,'#5eead4');
+  }
+  const y0=lvY(0,H);
+  g.strokeStyle='#3c3c5c';g.setLineDash([4,4]);g.beginPath();g.moveTo(90,y0);g.lineTo(560,y0);g.stroke();g.setLineDash([]);
+  label(g,'n = ∞',40,y0+4,'#8f8fb8');label(g,'0 eV (FREE!)',572,y0+4,'#5eead4');
+  // photon animation
+  const ey=lvY(E6[S2.n-1],H);
+  if(S2.photon){
+    const p=S2.photon;
+    p.t0+=dt;
+    const yf=lvY(E6[p.from-1],H),yt=lvY(E6[p.to-1],H);
+    // electron travels
+    const prog=Math.min(1,p.t0/0.6);
+    const cy=yf+(yt-yf)*prog;
+    // photon streak
+    const px=300+p.t0*(p.dir==='emit'?260:-260)+ (p.dir==='emit'?30:-30);
+    const col=colFor(p.lam);
+    g.strokeStyle=col;g.lineWidth=3;g.beginPath();
+    const sx=p.dir==='emit'?px-46:px+46;
+    g.moveTo(sx,cy);g.lineTo(px,cy);g.stroke();
+    dot(g,px,cy,4,col);
+    dot(g,300,cy,7,'#fbbf24');
+    if(p.t0>1.6)S2.photon=null;
+  } else {
+    dot(g,300,ey,7,'#fbbf24');
+    g.strokeStyle='#fbbf2455';g.beginPath();g.arc(300,ey,12+2*Math.sin(t*3),0,7);g.stroke();
+  }
+  panel(g,[['level: n = '+S2.n,'#fbbf24'],['E = '+E6[S2.n-1]+' eV','#5eead4'],['jump karo: line pe click','#8f8fb8'],['ya buttons se ↑↓','#8f8fb8']],580,150);
+  document.getElementById('v2read').textContent=S2.lastJump;
+}
+
+// ---------- SCENE 3: Hydrogen spectrum ----------
+const S3={series:2};
+[['b3lyman',1],['b3balmer',2],['b3paschen',3]].forEach(([id,n1])=>{document.getElementById(id).onclick=e=>{S3.series=n1;document.querySelectorAll('.scene')[2].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+const RY=109677; // cm^-1
+function ryd(n1,n2){const inv=RY*(1/(n1*n1)-1/(n2*n2));return 1e7/inv} // nm
+function lamX(lam,W){return 60+(lam-100)/(2000-100)*(W-120)}
+function draw3(t,dt){
+  const[c,g]=ctx('cv3'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const n1=S3.series;
+  // axis 100..1600 nm
+  const axisY=250;
+  g.strokeStyle='#3c3c5c';g.lineWidth=2;g.beginPath();g.moveTo(60,axisY);g.lineTo(W-60,axisY);g.stroke();
+  [200,400,600,800,1000,1200,1400,1600,1800,2000].forEach(L=>{const x=lamX(L,W);g.beginPath();g.moveTo(x,axisY-5);g.lineTo(x,axisY+5);g.stroke();label(g,L+'',x-12,axisY+22,'#8f8fb8')});
+  label(g,'λ (nm) →',W-120,axisY+22,'#8f8fb8');
+  // visible band 380-750
+  const vx1=lamX(380,W),vx2=lamX(750,W);
+  // rainbow gradient
+  const grad=g.createLinearGradient(vx1,0,vx2,0);
+  grad.addColorStop(0,'#8b5cf6');grad.addColorStop(0.35,'#22d3ee');grad.addColorStop(0.6,'#4ade80');grad.addColorStop(0.8,'#fbbf24');grad.addColorStop(1,'#ef4444');
+  g.globalAlpha=0.25;g.fillStyle=grad;g.fillRect(vx1,40,vx2-vx1,axisY-40);g.globalAlpha=1;
+  g.strokeStyle='#5eead4';g.lineWidth=1;g.strokeRect(vx1,40,vx2-vx1,axisY-40);
+  label(g,'VISIBLE',(vx1+vx2)/2-26,32,'#5eead4');
+  label(g,'UV',lamX(190,W)-6,32,'#8f8fb8');
+  label(g,'IR',lamX(1300,W)-4,32,'#8f8fb8');
+  // series lines n2 = n1+1 .. n1+7
+  let lines=[];
+  for(let n2=n1+1;n2<=n1+7;n2++)lines.push({n2,lam:ryd(n1,n2)});
+  lines.forEach((L,i)=>{
+    const x=lamX(L.lam,W);
+    const col=n1===2?colFor(L.lam):'#c9c9e2';
+    const hgt=axisY-60-i*8;
+    g.strokeStyle=col;g.lineWidth=2.5;g.beginPath();g.moveTo(x,axisY-2);g.lineTo(x,50);g.stroke();
+    if(i<4)label(g,Math.round(L.lam)+'',x-14,62+i*16,col);
+  });
+  const sname=seriesOf(n1);
+  const first=Math.round(lines[0].lam),second=Math.round(lines[1].lam);
+  panel(g,[[sname+' series (n₁ = '+n1+')','#fbbf24'],['pehli line: '+first+' nm ('+regionOf(first)+')','#5eead4'],['doosri: '+second+' nm','#22d3ee'],[regionOf(first)==='VISIBLE'?'aankh se dikhti hai!':(regionOf(first)==='UV'?'UV me - aankh se NAHI dikhti':'IR me - garmi jaisi, dikhti nahi'),'#8f8fb8']],60,286);
+  document.getElementById('v3read').innerHTML=sname+': n = '+(n1+1)+','+(n1+2)+','+(n1+3)+'… → '+n1+' &nbsp;|&nbsp; pehli line λ = <b>'+first+' nm</b> ('+regionOf(first)+') - 1/λ = R(1/'+n1+'² − 1/n₂²)';
+}
+
+// ---------- SCENE 4: orbital probability clouds ----------
+const S4={mode:'1s',dots:[],max:2600};
+[['b4s1','1s'],['b4s2','2s'],['b4p','2p'],['b4d','3d']].forEach(([id,m])=>{document.getElementById(id).onclick=e=>{S4.mode=m;S4.dots=[];document.querySelectorAll('.scene')[3].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+const CX4=300,CY4=170;
+function sampleOrb(mode){
+  if(mode==='1s'){
+    const r=-Math.log(1-Math.random())*36,a=R(0,6.283);
+    return [CX4+r*Math.cos(a),CY4+r*Math.sin(a)*0.92,'#22d3ee'];
+  }
+  if(mode==='2s'){
+    const inner=Math.random()<0.22;
+    const r=inner?-Math.log(1-Math.random())*13:52-Math.log(1-Math.random())*26;
+    const a=R(0,6.283);
+    return [CX4+r*Math.cos(a),CY4+r*Math.sin(a)*0.92,inner?'#e879f9':'#22d3ee'];
+  }
+  if(mode==='2p'){
+    const side=Math.random()<0.5?-1:1;
+    const x=CX4+side*(62+R(-1,1)*26*Math.abs(R(-1,1))+R(-22,22));
+    const y=CY4+R(-26,26)*(1-Math.abs(x-CX4)/130);
+    return [x,y,side<0?'#e879f9':'#22d3ee'];
+  }
+  // 3d_xy: four lobes at 45 deg diagonals
+  const q=Math.floor(R(0,4));
+  const ang=q*Math.PI/2+Math.PI/4;
+  const cx=CX4+72*Math.cos(ang),cy=CY4+72*Math.sin(ang)*0.85;
+  return [cx+R(-20,20),cy+R(-16,16),(q%2===0)?'#22d3ee':'#e879f9'];
+}
+function draw4(t,dt){
+  const[c,g]=ctx('cv4'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  // nucleus
+  dot(g,CX4,CY4,5,'#fbbf24');
+  for(let i=0;i<26;i++){if(S4.dots.length<S4.max)S4.dots.push(sampleOrb(S4.mode))}
+  S4.dots.forEach(d=>{g.globalAlpha=0.5;dot(g,d[0],d[1],1.6,d[2])});
+  g.globalAlpha=1;
+  // node ring for 2s
+  if(S4.mode==='2s'){g.strokeStyle='#f8717155';g.setLineDash([3,4]);g.beginPath();g.arc(CX4,CY4,34,0,7);g.stroke();g.setLineDash([]);label(g,'NODE (yahan 0 chance)',CX4+44,CY4-30,'#f87171')}
+  const info={'1s':['n=1, l=0, m=0','sphere - sab directions same','1 orbital, max 2 e⁻'],
+              '2s':['n=2, l=0, m=0','sphere + ek radial NODE','andhar bhi chance hai!'],
+              '2p':['n=2, l=1, m=−1/0/+1','dumbbell - 3 orientations (px, py, pz)','max 6 e⁻'],
+              '3d':['n=3, l=2, m=−2…+2','double-dumbbell - 5 orbitals','max 10 e⁻']}[S4.mode];
+  panel(g,[[S4.mode+' orbital','#fbbf24'],[info[0],'#5eead4'],[info[1],'#22d3ee'],[info[2],'#8f8fb8'],['dots = electron MILNE ki prob','#8f8fb8']],520,60);
+  document.getElementById('v4read').innerHTML=S4.mode+': <b style="color:#22d3ee">cyan = + phase</b>, <b style="color:#e879f9">magenta = − phase</b> · dots jama ho rahe = probability cloud (fixed orbit NAHI!)';
+}
+
+// ---------- SCENE 5: Aufbau filling ----------
+const ORB=[['1s',2],['2s',2],['2p',6],['3s',2],['3p',6],['4s',2],['3d',10],['4p',6]];
+const S5={Z:8,filled:0,timer:0};
+const EL=['','H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca','Sc','Ti','V','Cr','Mn','Fe','Co','Ni','Cu','Zn'];
+document.getElementById('zslider').oninput=e=>{S5.Z=+e.target.value;document.getElementById('zval').textContent=S5.Z;S5.filled=0;S5.timer=0};
+function targetOcc(Z){
+  const occ=ORB.map(()=>0);let left=Z;
+  for(let i=0;i<ORB.length&&left>0;i++){const take=Math.min(ORB[i][1],left);occ[i]=take;left-=take}
+  if(Z===24){occ[5]=1;occ[6]=5} // Cr exception: 4s1 3d5
+  if(Z===29){occ[5]=1;occ[6]=10} // Cu exception: 4s1 3d10
+  return occ;
+}
+function draw5(t,dt){
+  const[c,g]=ctx('cv5'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const occ=targetOcc(S5.Z);
+  const total=occ.reduce((a,b)=>a+b,0);
+  S5.timer+=dt;
+  if(S5.filled<total&&S5.timer>0.14){S5.filled++;S5.timer=0}
+  // draw orbital boxes: each orbital group as boxes; s=1 box, p=3, d=5
+  let placed=0;
+  const bx0=40;
+  const groups=[['1s',1,0],['2s',1,0],['2p',3,0],['3s',1,0],['3p',3,0],['4s',1,0],['3d',5,0],['4p',3,0]];
+  // layout: two rows of 4 groups
+  let cfgStr='';
+  groups.forEach((gr,gi)=>{
+    const row=gi<4?0:1,col=gi%4;
+    const gx=bx0+col*180,gy=40+row*130;
+    const nb=gr[1];
+    const cap=nb*2;
+    // electrons in this group so far (animated)
+    const before=occ.slice(0,gi).reduce((a,b)=>a+b,0);
+    const here=Math.max(0,Math.min(occ[gi],S5.filled-before));
+    label(g,gr[0],gx,gy-6,'#fbbf24');
+    for(let b=0;b<nb;b++){
+      const x=gx+b*34;
+      g.strokeStyle='#33334f';g.lineWidth=2;g.strokeRect(x,gy,28,34);
+    }
+    // Hund: fill up arrows first across boxes, then down
+    let ups=Math.min(here,nb),downs=here-ups;
+    if(here>nb){ups=nb;downs=here-nb}
+    for(let b=0;b<nb;b++){
+      const x=gx+b*34;
+      if(b<ups){g.strokeStyle='#22d3ee';g.lineWidth=2.5;g.beginPath();g.moveTo(x+14,gy+26);g.lineTo(x+14,gy+8);g.moveTo(x+8,gy+14);g.lineTo(x+14,gy+8);g.lineTo(x+20,gy+14);g.stroke()}
+      if(b<downs){g.strokeStyle='#e879f9';g.lineWidth=2.5;g.beginPath();g.moveTo(x+14,gy+8);g.lineTo(x+14,gy+26);g.moveTo(x+8,gy+20);g.lineTo(x+14,gy+26);g.lineTo(x+20,gy+20);g.stroke()}
+    }
+    if(occ[gi]>0)cfgStr+=gr[0]+sup(occ[gi])+' ';
+  });
+  const ex=(S5.Z===24)?'  ⚡ Cr EXCEPTION: 3d⁵ 4s¹ (half-filled d stable!)':(S5.Z===29)?'  ⚡ Cu EXCEPTION: 3d¹⁰ 4s¹ (full d stable!)':'';
+  panel(g,[[EL[S5.Z]+' (Z = '+S5.Z+')','#fbbf24'],['electrons: '+S5.filled+' / '+total,'#5eead4'],[ex||'Aufbau order me bhar raha','#8f8fb8']],40,312);
+  document.getElementById('v5read').innerHTML='<b>'+EL[S5.Z]+'</b>: '+cfgStr+'<span style="color:#f87171">'+ex+'</span>';
+}
+function sup(n){return String(n).split('').map(d=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[+d]).join('')}
+
+// ---------- main loop ----------
+let lastTs=0;
+function loop(ts){const t=ts/1000;const dt=Math.min(0.12,(ts-lastTs)/1000||0.016);lastTs=ts;
+  if(cur===0)draw1(t,dt);else if(cur===1)draw2(t,dt);else if(cur===2)draw3(t,dt);else if(cur===3)draw4(t,dt);else if(cur===4)draw5(t,dt);
+  requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+// scene 2 canvas click -> jump to level
+document.getElementById('cv2').onclick=e=>{
+  const r=e.target.getBoundingClientRect();
+  const y=(e.clientY-r.top)/r.height*330;
+  let best=1,bd=1e9;
+  for(let n=1;n<=5;n++){const d=Math.abs(lvY(E6[n-1],330)-y);if(d<bd){bd=d;best=n}}
+  jump(best);
+};
+</script>
+</body>
+</html>
