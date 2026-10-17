@@ -249,10 +249,10 @@ function draw3(t,dt){
   for(let v=0;v<=690;v+=4){const X=ox+v,Y=oy-f(v)*yscale;v?g.lineTo(X,Y):g.moveTo(X,Y)}
   g.stroke();
   // markers
-  [['v_p',vp,'#5eead4'],['v_avg',vavg,'#fbbf24'],['v_rms',vrms,'#f87171']].forEach(([nm,v,col])=>{
+  [['v_p',vp,'#5eead4'],['v_avg',vavg,'#fbbf24'],['v_rms',vrms,'#f87171']].forEach(([nm,v,col],i)=>{
     const X=ox+v,Y=oy-f(v)*yscale;
     g.strokeStyle=col;g.setLineDash([5,4]);g.beginPath();g.moveTo(X,oy);g.lineTo(X,Y);g.stroke();g.setLineDash([]);
-    label(g,nm,X-16,oy+18,col);
+    label(g,nm,X-16,oy+14+i*13,col);
   });
   const gas=S3.gas.toUpperCase();
   panel(g,[[gas+' (M = '+Math.round(m)+' u)','#fbbf24'],['v_p : v_avg : v_rms','#e8e8f0'],['1 : 1.128 : 1.224','#5eead4'],['halki gas → curve RIGHT + wide','#8f8fb8'],['(H₂ sabse tez, isliye escape!)','#f87171']],520,60);
