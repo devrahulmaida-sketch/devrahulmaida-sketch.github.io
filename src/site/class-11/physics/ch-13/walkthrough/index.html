@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oscillations Ka Visual Walkthrough - Class 11 Physics Ch 14</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .scene h2 .num{color:#22d3ee}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .fact b{color:#fff}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:420px;font-size:1rem;padding:10px}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Physics - Chapter 13 - Oscillations</span>
+  <h1>Oscillations Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - SHM ke har concept ko chalta-dikhata hua. Sliders ghumao, jhoola jhulao, formulas feel karo.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> SHM Kya Hai - Circle Ki Shadow Ka Khel</h2>
+  <p class="sub">Particle circle pe uniform chal raha hai. Uski shadow diameter pe aage-peeche = <b>SHM</b>. Saath me sine wave trace hoti hai - x = A sin(ωt + φ).</p>
+  <canvas id="cv1" width="760" height="300"></canvas>
+  <div class="ctrl">
+    <label>Amplitude A <input type="range" id="s1A" min="40" max="110" value="85"></label>
+    <label>ω (speed) <input type="range" id="s1w" min="5" max="30" value="12"></label>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="takeaway"><b>Periodic</b> = fixed time baad repeat (period T). <b>Oscillatory</b> = mean ke dono taraf. Har oscillatory periodic hai, har periodic oscillatory NAHI. SHM tab jab restoring force ∝ displacement aur OPPOSITE: <span class="formula">F = −kx</span> <span class="formula">ω = 2π/T</span></div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> x, v, a - Teeno Ka Phase Khel</h2>
+  <p class="sub">Spring-block oscillate karta hai, neeche teeno graphs LIVE. Dhyan se dekho: <b style="color:#e879f9">velocity</b> displacement se 90° aage, <b style="color:#fbbf24">acceleration</b> hamesha opposite (180°).</p>
+  <canvas id="cv2" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b2x">x (cyan)</button>
+    <button class="btn hot" id="b2v">v (magenta)</button>
+    <button class="btn hot" id="b2a">a (yellow)</button>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="takeaway">Mean position pe speed MAX = Aω, acceleration ZERO. Extremes pe speed zero, acceleration MAX = ω²A aur mean ki taraf. <span class="formula">v = ±ω√(A² − x²)</span> <span class="formula">a = −ω²x</span> - ye a = −ω²x dikhe to samajh jao SHM hai!</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Energy Ka Ping-Pong - KE ↔ PE</h2>
+  <p class="sub">Oscillator chalta hai, neeche energy graph: <b style="color:#fbbf24">PE parabola</b> (extremes pe max), <b style="color:#22d3ee">KE ulta parabola</b> (mean pe max), <b style="color:#5eead4">TOTAL flat</b> - energy kabhi banati-nasht nahi hoti, bas convert!</p>
+  <canvas id="cv3" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <label>Amplitude A <input type="range" id="s3A" min="40" max="120" value="90"></label>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="takeaway"><span class="formula">KE = ½mω²(A² − x²)</span> <span class="formula">PE = ½mω²x²</span> <span class="formula">E = ½kA² = constant</span> E ∝ A² - amplitude DOUBLE karo, energy 4 GUNA! Ek poore cycle me average KE = average PE = E/2.</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> Pendulum Lab - T Kis Pe Depend Karta Hai?</h2>
+  <p class="sub">Length, mass, g badlo aur period dekho. Surprise: <b>mass ka koi asar NAHI</b>! Moon pe le jao - same pendulum slow ho jaata hai.</p>
+  <canvas id="cv4" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <label>Length L <input type="range" id="s4L" min="25" max="200" value="100"></label>
+    <label>Mass <input type="range" id="s4m" min="1" max="10" value="4"></label>
+    <button class="btn hot" id="b4earth">Earth (g=9.8)</button>
+    <button class="btn" id="b4moon">Moon (g=1.6)</button>
+    <button class="btn" id="b4sec">Seconds Pendulum</button>
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="takeaway"><span class="formula">T = 2π√(L/g)</span> - sirf L aur g. Seconds pendulum: T=2s wala, L ≈ 1 m (99.4 cm). Spring ke liye <span class="formula">T = 2π√(m/k)</span> - wahan mass matter karta hai! Spring aadhi kaato → k double → T ÷ √2.</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> Damping aur Resonance - Jhoola Kab Rukta Hai, Kab Uchhalta Hai</h2>
+  <p class="sub">Upar: friction se amplitude exponential ghat-ta hai. Neeche: driving frequency badlo - jab wo <b>natural frequency</b> ke barabar aaye, amplitude MAXIMUM = <b style="color:#fbbf24">RESONANCE</b>.</p>
+  <canvas id="cv5" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <label>Damping b <input type="range" id="s5b" min="0" max="30" value="8"></label>
+    <label>Driving ν <input type="range" id="s5f" min="2" max="40" value="10"></label>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="takeaway">Damped: <span class="formula">A(t) = A₀e^(−bt/2m)</span> - har real jhoola rukta hai. Forced oscillation: system DRIVER ki frequency pe chalta hai. <b>Resonance</b>: ν<sub>drive</sub> = ν<sub>natural</sub> → amplitude max. Isliye troops bridge pe march break karte hain (1940 Tacoma bridge collapse!), swing ko perfect-timing dhakka, radio tuning. Kam damping = sharp resonance.</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">F = −kx &nbsp;|&nbsp; a = −ω²x (SHM ki pehchaan)</div>
+  <div class="formula">x = A sin(ωt + φ) &nbsp;|&nbsp; v = ±ω√(A² − x²)</div>
+  <div class="formula">v<sub>max</sub> = Aω (mean pe) &nbsp;|&nbsp; a<sub>max</sub> = ω²A (extremes pe)</div>
+  <div class="formula">E = ½kA² &nbsp;∝ A² &nbsp;|&nbsp; avg KE = avg PE = E/2</div>
+  <div class="formula">Spring: T = 2π√(m/k) &nbsp;|&nbsp; Pendulum: T = 2π√(L/g)</div>
+  <div class="formula">Damped: A = A₀e^(−bt/2m) &nbsp;|&nbsp; Resonance: ν<sub>drive</sub> = ν<sub>natural</sub></div>
+  <p style="margin-top:18px">Poora chapter samajh aaya? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Physics Ch 13 - Oscillations | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+
+// ---------- SCENE 1: circle projection -> SHM ----------
+const S1={A:85,w:12};
+document.getElementById('s1A').oninput=e=>S1.A=+e.target.value;
+document.getElementById('s1w').oninput=e=>S1.w=+e.target.value;
+function draw1(t){
+  const[c,g]=ctx('cv1'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const cx=150,cy=H/2,R=S1.A,w=S1.w/10;
+  const th=w*t;
+  const px=cx+R*Math.cos(th),py=cy-R*Math.sin(th);
+  // circle + diameter
+  g.strokeStyle='#3a3a55';g.lineWidth=1.5;g.beginPath();g.arc(cx,cy,R,0,7);g.stroke();
+  g.setLineDash([3,4]);g.beginPath();g.moveTo(cx-R,cy);g.lineTo(cx+R,cy);g.stroke();g.setLineDash([]);
+  // radius arm + particle
+  g.strokeStyle='#8f8fb8';g.beginPath();g.moveTo(cx,cy);g.lineTo(px,py);g.stroke();
+  g.fillStyle='#e879f9';g.beginPath();g.arc(px,py,7,0,7);g.fill();
+  // projection to diameter (shadow)
+  g.setLineDash([2,4]);g.strokeStyle='#5eead4';g.beginPath();g.moveTo(px,py);g.lineTo(px,cy);g.stroke();g.setLineDash([]);
+  g.fillStyle='#22d3ee';g.beginPath();g.arc(px,cy,8,0,7);g.fill();
+  label(g,'particle (circle)',cx-R,cy-R-12,'#e879f9');
+  label(g,'SHADOW = SHM',cx-R,cy+R+22,'#22d3ee');
+  // sine trace
+  const x0=330;
+  g.strokeStyle='#2e2e4a';g.beginPath();g.moveTo(x0,cy);g.lineTo(W-10,cy);g.stroke();
+  g.strokeStyle='#22d3ee';g.lineWidth=2.5;g.beginPath();
+  for(let x=0;x<=W-10-x0;x+=3){
+    const tt=t-x/120; // wave unrolls leftwards with time
+    const y=cy-R*Math.sin(w*tt);
+    x?g.lineTo(x0+x,y):g.moveTo(x0+x,y)}
+  g.stroke();
+  // connector from shadow point to wavefront
+  g.setLineDash([2,4]);g.strokeStyle='#5eead4';g.beginPath();g.moveTo(px,cy);g.lineTo(x0,cy-R*Math.sin(w*t));g.stroke();g.setLineDash([]);
+  g.fillStyle='#5eead4';g.beginPath();g.arc(x0,cy-R*Math.sin(w*t),6,0,7);g.fill();
+  label(g,'x = A sin(ωt + φ)',x0+40,cy-R-12,'#8f8fb8');
+  const T=(2*Math.PI/w).toFixed(1);
+  document.getElementById('v1read').innerHTML='ω = '+w.toFixed(1)+' rad/s → T = 2π/ω = <b style="color:#22d3ee">'+T+' s</b>, ν = 1/T = <b>'+(1/T).toFixed(2)+' Hz</b>';
+}
+
+// ---------- SCENE 2: x, v, a phase ----------
+const S2={x:true,v:true,a:true};
+[['b2x','x'],['b2v','v'],['b2a','a']].forEach(([id,k])=>{document.getElementById(id).onclick=e=>{S2[k]=!S2[k];e.target.classList.toggle('hot')}});
+function draw2(t){
+  const[c,g]=ctx('cv2'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const w=1.6,A=90;
+  const x=A*Math.sin(w*t), v=A*w*Math.cos(w*t), a=-A*w*w*Math.sin(w*t);
+  // spring-block oscillator (top strip)
+  const oy=58,wallX=90,restX=340;
+  g.strokeStyle='#3a3a55';g.lineWidth=3;g.beginPath();g.moveTo(wallX-14,oy-40);g.lineTo(wallX-14,oy+40);g.stroke();
+  for(let i=0;i<4;i++){g.beginPath();g.moveTo(wallX-14,oy-40+i*27);g.lineTo(wallX-24,oy-40+i*27+10);g.stroke()}
+  // spring zigzag
+  g.strokeStyle='#8f8fb8';g.lineWidth=2;g.beginPath();g.moveTo(wallX,oy);
+  const bx=restX+x,n=12;
+  for(let i=1;i<=n;i++){const sx=wallX+(bx-40-wallX)*i/n;sx?g.lineTo(sx,oy+(i%2?14:-14)):0}
+  g.lineTo(bx-40,oy);g.stroke();
+  g.fillStyle='#22d3ee';g.fillRect(bx-40,oy-24,44,48);
+  // acceleration arrow (yellow) & velocity arrow (magenta)
+  if(Math.abs(a)>8){g.strokeStyle='#fbbf24';g.lineWidth=3;const dir=a>0?1:-1,L=Math.min(60,Math.abs(a)/4);
+    g.beginPath();g.moveTo(bx-18,oy-42);g.lineTo(bx-18+dir*L,oy-42);g.lineTo(bx-18+dir*L-dir*8,oy-47);g.moveTo(bx-18+dir*L,oy-42);g.lineTo(bx-18+dir*L-dir*8,oy-37);g.stroke();
+    label(g,'a',bx-18+dir*L+6,oy-38,'#fbbf24')}
+  if(Math.abs(v)>8){g.strokeStyle='#e879f9';g.lineWidth=3;const dir=v>0?1:-1,L=Math.min(60,Math.abs(v)/3);
+    g.beginPath();g.moveTo(bx-18,oy+42);g.lineTo(bx-18+dir*L,oy+42);g.lineTo(bx-18+dir*L-dir*8,oy+37);g.moveTo(bx-18+dir*L,oy+42);g.lineTo(bx-18+dir*L-dir*8,oy+47);g.stroke();
+    label(g,'v',bx-18+dir*L+6,oy+54,'#e879f9')}
+  // mean line
+  g.setLineDash([3,4]);g.strokeStyle='#3a3a55';g.beginPath();g.moveTo(restX-20,oy-50);g.lineTo(restX-20,oy+60);g.stroke();g.setLineDash([]);
+  label(g,'mean',restX-38,oy+76,'#5c5c78');
+  // graphs
+  const gy=205,gH=62,x0=60,x1=W-30;
+  g.strokeStyle='#2e2e4a';g.beginPath();g.moveTo(x0,gy);g.lineTo(x1,gy);g.stroke();
+  const plot=(fn,col)=>{g.strokeStyle=col;g.lineWidth=2;g.beginPath();
+    for(let X=0;X<=x1-x0;X+=3){const tt=t-(x1-x0-X)/160;const y=gy-fn(tt)/A*gH*0.9;X?g.lineTo(x0+X,y):g.moveTo(x0+X,y)}
+    g.stroke()};
+  if(S2.x)plot(tt=>A*Math.sin(w*tt),'#22d3ee');
+  if(S2.v)plot(tt=>A*w*Math.cos(w*tt)/(w),'#e879f9');
+  if(S2.a)plot(tt=>-A*w*w*Math.sin(w*tt)/(w*w),'#fbbf24');
+  // cursor
+  g.strokeStyle='#5eead4';g.setLineDash([4,4]);g.beginPath();g.moveTo(x1,gy-gH-14);g.lineTo(x1,gy+gH+14);g.stroke();g.setLineDash([]);
+  // state readout
+  const ph=((w*t)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);
+  let state;
+  if(Math.abs(Math.sin(ph))>0.92) state=Math.sin(ph)>0?'EXTREME (right): x max, v = 0, a max ← mean ki taraf':'EXTREME (left): x max, v = 0, a max → mean ki taraf';
+  else if(Math.abs(Math.cos(ph))>0.92) state='MEAN position: x = 0, |v| MAX, a = 0';
+  else state='beech me: sab kuch mix - dekho kaun kahan hai';
+  document.getElementById('v2read').innerHTML='abhi: <b style="color:#5eead4">'+state+'</b>';
+}
+// ---------- SCENE 3: energy ping-pong ----------
+const S3={A:90};
+document.getElementById('s3A').oninput=e=>S3.A=+e.target.value;
+function draw3(t){
+  const[c,g]=ctx('cv3'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const w=1.6,A=S3.A;
+  const x=A*Math.sin(w*t);
+  // top: oscillator dot on axis
+  const oy=52,mid=W/2,scale=1.6;
+  g.strokeStyle='#2e2e4a';g.beginPath();g.moveTo(mid-A*scale-30,oy);g.lineTo(mid+A*scale+30,oy);g.stroke();
+  [mid-A*scale,mid,mid+A*scale].forEach((X,i)=>{g.strokeStyle='#3a3a55';g.beginPath();g.moveTo(X,oy-8);g.lineTo(X,oy+8);g.stroke();label(g,['-A','0','+A'][i],X-8,oy+26,'#5c5c78')});
+  g.fillStyle='#22d3ee';g.beginPath();g.arc(mid+x*scale,oy,9,0,7);g.fill();
+  // bottom: energy vs x graph
+  const gx0=110,gx1=W-110,gy0=270,gH=160,gmid=(gx0+gx1)/2,gxscale=(gx1-gx0)/2/A;
+  // axes
+  g.strokeStyle='#3a3a55';g.beginPath();g.moveTo(gx0-14,gy0-gH);g.lineTo(gx0-14,gy0);g.lineTo(gx1+14,gy0);g.stroke();
+  label(g,'E',gx0-30,gy0-gH+8,'#8f8fb8');label(g,'x',gx1+20,gy0+4,'#8f8fb8');
+  // PE parabola, KE inverted, total flat (normalize E=1)
+  const X2px=u=>gmid+u*gxscale, E2px=e=>gy0-e*gH*0.92;
+  g.strokeStyle='#fbbf24';g.lineWidth=2.2;g.beginPath();
+  for(let u=-A;u<=A;u+=2){const e=u*u/(A*A);const X=X2px(u),Y=E2px(e);u>-A?g.lineTo(X,Y):g.moveTo(X,Y)}
+  g.stroke();
+  g.strokeStyle='#22d3ee';g.lineWidth=2.2;g.beginPath();
+  for(let u=-A;u<=A;u+=2){const e=1-u*u/(A*A);const X=X2px(u),Y=E2px(e);u>-A?g.lineTo(X,Y):g.moveTo(X,Y)}
+  g.stroke();
+  g.strokeStyle='#5eead4';g.lineWidth=2.2;g.beginPath();g.moveTo(X2px(-A),E2px(1));g.lineTo(X2px(A),E2px(1));g.stroke();
+  label(g,'PE = ½mω²x²',X2px(A)-130,E2px(1)-10,'#fbbf24');
+  label(g,'KE',gmid-12,E2px(0.55),'#22d3ee');
+  label(g,'TOTAL E = ½kA² (flat!)',X2px(-A)+4,E2px(1)-10,'#5eead4');
+  // current position marker + energy split bar
+  const pe=x*x/(A*A),ke=1-pe;
+  g.strokeStyle='#e879f9';g.setLineDash([4,4]);g.beginPath();g.moveTo(X2px(x),gy0+6);g.lineTo(X2px(x),gy0-gH);g.stroke();g.setLineDash([]);
+  g.fillStyle='#e879f9';g.beginPath();g.arc(X2px(x),E2px(pe),6,0,7);g.fill();
+  g.fillStyle='#22d3ee';g.beginPath();g.arc(X2px(x),E2px(ke+pe)>E2px(pe)?E2px(ke+pe):E2px(ke+pe),0,0,7);g.fill();
+  // split bar (left)
+  const bx=46,bH=gH*0.92,by=gy0;
+  g.fillStyle='#fbbf24';g.fillRect(bx,by-bH*pe,16,bH*pe);
+  g.fillStyle='#22d3ee';g.fillRect(bx,by-bH*(pe+ke),16,bH*ke);
+  g.strokeStyle='#3a3a55';g.strokeRect(bx,by-bH,16,bH);
+  label(g,'PE',bx-6,by-bH*pe/2+4,'#0a0a12');
+  label(g,'KE',bx-6,by-bH*(pe+ke/2)+4,'#0a0a12');
+  document.getElementById('v3read').innerHTML='abhi: PE = <b style="color:#fbbf24">'+(pe*100|0)+'%</b>, KE = <b style="color:#22d3ee">'+(ke*100|0)+'%</b> &nbsp;|&nbsp; E ∝ A²: A ko slider se DOUBLE karo → energy <b style="color:#5eead4">4×</b>';
+}
+
+// ---------- SCENE 4: pendulum lab ----------
+const S4={L:100,m:4,g:9.8};
+document.getElementById('s4L').oninput=e=>S4.L=+e.target.value;
+document.getElementById('s4m').oninput=e=>S4.m=+e.target.value;
+document.getElementById('b4earth').onclick=e=>{S4.g=9.8;e.target.classList.add('hot');document.getElementById('b4moon').classList.remove('hot')};
+document.getElementById('b4moon').onclick=e=>{S4.g=1.6;e.target.classList.add('hot');document.getElementById('b4earth').classList.remove('hot')};
+document.getElementById('b4sec').onclick=()=>{S4.L=99.4;S4.g=9.8;document.getElementById('s4L').value=99.4;document.getElementById('b4earth').classList.add('hot');document.getElementById('b4moon').classList.remove('hot')};
+function draw4(t){
+  const[c,g]=ctx('cv4'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const Lm=S4.L/100; // meters
+  const T=2*Math.PI*Math.sqrt(Lm/S4.g);
+  const w=2*Math.PI/T;
+  const th0=0.5, th=th0*Math.cos(w*t);
+  const px0=W/2,py0=40,Lpx=60+S4.L*0.9;
+  const bx=px0+Lpx*Math.sin(th),by=py0+Lpx*Math.cos(th);
+  // pivot + rod + bob
+  g.strokeStyle='#3a3a55';g.lineWidth=4;g.beginPath();g.moveTo(px0-40,py0);g.lineTo(px0+40,py0);g.stroke();
+  g.strokeStyle='#8f8fb8';g.lineWidth=2.5;g.beginPath();g.moveTo(px0,py0);g.lineTo(bx,by);g.stroke();
+  // arc path
+  g.setLineDash([2,4]);g.strokeStyle='#2e2e4a';g.beginPath();g.arc(px0,py0,Lpx,Math.PI/2-th0,Math.PI/2+th0);g.stroke();g.setLineDash([]);
+  const r=10+S4.m*2.2;
+  g.fillStyle='#22d3ee';g.beginPath();g.arc(bx,by,r,0,7);g.fill();
+  // vertical ref
+  g.setLineDash([3,5]);g.strokeStyle='#3a3a55';g.beginPath();g.moveTo(px0,py0);g.lineTo(px0,py0+Lpx+20);g.stroke();g.setLineDash([]);
+  // stopwatch readout
+  const dispT=T.toFixed(2);
+  document.getElementById('v4read').innerHTML='L = '+Lm.toFixed(2)+' m, g = '+S4.g+' → T = 2π√(L/g) = <b style="color:#22d3ee">'+dispT+' s</b>'+(Math.abs(S4.L-99.4)<1&&S4.g===9.8?' - SECONDS PENDULUM (T ≈ 2s, L ≈ 1m)':'')+' &nbsp;|&nbsp; mass slider ghumao - T same! (mass se NAHI depend)';
+  // mini spring beside (visual only)
+  const sy=H-60,swx=90;
+  g.strokeStyle='#3a3a55';g.lineWidth=3;g.beginPath();g.moveTo(swx-14,sy-30);g.lineTo(swx-14,sy+30);g.stroke();
+  const wS=3.2,xS=60*Math.cos(wS*t);
+  g.strokeStyle='#8f8fb8';g.lineWidth=2;g.beginPath();g.moveTo(swx,sy);
+  for(let i=1;i<=10;i++){g.lineTo(swx+(60+xS)*i/10,sy+(i%2?10:-10))}
+  g.lineTo(swx+60+xS,sy);g.stroke();
+  g.fillStyle='#e879f9';g.fillRect(swx+60+xS,sy-16,30,32);
+  label(g,'spring: T = 2π√(m/k) - yahan MASS matter karta hai',swx+130,sy+4,'#8f8fb8');
+}
+
+// ---------- SCENE 5: damping + resonance ----------
+const S5={b:8,f:10};
+document.getElementById('s5b').oninput=e=>S5.b=+e.target.value;
+document.getElementById('s5f').oninput=e=>S5.f=+e.target.value;
+function draw5(t){
+  const[c,g]=ctx('cv5'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  // top: damped trace x(t) = A0 e^(-bt/2m) cos(wt) unrolling
+  const mid1=78,A0=58,w=3,beta=S5.b/40;
+  g.strokeStyle='#2e2e4a';g.beginPath();g.moveTo(0,mid1);g.lineTo(W,mid1);g.stroke();
+  g.strokeStyle='#22d3ee';g.lineWidth=2.2;g.beginPath();
+  for(let x=0;x<=W;x+=2){
+    const tt=t-(W-x)/130;
+    const env=A0*Math.exp(-beta*Math.max(0,(t-tt)+0)); // careful: env should decay with tt increasing
+    const y=mid1+A0*Math.exp(-beta*((W-x)/130))*Math.cos(w*tt);
+    x?g.lineTo(x,y):g.moveTo(x,y)}
+  g.stroke();
+  // envelope dashed
+  g.strokeStyle='#fbbf24';g.setLineDash([5,5]);g.lineWidth=1.2;g.beginPath();
+  for(let x=0;x<=W;x+=4){
+    const y=mid1-A0*Math.exp(-beta*((W-x)/130));
+    x?g.lineTo(x,y):g.moveTo(x,y)}
+  g.stroke();g.setLineDash([]);
+  label(g,'damped: A(t) = A₀e^(−bt/2m)',10,mid1-A0-12,'#fbbf24');
+  label(g,'(right edge = abhi, left = past)',W-200,mid1+A0+18,'#5c5c78');
+  // bottom: resonance curve
+  const gy0=H-44,gH=120,gx0=80,gx1=W-60;
+  const nu0=20; // natural frequency marker
+  g.strokeStyle='#3a3a55';g.beginPath();g.moveTo(gx0-14,gy0-gH);g.lineTo(gx0-14,gy0);g.lineTo(gx1+14,gy0);g.stroke();
+  label(g,'amplitude',gx0-70,gy0-gH+8,'#8f8fb8');label(g,'driving ν →',gx1-60,gy0+20,'#8f8fb8');
+  const f2x=f=>gx0+(f-2)/38*(gx1-gx0);
+  const resp=f=>{const Q=6-S5.b/8;const d=(f-nu0)/ (8/(Q)); return 1/Math.sqrt(1+d*d)};
+  g.strokeStyle='#5eead4';g.lineWidth=2.4;g.beginPath();
+  for(let f=2;f<=40;f+=0.3){const X=f2x(f),Y=gy0-resp(f)*gH*0.92;f>2?g.lineTo(X,Y):g.moveTo(X,Y)}
+  g.stroke();
+  // natural freq line
+  g.setLineDash([4,4]);g.strokeStyle='#e879f9';g.beginPath();g.moveTo(f2x(nu0),gy0);g.lineTo(f2x(nu0),gy0-gH-8);g.stroke();g.setLineDash([]);
+  label(g,'ν_natural',f2x(nu0)-28,gy0-gH-12,'#e879f9');
+  // current driving marker
+  const amp=resp(S5.f);
+  g.fillStyle='#fbbf24';g.beginPath();g.arc(f2x(S5.f),gy0-amp*gH*0.92,7,0,7);g.fill();
+  const near=Math.abs(S5.f-nu0)<=1.5;
+  document.getElementById('v5read').innerHTML='driving ν = '+S5.f+' Hz, natural = '+nu0+' Hz → amplitude = <b style="color:#fbbf24">'+(amp*100|0)+'%</b>'+(near?' - <b style="color:#fbbf24">RESONANCE! MAX AMPLITUDE</b>':' (door ho - chhota response)')+' | damping badhao → peak flat/wide';
+}
+// ---------- main loop ----------
+const draws=[draw1,draw2,draw3,draw4,draw5];
+let T0=performance.now();
+function frame(now){const t=(now-T0)/1000;draws.forEach(d=>d(t));requestAnimationFrame(frame)}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
