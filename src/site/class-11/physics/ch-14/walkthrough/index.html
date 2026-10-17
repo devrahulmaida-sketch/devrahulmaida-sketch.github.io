@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waves Ka Visual Walkthrough - Class 11 Physics Ch 14</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .scene h2 .num{color:#22d3ee}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .fact b{color:#fff}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:420px;font-size:1rem;padding:10px}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Physics - Chapter 14 - Waves</span>
+  <h1>Waves Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - notes wale har concept ko chalta-dikhata hua. Sliders ghumao, patterns dekho, formulas feel karo.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene" data-s="0">
+  <div class="card">
+    <h2><span class="num">1.</span> Wave Kya Hai - Energy Chalti Hai, Matter Nahi</h2>
+    <div class="sub">Neeche dots medium ke particles hain. Dekho: wave aage badhti hai, particles bas apni jagah oscillate karte hain - stadium ki Mexican wave jaisa.</div>
+    <canvas id="cv1" width="780" height="300"></canvas>
+    <div class="ctrl">
+      <button class="btn hot" id="b1t">Transverse (rope/light)</button>
+      <button class="btn" id="b1l">Longitudinal (sound)</button>
+    </div>
+    <div class="fact"><b>Transverse:</b> particles medium ke <b>PERPENDICULAR</b> hilti hain (crest-trough). Sirf solids + liquid surface pe. <b>Longitudinal:</b> particles <b>PARALLEL</b> hilti hain (compression-rarefaction) - solids, liquids, gases teeno me!</div>
+  </div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene" data-s="1">
+  <div class="card">
+    <h2><span class="num">2.</span> Wave Equation aur Speed - v = &nu;&lambda;</h2>
+    <div class="sub">Sliders se wave ko morph karo. Speed <span class="formula">v = &nu;&lambda;</span> medium set karta hai, frequency source.</div>
+    <canvas id="cv2" width="780" height="300"></canvas>
+    <div class="ctrl">
+      <label class="slider">Amplitude A <input type="range" id="s2a" min="10" max="60" value="35"></label>
+      <label class="slider">Wavelength &lambda; <input type="range" id="s2l" min="80" max="400" value="220"></label>
+      <label class="slider">Frequency &nu; <input type="range" id="s2f" min="5" max="30" value="12"></label>
+    </div>
+    <div class="ctrl">
+      <label class="slider">String tension T <input type="range" id="s2t" min="10" max="100" value="50"></label>
+      <span class="slider" id="v2read"></span>
+    </div>
+    <div class="fact">Travelling wave: <span class="formula">y(x,t) = A sin(kx - &omega;t)</span> &nbsp; String pe speed: <span class="formula">v = &radic;(T/&mu;)</span> - tight ya patli string &rarr; tez wave! Air me sound &asymp; 340 m/s; <b>v &prop; &radic;T</b> (Kelvin) - garmi me tez.</div>
+  </div>
+</section>
+<!-- SCENE 3 -->
+<section class="scene" data-s="2">
+  <div class="card">
+    <h2><span class="num">3.</span> Superposition &rarr; Standing Wave - Pattern FREEZE</h2>
+    <div class="sub">Do identical waves opposite directions me (red + blue). Neeche unka SUM. &ldquo;Lock karo&rdquo; - pattern ruk jaata hai: yahan Nodes aur Antinodes bante hain.</div>
+    <canvas id="cv3" width="780" height="340"></canvas>
+    <div class="ctrl">
+      <button class="btn" id="b3lock">Lock the Standing Wave</button>
+      <button class="btn" id="b3reset">Reset</button>
+    </div>
+    <div class="fact"><span class="formula">y = 2A sin(kx)cos(&omega;t)</span> &nbsp; <b>Nodes (N):</b> hamesha zero - khamosh points. <b>Antinodes (A):</b> maximum hilne wale. N-to-N = &lambda;/2, N-to-A = &lambda;/4. Standing wave me energy travel <b>NAHI</b> hoti - sab stored! Fixed end reflection: wave PALT ke aati hai (phase change &pi;).</div>
+  </div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene" data-s="3">
+  <div class="card">
+    <h2><span class="num">4.</span> Organ Pipes - Open vs Closed Ka Khel</h2>
+    <div class="sub">Pipe chuno, harmonic badhao. Air column ka standing pattern dekho - closed end = NODE, open end = ANTINODE (yaad rakhne ka rule!).</div>
+    <canvas id="cv4" width="780" height="340"></canvas>
+    <div class="ctrl">
+      <button class="btn hot" id="b4open">Open pipe (dono khule)</button>
+      <button class="btn" id="b4closed">Closed pipe (ek band)</button>
+      <button class="btn" id="b4prev">&larr; Harmonic</button>
+      <button class="btn" id="b4next">Harmonic &rarr;</button>
+      <span class="slider" id="v4read"></span>
+    </div>
+    <div class="fact"><b>Open pipe:</b> <span class="formula">&nu;&#8345; = n&nu;&#8321;</span> SAARE harmonics (string jaisa). <b>Closed pipe:</b> <span class="formula">&nu;&#8321; = v/4L</span> sirf ODD harmonics (1,3,5...) - 2&nu;&#8321; allowed NAHI! Same length ka open pipe DOUBLE fundamental deta hai. End correction e &asymp; 0.3r per open end.</div>
+  </div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene" data-s="4">
+  <div class="card">
+    <h2><span class="num">5.</span> Beats - Do Frequencies Ka WAH-WAH</h2>
+    <div class="sub">Do tuning forks thode alag frequencies pe. Envelope ka slow wah-wah = beats. Beat frequency = |&nu;&#8321; - &nu;&#8322;|</div>
+    <canvas id="cv5" width="780" height="320"></canvas>
+    <div class="ctrl">
+      <label class="slider">&nu;&#8321; <input type="range" id="s5a" min="10" max="40" value="24"></label>
+      <label class="slider">&nu;&#8322; <input type="range" id="s5b" min="10" max="40" value="20"></label>
+      <span class="slider" id="v5read"></span>
+    </div>
+    <div class="ctrl">
+      <button class="btn" id="b5wax">Wax lagao (fork 2)</button>
+      <button class="btn" id="b5file">File karo (fork 2)</button>
+    </div>
+    <div class="fact"><b>Wax lagane se mass badhta hai &rarr; frequency GHAT-ti hai. Filing se frequency BADH-ti hai.</b> Beat count sunke pata chalta hai kaunsa fork kitna off hai - piano tuners yahi karte hain! <span class="formula">f<sub>beat</sub> = |&nu;&#8321; - &nu;&#8322;|</span></div>
+  </div>
+</section>
+
+<!-- RECAP -->
+<section class="scene" data-s="5">
+  <div class="card recap">
+    <h2>Formula Pack - Pocket Mein Daal Lo</h2>
+    <div class="sub">Jo abhi animate hokar dikha, wahi yahan ek jagah.</div>
+    <span class="formula">v = &nu;&lambda; (medium decides v, source decides &nu;)</span>
+    <span class="formula">String: v = &radic;(T/&mu;)</span>
+    <span class="formula">Standing wave: y = 2A sin(kx)cos(&omega;t) - N-N = &lambda;/2</span>
+    <span class="formula">Open pipe: &nu;&#8345; = n&nu;&#8321; (saare harmonics)</span>
+    <span class="formula">Closed pipe: &nu;&#8321; = v/4L (sirf ODD harmonics)</span>
+    <span class="formula">Beats: f<sub>beat</sub> = |&nu;&#8321; - &nu;&#8322;| - wax = slow, filing = fast</span>
+    <div class="fact" style="text-align:left;margin-top:16px">Lightning pehle, thunder baad me: light 3&times;10&#8312; m/s vs sound 340 m/s. <b>3 second ka gap = ~1 km doori.</b></div>
+  </div>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">&larr; Peeche</button>
+  <button class="btn hot" id="next">Aage &rarr;</button>
+</div>
+<footer>Built from the Ch 14 Waves notes on this site - Hinglish, NCERT-faithful. Chapter page: <a href="../">Waves notes + Shorts</a></footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+
+// ---------- SCENE 1: particle medium ----------
+let s1mode='t';
+document.getElementById('b1t').onclick=e=>{s1mode='t';e.target.classList.add('hot');document.getElementById('b1l').classList.remove('hot')};
+document.getElementById('b1l').onclick=e=>{s1mode='l';e.target.classList.add('hot');document.getElementById('b1t').classList.remove('hot')};
+function draw1(t){
+  const[c,g]=ctx('cv1'),W=c.width,H=c.height;g.clearRect(0,0,W,H);
+  const N=48,cx0=30,dx=(W-60)/N,mid=H/2;
+  // wave path
+  g.strokeStyle='#2e2e4a';g.lineWidth=1;g.beginPath();g.moveTo(0,mid);g.lineTo(W,mid);g.stroke();
+  if(s1mode==='t'){
+    g.strokeStyle='#22d3ee';g.lineWidth=2;g.beginPath();
+    for(let x=0;x<=W;x+=4){const y=mid+Math.sin((x/W)*Math.PI*3 - t*2.2)*70;x?g.lineTo(x,y):g.moveTo(x,y)}
+    g.stroke();
+    for(let i=0;i<=N;i++){const x=cx0+i*dx,y=mid+Math.sin((x/W)*Math.PI*3 - t*2.2)*70;
+      g.fillStyle=i%6==0?'#e879f9':'#5eead4';g.beginPath();g.arc(x,y,i%6==0?6:4,0,7);g.fill();
+      g.strokeStyle='#26263e';g.beginPath();g.moveTo(x,mid);g.lineTo(x,y);g.stroke()}
+    label(g,'crest',120,mid-86,'#8f8fb8');label(g,'trough',330,mid+100,'#8f8fb8');
+  }else{
+    for(let i=0;i<=N;i++){const rest=cx0+i*dx,off=Math.sin((rest/W)*Math.PI*3 - t*2.2)*26,x=rest+off;
+      const density=Math.cos((rest/W)*Math.PI*3 - t*2.2);
+      g.fillStyle=density>0.55?'#e879f9':density<-0.55?'#38bdf8':'#5eead4';
+      g.beginPath();g.arc(x,mid,density>0.55?7:4.5,0,7);g.fill()}
+    label(g,'compression (bheed)',90,mid-70,'#e879f9');label(g,'rarefaction (khalai)',360,mid+86,'#38bdf8');
+    g.fillStyle='#8f8fb8';g.font='13px sans-serif';g.fillText('particles aage-peeche slide karte hain - wave ke PARALLEL',30,H-18);
+  }
+}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+
+// ---------- SCENE 2: travelling wave + sliders ----------
+const S2={A:35,L:220,F:12,T:50};
+[['s2a','A'],['s2l','L'],['s2f','F'],['s2t','T']].forEach(([id,k])=>{document.getElementById(id).oninput=e=>S2[k]=+e.target.value});
+function draw2(t){
+  const[c,g]=ctx('cv2'),W=c.width,H=c.height,mid=H/2;
+  g.clearRect(0,0,W,H);
+  g.strokeStyle='#2e2e4a';g.beginPath();g.moveTo(0,mid);g.lineTo(W,mid);g.stroke();
+  const k=2*Math.PI/S2.L,w=2*Math.PI*S2.F/10;
+  g.strokeStyle='#22d3ee';g.lineWidth=2.5;g.beginPath();
+  for(let x=0;x<=W;x+=3){const y=mid+S2.A*Math.sin(k*x-w*t);x?g.lineTo(x,y):g.moveTo(x,y)}
+  g.stroke();
+  // lambda bracket
+  const x0=60,yb=H-34;
+  g.strokeStyle='#fbbf24';g.lineWidth=1.5;g.beginPath();
+  g.moveTo(x0,yb);g.lineTo(x0+S2.L,yb);g.moveTo(x0,yb-6);g.lineTo(x0,yb+6);g.moveTo(x0+S2.L,yb-6);g.lineTo(x0+S2.L,yb+6);g.stroke();
+  label(g,'λ = '+S2.L+' px',x0+S2.L/2-40,yb-8,'#fbbf24');
+  // amplitude arrow
+  const xa=W-70;g.strokeStyle='#e879f9';g.beginPath();g.moveTo(xa,mid);g.lineTo(xa,mid-S2.A);g.stroke();
+  label(g,'A',xa+8,mid-S2.A/2,'#e879f9');
+  const v=(S2.F*S2.L/100).toFixed(0);
+  const vstr=(Math.sqrt(S2.T/0.05)/10).toFixed(1);
+  document.getElementById('v2read').innerHTML='v = νλ = <b style="color:#22d3ee">'+v+' units/s</b> &nbsp;|&nbsp; string √(T/μ) = <b style="color:#fbbf24">'+vstr+' m/s</b>';
+}
+// ---------- SCENE 3: superposition -> standing ----------
+let s3lock=false;
+document.getElementById('b3lock').onclick=()=>{s3lock=true};
+document.getElementById('b3reset').onclick=()=>{s3lock=false};
+function draw3(t){
+  const[c,g]=ctx('cv3'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const mid1=85,mid2=H-95,A=32,k=2*Math.PI/200,w=2.4;
+  // component waves
+  [['#f87171',1],['#60a5fa',-1]].forEach(([col,dir])=>{
+    g.strokeStyle=col;g.lineWidth=1.6;g.globalAlpha=.85;g.beginPath();
+    for(let x=0;x<=W;x+=3){const y=mid1+A*Math.sin(k*x - dir*w*t*(s3lock?0:1));x?g.lineTo(x,y):g.moveTo(x,y)}
+    g.stroke();g.globalAlpha=1});
+  label(g,'wave 1 →',8,mid1-50,'#f87171');label(g,'← wave 2',W-70,mid1-50,'#60a5fa');
+  // sum
+  g.strokeStyle='#2e2e4a';g.beginPath();g.moveTo(0,mid2);g.lineTo(W,mid2);g.stroke();
+  g.strokeStyle='#5eead4';g.lineWidth=3;g.beginPath();
+  for(let x=0;x<=W;x+=3){
+    const y1=A*Math.sin(k*x - w*t*(s3lock?0:1)),y2=A*Math.sin(k*x + w*t*(s3lock?0:1));
+    let y=s3lock? 2*A*Math.sin(k*x)*Math.cos(w*0) : y1+y2;
+    x?g.lineTo(x,mid2+y):g.moveTo(x,mid2+y)}
+  g.stroke();
+  label(g,'SUM (net displacement)',8,mid2-78,'#5eead4');
+  if(s3lock){
+    // nodes & antinodes
+    for(let x=0;x<=W;x++){
+      const s=Math.sin(k*x);
+      if(Math.abs(s)<0.02){g.fillStyle='#f87171';g.beginPath();g.arc(x,mid2,5,0,7);g.fill()}
+      if(Math.abs(s)>0.999&&x>10){g.strokeStyle='#fbbf24';g.beginPath();g.moveTo(x,mid2-2*A-14);g.lineTo(x,mid2+2*A+14);g.stroke()}
+    }
+    label(g,'N = node (khamosh)',W-160,mid2+92,'#f87171');
+    label(g,'yellow lines = antinode (full hilna)',8,mid2+92,'#fbbf24');
+  }
+}
+
+// ---------- SCENE 4: organ pipes ----------
+const S4={open:true,n:1};
+document.getElementById('b4open').onclick=e=>{S4.open=true;S4.n=1;e.target.classList.add('hot');document.getElementById('b4closed').classList.remove('hot')};
+document.getElementById('b4closed').onclick=e=>{S4.open=false;S4.n=1;e.target.classList.remove('hot');document.getElementById('b4closed').classList.add('hot')};
+document.getElementById('b4prev').onclick=()=>{S4.n=S4.open?Math.max(1,S4.n-1):Math.max(1,S4.n-2)};
+document.getElementById('b4next').onclick=()=>{S4.n=S4.open?Math.min(4,S4.n+1):Math.min(7,S4.n+2)};
+function env4(u,open,n){return open? Math.cos(n*Math.PI*u) : Math.cos(n*Math.PI*u/2)}
+function draw4(t){
+  const[c,g]=ctx('cv4'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const x0=70,x1=W-70,top=90,bot=H-90,mid=(top+bot)/2;
+  // pipe walls
+  g.strokeStyle='#8f8fb8';g.lineWidth=3;
+  g.beginPath();g.moveTo(x0,top);g.lineTo(x1,top);g.moveTo(x0,bot);g.lineTo(x1,bot);g.stroke();
+  if(S4.open){[x0,x1].forEach(x=>{g.setLineDash([4,4]);g.beginPath();g.moveTo(x,top-14);g.lineTo(x,top);g.moveTo(x,bot);g.lineTo(x,bot+14);g.stroke();g.setLineDash([])})}
+  else{g.fillStyle='#8f8fb8';g.fillRect(x1-6,top-10,8,bot-top+20)}
+  const n=S4.n;
+  // standing displacement envelope
+  g.strokeStyle='#22d3ee';g.lineWidth=3;g.beginPath();
+  const osc=Math.sin(t*3);
+  for(let x=x0;x<=x1;x+=3){
+    const u=(x-x0)/(x1-x0);
+    const y=mid+env4(u,S4.open,n)*42*osc;
+    x>x0?g.lineTo(x,y):g.moveTo(x,y)}
+  g.stroke();
+  // node markers (envelope ~ 0)
+  let prev=env4(0,S4.open,n);
+  for(let i=1;i<=200;i++){
+    const u=i/200,e=env4(u,S4.open,n);
+    if(prev*e<0){const x=x0+u*(x1-x0);g.fillStyle='#f87171';g.beginPath();g.arc(x,mid,5,0,7);g.fill()}
+    prev=e}
+  label(g,S4.open?'OPEN pipe - dono ends ANTINODE':'CLOSED pipe - band end = NODE',x0,top-30,'#8f8fb8');
+  label(g,'N',x0-6,mid-56,'#f87171');
+  const v=340,f1=S4.open? v/2 : v/4; // L=1m
+  document.getElementById('v4read').innerHTML=S4.open
+    ? ('harmonic n='+n+' → ν = '+n+' × (v/2L = '+f1+') = <b style="color:#22d3ee">'+(n*f1)+' Hz</b> (L=1m) - SAARE harmonics allowed')
+    : ('closed pipe n='+n+' (sirf ODD) → ν = '+n+' × (v/4L = '+f1+') = <b style="color:#22d3ee">'+(n*f1)+' Hz</b> (L=1m) - even harmonics GAYAB');
+}
+// ---------- SCENE 5: beats ----------
+const S5={a:200,b:204};
+document.getElementById('s5a').oninput=e=>S5.a=+e.target.value;
+document.getElementById('s5b').oninput=e=>S5.b=+e.target.value;
+document.getElementById('b5wax').onclick=()=>{S5.b=Math.max(180,S5.b-2);document.getElementById('s5b').value=S5.b};
+document.getElementById('b5file').onclick=()=>{S5.b=Math.min(230,S5.b+2);document.getElementById('s5b').value=S5.b};
+function draw5(t){
+  const[c,g]=ctx('cv5'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const mid1=70,mid2=210,A=26,k=2*Math.PI/90;
+  const w1=k*S5.a/10,w2=k*S5.b/10; // visual angular speeds proportional to freq
+  g.strokeStyle='#f87171';g.lineWidth=1.4;g.beginPath();
+  for(let x=0;x<=W;x+=2){const y=mid1+A*Math.sin(k*x-w1*t);x?g.lineTo(x,y):g.moveTo(x,y)}
+  g.stroke();
+  g.strokeStyle='#60a5fa';g.lineWidth=1.4;g.beginPath();
+  for(let x=0;x<=W;x+=2){const y=mid1+A*Math.sin(k*x-w2*t);x?g.lineTo(x,y):g.moveTo(x,y)}
+  g.stroke();
+  label(g,'ν1='+S5.a+' Hz',8,mid1-42,'#f87171');label(g,'ν2='+S5.b+' Hz',120,mid1-42,'#60a5fa');
+  // sum + envelope
+  g.strokeStyle='#2e2e4a';g.beginPath();g.moveTo(0,mid2);g.lineTo(W,mid2);g.stroke();
+  g.strokeStyle='#5eead4';g.lineWidth=2.6;g.beginPath();
+  for(let x=0;x<=W;x+=2){
+    const y=mid2+A*(Math.sin(k*x-w1*t)+Math.sin(k*x-w2*t));
+    x?g.lineTo(x,y):g.moveTo(x,y)}
+  g.stroke();
+  g.strokeStyle='#fbbf24';g.lineWidth=1.2;g.setLineDash([5,5]);g.beginPath();
+  for(let x=0;x<=W;x+=2){
+    const e=2*A*Math.abs(Math.cos((w1-w2)*t/2 - (k-k)*x));
+    const env=2*A*Math.abs(Math.cos(((w1-w2)/2)*(t - x*(1)/90)));
+    x?g.lineTo(x,mid2-env):g.moveTo(x,mid2-env)}
+  g.stroke();g.setLineDash([]);
+  const beats=Math.abs(S5.a-S5.b);
+  document.getElementById('v5read').innerHTML='beats = |ν1 − ν2| = |'+S5.a+' − '+S5.b+'| = <b style="color:#fbbf24">'+beats+' per second</b>'+(beats===0?' - PERFECT UNISON (tuned!)':'')+(beats>15?' - bahut alag, beats count karna mushkil':'');
+}
+// ---------- main loop ----------
+const draws=[draw1,draw2,draw3,draw4,draw5];
+let T0=performance.now();
+function frame(now){const t=(now-T0)/1000;draws.forEach(d=>d(t));requestAnimationFrame(frame)}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
