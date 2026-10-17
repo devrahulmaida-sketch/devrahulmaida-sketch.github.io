@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotational Motion Ka Visual Walkthrough - Class 11 Physics Ch 14</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .scene h2 .num{color:#22d3ee}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .fact b{color:#fff}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:420px;font-size:1rem;padding:10px}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Physics - Chapter 6 - System of Particles & Rotational Motion</span>
+  <h1>Rotational Motion Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - COM se rolling race tak. Sliders ghumao, skater ke haath sameto, formulas feel karo.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> Centre of Mass - System Ka Average Point</h2>
+  <p class="sub">Do masses ek dande pe. Masses aur positions badlo - <b style="color:#fbbf24">COM (yellow diamond)</b> kaise shift hota hai dekho. Zyada mass apni taraf COM kheench leta hai!</p>
+  <canvas id="cv1" width="760" height="300"></canvas>
+  <div class="ctrl">
+    <label>m₁ <input type="range" id="s1m1" min="1" max="10" value="3"></label>
+    <label>x₁ <input type="range" id="s1x1" min="0" max="100" value="20"></label>
+    <label>m₂ <input type="range" id="s1m2" min="1" max="10" value="6"></label>
+    <label>x₂ <input type="range" id="s1x2" min="0" max="100" value="80"></label>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="takeaway"><span class="formula">x<sub>COM</sub> = (m₁x₁ + m₂x₂)/(m₁ + m₂)</span> - mass-weighted average. Symmetric bodies ka COM geometric center (ring ke center pe - wahan material hai bhi nahi!). External force sirf COM ko accelerate karti hai: firecracker explode ho, tukde idhar-udhar, <b>COM wahi parabola</b> follow karta hai.</div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> Torque - Ghumane Wala Force</h2>
+  <p class="sub">Darwaze pe force lagao. Force kitna door hinge se (r), kitna bara (F), aur kis ANGLE pe (θ)? Nut-khulna meter neeche live hai.</p>
+  <canvas id="cv2" width="760" height="320"></canvas>
+  <div class="ctrl">
+    <label>r (lever arm) <input type="range" id="s2r" min="20" max="100" value="70"></label>
+    <label>F (force) <input type="range" id="s2f" min="10" max="100" value="60"></label>
+    <label>θ (angle) <input type="range" id="s2th" min="5" max="90" value="90"></label>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="takeaway"><span class="formula">τ = rF sin θ</span> - hinge ke PAAS dhakka = kam torque, handle pe (door r) = zyada. Force rod ke ALONG lage (θ=0) to torque ZERO - isliye darwaza kheenchne se nahi khulta, PUSH karke khulta hai!</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Skater Ka Trick - L = Iω Conservation</h2>
+  <p class="sub">Ghoomti skater ke haath <b>sameto ya failao</b> (slider). Haath sametne se I ghatta hai - L = Iω ko SAME rakhne ke liye ω BADH jaata hai. Yehi diver ka tuck aur planet ka Kepler law hai!</p>
+  <canvas id="cv3" width="760" height="320"></canvas>
+  <div class="ctrl">
+    <label>Haath (arms) <input type="range" id="s3r" min="20" max="100" value="90"></label>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="takeaway"><span class="formula">L = Iω = constant</span> (jab external torque zero). <span class="formula">I = Σmr²</span> - mass axis se JITNA DOOR, utna zyada I. I values: <b>ring MR² | disc ½MR² | solid sphere (2/5)MR² | rod (center) ML²/12 | rod (end) ML²/3</b>. τ = Iα = F = ma ka rotational version.</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> The Great Rolling Race - Sphere vs Disc vs Ring</h2>
+  <p class="sub">Teen objects incline pe RACE. Same mass, same radius - phir bhi winner alag! Kaun jitna <b>compact</b> (mass axis ke paas), utna tez. Rolling = rotation + translation, bottom point instant REST pe.</p>
+  <canvas id="cv4" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b4race">Race Shuru / Reset</button>
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="takeaway"><span class="formula">v = √(2gh/(1 + I/MR²))</span> - I/MR² jitna CHHOTA utna FAST: <b>solid sphere (2/5) &gt; disc (1/2) &gt; ring (1)</b>. Friction STATIC hai (bottom rest) - energy waste nahi, lekin friction ke BINA sirf slide hoga, rolling nahi!</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> Equilibrium - Book Kab Giregi?</h2>
+  <p class="sub">Book ko table ke edge pe slide karo (slider). Jab tak <b style="color:#fbbf24">COM table ke ANDAR</b> hai - stable. COM edge CROSS kiya - torque palat gaya, book <b style="color:#f87171">GIR</b> jaati hai!</p>
+  <canvas id="cv5" width="760" height="320"></canvas>
+  <div class="ctrl">
+    <label>Book position <input type="range" id="s5p" min="0" max="100" value="30"></label>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="takeaway">Static equilibrium ki 2 conditions: <span class="formula">ΣF = 0</span> (na hilo) aur <span class="formula">Στ = 0</span> (na ghoomo). Stable: COM neeche, thoda tilt karo to wapas. Unstable: COM upar - gir jaata hai. Couple = do equal-opposite forces: sirf torque, zero net force (steering wheel!).</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">x<sub>COM</sub> = Σmᵢxᵢ / Σmᵢ &nbsp;|&nbsp; v<sub>COM</sub> = Σmᵢvᵢ / M</div>
+  <div class="formula">τ = rF sin θ &nbsp;|&nbsp; τ = Iα</div>
+  <div class="formula">Ring MR² | Disc ½MR² | Sphere (2/5)MR² | Rod ML²/12 (center), ML²/3 (end)</div>
+  <div class="formula">L = Iω = constant &nbsp;(skater, diver, planets)</div>
+  <div class="formula">Rolling: v = ωR, bottom point REST &nbsp;|&nbsp; K = ½mv² + ½Iω²</div>
+  <div class="formula">Race: v = √(2gh/(1 + I/MR²)) → sphere &gt; disc &gt; ring</div>
+  <p style="margin-top:18px">Rotation ka khel samajh aaya? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Physics Ch 6 - Rotational Motion | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+
+// ---------- SCENE 1: COM ----------
+const S1={m1:3,x1:20,m2:6,x2:80};
+[['s1m1','m1'],['s1x1','x1'],['s1m2','m2'],['s1x2','x2']].forEach(([id,k])=>{document.getElementById(id).oninput=e=>S1[k]=+e.target.value});
+function draw1(t){
+  const[c,g]=ctx('cv1'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const y=140,x0=70,x1=W-70,sc=(x1-x0)/100;
+  const X=u=>x0+u*sc;
+  // rod
+  g.strokeStyle='#3a3a55';g.lineWidth=6;g.beginPath();g.moveTo(X(0),y);g.lineTo(X(100),y);g.stroke();
+  for(let u=0;u<=100;u+=10){g.strokeStyle='#2e2e4a';g.lineWidth=2;g.beginPath();g.moveTo(X(u),y-10);g.lineTo(X(u),y+10);g.stroke();label(g,''+(u/100*10|0),X(u)-4,y+30,'#5c5c78')}
+  // masses
+  const r1=8+S1.m1*2.4,r2=8+S1.m2*2.4;
+  g.fillStyle='#22d3ee';g.beginPath();g.arc(X(S1.x1),y-r1-4,r1,0,7);g.fill();
+  g.fillStyle='#e879f9';g.beginPath();g.arc(X(S1.x2),y-r2-4,r2,0,7);g.fill();
+  label(g,'m₁='+S1.m1,X(S1.x1)-16,y-r1*2-14,'#22d3ee');
+  label(g,'m₂='+S1.m2,X(S1.x2)-16,y-r2*2-14,'#e879f9');
+  // COM diamond
+  const com=(S1.m1*S1.x1+S1.m2*S1.x2)/(S1.m1+S1.m2);
+  g.fillStyle='#fbbf24';g.beginPath();
+  g.moveTo(X(com),y-2);g.lineTo(X(com)+10,y-16);g.lineTo(X(com),y-30);g.lineTo(X(com)-10,y-16);g.closePath();g.fill();
+  label(g,'COM',X(com)-14,y+48,'#fbbf24');
+  // balance wedge
+  g.fillStyle='#3a3a55';g.beginPath();g.moveTo(X(com)-14,y+62);g.lineTo(X(com)+14,y+62);g.lineTo(X(com),y+40);g.closePath();g.fill();
+  document.getElementById('v1read').innerHTML='x<sub>COM</sub> = ('+S1.m1+'×'+(S1.x1/10).toFixed(1)+' + '+S1.m2+'×'+(S1.x2/10).toFixed(1)+') / '+(S1.m1+S1.m2)+' = <b style="color:#fbbf24">'+(com/10).toFixed(2)+' m</b> - danda YAHAN balance hoga!';
+}
+
+// ---------- SCENE 2: torque ----------
+const S2={r:70,f:60,th:90};
+[['s2r','r'],['s2f','f'],['s2th','th']].forEach(([id,k])=>{document.getElementById(id).oninput=e=>S2[k]=+e.target.value});
+function draw2(t){
+  const[c,g]=ctx('cv2'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const hx=180,hy=H/2; // hinge
+  const rpx=20+S2.r*2.2;
+  // door (rod)
+  g.strokeStyle='#8f8fb8';g.lineWidth=10;g.beginPath();g.moveTo(hx,hy);g.lineTo(hx+rpx,hy);g.stroke();
+  g.fillStyle='#3a3a55';g.beginPath();g.arc(hx,hy,12,0,7);g.fill();
+  label(g,'HINGE',hx-26,hy+34,'#5c5c78');
+  // force arrow at end, at angle th from rod
+  const ex=hx+rpx,ey=hy;
+  const th=S2.th*Math.PI/180;
+  const Fl=20+S2.f*1.1;
+  const fx=Math.cos(th)*0, fy=-Math.sin(th)*Fl; // force perpendicular component
+  // arrow points at angle: rod along +x; force at angle th above rod -> direction (cos(90-th)...) simpler: force makes angle th with rod, pointing "up-ish"
+  const dirx=-Math.cos(th), diry=-Math.sin(th);
+  const tx=ex+dirx*Fl, ty=ey+diry*Fl;
+  g.strokeStyle='#f87171';g.lineWidth=4;g.beginPath();
+  g.moveTo(ex,ey);g.lineTo(tx,ty);
+  // arrowhead
+  const ang=Math.atan2(ty-ey,tx-ex);
+  g.moveTo(tx,ty);g.lineTo(tx-12*Math.cos(ang-0.4),ty-12*Math.sin(ang-0.4));
+  g.moveTo(tx,ty);g.lineTo(tx-12*Math.cos(ang+0.4),ty-12*Math.sin(ang+0.4));
+  g.stroke();
+  label(g,'F',tx+8,ty-8,'#f87171');
+  // angle arc
+  g.strokeStyle='#5eead4';g.lineWidth=1.5;g.beginPath();g.arc(ex,ey,44,Math.PI,Math.PI+th);g.stroke();
+  label(g,'θ='+S2.th+'°',ex-70,ey-50,'#5eead4');
+  // perpendicular lever arm visual
+  g.setLineDash([3,4]);g.strokeStyle='#fbbf24';g.beginPath();
+  g.moveTo(hx,hy);g.lineTo(ex - Math.cos(th)*0, ey - rpx*Math.sin(th));g.stroke();g.setLineDash([]);
+  label(g,'r·sinθ (effective arm)',hx+rpx/2-40,hy+74,'#fbbf24');
+  const tau=S2.r/100*S2.f*Math.sin(th);
+  const tauMax=1*100*1; // r=1m,F=100
+  // torque meter bar
+  const bw=300,bx=W-bw-40,by=H-56;
+  g.fillStyle='#1b1b2e';g.fillRect(bx,by,bw,18);
+  g.fillStyle='#fbbf24';g.fillRect(bx,by,bw*Math.min(1,tau/(100*100/100)),18);
+  g.strokeStyle='#3a3a55';g.strokeRect(bx,by,bw,18);
+  document.getElementById('v2read').innerHTML='τ = rF sinθ = '+(S2.r/100).toFixed(2)+' × '+S2.f+' × sin'+S2.th+'° = <b style="color:#fbbf24">'+tau.toFixed(1)+' N·m</b>'+(S2.th<25?' - chhota angle: force ka zyada hissa WASTE (rod ke along)!':S2.th>80?' - 90° = MAX torque per force!':'');
+}
+
+// ---------- SCENE 3: skater L = Iw ----------
+const S3={r:90};
+document.getElementById('s3r').oninput=e=>S3.r=+e.target.value;
+let skaterAngle=0, lastT=0;
+function draw3(t){
+  const[c,g]=ctx('cv3'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const cx=W/2-140,cy=H/2;
+  // I ∝ r² (arms mass distribution), L fixed
+  const I=(S3.r/50)*(S3.r/50); // relative
+  const I0=(90/50)*(90/50); // reference at slider=90
+  const w0=2.2;
+  const L=I0*w0;
+  const w=L/I;
+  skaterAngle+=w*(t-lastT);lastT=t;
+  // skater: body + arms
+  const armLen=24+S3.r*0.55;
+  const a=skaterAngle;
+  // motion blur circle hints
+  g.strokeStyle='#2e2e4a';g.beginPath();g.arc(cx,cy,armLen+14,0,7);g.stroke();
+  // body (rotates)
+  const dx=Math.cos(a),dy=Math.sin(a);
+  g.strokeStyle='#22d3ee';g.lineWidth=8;g.lineCap='round';
+  g.beginPath();g.moveTo(cx-dx*armLen,cy-dy*armLen);g.lineTo(cx+dx*armLen,cy+dy*armLen);g.stroke();
+  g.lineCap='butt';
+  // head
+  g.fillStyle='#e879f9';g.beginPath();g.arc(cx,cy,12,0,7);g.fill();
+  // hands (masses at arm ends)
+  g.fillStyle='#fbbf24';g.beginPath();g.arc(cx-dx*armLen,cy-dy*armLen,7,0,7);g.fill();
+  g.beginPath();g.arc(cx+dx*armLen,cy+dy*armLen,7,0,7);g.fill();
+  label(g,'skater (top view)',cx-52,cy+armLen+34,'#5c5c78');
+  // right panel: I, omega, L bars
+  const px=W-330;
+  const bar=(y,frac,col,nm,val)=>{g.fillStyle='#1b1b2e';g.fillRect(px,y,240,16);g.fillStyle=col;g.fillRect(px,y,240*Math.max(0.02,Math.min(1,frac)),16);g.strokeStyle='#3a3a55';g.strokeRect(px,y,240,16);label(g,nm+' = '+val,px,y-6,col)};
+  bar(cy-90,I/ ( (100/50)*(100/50) ),'#e879f9','I (moment of inertia)',I.toFixed(2));
+  bar(cy-40,w/(w0* (100/20)*(100/20) ),'#22d3ee','ω (spin speed)',w.toFixed(2)+' rad/s');
+  bar(cy+10,0.55,'#fbbf24','L = Iω (CONSTANT)',L.toFixed(2));
+  label(g,'haath sameto → I ↓ → ω ↑',px,cy+52,'#5eead4');
+  document.getElementById('v3read').innerHTML='arms = '+(S3.r<40?'<b style="color:#22d3ee">SAMETE hue (tuck)</b> - FAST spin!':S3.r>75?'<b style="color:#e879f9">FAILAAYE hue</b> - slow spin':'beech me')+' &nbsp;|&nbsp; L = Iω <b style="color:#fbbf24">FIXED</b> rahega chahe kuch ho jaye';
+}
+
+// ---------- SCENE 4: rolling race ----------
+let raceT0=null;
+document.getElementById('b4race').onclick=()=>{raceT0=null};
+const RACE=[{n:'Solid Sphere',k:2/5,col:'#22d3ee'},{n:'Disc',k:1/2,col:'#e879f9'},{n:'Ring',k:1,col:'#fbbf24'}];
+function draw4(t){
+  const[c,g]=ctx('cv4'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  if(raceT0===null)raceT0=t;
+  const rt=t-raceT0;
+  const x0=90,y0=70,slope=0.16,Lx=W-200;
+  const g0=9.8,sin=Math.sin(Math.atan(slope));
+  // incline
+  g.strokeStyle='#3a3a55';g.lineWidth=3;g.beginPath();g.moveTo(x0,y0);g.lineTo(x0+Lx,y0+Lx*slope);g.stroke();
+  // finish line
+  const fx=x0+Lx-30;
+  g.setLineDash([4,4]);g.strokeStyle='#5eead4';g.beginPath();g.moveTo(fx,y0-40);g.lineTo(fx+ (Lx*slope),y0+Lx*slope+40);g.stroke();g.setLineDash([]);
+  label(g,'FINISH',fx-14,y0-48,'#5eead4');
+  let ranks=[];
+  RACE.forEach((o,i)=>{
+    const a=g0*sin/(1+o.k); // acceleration down incline
+    let dist=0.5*a*rt*rt*8; // scaled
+    dist=Math.min(dist,fx-x0);
+    const x=x0+dist, y=y0+dist*slope;
+    const R=16;
+    // rolling rotation angle = dist/R
+    const th=dist/R;
+    const cy=y-R;
+    g.strokeStyle=o.col;g.lineWidth=2.5;g.beginPath();g.arc(x,cy,R,0,7);g.stroke();
+    // spoke to show rotation
+    g.beginPath();g.moveTo(x,cy);g.lineTo(x+R*Math.cos(th),cy+R*Math.sin(th));g.stroke();
+    if(o.n==='Ring'){g.lineWidth=5;g.beginPath();g.arc(x,cy,R-3,0,7);g.stroke()}
+    if(o.n==='Disc'){g.fillStyle=o.col+'33';g.beginPath();g.arc(x,cy,R-2,0,7);g.fill()}
+    label(g,o.n,x-34,cy-R-10,o.col);
+    ranks.push([dist,o]);
+  });
+  ranks.sort((a,b)=>b[0]-a[0]);
+  const winner=ranks[0][1];
+  document.getElementById('v4read').innerHTML='a = g sinθ/(1 + I/MR²) → '+(raceT0!==null&&ranks[0][0]>=fx-x0?('<b style="color:'+winner.col+'">'+winner.n+' WINS!</b> Order: '+ranks.map(r=>r[1].n).join(' > ')):'racing... sphere (2/5) sabse aage, ring (1) sabse peeche')+' | bottom point: instant REST (pure rolling)';
+}
+
+// ---------- SCENE 5: book equilibrium ----------
+const S5={p:30};
+document.getElementById('s5p').oninput=e=>S5.p=+e.target.value;
+let fallA=0;
+function draw5(t){
+  const[c,g]=ctx('cv5'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const edgeX=W/2+40,topY=200;
+  // table
+  g.fillStyle='#3a3a55';g.fillRect(60,topY,edgeX-60,14);
+  g.fillRect(80,topY+14,16,90);g.fillRect(edgeX-30,topY+14,16,90);
+  // book: length 200px; position p = % of book hanging RIGHT of edge... p = position of book center relative to edge
+  const bl=200, bh=44;
+  const p=S5.p/100; // 0 = fully on table (left), 1 = mostly hanging
+  const bookCx=edgeX-bl/2+ p*bl*0.9; // center moves right past edge
+  const comX=bookCx;
+  const over=comX>edgeX;
+  // tipping animation
+  if(over){fallA=Math.min(fallA+0.03,1.1)}else{fallA=Math.max(fallA-0.06,0)}
+  g.save();
+  g.translate(edgeX,topY);
+  g.rotate(fallA*0.9);
+  // book relative: from (bookCx-edgeX-bl/2) to (bookCx-edgeX+bl/2), sitting on top
+  g.fillStyle='#22d3ee';g.fillRect(bookCx-edgeX-bl/2,-bh,bl,bh);
+  g.fillStyle='#0a0a12';g.font='13px sans-serif';g.fillText('BOOK',bookCx-edgeX-20,-bh/2+4);
+  // COM marker
+  g.fillStyle='#fbbf24';g.beginPath();g.arc(bookCx-edgeX,-bh/2,6,0,7);g.fill();
+  g.restore();
+  // edge marker + COM projection
+  g.strokeStyle='#f87171';g.setLineDash([4,4]);g.beginPath();g.moveTo(edgeX,topY-70);g.lineTo(edgeX,topY+20);g.stroke();g.setLineDash([]);
+  label(g,'EDGE',edgeX-16,topY+36,'#f87171');
+  g.strokeStyle='#fbbf24';g.setLineDash([2,3]);g.beginPath();g.moveTo(bookCx,topY-bh-14);g.lineTo(bookCx,topY);g.stroke();g.setLineDash([]);
+  label(g,'COM',bookCx-14,topY-bh-22,'#fbbf24');
+  document.getElementById('v5read').innerHTML=over
+    ? 'COM edge ke <b style="color:#f87171">BAHAR</b> - gravity ka torque palat gaya → BOOK GIRI! (unstable)'
+    : 'COM table ke <b style="color:#5eead4">ANDAR</b> - normal force ka torque wapas laata hai → STABLE. Book ka '+(p*90|0)+'% bahar hai, phir bhi theek!';
+}
+// ---------- main loop ----------
+const draws=[draw1,draw2,draw3,draw4,draw5];
+let T0=performance.now();
+function frame(now){const t=(now-T0)/1000;draws.forEach(d=>d(t));requestAnimationFrame(frame)}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
