@@ -315,7 +315,7 @@ function draw3(t,dt){
   });
   const sname=seriesOf(n1);
   const first=Math.round(lines[0].lam),second=Math.round(lines[1].lam);
-  panel(g,[[sname+' series (n₁ = '+n1+')','#fbbf24'],['pehli line: '+first+' nm ('+regionOf(first)+')','#5eead4'],['doosri: '+second+' nm','#22d3ee'],[regionOf(first)==='VISIBLE'?'aankh se dikhti hai!':(regionOf(first)==='UV'?'UV me - aankh se NAHI dikhti':'IR me - garmi jaisi, dikhti nahi'),'#8f8fb8']],60,302);
+  panel(g,[[sname+' series (n₁ = '+n1+')','#fbbf24'],['pehli: '+first+' nm · doosri: '+second+' nm ('+regionOf(first)+')','#5eead4'],[regionOf(first)==='VISIBLE'?'aankh se dikhti hai!':(regionOf(first)==='UV'?'UV me - aankh se NAHI dikhti':'IR me - garmi jaisi, dikhti nahi'),'#8f8fb8']],60,306);
   document.getElementById('v3read').innerHTML=sname+': n = '+(n1+1)+','+(n1+2)+','+(n1+3)+'… → '+n1+' &nbsp;|&nbsp; pehli line λ = <b>'+first+' nm</b> ('+regionOf(first)+') - 1/λ = R(1/'+n1+'² − 1/n₂²)';
 }
 
