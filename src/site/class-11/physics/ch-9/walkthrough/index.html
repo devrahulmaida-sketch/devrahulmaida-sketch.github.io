@@ -294,11 +294,12 @@ function draw3(t,dt){
     g.strokeStyle='#f0f0fa';g.lineWidth=1.5;g.strokeRect(ox,o.y,sz,sz);
     label(g,o.n,ox+sz/2-o.n.length*3.5,o.y+sz/2+4,'#0a0a12');
     // arrows: weight down, buoyancy up
-    const wlen=10+o.d*4, blen=o.d<1?wlen:14;
-    g.strokeStyle='#f87171';g.lineWidth=3;g.beginPath();g.moveTo(ox+sz+18,o.y+sz/2-10);g.lineTo(ox+sz+18,o.y+sz/2+wlen);g.stroke();
-    label(g,'W',ox+sz+24,o.y+sz/2+wlen,'#f87171');
-    g.strokeStyle='#4ade80';g.lineWidth=3;g.beginPath();g.moveTo(ox-18,o.y+sz/2+10);g.lineTo(ox-18,o.y+sz/2-blen);g.stroke();
-    label(g,'Fb',ox-32,o.y+sz/2-blen,'#4ade80');
+    const wlen=Math.min(16+o.d*8,tbot-(o.y+sz/2)-8);
+    const blen=o.d<1?wlen:(o.d===1?wlen:Math.max(5,Math.min(14,wlen/o.d)));
+    g.strokeStyle='#f87171';g.lineWidth=3;g.beginPath();g.moveTo(ox+sz+18,o.y+sz/2-6);g.lineTo(ox+sz+18,o.y+sz/2+wlen);g.stroke();
+    label(g,'W = '+o.d,ox+sz+24,o.y+sz/2+wlen+2,'#f87171');
+    g.strokeStyle='#4ade80';g.lineWidth=3;g.beginPath();g.moveTo(ox-18,o.y+sz/2+6);g.lineTo(ox-18,o.y+sz/2-blen);g.stroke();
+    label(g,'Fb = '+(o.d<1?o.d:1),ox-72,o.y+sz/2-blen,'#4ade80');
     // verdict panel
     const sub=o.d<1?Math.round(o.d*100)+'% paani ke andar':(o.d===1?'poora dooba, kahin bhi tika':'bottom pe dooba!');
     panel(g,[[o.n+' (ρ = '+o.d+')','#fbbf24'],[o.d<1?'TAIRTI HAI ✓':(o.d===1?'NEUTRAL - suspend!':'DOOB GAYI ✗'),o.d<1?'#4ade80':(o.d===1?'#fbbf24':'#f87171')],[sub,'#8f8fb8'],[o.d===0.9?'ICEBERG: 90% andar!':(o.d<1?'displaced weight = apna weight':'F_b < W isliye doobi'),'#5eead4']],460,80);
