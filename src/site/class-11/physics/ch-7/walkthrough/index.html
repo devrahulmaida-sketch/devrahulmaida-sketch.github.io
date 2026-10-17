@@ -227,7 +227,7 @@ function draw2(t,dt){
   const gv=S2.r<=1?S2.r:1/(S2.r*S2.r);
   const px=gx+S2.r/3*gw,py=gy-gv*gh;
   dot(g,px,py,6,'#fbbf24');
-  panel(g,[['r = '+S2.r.toFixed(2)+' R','#fbbf24'],["g = "+(Math.round(gv*100)/100)+" g₀",'#5eead4'],[S2.r<0.98?'ANDAR: g ∝ r (linear)':(S2.r<=1.02?'SURFACE: full g₀':'BAHAR: g ∝ 1/r² (crash!)'),'#8f8fb8']],60,30);
+  panel(g,[['r = '+S2.r.toFixed(2)+' R','#fbbf24'],["g = "+(Math.round(gv*100)/100)+" g₀",'#5eead4'],[S2.r<0.98?'ANDAR: g ∝ r (linear)':(S2.r<=1.02?'SURFACE: full g₀':'BAHAR: g ∝ 1/r² (door = kam)'),'#8f8fb8']],60,30);
   document.getElementById('v2read').innerHTML='r = <b>'+S2.r.toFixed(2)+' R</b> → g = <b style="color:#5eead4">'+(Math.round(gv*100)/100)+' g₀</b>'+(S2.r<0.02?' · CENTER pe g = 0!':'');
 }
 
