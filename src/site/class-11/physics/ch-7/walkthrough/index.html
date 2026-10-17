@@ -291,7 +291,7 @@ const S4={th:0,wedges:[],acc:0,lastW:0,areaT:0};
 function draw4(t,dt){
   const[c,g]=ctx('cv4'),W=c.width,H=c.height;
   g.clearRect(0,0,W,H);
-  const cx=300,cy=170,a=200,b=118,e=0.72;
+  const cx=300,cy=165,a=170,b=136,e=0.6;
   const fx=cx-a*e; // focus (sun)
   // orbit path
   g.strokeStyle='#3c3c5c';g.lineWidth=1.5;g.beginPath();
@@ -301,10 +301,10 @@ function draw4(t,dt){
   dot(g,fx,cy,9,'#fbbf24');
   label(g,'SUN (focus!)',fx-34,cy+26,'#fbbf24');
   // planet: angular speed ~ 1/r^2 from focus
-  const spd=2.2;
+  const spd=1.8;
   const px0=cx+a*Math.cos(S4.th),py0=cy+b*Math.sin(S4.th);
   const r0=Math.hypot(px0-fx,py0-cy);
-  S4.th+=spd*dt*(Math.pow(160,2)/Math.pow(Math.max(40,r0),2))*0.55;
+  S4.th+=spd*dt*Math.pow(68/Math.max(50,r0),2); // omega ∝ 1/r² (angular momentum)
   const px=cx+a*Math.cos(S4.th),py=cy+b*Math.sin(S4.th);
   // wedge accumulation: every 0.55 rad of sweep close a wedge
   S4.acc+=dt;
@@ -314,7 +314,7 @@ function draw4(t,dt){
     S4.acc=0;
     S4.wedges.push(S4.wStart.pts.slice());
     S4.wStart={th:S4.th,pts:[[fx,cy],[px,py]]};
-    if(S4.wedges.length>4)S4.wedges.shift();
+    if(S4.wedges.length>5)S4.wedges.shift();
   }
   // draw wedges
   const wcols=['#22d3ee33','#e879f933','#fbbf2433','#4ade8033','#f8717133'];
@@ -325,7 +325,7 @@ function draw4(t,dt){
     g.closePath();g.fill();
   });
   // planet + velocity arrow
-  const v=spd*(Math.pow(160,2)/Math.pow(Math.max(40,r0),2))*0.55;
+  const v=spd*Math.pow(68/Math.max(50,r0),2);
   dot(g,px,py,7,'#22d3ee');
   const vx=-a*Math.sin(S4.th),vy=b*Math.cos(S4.th);
   const vm=Math.hypot(vx,vy);
