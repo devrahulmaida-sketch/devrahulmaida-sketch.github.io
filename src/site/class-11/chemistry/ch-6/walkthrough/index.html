@@ -208,7 +208,7 @@ function draw1(t,dt){
   }
   g.strokeStyle='#4ade8066';g.setLineDash([4,4]);g.beginPath();g.moveTo(500,296-40*1.7);g.lineTo(740,296-40*1.7);g.stroke();g.setLineDash([]);
   label(g,'equilibrium B = 40',604,296-40*1.7-6,'#4ade80');
-  document.getElementById('v1read').innerHTML=S1.run?('A = <b style="color:#f87171">'+na+'</b> · B = <b style="color:#22d3ee">'+nb+'</b> · forward = backward = <b>'+rf.toFixed(1)+'/s</b> - counts STILL, particles MOVING!'):'';
+  document.getElementById('v1read').innerHTML=S1.run?('A = <b style="color:#f87171">'+na+'</b> · B = <b style="color:#22d3ee">'+nb+'</b> · forward = <b>'+rf.toFixed(1)+'/s</b> · backward = <b>'+rb.toFixed(1)+'/s</b>'+(eqd?' - <b style="color:#4ade80">RATES BARABAR, par flip JAARI!</b>':' - converge ho rahe hain...')):'';
 }
 
 // ---------- SCENE 2: Q vs K ----------
@@ -287,7 +287,7 @@ function draw3(t,dt){
   const sq=S3.squish>0?Math.min(1,S3.squish)*60:0;
   const bw=box3.w-sq;
   g.strokeStyle='#3c3c5c';g.lineWidth=3;g.strokeRect(box3.x,box3.y,bw,box3.h);
-  if(sq>0)label(g,'PRESSURE ↑ (volume kam!)',box3.x+bw+10,box3.y+20,'#fbbf24');
+  if(sq>0)label(g,'PRESSURE ↑ - volume kam!',box3.x+12,box3.y+18,'#fbbf24');
   // molecules
   let i=0;
   for(let k=0;k<S3.n2;k++,i++){const[x,y]=molpos(i,bw);dot(g,x-5,y,5,'#22d3ee');dot(g,x+5,y,5,'#22d3ee');label(g,'',0,0,'#000')}
@@ -314,16 +314,17 @@ document.getElementById('phslider').oninput=e=>{
   S4.e=+e.target.value;
   document.getElementById('phval').textContent='10'+sup(S4.e);
 };
-function sup(n){const m={'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};return String(n).split('').map(c=>m[c]).join('')}
+function sup(n){const m={'-':'⁻','.':'.','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};return String(n).split('').map(c=>m[c]).join('')}
+function fmtExp(x){const r=Math.round(x*10)/10;return sup(Number.isInteger(r)?r:r.toFixed(1))}
 const PHC=['#f43f5e','#f43f5e','#fb7185','#fb923c','#fbbf24','#fde047','#a3e635','#4ade80','#34d399','#2dd4bf','#38bdf8','#818cf8','#a78bfa','#c084fc','#e879f9'];
-const PHS=[['battery acid',0],['lemon',2],['vinegar',3],['blood',7.4],['pure water',7],['soap',10],['NaOH (1M)',14]];
+const PHS=[['battery acid',0,0],['lemon',2,0],['vinegar',3,0],['pure water',7,0],['blood',7.4,1],['soap',10,0],['NaOH (1M)',14,0]];
 function draw4(t,dt){
   const[c,g]=ctx('cv4'),W=c.width,H=c.height;
   g.clearRect(0,0,W,H);
   const pH=-S4.e,pOH=14-pH;
   const sx=60,sw=640,sy=140,sh=36;
   // readout panel (top right, short lines)
-  panel(g,[['[H⁺] = 10'+sup(S4.e)+' M','#f0f0fa'],['pOH = '+pOH+' · [OH⁻] = 10'+sup(-pOH),'#8f8fb8'],['pH + pOH = 14 ✓','#8f8fb8'],['1 point = 10× difference!','#fbbf24'],['pH '+pH+' vs pH '+(pH+2>14?14:pH+2)+' = 100× acidic','#fbbf24']],440,34);
+  panel(g,[['[H⁺] = 10'+sup(S4.e)+' M','#f0f0fa'],['pOH = '+pOH+' · [OH⁻] = 10'+sup(-pOH),'#8f8fb8'],['pH + pOH = 14 ✓ · 1 point = 10×!','#fbbf24']],60,30);
   for(let i=0;i<14;i++){
     g.fillStyle=PHC[i];g.fillRect(sx+i*sw/14,sy,sw/14+1,sh);
   }
@@ -331,9 +332,9 @@ function draw4(t,dt){
   for(let i=0;i<=14;i++)label(g,''+i,sx+i*sw/14-3,sy+sh+18,'#8f8fb8');
   // substances above the strip
   PHS.forEach(s=>{
-    const x=sx+s[1]*sw/14;
-    g.strokeStyle='#e8e8f0';g.lineWidth=1;g.beginPath();g.moveTo(x,sy-14);g.lineTo(x,sy);g.stroke();
-    label(g,s[0],Math.min(x-26,700),sy-22,'#c9c9e2');
+    const x=sx+s[1]*sw/14,up=s[2]?20:0;
+    g.strokeStyle='#e8e8f0';g.lineWidth=1;g.beginPath();g.moveTo(x,sy-14-up);g.lineTo(x,sy);g.stroke();
+    label(g,s[0],Math.min(x-26,700),sy-22-up,'#c9c9e2');
   });
   // marker: white line through strip + label inside strip
   const mx=sx+pH*sw/14;
@@ -384,8 +385,8 @@ function draw5(t,dt){
   if(S5.ppt>2)label(g,'AgCl precipitate!',tx+60,ty+th-pileH-30,'#f0f0fa');
   // gauges
   const gx=450;
-  label(g,'ionic product IP = 10'+sup((S5.ag+S5.cl).toFixed(1)),gx,90,'#f0f0fa');
-  label(g,'Ksp = 1.8×10⁻¹⁰ = 10'+sup(LOGKSP.toFixed(2)),gx,114,'#8f8fb8');
+  label(g,'ionic product IP = 10'+fmtExp(S5.ag+S5.cl),gx,90,'#f0f0fa');
+  label(g,'Ksp = 1.8×10⁻¹⁰ (10'+fmtExp(LOGKSP)+')',gx,114,'#8f8fb8');
   // bar comparison (log scale)
   const l1=S5.ag+S5.cl,l2=LOGKSP,bx=gx,by=150,bsc=14;
   g.fillStyle='#26263e';g.fillRect(bx,by,168,16);
@@ -401,7 +402,7 @@ function draw5(t,dt){
     label(g,'aur ghol sakte ho',gx,252,'#4ade80');
   }
   label(g,'saturated: s = √Ksp = 1.34×10⁻⁵ M',gx,286,'#8f8fb8');
-  document.getElementById('v5read').innerHTML='[Ag⁺] = 10'+sup(S5.ag)+' · [Cl⁻] = 10'+sup(S5.cl)+' · IP = 10'+sup((S5.ag+S5.cl).toFixed(1))+' → '+(over?'<b style="color:#f87171">PRECIPITATE girega!</b>':'<b style="color:#4ade80">dissolved rahega</b>');
+  document.getElementById('v5read').innerHTML='[Ag⁺] = 10'+fmtExp(S5.ag)+' · [Cl⁻] = 10'+fmtExp(S5.cl)+' · IP = 10'+fmtExp(S5.ag+S5.cl)+' → '+(over?'<b style="color:#f87171">PRECIPITATE girega!</b>':'<b style="color:#4ade80">dissolved rahega</b>');
 }
 
 // ---------- main loop ----------
