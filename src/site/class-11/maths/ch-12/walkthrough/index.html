@@ -198,7 +198,7 @@ document.getElementById('s2z').oninput=e=>S2.z=+e.target.value;
 function draw2(t){
   const[c,g]=ctx('cv2'),W=c.width,H=c.height;
   g.clearRect(0,0,W,H);
-  const cx=W/2,cy=H/2+30,R=30+S2.z*1.7; // px per unit
+  const cx=W/2,cy=H/2+30,R=30+S2.z*7; // px per unit
   g.strokeStyle='#3a3a55';g.beginPath();g.moveTo(0,cy);g.lineTo(W,cy);g.moveTo(cx,10);g.lineTo(cx,H-10);g.stroke();
   const plot=(fn,col,lw)=>{g.strokeStyle=col;g.lineWidth=lw;g.beginPath();
     for(let px=0;px<=W;px+=2){const x=(px-cx)/R;const y=fn(x);const Y=cy-y*R;px?g.lineTo(px,Y):g.moveTo(px,Y)}
