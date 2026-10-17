@@ -265,37 +265,34 @@ function draw4(t){
   g.clearRect(0,0,W,H);
   if(raceT0===null)raceT0=t;
   const rt=t-raceT0;
-  const x0=90,y0=70,slope=0.16,Lx=W-200;
+  const x0=80,slope=0.14,Lx=W-230;
   const g0=9.8,sin=Math.sin(Math.atan(slope));
-  // incline
-  g.strokeStyle='#3a3a55';g.lineWidth=3;g.beginPath();g.moveTo(x0,y0);g.lineTo(x0+Lx,y0+Lx*slope);g.stroke();
-  // finish line
-  const fx=x0+Lx-30;
-  g.setLineDash([4,4]);g.strokeStyle='#5eead4';g.beginPath();g.moveTo(fx,y0-40);g.lineTo(fx+ (Lx*slope),y0+Lx*slope+40);g.stroke();g.setLineDash([]);
-  label(g,'FINISH',fx-14,y0-48,'#5eead4');
   let ranks=[];
   RACE.forEach((o,i)=>{
-    const a=g0*sin/(1+o.k); // acceleration down incline
-    let dist=0.5*a*rt*rt*8; // scaled
-    dist=Math.min(dist,fx-x0);
-    const x=x0+dist, y=y0+dist*slope;
-    const R=16;
-    // rolling rotation angle = dist/R
+    const y0=86+i*92;
+    const fx=x0+Lx;
+    // lane incline
+    g.strokeStyle='#3a3a55';g.lineWidth=2.5;g.beginPath();g.moveTo(x0,y0);g.lineTo(x0+Lx,y0+Lx*slope);g.stroke();
+    // finish tick
+    g.setLineDash([3,4]);g.strokeStyle='#5eead4';g.beginPath();g.moveTo(fx,y0-34);g.lineTo(fx,y0+Lx*slope+10);g.stroke();g.setLineDash([]);
+    if(i===0)label(g,'FINISH',fx-14,y0-42,'#5eead4');
+    const a=g0*sin/(1+o.k);
+    let dist=Math.min(0.5*a*rt*rt*8,fx-x0-16);
+    const x=x0+dist,y=y0+dist*slope;
+    const R=15,cy=y-R;
     const th=dist/R;
-    const cy=y-R;
-    g.strokeStyle=o.col;g.lineWidth=2.5;g.beginPath();g.arc(x,cy,R,0,7);g.stroke();
-    // spoke to show rotation
-    g.beginPath();g.moveTo(x,cy);g.lineTo(x+R*Math.cos(th),cy+R*Math.sin(th));g.stroke();
-    if(o.n==='Ring'){g.lineWidth=5;g.beginPath();g.arc(x,cy,R-3,0,7);g.stroke()}
-    if(o.n==='Disc'){g.fillStyle=o.col+'33';g.beginPath();g.arc(x,cy,R-2,0,7);g.fill()}
-    label(g,o.n,x-34,cy-R-10,o.col);
+    if(o.n==='Ring'){g.strokeStyle=o.col;g.lineWidth=5.5;g.beginPath();g.arc(x,cy,R-3,0,7);g.stroke()}
+    else if(o.n==='Disc'){g.fillStyle=o.col+'44';g.beginPath();g.arc(x,cy,R,0,7);g.fill();g.strokeStyle=o.col;g.lineWidth=2;g.beginPath();g.arc(x,cy,R,0,7);g.stroke()}
+    else{g.fillStyle=o.col;g.beginPath();g.arc(x,cy,R,0,7);g.fill()}
+    // spoke to show rolling rotation
+    g.strokeStyle=o.n==='Solid Sphere'?'#0a0a12':o.col;g.lineWidth=2;g.beginPath();g.moveTo(x,cy);g.lineTo(x+R*Math.cos(th),cy+R*Math.sin(th));g.stroke();
+    label(g,o.n+' (I/MR² = '+(o.k===0.4?'2/5':o.k===0.5?'1/2':'1')+')',x0-6,y0-34,o.col);
     ranks.push([dist,o]);
   });
   ranks.sort((a,b)=>b[0]-a[0]);
   const winner=ranks[0][1];
-  document.getElementById('v4read').innerHTML='a = g sinθ/(1 + I/MR²) → '+(raceT0!==null&&ranks[0][0]>=fx-x0?('<b style="color:'+winner.col+'">'+winner.n+' WINS!</b> Order: '+ranks.map(r=>r[1].n).join(' > ')):'racing... sphere (2/5) sabse aage, ring (1) sabse peeche')+' | bottom point: instant REST (pure rolling)';
+  document.getElementById('v4read').innerHTML='a = g sinθ/(1 + I/MR²) → '+(ranks[0][0]>=Lx-16?('<b style="color:'+winner.col+'">'+winner.n+' WINS!</b> Order: '+ranks.map(r=>r[1].n).join(' > ')):'racing... sphere (2/5) sabse aage, ring (1) sabse peeche')+' | bottom point: instant REST (pure rolling)';
 }
-
 // ---------- SCENE 5: book equilibrium ----------
 const S5={p:30};
 document.getElementById('s5p').oninput=e=>S5.p=+e.target.value;
