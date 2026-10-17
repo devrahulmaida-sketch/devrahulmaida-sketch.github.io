@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermodynamics Ka Visual Walkthrough - Class 11 Physics Ch 11</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .scene h2 .num{color:#22d3ee}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .fact b{color:#fff}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:440px;font-size:1rem;padding:10px}
+  .readout{font-size:.88rem;color:#fbbf24;flex-basis:100%;min-height:1.2em}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Physics - Chapter 11 - Thermodynamics</span>
+  <h1>Thermodynamics Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - P-V diagram se Carnot engine tak. Processes kheencho, heat ka batwara dekho, engine chalao, cycle ghumo.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> P-V Diagram Ka Map - 4 Processes</h2>
+  <p class="sub">Gas state A (V=1, P=4, T=400K) se shuru. Process chuno aur curve khichte dekho: <b>shaded area = WORK</b> (∫P dV). Adiabatic curve isothermal se <b>zyada STEEP</b> hoti hai (γ = 1.4)!</p>
+  <canvas id="cv1" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" data-p="iso">Isothermal (T const)</button>
+    <button class="btn" data-p="adia">Adiabatic (Q=0)</button>
+    <button class="btn" data-p="isob">Isobaric (P const)</button>
+    <button class="btn" data-p="isoc">Isochoric (V const)</button>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="fact"><b>State function vs path function:</b> ΔU sirf end states pe depend karta hai; Q aur W PATH pe. U = bank balance, Q/W = deposit-withdrawal ke tareeke! Cyclic process me ΔU = 0 → Q_net = W_net = loop ka area.</div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> First Law - Heat Ka Batwara (ΔU = Q − W)</h2>
+  <p class="sub">Piston <b>free</b> hai (isobaric). Heat daalo aur dekho energy ka split: diatomic gas me har 7 units heat me se <b>5 internal energy</b> (gas garam) + <b>2 work</b> (piston upar)! Isi liye C_p &gt; C_v - Mayer: <b>C_p − C_v = R</b>.</p>
+  <canvas id="cv2" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn" id="q1">+1 Heat</button>
+    <button class="btn" id="q5">+5 Heat</button>
+    <button class="btn" id="qreset">Reset</button>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="fact"><b>Sign convention:</b> Q positive jab heat SYSTEM me aaye, W positive jab SYSTEM work kare (gas expand ho). Isothermal: ΔU=0 → Q=W. Adiabatic: Q=0 → ΔU=−W (gas apni jeb se work karti hai, THANDI hoti hai). Isochoric: W=0 → ΔU=Q.</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Race: Isothermal vs Adiabatic Expansion</h2>
+  <p class="sub">Dono cylinders same state (V=1, P=4, T=400K) se <b>double volume</b> tak expand honge. Left: heat reservoir se juda (T constant). Right: insulated (Q=0) - <b>gas apni energy kharch karke thandi ho jaati hai!</b> Kaun zyada work karega?</p>
+  <canvas id="cv3" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="race">Expand ×2 Karo</button>
+    <button class="btn" id="racereset">Reset</button>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="fact"><b>Adiabatic relations:</b> PV<sup>γ</sup> = constant, TV<sup>γ−1</sup> = constant. Work: W = (P₁V₁ − P₂V₂)/(γ−1) = μR(T₁−T₂)/(γ−1). Isothermal: W = μRT ln(V₂/V₁). Adiabatic me KAM work milta hai - pressure jaldi girta hai!</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> Heat Engine - 100% Kyun IMPOSSIBLE?</h2>
+  <p class="sub">Engine hot source (T₁) se Q₁ heat leta hai, kuch <b>W work</b> banata hai, baaki Q₂ cold sink ko <b>DENA hi padta hai</b> (Kelvin-Planck!). Arrows ki motai = energy. Sliders se T₁, T₂ badlo: <b>Carnot limit η = 1 − T₂/T₁</b> se zyada koi engine nahi!</p>
+  <canvas id="cv4" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <div class="slider">T₁ (hot) = <input type="range" id="t1slider" min="400" max="800" value="600" step="25"> <span id="t1val">600</span> K</div>
+    <div class="slider">T₂ (cold) = <input type="range" id="t2slider" min="200" max="380" value="300" step="10"> <span id="t2val">300</span> K</div>
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="fact"><b>Carnot = speed limit of engines.</b> η = W/Q₁ = 1 − Q₂/Q₁ ≤ 1 − T₂/T₁ (temperatures hamesha <b>Kelvin</b> me!). Refrigerator ulta hai: work daalo, heat cold se hot pump karo - COP = T₂/(T₁−T₂), 1 se ZYADA ho sakta hai!</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> Carnot Cycle - 4 Steps Ka Perfect Loop</h2>
+  <p class="sub">Ideal reversible engine ka cycle: <b>2 isothermal + 2 adiabatic</b> steps. Dot ke saath ghumo: T₁=400K, T₂=300K. Clockwise loop = positive net work = <b>andar ka shaded area</b> (W = 0.69 units, η = 25%).</p>
+  <canvas id="cv5" width="760" height="360"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="cplay">Pause</button>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="fact"><b>Steps:</b> A→B isothermal expansion (reservoir se Q₁ = 2.77 units), B→C adiabatic expansion (thandi 400→300K), C→D isothermal compression (sink ko Q₂), D→A adiabatic compression (wapas 400K). Anticlockwise chalao to <b>refrigerator</b>!</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">ΔU = Q − W &nbsp;|&nbsp; W = ∫P dV &nbsp;|&nbsp; cyclic: Q_net = W_net</div>
+  <div class="formula">C_p − C_v = R &nbsp;|&nbsp; γ = C_p/C_v (diatomic 1.4)</div>
+  <div class="formula">Adiabatic: PV<sup>γ</sup> = const · TV<sup>γ−1</sup> = const</div>
+  <div class="formula">W<sub>adia</sub> = μR(T₁−T₂)/(γ−1) &nbsp;|&nbsp; W<sub>iso</sub> = μRT ln(V₂/V₁)</div>
+  <div class="formula">η = 1 − Q₂/Q₁ ≤ 1 − T₂/T₁ (Carnot, Kelvin me!)</div>
+  <div class="formula">COP<sub>fridge</sub> = Q₂/W = T₂/(T₁−T₂)</div>
+  <p style="margin-top:18px">Heat ke rules samjhe? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Physics Ch 11 - Thermodynamics | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,r,0,7);g.fill()}
+function panel(g,lines,x,y){lines.forEach((L,i)=>label(g,L[0],x,y+i*22,L[1]))}
+const R=(a,b)=>a+Math.random()*(b-a);
+// shared PV mapping: V in [0.5,5], P in [0,5]
+function pvmap(gx,gy,gw,gh){return {X:v=>gx+(v-0.5)/4.5*gw, Y:p=>gy-p/5*gh}}
+function axes(g,gx,gy,gw,gh){
+  g.strokeStyle='#3c3c5c';g.lineWidth=1.5;g.strokeRect(gx,gy-gh,gw,gh);
+  label(g,'P',gx-14,gy-gh+14,'#8f8fb8');label(g,'V →',gx+gw-24,gy+18,'#8f8fb8');
+  [1,2,3,4,5].forEach(v=>{if(v<=5)label(g,''+v,gx+(v-0.5)/4.5*gw-3,gy+16,'#5c5c78')});
+  [1,2,3,4].forEach(p=>label(g,''+p,gx-14,gy-p/5*gh+4,'#5c5c78'));
+}
+const GAM=1.4, MR=0.01, MCV=0.025; // diatomic, mu*R, mu*Cv
+
+// ---------- SCENE 1: PV map, 4 processes ----------
+const PROC={
+ iso:{name:'Isothermal',col:'#22d3ee',Pf:v=>4/v,V2:2,note:'T = 400K constant → ΔU = 0, saari heat work me!'},
+ adia:{name:'Adiabatic',col:'#e879f9',Pf:v=>4*Math.pow(v,-GAM),V2:2,note:'Q = 0 → gas THANDI: 400 → 303K. Curve zyada steep!'},
+ isob:{name:'Isobaric',col:'#fbbf24',Pf:v=>4,V2:2,note:'P = 4 constant → seedhi line. Gas 800K tak garam!'},
+ isoc:{name:'Isochoric',col:'#5eead4',Pf:null,V2:1,note:'V = 1 constant → seedha neeche. W = 0, Q = ΔU = −5'}
+};
+const LEDGER={
+ iso:{Q:'+2.77',W:'+2.77',dU:'0'},
+ adia:{Q:'0',W:'+2.42',dU:'−2.42'},
+ isob:{Q:'+14',W:'+4',dU:'+10'},
+ isoc:{Q:'−5',W:'0',dU:'−5'}
+};
+const S1={p:'iso',prog:1};
+document.querySelectorAll('.scene')[0].querySelectorAll('.btn[data-p]').forEach(b=>{
+  b.onclick=()=>{S1.p=b.dataset.p;S1.prog=0;document.querySelectorAll('.scene')[0].querySelectorAll('.btn[data-p]').forEach(x=>x.classList.remove('hot'));b.classList.add('hot')};
+});
+function draw1(t,dt){
+  const[c,g]=ctx('cv1'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const pr=PROC[S1.p],L=LEDGER[S1.p];
+  const gx=60,gy=300,gw=380,gh=260,m=pvmap(gx,gy,gw,gh);
+  axes(g,gx,gy,gw,gh);
+  if(S1.prog<1)S1.prog=Math.min(1,S1.prog+dt/1.4);
+  const Ax=m.X(1),Ay=m.Y(4);
+  if(S1.p==='isoc'){
+    // vertical line from (1,4) to (1,2)
+    const yEnd=Ay+(m.Y(2)-Ay)*S1.prog;
+    g.strokeStyle=pr.col;g.lineWidth=3;g.beginPath();g.moveTo(Ax,Ay);g.lineTo(Ax,yEnd);g.stroke();
+    dot(g,Ax,yEnd,6,pr.col);
+    dot(g,Ax,Ay,5,'#f0f0fa');label(g,'A',Ax-16,Ay+4,'#f0f0fa');
+    label(g,'W = 0 (koi area nahi!)',Ax+14,(Ay+m.Y(2))/2,'#5eead4');
+  }else{
+    // shade work area under curve up to progress
+    const vEnd=1+(pr.V2-1)*S1.prog;
+    g.fillStyle=pr.col+'22';
+    g.beginPath();g.moveTo(Ax,gy);
+    for(let v=1;v<=vEnd;v+=0.02)g.lineTo(m.X(v),m.Y(pr.Pf(v)));
+    g.lineTo(m.X(vEnd),gy);g.closePath();g.fill();
+    // curve
+    g.strokeStyle=pr.col;g.lineWidth=3;g.beginPath();
+    for(let v=1;v<=vEnd;v+=0.02){const px=m.X(v),py=m.Y(pr.Pf(v));v===1?g.moveTo(px,py):g.lineTo(px,py)}
+    g.stroke();
+    dot(g,m.X(vEnd),m.Y(pr.Pf(vEnd)),6,pr.col);
+    dot(g,Ax,Ay,5,'#f0f0fa');label(g,'A',Ax-16,Ay+4,'#f0f0fa');
+    if(S1.prog===1){dot(g,m.X(2),m.Y(pr.Pf(2)),5,'#f0f0fa');label(g,'B',m.X(2)+8,m.Y(pr.Pf(2))+4,'#f0f0fa')}
+    label(g,'W = shaded area = '+L.W,m.X(1.15),gy-14,pr.col);
+    // reference isotherm dashed for steepness compare
+    if(S1.p==='adia'){
+      g.strokeStyle='#22d3ee55';g.setLineDash([5,5]);g.beginPath();
+      for(let v=1;v<=2;v+=0.05){const px=m.X(v),py=m.Y(4/v);v===1?g.moveTo(px,py):g.lineTo(px,py)}
+      g.stroke();g.setLineDash([]);
+      label(g,'isothermal (flatter)',m.X(1.55),m.Y(2.35),'#22d3ee');
+    }
+  }
+  // ledger right
+  panel(g,[[pr.name+' process','#f0f0fa'],['Q = '+L.Q,'#e879f9'],['W = '+L.W,'#fbbf24'],['ΔU = '+L.dU,'#5eead4']],520,60);
+  g.strokeStyle='#26263e';g.beginPath();g.moveTo(500,40);g.lineTo(500,150);g.stroke();
+  const note=pr.note;
+  // wrap note manually
+  label(g,note.slice(0,42),520,180,'#8f8fb8');
+  if(note.length>42)label(g,note.slice(42,84),520,200,'#8f8fb8');
+  panel(g,[['ΔU = μC_vΔT hamesha','#8f8fb8'],['(ideal gas, har process!)','#8f8fb8']],520,240);
+  document.getElementById('v1read').innerHTML=pr.name+': Q = <b style="color:#e879f9">'+L.Q+'</b> · W = <b style="color:#fbbf24">'+L.W+'</b> · ΔU = <b style="color:#5eead4">'+L.dU+'</b> units';
+}
+
+// ---------- SCENE 2: first law energy split ----------
+const S2={Q:0,dU:0,W:0,parts:[],flash:0};
+function s2add(q){if(S2.Q+q>14)return;S2.Q+=q;S2.dU+=q*5/7;S2.W+=q*2/7;S2.flash=1;for(let i=0;i<8;i++)S2.parts.push({x:R(110,210),y:310,vx:R(-20,20),vy:R(-40,-15),l:1,col:'#e879f9'})}
+document.getElementById('q1').onclick=()=>s2add(1);
+document.getElementById('q5').onclick=()=>s2add(5);
+document.getElementById('qreset').onclick=()=>{S2.Q=0;S2.dU=0;S2.W=0};
+function draw2(t,dt){
+  const[c,g]=ctx('cv2'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const V=1+S2.W/4, T=400*V;
+  // cylinder
+  const cx0=90,cx1=230,cbot=290,pisY=cbot-V*80;
+  g.fillStyle='#12121f';g.fillRect(cx0,pisY,cx1-cx0,cbot-pisY);
+  g.strokeStyle='#3c3c5c';g.lineWidth=3;
+  g.beginPath();g.moveTo(cx0,pisY-16);g.lineTo(cx0,cbot);g.lineTo(cx1,cbot);g.lineTo(cx1,pisY-16);g.stroke();
+  // piston
+  g.fillStyle='#33334f';g.fillRect(cx0-6,pisY-12,cx1-cx0+12,14);
+  g.strokeStyle='#5eead4';g.lineWidth=1.5;g.strokeRect(cx0-6,pisY-12,cx1-cx0+12,14);
+  // flame under cylinder
+  if(S2.flash>0){S2.flash-=dt;
+    g.fillStyle='#f87171';g.beginPath();g.moveTo(140,318);g.quadraticCurveTo(152,296,160,314);g.quadraticCurveTo(168,296,180,318);g.closePath();g.fill();
+  }
+  label(g,'flame',146,330,'#f87171');
+  // particles
+  const spd=Math.sqrt(T/400);
+  S2.parts.forEach(p=>{p.x+=p.vx*dt*spd;p.y+=p.vy*dt*spd;p.l-=dt*0.4});
+  S2.parts=S2.parts.filter(p=>p.l>0&&p.y>pisY+4);
+  S2.parts.forEach(p=>dot(g,p.x,p.y,2.5,p.col));
+  // permanent gas dots
+  for(let i=0;i<14;i++){
+    const px=cx0+14+((i*53+t*30*spd)%(cx1-cx0-28));
+    const py=pisY+14+((i*37+t*22*spd)%Math.max(20,cbot-pisY-26));
+    dot(g,px,py,2.5,'#22d3ee88');
+  }
+  label(g,'gas: T = '+Math.round(T)+' K',cx0+10,pisY+22,'#22d3ee');
+  label(g,'V = '+V.toFixed(2),cx0+52,cbot+18,'#8f8fb8');
+  // bars right: Q, dU, W
+  const bx=380,bw=70,bot=290,sc=180/14;
+  const bars=[['Q (aayi)',S2.Q,'#e879f9'],['ΔU (5/7)',S2.dU,'#5eead4'],['W (2/7)',S2.W,'#fbbf24']];
+  bars.forEach((b,i)=>{
+    const x=bx+i*110;
+    g.fillStyle='#26263e';g.fillRect(x,bot-180,bw,180);
+    g.fillStyle=b[2];g.fillRect(x,bot-b[1]*sc,bw,Math.max(0,b[1]*sc));
+    label(g,b[0],x-4,bot+18,'#b9b9d4');
+    label(g,b[1].toFixed(2),x+10,bot-b[1]*sc-8,b[2]);
+  });
+  panel(g,[['First Law: ΔU = Q − W','#f0f0fa'],['diatomic: har 7 me','#8f8fb8'],['5 → U (garam), 2 → W','#8f8fb8'],['C_p − C_v = R (Mayer)','#fbbf24']],600,50);
+  document.getElementById('v2read').innerHTML='Q = <b style="color:#e879f9">'+S2.Q+'</b> units → ΔU = <b style="color:#5eead4">'+S2.dU.toFixed(2)+'</b> + W = <b style="color:#fbbf24">'+S2.W.toFixed(2)+'</b> · piston V = '+V.toFixed(2)+' · T = '+Math.round(T)+'K'+(S2.Q>=14?' · MAX pahunch gaye!':'');
+}
+
+// ---------- SCENE 3: isothermal vs adiabatic race ----------
+const S3={V:1,run:false};
+document.getElementById('race').onclick=()=>{if(S3.V<2)S3.run=true};
+document.getElementById('racereset').onclick=()=>{S3.V=1;S3.run=false};
+function miniCyl(g,x0,cbot,V,T,col,ttl){
+  const cx1=x0+120,pisY=cbot-V*60;
+  g.fillStyle='#12121f';g.fillRect(x0,pisY,120,cbot-pisY);
+  g.strokeStyle='#3c3c5c';g.lineWidth=3;
+  g.beginPath();g.moveTo(x0,pisY-12);g.lineTo(x0,cbot);g.lineTo(x0+120,cbot);g.lineTo(x0+120,pisY-12);g.stroke();
+  g.fillStyle='#33334f';g.fillRect(x0-5,pisY-10,130,12);
+  g.strokeStyle=col;g.lineWidth=1.5;g.strokeRect(x0-5,pisY-10,130,12);
+  for(let i=0;i<8;i++)dot(g,x0+14+(i*41)%94,pisY+12+(i*29)%Math.max(14,cbot-pisY-24),2.5,col+'99');
+  label(g,ttl,x0+6,cbot+18,col);
+  label(g,'T = '+Math.round(T)+' K',x0+6,pisY+18,'#e8e8f0');
+}
+function draw3(t,dt){
+  const[c,g]=ctx('cv3'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  if(S3.run&&S3.V<2){S3.V=Math.min(2,S3.V+dt*0.5);if(S3.V===2)S3.run=false}
+  const V=S3.V;
+  const Tiso=400, Tad=400*Math.pow(V,-(GAM-1));
+  const Pad=v=>4*Math.pow(v,-GAM), Piso=v=>4/v;
+  miniCyl(g,50,150,V,Tiso,'#22d3ee','ISOTHERMAL (reservoir)');
+  miniCyl(g,430,150,V,Tad,'#e879f9','ADIABATIC (insulated)');
+  // mini plots
+  const plots=[{x:50,col:'#22d3ee',Pf:Piso,T:Tiso,Wv:4*Math.log(V),nm:'iso'},{x:430,col:'#e879f9',Pf:Pad,T:Tad,Wv:(4-4*Math.pow(V,1-GAM))/(GAM-1),nm:'adia'}];
+  plots.forEach(pl=>{
+    const gx=pl.x,gy=320,gw=240,gh=130,m={X:v=>gx+(v-0.8)/1.4*gw,Y:p=>gy-p/4.5*gh};
+    g.strokeStyle='#3c3c5c';g.lineWidth=1;g.strokeRect(gx,gy-gh,gw,gh);
+    label(g,'P',gx-12,gy-gh+12,'#8f8fb8');label(g,'V',gx+gw-12,gy+14,'#8f8fb8');
+    // full curve faint
+    g.strokeStyle=pl.col+'44';g.lineWidth=1.5;g.beginPath();
+    for(let v=1;v<=2;v+=0.05){const px=m.X(v),py=m.Y(pl.Pf(v));v===1?g.moveTo(px,py):g.lineTo(px,py)}
+    g.stroke();
+    // traveled curve solid + area
+    g.fillStyle=pl.col+'22';g.beginPath();g.moveTo(m.X(1),gy);
+    for(let v=1;v<=V;v+=0.02)g.lineTo(m.X(v),m.Y(pl.Pf(v)));
+    g.lineTo(m.X(V),gy);g.closePath();g.fill();
+    g.strokeStyle=pl.col;g.lineWidth=2.5;g.beginPath();
+    for(let v=1;v<=V;v+=0.02){const px=m.X(v),py=m.Y(pl.Pf(v));v===1?g.moveTo(px,py):g.lineTo(px,py)}
+    g.stroke();
+    dot(g,m.X(V),m.Y(pl.Pf(V)),5,pl.col);
+    label(g,'W = '+pl.Wv.toFixed(2),gx+gw-70,gy-gh+14,'#fbbf24');
+  });
+  // center status
+  if(V===2)panel(g,[['Isothermal W = 2.77 > Adiabatic W = 2.42','#fbbf24']],215,40);
+  document.getElementById('v3read').innerHTML='V = <b>'+V.toFixed(2)+'</b> · Isothermal: <b style="color:#22d3ee">400K, W='+ (4*Math.log(V)).toFixed(2)+'</b> · Adiabatic: <b style="color:#e879f9">'+Math.round(Tad)+'K, W='+((4-4*Math.pow(V,1-GAM))/(GAM-1)).toFixed(2)+'</b>'+(V===2?' · ADIABATIC STEEP + THANDI (apni U se work!)':'');
+}
+
+// ---------- SCENE 4: heat engine ----------
+const S4={T1:600,T2:300};
+document.getElementById('t1slider').oninput=e=>{S4.T1=+e.target.value;document.getElementById('t1val').textContent=S4.T1};
+document.getElementById('t2slider').oninput=e=>{S4.T2=+e.target.value;document.getElementById('t2val').textContent=S4.T2};
+function arrow(g,x1,y1,x2,y2,th,col){
+  g.strokeStyle=col;g.lineWidth=th;g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();
+  const an=Math.atan2(y2-y1,x2-x1);
+  g.fillStyle=col;g.beginPath();
+  g.moveTo(x2,y2);g.lineTo(x2-14*Math.cos(an-0.5),y2-14*Math.sin(an-0.5));g.lineTo(x2-14*Math.cos(an+0.5),y2-14*Math.sin(an+0.5));g.closePath();g.fill();
+}
+function draw4(t,dt){
+  const[c,g]=ctx('cv4'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const eta=1-S4.T2/S4.T1;
+  const flow=(Math.sin(t*2)+1)/2; // pulse
+  // hot box
+  g.fillStyle='#3d1515';g.fillRect(60,110,150,80);
+  g.strokeStyle='#f87171';g.lineWidth=2;g.strokeRect(60,110,150,80);
+  label(g,'HOT SOURCE',82,138,'#f87171');
+  label(g,'T₁ = '+S4.T1+' K',92,162,'#fbbf24');
+  // cold box
+  g.fillStyle='#0f1f33';g.fillRect(550,110,150,80);
+  g.strokeStyle='#60a5fa';g.lineWidth=2;g.strokeRect(550,110,150,80);
+  label(g,'COLD SINK',576,138,'#60a5fa');
+  label(g,'T₂ = '+S4.T2+' K',586,162,'#93c5fd');
+  // engine circle
+  const ex=380,ey=150;
+  g.fillStyle='#12121f';g.beginPath();g.arc(ex,ey,52,0,7);g.fill();
+  g.strokeStyle='#22d3ee';g.lineWidth=3;g.beginPath();g.arc(ex,ey,52,0,7);g.stroke();
+  // spinning spokes
+  for(let i=0;i<3;i++){const an=t*1.5+i*2.094;g.strokeStyle='#22d3ee66';g.lineWidth=2;g.beginPath();g.moveTo(ex,ey);g.lineTo(ex+40*Math.cos(an),ey+40*Math.sin(an));g.stroke()}
+  label(g,'ENGINE',ex-26,ey+4,'#22d3ee');
+  // arrows: Q1 in, W up, Q2 out (thickness ∝ energy)
+  const q1th=16,wth=Math.max(1.5,16*eta),q2th=16*(1-eta);
+  arrow(g,214,150,320,150,q1th,'#e879f9');
+  label(g,'Q₁ = 100',232,138,'#e879f9');
+  arrow(g,ex,ey-56,ex,40,wth,'#fbbf24');
+  label(g,'W = '+Math.round(eta*100),ex+12,60,'#fbbf24');
+  arrow(g,440,150,546,150,q2th,'#60a5fa');
+  label(g,'Q₂ = '+Math.round((1-eta)*100),452,138,'#60a5fa');
+  // eta gauge
+  g.fillStyle='#26263e';g.fillRect(120,250,520,22);
+  g.fillStyle='#fbbf24';g.fillRect(120,250,520*eta,22);
+  if(520*eta>170)label(g,'η (Carnot max) = '+Math.round(eta*100)+'%',128,266,'#0a0a12');
+  else label(g,'η (Carnot max) = '+Math.round(eta*100)+'%',120+520*eta+8,266,'#fbbf24');
+  label(g,'0%',120,292,'#5c5c78');label(g,'100% (IMPOSSIBLE - Kelvin-Planck!)',452,292,'#5c5c78');
+  document.getElementById('v4read').innerHTML='η = 1 − T₂/T₁ = 1 − '+S4.T2+'/'+S4.T1+' = <b style="color:#fbbf24">'+Math.round(eta*100)+'%</b> · har 100 heat units me sirf <b>'+Math.round(eta*100)+'</b> work, <b>'+Math.round((1-eta)*100)+'</b> sink ko DENI hi padti hai!';
+}
+
+// ---------- SCENE 5: Carnot cycle ----------
+const T1c=400,T2c=300;
+const cycA={v:1,p:4},cycB={v:2,p:2};
+const cycC={v:Math.pow(T1c*Math.pow(2,GAM-1)/T2c,1/(GAM-1)),p:0};
+cycC.p=3/cycC.v;
+const cycD={v:Math.pow(T1c/T2c,1/(GAM-1)),p:0};
+cycD.p=3/cycD.v;
+function legPts(f,v1,v2,n){const pts=[];for(let i=0;i<=n;i++){const v=v1+(v2-v1)*i/n;pts.push([v,f(v)])}return pts}
+const LEGS=[
+ {pts:legPts(v=>4/v,1,2,40),col:'#22d3ee',cap:'1. ISOTHERMAL expansion @ 400K - reservoir se heat Q₁ = 2.77 andar'},
+ {pts:legPts(v=>2*Math.pow(2/v,GAM),2,cycC.v,40),col:'#e879f9',cap:'2. ADIABATIC expansion - insulated! Gas thandi: 400 → 300K'},
+ {pts:legPts(v=>3/v,cycC.v,cycD.v,40),col:'#5eead4',cap:'3. ISOTHERMAL compression @ 300K - sink ko heat Q₂ = 2.08 bahar'},
+ {pts:legPts(v=>cycD.p*Math.pow(cycD.v/v,GAM),cycD.v,1,40),col:'#fbbf24',cap:'4. ADIABATIC compression - wapas 400K! Cycle poora, ΔU = 0'}
+];
+const S5={seg:0,segT:0,play:true};
+document.getElementById('cplay').onclick=e=>{S5.play=!S5.play;e.target.textContent=S5.play?'Pause':'Play'};
+function draw5(t,dt){
+  const[c,g]=ctx('cv5'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const gx=90,gy=320,gw=450,gh=270,m=pvmap(gx,gy,gw,gh);
+  axes(g,gx,gy,gw,gh);
+  // shaded cycle area
+  g.fillStyle='#fbbf2414';g.beginPath();
+  const all=[...LEGS[0].pts,...LEGS[1].pts,...LEGS[2].pts,...LEGS[3].pts];
+  all.forEach((p,i)=>{const px=m.X(p[0]),py=m.Y(p[1]);i?g.lineTo(px,py):g.moveTo(px,py)});
+  g.closePath();g.fill();
+  label(g,'W_net = shaded area',m.X(2.6),m.Y(4.5),'#fbbf24');
+  // legs
+  LEGS.forEach(L=>{
+    g.strokeStyle=L.col;g.lineWidth=3;g.beginPath();
+    L.pts.forEach((p,i)=>{const px=m.X(p[0]),py=m.Y(p[1]);i?g.lineTo(px,py):g.moveTo(px,py)});
+    g.stroke();
+  });
+  // corner labels
+  dot(g,m.X(1),m.Y(4),5,'#f0f0fa');label(g,'A (1, 4)',m.X(1)-12,m.Y(4)-10,'#f0f0fa');
+  dot(g,m.X(2),m.Y(2),5,'#f0f0fa');label(g,'B (2, 2)',m.X(2)+8,m.Y(2)+4,'#f0f0fa');
+  dot(g,m.X(cycC.v),m.Y(cycC.p),5,'#f0f0fa');label(g,'C ('+cycC.v.toFixed(1)+', '+cycC.p.toFixed(2)+')',m.X(cycC.v)-30,m.Y(cycC.p)+20,'#f0f0fa');
+  dot(g,m.X(cycD.v),m.Y(cycD.p),5,'#f0f0fa');label(g,'D ('+cycD.v.toFixed(1)+', '+cycD.p.toFixed(2)+')',m.X(cycD.v)-10,m.Y(cycD.p)-12,'#f0f0fa');
+  // walking dot
+  if(S5.play){S5.segT+=dt/2.4;if(S5.segT>=1){S5.segT=0;S5.seg=(S5.seg+1)%4}}
+  const L=LEGS[S5.seg],idx=Math.min(L.pts.length-1,Math.floor(S5.segT*(L.pts.length-1)));
+  const p=L.pts[idx];
+  dot(g,m.X(p[0]),m.Y(p[1]),8,L.col);dot(g,m.X(p[0]),m.Y(p[1]),3,'#fff');
+  // caption box
+  g.fillStyle='#12121fcc';g.fillRect(560,90,190,120);
+  g.strokeStyle=L.col;g.strokeRect(560,90,190,120);
+  const cap=L.cap;
+  for(let i=0;i<cap.length;i+=26)label(g,cap.slice(i,i+26),568,112+i/26*20,L.col);
+  panel(g,[['T₁ = 400K, T₂ = 300K','#8f8fb8'],['η = 1 − 300/400 = 25%','#fbbf24'],['Q₁=2.77 · W=0.69 · Q₂=2.08','#8f8fb8'],['clockwise = engine!','#5eead4']],560,240);
+  document.getElementById('v5read').textContent=L.cap;
+}
+
+// ---------- main loop ----------
+let lastTs=0;
+function loop(ts){const t=ts/1000;const dt=Math.min(0.12,(ts-lastTs)/1000||0.016);lastTs=ts;
+  if(cur===0)draw1(t,dt);else if(cur===1)draw2(t,dt);else if(cur===2)draw3(t,dt);else if(cur===3)draw4(t,dt);else if(cur===4)draw5(t,dt);
+  requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
