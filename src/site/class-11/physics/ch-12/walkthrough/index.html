@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinetic Theory Ka Visual Walkthrough - Class 11 Physics Ch 12</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .scene h2 .num{color:#22d3ee}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .slider{display:flex;align-items:center;gap:8px;font-size:.82rem;color:#b9b9d4}
+  .slider input{width:110px;accent-color:#22d3ee}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .fact b{color:#fff}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:420px;font-size:1rem;padding:10px}
+  .readout{font-size:.88rem;color:#fbbf24;flex-basis:100%;min-height:1.2em}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Physics - Chapter 12 - Kinetic Theory</span>
+  <h1>Kinetic Theory Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - molecules ki bheed se Van der Waals tak. Temperature badhao, speeds dekho, energy pockets bharo.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> Pressure Ka Asli Raaz - Wall Pe Bombardment</h2>
+  <p class="sub">Gas = crores of tiny balls, lagatar random motion me. <b>Pressure kuch aur nahi - molecules ke wall pe DHAKKE</b> hain! Temperature badhao aur dekho: hits per second badh jaate hain (P = ⅓ρv²<sub>rms</sub>).</p>
+  <canvas id="cv1" width="760" height="320"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b1cold">Thanda (slow)</button>
+    <button class="btn" id="b1room">Room Temp</button>
+    <button class="btn" id="b1hot">Garam (fast)</button>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="fact"><b>Kinetic theory postulates:</b> molecules point-size, elastic collisions, beech me koi force nahi (ideal gas). <b>P = (1/3)ρv²<sub>rms</sub></b> - speed double, pressure 4×! Isliye sealed dabba garam karne pe FATT sakta hai.</div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> Temperature = Average Kinetic Energy</h2>
+  <p class="sub">Temperature koi "garmi ka meter" nahi - yeh molecules ki <b>average KE ka direct measure</b> hai: KE = (3/2)k<sub>B</sub>T per molecule. T badhao, speedometer dekho. T = 0 pe sab RUK jaayenge (isliye absolute zero pahunchna impossible!).</p>
+  <canvas id="cv2" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b2t1">100 K</button>
+    <button class="btn" id="b2t2">300 K</button>
+    <button class="btn" id="b2t3">600 K</button>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="fact"><b>Per molecule:</b> KE = (3/2)k<sub>B</sub>T &nbsp;|&nbsp; <b>per mole:</b> KE = (3/2)RT. Ideal gas ki internal energy <b>SIRF kinetic</b> - sirf T pe depend karti hai, P ya V pe nahi! Speed ∝ √T (T chaar guna → speed double).</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Maxwell Distribution - Kaun Kitna Fast?</h2>
+  <p class="sub">Saare molecules same speed pe NAHI hote - ek <b>distribution</b> hai: zyadaatar middle me, kuch slow, kuch rocket-fast. Teen speeds yaad rakho: <b>v_p &lt; v_avg &lt; v_rms</b>. Gas badlo: halki gas (H₂) sabse tez!</p>
+  <canvas id="cv3" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b3h2">H₂ (lightest)</button>
+    <button class="btn" id="b3n2">N₂</button>
+    <button class="btn" id="b3o2">O₂ (heaviest)</button>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="fact"><b>Ratio pakka:</b> v_p : v_avg : v_rms = 1 : 1.128 : 1.224 (√2 : √(8/π) : √3). v<sub>rms</sub> = √(3RT/M) - <b>mass upar, speed neeche</b>. Isliye H₂ atmosphere se escape kar jaati hai, O₂ nahi!</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> Degrees of Freedom - Energy Ke Pockets</h2>
+  <p class="sub">Molecule energy kitne <b>independent tareeko</b> me store kar sakta hai, wahi degrees of freedom (f). <b>Equipartition: har pocket ko (1/2)k<sub>B</sub>T milta hai</b> - fair distribution! Monatomic vs Diatomic dekho.</p>
+  <canvas id="cv4" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b4he">He (monatomic, f=3)</button>
+    <button class="btn" id="b4n2">N₂ (diatomic, f=5)</button>
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="fact"><b>U = (f/2)RT</b> per mole &nbsp;|&nbsp; C<sub>v</sub> = (f/2)R, C<sub>p</sub> = (f/2 + 1)R &nbsp;|&nbsp; <b>γ = 1 + 2/f</b>: monatomic 5/3, diatomic 7/5 = 1.4. Room temp pe vibration soya hota hai (warna f = 7!).</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> Mean Free Path - Kitni Door Tak Free?</h2>
+  <p class="sub">Ek molecule do collisions ke beech <b>average kitna door</b> jaata hai - wohi mean free path λ. Bheed badhao (pressure) aur λ GHAT jaata hai: λ = 1/(√2 πd²n). Air me sirf ~10⁻⁷ m!</p>
+  <canvas id="cv5" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="b5low">Low Pressure (khula)</button>
+    <button class="btn" id="b5high">High Pressure (bheed)</button>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="fact"><b>Real gases:</b> high P, low T pe ideal law FAIL - molecules ka apna volume + attraction. <b>Van der Waals: (P + a/V²)(V − b) = RT</b> (a = attraction, b = volume correction). Critical temperature ke upar gas liquefy nahi hoti!</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">P = ⅓ρv²<sub>rms</sub> &nbsp;|&nbsp; KE/molecule = (3/2)k<sub>B</sub>T</div>
+  <div class="formula">v<sub>rms</sub> = √(3RT/M) &nbsp;|&nbsp; v<sub>p</sub> &lt; v<sub>avg</sub> &lt; v<sub>rms</sub> (1 : 1.128 : 1.224)</div>
+  <div class="formula">U = (f/2)RT &nbsp;|&nbsp; C<sub>v</sub> = (f/2)R &nbsp;|&nbsp; γ = 1 + 2/f</div>
+  <div class="formula">mono f=3 (γ=5/3) &nbsp;|&nbsp; dia f=5 (γ=7/5)</div>
+  <div class="formula">λ = 1/(√2 πd²n) = k<sub>B</sub>T/(√2 πd²P)</div>
+  <div class="formula">Van der Waals: (P + a/V²)(V − b) = RT</div>
+  <p style="margin-top:18px">Molecules ka khel samjha? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Physics Ch 12 - Kinetic Theory | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,r,0,7);g.fill()}
+function panel(g,lines,x,y){lines.forEach((L,i)=>label(g,L[0],x,y+i*22,L[1]))}
+const R=(a,b)=>a+Math.random()*(b-a);
+
+// ---------- SCENE 1: pressure = wall bombardment ----------
+const B1={x:40,y:26,w:520,h:268};
+const S1={spd:0.7,hits:[],sparks:[],mol:[],last:0};
+for(let i=0;i<24;i++)S1.mol.push({x:R(B1.x+10,B1.x+B1.w-10),y:R(B1.y+10,B1.y+B1.h-10),a:R(0,6.28),s:R(0.7,1.3)});
+[['b1cold',0.55],['b1room',1.0],['b1hot',1.75]].forEach(([id,v])=>{document.getElementById(id).onclick=e=>{S1.spd=v;S1.hits=[];document.querySelectorAll('.scene')[0].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+function draw1(t,dt){
+  const[c,g]=ctx('cv1'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  // box
+  g.strokeStyle='#3c3c5c';g.lineWidth=3;g.strokeRect(B1.x,B1.y,B1.w,B1.h);
+  label(g,'GAS (ideal)',B1.x+8,B1.y+20,'#5c5c78');
+  const step=S1.spd*60*dt;
+  S1.mol.forEach(m=>{
+    m.x+=Math.cos(m.a)*m.s*step; m.y+=Math.sin(m.a)*m.s*step;
+    let hit=false;
+    if(m.x<B1.x+5){m.x=B1.x+5;m.a=Math.PI-m.a;hit=true}
+    if(m.x>B1.x+B1.w-5){m.x=B1.x+B1.w-5;m.a=Math.PI-m.a;hit=true}
+    if(m.y<B1.y+5){m.y=B1.y+5;m.a=-m.a;hit=true}
+    if(m.y>B1.y+B1.h-5){m.y=B1.y+B1.h-5;m.a=-m.a;hit=true}
+    if(hit){S1.hits.push(t);S1.sparks.push({x:m.x,y:m.y,t0:t})}
+    dot(g,m.x,m.y,4,'#22d3ee');
+  });
+  // sparks
+  S1.sparks=S1.sparks.filter(s=>t-s.t0<0.4);
+  S1.sparks.forEach(s=>{const q=1-(t-s.t0)/0.4;g.strokeStyle='rgba(251,191,36,'+q+')';g.lineWidth=2;g.beginPath();g.arc(s.x,s.y,4+10*(1-q),0,7);g.stroke()});
+  // hit rate over last 2.5s
+  S1.hits=S1.hits.filter(h=>t-h<2.5);
+  const rate=Math.round(S1.hits.length/2.5*10)/10;
+  const pRel=Math.round(S1.spd*S1.spd*100)/100;
+  panel(g,[['Wall hits (last 2.5s): '+S1.hits.length,'#e8e8f0'],['≈ '+rate+' hits/sec','#fbbf24'],['P ∝ v² → relative P = '+pRel+'×','#5eead4'],['yahi bombardment = PRESSURE','#8f8fb8']],590,70);
+  document.getElementById('v1read').innerHTML='Speed ×'+S1.spd+' → hits/sec ≈ <b style="color:#fbbf24">'+rate+'</b> → P = (1/3)ρv²<sub>rms</sub> ∝ <b style="color:#5eead4">v²</b> ('+pRel+'×)';
+}
+
+// ---------- SCENE 2: T = average KE ----------
+const S2={T:100,mol:[],trails:[]};
+for(let i=0;i<9;i++)S2.mol.push({x:R(70,430),y:R(50,290),a:R(0,6.28),s:R(0.75,1.25)});
+[['b2t1',100],['b2t2',300],['b2t3',600]].forEach(([id,v])=>{document.getElementById(id).onclick=e=>{S2.T=v;document.querySelectorAll('.scene')[1].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+function draw2(t,dt){
+  const[c,g]=ctx('cv2'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  const vScale=Math.sqrt(S2.T/100); // 1, 1.73, 2.45
+  const B={x:40,y:26,w:430,h:278};
+  g.strokeStyle='#3c3c5c';g.lineWidth=3;g.strokeRect(B.x,B.y,B.w,B.h);
+  const step=vScale*55*dt;
+  S2.mol.forEach((m,i)=>{
+    m.x+=Math.cos(m.a)*m.s*step; m.y+=Math.sin(m.a)*m.s*step;
+    if(m.x<B.x+6||m.x>B.x+B.w-6){m.a=Math.PI-m.a;m.x=Math.max(B.x+6,Math.min(B.x+B.w-6,m.x))}
+    if(m.y<B.y+6||m.y>B.y+B.h-6){m.a=-m.a;m.y=Math.max(B.y+6,Math.min(B.y+B.h-6,m.y))}
+    dot(g,m.x,m.y,i===0?7:4,i===0?'#fbbf24':'#22d3ee');
+  });
+  // speedometer bar
+  const bx=520,bw=60,maxH=200;
+  const bars=[['100K',1,'#5eead4'],['300K',1.732,'#fbbf24'],['600K',2.449,'#f87171']];
+  bars.forEach((b,i)=>{
+    const X=bx+i*72,h=b[1]/2.449*maxH*(S2.T===(i===0?100:i===1?300:600)?1:0.35);
+    const full=b[1]/2.449*maxH;
+    g.fillStyle='#1b1b2e';g.fillRect(X,280-full,48,full);
+    g.fillStyle=b[2];g.fillRect(X,280-h,48,h);
+    label(g,b[0],X+4,298,'#8f8fb8');
+  });
+  const ke=(1.5*1.38e-23*S2.T).toExponential(2);
+  panel(g,[['T = '+S2.T+' K','#fbbf24'],['v ∝ √T = '+(vScale.toFixed(2))+'×','#22d3ee'],['KE = (3/2)k_BT','#e8e8f0'],['= '+ke+' J','#5eead4']],520,50);
+  label(g,'0 K pe KE = 0 → sab RUK jaayenge (unreachable!)',40,H-14,'#f87171');
+  document.getElementById('v2read').innerHTML='T = <b style="color:#fbbf24">'+S2.T+' K</b> → average KE per molecule = <b style="color:#5eead4">'+ke+' J</b> · speed scale √T = '+vScale.toFixed(2)+'×';
+}
+
+// ---------- SCENE 3: Maxwell distribution ----------
+const S3={gas:'h2',cur:2,target:2,anim:1};
+const S3M={h2:2,n2:28,o2:32};
+[['b3h2','h2'],['b3n2','n2'],['b3o2','o2']].forEach(([id,k])=>{document.getElementById(id).onclick=e=>{S3.cur=S3.display||S3M[S3.gas];S3.gas=k;S3.target=S3M[k];S3.anim=0;document.querySelectorAll('.scene')[2].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+function maxwell(v,m){const a=m/(2*300);return v*v*Math.exp(-a*v*v)}
+function draw3(t,dt){
+  const[c,g]=ctx('cv3'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  if(S3.anim<1)S3.anim=Math.min(1,S3.anim+0.04);
+  const m=(S3.cur+(S3.target-S3.cur)*S3.anim);
+  S3.display=m;
+  const ox=70,oy=290,sx=0.55,sy=1150;
+  // axes
+  g.strokeStyle='#3c3c5c';g.lineWidth=1.5;
+  g.beginPath();g.moveTo(ox,20);g.lineTo(ox,oy);g.lineTo(W-30,oy);g.stroke();
+  label(g,'speed v →',W-130,oy+22,'#8f8fb8');label(g,'kitne molecules',16,34,'#8f8fb8');
+  // normalize peak
+  const vp=Math.sqrt(2*300/m/2)*2; // v_p with kT=300*2 units: sqrt(2kT/m), kT=600? just shape
+  let peak=0;for(let v=0.1;v<900;v+=5){const f=maxwell(v,m);if(f>peak)peak=f}
+  // curve
+  g.strokeStyle='#22d3ee';g.lineWidth=3;g.beginPath();
+  for(let i=0;i<=140;i++){const v=i*8;const f=maxwell(v,m)/peak;const X=ox+v*sx,Y=oy-f*sy*0.4;i?g.lineTo(X,Y):g.moveTo(X,Y)}
+  g.stroke();
+  // three speed markers: vp:vavg:vrms = 1:1.128:1.224 scaled by sqrt(1/m)
+  const base=Math.sqrt(2/m)*Math.sqrt(600)*1.6; // px-ish scale anchor
+  const marks=[['v_p',1,'#5eead4'],['v_avg',1.128,'#fbbf24'],['v_rms',1.224,'#f87171']];
+  marks.forEach(([nm,k,col])=>{
+    const v=base*k;
+    const X=ox+v*sx*8/8*1; // v already in same units as curve v
+    const f=maxwell(v,m)/peak;
+    const Y=oy-f*sy*0.4;
+    g.strokeStyle=col;g.setLineDash([5,4]);g.beginPath();g.moveTo(X,oy);g.lineTo(X,Y);g.stroke();g.setLineDash([]);
+    label(g,nm,X-16,oy+18,col);
+  });
+  const gas=S3.gas.toUpperCase();
+  panel(g,[[gas+' (M = '+m+' u)','#fbbf24'],['v_p : v_avg : v_rms','#e8e8f0'],['1 : 1.128 : 1.224','#5eead4'],['halki gas → curve RIGHT + wide','#8f8fb8'],['(H₂ sabse tez, isliye escape!)','#f87171']],520,60);
+  document.getElementById('v3read').innerHTML='<b style="color:#fbbf24">'+gas+'</b>: v<sub>rms</sub> = √(3RT/M) ∝ 1/√M - M badhaya ('+m+' u) to speeds <b style="color:#5eead4">GHAT gayi</b>!';
+}
+
+// ---------- SCENE 4: degrees of freedom ----------
+const S4={mode:'he',fill:1};
+[['b4he','he'],['b4n2','n2']].forEach(([id,k])=>{document.getElementById(id).onclick=e=>{S4.mode=k;S4.fill=0.0001;document.querySelectorAll('.scene')[3].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+function draw4(t,dt){
+  const[c,g]=ctx('cv4'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  if(S4.fill<1)S4.fill=Math.min(1,S4.fill+0.012);
+  const mono=S4.mode==='he';
+  const f=mono?3:5;
+  // molecule visual
+  const cx=150,cy=150;
+  if(mono){
+    dot(g,cx,cy,26,'#22d3ee');
+    label(g,'He',cx-9,cy+5,'#0a0a12');
+    // 3 translation arrows
+    const wob=Math.sin(t*3)*8;
+    [[1,0],[0,1],[-0.7,-0.7]].forEach(d=>{
+      g.strokeStyle='#5eead4';g.lineWidth=2.5;g.beginPath();
+      g.moveTo(cx-d[0]*(20+wob),cy-d[1]*(20+wob));g.lineTo(cx+d[0]*(44+wob),cy+d[1]*(44+wob));g.stroke();
+    });
+    label(g,'sirf TRANSLATION (x, y, z)',cx-90,cy+70,'#8f8fb8');
+  }else{
+    const a=t*2.2;
+    const ax=cx+Math.cos(a)*34, ay=cy+Math.sin(a)*34;
+    const bx2=cx-Math.cos(a)*34, by2=cy-Math.sin(a)*34;
+    g.strokeStyle='#8f8fb8';g.lineWidth=5;g.beginPath();g.moveTo(ax,ay);g.lineTo(bx2,by2);g.stroke();
+    dot(g,ax,ay,18,'#22d3ee');dot(g,bx2,by2,18,'#e879f9');
+    label(g,'N',ax-5,ay+5,'#0a0a12');label(g,'N',bx2-5,by2+5,'#0a0a12');
+    label(g,'3 translation + 2 ROTATION (ghoom raha!)',cx-130,cy+74,'#8f8fb8');
+  }
+  // energy pockets
+  const names=mono?['T-x','T-y','T-z']:['T-x','T-y','T-z','R-1','R-2'];
+  const cols=mono?['#22d3ee','#22d3ee','#22d3ee']:['#22d3ee','#22d3ee','#22d3ee','#e879f9','#e879f9'];
+  names.forEach((nm,i)=>{
+    const X=330+i*82, bh=120, fillH=bh*Math.min(1,Math.max(0,S4.fill*f-i));
+    g.fillStyle='#1b1b2e';g.fillRect(X,220-bh,52,bh);
+    g.fillStyle=cols[i];g.fillRect(X,220-fillH,52,fillH);
+    g.strokeStyle='#3c3c5c';g.strokeRect(X,220-bh,52,bh);
+    label(g,nm,X+12,238,cols[i]);
+    label(g,'½k_BT',X+4,220-bh-8,'#8f8fb8');
+  });
+  panel(g,[[(mono?'He: f = 3':'N₂: f = 5'),'#fbbf24'],['U = (f/2)RT = '+(mono?'(3/2)RT':'(5/2)RT'),'#22d3ee'],['C_v = '+(mono?'(3/2)R':'(5/2)R')+' · γ = '+(mono?'5/3 ≈ 1.67':'7/5 = 1.4'),'#5eead4'],['har pocket SAME energy (equipartition!)','#8f8fb8']],330,290);
+  document.getElementById('v4read').innerHTML=(mono?'Monatomic: sirf 3 translational pockets':'Diatomic: 3 translation + 2 rotation')+' → f = <b style="color:#fbbf24">'+f+'</b> → γ = 1 + 2/f = <b style="color:#5eead4">'+(mono?'5/3':'7/5')+'</b>';
+}
+
+// ---------- SCENE 5: mean free path ----------
+const S5={mode:'low',walker:null,others:[],segs:[],cur:0,path:[]};
+function s5init(mode){
+  const n=mode==='low'?12:38;
+  S5.others=[];for(let i=0;i<n;i++)S5.others.push({x:R(60,700),y:R(40,300)});
+  S5.walker={x:80,y:170,a:R(-0.6,0.6),sx:80,sy:170,dist:0};
+  S5.segs=[];S5.path=[];
+}
+s5init('low');
+[['b5low','low'],['b5high','high']].forEach(([id,k])=>{document.getElementById(id).onclick=e=>{S5.mode=k;s5init(k);document.querySelectorAll('.scene')[4].querySelectorAll('.btn').forEach(b=>b.classList.remove('hot'));e.target.classList.add('hot')}});
+function draw5(t,dt){
+  const[c,g]=ctx('cv5'),W=c.width,H=c.height;
+  g.clearRect(0,0,W,H);
+  S5.others.forEach(o=>dot(g,o.x,o.y,7,'#3f3f5c'));
+  const w=S5.walker;
+  const step=170*dt;
+  let nx=w.x+Math.cos(w.a)*step, ny=w.y+Math.sin(w.a)*step;
+  // collide?
+  let hit=null;
+  for(const o of S5.others){if((nx-o.x)**2+(ny-o.y)**2<100){hit=o;break}}
+  if(nx<20||nx>740||ny<20||ny>320)hit={edge:true};
+  if(hit){
+    S5.segs.push(w.dist);if(S5.segs.length>10)S5.segs.shift();
+    w.x=w.sx;w.y=w.sy; // hold at last point
+    w.a=R(0,6.28);w.sx=w.x;w.sy=w.y;w.dist=0;
+    dot(g,w.x,w.y,11,'#f8717155');
+  }else{
+    w.x=nx;w.y=ny;w.dist+=step;
+  }
+  S5.path.push([w.x,w.y]);if(S5.path.length>600)S5.path.shift();
+  g.strokeStyle='#fbbf24';g.lineWidth=2;g.beginPath();
+  S5.path.forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.stroke();
+  dot(g,w.x,w.y,6,'#fbbf24');
+  const avg=S5.segs.length?Math.round(S5.segs.reduce((a,b)=>a+b,0)/S5.segs.length):0;
+  panel(g,[['n (molecules) = '+S5.others.length,'#e8e8f0'],['collisions so far: '+S5.segs.length,'#8f8fb8'],['avg free path λ ≈ '+avg+' px','#fbbf24'],['λ = 1/(√2 πd²n) ∝ 1/n','#5eead4'],['bheed DOUBLE → λ HALF!','#f87171']],540,60);
+  document.getElementById('v5read').innerHTML=(S5.mode==='low'?'Low pressure: kam molecules':'High pressure: zyada bheed')+' → λ ≈ <b style="color:#fbbf24">'+avg+' px</b> (air me real λ ~ 10⁻⁷ m!)';
+}
+
+// ---------- main loop ----------
+let lastTs=0;
+function loop(ts){const t=ts/1000;const dt=Math.min(0.05,(ts-lastTs)/1000||0.016);lastTs=ts;
+  if(cur===0)draw1(t,dt);else if(cur===1)draw2(t,dt);else if(cur===2)draw3(t,dt);else if(cur===3)draw4(t,dt);else draw5(t,dt);
+  requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
