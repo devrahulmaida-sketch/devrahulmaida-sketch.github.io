@@ -168,7 +168,7 @@ function draw1(){
   g.fillText('→ Period '+n+',  Group '+grp,470,214);
   g.fillStyle=TX;g.font='12px sans-serif';
   g.fillText('gold dot = sabse naya electron (abhi ghusa!)',470,244);
-  document.getElementById('r1').innerHTML='<b>'+SYM[z1]+' (Z='+z1+'): '+CONF[z1]+'</b> → shells ['+sh.join(', ')+'] → <b>Period '+n+', Group '+grp+'</b>.'+(noble?' Outer shell FULL - Group 18 noble gas (react nahi karta 😴)':(val<=2?' s-block metal.':' p-block: group = valence + 10 trick!'));
+  document.getElementById('r1').innerHTML='<b>'+SYM[z1]+' (Z='+z1+'): '+CONF[z1]+'</b> → shells ['+sh.join(', ')+'] → <b>Period '+n+', Group '+grp+'</b>.'+(noble?' Outer shell FULL - Group 18 noble gas (react nahi karta 😴)':(val<=2?(z1===1?' s-block - par H non-metal hai (exception!)':' s-block metal.'):' p-block: group = valence + 10 trick!'));
 }
 
 // ---------- SCENE 2: size map ----------
