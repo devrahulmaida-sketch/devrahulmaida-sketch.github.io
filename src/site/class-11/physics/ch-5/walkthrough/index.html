@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work, Energy and Power Ka Visual Walkthrough - Class 11 Physics Ch 5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07070d;color:#e8e8f2;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:18px 12px 40px}
+.wrap{max-width:820px;margin:0 auto}
+.badge{display:inline-block;font-size:.75em;padding:4px 12px;border:1px solid #3b3b5c;border-radius:999px;color:#9aa0c9;margin-bottom:10px}
+h1{font-size:1.7em;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+.tag{text-align:center;color:#9aa0c9;font-size:.9em;margin:8px 0 4px}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0 18px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2a2a45;border:0;cursor:pointer;padding:0}
+.dot.on{background:#22d3ee;box-shadow:0 0 8px #22d3ee88}
+.scene{display:none}
+.scene.on{display:block}
+h2{font-size:1.15em;color:#7dd3fc;margin-bottom:6px}
+.sub{color:#b9b9d6;font-size:.88em;margin-bottom:12px;line-height:1.5}
+canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;border-radius:12px;margin:8px 0}
+.readout{font-size:.9em;color:#c9c9e0;background:#0e0e1c;border:1px solid #26264a;border-radius:10px;padding:10px 14px;margin:8px 0;line-height:1.55;min-height:52px}
+.readout b{color:#7dd3fc}
+.fact{font-size:.85em;color:#a8a8cc;background:#0e0e1c;border-left:3px solid #22d3ee;border-radius:0 8px 8px 0;padding:9px 12px;margin:8px 0;line-height:1.5}
+.fact b{color:#e879f9}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.btn{background:#181830;color:#c9c9e0;border:1px solid #33335c;border-radius:10px;padding:8px 14px;font-size:.85em;cursor:pointer}
+.btn.sel{border-color:#e879f9;color:#e879f9;background:#22122a}
+.btn.hot{background:#22d3ee;color:#06202a;border-color:#22d3ee;font-weight:700}
+.btn:active{transform:scale(.97)}
+.sliderrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.85em;color:#c9c9e0}
+.sliderrow input[type=range]{flex:1;accent-color:#22d3ee}
+.sliderrow b{color:#e879f9;min-width:64px;text-align:right}
+.recap .card{background:#0e0e1c;border:1px solid #26264a;border-radius:12px;padding:14px 16px;margin:10px 0}
+.recap .card h3{color:#e879f9;font-size:.95em;margin-bottom:6px}
+.recap .card p{font-size:.86em;color:#c9c9e0;line-height:1.6;font-family:ui-monospace,monospace}
+.navrow{display:flex;justify-content:space-between;margin-top:18px}
+.credit{text-align:center;color:#565672;font-size:.75em;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="text-align:center"><span class="badge">Class 11 Physics - Chapter 5 - Work, Energy and Power</span></div>
+<h1>Work, Energy and Power Ka Visual Walkthrough</h1>
+<p class="tag">5 animated scenes - work ka sign ghumao, braking distance udao, energy bank account dekho, collision karwao, power ka tradeoff samjho.</p>
+<div class="dots" id="dots"></div>
+
+<section class="scene on">
+<h2>1. Work Ka Sign - Angle Hi Boss Hai</h2>
+<p class="sub">Work <b>W = F·s·cosθ</b> - scalar hai, par + / - / 0 sab ho sakta hai! Block right ja raha hai, force ka angle ghumao aur dekho W kab positive, kab ZERO, kab negative:</p>
+<canvas id="cv1" width="760" height="340"></canvas>
+<div class="sliderrow"><span>Force ka angle θ (displacement se)</span><input type="range" id="th1slide" min="0" max="180" value="30"><b id="th1val">θ = 30°</b></div>
+<div class="readout" id="v1read"></div>
+<div class="fact"><b>Zero work ke 2 star cases:</b> θ = 90° (force ⊥ displacement - isliye circular motion me centripetal force KAAM NAHI karta!) aur displacement = 0 (deewar ko dhakka lagate raho, deewar nahi hili - work ZERO). Bag utha ke khade rehna = physics mein ZERO work, chahe thakan ho!</div>
+</section>
+
+<section class="scene">
+<h2>2. Braking Distance - Speed Double, Rasta 4x!</h2>
+<p class="sub">Work-energy theorem: <b>W_net = ΔK</b>. Brake ka friction gaadi ki POORI kinetic energy kha jaata hai: f·d = ½mv² → <b>d = v²/(2μg)</b>. Speed badhao aur stopping distance ka explosion dekho:</p>
+<canvas id="cv2" width="760" height="340"></canvas>
+<div class="sliderrow"><span>speed v0</span><input type="range" id="v2slide" min="5" max="40" value="10"><b id="v2val">v0 = 10 m/s</b></div>
+<div class="sliderrow"><span>mu (tyre-road friction)</span><input type="range" id="mu2slide" min="20" max="80" value="50"><b id="mu2val">mu = 0.50</b></div>
+<div class="btnrow"><button class="btn hot" id="brake2">Brake Lagao!</button></div>
+<div class="readout" id="v2read"></div>
+<div class="fact"><b>Square ka kamaal:</b> KE = ½mv² - speed DOUBLE toh KE 4x, braking distance bhi 4x! 20 se 40 m/s jaoge toh rukne mein 4 GUNA lambi road chahiye. Isliye "thoda zyada speed" bhi bahut zyada khatarnak hai.</div>
+</section>
+
+<section class="scene">
+<h2>3. Energy Bank Account - KE + PE Pakka Constant</h2>
+<p class="sub">Sirf gravity kaam kare (no friction) toh <b>mechanical energy conserve</b>: girte hue ball ki PE ghatti, KE badhti - TOTAL hamesha same! Height badlo, landing speed <b>v = √(2gh)</b> verify karo - mass toh cancel hi ho jaata hai:</p>
+<canvas id="cv3" width="760" height="360"></canvas>
+<div class="sliderrow"><span>drop height h</span><input type="range" id="h3slide" min="2" max="20" value="10"><b id="h3val">h = 10 m</b></div>
+<div class="btnrow"><button class="btn hot" id="drop3">Ball Girao!</button></div>
+<div class="readout" id="v3read"></div>
+<div class="fact"><b>Bank account socho:</b> PE aur KE mein transfer hota rehta hai, balance same (jab tak friction "fee" na kaate). Pendulum: ends pe sab PE, bottom pe sab KE. Roller coaster bhi yahi - height se seedha speed: v = √(2gh).</div>
+</section>
+
+<section class="scene">
+<h2>4. Collision Lab - Momentum Pakka, KE Shart Se</h2>
+<p class="sub">HAR collision mein <b>momentum conserve</b> (external force ~0), par KE sirf ELASTIC mein bachti hai! Equal masses ka elastic collision = velocities EXCHANGE (Newton's cradle ka raaz). Mode badlo aur dekho:</p>
+<canvas id="cv4" width="760" height="340"></canvas>
+<div class="sliderrow"><span>cart 1 mass (cart 2 = 4 kg static)</span><input type="range" id="m4slide" min="1" max="10" value="4"><b id="m4val">m1 = 4 kg</b></div>
+<div class="sliderrow"><span>cart 1 speed u1</span><input type="range" id="u4slide" min="4" max="20" value="10"><b id="u4val">u1 = 10 m/s</b></div>
+<div class="btnrow"><button class="btn sel" id="modeE">Elastic</button><button class="btn" id="modeI">Perfectly Inelastic (chipak!)</button><button class="btn hot" id="coll4">Collision Karwao!</button></div>
+<div class="readout" id="v4read"></div>
+<div class="fact"><b>1D elastic formulas:</b> v1 = ((m1-m2)/(m1+m2))u1, v2 = (2m1/(m1+m2))u1. m1 = m2 → poora EXCHANGE! Heavy hits light → light ~2x se udta. Perfectly inelastic: v = (m1u1)/(m1+m2), dono chipak ke saath. e = separation/approach: elastic e = 1, chipakne pe e = 0.</div>
+</section>
+
+<section class="scene">
+<h2>5. Power Ka Tradeoff - P = F x v</h2>
+<p class="sub">Power = kaam kitni JALDI hua: <b>P = W/t = F·v</b>. Cyclist ka power fixed hai - chadhai pe gravity ke against zyada FORCE chahiye, toh speed GIR jaati hai. Isliye uphill pe gear DOWN karte hain! Slope badhao:</p>
+<canvas id="cv5" width="760" height="340"></canvas>
+<div class="sliderrow"><span>cyclist ka power P</span><input type="range" id="p5slide" min="150" max="1000" value="400" step="10"><b id="p5val">P = 400 W</b></div>
+<div class="sliderrow"><span>slope angle</span><input type="range" id="sl5slide" min="0" max="12" value="4"><b id="sl5val">slope = 4°</b></div>
+<div class="readout" id="v5read"></div>
+<div class="fact"><b>Yaad rakho:</b> 1 HP = 746 W (ghode ki power se compare!). Bijli ka bill: 1 UNIT = 1 kWh = 3.6 x 10^6 J - yeh ENERGY hai, power NAHI! Constant P pe: speed badhao toh force ghatti hai - truck chadhai pe slow kyun? Kyunki F = P/v!</div>
+</section>
+
+<section class="scene recap">
+<h2 style="text-align:center;color:#e879f9">Formula Pack - Screenshot Le Lo</h2>
+<div class="card"><h3>Work</h3><p>W = F s cosθ (dot product) | θ &lt; 90° +ve, θ = 90° ZERO, θ &gt; 90° -ve | variable force: F-x graph ka area | spring stretch: W = ½kx² | centripetal force ka work HAMESHA 0</p></div>
+<div class="card"><h3>Energy + Work-Energy Theorem</h3><p>K = ½mv² (speed double → KE 4x!) | U = mgh, spring U = ½kx² | W_net = ΔK (SAB forces ka work, friction bhi) | F = -dU/dx (force PE ghataane wali side)</p></div>
+<div class="card"><h3>Mechanical Energy Conservation</h3><p>sirf conservative forces → KE + PE = constant | height h se drop: v = √(2gh) - mass cancel! | friction ho toh energy heat mein leak, par W_net = ΔK tab bhi valid</p></div>
+<div class="card"><h3>Collisions</h3><p>momentum HAMESHA conserve | elastic: KE bhi conserve | equal masses elastic → velocities EXCHANGE | perfectly inelastic: v = (m1u1+m2u2)/(m1+m2) | e = separation/approach (elastic 1, chipak 0)</p></div>
+<div class="card"><h3>Power</h3><p>P = W/t = F·v | 1 HP = 746 W | 1 unit (bijli) = 1 kWh = 3.6 x 10^6 J | constant P: v ↑ toh F ↓ (uphill gear down!) | efficiency = useful output / total input, kabhi 100% nahi</p></div>
+</section>
+
+<div class="navrow">
+<button class="btn" id="prev">← Peeche</button>
+<button class="btn hot" id="next">Aage →</button>
+</div>
+<p class="credit">Learn With Rahul - Class 11 Physics Ch 5 Work, Energy and Power Visual Walkthrough</p>
+</div>
+
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+let cur=0;
+const dotsBox=document.getElementById('dots');
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
+function line(g,x1,y1,x2,y2,col,w,dash){g.strokeStyle=col;g.lineWidth=w||1.5;if(dash)g.setLineDash(dash);g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();g.setLineDash([])}
+function arrow(g,x1,y1,x2,y2,col,w){
+  line(g,x1,y1,x2,y2,col,w||2.5);
+  const a=Math.atan2(y2-y1,x2-x1),s=9;
+  g.fillStyle=col;g.beginPath();g.moveTo(x2,y2);
+  g.lineTo(x2-s*Math.cos(a-0.45),y2-s*Math.sin(a-0.45));
+  g.lineTo(x2-s*Math.cos(a+0.45),y2-s*Math.sin(a+0.45));
+  g.closePath();g.fill();
+}
+function block(g,x,y,w,h,col,txt){
+  g.fillStyle='#12122a';g.strokeStyle=col;g.lineWidth=2;
+  g.beginPath();g.roundRect(x-w/2,y-h/2,w,h,6);g.fill();g.stroke();
+  if(txt){g.fillStyle=col;g.font='bold 13px sans-serif';g.textAlign='center';g.fillText(txt,x,y+4);g.textAlign='left'}
+}
+const TAU=Math.PI*2;
+const L=(a,b,p)=>a+(b-a)*p;
+const ease=p=>p*p*(3-2*p);
+const grav=9.8;
+
+// ---------- SCENE 1: work sign ----------
+const [c1,g1]=ctx('cv1');
+const S1={th:30};
+document.getElementById('th1slide').oninput=e=>{S1.th=+e.target.value;document.getElementById('th1val').textContent='θ = '+S1.th+'°'};
+function draw1(t){
+  const g=g1,W=c1.width,H=c1.height;g.clearRect(0,0,W,H);
+  const gy=240;
+  line(g,40,gy+40,W-40,gy+40,'#2c2c4d',2);
+  // block moving right continuously
+  const bx=140+((t*140)%(W-320));
+  const by=gy;
+  // displacement direction arrow (along ground)
+  arrow(g,80,gy+90,220,gy+90,'#4ade80',2.5);
+  label(g,'displacement s →',86,gy+112,'#4ade80');
+  block(g,bx,by,64,44,'#22d3ee','');
+  // force arrow at angle -theta above +x
+  const th=S1.th*Math.PI/180;
+  const fx=Math.cos(th)*110, fy=-Math.sin(th)*110;
+  arrow(g,bx,by,bx+fx,by+fy,'#fbbf24',3);
+  label(g,'F',bx+fx+6,by+fy+4,'#fbbf24');
+  // angle arc
+  g.strokeStyle='#565672';g.lineWidth=1.5;g.beginPath();g.arc(bx,by,40,-th,0);g.stroke();
+  label(g,'θ',bx+44,by-6,'#9aa0c9');
+  // reference horizontal from block
+  line(g,bx,by,bx+70,by,'#3b3b5c',1.2,[4,4]);
+  const F=20,s=4;
+  const Wk=F*s*Math.cos(th);
+  const col=Wk>0.05?'#4ade80':(Wk<-0.05?'#f87171':'#e879f9');
+  label(g,'W = F·s·cosθ',W/2-70,36,'#9aa0c9');
+  g.fillStyle=col;g.font='bold 26px sans-serif';g.textAlign='center';
+  g.fillText('W = '+(Wk>=0?'+':'')+Wk.toFixed(1)+' J',W/2,72);g.textAlign='left';
+  const msg=S1.th<85?'POSITIVE work - force displacement ki madad kar raha hai (energy de raha hai)':(S1.th>95?'NEGATIVE work - force ROK raha hai (friction/brake jaisa, energy kha raha hai)':'ZERO work! Force ⊥ displacement - KAAM NAHI!');
+  label(g,msg,W/2-Math.min(330,msg.length*3.4),100,col);
+  document.getElementById('v1read').innerHTML='W = F·s·cosθ = 20 x 4 x cos('+S1.th+'°) = <b>'+(Wk>=0?'+':'')+Wk.toFixed(1)+' J</b>. '+(S1.th===90?'θ = 90° → cosθ = 0 → <b>ZERO work</b>! Isliye circular motion me centripetal force (hamesha ⊥ velocity) ka koi work NAHI - speed same rehti hai, sirf direction badalti hai!':(S1.th<90?'θ &lt; 90° → cosθ positive → block ko energy MIL rahi hai.':'θ &gt; 90° → cosθ negative → friction/brake jaisa: block ki energy GHAT rahi hai.'));
+}
+
+// ---------- SCENE 2: braking distance ----------
+const [c2,g2]=ctx('cv2');
+const S2={v:10,mu:0.5,t0:-1};
+document.getElementById('v2slide').oninput=e=>{S2.v=+e.target.value;document.getElementById('v2val').textContent='v0 = '+S2.v+' m/s'};
+document.getElementById('mu2slide').oninput=e=>{S2.mu=+e.target.value/100;document.getElementById('mu2val').textContent='mu = '+S2.mu.toFixed(2)};
+document.getElementById('brake2').onclick=()=>{S2.t0=nowT};
+function draw2(t){
+  const g=g2,W=c2.width,H=c2.height;g.clearRect(0,0,W,H);
+  const a=S2.mu*grav;
+  const d=S2.v*S2.v/(2*a);          // stopping distance m
+  const tstop=S2.v/a;               // stopping time s
+  const px=560/Math.max(1,(40*40)/(2*0.2*grav)); // scale from worst case: v=40, mu=0.2 → 407m
+  const gy=190;
+  line(g,40,gy+40,W-40,gy+40,'#2c2c4d',2);
+  // distance ruler marks every d/4
+  for(let i=0;i<=4;i++){const mx=80+d*px*i/4;line(g,mx,gy+44,mx,gy+52,'#3b3b5c',1.2);label(g,(d*i/4).toFixed(0)+'m',mx-8,gy+66,'#565672')}
+  const running=S2.t0>=0;
+  const el=running?Math.min(tstop,t-S2.t0):0;
+  const dist=S2.v*el-0.5*a*el*el;
+  const cx=80+dist*px;
+  // car
+  block(g,cx,gy,70,40,'#22d3ee','CAR');
+  if(running&&el<tstop){
+    arrow(g,cx-46,gy,cx-46-60,gy,'#f87171',3);
+    label(g,'brake f',cx-150,gy-14,'#f87171');
+  }
+  if(running&&el>=tstop){
+    label(g,'RUK GAYI!',cx-30,gy-40,'#4ade80');
+    line(g,80,gy-56,80+d*px,gy-56,'#e879f9',2);
+    label(g,'d = '+d.toFixed(1)+' m',80+d*px/2-34,gy-64,'#e879f9');
+  }
+  if(!running)label(g,'"Brake Lagao!" dabao - friction KE ko khaayega',200,40,'#565672');
+  // KE bar draining
+  const KE0=0.5*1200*S2.v*S2.v, KE=0.5*1200*Math.max(0,S2.v-a*el)*Math.max(0,S2.v-a*el);
+  g.fillStyle='#1a1a30';g.fillRect(80,286,600,14);
+  g.fillStyle='#e879f9';g.fillRect(80,286,600*KE/KE0,14);
+  label(g,'kinetic energy bachi',80,280,'#9aa0c9');
+  const dBase=100/(2*a);
+  document.getElementById('v2read').innerHTML='d = v²/(2μg) = '+(S2.v*S2.v)+'/(2 x '+S2.mu.toFixed(2)+' x 9.8) = <b>'+d.toFixed(1)+' m</b> (rukne ka time '+(tstop).toFixed(1)+' s). 10 m/s pe yahi gaadi '+dBase.toFixed(1)+' m mein rukti - <b>speed '+ (S2.v/10).toFixed(1) +'x → distance '+((S2.v*S2.v)/100).toFixed(1)+'x</b> (square!)';
+}
+
+// ---------- SCENE 3: energy conservation ----------
+const [c3,g3]=ctx('cv3');
+const S3={h:10,t0:-1};
+document.getElementById('h3slide').oninput=e=>{S3.h=+e.target.value;document.getElementById('h3val').textContent='h = '+S3.h+' m'};
+document.getElementById('drop3').onclick=()=>{S3.t0=nowT};
+function draw3(t){
+  const g=g3,W=c3.width,H=c3.height;g.clearRect(0,0,W,H);
+  const m=1;
+  const ph=240/20; // px per m (max 20m)
+  const gY=300;
+  line(g,60,gY,430,gY,'#2c2c4d',3);
+  label(g,'ground (h = 0)',66,gY+20,'#565672');
+  // height ruler
+  line(g,90,gY,90,gY-S3.h*ph,'#3b3b5c',1.2,[4,4]);
+  label(g,'h = '+S3.h+' m',98,gY-S3.h*ph+4,'#9aa0c9');
+  // fall physics
+  const tfall=Math.sqrt(2*S3.h/grav);
+  const running=S3.t0>=0;
+  const el=running?Math.min(tfall,t-S3.t0):0;
+  const fallen=0.5*grav*el*el;
+  const vel=grav*el;
+  const bY=gY-S3.h*ph+fallen*ph;
+  dot(g,300,Math.min(bY,gY-10),12,'#fbbf24');
+  // energy bars
+  const E0=m*grav*S3.h;
+  const PE=m*grav*Math.max(0,S3.h-fallen);
+  const KE=0.5*m*vel*vel;
+  const bx0=480,bw=52,scale=200/E0;
+  // PE bar
+  g.fillStyle='#1a1a30';g.fillRect(bx0,60,bw,200);
+  g.fillStyle='#22d3ee';g.fillRect(bx0,60+200-PE*scale,bw,PE*scale);
+  label(g,'PE',bx0+16,52,'#22d3ee');
+  // KE bar
+  g.fillStyle='#1a1a30';g.fillRect(bx0+70,60,bw,200);
+  g.fillStyle='#e879f9';g.fillRect(bx0+70,60+200-KE*scale,bw,KE*scale);
+  label(g,'KE',bx0+88,52,'#e879f9');
+  // total bar (constant!)
+  g.fillStyle='#1a1a30';g.fillRect(bx0+140,60,bw,200);
+  g.fillStyle='#4ade80';g.fillRect(bx0+140,60,bw,200);
+  label(g,'TOTAL',bx0+140,52,'#4ade80');
+  if(running&&el>=tfall){
+    label(g,'IMPACT! v = √(2gh) = '+Math.sqrt(2*grav*S3.h).toFixed(1)+' m/s',170,40,'#4ade80');
+  }
+  if(!running)label(g,'"Ball Girao!" dabao - PE→KE transfer dekho',180,40,'#565672');
+  document.getElementById('v3read').innerHTML='h = '+S3.h+' m → E-total = mgh = <b>'+E0.toFixed(0)+' J</b> (m = 1 kg). Abhi: PE = <b>'+PE.toFixed(0)+' J</b>, KE = <b>'+KE.toFixed(0)+' J</b>, sum = '+(PE+KE).toFixed(0)+' J (constant!). Impact speed v = √(2 x 9.8 x '+S3.h+') = <b>'+Math.sqrt(2*grav*S3.h).toFixed(1)+' m/s</b> - mass kahin nahi aaya, SAB objects saath girte hain!';
+}
+
+// ---------- SCENE 4: collision lab ----------
+const [c4,g4]=ctx('cv4');
+const S4={m1:4,u1:10,mode:'elastic',t0:-1};
+const m2C=4;
+document.getElementById('m4slide').oninput=e=>{S4.m1=+e.target.value;document.getElementById('m4val').textContent='m1 = '+S4.m1+' kg'};
+document.getElementById('u4slide').oninput=e=>{S4.u1=+e.target.value;document.getElementById('u4val').textContent='u1 = '+S4.u1+' m/s'};
+document.getElementById('modeE').onclick=()=>{S4.mode='elastic';document.getElementById('modeE').className='btn sel';document.getElementById('modeI').className='btn'};
+document.getElementById('modeI').onclick=()=>{S4.mode='inelastic';document.getElementById('modeI').className='btn sel';document.getElementById('modeE').className='btn'};
+document.getElementById('coll4').onclick=()=>{S4.t0=nowT};
+function draw4(t){
+  const g=g4,W=c4.width,H=c4.height;g.clearRect(0,0,W,H);
+  const gy=200;
+  line(g,40,gy+40,W-40,gy+40,'#2c2c4d',2);
+  const u1=S4.u1,m1=S4.m1;
+  let v1,v2;
+  if(S4.mode==='elastic'){
+    v1=((m1-m2C)/(m1+m2C))*u1;
+    v2=(2*m1/(m1+m2C))*u1;
+  }else{
+    v1=v2=(m1*u1)/(m1+m2C);
+  }
+  const sc=14; // px per m/s for animation
+  const x2_0=430;
+  const running=S4.t0>=0;
+  const tHit=0.9;
+  let x1,x2;
+  if(!running){x1=90;x2=x2_0}
+  else{
+    const el=t-S4.t0;
+    if(el<tHit){x1=L(90,x2_0-74,el/tHit);x2=x2_0}
+    else{
+      const e2=el-tHit;
+      x1=x2_0-74+v1*sc*e2;x2=x2_0+v2*sc*e2;
+      x1=Math.max(40,x1);x2=Math.min(W-50,Math.max(x1+80,x2));
+    }
+  }
+  const w1=50+m1*4,w2=50+m2C*4;
+  block(g,x1,gy,w1,44,'#22d3ee','m1='+m1);
+  block(g,x2,gy,w2,44,'#e879f9','m2='+m2C);
+  if(!running||t-S4.t0<tHit)label(g,'u1 = '+u1+' m/s →',x1-40,gy-44,'#22d3ee');
+  if(running&&t-S4.t0>=tHit){
+    label(g,'v1 = '+v1.toFixed(1)+' m/s',x1-40,gy-44,'#22d3ee');
+    label(g,'v2 = '+v2.toFixed(1)+' m/s →',Math.min(W-140,x2-40),gy-44,'#e879f9');
+    if(S4.mode==='inelastic')label(g,'CHIPAK GAYE!',(x1+x2)/2-40,gy+80,'#f87171');
+  }
+  // momentum bars
+  const pB=m1*u1;
+  const pA=S4.mode==='elastic'?(m1*v1+m2C*v2):((m1+m2C)*v1);
+  const bsc=200/Math.max(1,10*20);
+  g.fillStyle='#1a1a30';g.fillRect(80,290,200,14);
+  g.fillStyle='#4ade80';g.fillRect(80,290,pB*bsc,14);
+  label(g,'p before = '+pB.toFixed(0)+' kg m/s',290,301,'#4ade80');
+  g.fillStyle='#1a1a30';g.fillRect(80,316,200,14);
+  g.fillStyle='#4ade80';g.fillRect(80,316,pA*bsc,14);
+  label(g,'p after = '+pA.toFixed(0)+' kg m/s',290,327,'#4ade80');
+  const KEb=0.5*m1*u1*u1, KEa=0.5*m1*v1*v1+0.5*m2C*v2*v2;
+  const lost=100*(1-KEa/KEb);
+  const exch=m1===m2C&&S4.mode==='elastic';
+  document.getElementById('v4read').innerHTML='<b>'+(S4.mode==='elastic'?'ELASTIC':'PERFECTLY INELASTIC')+'</b>: m1 = '+m1+' kg @ '+u1+' m/s → m2 = '+m2C+' kg (static). Baad mein: v1 = <b>'+v1.toFixed(1)+'</b>, v2 = <b>'+v2.toFixed(1)+' m/s</b>. Momentum: '+pB.toFixed(0)+' → '+pA.toFixed(0)+' (SAME - pakka conserve!). KE: '+KEb.toFixed(0)+' J → '+KEa.toFixed(0)+' J'+(S4.mode==='elastic'?' (<b>koi loss NAHI</b> - elastic!)':' (<b>'+lost.toFixed(0)+'% KE gaya</b> heat/deformation mein!)')+(exch?' <b>Equal masses - velocities EXCHANGE ho gayi! Newton\'s cradle yahi hai.</b>':'');
+}
+
+// ---------- SCENE 5: power tradeoff ----------
+const [c5,g5]=ctx('cv5');
+const S5={P:400,th:4};
+document.getElementById('p5slide').oninput=e=>{S5.P=+e.target.value;document.getElementById('p5val').textContent='P = '+S5.P+' W'};
+document.getElementById('sl5slide').oninput=e=>{S5.th=+e.target.value;document.getElementById('sl5val').textContent='slope = '+S5.th+'°'};
+function draw5(t){
+  const g=g5,W=c5.width,H=c5.height;g.clearRect(0,0,W,H);
+  const m=80,th=S5.th*Math.PI/180;
+  const Fres=m*grav*Math.sin(th)+40; // gravity along slope + rolling 40 N
+  const v=S5.P/Fres;
+  // slope
+  const x0=60,y0=280,sl=620;
+  const x1=x0+sl*Math.cos(th),y1=y0-sl*Math.sin(th);
+  line(g,x0,y0,x1,y1,'#8f8fb8',4);
+  line(g,x1,y1,x1,300,'#3b3b5c',2);line(g,x0,y0,x0,300,'#3b3b5c',2);line(g,x0,300,x1,300,'#3b3b5c',2);
+  label(g,'slope '+S5.th+'°',x0+10,y0+24,'#9aa0c9');
+  // cyclist moving along slope (wrap)
+  const sp=Math.min(640,((t*v*22)%640));
+  const cx=x0+sp*Math.cos(th),cy=y0-sp*Math.sin(th)-16;
+  dot(g,cx,cy,13,'#22d3ee');
+  label(g,'CYCLIST',cx-26,cy-30,'#22d3ee');
+  // driving force arrow along slope
+  const fl=Math.min(110,Fres*0.5,Math.max(24,(W-46-cx)/Math.max(0.25,Math.cos(th))));
+  arrow(g,cx,cy+16,cx+fl*Math.cos(th),cy+16-fl*Math.sin(th),'#f87171',3);
+  label(g,'F = '+Fres.toFixed(0)+' N',Math.min(W-120,cx+fl*Math.cos(th)+8),cy+16-fl*Math.sin(th)+4,'#f87171');
+  // speed readout on canvas
+  g.fillStyle='#4ade80';g.font='bold 24px sans-serif';g.textAlign='center';
+  g.fillText('v = '+v.toFixed(1)+' m/s = '+(v*3.6).toFixed(0)+' km/h',W/2,52);g.textAlign='left';
+  label(g,'power constant: P = '+S5.P+' W',W/2-110,80,'#9aa0c9');
+  document.getElementById('v5read').innerHTML='F = mg·sinθ + 40 (rolling) = 80 x 9.8 x '+Math.sin(th).toFixed(3)+' + 40 = <b>'+Fres.toFixed(0)+' N</b>. v = P/F = '+S5.P+'/'+Fres.toFixed(0)+' = <b>'+v.toFixed(1)+' m/s = '+(v*3.6).toFixed(0)+' km/h</b>. '+(S5.th>=8?'Steep chadhai: F bada → v GIR gayi - isliye uphill pe gear DOWN (zyada force, kam speed, same power)!':(S5.th===0?'Flat road: sirf rolling resistance, full speed! Real mein air drag aur rokta hai.':'Halki chadhai: force badha, speed thodi ghati - P = F·v ka live tradeoff!'));
+}
+
+const DRAW=[draw1,draw2,draw3,draw4,draw5,()=>{}];
+let last=performance.now(),nowT=0;
+function tick(now){
+  const dt=Math.min(0.05,(now-last)/1000);last=now;nowT=now/1000;
+  if(DRAW[cur])DRAW[cur](nowT,dt);
+  requestAnimationFrame(tick);
+}
+go(0);
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
