@@ -282,20 +282,20 @@ const QS=[
  {q:'"Temperature −5 aur 15 ke BEECH rehta hai (dono included)" - T',opts:['T < −5 ya T > 15','−5 ≤ T ≤ 15','−5 < T < 15'],ans:1,why:'"beech, dono included" = AND with ≤ dono taraf → −5 ≤ T ≤ 15'},
 ];
 let qi=0,qScore={ok:0,tot:0},qDone=false;
+function drawScore(){g5.fillStyle='#0b0b16';g5.fillRect(10,58,220,30);g5.fillStyle=TX;g5.font='13px sans-serif';g5.fillText('score: '+qScore.ok+'/'+qScore.tot,20,80)}
 function renderQ(){
   qDone=false;
   const Q=QS[qi];
   const g=g5,W=c5.width,H=c5.height;g.clearRect(0,0,W,H);
   g.fillStyle='#fff';g.font='15px sans-serif';
   g.fillText('Q'+(qi+1)+'/'+QS.length+':  '+Q.q,20,50);
-  g.fillStyle=TX;g.font='13px sans-serif';
-  g.fillText('score: '+qScore.ok+'/'+qScore.tot,20,80);
+  drawScore();
   const box=document.getElementById('quizBtns');box.innerHTML='';
   Q.opts.forEach((o,j)=>{
     const b=document.createElement('button');b.className='btn';b.textContent=o;
     b.onclick=()=>{
       if(qDone)return;qDone=true;qScore.tot++;
-      const good=j===Q.ans;if(good)qScore.ok++;
+      const good=j===Q.ans;if(good)qScore.ok++;drawScore();
       document.getElementById('r5').innerHTML=(good?'✅ <b style="color:'+GR+'">SAHI!</b> ':'❌ Sahi: <b style="color:'+GD+'">'+Q.opts[Q.ans]+'</b> | ')+Q.why;
       const nb=document.createElement('button');nb.className='btn hot';nb.textContent=qi<QS.length-1?'Agla Sawaal →':'Phir Se ↻';
       nb.onclick=()=>{qi=(qi+1)%QS.length;renderQ()};
