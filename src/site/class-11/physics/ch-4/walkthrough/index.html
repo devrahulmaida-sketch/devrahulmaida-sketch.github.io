@@ -216,8 +216,9 @@ function draw2(t){
   if(running&&t-S2.t0>=fly){
     // force arrow on hand
     const fl=Math.min(160,F*3);
-    arrow(g,gloveX+60,cy,gloveX+60-fl,cy,'#f87171',3);
-    label(g,'F = '+F.toFixed(1)+' N',gloveX+56-fl,cy-16,'#f87171');
+    const ax0=Math.min(gloveX+60,W-30-fl);
+    arrow(g,ax0,cy,ax0-fl,cy,'#f87171',3);
+    label(g,'F = '+F.toFixed(1)+' N',Math.max(40,ax0-fl-10),cy-16,'#f87171');
   }
   // force bar
   const maxF=dp/0.05;
@@ -298,7 +299,7 @@ function draw4(t,dtf){
   // applied force arrow
   if(S4.F>0){const fl=S4.F*1.1;arrow(g,S4.x+34,gy,S4.x+34+fl,gy,'#fbbf24',3);label(g,'F = '+S4.F+' N',S4.x+40+fl>700?S4.x-90:S4.x+44+fl*0.4,gy-16,'#fbbf24')}
   // friction arrow
-  if(fr>0){const fl2=fr*1.1;arrow(g,S4.x-34,gy,S4.x-34-fl2,gy,'#f87171',3);label(g,'f = '+fr.toFixed(0)+' N',S4.x-44-fl2-40,gy-16,'#f87171')}
+  if(fr>0){const fl2=fr*1.1;arrow(g,S4.x-34,gy,S4.x-34-fl2,gy,'#f87171',3);label(g,'f = '+fr.toFixed(0)+' N',Math.max(30,S4.x-44-fl2-40),gy-16,'#f87171')}
   // status
   label(g,slipped?'KINETIC: slip ho gaya! f = mu-k x N (constant)':'STATIC: friction F ke barabar adjust kar raha hai',300,gy-56,slipped?'#f87171':'#4ade80');
   // friction vs applied graph
@@ -337,7 +338,7 @@ function draw5(t){
   // support structure
   line(g,cx-dx,cy+dy,cx-dx,cy+150,'#3b3b5c',2);line(g,cx+dx,cy-dy,cx+dx,cy+150,'#3b3b5c',2);
   line(g,cx-dx,cy+150,cx+dx,cy+150,'#3b3b5c',2);
-  label(g,'banking θ = '+S5.th+'°',cx-dx+10,cy+dy+26,'#9aa0c9');
+  label(g,'banking θ = '+S5.th+'°',cx-dx+10,Math.min(H-12,cy+dy+26),'#9aa0c9');
   // car on surface (center)
   const ux=Math.cos(th),uy=-Math.sin(th); // up-slope unit
   const nx=Math.sin(th),ny=-Math.cos(th); // surface normal unit (up-left? check: perpendicular pointing away from surface up-left)
