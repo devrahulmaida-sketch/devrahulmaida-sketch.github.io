@@ -284,7 +284,8 @@ function draw3(){
   S3.anim=Math.min(1,S3.anim+0.008);
   const p=ease(S3.anim);
   const C1=[120,200],C2=[220,200],C3=[300,200];
-  line(g,C1[0],C1[1]-4,C2[0],C2[1]-4,'#8f8fb8',2.5);line(g,C1[0],C1[1]+4,C2[0],C2[1]+4,'#8f8fb8',2.5);
+  if(p<0.98){line(g,C1[0],C1[1]-4,C2[0],C2[1]-4,'#8f8fb8',2.5);line(g,C1[0],C1[1]+4,C2[0],C2[1]+4,'#8f8fb8',2.5)}
+  else{line(g,C1[0],C1[1],C2[0],C2[1],'#8f8fb8',2.5)}
   line(g,C2[0],C2[1],C3[0],C3[1],'#8f8fb8',2.5);
   [[C1[0]-32,C1[1]-26],[C1[0]-32,C1[1]+26]].forEach(h=>{line(g,C1[0],C1[1],h[0],h[1],'#3b3b5c',1.2);atom(g,h[0],h[1],8,'#565672','H','#e8e8f2')});
   line(g,C2[0],C2[1],C2[0]+4,C2[1]-36,'#3b3b5c',1.2);atom(g,C2[0]+4,C2[1]-40,8,'#565672','H','#e8e8f2');
@@ -369,7 +370,7 @@ function draw5(t){
   V.forEach((v,i)=>i?g.lineTo(v[0],v[1]):g.moveTo(v[0],v[1]));g.closePath();g.stroke();
   g.setLineDash([5,5]);g.strokeStyle='#e879f9';g.beginPath();g.arc(cx,cy,58,0,TAU);g.stroke();g.setLineDash([]);
   for(let i=0;i<6;i++){const a=t*0.7+i*Math.PI/3;dot(g,cx+58*Math.cos(a),cy+58*Math.sin(a),4,'#e879f9')}
-  label(g,'6 pi electrons - sab jagah ghoomte hain!',cx-110,cy+155,'#e879f9');
+  label(g,'6 pi electrons - sab jagah ghoomte hain!',470,120,'#e879f9');
   const sub=S5.dir?(S5.dir==='op'?'-CH3':'-NO2'):(S5.sub?EAS[S5.sub].name:null);
   V.forEach((v,i)=>{
     const ox=v[0]+(v[0]-cx)*0.32,oy=v[1]+(v[1]-cy)*0.32;
