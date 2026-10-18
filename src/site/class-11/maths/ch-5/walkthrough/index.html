@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear Inequalities Ka Visual Walkthrough - Class 11 Maths Ch 5</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07070d;color:#e8e8f2;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:18px 12px 40px}
+.wrap{max-width:820px;margin:0 auto}
+.badge{display:inline-block;font-size:.75em;padding:4px 12px;border:1px solid #3b3b5c;border-radius:999px;color:#9aa0c9;margin-bottom:10px}
+h1{font-size:1.7em;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+.tag{text-align:center;color:#9aa0c9;font-size:.9em;margin:8px 0 4px}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0 18px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2a2a45;border:0;cursor:pointer;padding:0}
+.dot.on{background:#22d3ee;box-shadow:0 0 8px #22d3ee88}
+.scene{display:none}
+.scene.on{display:block}
+h2{font-size:1.15em;color:#7dd3fc;margin-bottom:6px}
+.sub{color:#b9b9d6;font-size:.88em;margin-bottom:12px;line-height:1.5}
+canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;border-radius:12px;margin:8px 0}
+.readout{font-size:.9em;color:#c9c9e0;background:#0e0e1c;border:1px solid #26264a;border-radius:10px;padding:10px 14px;margin:8px 0;line-height:1.55;min-height:52px}
+.readout b{color:#7dd3fc}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.btn{background:#181830;color:#c9c9e0;border:1px solid #33335c;border-radius:10px;padding:8px 14px;font-size:.85em;cursor:pointer}
+.btn.sel{border-color:#e879f9;color:#e879f9;background:#22122a}
+.btn:active{transform:scale(.97)}
+.sliderrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.85em;color:#c9c9e0}
+.sliderrow input[type=range]{flex:1;accent-color:#22d3ee}
+.sliderrow b{color:#e879f9;min-width:64px;text-align:right}
+.recap .card{background:#0e0e1c;border:1px solid #26264a;border-radius:12px;padding:14px 16px;margin:10px 0}
+.recap .card h3{color:#e879f9;font-size:.95em;margin-bottom:6px}
+.recap .card p{font-size:.86em;color:#c9c9e0;line-height:1.6;font-family:ui-monospace,monospace}
+.navrow{display:flex;justify-content:space-between;margin-top:18px}
+.credit{text-align:center;color:#565672;font-size:.75em;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="text-align:center"><span class="badge">Class 11 Maths - Chapter 5 - Linear Inequalities</span></div>
+<h1>Inequalities Ka Visual Walkthrough</h1>
+<p class="tag">5 animated scenes - sign-flip ka mirror khel, number line circles, 2D half-plane shading, system ka common region, aur word problems.</p>
+<div class="dots" id="dots"></div>
+
+<section class="scene on">
+<h2>1. Sign-Flip Lab - Minus Se Multiply = Mirror!</h2>
+<p class="sub">Sabse bada TRAP ⭐: <b>NEGATIVE number se multiply/divide karo to sign PALAT jaata hai</b>. Kyun? Number line ka mirror image! Slider se 'a' badlo aur dekho kab flip hota hai: a·x &lt; b solve karte hain.</p>
+<canvas id="cv1" width="760" height="300"></canvas>
+<div class="sliderrow">a <input type="range" id="a1" min="-5" max="5" value="2" step="1"> <b id="a1v">2</b></div>
+<div class="sliderrow">b <input type="range" id="b1" min="-8" max="8" value="6" step="1"> <b id="b1v">6</b></div>
+<div class="readout" id="r1"></div>
+</section>
+
+<section class="scene">
+<h2>2. Number Line - Open vs Closed Circle ⭐</h2>
+<p class="sub"><b>&lt; , &gt;</b> = <b>open circle</b> (○ point included NAHI) | <b>≤ , ≥</b> = <b>closed circle</b> (● point included). Interval me round bracket = open, square = closed, <b>∞ ke saath hamesha round</b>! Preset chuno:</p>
+<div class="btnrow">
+<button class="btn sel" data-p="0">x &lt; 3</button>
+<button class="btn" data-p="1">x ≥ −1</button>
+<button class="btn" data-p="2">−2 ≤ x &lt; 5 (AND)</button>
+<button class="btn" data-p="3">x &lt; −1 OR x &gt; 3</button>
+</div>
+<canvas id="cv2" width="760" height="220"></canvas>
+<div class="readout" id="r2"></div>
+</section>
+
+<section class="scene">
+<h2>3. 2D Region - Half-Plane Shading ⭐</h2>
+<p class="sub">Do variables me solution ek <b>REGION</b> hai, line nahi! Steps: (1) line draw karo, (2) &lt;/&gt; → <b>DASHED</b>, ≤/≥ → <b>SOLID</b>, (3) <b>test point</b> daalo - satisfy kare to us side shade. Test point ko ghumao aur dekho green/red kab hota hai:</p>
+<div class="btnrow" id="signBtns">
+<button class="btn sel" data-s="0">x + y &lt; 4</button>
+<button class="btn" data-s="1">x + y ≤ 4</button>
+<button class="btn" data-s="2">x + y &gt; 4</button>
+<button class="btn" data-s="3">x + y ≥ 4</button>
+</div>
+<canvas id="cv3" width="760" height="400"></canvas>
+<div class="sliderrow">test point x <input type="range" id="px3" min="-6" max="8" value="1" step="0.5"> <b id="px3v">1</b></div>
+<div class="sliderrow">y <input type="range" id="py3" min="-4" max="8" value="1" step="0.5"> <b id="py3v">1</b></div>
+<div class="readout" id="r3"></div>
+</section>
+
+<section class="scene">
+<h2>4. System - Common Region = Answer ⭐</h2>
+<p class="sub">Do-teen inequalities EK SAATH: har ek ka shade karo, <b>jo overlap kare wahi solution</b> (feasible region - 12th ke LPP ka foundation!). System: <b>x + y ≤ 4</b>, <b>x − y ≤ 2</b>, <b>y ≥ 0</b>. Steps animate hote hain:</p>
+<div class="btnrow"><button class="btn hot" id="anim4">Phir Se Chalao ↻</button></div>
+<canvas id="cv4" width="760" height="400"></canvas>
+<div class="readout" id="r4"></div>
+</section>
+
+<section class="scene">
+<h2>5. Word Problems - Real Life Se Inequality Tak</h2>
+<p class="sub">Exam me statement se inequality banana aana chahiye: "kam se kam" = ≥, "zyada se zyada/max" = ≤, "se zyada" = &gt;. Quiz time:</p>
+<canvas id="cv5" width="760" height="180"></canvas>
+<div class="btnrow" id="quizBtns"></div>
+<div class="readout" id="r5"></div>
+</section>
+
+<section class="scene recap">
+<h2>Formula Recap - Screenshot Le Lo!</h2>
+<div class="card"><h3>Symbols + Rules</h3><p>&lt; chhota, &gt; bada, ≤ / ≥ barabar included | add/subtract SAME number → sign same | ×÷ POSITIVE → sign same | ×÷ NEGATIVE → <b>SIGN FLIP</b> (minus = mirror!) ⭐ | safe trick: variable ko LEFT pe positive coefficient ke saath laao</p></div>
+<div class="card"><h3>Number Line + Intervals ⭐</h3><p>&lt; , &gt; → OPEN circle (○) | ≤ , ≥ → CLOSED (●) | x &lt; 3 = (−∞, 3) | x ≥ 3 = [3, ∞) | round = open, square = closed | ∞ ke saath HAMESHA round bracket</p></div>
+<div class="card"><h3>AND vs OR ⭐</h3><p>AND (dono ek saath): −2 ≤ x &lt; 5 → [−2, 5) - overlap | OR (koi ek): x &lt; −1 ya x &gt; 3 → (−∞,−1) ∪ (3,∞) - do alag regions | "between" = AND, "outside" = OR</p></div>
+<div class="card"><h3>2D Region Steps ⭐</h3><p>(1) inequality → equation, line draw karo | (2) &lt;/&gt; = DASHED line, ≤/≥ = SOLID | (3) test point (origin easiest!) - satisfy kare to us side, nahi to doosri side shade</p></div>
+<div class="card"><h3>System + Word Problems</h3><p>common region = sabki shading ka overlap = feasible region (LPP foundation) | corners (vertices) important | "kam se kam" = ≥ | "max/zyada se zyada" = ≤ | "se kam nahi" = ≥</p></div>
+</section>
+<div class="navrow">
+<button class="btn" id="prev">← Peeche</button>
+<button class="btn hot" id="next">Aage →</button>
+</div>
+<p class="credit">Learn With Rahul - Class 11 Maths Ch 5 Linear Inequalities Visual Walkthrough</p>
+</div>
+
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+let cur=0;
+const dotsBox=document.getElementById('dots');
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
+function ring(g,x,y,r,col){g.strokeStyle=col;g.lineWidth=2.5;g.beginPath();g.arc(x,y,r,0,7);g.stroke()}
+function line(g,x1,y1,x2,y2,col,w,dash){g.strokeStyle=col;g.lineWidth=w||1.5;if(dash)g.setLineDash(dash);g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();g.setLineDash([])}
+const CY='#22d3ee',MG='#f0f',GD='#ffd166',GR='#7CFC98',TX='#9aa0b8',AX='#2c2c4d',RD='#ff5555';
+function numline(g,y,x0,x1,vmin,vmax){
+  line(g,x0,y,x1,y,AX,3);
+  for(let v=vmin;v<=vmax;v++){const x=x0+(v-vmin)*(x1-x0)/(vmax-vmin);line(g,x,y-6,x,y+6,AX,1.5);label(g,''+v,x-4,y+22,TX)}
+  return v=>x0+(v-vmin)*(x1-x0)/(vmax-vmin);
+}
+
+// ---------- SCENE 1: sign flip lab ----------
+const [c1,g1]=ctx('cv1');
+let a1=2,b1=6;
+document.getElementById('a1').oninput=e=>{a1=+e.target.value;document.getElementById('a1v').textContent=a1};
+document.getElementById('b1').oninput=e=>{b1=+e.target.value;document.getElementById('b1v').textContent=b1};
+function draw1(){
+  const g=g1,W=c1.width,H=c1.height;g.clearRect(0,0,W,H);
+  const X=numline(g,150,70,690,-8,8);
+  if(a1===0){
+    const holds=b1>0;
+    document.getElementById('r1').innerHTML='a = 0 → inequality ban gayi <b>0 &lt; '+b1+'</b> → '+(holds?'<b style="color:'+GR+'">HAMESHA true - saari number line solution!</b>':'<b style="color:'+RD+'">kabhi true nahi - NO solution!</b>')+' (x gayab!)';
+    if(holds){g.fillStyle='rgba(124,252,152,.18)';g.fillRect(70,132,620,36)}
+    return;
+  }
+  const sol=b1/a1, flip=a1<0;
+  const sx=X(Math.max(-8,Math.min(8,sol)));
+  if(flip){ // x > sol
+    g.fillStyle='rgba(255,0,255,.16)';g.fillRect(sol>=-8&&sol<=8?sx:70,132,sol<=8?(690-(sol>=-8?sx:690)):620,36);
+    if(sol>=-8&&sol<=8)ring(g,sx,150,7,MG);
+  }else{
+    g.fillStyle='rgba(34,211,238,.16)';g.fillRect(70,132,(sol>=-8&&sol<=8?sx:70)-70,36);
+    if(sol>=-8&&sol<=8)ring(g,sx,150,7,CY);
+  }
+  label(g,'a·x < b  →  '+a1+'x < '+b1,70,60,TX);
+  if(flip){
+    g.fillStyle='rgba(255,209,102,.13)';g.fillRect(60,80,640,36);
+    label(g,'⚠ NEGATIVE se divide - SIGN FLIP! < ban gaya >  (minus = mirror)',76,104,GD);
+  }
+  document.getElementById('r1').innerHTML=a1+'x &lt; '+b1+' → dono taraf ÷ '+a1+(flip?' <b style="color:'+GD+'">(negative - FLIP!)</b>':'')+' → <b style="color:'+(flip?MG:CY)+'">x '+(flip?'&gt;':'&lt;')+' '+sol.toFixed(2)+'</b> | check: x = '+(flip?sol+1:sol-1).toFixed(0)+' daalo → '+a1+'·'+(flip?sol+1:sol-1).toFixed(0)+' = '+(a1*(flip?sol+1:sol-1)).toFixed(0)+(a1*(flip?sol+1:sol-1)<b1?' < '+b1+' ✓':' ✗ - shade doosri side!');
+}
+
+// ---------- SCENE 2: number line presets ----------
+const [c2,g2]=ctx('cv2');
+let p2=0;
+document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{p2=+b.dataset.p;document.querySelectorAll('[data-p]').forEach(x=>x.classList.remove('sel'));b.classList.add('sel')});
+function draw2(){
+  const g=g2,W=c2.width,H=c2.height;g.clearRect(0,0,W,H);
+  const X=numline(g,110,70,690,-8,8);
+  const y=110;
+  let txt='';
+  if(p2===0){
+    g.fillStyle='rgba(34,211,238,.18)';g.fillRect(70,y-18,X(3)-70,36);
+    ring(g,X(3),y,7,CY);
+    txt='x < 3 → <b>OPEN circle</b> at 3 (3 included NAHI), LEFT shade | interval: <b style="color:'+CY+'">(−∞, 3)</b> - round brackets!';
+  }else if(p2===1){
+    g.fillStyle='rgba(255,0,255,.18)';g.fillRect(X(-1),y-18,690-X(-1),36);
+    dot(g,X(-1),y,7,MG);
+    txt='x ≥ −1 → <b>CLOSED circle</b> at −1 (included!), RIGHT shade | interval: <b style="color:'+MG+'">[−1, ∞)</b> - square on −1, round on ∞ (hamesha!)';
+  }else if(p2===2){
+    g.fillStyle='rgba(255,209,102,.18)';g.fillRect(X(-2),y-18,X(5)-X(-2),36);
+    dot(g,X(-2),y,7,GD);ring(g,X(5),y,7,GD);
+    txt='−2 ≤ x < 5 → <b>AND</b>: dono conditions ek saath | ● at −2, ○ at 5, BEECH shade | interval: <b style="color:'+GD+'">[−2, 5)</b>';
+  }else{
+    g.fillStyle='rgba(34,211,238,.18)';g.fillRect(70,y-18,X(-1)-70,36);
+    g.fillStyle='rgba(255,0,255,.18)';g.fillRect(X(3),y-18,690-X(3),36);
+    ring(g,X(-1),y,7,CY);ring(g,X(3),y,7,MG);
+    txt='x < −1 OR x > 3 → <b>OR</b>: koi ek kaafi - DO alag regions | union: <b style="color:'+CY+'">(−∞, −1)</b> ∪ <b style="color:'+MG+'">(3, ∞)</b> | beech GAP!';
+  }
+  document.getElementById('r2').innerHTML=txt;
+}
+
+// ---------- SCENE 3: half-plane ----------
+const [c3,g3]=ctx('cv3');
+let s3=0,px3=1,py3=1;
+document.querySelectorAll('#signBtns [data-s]').forEach(b=>b.onclick=()=>{s3=+b.dataset.s;document.querySelectorAll('#signBtns [data-s]').forEach(x=>x.classList.remove('sel'));b.classList.add('sel')});
+document.getElementById('px3').oninput=e=>{px3=+e.target.value;document.getElementById('px3v').textContent=px3};
+document.getElementById('py3').oninput=e=>{py3=+e.target.value;document.getElementById('py3v').textContent=py3};
+const GX3=v=>80+(v+6)*640/14, GY3=v=>370-(v+4)*330/12;
+function draw3(){
+  const g=g3,W=c3.width,H=c3.height;g.clearRect(0,0,W,H);
+  // axes
+  line(g,GX3(-6),GY3(0),GX3(8),GY3(0),AX,2);line(g,GX3(0),GY3(-4),GX3(0),GY3(8),AX,2);
+  for(let v=-6;v<=8;v+=2){line(g,GX3(v),GY3(0)-4,GX3(v),GY3(0)+4,AX,1);label(g,''+v,GX3(v)-4,GY3(0)+16,TX)}
+  for(let v=-4;v<=8;v+=2){line(g,GX3(0)-4,GY3(v),GX3(0)+4,GY3(v),AX,1);label(g,''+v,GX3(0)-18,GY3(v)+4,TX)}
+  label(g,'x',GX3(8)-6,GY3(0)-8,TX);label(g,'y',GX3(0)+8,GY3(8)+4,TX);
+  const wantBelow=s3<=1; // < or ≤ : x+y<4 → below side
+  const solid=s3===1||s3===3;
+  // shade side
+  g.fillStyle=wantBelow?'rgba(34,211,238,.13)':'rgba(255,0,255,.13)';
+  g.beginPath();
+  const xA=-6,xB=8,yA1=4-xA,yB1=4-xB;
+  if(wantBelow){g.moveTo(GX3(xA),GY3(-4));g.lineTo(GX3(xA),GY3(yA1));g.lineTo(GX3(xB),GY3(yB1));g.lineTo(GX3(xB),GY3(-4))}
+  else{g.moveTo(GX3(xA),GY3(8));g.lineTo(GX3(xA),GY3(yA1));g.lineTo(GX3(xB),GY3(yB1));g.lineTo(GX3(xB),GY3(8))}
+  g.closePath();g.fill();
+  // the line x+y=4
+  line(g,GX3(xA),GY3(yA1),GX3(xB),GY3(yB1),wantBelow?CY:MG,3,solid?null:[8,6]);
+  label(g,'x + y = 4',GX3(5.2),GY3(-1.2)-6,wantBelow?CY:MG);
+  // test point
+  const val=px3+py3;
+  let ok;
+  if(s3===0)ok=val<4;else if(s3===1)ok=val<=4;else if(s3===2)ok=val>4;else ok=val>=4;
+  dot(g,GX3(px3),GY3(py3),7,ok?GR:RD);
+  label(g,'('+px3+', '+py3+')',GX3(px3)+10,GY3(py3)-8,ok?GR:RD);
+  const signs=['<','≤','>','≥'];
+  document.getElementById('r3').innerHTML='inequality: <b>x + y '+signs[s3]+' 4</b> | line <b>'+(solid?'SOLID (≤/≥ - line included)':'DASHED (&lt;/&gt; - line EXCLUDED)')+'</b> | test point ('+px3+', '+py3+'): '+px3+' + '+py3+' = '+val+' '+(ok?'<b style="color:'+GR+'">✓ SATISFIES - ye side shade sahi</b>':'<b style="color:'+RD+'">✗ satisfy NAHI karta - is side shade mat karo</b>')+' | origin trick: (0,0) → 0 '+signs[s3]+' 4? '+((s3<=1)?'✓ origin wali side':'✗ doosri side');
+}
+
+// ---------- SCENE 4: system ----------
+const [c4,g4]=ctx('cv4');
+let t4=99;
+document.getElementById('anim4').onclick=()=>{t4=0};
+function draw4(dt){
+  const g=g4,W=c4.width,H=c4.height;g.clearRect(0,0,W,H);
+  t4+=dt;
+  line(g,GX3(-6),GY3(0),GX3(8),GY3(0),AX,2);line(g,GX3(0),GY3(-4),GX3(0),GY3(8),AX,2);
+  for(let v=-6;v<=8;v+=2){line(g,GX3(v),GY3(0)-4,GX3(v),GY3(0)+4,AX,1);label(g,''+v,GX3(v)-4,GY3(0)+16,TX)}
+  for(let v=-4;v<=8;v+=2){line(g,GX3(0)-4,GY3(v),GX3(0)+4,GY3(v),AX,1);label(g,''+v,GX3(0)-18,GY3(v)+4,TX)}
+  const xA=-6,xB=8;
+  // stage 1: x+y<=4 (cyan)
+  if(t4>0.5){
+    g.fillStyle='rgba(34,211,238,.12)';
+    g.beginPath();g.moveTo(GX3(xA),GY3(-4));g.lineTo(GX3(xA),GY3(4-xA));g.lineTo(GX3(xB),GY3(4-xB));g.lineTo(GX3(xB),GY3(-4));g.closePath();g.fill();
+    line(g,GX3(xA),GY3(4-xA),GX3(xB),GY3(4-xB),CY,3);
+    label(g,'x + y = 4',GX3(4.6),GY3(-0.6)-8,CY);
+  }
+  // stage 2: x-y<=2 i.e. y>=x-2 (magenta)
+  if(t4>2){
+    g.fillStyle='rgba(255,0,255,.12)';
+    g.beginPath();g.moveTo(GX3(xA),GY3(xA-2));g.lineTo(GX3(xB),GY3(xB-2));g.lineTo(GX3(xB),GY3(8));g.lineTo(GX3(xA),GY3(8));g.closePath();g.fill();
+    line(g,GX3(xA),GY3(xA-2),GX3(xB),GY3(xB-2),MG,3);
+    label(g,'x − y = 2',GX3(6.4),GY3(4.4)-8,MG);
+  }
+  // stage 3: y>=0 above x-axis (green)
+  if(t4>3.5){
+    g.fillStyle='rgba(124,252,152,.10)';
+    g.fillRect(GX3(xA),GY3(8),GX3(xB)-GX3(xA),GY3(0)-GY3(8));
+    line(g,GX3(xA),GY3(0),GX3(xB),GY3(0),GR,3);
+    label(g,'y = 0',GX3(-5.6),GY3(0)-8,GR);
+  }
+  // stage 4: feasible region highlight - intersection polygon
+  if(t4>5){
+    // vertices: y=0∩x-y=2 -> (2,0); y=0∩x+y=4 -> (4,0); x+y=4∩x-y=2 -> (3,1)
+    g.beginPath();
+    g.moveTo(GX3(2),GY3(0));g.lineTo(GX3(4),GY3(0));g.lineTo(GX3(3),GY3(1));g.closePath();
+    g.fillStyle='rgba(255,209,102,.4)';g.fill();
+    g.strokeStyle=GD;g.lineWidth=3;g.stroke();
+    for(const [vx,vy] of[[2,0],[4,0],[3,1]]){dot(g,GX3(vx),GY3(vy),6,'#fff');label(g,'('+vx+','+vy+')',GX3(vx)-14,GY3(vy)+18,'#fff')}
+    label(g,'FEASIBLE REGION',GX3(2.1),GY3(2.6),GD);
+  }
+  const stage=t4<0.5?'step 1: pehli inequality shade ho rahi...':t4<2?'① x + y ≤ 4 - origin side (cyan)':t4<3.5?'② x − y ≤ 2 add hui (magenta)':t4<5?'③ y ≥ 0 add hui (green)':'⭐ OVERLAP = feasible region (gold triangle) - vertices (2,0), (4,0), (3,1) - yahi 12th LPP me kaam aayenge!';
+  document.getElementById('r4').innerHTML=stage;
+}
+
+// ---------- SCENE 5: word problem quiz ----------
+const [c5,g5]=ctx('cv5');
+const QS=[
+ {q:'"Exam me KAM SE KAM 40 marks chahiye" - x = marks',opts:['x < 40','x ≥ 40','x ≤ 40'],ans:1,why:'"kam se kam 40" = 40 bhi chalega + usse zyada → x ≥ 40'},
+ {q:'"Lift me MAX 10 log allowed" - x = log',opts:['x ≤ 10','x > 10','x ≥ 10'],ans:0,why:'"max 10" = 10 tak chalega, 11 nahi → x ≤ 10'},
+ {q:'"Ride ke liye height 120 cm SE ZYADA chahiye" - h = height',opts:['h ≥ 120','h ≤ 120','h > 120'],ans:2,why:'"se zyada" = 120 EXACT nahi chalega → h > 120 (strict!)'},
+ {q:'"Temperature −5 aur 15 ke BEECH rehta hai (dono included)" - T',opts:['T < −5 ya T > 15','−5 ≤ T ≤ 15','−5 < T < 15'],ans:1,why:'"beech, dono included" = AND with ≤ dono taraf → −5 ≤ T ≤ 15'},
+];
+let qi=0,qScore={ok:0,tot:0},qDone=false;
+function renderQ(){
+  qDone=false;
+  const Q=QS[qi];
+  const g=g5,W=c5.width,H=c5.height;g.clearRect(0,0,W,H);
+  g.fillStyle='#fff';g.font='15px sans-serif';
+  g.fillText('Q'+(qi+1)+'/'+QS.length+':  '+Q.q,20,50);
+  g.fillStyle=TX;g.font='13px sans-serif';
+  g.fillText('score: '+qScore.ok+'/'+qScore.tot,20,80);
+  const box=document.getElementById('quizBtns');box.innerHTML='';
+  Q.opts.forEach((o,j)=>{
+    const b=document.createElement('button');b.className='btn';b.textContent=o;
+    b.onclick=()=>{
+      if(qDone)return;qDone=true;qScore.tot++;
+      const good=j===Q.ans;if(good)qScore.ok++;
+      document.getElementById('r5').innerHTML=(good?'✅ <b style="color:'+GR+'">SAHI!</b> ':'❌ Sahi: <b style="color:'+GD+'">'+Q.opts[Q.ans]+'</b> | ')+Q.why;
+      const nb=document.createElement('button');nb.className='btn hot';nb.textContent=qi<QS.length-1?'Agla Sawaal →':'Phir Se ↻';
+      nb.onclick=()=>{qi=(qi+1)%QS.length;renderQ()};
+      box.appendChild(nb);
+    };
+    box.appendChild(b);
+  });
+  document.getElementById('r5').innerHTML='sahi inequality chuno...';
+}
+renderQ();
+function draw5(){/* static canvas; quiz rendered via renderQ */}
+
+let last=performance.now();
+function tick(now){
+  const dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(cur==0)draw1();
+  if(cur==1)draw2();
+  if(cur==2)draw3();
+  if(cur==3)draw4(dt);
+  if(cur==4)draw5();
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script></body></html>
