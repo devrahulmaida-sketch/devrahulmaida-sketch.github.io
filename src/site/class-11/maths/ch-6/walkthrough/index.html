@@ -66,7 +66,7 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 <button class="btn sel" data-p="c">Combination - sirf SELECT (team)</button>
 <button class="btn" data-p="p">Permutation - ARRANGE bhi (medals)</button>
 </div>
-<div class="readout" id="r2"></div>
+<div class="readout" id="r2x"></div>
 </section>
 
 <section class="scene">
@@ -75,7 +75,7 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 <canvas id="cv3" width="760" height="300"></canvas>
 <div class="sliderrow">n <input type="range" id="n3" min="3" max="10" value="8" step="1"> <b id="n3v">8</b></div>
 <div class="sliderrow">r <input type="range" id="r3" min="1" max="8" value="3" step="1"> <b id="r3v">3</b></div>
-<div class="readout" id="r3"></div>
+<div class="readout" id="r3x"></div>
 </section>
 
 <section class="scene">
@@ -219,7 +219,7 @@ function draw2(){
     g.fillText(sup(n2)+'C'+sup(r2)+' = '+n2+'!/('+r2+'!·'+(n2-r2)+'!) = '+nCr(n2,r2),x0,215);
     g.fillStyle=GR;g.font='13px sans-serif';
     g.fillText('{A,B,C} aur {B,C,A} = SAME team - bas itna hi!',x0,245);
-    document.getElementById('r2').innerHTML='COMBINATION: <b>'+sup(n2)+'C'+sup(r2)+' = '+nCr(n2,r2)+' selections</b>. Team, committee, group - order ka zikr nahi = order matter NAHI karta. Yaad rakho: ⁿC_r = ⁿC_(n−r) - '+n2+' me se '+r2+' chunna = '+(n2-r2)+' CHHODNA!';
+    document.getElementById('r2x').innerHTML='COMBINATION: <b>'+sup(n2)+'C'+sup(r2)+' = '+nCr(n2,r2)+' selections</b>. Team, committee, group - order ka zikr nahi = order matter NAHI karta. Yaad rakho: ⁿC_r = ⁿC_(n−r) - '+n2+' me se '+r2+' chunna = '+(n2-r2)+' CHHODNA!';
   } else {
     // ordered slots
     const sy=190,ssp=80,sx=90;
@@ -236,7 +236,7 @@ function draw2(){
     g.fillText(sup(n2)+'P'+sup(r2)+' = '+n2+'!/('+(n2-r2)+')! = '+nPr(n2,r2),60,282);
     g.fillStyle=GR;g.font='13px sans-serif';
     g.fillText(sup(n2)+'P'+sup(r2)+' = '+sup(n2)+'C'+sup(r2)+' × '+r2+'! = '+nCr(n2,r2)+' × '+fact(r2)+' - pehle select, phir arrange!',330,282);
-    document.getElementById('r2').innerHTML='PERMUTATION: <b>'+sup(n2)+'P'+sup(r2)+' = '+nPr(n2,r2)+' arrangements</b>. Medals, rank, code, numbers - ORDER matter karta hai. Connection: <b>ⁿP_r = ⁿC_r × r!</b> - isliye permutation hamesha bada (ya barabar) hota hai!';
+    document.getElementById('r2x').innerHTML='PERMUTATION: <b>'+sup(n2)+'P'+sup(r2)+' = '+nPr(n2,r2)+' arrangements</b>. Medals, rank, code, numbers - ORDER matter karta hai. Connection: <b>ⁿP_r = ⁿC_r × r!</b> - isliye permutation hamesha bada (ya barabar) hota hai!';
   }
 }
 
@@ -278,7 +278,7 @@ function draw3(){
   g.fillText(sup(n3)+'P'+sup(r3)+' = '+terms.join(' × ')+(r3>1?' = '+prod:' = '+prod),x0,225);
   g.fillStyle=GR;g.font='13px sans-serif';
   g.fillText('sirf '+r3+' terms bache! Poora factorial kabhi compute mat karo - pehle cancel.',x0,255);
-  document.getElementById('r3').innerHTML='<b>'+sup(n3)+'P'+sup(r3)+' = '+n3+'!/('+(n3-r3)+')! = '+terms.join(' × ')+' = '+prod+'</b>. (n−r)! ka poora tail cancel ho jaata hai - bache hue <b>'+r3+' terms</b> ka product hi jawab hai.'+(r3===n3?' Full arrangement: '+n3+'! = '+fact(n3)+' (0! = 1 definition se!)':'');
+  document.getElementById('r3x').innerHTML='<b>'+sup(n3)+'P'+sup(r3)+' = '+n3+'!/('+(n3-r3)+')! = '+terms.join(' × ')+' = '+prod+'</b>. (n−r)! ka poora tail cancel ho jaata hai - bache hue <b>'+r3+' terms</b> ka product hi jawab hai.'+(r3===n3?' Full arrangement: '+n3+'! = '+fact(n3)+' (0! = 1 definition se!)':'');
 }
 
 // ---------- SCENE 4: bundle vs gap ----------
