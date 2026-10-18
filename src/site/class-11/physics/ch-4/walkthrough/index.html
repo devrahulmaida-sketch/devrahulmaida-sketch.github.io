@@ -152,8 +152,8 @@ function draw1(t){
   const running=S1.t0>=0;
   const tt=running?Math.min(4,(t-S1.t0)):0;
   const aA=S1.F/S1.mA, aB=S1.F/mB;
-  const scale=90; // px per m
-  const xA=90+aA*tt*tt/2*scale*0.25, xB=90+aB*tt*tt/2*scale*0.25;
+  const dMax=8*Math.max(aA,aB);const pxScale=Math.min(22.5,(W-160)/Math.max(1,dMax));
+  const xA=90+aA*tt*tt/2*pxScale, xB=90+aB*tt*tt/2*pxScale;
   // lanes
   const yA=110,yB=240;
   line(g,60,yA+40,W-30,yA+40,'#2c2c4d',2);line(g,60,yB+40,W-30,yB+40,'#2c2c4d',2);
