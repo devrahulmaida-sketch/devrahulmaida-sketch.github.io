@@ -381,7 +381,7 @@ function draw5(t){
   if(S5.dir){
     const pos=S5.dir==='op'?[1,3,5]:[2,4];
     const nm=S5.dir==='op'?['ortho','para','ortho']:['meta','meta'];
-    pos.forEach((vi,k)=>{g.strokeStyle='#e879f9';g.lineWidth=2.5;g.beginPath();g.arc(V[vi][0],V[vi][1],24,0,TAU);g.stroke();label(g,nm[k],V[vi][0]-18,V[vi][1]+42,'#e879f9')});
+    pos.forEach((vi,k)=>{g.strokeStyle='#e879f9';g.lineWidth=2.5;g.beginPath();g.arc(V[vi][0],V[vi][1],24,0,TAU);g.stroke();const lx=V[vi][0]+(V[vi][0]-cx)*0.5-14,ly=V[vi][1]+(V[vi][1]-cy)*0.5+24;label(g,nm[k],lx,ly,'#e879f9')});
     label(g,'naya group YAHA aayega',520,60,'#e879f9');
   }
   const hn=+document.getElementById('hslide').value;
