@@ -44,7 +44,7 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 
 <section class="scene on">
 <h2>1. Stress-Strain Curve - Exam Ka Sabse Famous Graph</h2>
-<p class="sub">Wire ko khincho aur curve pe chalo: <b>O→A proportional</b> (Hooke valid), <b>A→B elastic limit</b> (wapas aa sakti hai), <b>B→C plastic</b> (permanent set), <b>C = ultimate tensile strength</b> (max stress), <b>D = fracture</b>. C ke baad NECK banti hai, phir D pe TOOT jaati hai!</p>
+<p class="sub">Wire ko khincho aur curve pe chalo: <b>OâA proportional</b> (Hooke valid), <b>AâB elastic limit</b> (wapas aa sakti hai), <b>BâC plastic</b> (permanent set), <b>C = ultimate tensile strength</b> (max stress), <b>D = fracture</b>. C ke baad NECK banti hai, phir D pe TOOT jaati hai!</p>
 <canvas id="cv1" width="760" height="360"></canvas>
 <div class="sliderrow">kitna khincha (strain) <input type="range" id="e1slide" min="0" max="360" value="0" step="1"> <b id="e1val">0%</b></div>
 <div class="readout" id="v1read"></div>
@@ -52,7 +52,7 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 
 <section class="scene">
 <h2>2. Hooke's Law Lab - Elastic Limit Ke ANDAR</h2>
-<p class="sub">Elastic limit tak <b>stress ∝ strain</b> - seedhi line! Force badhao, wire stretch hoti hai; force hatao, wire WAPAS. Limit cross kiya? Permanent set - ab wapas nahi aayegi. (Y = 2×10¹¹ Pa steel ke liye - isliye asli ΔL chhota, drawing mein zoom kiya hai!)</p>
+<p class="sub">Elastic limit tak <b>stress â strain</b> - seedhi line! Force badhao, wire stretch hoti hai; force hatao, wire WAPAS. Limit cross kiya? Permanent set - ab wapas nahi aayegi. (Y = 2Ã10Â¹Â¹ Pa steel ke liye - isliye asli ÎL chhota, drawing mein zoom kiya hai!)</p>
 <canvas id="cv2" width="760" height="340"></canvas>
 <div class="sliderrow">force <input type="range" id="f2slide" min="0" max="200" value="60" step="1"> <b id="f2val">F = 60 N</b></div>
 <div class="readout" id="v2read"></div>
@@ -60,7 +60,7 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 
 <section class="scene">
 <h2>3. Teen Moduli - Young, Bulk, Shear</h2>
-<p class="sub"><b>Y</b> length ka boss: (F/A)/(ΔL/L). <b>B</b> volume ka boss: −p/(ΔV/V). <b>G</b> shape ka boss: (F/A)/θ. Mode chuno aur deformation dekho:</p>
+<p class="sub"><b>Y</b> length ka boss: (F/A)/(ÎL/L). <b>B</b> volume ka boss: âp/(ÎV/V). <b>G</b> shape ka boss: (F/A)/Î¸. Mode chuno aur deformation dekho:</p>
 <div class="btnrow">
 <button class="btn sel" id="mY">Young's Y (stretch)</button>
 <button class="btn" id="mB">Bulk B (squeeze)</button>
@@ -73,15 +73,15 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 
 <section class="scene">
 <h2>4. Elastic Potential Energy - Stretch Ki Energy</h2>
-<p class="sub">Wire stretch karne me jo kaam kiya, woh <b>elastic PE</b> banke store: <b>u = ½ × stress × strain</b> (per volume) - graph ke NEECHE ka area! Jitna zyada khinchoge, area (energy) square ki tarah badhti hai. Pole vault, bow-arrow, bungee - sab yahi hai.</p>
+<p class="sub">Wire stretch karne me jo kaam kiya, woh <b>elastic PE</b> banke store: <b>u = Â½ Ã stress Ã strain</b> (per volume) - graph ke NEECHE ka area! Jitna zyada khinchoge, area (energy) square ki tarah badhti hai. Pole vault, bow-arrow, bungee - sab yahi hai.</p>
 <canvas id="cv4" width="760" height="320"></canvas>
-<div class="sliderrow">strain (steel, ×10⁻³) <input type="range" id="e4slide" min="0" max="20" value="10" step="0.5"> <b id="e4val">ε = 0.010</b></div>
+<div class="sliderrow">strain (steel, Ã10â»Â³) <input type="range" id="e4slide" min="0" max="20" value="10" step="0.5"> <b id="e4val">Îµ = 0.010</b></div>
 <div class="readout" id="v4read"></div>
 </section>
 
 <section class="scene">
 <h2>5. Steel vs Rubber + Poisson Ratio - Shockers</h2>
-<p class="sub">SHOCKER: <b>steel rubber se ZYADA elastic hai!</b> Same stress pe steel ka strain bahut kam (curve STEEP = bada modulus). Aur kheenchne pe wire PATLI bhi hoti hai - <b>Poisson ratio σ = lateral strain / longitudinal strain</b> (~0.3 metals, hamesha &lt; 0.5).</p>
+<p class="sub">SHOCKER: <b>steel rubber se ZYADA elastic hai!</b> Same stress pe steel ka strain bahut kam (curve STEEP = bada modulus). Aur kheenchne pe wire PATLI bhi hoti hai - <b>Poisson ratio Ï = lateral strain / longitudinal strain</b> (~0.3 metals, hamesha &lt; 0.5).</p>
 <canvas id="cv5" width="760" height="320"></canvas>
 <div class="sliderrow">same stress dono pe <input type="range" id="s5slide" min="0" max="100" value="50" step="1"> <b id="s5val">50%</b></div>
 <div class="readout" id="v5read"></div>
@@ -89,16 +89,16 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 
 <section class="scene recap">
 <h2>Formula Recap - Screenshot Le Lo!</h2>
-<div class="card"><h3>Stress aur Strain</h3><p>stress = F/A (Pa = N/m²): tensile/compressive (⊥), shearing (∥), hydraulic (sab taraf) | strain = ΔL/L ya ΔV/V ya θ (UNITLESS!) | elastic limit tak body wapas aati hai</p></div>
-<div class="card"><h3>Hooke's Law + Curve Points ⭐</h3><p>elastic limit ke ANDAR: stress ∝ strain → stress/strain = modulus | O→A proportional | B elastic limit (yield) | C = UTS (max stress) | D = fracture | C ke baad NECKING, phir break</p></div>
-<div class="card"><h3>Teen Moduli ⭐</h3><p>Y = (F/A)/(ΔL/L) length | B = −p/(ΔV/V) volume, k = 1/B | G = (F/A)/θ shape | Relations: Y = 2G(1+σ) = 3B(1−2σ) = 9BG/(3B+G) | own weight: ΔL = ρgL²/2Y</p></div>
-<div class="card"><h3>Elastic Potential Energy</h3><p>u = ½ × stress × strain = σ²/2Y = ½Yε² (J/m³) | U = ½ × stress × strain × volume = ½FΔL | = graph ke neeche ka AREA | spring ka ½kx² jaisa</p></div>
-<div class="card"><h3>Shocker Facts</h3><p>Steel MORE elastic than rubber (kam strain @ same stress!) | Poisson σ = lateral/longitudinal strain ≈ 0.3 metals, &lt; 0.5 hamesha | kheencho → wire patli hoti hai</p></div>
+<div class="card"><h3>Stress aur Strain</h3><p>stress = F/A (Pa = N/mÂ²): tensile/compressive (â¥), shearing (â¥), hydraulic (sab taraf) | strain = ÎL/L ya ÎV/V ya Î¸ (UNITLESS!) | elastic limit tak body wapas aati hai</p></div>
+<div class="card"><h3>Hooke's Law + Curve Points â­</h3><p>elastic limit ke ANDAR: stress â strain â stress/strain = modulus | OâA proportional | B elastic limit (yield) | C = UTS (max stress) | D = fracture | C ke baad NECKING, phir break</p></div>
+<div class="card"><h3>Teen Moduli â­</h3><p>Y = (F/A)/(ÎL/L) length | B = âp/(ÎV/V) volume, k = 1/B | G = (F/A)/Î¸ shape | Relations: Y = 2G(1+Ï) = 3B(1â2Ï) = 9BG/(3B+G) | own weight: ÎL = ÏgLÂ²/2Y</p></div>
+<div class="card"><h3>Elastic Potential Energy</h3><p>u = Â½ Ã stress Ã strain = ÏÂ²/2Y = Â½YÎµÂ² (J/mÂ³) | U = Â½ Ã stress Ã strain Ã volume = Â½FÎL | = graph ke neeche ka AREA | spring ka Â½kxÂ² jaisa</p></div>
+<div class="card"><h3>Shocker Facts</h3><p>Steel MORE elastic than rubber (kam strain @ same stress!) | Poisson Ï = lateral/longitudinal strain â 0.3 metals, &lt; 0.5 hamesha | kheencho â wire patli hoti hai</p></div>
 </section>
 
 <div class="navrow">
-<button class="btn" id="prev">← Peeche</button>
-<button class="btn hot" id="next">Aage →</button>
+<button class="btn" id="prev">â Peeche</button>
+<button class="btn hot" id="next">Aage â</button>
 </div>
 <p class="credit">Learn With Rahul - Class 11 Physics Ch 8 Mechanical Properties of Solids Visual Walkthrough</p>
 </div>
@@ -108,7 +108,7 @@ const scenes=[...document.querySelectorAll('.scene')];
 let cur=0;
 const dotsBox=document.getElementById('dots');
 scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
-function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir â»':'Aage â'}
 document.getElementById('prev').onclick=()=>go(cur-1);
 document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
 function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')]}
@@ -127,7 +127,7 @@ function arrow(g,x1,y1,x2,y2,col,w){
 // ---------- SCENE 1: stress-strain curve journey ----------
 const [c1,g1]=ctx('cv1');
 const S1={e:0};
-document.getElementById('e1slide').oninput=e=>{S1.e=+e.target.value;document.getElementById('e1val').textContent='ε = '+(S1.e/100).toFixed(2)};
+document.getElementById('e1slide').oninput=e=>{S1.e=+e.target.value;document.getElementById('e1val').textContent='Îµ = '+(S1.e/100).toFixed(2)};
 // curve control points (strain, stress) normalized
 const PTS=[[0,0],[1.0,1.0],[1.5,1.2],[2.6,2.2],[3.4,1.9]];
 const NAMES=['O','A','B','C','D'];
@@ -143,8 +143,8 @@ function draw1(t){
   const X=e=>90+e*88, Y=s=>300-s*80;
   // axes
   line(g,90,300,430,300,'#2c2c4d',2);line(g,90,300,90,40,'#2c2c4d',2);
-  label(g,'strain ε →',370,322,'#565672');
-  label(g,'stress σ',40,52,'#565672');
+  label(g,'strain Îµ â',370,322,'#565672');
+  label(g,'stress Ï',40,52,'#565672');
   // full curve faint
   g.strokeStyle='#3b3b5c';g.lineWidth=2;g.beginPath();
   for(let i=0;i<=100;i++){const e=3.4*i/100;const x=X(e),y=Y(sigOf(e));i===0?g.moveTo(x,y):g.lineTo(x,y)}
@@ -165,10 +165,10 @@ function draw1(t){
   dot(g,cx,cy,6,'#facc15');
   // region message
   let msg;
-  if(e<=1.0)msg='O→A: PROPORTIONAL - Hooke valid, seedhi line (σ = Yε)';
-  else if(e<=1.5)msg='A→B: ELASTIC LIMIT tak - curve hui, par force hatao toh WAPAS aa jayegi';
-  else if(e<=2.6)msg='B→C: PLASTIC region - permanent set shuru! Ab wapas nahi aayegi';
-  else if(e<3.4)msg='C→D: UTS cross! NECK ban rahi hai (beech se patli) - break aane wala hai...';
+  if(e<=1.0)msg='OâA: PROPORTIONAL - Hooke valid, seedhi line (Ï = YÎµ)';
+  else if(e<=1.5)msg='AâB: ELASTIC LIMIT tak - curve hui, par force hatao toh WAPAS aa jayegi';
+  else if(e<=2.6)msg='BâC: PLASTIC region - permanent set shuru! Ab wapas nahi aayegi';
+  else if(e<3.4)msg='CâD: UTS cross! NECK ban rahi hai (beech se patli) - break aane wala hai...';
   else msg='D: FRACTURE - wire TOOT gayi!';
   label(g,msg,90,26,'#9aa0c9');
   // wire visual
@@ -236,18 +236,18 @@ function draw2(t){
   // real numbers
   const A=1e-6,L=2,Y=2e11;
   const dL=F*L/(A*Y);
-  label(g,'asli steel wire (L=2m, A=1mm²): ΔL = '+(dL*1000).toFixed(2)+' mm',70,300,'#565672');
+  label(g,'asli steel wire (L=2m, A=1mmÂ²): ÎL = '+(dL*1000).toFixed(2)+' mm',70,300,'#565672');
   // mini graph
   const gx=560,gy=300;
   line(g,gx,gy,gx+170,gy,'#2c2c4d',2);line(g,gx,gy,gx,gy-180,'#2c2c4d',2);
-  label(g,'ε',gx+176,gy+4,'#565672');label(g,'σ',gx-14,gy-172,'#565672');
+  label(g,'Îµ',gx+176,gy+4,'#565672');label(g,'Ï',gx-14,gy-172,'#565672');
   g.strokeStyle='#22d3ee';g.lineWidth=2.5;g.beginPath();g.moveTo(gx,gy);g.lineTo(gx+105,gy-150);g.stroke();
   g.strokeStyle='#f87171';g.beginPath();g.moveTo(gx+105,gy-150);g.lineTo(gx+150,gy-168);g.stroke();
   const t2=Math.min(F,200)/200;
   const dotx=gx+150*t2,doty=t2<=0.75?gy-150*(t2/0.75):gy-150-18*((t2-0.75)/0.25);
   dot(g,dotx,doty,5,'#facc15');
   label(g,'linear = Hooke',gx+18,gy-158,'#9aa0c9');
-  document.getElementById('v2read').innerHTML='F = <b>'+F+' N</b> → '+(plastic?'status: <b>PLASTIC (limit cross!)</b> - ab force hatao toh bhi permanent stretch rahega.':'status: <b>ELASTIC</b> - force hatao, wire bilkul wapas. stress ∝ strain (Hooke!).')+' Steel wire pe asli stretch sirf <b>'+(dL*1000).toFixed(2)+' mm</b> - Y = 2×10¹¹ Pa itna BADA hai!';
+  document.getElementById('v2read').innerHTML='F = <b>'+F+' N</b> â '+(plastic?'status: <b>PLASTIC (limit cross!)</b> - ab force hatao toh bhi permanent stretch rahega.':'status: <b>ELASTIC</b> - force hatao, wire bilkul wapas. stress â strain (Hooke!).')+' Steel wire pe asli stretch sirf <b>'+(dL*1000).toFixed(2)+' mm</b> - Y = 2Ã10Â¹Â¹ Pa itna BADA hai!';
 }
 
 // ---------- SCENE 3: three moduli ----------
@@ -274,10 +274,10 @@ function draw3(t){
     label(g,'F',bx+bl+st+62,by+5,'#e879f9');
     // dL marker
     line(g,bx+bl,by+bh/2+16,bx+bl+st,by+bh/2+16,'#4ade80',2);
-    label(g,'ΔL',bx+bl+st/2-8,by+bh/2+34,'#4ade80');
+    label(g,'ÎL',bx+bl+st/2-8,by+bh/2+34,'#4ade80');
     label(g,'Young: LENGTH change resist karta hai',150,70,'#9aa0c9');
-    label(g,'steel Y ≈ 2×10¹¹ Pa - buildings me steel rods isliye!',150,90,'#565672');
-    document.getElementById('v3read').innerHTML='<b>Y = (F/A) / (ΔL/L) = FL/(A·ΔL)</b> - jitna BADA Y, utna kam stretch. Wire apne khud ke weight se bhi stretch hoti hai: ΔL = ρgL²/2Y (half effective, kyunki weight distributed hai!).';
+    label(g,'steel Y â 2Ã10Â¹Â¹ Pa - buildings me steel rods isliye!',150,90,'#565672');
+    document.getElementById('v3read').innerHTML='<b>Y = (F/A) / (ÎL/L) = FL/(AÂ·ÎL)</b> - jitna BADA Y, utna kam stretch. Wire apne khud ke weight se bhi stretch hoti hai: ÎL = ÏgLÂ²/2Y (half effective, kyunki weight distributed hai!).';
   }else if(S3.mode==='B'){
     const cx=330,cy=170,s=110,sh=f*16;
     // dashed original cube
@@ -290,11 +290,11 @@ function draw3(t){
     arrow(g,cx+s/2+d,cy,cx+s/2+6,cy,'#e879f9',3);
     arrow(g,cx,cy-s/2-d,cx,cy-s/2-6,'#e879f9',3);
     arrow(g,cx,cy+s/2+d,cx,cy+s/2+6,'#e879f9',3);
-    label(g,'p (pressure sab taraf se)',cx-90,cy-s/2-52,'#e879f9');
-    label(g,'ΔV shrink (zoomed)',cx+s/2+56,cy+6,'#4ade80');
+    label(g,'p (pressure sab taraf se)',cx+56,cy-s/2-46,'#e879f9');
+    label(g,'ÎV shrink (zoomed)',cx+s/2+56,cy+6,'#4ade80');
     label(g,'Bulk: VOLUME change resist karta hai',150,70,'#9aa0c9');
     label(g,'compressibility k = 1/B - kitna aasani se dabta hai',150,90,'#565672');
-    document.getElementById('v3read').innerHTML='<b>B = −p / (ΔV/V) = −pV/ΔV</b> - minus ka matlab: pressure badhao toh volume GHATTA hai. Solids ka B bohot bada (mushkil se dabte hain), gases ka chhota.';
+    document.getElementById('v3read').innerHTML='<b>B = âp / (ÎV/V) = âpV/ÎV</b> - minus ka matlab: pressure badhao toh volume GHATTA hai. Solids ka B bohot bada (mushkil se dabte hain), gases ka chhota.';
   }else{
     const bx=250,by=230,w=260,h=100,sh=f*90;
     // dashed original rectangle
@@ -307,17 +307,17 @@ function draw3(t){
     label(g,'base FIXED',bx+70,by+22,'#565672');
     // theta arc
     g.strokeStyle='#4ade80';g.lineWidth=2;g.beginPath();g.arc(bx,by,70,-Math.PI/2+Math.atan2(sh,h),0);g.stroke();
-    label(g,'θ',bx+30,by-64,'#4ade80');
+    label(g,'Î¸',bx+30,by-64,'#4ade80');
     label(g,'Shear: SHAPE change resist karta hai (twist)',150,70,'#9aa0c9');
-    label(g,'θ chhota (radian mein) = F/(A·G)',150,90,'#565672');
-    document.getElementById('v3read').innerHTML='<b>G = (F/A) / θ</b> - shearing stress / shear angle. G ko rigidity modulus bhi bolte hain. Relation yaad rakho: <b>Y = 2G(1+σ) = 3B(1−2σ) = 9BG/(3B+G)</b> - teeno moduli + Poisson ek dusre se judte hain!';
+    label(g,'Î¸ chhota (radian mein) = F/(AÂ·G)',150,90,'#565672');
+    document.getElementById('v3read').innerHTML='<b>G = (F/A) / Î¸</b> - shearing stress / shear angle. G ko rigidity modulus bhi bolte hain. Relation yaad rakho: <b>Y = 2G(1+Ï) = 3B(1â2Ï) = 9BG/(3B+G)</b> - teeno moduli + Poisson ek dusre se judte hain!';
   }
 }
 
 // ---------- SCENE 4: elastic PE ----------
 const [c4,g4]=ctx('cv4');
 const S4={e:10};
-document.getElementById('e4slide').oninput=e=>{S4.e=+e.target.value;document.getElementById('e4val').textContent='ε = '+(S4.e/1000).toFixed(3)};
+document.getElementById('e4slide').oninput=e=>{S4.e=+e.target.value;document.getElementById('e4val').textContent='Îµ = '+(S4.e/1000).toFixed(3)};
 function draw4(t){
   const g=g4,W=c4.width,H=c4.height;g.clearRect(0,0,W,H);
   const gx=100,gy=260,Y=2e11;
@@ -325,15 +325,14 @@ function draw4(t){
   const X=e=>gx+e/0.02*420, Yy=s=>gy-s/4e9*200;
   // axes
   line(g,gx,gy,gx+470,gy,'#2c2c4d',2);line(g,gx,gy,gx,gy-220,'#2c2c4d',2);
-  label(g,'strain ε',gx+430,gy+26,'#565672');label(g,'stress σ',gx-36,gy-206,'#565672');
+  label(g,'strain Îµ',gx+430,gy+26,'#565672');label(g,'stress Ï',gx-36,gy-206,'#565672');
   // line
   line(g,gx,gy,X(0.02),Yy(4e9),'#22d3ee',2.5);
   // shaded area up to eps
   g.fillStyle='#e879f955';g.beginPath();
   g.moveTo(gx,gy);g.lineTo(X(eps),gy);g.lineTo(X(eps),Yy(sig));g.closePath();g.fill();
   dot(g,X(eps),Yy(sig),6,'#facc15');
-  label(g,'u = AREA = ½ × σ × ε',gx+150,gy-206,'#e879f9');
-  label(g,'½kx² wali feeling!',gx+330,gy-180,'#565672');
+  label(g,'u = AREA = Â½ Ã Ï Ã Îµ',gx+150,gy-206,'#e879f9');
   // energy bar
   const u=0.5*sig*eps;
   const bx=620,bh=200,fill=Math.min(1,u/4e7)*bh;
@@ -341,9 +340,9 @@ function draw4(t){
   g.fillStyle='#e879f9';g.fillRect(bx,gy-fill,46,fill);
   g.strokeStyle='#33335c';g.strokeRect(bx,gy-bh,46,bh);
   label(g,'energy',bx-4,gy+22,'#565672');
-  label(g,(u/1e6).toFixed(1)+'×10⁶',bx-12,gy-bh-24,'#e879f9');
-  label(g,'J/m³',bx+2,gy-bh-8,'#e879f9');
-  document.getElementById('v4read').innerHTML='ε = <b>'+eps.toFixed(3)+'</b>, σ = Yε = 2×10¹¹ × '+eps.toFixed(3)+' = <b>'+(sig/1e8).toFixed(1)+'×10⁸ Pa</b> → energy density u = ½σε = <b>'+(u/1e6).toFixed(2)+'×10⁶ J/m³</b>. Strain DOUBLE karo → energy 4× (square!). Pole vault ka pole yahi energy wapas deta hai.';
+  label(g,(u/1e6).toFixed(1)+'Ã10â¶',bx-12,gy-bh-24,'#e879f9');
+  label(g,'J/mÂ³',bx+2,gy-bh-8,'#e879f9');
+  document.getElementById('v4read').innerHTML='Îµ = <b>'+eps.toFixed(3)+'</b>, Ï = YÎµ = 2Ã10Â¹Â¹ Ã '+eps.toFixed(3)+' = <b>'+(sig/1e8).toFixed(1)+'Ã10â¸ Pa</b> â energy density u = Â½ÏÎµ = <b>'+(u/1e6).toFixed(2)+'Ã10â¶ J/mÂ³</b>. Strain DOUBLE karo â energy 4Ã (square!). Pole vault ka pole yahi energy wapas deta hai.';
 }
 
 // ---------- SCENE 5: steel vs rubber + Poisson ----------
@@ -356,17 +355,17 @@ function draw5(t){
   const Ys=2e11,Yr=1e7;
   const es=sig/Ys, er=sig/Yr;
   // strain bars (zoomed x1e6 display)
-  label(g,'same stress σ = '+(sig/1e6).toFixed(2)+'×10⁶ Pa dono pe:',60,44,'#9aa0c9');
+  label(g,'same stress Ï = '+(sig/1e6).toFixed(2)+'Ã10â¶ Pa dono pe:',60,44,'#9aa0c9');
   const bx=200,maxw=460;
   label(g,'steel',150,108,'#7dd3fc');
   g.fillStyle='#1a1a30';g.fillRect(bx,92,maxw,20);
   g.fillStyle='#22d3ee';g.fillRect(bx,92,Math.max(2,es*1e6/100*maxw),20);
-  label(g,'ε = '+(es*1e6).toFixed(1)+'×10⁻⁶',bx+maxw+10,108,'#22d3ee');
+  label(g,'Îµ = '+(es*1e6).toFixed(1)+'Ã10â»â¶',bx+maxw+10,108,'#22d3ee');
   label(g,'rubber',140,148,'#e879f9');
   g.fillStyle='#1a1a30';g.fillRect(bx,132,maxw,20);
   g.fillStyle='#e879f9';g.fillRect(bx,132,Math.min(maxw,Math.max(2,er/0.1*maxw)),20);
-  label(g,'ε = '+(er*100).toFixed(1)+'%',bx+maxw+10,148,'#e879f9');
-  label(g,'STEEL ka strain 20,000× KAM → steel zyada ELASTIC! (definition: kam deform hona)',60,196,'#4ade80');
+  label(g,'Îµ = '+(er*100).toFixed(1)+'%',bx+maxw+10,148,'#e879f9');
+  label(g,'STEEL ka strain 20,000Ã KAM â steel zyada ELASTIC! (definition: kam deform hona)',60,196,'#4ade80');
   // poisson visual
   const wy=270,L=340,th0=26,eps=S5.s/100*0.01,pr=0.3;
   const stretch=eps*L*60,thin=pr*eps*th0*60;
@@ -378,9 +377,9 @@ function draw5(t){
   g.lineTo(200,wy+th0/2);
   g.closePath();g.fill();
   g.strokeStyle='#565672';g.setLineDash([4,4]);g.strokeRect(200,wy-th0/2,L,th0);g.setLineDash([]);
-  label(g,'kheencho → LAMBI + PATLI! σ = 0.3 (metal)',200,wy-44,'#9aa0c9');
-  label(g,'thickness zoom ×60',560,wy+44,'#565672');
-  document.getElementById('v5read').innerHTML='Steel: ε = <b>'+(es*1e6).toFixed(1)+'×10⁻⁶</b>, rubber: ε = <b>'+(er*100).toFixed(1)+'%</b> - SAME stress pe! Curve jitna STEEP, modulus utna BADA, material utna ELASTIC. Poisson ratio σ = lateral strain / longitudinal strain ≈ <b>0.3 metals</b>, hamesha <b>&lt; 0.5</b> (volume badh nahi sakta stretch mein - trap question!).';
+  label(g,'kheencho â LAMBI + PATLI! Ï = 0.3 (metal)',200,wy-44,'#9aa0c9');
+  label(g,'thickness zoom Ã60',560,wy+44,'#565672');
+  document.getElementById('v5read').innerHTML='Steel: Îµ = <b>'+(es*1e6).toFixed(1)+'Ã10â»â¶</b>, rubber: Îµ = <b>'+(er*100).toFixed(1)+'%</b> - SAME stress pe! Curve jitna STEEP, modulus utna BADA, material utna ELASTIC. Poisson ratio Ï = lateral strain / longitudinal strain â <b>0.3 metals</b>, hamesha <b>&lt; 0.5</b> (volume badh nahi sakta stretch mein - trap question!).';
 }
 
 const DRAW=[draw1,draw2,draw3,draw4,draw5,()=>{}];
