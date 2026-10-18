@@ -278,7 +278,7 @@ function draw4(){
   const x0=180,y0=270,bw=90,gap=70;
   D.forEach(([s,v],i)=>{
     const x=x0+i*(bw+gap);
-    const h=v/max*190;
+    const h=pr4==='eg'?40+(v-300)/60*130:20+v/4.5*160;
     const isW=i===win;
     const pulse=isW?1+0.06*Math.sin(t*4):1;
     g.fillStyle=(isW?GD:CY)+'55';g.fillRect(x,y0-h*pulse,bw,h*pulse);
@@ -291,11 +291,11 @@ function draw4(){
   g.fillText(pr4==='eg'?'WINNER: Cl (sabse zyada energy release!)':'WINNER: F (4.0 = duniya ka max)',x0-60,60);
   g.fillStyle=TX;g.font='13px sans-serif';
   if(pr4==='eg'){
-    g.fillText('F chhota hai → naya electron ghusne pe cramped space me repulsion',x0-60,90);
-    g.fillText('→ F ka shauk Cl se KAM (−328 vs −349). EXAM TRAP!',x0-60,110);
+    g.fillText('F chhota hai → naya electron ghusne pe cramped space me repulsion',40,306);
+    g.fillText('→ F ka shauk Cl se KAM (−328 vs −349). EXAM TRAP!',40,323);
   } else {
-    g.fillText('EN = bond ke shared electrons kheenchne ki taakat (Pauling scale)',x0-60,90);
-    g.fillText('F sabse electronegative. Noble gases ka EN hota hi nahi (bond nahi banate)',x0-60,110);
+    g.fillText('EN = bond ke shared electrons kheenchne ki taakat (Pauling scale)',40,306);
+    g.fillText('F sabse electronegative. Noble gases ka EN hota hi nahi (bond nahi banate)',40,323);
   }
   document.getElementById('r4').innerHTML=pr4==='eg'?'<b>TRAP: electron gain enthalpy me Cl > F!</b> (−349 vs −328 kJ/mol). F itna chhota hai ki incoming electron ko andar ki density repel karti hai. "Sabse negative EGH" = Cl, "sabse zyada EN" = F - dono alag sawaal!':'<b>EN ka king F hai (4.0)</b> - L→R badhta, up→down ghat-ta. Master trick: <b>size/metallic character bottom-left (Cs) ki taraf, IE/EN/non-metallic top-right (F) ki taraf</b> - ye 2 lines se saare trends yaad!';
 }
