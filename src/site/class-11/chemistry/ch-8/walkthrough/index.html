@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Ka Visual Walkthrough - Class 11 Chemistry Ch 8</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a12;color:#e8e8f0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+  header{text-align:center;padding:22px 10px 10px}
+  header .tag{display:inline-block;background:#1b1b2e;border:1px solid #2e2e4a;border-radius:999px;padding:4px 14px;font-size:.78rem;color:#8f8fb8;letter-spacing:.5px}
+  header h1{font-size:1.7rem;margin:12px 0 6px;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{color:#9a9ab5;font-size:.92rem}
+  .dots{display:flex;gap:8px;justify-content:center;margin:16px 0 4px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#2c2c44;cursor:pointer;border:none;transition:.2s}
+  .dot.on{background:#22d3ee;transform:scale(1.25)}
+  .scene{display:none;padding-top:14px}
+  .scene.on{display:block}
+  .card{background:#12121f;border:1px solid #26263e;border-radius:16px;padding:16px;margin-bottom:14px}
+  .scene h2{font-size:1.15rem;color:#f0f0fa;margin-bottom:4px}
+  .sub{color:#8f8fb8;font-size:.85rem;margin-bottom:12px}
+  canvas{width:100%;height:auto;display:block;background:#0d0d18;border-radius:12px;border:1px solid #22223a}
+  .ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+  .btn{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:10px;padding:8px 16px;font-size:.88rem;cursor:pointer;transition:.15s}
+  .btn:hover{border-color:#22d3ee;color:#22d3ee}
+  .btn.hot{background:#22d3ee;color:#06222a;border-color:#22d3ee;font-weight:600}
+  .btn.sel{border-color:#e879f9;color:#e879f9}
+  .fact{border-left:3px solid #22d3ee;padding:10px 14px;background:#101024;border-radius:0 12px 12px 0;font-size:.9rem;color:#c9c9e2;margin-top:12px}
+  .formula{display:inline-block;background:#1b1b2e;border-radius:8px;padding:3px 10px;color:#fbbf24;font-family:'Courier New',monospace;font-weight:600}
+  .nav{display:flex;justify-content:space-between;margin-top:8px}
+  .recap{text-align:center}
+  .recap .formula{display:block;margin:8px auto;max-width:560px;font-size:1rem;padding:10px}
+  .readout{font-size:.88rem;color:#fbbf24;flex-basis:100%;min-height:1.2em}
+  footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
+  a{color:#22d3ee}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Class 11 Chemistry - Chapter 8 - Organic Chemistry: Basic Principles &amp; Techniques</span>
+  <h1>Organic Ka Visual Walkthrough</h1>
+  <p>5 animated scenes - hybridization se electrophile attack tak. Shapes dekho, IUPAC naam banao, isomers compare karo, carbocation ki race dekho, curved arrows udaao.</p>
+  <div class="dots" id="dots"></div>
+</header>
+
+<!-- SCENE 1 -->
+<section class="scene on">
+  <h2><span>1.</span> Hybridization - Carbon Ki Shapes</h2>
+  <p class="sub">Carbon 4 bonds banata hai, par <b>shape hybridization pe depend</b> karti hai: <b>sp³ = tetrahedral 109.5°</b> (sirf single bonds), <b>sp² = trigonal planar 120°</b> (ek double bond), <b>sp = linear 180°</b> (triple bond). Molecule chuno, angle aur σ/π breakdown dekho!</p>
+  <canvas id="cv1" width="760" height="360"></canvas>
+  <div class="ctrl">
+    <button class="btn hyb sel" data-h="0">CH₄ methane</button>
+    <button class="btn hyb" data-h="1">C₂H₄ ethene</button>
+    <button class="btn hyb" data-h="2">C₂H₂ ethyne</button>
+    <div class="readout" id="v1read"></div>
+  </div>
+  <div class="fact"><b>Catenation + tetravalency = LAKHON compounds!</b> Carbon khud se chains/rings banata hai (catenation) aur 4 bonds (tetravalency) - koi aur element itna versatile nahi. Wedge (▲) = plane ke BAHAR, dash = plane ke ANDAR - 3D structure samajhne ka code!</div>
+</section>
+
+<!-- SCENE 2 -->
+<section class="scene">
+  <h2><span>2.</span> IUPAC Naming Machine</h2>
+  <p class="sub">Naam banane ke <b>4 steps</b>: (1) longest chain dhoondo → root word, (2) functional group ko sabse CHHOTA number do, (3) substituents alphabetical prefix me, (4) suffix: -ane/-ene/-yne/-ol... Example chuno, <b>Agla Step</b> dabao!</p>
+  <canvas id="cv2" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn iup sel" data-i="0">example 1</button>
+    <button class="btn iup" data-i="1">example 2</button>
+    <button class="btn iup" data-i="2">example 3</button>
+    <button class="btn hot" id="iupnext">Agla Step</button>
+    <div class="readout" id="v2read"></div>
+  </div>
+  <div class="fact"><b>Trap:</b> "longest chain" straight nahi honi chahiye - zigzag bhi chalti hai! Aur substituents ko lowest SET of numbers do (2,3- 3,4- ko harata hai). Functional group priority sabse upar: -COOH &gt; -CHO &gt; -CO- &gt; -OH &gt; -NH₂.</div>
+</section>
+
+<!-- SCENE 3 -->
+<section class="scene">
+  <h2><span>3.</span> Isomer Lab - Same Formula, Alag Compounds</h2>
+  <p class="sub"><b>Structural isomers</b>: connectivity alag (chain, position, functional, metamerism). <b>Stereoisomers</b>: connectivity SAME, 3D arrangement alag (cis-trans, optical). Type chuno, dono structures compare karo!</p>
+  <canvas id="cv3" width="760" height="330"></canvas>
+  <div class="ctrl">
+    <button class="btn iso sel" data-t="0">Chain</button>
+    <button class="btn iso" data-t="1">Position</button>
+    <button class="btn iso" data-t="2">Functional</button>
+    <button class="btn iso" data-t="3">Cis-Trans</button>
+    <div class="readout" id="v3read"></div>
+  </div>
+  <div class="fact"><b>Feel:</b> structural isomers = same Lego pieces, different build. Cis-trans = double bond pe rotation ROKA hua hai - same side (cis) ya opposite side (trans). Optical isomers = chiral carbon (4 alag groups) ke mirror images - plane-polarised light ghumate hain!</div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene">
+  <h2><span>4.</span> Carbocation Stability - Hyperconjugation Race</h2>
+  <p class="sub"><b>3° &gt; 2° &gt; 1° &gt; methyl</b> - JEE ka all-time favourite! Kyun? <b>Hyperconjugation:</b> paas wale α-C-H sigma bonds ka electron density empty p-orbital ko support karta hai. Jitne zyada α-H, utna stable. Har carbocation pe click karo!</p>
+  <canvas id="cv4" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn cb sel" data-c="0">methyl</button>
+    <button class="btn cb" data-c="1">1°</button>
+    <button class="btn cb" data-c="2">2°</button>
+    <button class="btn cb" data-c="3">3°</button>
+    <div class="readout" id="v4read"></div>
+  </div>
+  <div class="fact"><b>Carbanion me order ULTA hai</b> (1° &gt; 2° &gt; 3°) - alkyl groups electron DETE hain, electron-rich carbanion ko unstable karte hain! Free radical carbocation JAISE behave karta hai (3° &gt; 2° &gt; 1°). +I effect bhi carbocation ko help karta hai.</div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene">
+  <h2><span>5.</span> Electrophile Attack - Curved Arrow Ka Matlab</h2>
+  <p class="sub"><b>Electrophile = electron-lover (bhookha)</b>: H⁺, NO₂⁺, BF₃. <b>Nucleophile = nucleus-lover (daani)</b>: OH⁻, CN⁻, NH₃. Ethene + H⁺ dekho: <b>curved arrow = electron pair ka movement</b> - π bond ke electrons H⁺ ko pakadte hain, doosra carbon carbocation!</p>
+  <canvas id="cv5" width="760" height="340"></canvas>
+  <div class="ctrl">
+    <button class="btn hot" id="s5go">Attack Chalao</button>
+    <button class="btn" id="s5rs">Reset</button>
+    <div class="readout" id="v5read"></div>
+  </div>
+  <div class="fact"><b>Curved arrow ka tail = electrons jahan se jaate hain, head = jahan jaate hain.</b> Full arrowhead = electron PAIR, fishhook (aadha) = single electron (radicals me). Reaction = electrophile aur nucleophile ka milan! Ab Br₂ addition samjho: alkene + Br₂ → brown color GAYAB - unsaturation ka test!</div>
+</section>
+
+<!-- RECAP -->
+<section class="scene recap">
+  <h2>Formula Pack - Screenshot Le Lo</h2>
+  <div class="formula">sp³ = tetrahedral 109.5° | sp² = trigonal 120° | sp = linear 180°</div>
+  <div class="formula">IUPAC: longest chain → lowest number to FG → alphabetical prefixes → suffix</div>
+  <div class="formula">Isomers: chain / position / functional / metamerism | cis-trans / optical</div>
+  <div class="formula">Carbocation stability: 3° &gt; 2° &gt; 1° &gt; methyl (hyperconjugation) | carbanion ULTA</div>
+  <div class="formula">Electrophile = e⁻ lover (H⁺, NO₂⁺) | Nucleophile = e⁻ donor (OH⁻, CN⁻)</div>
+  <div class="formula">Reactions: substitution / addition / elimination / rearrangement</div>
+  <div class="formula">Purification: distillation, crystallisation, chromatography | Lassaigne's test</div>
+  <p style="margin-top:18px">GOC ka engine samjha? Ab notes se revise karo aur Shorts dekho.</p>
+  <a class="btn hot" style="text-decoration:none;display:inline-block;margin-top:8px" href="../index.html">← Notes Pe Wapas</a>
+</section>
+
+<div class="nav">
+  <button class="btn" id="prev">← Peeche</button>
+  <button class="btn" id="next">Aage →</button>
+</div>
+<footer>Class 11 Chemistry Ch 8 - Organic Chemistry | Interactive Walkthrough | Notes ke saath padho, Shorts se revise karo</footer>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const dotsBox=document.getElementById('dots');
+let cur=0;
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+go(0);
+function ctx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
+function panel(g,lines,x,y){lines.forEach((L,i)=>label(g,L[0],x,y+i*22,L[1]))}
+function bond(g,x1,y1,x2,y2,n){
+  if(n===1){g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();return}
+  const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy),nx=-dy/L*4,ny=dx/L*4;
+  for(let k=0;k<n;k++){const o=(k-(n-1)/2);
+    g.beginPath();g.moveTo(x1+nx*o,y1+ny*o);g.lineTo(x2+nx*o,y2+ny*o);g.stroke()}
+}
+function atomL(g,x,y,txt,col){g.fillStyle=col||'#f0f0fa';g.font='bold 15px sans-serif';g.textAlign='center';g.fillText(txt,x,y+5);g.textAlign='left'}
+function angleArc(g,cx,cy,r,a1,a2,txt,col){
+  g.strokeStyle=col;g.lineWidth=2;g.beginPath();g.arc(cx,cy,r,a1,a2);g.stroke();
+  const mid=(a1+a2)/2;
+  label(g,txt,cx+Math.cos(mid)*(r+16)-14,cy+Math.sin(mid)*(r+16)+4,col);
+}
+
+// ---------- SCENE 1: hybridization shapes ----------
+const [c1,g1]=ctx('cv1');
+const S1={h:0};
+[...document.querySelectorAll('.hyb')].forEach(b=>b.onclick=()=>{S1.h=+b.dataset.h;[...document.querySelectorAll('.hyb')].forEach(x=>x.classList.toggle('sel',x===b))});
+function draw1(t,dt){
+  const g=g1,W=c1.width,H=c1.height;
+  g.clearRect(0,0,W,H);
+  const cx=280,cy=180;
+  if(S1.h===0){
+    // CH4 tetrahedral: 2 in-plane, 1 wedge, 1 dash
+    atomL(g,cx,cy,'C','#fbbf24');
+    g.strokeStyle='#8f8fb8';g.lineWidth=2;
+    bond(g,cx-10,cy-8,cx-90,cy-70,1);bond(g,cx+10,cy-8,cx+80,cy-70,1);
+    atomL(g,cx-104,cy-66,'H');atomL(g,cx+96,cy-66,'H');
+    // wedge (towards viewer)
+    g.fillStyle='#22d3ee';g.beginPath();g.moveTo(cx-6,cy+8);g.lineTo(cx+6,cy+8);g.lineTo(cx+2,cy+95);g.lineTo(cx-2,cy+95);g.closePath();g.fill();
+    atomL(g,cx,cy+116,'H','#22d3ee');
+    // dash (behind)
+    g.strokeStyle='#e879f9';for(let k=0;k<6;k++){const y0=cy+8+k*14,w=3+k*1.2;
+      g.beginPath();g.moveTo(cx-30-w,y0);g.lineTo(cx-30+w,y0);g.stroke()}
+    atomL(g,cx-30,cy+116,'H','#e879f9');
+    angleArc(g,cx,cy,60,-2.35,-0.79,'109.5°','#4ade80');
+    panel(g,[['sp³ hybridization','#fbbf24'],['shape: TETRAHEDRAL','#f0f0fa'],['angle: 109.5°','#4ade80'],['σ bonds: 4 · π bonds: 0','#22d3ee'],['sirf SINGLE bonds = sp³','#8f8fb8']],480,120);
+  } else if(S1.h===1){
+    // C2H4 trigonal planar
+    atomL(g,cx-45,cy,'C','#fbbf24');atomL(g,cx+45,cy,'C','#fbbf24');
+    g.strokeStyle='#8f8fb8';g.lineWidth=2;
+    bond(g,cx-25,cy,cx+25,cy,2);
+    bond(g,cx-60,cy-6,cx-130,cy-50,1);bond(g,cx-60,cy+6,cx-130,cy+50,1);
+    bond(g,cx+60,cy-6,cx+130,cy-50,1);bond(g,cx+60,cy+6,cx+130,cy+50,1);
+    atomL(g,cx-146,cy-46,'H');atomL(g,cx-146,cy+56,'H');atomL(g,cx+146,cy-46,'H');atomL(g,cx+146,cy+56,'H');
+    label(g,'π bond',cx+15,cy+40,'#e879f9');
+    angleArc(g,cx-45,cy,55,-2.75,-0.4,'120°','#4ade80');
+    panel(g,[['sp² hybridization','#fbbf24'],['shape: TRIGONAL PLANAR','#f0f0fa'],['angle: 120°','#4ade80'],['σ bonds: 5 · π bonds: 1','#22d3ee'],['DOUBLE bond = 1σ + 1π','#8f8fb8']],480,120);
+  } else {
+    // C2H2 linear
+    atomL(g,cx-45,cy,'C','#fbbf24');atomL(g,cx+45,cy,'C','#fbbf24');
+    g.strokeStyle='#8f8fb8';g.lineWidth=2;
+    bond(g,cx-25,cy,cx+25,cy,3);
+    bond(g,cx-70,cy,cx-140,cy,1);bond(g,cx+70,cy,cx+140,cy,1);
+    atomL(g,cx-156,cy,'H');atomL(g,cx+156,cy,'H');
+    angleArc(g,cx-45,cy,60,-1.57,0,'180°','#4ade80');
+    label(g,'linear - seedhi line!',cx-60,cy+50,'#4ade80');
+    panel(g,[['sp hybridization','#fbbf24'],['shape: LINEAR','#f0f0fa'],['angle: 180°','#4ade80'],['σ bonds: 3 · π bonds: 2','#22d3ee'],['TRIPLE bond = 1σ + 2π','#8f8fb8']],480,120);
+  }
+  label(g,'▲ wedge = bahar · dash = andar (3D code)',60,340,'#5c5c78');
+  const R=[['CH₄: sp³ · tetrahedral · 109.5° · 4σ 0π - single bonds'],['C₂H₄: sp² · trigonal planar · 120° · 5σ 1π - double bond = 1σ+1π'],['C₂H₂: sp · linear · 180° · 3σ 2π - triple bond = 1σ+2π']];
+  document.getElementById('v1read').innerHTML=R[S1.h][0];
+}
+
+// ---------- SCENE 2: IUPAC machine ----------
+const [c2,g2]=ctx('cv2');
+const IUP=[
+ {skel:[[150,150],[250,150],[350,150],[450,150]],fg:[2,'OH'],fgPos:'up',name:'butan-2-ol',
+  steps:['Step 1: longest chain = 4 carbon → root "but"','Step 2: functional group -OH → suffix "-ol" (single bonds → -an-)','Step 3: numbering RIGHT se - OH ko 2 milega (left se 4 - reject!)','Step 4: naam = butan-2-ol']},
+ {skel:[[150,150],[250,150],[350,150]],dbl:[0,1],name:'prop-1-ene',
+  steps:['Step 1: longest chain = 3 carbon → root "prop"','Step 2: double bond hai → suffix "-ene"','Step 3: numbering LEFT se - double bond ko 1 milega (right se 2 - reject!)','Step 4: naam = prop-1-ene']},
+ {skel:[[150,150],[250,150],[350,150],[450,150]],branch:[1,'CH₃'],name:'2-methylbutane',
+  steps:['Step 1: longest chain = 4 carbon → root "but" (zigzag bhi chal sakti hai!)','Step 2: koi functional group nahi → suffix "-ane"','Step 3: numbering LEFT se - methyl ko 2 milega (right se 3 - reject!)','Step 4: naam = 2-methylbutane']}
+];
+const S2={i:0,step:0};
+[...document.querySelectorAll('.iup')].forEach(b=>b.onclick=()=>{S2.i=+b.dataset.i;S2.step=0;[...document.querySelectorAll('.iup')].forEach(x=>x.classList.toggle('sel',x===b))});
+document.getElementById('iupnext').onclick=()=>{S2.step=(S2.step+1)%5};
+function draw2(t,dt){
+  const g=g2,W=c2.width,H=c2.height;
+  g.clearRect(0,0,W,H);
+  const E=IUP[S2.i],s=S2.step;
+  // skeleton
+  g.strokeStyle=s>=1?'#4ade80':'#8f8fb8';g.lineWidth=s>=1?3:2;
+  for(let i=0;i<E.skel.length-1;i++){
+    bond(g,E.skel[i][0]+14,E.skel[i][1],E.skel[i+1][0]-14,E.skel[i+1][1],E.dbl&&E.dbl[0]===i?2:1);
+  }
+  E.skel.forEach((p,i)=>{atomL(g,p[0],p[1],i===0||i===E.skel.length-1?'C':'C','#f0f0fa')});
+  if(E.fg){const fp=E.skel[E.fg[0]];
+    atomL(g,fp[0],fp[1]-46,'OH','#e879f9');
+    g.strokeStyle='#e879f9';g.lineWidth=2;bond(g,fp[0],fp[1]-14,fp[0],fp[1]-32,1)}
+  if(E.branch){const bp=E.skel[E.branch[0]];
+    atomL(g,bp[0],bp[1]-46,'CH₃','#22d3ee');
+    g.strokeStyle='#22d3ee';g.lineWidth=2;bond(g,bp[0],bp[1]-14,bp[0],bp[1]-32,1)}
+  // numbering when step>=3
+  if(s>=3){
+    E.skel.forEach((p,i)=>{
+      const n=S2.i===0?E.skel.length-i:i+1;
+      label(g,String(n),p[0]-4,p[1]+34,'#fbbf24')});
+  }
+  // step text right
+  const lines=[];
+  for(let k=0;k<Math.min(s,4);k++)lines.push([E.steps[k],k===Math.min(s,4)-1?'#4ade80':'#8f8fb8']);
+  if(s>=4)lines.push(['NAAM = '+E.name,'#fbbf24']);
+  panel(g,lines,470,80);
+  const msgs=['Agla Step dabao...','chain pakdi! ab suffix...','numbering ka rule dekho','sab mil gaya - naam banao!','NAAM TAYAAR: '+E.name];
+  document.getElementById('v2read').innerHTML=s>=4?'✓ <b>'+E.name+'</b> - longest chain + lowest number + suffix = naam!':msgs[s];
+}
+
+// ---------- SCENE 3: isomer lab ----------
+const [c3,g3]=ctx('cv3');
+const S3={t:0};
+[...document.querySelectorAll('.iso')].forEach(b=>b.onclick=()=>{S3.t=+b.dataset.t;[...document.querySelectorAll('.iso')].forEach(x=>x.classList.toggle('sel',x===b))});
+function chain(g,x0,y,n,cols){
+  g.strokeStyle='#8f8fb8';g.lineWidth=2;
+  for(let i=0;i<n-1;i++)bond(g,x0+i*52+12,y,x0+(i+1)*52-12,y,1);
+  for(let i=0;i<n;i++)atomL(g,x0+i*52,y,'C',cols||'#f0f0fa');
+}
+function draw3(t,dt){
+  const g=g3,W=c3.width,H=c3.height;
+  g.clearRect(0,0,W,H);
+  if(S3.t===0){
+    label(g,'CHAIN isomerism - C₄H₁₀',60,50,'#fbbf24');
+    chain(g,150,130,4);label(g,'n-butane (seedhi chain)',170,170,'#8f8fb8');
+    chain(g,190,230,3);atomL(g,242,176,'C');
+    g.strokeStyle='#8f8fb8';bond(g,242,190,242,216,1);
+    label(g,'isobutane (branch!)',210,290,'#8f8fb8');
+    label(g,'same formula, chain ki SHAPE alag',470,150,'#4ade80');
+  } else if(S3.t===1){
+    label(g,'POSITION isomerism - C₃H₈O',60,50,'#fbbf24');
+    chain(g,120,130,3);
+    atomL(g,120,84,'OH','#e879f9');g.strokeStyle='#e879f9';bond(g,120,104,120,118,1);
+    label(g,'propan-1-ol',140,170,'#8f8fb8');
+    chain(g,420,130,3);
+    atomL(g,472,84,'OH','#e879f9');g.strokeStyle='#e879f9';bond(g,472,104,472,118,1);
+    label(g,'propan-2-ol',440,170,'#8f8fb8');
+    label(g,'OH ki POSITION alag - dono alcohol hain!',170,250,'#4ade80');
+  } else if(S3.t===2){
+    label(g,'FUNCTIONAL isomerism - C₂H₆O',60,50,'#fbbf24');
+    atomL(g,150,130,'C');atomL(g,210,130,'C');atomL(g,268,130,'O','#e879f9');
+    g.strokeStyle='#8f8fb8';g.lineWidth=2;bond(g,162,130,198,130,1);bond(g,222,130,256,130,1);
+    label(g,'ethanol (ALCOHOL)',140,170,'#8f8fb8');
+    atomL(g,430,130,'C');atomL(g,488,130,'O','#e879f9');atomL(g,546,130,'C');
+    bond(g,442,130,476,130,1);bond(g,500,130,534,130,1);
+    label(g,'methoxymethane (ETHER)',400,170,'#8f8fb8');
+    label(g,'functional group HI alag - alcohol vs ether!',170,250,'#4ade80');
+  } else {
+    label(g,'CIS-TRANS isomerism - but-2-ene',60,50,'#fbbf24');
+    // cis: CH3 same side
+    atomL(g,180,150,'C');atomL(g,260,150,'C');
+    g.strokeStyle='#8f8fb8';g.lineWidth=2;bond(g,192,150,248,150,2);
+    bond(g,172,142,140,110,1);bond(g,268,142,300,110,1);
+    atomL(g,128,104,'CH₃','#22d3ee');atomL(g,312,104,'CH₃','#22d3ee');
+    atomL(g,140,196,'H');atomL(g,300,196,'H');
+    bond(g,172,158,146,188,1);bond(g,268,158,294,188,1);
+    label(g,'cis (CH₃ SAME side)',160,240,'#22d3ee');
+    // trans
+    atomL(g,480,150,'C');atomL(g,560,150,'C');
+    bond(g,492,150,548,150,2);
+    bond(g,472,142,440,110,1);bond(g,568,158,594,188,1);
+    atomL(g,428,104,'CH₃','#22d3ee');atomL(g,600,196,'CH₃','#22d3ee');
+    atomL(g,600,104,'H');atomL(g,428,196,'H');
+    bond(g,568,142,594,112,1);bond(g,472,158,446,188,1);
+    label(g,'trans (CH₃ OPPOSITE side)',450,240,'#e879f9');
+    label(g,'double bond pe rotation NAHI - dono ALAG compounds!',180,300,'#4ade80');
+  }
+  const R=['C₄H₁₀: n-butane vs isobutane - chain shape alag','C₃H₈O: propan-1-ol vs propan-2-ol - OH position alag','C₂H₆O: ethanol vs methoxymethane - functional group hi alag!','but-2-ene: cis (same side) vs trans (opposite) - rotation blocked!'];
+  document.getElementById('v3read').textContent=R[S3.t];
+}
+
+// ---------- SCENE 4: carbocation stability ----------
+const [c4,g4]=ctx('cv4');
+const CB=[['CH₃⁺ methyl',0],['CH₃CH₂⁺ 1°',3],['(CH₃)₂CH⁺ 2°',6],['(CH₃)₃C⁺ 3°',9]];
+const S4={c:3};
+[...document.querySelectorAll('.cb')].forEach(b=>b.onclick=()=>{S4.c=+b.dataset.c;[...document.querySelectorAll('.cb')].forEach(x=>x.classList.toggle('sel',x===b))});
+function draw4(t,dt){
+  const g=g4,W=c4.width,H=c4.height;
+  g.clearRect(0,0,W,H);
+  label(g,'Stability ladder (hyperconjugation se):',60,44,'#fbbf24');
+  const base=280,maxH=190;
+  CB.forEach((cb,i)=>{
+    const x=90+i*110,hv=40+cb[1]/9*maxH*0.85;
+    const sel=i===S4.c;
+    g.fillStyle=sel?'#e879f9':'#2c2c44';g.fillRect(x,base-hv,70,hv);
+    g.strokeStyle=sel?'#e879f9':'#4a4a6e';g.strokeRect(x,base-hv,70,hv);
+    label(g,cb[0].split(' ')[1],x+22,base+22,sel?'#f0f0fa':'#8f8fb8');
+    if(sel)label(g,'α-H = '+cb[1],x+18,base-hv-14,'#fbbf24');
+  });
+  // ascending arrow
+  g.strokeStyle='#4ade80';g.lineWidth=2.5;g.beginPath();g.moveTo(70,base+8);g.lineTo(480,base+8);g.stroke();
+  label(g,'stability badhti hai →',70,base+34,'#4ade80');
+  const C=CB[S4.c];
+  panel(g,[
+    [C[0],'#fbbf24'],
+    ['α-hydrogens: '+C[1],'#f0f0fa'],
+    ['hyperconjugation structures: '+C[1],'#22d3ee'],
+    ['jitne zyada α-H → utna STABLE','#8f8fb8'],
+    ['empty p-orbital ko α-C-H σ','#5c5c78'],
+    ['se electron density milti hai','#5c5c78']
+  ],520,80);
+  document.getElementById('v4read').innerHTML=C[0]+': <b>'+C[1]+' α-H</b> → '+C[1]+' hyperconjugation structures · order: <b>3° > 2° > 1° > methyl</b>';
+}
+
+// ---------- SCENE 5: electrophile attack ----------
+const [c5,g5]=ctx('cv5');
+const S5={p:0,running:false};
+document.getElementById('s5go').onclick=()=>{if(S5.p>=1)S5.p=0;S5.running=true};
+document.getElementById('s5rs').onclick=()=>{S5.p=0;S5.running=false};
+function draw5(t,dt){
+  const g=g5,W=c5.width,H=c5.height;
+  g.clearRect(0,0,W,H);
+  if(S5.running&&S5.p<1)S5.p=Math.min(1,S5.p+dt*0.5);
+  const p=S5.p;
+  const c1x=290,c2x=390,y=170;
+  // ethene carbons
+  atomL(g,c1x,y,'C','#fbbf24');atomL(g,c2x,y,'C','#fbbf24');
+  g.strokeStyle='#8f8fb8';g.lineWidth=2;
+  if(p<1){bond(g,c1x+14,y,c2x-14,y,2);label(g,'π bond (electron-rich!)',c1x+14,y+26,'#e879f9')}
+  else{
+    bond(g,c1x+14,y,c2x-14,y,1);
+    label(g,'ab sirf σ bond (single)',c1x+14,y+26,'#8f8fb8');
+  }
+  // H+ electrophile
+  atomL(g,560,110,'H⁺','#22d3ee');
+  label(g,'electrophile (bhookha - e⁻ chahiye)',500,80,'#22d3ee');
+  // curved arrow from pi bond to H+
+  if(p<1){
+    const mx=(c1x+c2x)/2;
+    g.strokeStyle='#fbbf24';g.lineWidth=3;
+    const ex=mx+(560-mx)*p*1.0, ey=y-40-80*Math.sin(Math.min(p*1.2,1)*Math.PI/2);
+    g.beginPath();g.moveTo(mx,y-10);
+    g.quadraticCurveTo(mx+60,y-110,ex,ey);
+    g.stroke();
+    if(p>0.6){ // arrowhead
+      g.beginPath();g.moveTo(ex-10,ey-2);g.lineTo(ex,ey);g.lineTo(ex-6,ey+9);g.stroke();
+    }
+    dot(g,ex,ey,4,'#fbbf24');
+  } else {
+    // product: H on left C, + on right C
+    atomL(g,c1x,y-52,'H','#22d3ee');
+    g.strokeStyle='#22d3ee';bond(g,c1x,y-14,c1x,y-36,1);
+    label(g,'+',c2x+16,y-16,'#f87171');
+    label(g,'carbocation bana! (ab Nu⁻ attack karega)',c2x-40,y+56,'#f87171');
+  }
+  panel(g,[
+    ['curved arrow = electron PAIR ka movement','#fbbf24'],
+    ['tail: π bond (electrons yahan hain)','#e879f9'],
+    ['head: H⁺ (electrons yahan chahiye)','#22d3ee'],
+    ['step 1 of electrophilic addition','#8f8fb8']
+  ],40,250);
+  document.getElementById('v5read').innerHTML=p>=1?'CH₂=CH₂ + H⁺ → CH₃-<b style="color:#f87171">CH₂⁺</b> (carbocation!) · ab nucleophile attack karega':'π electrons H⁺ ko <b>pakad rahe hain</b> - arrow udte dekho!';
+}
+
+// ---------- main loop ----------
+let lastTs=0;
+function loop(ts){const t=ts/1000;const dt=Math.min(0.12,(ts-lastTs)/1000||0.016);lastTs=ts;
+  if(cur===0)draw1(t,dt);else if(cur===1)draw2(t,dt);else if(cur===2)draw3(t,dt);else if(cur===3)draw4(t,dt);else if(cur===4)draw5(t,dt);
+  requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
