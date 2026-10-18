@@ -139,8 +139,9 @@ const nCr=(n,r)=>fact(n)/(fact(r)*fact(n-r));
 // ---------- SCENE 1: stage machine ----------
 const [c1,g1]=ctx('cv1');
 let a1=3,b1=4,d1=2,mode1='and';
+const set1={a1:v=>a1=v,b1:v=>b1=v,d1:v=>d1=v};
 [['s1a','a1','s1av'],['s1b','b1','s1bv'],['s1c','d1','s1cv']].forEach(([id,v,lab])=>{
-  document.getElementById(id).oninput=e=>{window[v]=+e.target.value;document.getElementById(lab).textContent=e.target.value};
+  document.getElementById(id).oninput=e=>{set1[v](+e.target.value);document.getElementById(lab).textContent=e.target.value};
 });
 document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mode1=b.dataset.m;document.querySelectorAll('[data-m]').forEach(x=>x.classList.toggle('sel',x===b))});
 function draw1(){
