@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydrocarbons Ka Visual Walkthrough - Class 11 Chemistry Ch 9</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07070d;color:#e8e8f2;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:18px 12px 40px}
+.wrap{max-width:820px;margin:0 auto}
+.badge{display:inline-block;font-size:.75em;padding:4px 12px;border:1px solid #3b3b5c;border-radius:999px;color:#9aa0c9;margin-bottom:10px}
+h1{font-size:1.7em;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+.tag{text-align:center;color:#9aa0c9;font-size:.9em;margin:8px 0 4px}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0 18px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2a2a45;border:0;cursor:pointer;padding:0}
+.dot.on{background:#22d3ee;box-shadow:0 0 8px #22d3ee88}
+.scene{display:none}
+.scene.on{display:block}
+h2{font-size:1.15em;color:#7dd3fc;margin-bottom:6px}
+.sub{color:#b9b9d6;font-size:.88em;margin-bottom:12px;line-height:1.5}
+canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;border-radius:12px;margin:8px 0}
+.readout{font-size:.9em;color:#c9c9e0;background:#0e0e1c;border:1px solid #26264a;border-radius:10px;padding:10px 14px;margin:8px 0;line-height:1.55;min-height:52px}
+.readout b{color:#7dd3fc}
+.fact{font-size:.85em;color:#a8a8cc;background:#0e0e1c;border-left:3px solid #22d3ee;border-radius:0 8px 8px 0;padding:9px 12px;margin:8px 0;line-height:1.5}
+.fact b{color:#e879f9}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.btn{background:#181830;color:#c9c9e0;border:1px solid #33335c;border-radius:10px;padding:8px 14px;font-size:.85em;cursor:pointer}
+.btn.sel{border-color:#e879f9;color:#e879f9;background:#22122a}
+.btn.hot{background:#22d3ee;color:#06202a;border-color:#22d3ee;font-weight:700}
+.btn:active{transform:scale(.97)}
+.sliderrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.85em;color:#c9c9e0}
+.sliderrow input[type=range]{flex:1;accent-color:#22d3ee}
+.sliderrow b{color:#e879f9;min-width:64px;text-align:right}
+.recap .card{background:#0e0e1c;border:1px solid #26264a;border-radius:12px;padding:14px 16px;margin:10px 0}
+.recap .card h3{color:#e879f9;font-size:.95em;margin-bottom:6px}
+.recap .card p{font-size:.86em;color:#c9c9e0;line-height:1.6;font-family:ui-monospace,monospace}
+.navrow{display:flex;justify-content:space-between;margin-top:18px}
+.credit{text-align:center;color:#565672;font-size:.75em;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="text-align:center"><span class="badge">Class 11 Chemistry - Chapter 9 - Hydrocarbons</span></div>
+<h1>Hydrocarbons Ka Visual Walkthrough</h1>
+<p class="tag">5 animated scenes - char families pehchano, free radicals ki chain chalao, Markovnikov ka rule test karo, acidity ka order dekho, benzene ka ring ghumao.</p>
+<div class="dots" id="dots"></div>
+
+<section class="scene on">
+<h2>1. Char Families - Formula Se Pehchano</h2>
+<p class="sub">Hydrocarbon = sirf C + H. Family <b>bond</b> se decide hoti hai: sab single = alkane, ek double = alkene, ek triple = alkyne. n badlo aur H gino - general formula HAMESHA fit hota hai!</p>
+<canvas id="cv1" width="760" height="360"></canvas>
+<div class="sliderrow"><span>carbons (n)</span><input type="range" id="nslide" min="1" max="8" value="4"><b id="nval">n = 4</b></div>
+<div class="btnrow">
+<button class="btn fam sel" data-f="alkane">Alkane (single)</button>
+<button class="btn fam" data-f="alkene">Alkene (1 double)</button>
+<button class="btn fam" data-f="alkyne">Alkyne (1 triple)</button>
+<button class="btn fam" data-f="aromatic">Aromatic</button>
+</div>
+<div class="readout" id="v1read"></div>
+<div class="fact"><b>Feel:</b> alkane = lazy (saturated, kam reactive - par fuel ka raaja: LPG, CNG, petrol!). Alkene/alkyne = active (pi bond mein extra electrons - reaction ke liye ready!). Aromatic = benzene ring wala VIP.</div>
+</section>
+
+<section class="scene">
+<h2>2. Free Radical Halogenation - Chain Reaction</h2>
+<p class="sub">CH<sub>4</sub> + Cl<sub>2</sub> ko <b>sunlight</b> do aur chain shuru! 3 steps: initiation (radicals bante hain), propagation (radical naya radical paida karta hai), termination (radicals milke khatam). Animation dekho:</p>
+<canvas id="cv2" width="760" height="360"></canvas>
+<div class="btnrow"><button class="btn hot" id="replay2">Phir Se Chalao</button></div>
+<div class="readout" id="v2read"></div>
+<div class="fact"><b>Aage kya hota hai:</b> CH<sub>3</sub>Cl pe yahi chain phir chalti hai - CH<sub>3</sub>Cl → CH<sub>2</sub>Cl<sub>2</sub> → CHCl<sub>3</sub> → CCl<sub>4</sub>. Isliye products ka MIXTURE milta hai!</div>
+</section>
+
+<section class="scene">
+<h2>3. Markovnikov Ka Rule - H Kahan Jaayega?</h2>
+<p class="sub">Propene + HBr: H us carbon pe jaata hai jahan <b>pehle se ZYADA H</b> hain ("rich get richer")! Kyun? Kyunki is route se <b>zyada stable carbocation</b> banta hai. Peroxide ON karo - rule ULTA ho jaata hai (sirf HBr ke saath!).</p>
+<canvas id="cv3" width="760" height="380"></canvas>
+<div class="btnrow">
+<button class="btn hot" id="play3">Addition Chalao</button>
+<button class="btn" id="perox">Peroxide (ROOR): OFF</button>
+</div>
+<div class="readout" id="v3read"></div>
+<div class="fact"><b>Kharash / peroxide effect:</b> anti-Markovnikov SIRF HBr + peroxide ke saath hota hai - HCl aur HI ke saath NAHI. Exam ka favourite trap!</div>
+</section>
+
+<section class="scene">
+<h2>4. sp, sp2, sp3 - Acidity Ka Order</h2>
+<p class="sub">Terminal alkyne (C≡C-H) <b>WEAK ACID</b> hai - alkene/alkane nahi! Wajah: sp carbon ka <b>s-character 50%</b> - electrons ko zyada kheenchta hai, H ko dheela pakadta hai. Hybridisation badlo, s-character dekho:</p>
+<canvas id="cv4" width="760" height="340"></canvas>
+<div class="btnrow">
+<button class="btn hyb" data-h="sp3">sp3 (alkane)</button>
+<button class="btn hyb" data-h="sp2">sp2 (alkene)</button>
+<button class="btn hyb sel" data-h="sp">sp (alkyne)</button>
+</div>
+<div class="readout" id="v4read"></div>
+<div class="fact"><b>Acidity order:</b> alkyne &gt; alkene &gt; alkane (sp &gt; sp<sup>2</sup> &gt; sp<sup>3</sup>). Terminal alkyne ka TEST: ammoniacal AgNO<sub>3</sub> → white ppt, ammoniacal Cu<sub>2</sub>Cl<sub>2</sub> → red ppt!</div>
+</section>
+
+<section class="scene">
+<h2>5. Benzene - Delocalised Ring Ka VIP</h2>
+<p class="sub">6 C, har ek sp<sup>2</sup>, aur <b>6 pi electrons poore ring mein ghoomte hain</b> - isliye benzene extra stable (aromatic!). Isliye woh addition NAHI, <b>substitution</b> karta hai - aromaticity bachani hai! Reactions aur directive influence try karo:</p>
+<canvas id="cv5" width="760" height="400"></canvas>
+<div class="btnrow">
+<button class="btn eas" data-s="nitration">Nitration</button>
+<button class="btn eas" data-s="halogenation">Halogenation</button>
+<button class="btn eas" data-s="sulphonation">Sulphonation</button>
+<button class="btn eas" data-s="fcalk">Friedel-Crafts Alkylation</button>
+<button class="btn eas" data-s="fcacyl">Friedel-Crafts Acylation</button>
+</div>
+<div class="btnrow">
+<button class="btn dir" data-d="op">Directive: -CH3 (o/p director)</button>
+<button class="btn dir" data-d="meta">Directive: -NO2 (meta director)</button>
+</div>
+<div class="sliderrow"><span>Huckel n</span><input type="range" id="hslide" min="0" max="3" value="1"><b id="hval">n = 1</b></div>
+<div class="readout" id="v5read"></div>
+<div class="fact"><b>Proof of stability:</b> benzene bina catalyst ke Br<sub>2</sub> ka colour NAHI udta (addition nahi karta). Huckel rule: cyclic + planar + (4n+2) pi electrons = aromatic. Benzene: n=1, 6 electrons - perfect!</div>
+</section>
+
+<section class="scene recap">
+<h2 style="text-align:center;color:#e879f9">Formula Pack - Screenshot Le Lo</h2>
+<div class="card"><h3>Char Families</h3><p>Alkane: C<sub>n</sub>H<sub>2n+2</sub> (sab single) | Alkene: C<sub>n</sub>H<sub>2n</sub> (1 double) | Alkyne: C<sub>n</sub>H<sub>2n-2</sub> (1 triple) | Aromatic: benzene C<sub>6</sub>H<sub>6</sub> ring</p></div>
+<div class="card"><h3>Free Radical Halogenation</h3><p>CH<sub>4</sub> + Cl<sub>2</sub> (sunlight) → CH<sub>3</sub>Cl → CH<sub>2</sub>Cl<sub>2</sub> → CHCl<sub>3</sub> → CCl<sub>4</sub> | 3 steps: INITIATION → PROPAGATION → TERMINATION</p></div>
+<div class="card"><h3>Markovnikov Rule</h3><p>H us C pe jahan pehle se ZYADA H (stable carbocation = major product) | Anti-Mark: SIRF HBr + peroxide (Kharash effect), HCl/HI pe nahi</p></div>
+<div class="card"><h3>Alkyne Acidity</h3><p>acidity: alkyne &gt; alkene &gt; alkane | s-character: sp 50% &gt; sp2 33% &gt; sp3 25% | terminal alkyne test: AgNO<sub>3</sub> white ppt, Cu<sub>2</sub>Cl<sub>2</sub> red ppt</p></div>
+<div class="card"><h3>Benzene (Aromatic)</h3><p>6 pi electrons delocalised, Huckel 4n+2 (n=1: 6) | Addition NAHI - Electrophilic SUBSTITUTION karta hai</p></div>
+<div class="card"><h3>EAS Reagents</h3><p>Nitration: conc HNO<sub>3</sub>+H<sub>2</sub>SO<sub>4</sub> | Halogenation: Cl<sub>2</sub>/FeCl<sub>3</sub> | Sulphonation: conc H<sub>2</sub>SO<sub>4</sub> heat | FC alkylation: R-Cl/AlCl<sub>3</sub> | FC acylation: RCOCl/AlCl<sub>3</sub> | o/p directors: -OH, -NH<sub>2</sub>, -CH<sub>3</sub>, halogens | meta directors: -NO<sub>2</sub>, -CHO, -COOH, -CN</p></div>
+</section>
+
+<div class="navrow">
+<button class="btn" id="prev">← Peeche</button>
+<button class="btn hot" id="next">Aage →</button>
+</div>
+<p class="credit">Learn With Rahul - Class 11 Chemistry Ch 9 Hydrocarbons Visual Walkthrough</p>
+</div>
+
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+let cur=0;
+const dotsBox=document.getElementById('dots');
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
+function line(g,x1,y1,x2,y2,col,w,dash){g.strokeStyle=col;g.lineWidth=w||1.5;if(dash)g.setLineDash(dash);g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();g.setLineDash([])}
+function atom(g,x,y,r,col,txt,tcol){dot(g,x,y,r,col);g.fillStyle=tcol||'#06202a';g.font='bold '+(r>11?13:10)+'px sans-serif';g.textAlign='center';g.fillText(txt,x,y+(r>11?4:3));g.textAlign='left'}
+const TAU=Math.PI*2;
+const L=(a,b,p)=>a+(b-a)*p;
+const ease=p=>p*p*(3-2*p);
+
+// ---------- SCENE 1: four families ----------
+const [c1,g1]=ctx('cv1');
+const S1={n:4,fam:'alkane'};
+const ANAMES=['methane','ethane','propane','butane','pentane','hexane','heptane','octane'];
+document.getElementById('nslide').oninput=e=>{S1.n=+e.target.value;document.getElementById('nval').textContent='n = '+S1.n};
+[...document.querySelectorAll('.fam')].forEach(b=>b.onclick=()=>{S1.fam=b.dataset.f;[...document.querySelectorAll('.fam')].forEach(x=>x.classList.toggle('sel',x===b));
+ if(S1.fam!=='alkane'&&S1.fam!=='aromatic'&&S1.n<2){S1.n=2;document.getElementById('nslide').value=2;document.getElementById('nval').textContent='n = 2'}});
+function draw1(){
+  const g=g1,W=c1.width,H=c1.height;g.clearRect(0,0,W,H);
+  const r1=document.getElementById('v1read');
+  if(S1.fam==='aromatic'){
+    const cx=380,cy=170,R=95;g.lineWidth=2.5;g.strokeStyle='#22d3ee';g.beginPath();
+    for(let i=0;i<6;i++){const a=-Math.PI/2+i*Math.PI/3,x=cx+R*Math.cos(a),y=cy+R*Math.sin(a);i?g.lineTo(x,y):g.moveTo(x,y)}g.closePath();g.stroke();
+    g.setLineDash([5,5]);g.strokeStyle='#e879f9';g.beginPath();g.arc(cx,cy,55,0,TAU);g.stroke();g.setLineDash([]);
+    label(g,'6 pi electrons = poore ring mein delocalised',cx-140,cy+R+32,'#e879f9');
+    r1.innerHTML='Aromatic family ka boss: <b>benzene C<sub>6</sub>H<sub>6</sub></b> - chain nahi, RING! 6 pi electrons ek jagah nahi rukti - poore ring mein ghoomti hain. Iska poora khel Scene 5 mein.';
+    return;
+  }
+  const n=S1.n;
+  const sp=n>1?Math.min(76,600/(n-1)):0;
+  const x0=(W-(n-1)*sp)/2, cy=180;
+  const hcnt=[];
+  for(let i=0;i<n;i++){
+    let h=(n===1)?4:((i===0||i===n-1)?3:2);
+    if(S1.fam==='alkene'&&(i===0||i===1))h-=1;
+    if(S1.fam==='alkyne'&&(i===0||i===1))h-=2;
+    hcnt.push(h);
+  }
+  for(let i=0;i<n-1;i++){
+    const x1=x0+i*sp,x2=x0+(i+1)*sp;
+    const b=(i===0&&S1.fam==='alkene')?2:(i===0&&S1.fam==='alkyne')?3:1;
+    if(b===1)line(g,x1,cy,x2,cy,'#8f8fb8',2.5);
+    else if(b===2){line(g,x1,cy-4,x2,cy-4,'#8f8fb8',2.5);line(g,x1,cy+4,x2,cy+4,'#8f8fb8',2.5)}
+    else{line(g,x1,cy-6,x2,cy-6,'#8f8fb8',2.2);line(g,x1,cy,x2,cy,'#8f8fb8',2.2);line(g,x1,cy+6,x2,cy+6,'#8f8fb8',2.2)}
+  }
+  let Htot=0;
+  for(let i=0;i<n;i++){
+    const x=x0+i*sp,h=hcnt[i];Htot+=h;
+    const slots=[];
+    if(i===0&&n>1)slots.push([-1,0]);
+    if(i===n-1&&n>1)slots.push([1,0]);
+    slots.push([0,-1],[0,1]);
+    if(n===1)slots.push([1,0],[-1,0]);
+    for(let k=0;k<h;k++){
+      const s=slots[k],hx=x+s[0]*38,hy=cy+s[1]*44;
+      line(g,x,cy,hx,hy,'#3b3b5c',1.2);
+      atom(g,hx,hy,8,'#565672','H','#e8e8f2');
+    }
+    atom(g,x,cy,15,'#22d3ee','C');
+  }
+  const gen=S1.fam==='alkane'?(2*n+2):(S1.fam==='alkene'?2*n:2*n-2);
+  const genTxt=S1.fam==='alkane'?'C<sub>n</sub>H<sub>2n+2</sub>':(S1.fam==='alkene'?'C<sub>n</sub>H<sub>2n</sub>':'C<sub>n</sub>H<sub>2n-2</sub>');
+  const nm=S1.fam==='alkane'?ANAMES[n-1]:(S1.fam==='alkene'?ANAMES[n-1].replace('ane','ene'):ANAMES[n-1].replace('ane','yne'));
+  r1.innerHTML='General formula <b>'+genTxt+'</b> → n = '+n+': <b>C'+n+'H'+gen+'</b> ('+nm+') | canvas pe gin ke dekho: H count = <b>'+Htot+'</b> - EXACT MATCH!';
+}
+
+// ---------- SCENE 2: free radical chain ----------
+const [c2,g2]=ctx('cv2');
+const S2={t0:-1};
+document.getElementById('replay2').onclick=()=>{S2.t0=nowT};
+const STEPTXT=[
+ 'Reactants ready: CH<sub>4</sub> + Cl<sub>2</sub>. Dark mein KUCH nahi hota - sunlight ki energy chahiye!',
+ '<b>STEP 1 - INITIATION:</b> sunlight Cl<sub>2</sub> ka bond todti hai → 2 Cl• free radicals (super reactive, unpaired electron!)',
+ '<b>STEP 2 - PROPAGATION (a):</b> Cl• methane se H kheench leta hai → HCl + CH<sub>3</sub>• (naya radical paida - chain zinda!)',
+ '<b>STEP 2 - PROPAGATION (b):</b> CH<sub>3</sub>• doosre Cl<sub>2</sub> se Cl kheenchta hai → CH<sub>3</sub>Cl + Cl• (radical WAPAS - chain chalti rahegi!)',
+ '<b>STEP 3 - TERMINATION:</b> do radicals mil gaye (Cl• + Cl• → Cl<sub>2</sub>) - chain khatam. Yaad rakho: CH<sub>3</sub>• + Cl• → CH<sub>3</sub>Cl bhi termination hai!'];
+function ch4(g,hx,hy,radical){
+  const cx=170,cy=185;
+  const Hs=[[138,150],[138,220],[188,148]];
+  Hs.forEach(p=>{line(g,cx,cy,p[0],p[1],'#3b3b5c',1.2);atom(g,p[0],p[1],8,'#565672','H','#e8e8f2')});
+  if(hx!==null){line(g,cx,cy,hx,hy,'#3b3b5c',1.2);atom(g,hx,hy,8,'#565672','H','#e8e8f2')}
+  atom(g,cx,cy,17,'#22d3ee','C');
+  if(radical){dot(g,cx+15,cy-15,4,'#e879f9');label(g,'CH3• (methyl radical)',cx+30,cy+44,'#e879f9')}
+  else label(g,'CH4 (methane)',cx-40,cy+50,'#9aa0c9');
+}
+function clpair(g,x,y,gap,txt){
+  line(g,x-gap/2,y,x+gap/2,y,'#3b3b5c',1.5);
+  atom(g,x-gap/2,y,13,'#4ade80','Cl');atom(g,x+gap/2,y,13,'#4ade80','Cl');
+  if(txt)label(g,txt,x-16,y+30,'#9aa0c9');
+}
+function draw2(t){
+  const g=g2,W=c2.width,H=c2.height;g.clearRect(0,0,W,H);
+  const tt=((t-S2.t0)%12+12)%12;
+  const st=Math.min(4,Math.floor(tt/2.4)), p=ease(Math.min(1,(tt-st*2.4)/2.4));
+  document.getElementById('v2read').innerHTML=STEPTXT[st];
+  if(st===0){
+    ch4(g,205,208,false);clpair(g,620,180,32,'Cl2');
+    label(g,'sunlight off...',600,90,'#565672');
+  }else if(st===1){
+    ch4(g,205,208,false);
+    for(let i=0;i<5;i++){const a=-0.4-i*0.28;line(g,700,40,700+90*Math.cos(a),40+90*Math.sin(a),'#fbbf24',2)}
+    dot(g,700,40,10,'#fbbf24');label(g,'sunlight',652,24,'#fbbf24');
+    const ax=L(604,500,p),ay=L(180,110,p),bx=L(636,590,p),by=L(180,260,p);
+    atom(g,ax,ay,13,'#4ade80','Cl');dot(g,ax+11,ay-11,4,'#e879f9');
+    atom(g,bx,by,13,'#4ade80','Cl');dot(g,bx+11,by-11,4,'#e879f9');
+    label(g,'Cl•',ax-8,ay-22,'#e879f9');label(g,'Cl•',bx-8,by+34,'#e879f9');
+  }else if(st===2){
+    const grab=p>0.55, q=grab?(p-0.55)/0.45:p;
+    const hx=grab?L(330,450,q):L(205,330,p), hy=grab?L(150,105,q):L(208,150,p);
+    ch4(g,grab?null:hx,grab?null:hy,grab);
+    const ax=grab?L(350,470,q):L(500,350,p), ay=grab?L(130,95,q):L(110,140,p);
+    atom(g,ax,ay,13,'#4ade80','Cl');
+    if(grab){line(g,ax,ay,hx,hy,'#3b3b5c',1.5);atom(g,hx,hy,8,'#565672','H','#e8e8f2');label(g,'HCl ban gaya!',ax-20,ay-26,'#4ade80')}
+    else{dot(g,ax+11,ay-11,4,'#e879f9');label(g,'Cl• ne H ko target kiya',ax-60,ay-26,'#e879f9')}
+    atom(g,590,260,13,'#4ade80','Cl');dot(g,601,249,4,'#e879f9');
+  }else if(st===3){
+    ch4(g,null,null,true);
+    const cx2=L(604,225,p),cy2=L(310,215,p);
+    atom(g,cx2,cy2,13,'#4ade80','Cl');
+    if(p>0.7){line(g,187,200,cx2,cy2,'#8f8fb8',2);label(g,'CH3Cl BAN GAYA!',130,262,'#4ade80')}
+    const dx=L(636,470,p),dy=L(310,295,p);
+    atom(g,dx,dy,13,'#4ade80','Cl');dot(g,dx+11,dy-11,4,'#e879f9');
+    label(g,'Cl• REGENERATED!',dx-60,dy+34,'#e879f9');
+    atom(g,520,80,13,'#4ade80','Cl');atom(g,545,68,8,'#565672','H','#e8e8f2');label(g,'HCl',505,50,'#9aa0c9');
+  }else{
+    ch4(g,null,null,false);
+    atom(g,232,222,13,'#4ade80','Cl');line(g,187,198,222,214,'#8f8fb8',2);
+    label(g,'CH3Cl (product)',140,262,'#9aa0c9');
+    const mx=L(480,556,p),my=L(295,262,p);
+    atom(g,mx,my,13,'#4ade80','Cl');atom(g,590,260,13,'#4ade80','Cl');
+    if(p>0.8){label(g,'Cl2 (wapas)',540,300,'#9aa0c9')}
+    else{dot(g,mx+11,my-11,4,'#e879f9');dot(g,601,249,4,'#e879f9')}
+    label(g,'Cl• + Cl• → Cl2 : chain KHATAM',420,220,'#fbbf24');
+    atom(g,520,80,13,'#4ade80','Cl');atom(g,545,68,8,'#565672','H','#e8e8f2');label(g,'HCl',505,50,'#9aa0c9');
+  }
+}
+
+// ---------- SCENE 3: Markovnikov ----------
+const [c3,g3]=ctx('cv3');
+const S3={per:false,anim:1};
+document.getElementById('perox').onclick=e=>{S3.per=!S3.per;e.target.textContent='Peroxide (ROOR): '+(S3.per?'ON':'OFF');e.target.classList.toggle('sel',S3.per);S3.anim=0};
+document.getElementById('play3').onclick=()=>{S3.anim=0};
+function draw3(){
+  const g=g3,W=c3.width,H=c3.height;g.clearRect(0,0,W,H);
+  S3.anim=Math.min(1,S3.anim+0.008);
+  const p=ease(S3.anim);
+  const C1=[120,200],C2=[220,200],C3=[300,200];
+  line(g,C1[0],C1[1]-4,C2[0],C2[1]-4,'#8f8fb8',2.5);line(g,C1[0],C1[1]+4,C2[0],C2[1]+4,'#8f8fb8',2.5);
+  line(g,C2[0],C2[1],C3[0],C3[1],'#8f8fb8',2.5);
+  [[C1[0]-32,C1[1]-26],[C1[0]-32,C1[1]+26]].forEach(h=>{line(g,C1[0],C1[1],h[0],h[1],'#3b3b5c',1.2);atom(g,h[0],h[1],8,'#565672','H','#e8e8f2')});
+  line(g,C2[0],C2[1],C2[0]+4,C2[1]-36,'#3b3b5c',1.2);atom(g,C2[0]+4,C2[1]-40,8,'#565672','H','#e8e8f2');
+  [[C3[0]+30,C3[1]-28],[C3[0]+30,C3[1]+28],[C3[0]+38,C3[1]]].forEach(h=>{line(g,C3[0],C3[1],h[0],h[1],'#3b3b5c',1.2);atom(g,h[0],h[1],8,'#565672','H','#e8e8f2')});
+  atom(g,C1[0],C1[1],15,'#22d3ee','C');atom(g,C2[0],C2[1],15,'#22d3ee','C');atom(g,C3[0],C3[1],15,'#22d3ee','C');
+  label(g,'C1 (2 H - zyada H!)',60,272,'#9aa0c9');label(g,'C2 (1 H)',196,272,'#9aa0c9');label(g,'C3',296,272,'#9aa0c9');
+  const Ht=S3.per?C2:C1, Bt=S3.per?C1:C2;
+  const hx=L(150,Ht[0]+6,p),hy=L(70,Ht[1]-44,p);
+  const bx=L(210,Bt[0]+4,p),by=L(100,Bt[1]+42,p);
+  line(g,hx,hy,bx,by,'#3b3b5c',Math.max(0.5,2.5*(1-p)));
+  atom(g,hx,hy,8,'#f8fafc','H','#06202a');atom(g,bx,by,15,'#e879f9','Br','#fff');
+  if(p<1)label(g,'H-Br',hx-4,hy-22,'#9aa0c9');
+  else{
+    line(g,Ht[0],Ht[1],hx,hy,'#8f8fb8',2);line(g,Bt[0],Bt[1],bx,by,'#8f8fb8',2);
+    label(g,S3.per?'Br C1 pe (kam H wale)':'Br C2 pe (middle C)',40,320,'#e879f9');
+  }
+  label(g,'Kyun? Carbocation stability:',470,80,'#7dd3fc');
+  g.fillStyle='#4ade80';g.fillRect(470,100,220,18);label(g,'2-deg carbocation - ZYADA stable',474,136,'#4ade80');
+  label(g,'(Markovnikov route isi se guzarti hai)',470,156,'#4ade80');
+  g.fillStyle='#f87171';g.fillRect(470,180,90,18);label(g,'1-deg carbocation - kam stable',474,216,'#f87171');
+  label(g,'Stable intermediate = fast route = MAJOR product',470,250,'#c9c9e0');
+  const r3=document.getElementById('v3read');
+  if(!S3.per)r3.innerHTML='<b>MARKOVNIKOV:</b> H C1 pe (jahan pehle se 2 H), Br C2 pe → <b>2-bromopropane CH<sub>3</sub>-CHBr-CH<sub>3</sub> = MAJOR</b>. Route 2-deg carbocation se guzarti hai - stable, isliye major!';
+  else r3.innerHTML='<b>ANTI-MARKOVNIKOV (peroxide effect):</b> Br C1 pe (kam H wale) → <b>1-bromopropane CH<sub>2</sub>Br-CH<sub>2</sub>-CH<sub>3</sub></b>. Free radical mechanism se hota hai - aur SIRF HBr ke saath kaam karta hai!';
+}
+
+// ---------- SCENE 4: hybridisation & acidity ----------
+const [c4,g4]=ctx('cv4');
+const S4={h:'sp'};
+const HYB={
+ sp3:{pct:25,ex:'CH4 methane',read:'<b>sp3 (alkane):</b> s-character sirf <b>25%</b> - electron ko loose pakda, H chipka hi rehta hai. Alkane acidic NAHI hai.'},
+ sp2:{pct:33,ex:'CH2=CH2 ethene',read:'<b>sp2 (alkene):</b> s-character <b>33%</b> - thoda zyada kheench, par abhi bhi H nahi deta. Alkene bhi practically acidic nahi.'},
+ sp:{pct:50,ex:'HC≡CH ethyne',read:'<b>sp (alkyne):</b> s-character <b>50%</b> - MAX kheench! Terminal H dheela hai: <b>weak acid</b>. Na/NaNH<sub>2</sub> se H<sup>+</sup> deta hai → sodium acetylide!'}};
+[...document.querySelectorAll('.hyb')].forEach(b=>b.onclick=()=>{S4.h=b.dataset.h;[...document.querySelectorAll('.hyb')].forEach(x=>x.classList.toggle('sel',x===b))});
+function draw4(t){
+  const g=g4,W=c4.width,H=c4.height;g.clearRect(0,0,W,H);
+  const cols={sp3:150,sp2:380,sp:610};
+  const my=110;
+  const m1=cols.sp3;
+  [[-40,-40],[40,-40],[-40,40],[40,40]].forEach(d=>{line(g,m1,my,m1+d[0],my+d[1],'#3b3b5c',1.2);atom(g,m1+d[0],my+d[1],8,'#565672','H','#e8e8f2')});
+  atom(g,m1,my,15,'#22d3ee','C');
+  const m2a=cols.sp2-30,m2b=cols.sp2+30;
+  line(g,m2a,my-4,m2b,my-4,'#8f8fb8',2.2);line(g,m2a,my+4,m2b,my+4,'#8f8fb8',2.2);
+  [[m2a-26,my-24],[m2a-26,my+24]].forEach(h=>{line(g,m2a,my,h[0],h[1],'#3b3b5c',1.2);atom(g,h[0],h[1],8,'#565672','H','#e8e8f2')});
+  [[m2b+26,my-24],[m2b+26,my+24]].forEach(h=>{line(g,m2b,my,h[0],h[1],'#3b3b5c',1.2);atom(g,h[0],h[1],8,'#565672','H','#e8e8f2')});
+  atom(g,m2a,my,15,'#22d3ee','C');atom(g,m2b,my,15,'#22d3ee','C');
+  const m3a=cols.sp-26,m3b=cols.sp+26;
+  line(g,m3a,my-5,m3b,my-5,'#8f8fb8',2);line(g,m3a,my,m3b,my,'#8f8fb8',2);line(g,m3a,my+5,m3b,my+5,'#8f8fb8',2);
+  line(g,m3a,my,m3a-24,my,'#3b3b5c',1.2);atom(g,m3a-30,my,8,'#f8fafc','H','#06202a');
+  line(g,m3b,my,m3b+24,my,'#3b3b5c',1.2);atom(g,m3b+30,my,8,'#f8fafc','H','#06202a');
+  atom(g,m3a,my,15,'#22d3ee','C');atom(g,m3b,my,15,'#22d3ee','C');
+  if(S4.h==='sp'){const w=1.5+Math.sin(t*5)*0.5;g.strokeStyle='#e879f9';g.lineWidth=w;g.beginPath();g.arc(m3b+30,my,14,0,TAU);g.stroke();label(g,'yeh H dheela hai!',m3b+8,my-26,'#e879f9')}
+  Object.keys(cols).forEach(k=>{
+    const x=cols[k],sel=S4.h===k;
+    label(g,k+' : '+HYB[k].pct+'% s-character',x-70,190,sel?'#e879f9':'#9aa0c9');
+    g.fillStyle='#1a1a30';g.fillRect(x-70,200,150,14);
+    g.fillStyle=sel?'#e879f9':'#22d3ee';g.fillRect(x-70,200,HYB[k].pct*3,14);
+    label(g,HYB[k].ex,x-70,240,'#565672');
+    if(sel){g.strokeStyle='#e879f9';g.lineWidth=1.5;g.strokeRect(x-95,52,190,196)}
+  });
+  label(g,'acidity:  alkane (sp3)  <  alkene (sp2)  <  alkyne (sp)',150,292,'#fbbf24');
+  document.getElementById('v4read').innerHTML=HYB[S4.h].read;
+}
+
+// ---------- SCENE 5: benzene & EAS ----------
+const [c5,g5]=ctx('cv5');
+const S5={sub:null,dir:null};
+const EAS={
+ nitration:{name:'-NO2',reagent:'conc HNO3 + conc H2SO4',prod:'Nitrobenzene',disp:'NITRATION'},
+ halogenation:{name:'-Cl',reagent:'Cl2 / FeCl3',prod:'Chlorobenzene',disp:'HALOGENATION'},
+ sulphonation:{name:'-SO3H',reagent:'conc H2SO4 (heat)',prod:'Benzene sulphonic acid',disp:'SULPHONATION'},
+ fcalk:{name:'-R',reagent:'R-Cl / AlCl3',prod:'Alkylbenzene',disp:'FRIEDEL-CRAFTS ALKYLATION'},
+ fcacyl:{name:'-COR',reagent:'RCOCl / AlCl3',prod:'Ketone (acylbenzene)',disp:'FRIEDEL-CRAFTS ACYLATION'}};
+[...document.querySelectorAll('.eas')].forEach(b=>b.onclick=()=>{S5.sub=b.dataset.s;S5.dir=null;[...document.querySelectorAll('.eas')].forEach(x=>x.classList.toggle('sel',x===b));[...document.querySelectorAll('.dir')].forEach(x=>x.classList.remove('sel'))});
+[...document.querySelectorAll('.dir')].forEach(b=>b.onclick=()=>{S5.dir=b.dataset.d;S5.sub=null;[...document.querySelectorAll('.dir')].forEach(x=>x.classList.toggle('sel',x===b));[...document.querySelectorAll('.eas')].forEach(x=>x.classList.remove('sel'))});
+document.getElementById('hslide').oninput=e=>{document.getElementById('hval').textContent='n = '+e.target.value};
+function draw5(t){
+  const g=g5,W=c5.width,H=c5.height;g.clearRect(0,0,W,H);
+  const cx=270,cy=195,R=105;
+  const V=[];for(let i=0;i<6;i++){const a=-Math.PI/2+i*Math.PI/3;V.push([cx+R*Math.cos(a),cy+R*Math.sin(a)])}
+  g.strokeStyle='#22d3ee';g.lineWidth=2.5;g.beginPath();
+  V.forEach((v,i)=>i?g.lineTo(v[0],v[1]):g.moveTo(v[0],v[1]));g.closePath();g.stroke();
+  g.setLineDash([5,5]);g.strokeStyle='#e879f9';g.beginPath();g.arc(cx,cy,58,0,TAU);g.stroke();g.setLineDash([]);
+  for(let i=0;i<6;i++){const a=t*0.7+i*Math.PI/3;dot(g,cx+58*Math.cos(a),cy+58*Math.sin(a),4,'#e879f9')}
+  label(g,'6 pi electrons - sab jagah ghoomte hain!',cx-110,cy+155,'#e879f9');
+  const sub=S5.dir?(S5.dir==='op'?'-CH3':'-NO2'):(S5.sub?EAS[S5.sub].name:null);
+  V.forEach((v,i)=>{
+    const ox=v[0]+(v[0]-cx)*0.32,oy=v[1]+(v[1]-cy)*0.32;
+    atom(g,v[0],v[1],13,'#22d3ee','C');
+    if(i===0&&sub){line(g,v[0],v[1],ox,oy,'#8f8fb8',2);label(g,sub,ox-14,oy+4,'#fbbf24')}
+    else{atom(g,ox,oy,8,'#565672','H','#e8e8f2')}
+  });
+  if(S5.dir){
+    const pos=S5.dir==='op'?[1,3,5]:[2,4];
+    const nm=S5.dir==='op'?['ortho','para','ortho']:['meta','meta'];
+    pos.forEach((vi,k)=>{g.strokeStyle='#e879f9';g.lineWidth=2.5;g.beginPath();g.arc(V[vi][0],V[vi][1],24,0,TAU);g.stroke();label(g,nm[k],V[vi][0]-18,V[vi][1]+42,'#e879f9')});
+    label(g,'naya group YAHA aayega',520,60,'#e879f9');
+  }
+  const hn=+document.getElementById('hslide').value;
+  const pi=4*hn+2;
+  label(g,'Huckel: 4n+2 = '+pi+' pi electrons (n='+hn+')',470,300,'#7dd3fc');
+  label(g,pi===6?'6 = BENZENE - AROMATIC!':'benzene ke liye n=1 chahiye (6 electrons)',470,322,pi===6?'#4ade80':'#9aa0c9');
+  const r5=document.getElementById('v5read');
+  if(S5.sub){const e=EAS[S5.sub];r5.innerHTML='<b>'+e.disp+':</b> reagent <b>'+e.reagent+'</b> → ek H nikal ke <b>'+e.name+'</b> lag gaya → <b>'+e.prod+'</b>. H replace hua, ring SAFE - yahi hai substitution!';}
+  else if(S5.dir==='op')r5.innerHTML='<b>o/p DIRECTOR (-CH3, -OH, -NH2, halogens):</b> +R/+I effect - naya group <b>ortho ya para</b> position pe aayega (pink circles dekho!).';
+  else if(S5.dir==='meta')r5.innerHTML='<b>m DIRECTOR (-NO2, -CHO, -COOH, -CN):</b> -R/-I effect - naya group <b>meta</b> position pe aayega.';
+  else r5.innerHTML='Upar button dabao: 5 <b>electrophilic aromatic substitution</b> reactions try karo (reagent yaad rakhna!), ya directive influence dekho - ring pe pehle se group decide karta hai naya group KAHAN lagega.';
+}
+
+const DRAW=[draw1,draw2,draw3,draw4,draw5,()=>{}];
+let last=performance.now(),nowT=0;
+function tick(now){
+  const dt=Math.min(0.05,(now-last)/1000);last=now;nowT=now/1000;
+  if(DRAW[cur])DRAW[cur](nowT,dt);
+  requestAnimationFrame(tick);
+}
+go(0);
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
