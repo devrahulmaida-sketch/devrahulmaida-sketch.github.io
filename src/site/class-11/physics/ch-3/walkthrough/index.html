@@ -256,14 +256,15 @@ function draw3(t){
     }
     g.stroke();
     dot(g,sx,sy,9,'#fbbf24');
-    // velocity components at ball
-    const vx=ux,vy=uy-grav*el;
-    arrow(g,sx,sy,Math.min(W-8,sx+vx*2.2),sy,'#22d3ee',2.5);
-    label(g,'ux = '+ux.toFixed(1),Math.min(W-100,sx+6),sy-10,'#22d3ee');
-    if(Math.abs(vy)>0.5){arrow(g,sx,sy,sx,sy-vy*2.2,'#e879f9',2.5);
-    label(g,'vy = '+vy.toFixed(1),Math.min(W-100,sx+6),Math.max(16,sy-vy*2.2-8),'#e879f9');}
-    else label(g,'vy = 0.0 (TOP!)',Math.min(W-110,sx+6),sy-10,'#e879f9');
-    if(el>=T){
+    // velocity components at ball (only while flying)
+    if(el<T){
+      const vx=ux,vy=uy-grav*el;
+      arrow(g,sx,sy,Math.min(W-8,sx+vx*2.2),sy,'#22d3ee',2.5);
+      label(g,'ux = '+ux.toFixed(1),Math.min(W-100,sx+6),sy-12,'#22d3ee');
+      if(Math.abs(vy)>0.5){arrow(g,sx,sy,sx,sy-vy*2.2,'#e879f9',2.5);
+      label(g,'vy = '+vy.toFixed(1),Math.min(W-100,sx+6),Math.max(16,sy-vy*2.2-8),'#e879f9');}
+      else label(g,'vy = 0 (TOP!)',Math.min(W-110,sx+6),sy+22,'#e879f9');
+    }else{
       label(g,'LANDED! R = '+R.toFixed(1)+' m, T = '+T.toFixed(2)+' s',ox+80,52,'#4ade80');
     }
   }else{
@@ -311,7 +312,7 @@ function draw4(t){
     if(el>=tcross){
       // drift marker
       line(g,startX,top,startX+drift*px,top,'#e879f9',2.5);
-      label(g,'drift = '+drift.toFixed(1)+' m downstream!',Math.min(W-230,startX+drift*px/2-40),top-10,'#e879f9');
+      label(g,'drift = '+drift.toFixed(1)+' m downstream!',Math.min(W-230,startX+drift*px/2-40),top+16,'#e879f9');
       label(g,'PAAR! time = '+tcross.toFixed(1)+' s',W/2-70,30,'#4ade80');
     }
   }else{
@@ -329,7 +330,7 @@ document.getElementById('r5slide').oninput=e=>{S5.r=+e.target.value;document.get
 function draw5(t){
   const g=g5,W=c5.width,H=c5.height;g.clearRect(0,0,W,H);
   const cx=280,cy=180;
-  const rpx=Math.min(120,120*S5.r/50);
+  const rpx=Math.min(120,Math.max(40,120*S5.r/50));
   // circle path
   g.strokeStyle='#2c2c4d';g.lineWidth=2;g.beginPath();g.arc(cx,cy,rpx,0,7);g.stroke();
   dot(g,cx,cy,4,'#565672');
@@ -350,7 +351,9 @@ function draw5(t){
   const acc=S5.v*S5.v/S5.r;
   g.fillStyle='#4ade80';g.font='bold 24px sans-serif';g.textAlign='center';
   g.fillText('a = v²/r = '+acc.toFixed(2)+' m/s²',W/2+110,60);g.textAlign='left';
-  label(g,'speed CONSTANT = '+S5.v+' m/s, par direction har pal badal rahi hai → acceleration ZERO nahi!',W/2+110-Math.min(300,("speed constant par direction badal rahi").length*3.2),92,'#9aa0c9');
+  label(g,'speed CONSTANT = '+S5.v+' m/s',W/2+30,92,'#9aa0c9');
+  label(g,'par direction har pal badal rahi hai',W/2+30,110,'#9aa0c9');
+  label(g,'→ acceleration ZERO nahi!',W/2+30,128,'#9aa0c9');
   document.getElementById('v5read').innerHTML='v = '+S5.v+' m/s, r = '+S5.r+' m → a = v²/r = '+S5.v+'²/'+S5.r+' = <b>'+acc.toFixed(2)+' m/s²</b> (hamesha CENTER ki taraf). ω = v/r = <b>'+(S5.v/S5.r).toFixed(2)+' rad/s</b>, ek chakkar ka time T = 2πr/v = <b>'+(2*Math.PI*S5.r/S5.v).toFixed(1)+' s</b>. v aur a hamesha PERPENDICULAR - isliye speed nahi, sirf direction badalti hai. Car circular turn pe: friction yahi centripetal force deta hai!';
 }
 
