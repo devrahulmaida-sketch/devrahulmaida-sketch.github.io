@@ -214,14 +214,14 @@ const STEPTXT=[
  '<b>STEP 2 - PROPAGATION (a):</b> Cl• methane se H kheench leta hai → HCl + CH<sub>3</sub>• (naya radical paida - chain zinda!)',
  '<b>STEP 2 - PROPAGATION (b):</b> CH<sub>3</sub>• doosre Cl<sub>2</sub> se Cl kheenchta hai → CH<sub>3</sub>Cl + Cl• (radical WAPAS - chain chalti rahegi!)',
  '<b>STEP 3 - TERMINATION:</b> do radicals mil gaye (Cl• + Cl• → Cl<sub>2</sub>) - chain khatam. Yaad rakho: CH<sub>3</sub>• + Cl• → CH<sub>3</sub>Cl bhi termination hai!'];
-function ch4(g,hx,hy,radical){
+function ch4(g,hx,hy,radical,lbl){
   const cx=170,cy=185;
   const Hs=[[138,150],[138,220],[188,148]];
   Hs.forEach(p=>{line(g,cx,cy,p[0],p[1],'#3b3b5c',1.2);atom(g,p[0],p[1],8,'#565672','H','#e8e8f2')});
   if(hx!==null){line(g,cx,cy,hx,hy,'#3b3b5c',1.2);atom(g,hx,hy,8,'#565672','H','#e8e8f2')}
   atom(g,cx,cy,17,'#22d3ee','C');
   if(radical){dot(g,cx+15,cy-15,4,'#e879f9');label(g,'CH3• (methyl radical)',cx+30,cy+44,'#e879f9')}
-  else label(g,'CH4 (methane)',cx-40,cy+50,'#9aa0c9');
+  else label(g,lbl||'CH4 (methane)',cx-40,cy+50,'#9aa0c9');
 }
 function clpair(g,x,y,gap,txt){
   line(g,x-gap/2,y,x+gap/2,y,'#3b3b5c',1.5);
@@ -263,9 +263,8 @@ function draw2(t){
     label(g,'Cl• REGENERATED!',dx-60,dy+34,'#e879f9');
     atom(g,520,80,13,'#4ade80','Cl');atom(g,545,68,8,'#565672','H','#e8e8f2');label(g,'HCl',505,50,'#9aa0c9');
   }else{
-    ch4(g,null,null,false);
+    ch4(g,null,null,false,'CH3Cl (product)');
     atom(g,232,222,13,'#4ade80','Cl');line(g,187,198,222,214,'#8f8fb8',2);
-    label(g,'CH3Cl (product)',140,262,'#9aa0c9');
     const mx=L(480,556,p),my=L(295,262,p);
     atom(g,mx,my,13,'#4ade80','Cl');atom(g,590,260,13,'#4ade80','Cl');
     if(p>0.8){label(g,'Cl2 (wapas)',540,300,'#9aa0c9')}
