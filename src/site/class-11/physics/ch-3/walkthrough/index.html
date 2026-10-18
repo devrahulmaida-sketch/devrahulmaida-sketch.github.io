@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motion in a Plane Ka Visual Walkthrough - Class 11 Physics Ch 3</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07070d;color:#e8e8f2;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:18px 12px 40px}
+.wrap{max-width:820px;margin:0 auto}
+.badge{display:inline-block;font-size:.75em;padding:4px 12px;border:1px solid #3b3b5c;border-radius:999px;color:#9aa0c9;margin-bottom:10px}
+h1{font-size:1.7em;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+.tag{text-align:center;color:#9aa0c9;font-size:.9em;margin:8px 0 4px}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0 18px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2a2a45;border:0;cursor:pointer;padding:0}
+.dot.on{background:#22d3ee;box-shadow:0 0 8px #22d3ee88}
+.scene{display:none}
+.scene.on{display:block}
+h2{font-size:1.15em;color:#7dd3fc;margin-bottom:6px}
+.sub{color:#b9b9d6;font-size:.88em;margin-bottom:12px;line-height:1.5}
+canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;border-radius:12px;margin:8px 0}
+.readout{font-size:.9em;color:#c9c9e0;background:#0e0e1c;border:1px solid #26264a;border-radius:10px;padding:10px 14px;margin:8px 0;line-height:1.55;min-height:52px}
+.readout b{color:#7dd3fc}
+.fact{font-size:.85em;color:#a8a8cc;background:#0e0e1c;border-left:3px solid #22d3ee;border-radius:0 8px 8px 0;padding:9px 12px;margin:8px 0;line-height:1.5}
+.fact b{color:#e879f9}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.btn{background:#181830;color:#c9c9e0;border:1px solid #33335c;border-radius:10px;padding:8px 14px;font-size:.85em;cursor:pointer}
+.btn.sel{border-color:#e879f9;color:#e879f9;background:#22122a}
+.btn.hot{background:#22d3ee;color:#06202a;border-color:#22d3ee;font-weight:700}
+.btn:active{transform:scale(.97)}
+.sliderrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.85em;color:#c9c9e0}
+.sliderrow input[type=range]{flex:1;accent-color:#22d3ee}
+.sliderrow b{color:#e879f9;min-width:64px;text-align:right}
+.recap .card{background:#0e0e1c;border:1px solid #26264a;border-radius:12px;padding:14px 16px;margin:10px 0}
+.recap .card h3{color:#e879f9;font-size:.95em;margin-bottom:6px}
+.recap .card p{font-size:.86em;color:#c9c9e0;line-height:1.6;font-family:ui-monospace,monospace}
+.navrow{display:flex;justify-content:space-between;margin-top:18px}
+.credit{text-align:center;color:#565672;font-size:.75em;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="text-align:center"><span class="badge">Class 11 Physics - Chapter 3 - Motion in a Plane</span></div>
+<h1>Motion in a Plane Ka Visual Walkthrough</h1>
+<p class="tag">5 animated scenes - vectors jodo aur todo, projectile udao, nadi paar karo, circular motion ka acceleration dekho.</p>
+<div class="dots" id="dots"></div>
+
+<section class="scene on">
+<h2>1. Vector Addition - Angle Ghumao, Resultant Badlo</h2>
+<p class="sub">A aur B ko head-to-tail jodo: resultant <b>R = A + B</b>, magnitude <b>|R| = √(A² + B² + 2AB cosθ)</b>. Dono ke beech ka angle θ ghumao - same vectors, alag alag resultant!</p>
+<canvas id="cv1" width="760" height="340"></canvas>
+<div class="sliderrow">vectors ke beech angle <input type="range" id="th1slide" min="0" max="180" value="60" step="1"> <b id="th1val">θ = 60°</b></div>
+<div class="readout" id="v1read"></div>
+</section>
+
+<section class="scene">
+<h2>2. Resolution - Vector Ko x aur y Mein Todo</h2>
+<p class="sub">Har 2D vector do shadows ka sum hai: <b>A<sub>x</sub> = A cosθ</b> (x-shadow) aur <b>A<sub>y</sub> = A sinθ</b> (y-shadow). Angle badlo aur shadows ka badalna dekho - components se addition EASY ho jaata hai!</p>
+<canvas id="cv2" width="760" height="340"></canvas>
+<div class="sliderrow">vector ka angle <input type="range" id="th2slide" min="0" max="90" value="35" step="1"> <b id="th2val">θ = 35°</b></div>
+<div class="readout" id="v2read"></div>
+</section>
+
+<section class="scene">
+<h2>3. Projectile - Phenko, Parabola Banao</h2>
+<p class="sub">Sirf gravity ke under free motion: <b>a<sub>x</sub> = 0, a<sub>y</sub> = −g</b>. x aur y motions bilkul independent! u aur θ set karo, "Phenko!" dabao - range, height, time of flight sab live:</p>
+<canvas id="cv3" width="760" height="360"></canvas>
+<div class="sliderrow">initial speed u <input type="range" id="u3slide" min="10" max="30" value="20" step="1"> <b id="u3val">u = 20 m/s</b></div>
+<div class="sliderrow">launch angle θ <input type="range" id="th3slide" min="15" max="75" value="45" step="1"> <b id="th3val">θ = 45°</b></div>
+<div class="btnrow"><button class="btn hot" id="fire3">Phenko!</button></div>
+<div class="readout" id="v3read"></div>
+</section>
+
+<section class="scene">
+<h2>4. River-Boat - Nadi Paar Karo</h2>
+<p class="sub">Ground velocity = boat ka velocity + river ka velocity (<b>v<sub>AB</sub> = v<sub>A</sub> − v<sub>B</sub> wala relative velocity</b>). Boat seedha opposite bank aim kar rahi hai (shortest TIME wala case) - river kitna drift karayegi?</p>
+<canvas id="cv4" width="760" height="340"></canvas>
+<div class="sliderrow">boat speed (still water) <input type="range" id="vb4slide" min="2" max="8" value="5" step="0.5"> <b id="vb4val">vb = 5.0 m/s</b></div>
+<div class="sliderrow">river speed <input type="range" id="vr4slide" min="0" max="5" value="2" step="0.5"> <b id="vr4val">vr = 2.0 m/s</b></div>
+<div class="btnrow"><button class="btn hot" id="go4">Nadi Paar Karo!</button></div>
+<div class="readout" id="v4read"></div>
+</section>
+
+<section class="scene">
+<h2>5. Circular Motion - Seedha Nahi, Center Ki Ore!</h2>
+<p class="sub">CONSTANT speed phir bhi ACCELERATED motion - kyunki direction badal rahi hai! Velocity hamesha <b>tangent</b>, acceleration hamesha <b>center</b> ki taraf: <b>a = v²/r</b>. v aur r badlo:</p>
+<canvas id="cv5" width="760" height="340"></canvas>
+<div class="sliderrow">speed v <input type="range" id="v5slide" min="4" max="20" value="10" step="1"> <b id="v5val">v = 10 m/s</b></div>
+<div class="sliderrow">radius r <input type="range" id="r5slide" min="5" max="50" value="25" step="1"> <b id="r5val">r = 25 m</b></div>
+<div class="readout" id="v5read"></div>
+</section>
+
+<section class="scene recap">
+<h2 style="text-align:center;color:#e879f9">Formula Pack - Screenshot Le Lo</h2>
+<div class="card"><h3>Vector Addition</h3><p>|R| = √(A² + B² + 2AB cosθ) | θ = 0° → A+B (max), θ = 180° → |A−B| (min), θ = 90° → √(A²+B²) | tanφ = B sinθ / (A + B cosθ)</p></div>
+<div class="card"><h3>Resolution (Components)</h3><p>A<sub>x</sub> = A cosθ | A<sub>y</sub> = A sinθ | A = √(A<sub>x</sub>² + A<sub>y</sub>²) | tanθ = A<sub>y</sub>/A<sub>x</sub> | resultant ka component = components ka sum</p></div>
+<div class="card"><h3>Projectile Motion ⭐</h3><p>R = u² sin2θ / g (θ = 45° pe MAX) | H = u² sin²θ / 2g | T = 2u sinθ / g | trajectory y = x tanθ − gx²/(2u² cos²θ) | top pe v = u cosθ ≠ 0 (trap!) | θ aur 90°−θ SAME range</p></div>
+<div class="card"><h3>Relative Velocity</h3><p>v<sub>AB</sub> = v<sub>A</sub> − v<sub>B</sub> | river-boat: crossing time = width / v<sub>boat</sub> (boat seedha aim kare toh), drift = v<sub>river</sub> × time | rain-man: umbrella relative velocity ki direction mein</p></div>
+<div class="card"><h3>Uniform Circular Motion</h3><p>a = v²/r = ω²r (CENTER ki taraf) | v = ωr | ω = 2π/T = 2πf | speed constant, VELOCITY nahi (direction badalti hai) | v ⊥ a hamesha</p></div>
+</section>
+
+<div class="navrow">
+<button class="btn" id="prev">← Peeche</button>
+<button class="btn hot" id="next">Aage →</button>
+</div>
+<p class="credit">Learn With Rahul - Class 11 Physics Ch 3 Motion in a Plane Visual Walkthrough</p>
+</div>
+
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+let cur=0;
+const dotsBox=document.getElementById('dots');
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
+function line(g,x1,y1,x2,y2,col,w,dash){g.strokeStyle=col;g.lineWidth=w||1.5;if(dash)g.setLineDash(dash);g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();g.setLineDash([])}
+function arrow(g,x1,y1,x2,y2,col,w){
+  line(g,x1,y1,x2,y2,col,w||2.5);
+  const a=Math.atan2(y2-y1,x2-x1),s=9;
+  g.fillStyle=col;g.beginPath();g.moveTo(x2,y2);
+  g.lineTo(x2-s*Math.cos(a-0.45),y2-s*Math.sin(a-0.45));
+  g.lineTo(x2-s*Math.cos(a+0.45),y2-s*Math.sin(a+0.45));
+  g.closePath();g.fill();
+}
+const grav=9.8;
+
+// ---------- SCENE 1: vector addition ----------
+const [c1,g1]=ctx('cv1');
+const S1={th:60};
+document.getElementById('th1slide').oninput=e=>{S1.th=+e.target.value;document.getElementById('th1val').textContent='θ = '+S1.th+'°'};
+function draw1(t){
+  const g=g1,W=c1.width,H=c1.height;g.clearRect(0,0,W,H);
+  const A=6,B=4,sc=34;
+  const ox=300,oy=230;
+  const th=S1.th*Math.PI/180;
+  // vector A along +x
+  const ax=A*sc,ay=0;
+  // vector B at angle th above +x
+  const bx=B*sc*Math.cos(th),by=-B*sc*Math.sin(th);
+  // parallelogram: A from origin, B from origin (dashed), A from B's tip (dashed), B from A's tip (dashed)
+  arrow(g,ox,oy,ox+ax,oy+ay,'#22d3ee',3);
+  label(g,'A = 6',ox+ax/2-16,oy+22,'#22d3ee');
+  arrow(g,ox,oy,ox+bx,oy+by,'#e879f9',3);
+  label(g,'B = 4',Math.min(W-60,Math.max(50,ox+bx/2-30)),oy+by/2-12,'#e879f9');
+  // dashed completion
+  line(g,ox+ax,oy+ay,ox+ax+bx,oy+ay+by,'#3b3b5c',1.5,[5,5]);
+  line(g,ox+bx,oy+by,ox+ax+bx,oy+ay+by,'#3b3b5c',1.5,[5,5]);
+  // resultant
+  const rx=ax+bx,ry=ay+by;
+  arrow(g,ox,oy,ox+rx,oy+ry,'#4ade80',4);
+  const Rmag=Math.sqrt(A*A+B*B+2*A*B*Math.cos(th));
+  label(g,'R',ox+rx/2+10,oy+ry/2-10,'#4ade80');
+  // angle arc at origin between A and B
+  g.strokeStyle='#565672';g.lineWidth=1.5;g.beginPath();g.arc(ox,oy,44,-th,0);g.stroke();
+  label(g,'θ',ox+52,oy-6,'#9aa0c9');
+  // big readout
+  const pct=(Rmag-2)/8; // 2..10
+  g.fillStyle='#1a1a30';g.fillRect(80,286,600,14);
+  g.fillStyle='#4ade80';g.fillRect(80,286,600*pct,14);
+  label(g,'|R| scale: 2 (θ=180°) se 10 (θ=0°)',80,280,'#565672');
+  g.fillStyle='#4ade80';g.font='bold 26px sans-serif';g.textAlign='center';
+  g.fillText('|R| = '+Rmag.toFixed(2),W/2,60);g.textAlign='left';
+  const msg=S1.th===0?'θ = 0°: SAME direction → |R| = A + B = 10 (MAX possible!)':(S1.th===180?'θ = 180°: OPPOSITE → |R| = |A − B| = 2 (MIN possible!)':(S1.th===90?'θ = 90°: Pythagoras wala case → |R| = √(A² + B²) = √52 ≈ 7.21':'θ badhane se resultant GHAT-ta hai: '+Rmag.toFixed(2)));
+  label(g,msg,W/2-Math.min(340,msg.length*3.4),96,'#9aa0c9');
+  document.getElementById('v1read').innerHTML='|R| = √(A² + B² + 2AB cosθ) = √(36 + 16 + 48 x cos'+S1.th+'°) = <b>'+Rmag.toFixed(2)+'</b>. '+(S1.th<45?'Chhota angle → vectors saath milkar dhakka dete hain, resultant BADA.':(S1.th>135?'Bada angle → vectors ek doosre ko CANCEL karne lagte hain, resultant chhota.':'Beech ka angle → resultant A+B aur |A−B| ke beech kahin.'));
+}
+
+// ---------- SCENE 2: resolution ----------
+const [c2,g2]=ctx('cv2');
+const S2={th:35};
+document.getElementById('th2slide').oninput=e=>{S2.th=+e.target.value;document.getElementById('th2val').textContent='θ = '+S2.th+'°'};
+function draw2(t){
+  const g=g2,W=c2.width,H=c2.height;g.clearRect(0,0,W,H);
+  const A=10,sc=22;
+  const th=S2.th*Math.PI/180;
+  const ox=260,oy=260;
+  const ax=A*Math.cos(th),ay=A*Math.sin(th);
+  const px=ax*sc,py=ay*sc;
+  // axes
+  line(g,60,oy,W-60,oy,'#2c2c4d',2);
+  line(g,ox,oy+40,ox,40,'#2c2c4d',2);
+  label(g,'x',W-52,oy-8,'#565672');
+  label(g,'y',ox+8,52,'#565672');
+  // component shadows (dashed guides)
+  line(g,ox+px,oy-py,ox+px,oy,'#3b3b5c',1.5,[5,5]);
+  line(g,ox+px,oy-py,ox,oy-py,'#3b3b5c',1.5,[5,5]);
+  // component arrows
+  if(px>2)arrow(g,ox,oy,ox+px,oy,'#22d3ee',3.5);
+  if(py>2)arrow(g,ox+px,oy,ox+px,oy-py,'#e879f9',3.5);
+  // main vector
+  arrow(g,ox,oy,ox+px,oy-py,'#fbbf24',3.5);
+  label(g,'A = 10',ox+px/2-10,oy-py/2-14,'#fbbf24');
+  label(g,'Ax = A cosθ = '+ax.toFixed(2),Math.min(W-220,ox+px/2-40),oy+24,'#22d3ee');
+  label(g,'Ay = A sinθ = '+ay.toFixed(2),Math.min(W-200,ox+px+10),Math.max(30,oy-py/2),'#e879f9');
+  // angle arc
+  g.strokeStyle='#565672';g.lineWidth=1.5;g.beginPath();g.arc(ox,oy,52,-th,0);g.stroke();
+  label(g,'θ',ox+60,oy-6,'#9aa0c9');
+  // component bars
+  g.fillStyle='#1a1a30';g.fillRect(80,302,600,12);
+  g.fillStyle='#22d3ee';g.fillRect(80,302,600*ax/10,12);
+  label(g,'Ax',60,312,'#22d3ee');
+  g.fillStyle='#1a1a30';g.fillRect(80,322,600,12);
+  g.fillStyle='#e879f9';g.fillRect(80,322,600*ay/10,12);
+  label(g,'Ay',60,332,'#e879f9');
+  const msg=S2.th===0?'θ = 0°: POORA vector x mein, y-shadow ZERO!':(S2.th===90?'θ = 90°: POORA vector y mein, x-shadow ZERO!':(S2.th===45?'θ = 45°: dono shadows EXACT BARABAR (cos45 = sin45 = 0.707)!':'θ badhao → x-shadow ghatta hai, y-shadow badhta hai (cos kam, sin zyada)'));
+  label(g,msg,W/2-Math.min(340,msg.length*3.4),30,'#9aa0c9');
+  document.getElementById('v2read').innerHTML='A = 10, θ = '+S2.th+'° → A<sub>x</sub> = 10 x cos'+S2.th+'° = <b>'+ax.toFixed(2)+'</b>, A<sub>y</sub> = 10 x sin'+S2.th+'° = <b>'+ay.toFixed(2)+'</b>. Check: √('+ax.toFixed(2)+'² + '+ay.toFixed(2)+'²) = <b>'+Math.sqrt(ax*ax+ay*ay).toFixed(2)+'</b> = A wapas! ✓';
+}
+
+// ---------- SCENE 3: projectile ----------
+const [c3,g3]=ctx('cv3');
+const S3={u:20,th:45,t0:-1};
+document.getElementById('u3slide').oninput=e=>{S3.u=+e.target.value;document.getElementById('u3val').textContent='u = '+S3.u+' m/s'};
+document.getElementById('th3slide').oninput=e=>{S3.th=+e.target.value;document.getElementById('th3val').textContent='θ = '+S3.th+'°'};
+document.getElementById('fire3').onclick=()=>{S3.t0=nowT};
+function draw3(t){
+  const g=g3,W=c3.width,H=c3.height;g.clearRect(0,0,W,H);
+  const u=S3.u,th=S3.th*Math.PI/180;
+  const ux=u*Math.cos(th),uy=u*Math.sin(th);
+  const T=2*uy/grav, Hmax=uy*uy/(2*grav), R=ux*T;
+  // scale: worst case u=30,th=45 → R=91.8m, H=22.96m (th=75: H=41.9m)
+  const maxR=30*30/grav, maxH=30*30/(2*grav);
+  const px=(W-120)/maxR, py=250/maxH;
+  const ox=60,gy=320;
+  line(g,40,gy,W-40,gy,'#2c2c4d',2);
+  label(g,'ground',46,gy+18,'#565672');
+  // predicted trajectory (faint)
+  g.strokeStyle='#3b3b5c';g.lineWidth=1.5;g.beginPath();
+  for(let i=0;i<=60;i++){
+    const tt=T*i/60, x=ux*tt, y=uy*tt-0.5*grav*tt*tt;
+    const sx=ox+x*px,sy=gy-y*py;
+    if(i===0)g.moveTo(sx,sy);else g.lineTo(sx,sy);
+  }
+  g.stroke();
+  // R and H markers
+  line(g,ox+R*px,gy,ox+R*px,gy-14,'#4ade80',2);
+  label(g,'R = '+R.toFixed(1)+' m',Math.min(W-110,ox+R*px-40),gy+18,'#4ade80');
+  const apexX=ox+(R/2)*px, apexY=gy-Hmax*py;
+  dot(g,apexX,apexY,3,'#9aa0c9');
+  line(g,apexX,apexY,apexX+26,apexY,'#565672',1,[3,3]);
+  label(g,'H = '+Hmax.toFixed(1)+' m',Math.min(W-120,apexX+30),apexY+4,'#9aa0c9');
+  const running=S3.t0>=0;
+  if(running){
+    const el=Math.min(T,t-S3.t0);
+    const x=ux*el,y=uy*el-0.5*grav*el*el;
+    const sx=ox+x*px,sy=gy-y*py;
+    // trail
+    g.strokeStyle='#22d3ee66';g.lineWidth=2.5;g.beginPath();
+    for(let i=0;i<=40;i++){
+      const tt=el*i/40, xx=ux*tt, yy=uy*tt-0.5*grav*tt*tt;
+      if(i===0)g.moveTo(ox+xx*px,gy-yy*py);else g.lineTo(ox+xx*px,gy-yy*py);
+    }
+    g.stroke();
+    dot(g,sx,sy,9,'#fbbf24');
+    // velocity components at ball
+    const vx=ux,vy=uy-grav*el;
+    arrow(g,sx,sy,Math.min(W-8,sx+vx*2.2),sy,'#22d3ee',2.5);
+    label(g,'ux = '+ux.toFixed(1),Math.min(W-100,sx+6),sy-10,'#22d3ee');
+    if(Math.abs(vy)>0.5){arrow(g,sx,sy,sx,sy-vy*2.2,'#e879f9',2.5);
+    label(g,'vy = '+vy.toFixed(1),Math.min(W-100,sx+6),Math.max(16,sy-vy*2.2-8),'#e879f9');}
+    else label(g,'vy = 0.0 (TOP!)',Math.min(W-110,sx+6),sy-10,'#e879f9');
+    if(el>=T){
+      label(g,'LANDED! R = '+R.toFixed(1)+' m, T = '+T.toFixed(2)+' s',ox+80,52,'#4ade80');
+    }
+  }else{
+    label(g,'"Phenko!" dabao - u aur θ set karke',220,52,'#565672');
+  }
+  const sameR=90-S3.th;
+  document.getElementById('v3read').innerHTML='u = '+u+' m/s, θ = '+S3.th+'° → T = 2u sinθ/g = <b>'+T.toFixed(2)+' s</b>, H = u² sin²θ/2g = <b>'+Hmax.toFixed(1)+' m</b>, R = u² sin2θ/g = <b>'+R.toFixed(1)+' m</b>. Top pe v = u cosθ = <b>'+ux.toFixed(1)+' m/s (ZERO nahi - sirf horizontal bachta hai!)</b>. θ = '+sameR+'° bhi EXACT same range dega (complementary trick)!'+(S3.th===45?' <b>45° = MAXIMUM range wala angle!</b>':'');
+}
+
+// ---------- SCENE 4: river-boat ----------
+const [c4,g4]=ctx('cv4');
+const S4={vb:5,vr:2,t0:-1};
+document.getElementById('vb4slide').oninput=e=>{S4.vb=+e.target.value;document.getElementById('vb4val').textContent='vb = '+S4.vb.toFixed(1)+' m/s'};
+document.getElementById('vr4slide').oninput=e=>{S4.vr=+e.target.value;document.getElementById('vr4val').textContent='vr = '+S4.vr.toFixed(1)+' m/s'};
+document.getElementById('go4').onclick=()=>{S4.t0=nowT};
+function draw4(t){
+  const g=g4,W=c4.width,H=c4.height;g.clearRect(0,0,W,H);
+  const width=100; // river width m
+  const py=220/width; // px per m vertical
+  const top=50,bot=top+width*py;
+  // river band
+  g.fillStyle='#0d1a2a';g.fillRect(60,top,W-120,bot-top);
+  line(g,60,top,W-60,top,'#22d3ee55',2);
+  line(g,60,bot,W-60,bot,'#22d3ee55',2);
+  label(g,'near bank (start)',64,bot+20,'#565672');
+  label(g,'far bank',64,top-8,'#565672');
+  // river flow arrows
+  for(let i=0;i<4;i++){const fx=140+i*140+((t*S4.vr*18)%140);const cx=fx>W-100?fx-(W-260):fx;arrow(g,cx,top+40+i*50>bot-20?bot-40:top+40+i*50,cx+26,top+40+i*50>bot-20?bot-40:top+40+i*50,'#1e4a66',2)}
+  label(g,'river flow →',W-190,bot-14,'#1e6a96');
+  const tcross=width/S4.vb;
+  const drift=S4.vr*tcross;
+  const px=(W-260)/Math.max(80,S4.vr*width/2+40); // horizontal scale: worst drift
+  const startX=120;
+  // target point straight across
+  dot(g,startX,top,4,'#4ade80');
+  label(g,'seedha target',startX-34,top-10,'#4ade80');
+  const running=S4.t0>=0;
+  if(running){
+    const el=Math.min(tcross,t-S4.t0);
+    const bx=startX+S4.vr*el*px, by=bot-S4.vb*el*py;
+    // boat
+    g.fillStyle='#12122a';g.strokeStyle='#fbbf24';g.lineWidth=2;
+    g.beginPath();g.roundRect(bx-16,by-10,32,20,5);g.fill();g.stroke();
+    label(g,'🚤',bx-9,by+4,'#fbbf24');
+    if(el>=tcross){
+      // drift marker
+      line(g,startX,top,startX+drift*px,top,'#e879f9',2.5);
+      label(g,'drift = '+drift.toFixed(1)+' m downstream!',Math.min(W-230,startX+drift*px/2-40),top-10,'#e879f9');
+      label(g,'PAAR! time = '+tcross.toFixed(1)+' s',W/2-70,30,'#4ade80');
+    }
+  }else{
+    label(g,'"Nadi Paar Karo!" dabao',W/2-70,30,'#565672');
+  }
+  const vg=Math.sqrt(S4.vb*S4.vb+S4.vr*S4.vr);
+  document.getElementById('v4read').innerHTML='River 100 m wide. Boat seedha aim → crossing time = width / v<sub>boat</sub> = 100/'+S4.vb.toFixed(1)+' = <b>'+tcross.toFixed(1)+' s</b> (river speed se time pe FARAK NAHI!). Drift = v<sub>river</sub> x time = '+S4.vr.toFixed(1)+' x '+tcross.toFixed(1)+' = <b>'+drift.toFixed(1)+' m downstream</b>. Ground speed = √(vb² + vr²) = <b>'+vg.toFixed(1)+' m/s</b>. Seedha target pe utarna ho toh boat ko thoda UPSTREAM aim karna padega (uska component river ko cancel kare)!';
+}
+
+// ---------- SCENE 5: circular motion ----------
+const [c5,g5]=ctx('cv5');
+const S5={v:10,r:25};
+document.getElementById('v5slide').oninput=e=>{S5.v=+e.target.value;document.getElementById('v5val').textContent='v = '+S5.v+' m/s'};
+document.getElementById('r5slide').oninput=e=>{S5.r=+e.target.value;document.getElementById('r5val').textContent='r = '+S5.r+' m'};
+function draw5(t){
+  const g=g5,W=c5.width,H=c5.height;g.clearRect(0,0,W,H);
+  const cx=280,cy=180;
+  const rpx=Math.min(120,120*S5.r/50);
+  // circle path
+  g.strokeStyle='#2c2c4d';g.lineWidth=2;g.beginPath();g.arc(cx,cy,rpx,0,7);g.stroke();
+  dot(g,cx,cy,4,'#565672');
+  label(g,'center',cx+8,cy+4,'#565672');
+  // particle
+  const w=S5.v/S5.r; // omega rad/s (real!)
+  const a=t*w*0.8; // slowed for viewing
+  const px=cx+rpx*Math.cos(a),py=cy+rpx*Math.sin(a);
+  dot(g,px,py,10,'#fbbf24');
+  // velocity tangent (perpendicular to radius, direction of motion: CCW if a decreasing... we use +a)
+  const txv=-Math.sin(a),tyv=Math.cos(a);
+  arrow(g,px,py,px+txv*60,py+tyv*60,'#22d3ee',3);
+  label(g,'v (tangent)',px+txv*68-24,py+tyv*68+4,'#22d3ee');
+  // acceleration toward center
+  const axn=-Math.cos(a),ayn=-Math.sin(a);
+  arrow(g,px,py,px+axn*Math.max(34,rpx*0.55),py+ayn*Math.max(34,rpx*0.55),'#e879f9',3);
+  label(g,'a = v²/r (center)',Math.min(W-170,Math.max(70,px+axn*rpx*0.55-30)),py+ayn*rpx*0.55-8,'#e879f9');
+  const acc=S5.v*S5.v/S5.r;
+  g.fillStyle='#4ade80';g.font='bold 24px sans-serif';g.textAlign='center';
+  g.fillText('a = v²/r = '+acc.toFixed(2)+' m/s²',W/2+110,60);g.textAlign='left';
+  label(g,'speed CONSTANT = '+S5.v+' m/s, par direction har pal badal rahi hai → acceleration ZERO nahi!',W/2+110-Math.min(300,("speed constant par direction badal rahi").length*3.2),92,'#9aa0c9');
+  document.getElementById('v5read').innerHTML='v = '+S5.v+' m/s, r = '+S5.r+' m → a = v²/r = '+S5.v+'²/'+S5.r+' = <b>'+acc.toFixed(2)+' m/s²</b> (hamesha CENTER ki taraf). ω = v/r = <b>'+(S5.v/S5.r).toFixed(2)+' rad/s</b>, ek chakkar ka time T = 2πr/v = <b>'+(2*Math.PI*S5.r/S5.v).toFixed(1)+' s</b>. v aur a hamesha PERPENDICULAR - isliye speed nahi, sirf direction badalti hai. Car circular turn pe: friction yahi centripetal force deta hai!';
+}
+
+const DRAW=[draw1,draw2,draw3,draw4,draw5,()=>{}];
+let last=performance.now(),nowT=0;
+function tick(now){
+  const dt=Math.min(0.05,(now-last)/1000);last=now;nowT=now/1000;
+  if(DRAW[cur])DRAW[cur](nowT,dt);
+  requestAnimationFrame(tick);
+}
+go(0);
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
