@@ -242,7 +242,7 @@ function draw3(t){
   const apexX=ox+(R/2)*px, apexY=gy-Hmax*py;
   dot(g,apexX,apexY,3,'#9aa0c9');
   line(g,apexX,apexY,apexX+26,apexY,'#565672',1,[3,3]);
-  label(g,'H = '+Hmax.toFixed(1)+' m',Math.min(W-120,apexX+30),apexY+4,'#9aa0c9');
+  label(g,'H = '+Hmax.toFixed(1)+' m',Math.max(70,apexX-130),apexY+4,'#9aa0c9');
   const running=S3.t0>=0;
   if(running){
     const el=Math.min(T,t-S3.t0);
