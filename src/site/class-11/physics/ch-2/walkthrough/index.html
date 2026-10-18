@@ -44,7 +44,7 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 
 <section class="scene on">
 <h2>1. Distance vs Displacement - Odometer vs Seedha Arrow</h2>
-<p class="sub">Car ko road pe ghumao: <b>distance</b> odometer hai (kabhi kam nahi hota, hamesha positive), <b>displacement</b> final minus initial position (vector - sign hi direction hai). Round trip pe displacement ZERO, distance 560 km!</p>
+<p class="sub">Car ko road pe ghumao: <b>distance</b> odometer hai (kabhi kam nahi hota, hamesha positive), <b>displacement</b> final minus initial position (vector - sign hi direction hai). Round trip pe displacement ZERO, distance 560 m!</p>
 <canvas id="cv1" width="760" height="320"></canvas>
 <div class="sliderrow">trip progress <input type="range" id="p1slide" min="0" max="100" value="0" step="1"> <b id="p1val">0%</b></div>
 <div class="readout" id="v1read"></div>
@@ -170,7 +170,7 @@ function draw2(tNow){
   const g=g2,W=c2.width,H=c2.height;g.clearRect(0,0,W,H);
   const t=(tNow/1000)%T2;
   // road strip
-  const RX=m=>40+(m-XMIN)*700/(XMAX-XMIN), ry=55;
+  const RX=m=>40+(m-XMIN)*700/(XMAX-XMIN), ry=42;
   line(g,30,ry,750,ry,AX,5);
   for(let m=-150;m<=200;m+=50){line(g,RX(m),ry+7,RX(m),ry+13,AX,1.2);label(g,m+'m',RX(m)-12,ry+26,TX)}
   const x=v2*t;
@@ -178,9 +178,9 @@ function draw2(tNow){
   label(g,'position x = '+x.toFixed(0)+' m   (t = '+t.toFixed(1)+' s)',40,24,TX);
   // graph
   const GX=tt=>90+tt*64, GY=m=>300-(m-XMIN)*190/(XMAX-XMIN);
-  line(g,90,40,90,300,AX,2);line(g,90,300,730,300,AX,2);
+  line(g,90,100,90,300,AX,2);line(g,90,300,730,300,AX,2);
   line(g,90,GY(0),730,GY(0),AX,2);
-  label(g,'x (m)',60,50,TX);label(g,'t (s)',712,318,TX);label(g,'x = 0',52,GY(0)+4,TX);
+  label(g,'x (m)',60,112,TX);label(g,'t (s)',650,318,TX);label(g,'x = 0',52,GY(0)+4,TX);
   for(let tt=0;tt<=10;tt+=2){line(g,GX(tt),300,GX(tt),306,AX,1);label(g,''+tt,GX(tt)-3,318,TX)}
   for(const m of[-100,100]){line(g,84,GY(m),90,GY(m),AX,1);label(g,''+m,56,GY(m)+4,TX)}
   // live line
@@ -218,7 +218,7 @@ function draw3(tNow){
   // axes
   line(g,90,80,90,290,AX,2);line(g,90,290,730,290,AX,2);
   line(g,90,GY(0),730,GY(0),'#3a3a5e',2.5);
-  label(g,'v (m/s)',48,90,TX);label(g,'t (s)',712,308,TX);label(g,'v = 0',54,GY(0)+4,TX);
+  label(g,'v (m/s)',95,72,TX);label(g,'t (s)',650,308,TX);label(g,'v = 0',54,GY(0)+4,TX);
   for(let tt=0;tt<=10;tt+=2){line(g,GX(tt),290,GX(tt),296,AX,1);label(g,''+tt,GX(tt)-3,308,TX)}
   for(const v of[-40,40]){line(g,84,GY(v),90,GY(v),AX,1);label(g,''+v,58,GY(v)+4,TX)}
   // signed area shading up to t
