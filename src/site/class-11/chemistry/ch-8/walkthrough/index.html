@@ -252,7 +252,7 @@ function draw2(t,dt){
   const lines=[];
   for(let k=0;k<Math.min(s,4);k++)lines.push([E.steps[k],k===Math.min(s,4)-1?'#4ade80':'#8f8fb8']);
   if(s>=4)lines.push(['NAAM = '+E.name,'#fbbf24']);
-  panel(g,lines,470,80);
+  panel(g,lines,40,232);
   const msgs=['Agla Step dabao...','chain pakdi! ab suffix...','numbering ka rule dekho','sab mil gaya - naam banao!','NAAM TAYAAR: '+E.name];
   document.getElementById('v2read').innerHTML=s>=4?'✓ <b>'+E.name+'</b> - longest chain + lowest number + suffix = naam!':msgs[s];
 }
