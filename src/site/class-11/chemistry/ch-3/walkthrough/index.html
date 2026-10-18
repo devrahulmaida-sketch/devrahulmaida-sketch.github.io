@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mechanical Properties of Solids Ka Visual Walkthrough - Class 11 Physics Ch 8</title>
+<title>Periodicity Ka Visual Walkthrough - Class 11 Chemistry Ch 3</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#07070d;color:#e8e8f2;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:18px 12px 40px}
@@ -24,6 +24,7 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
 .btn{background:#181830;color:#c9c9e0;border:1px solid #33335c;border-radius:10px;padding:8px 14px;font-size:.85em;cursor:pointer}
 .btn.sel{border-color:#e879f9;color:#e879f9;background:#22122a}
+.btn.hot{border-color:#22d3ee;color:#22d3ee}
 .btn:active{transform:scale(.97)}
 .sliderrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.85em;color:#c9c9e0}
 .sliderrow input[type=range]{flex:1;accent-color:#22d3ee}
@@ -37,72 +38,79 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 </head>
 <body>
 <div class="wrap">
-<div style="text-align:center"><span class="badge">Class 11 Physics - Chapter 8 - Mechanical Properties of Solids</span></div>
-<h1>Solids Ki Elasticity Ka Visual Walkthrough</h1>
-<p class="tag">5 animated scenes - stress-strain curve pe chalo, Hooke's law test karo, teen moduli dekho, stretch ki energy napo, aur steel vs rubber ka ultimate sawaal.</p>
+<div style="text-align:center"><span class="badge">Class 11 Chemistry - Chapter 3 - Classification of Elements and Periodicity</span></div>
+<h1>Periodicity Ka Visual Walkthrough</h1>
+<p class="tag">5 animated scenes - config se position decoder, radius trend map, IE ke famous exceptions (zigzag!), F vs Cl ka trap, aur trend quiz.</p>
 <div class="dots" id="dots"></div>
-
 <section class="scene on">
-<h2>1. Stress-Strain Curve - Exam Ka Sabse Famous Graph</h2>
-<p class="sub">Wire ko khincho aur curve pe chalo: <b>O→A proportional</b> (Hooke valid), <b>A→B elastic limit</b> (wapas aa sakti hai), <b>B→C plastic</b> (permanent set), <b>C = ultimate tensile strength</b> (max stress), <b>D = fracture</b>. C ke baad NECK banti hai, phir D pe TOOT jaati hai!</p>
-<canvas id="cv1" width="760" height="360"></canvas>
-<div class="sliderrow">kitna khincha (strain) <input type="range" id="e1slide" min="0" max="360" value="0" step="1"> <b id="e1val">0%</b></div>
-<div class="readout" id="v1read"></div>
+<h2>1. Position Decoder - Config Se Period + Group ⭐</h2>
+<p class="sub">Element ka Z chuno, shells bharte dekho. <b>Period = sabse bada n</b> (valence shell) | <b>Group = valence electrons</b> (p-block me +10!). Shells bharte jaate hain 2, 8, 8...</p>
+<canvas id="cv1" width="760" height="330"></canvas>
+<div class="sliderrow">Z (atomic number) <input type="range" id="z1" min="1" max="20" value="11" step="1"> <b id="z1v">11</b></div>
+<div class="readout" id="r1"></div>
 </section>
 
 <section class="scene">
-<h2>2. Hooke's Law Lab - Elastic Limit Ke ANDAR</h2>
-<p class="sub">Elastic limit tak <b>stress ∝ strain</b> - seedhi line! Force badhao, wire stretch hoti hai; force hatao, wire WAPAS. Limit cross kiya? Permanent set - ab wapas nahi aayegi. (Y = 2×10¹¹ Pa steel ke liye - isliye asli ΔL chhota, drawing mein zoom kiya hai!)</p>
-<canvas id="cv2" width="760" height="340"></canvas>
-<div class="sliderrow">force <input type="range" id="f2slide" min="0" max="200" value="60" step="1"> <b id="f2val">F = 60 N</b></div>
-<div class="readout" id="v2read"></div>
-</section>
-
-<section class="scene">
-<h2>3. Teen Moduli - Young, Bulk, Shear</h2>
-<p class="sub"><b>Y</b> length ka boss: (F/A)/(ΔL/L). <b>B</b> volume ka boss: −p/(ΔV/V). <b>G</b> shape ka boss: (F/A)/θ. Mode chuno aur deformation dekho:</p>
+<h2>2. Size Map - Radius Ke 3 Rules</h2>
+<p class="sub"><b>Period me L→R: size GHTATA hai</b> (nuclear magnet strong) | <b>Group me upar→neeche: size BADHTA hai</b> (naya floor) | <b>Isoelectronic: Z zyada → size chhota</b>. Teen views toggle karo:</p>
+<canvas id="cv2" width="760" height="330"></canvas>
 <div class="btnrow">
-<button class="btn sel" id="mY">Young's Y (stretch)</button>
-<button class="btn" id="mB">Bulk B (squeeze)</button>
-<button class="btn" id="mG">Shear G (twist)</button>
+<button class="btn sel" data-v="per">Period 2 vs 3 (L→R shrink)</button>
+<button class="btn" data-v="grp">Group 1 + 17 (down grow)</button>
+<button class="btn" data-v="iso">Isoelectronic 10e⁻ series</button>
 </div>
-<canvas id="cv3" width="760" height="340"></canvas>
-<div class="sliderrow">force / pressure <input type="range" id="f3slide" min="10" max="100" value="50" step="1"> <b id="f3val">50%</b></div>
-<div class="readout" id="v3read"></div>
+<div class="readout" id="r2"></div>
 </section>
 
 <section class="scene">
-<h2>4. Elastic Potential Energy - Stretch Ki Energy</h2>
-<p class="sub">Wire stretch karne me jo kaam kiya, woh <b>elastic PE</b> banke store: <b>u = ½ × stress × strain</b> (per volume) - graph ke NEECHE ka area! Jitna zyada khinchoge, area (energy) square ki tarah badhti hai. Pole vault, bow-arrow, bungee - sab yahi hai.</p>
-<canvas id="cv4" width="760" height="320"></canvas>
-<div class="sliderrow">strain (steel, ×10⁻³) <input type="range" id="e4slide" min="0" max="20" value="10" step="0.5"> <b id="e4val">ε = 0.010</b></div>
-<div class="readout" id="v4read"></div>
+<h2>3. IE Zigzag - Famous EXCEPTIONS Pakdo ⭐⭐</h2>
+<p class="sub">Ionization Enthalpy period me badhta hai - <b>par 2 jagah DIP aata hai!</b> Be &gt; B aur N &gt; O (period 2) | Mg &gt; Al aur P &gt; S (period 3). Kyun? <b>full-filled / half-filled configs extra stable</b>. Period chuno, dip pe nazar rakho:</p>
+<canvas id="cv3" width="760" height="330"></canvas>
+<div class="btnrow">
+<button class="btn sel" data-pe="2">Period 2 (Li → Ne)</button>
+<button class="btn" data-pe="3">Period 3 (Na → Ar)</button>
+</div>
+<div class="readout" id="r3"></div>
 </section>
 
 <section class="scene">
-<h2>5. Steel vs Rubber + Poisson Ratio - Shockers</h2>
-<p class="sub">SHOCKER: <b>steel rubber se ZYADA elastic hai!</b> Same stress pe steel ka strain bahut kam (curve STEEP = bada modulus). Aur kheenchne pe wire PATLI bhi hoti hai - <b>Poisson ratio σ = lateral strain / longitudinal strain</b> (~0.3 metals, hamesha &lt; 0.5).</p>
-<canvas id="cv5" width="760" height="320"></canvas>
-<div class="sliderrow">same stress dono pe <input type="range" id="s5slide" min="0" max="100" value="50" step="1"> <b id="s5val">50%</b></div>
-<div class="readout" id="v5read"></div>
+<h2>4. F vs Cl TRAP - Electron Gain Ka Ulta Khel ⭐</h2>
+<p class="sub">Electronegativity me <b>F sabse bada (4.0)</b> - par electron gain enthalpy me <b>CL jeetta hai (−349 vs F ka −328)!</b> F itna chhota hai ki naya electron ghusne pe repulsion. Do properties toggle karo, winner badalte dekho:</p>
+<canvas id="cv4" width="760" height="330"></canvas>
+<div class="btnrow">
+<button class="btn sel" data-pr="eg">Electron Gain Enthalpy (zyada negative = shaukeen)</button>
+<button class="btn" data-pr="en">Electronegativity (Pauling)</button>
+</div>
+<div class="readout" id="r4"></div>
+</section>
+
+<section class="scene">
+<h2>5. Rapid Quiz - Trends Pakke?</h2>
+<p class="sub">5 sawaal. Master trick yaad rakho: <b>size/metallic → bottom-left | IE/EN → top-right</b>.</p>
+<canvas id="cv5" width="760" height="140"></canvas>
+<div class="btnrow" id="quizBtns"></div>
+<div class="readout" id="r5"></div>
 </section>
 
 <section class="scene recap">
 <h2>Formula Recap - Screenshot Le Lo!</h2>
-<div class="card"><h3>Stress aur Strain</h3><p>stress = F/A (Pa = N/m²): tensile/compressive (⊥), shearing (∥), hydraulic (sab taraf) | strain = ΔL/L ya ΔV/V ya θ (UNITLESS!) | elastic limit tak body wapas aati hai</p></div>
-<div class="card"><h3>Hooke's Law + Curve Points ⭐</h3><p>elastic limit ke ANDAR: stress ∝ strain → stress/strain = modulus | O→A proportional | B elastic limit (yield) | C = UTS (max stress) | D = fracture | C ke baad NECKING, phir break</p></div>
-<div class="card"><h3>Teen Moduli ⭐</h3><p>Y = (F/A)/(ΔL/L) length | B = −p/(ΔV/V) volume, k = 1/B | G = (F/A)/θ shape | Relations: Y = 2G(1+σ) = 3B(1−2σ) = 9BG/(3B+G) | own weight: ΔL = ρgL²/2Y</p></div>
-<div class="card"><h3>Elastic Potential Energy</h3><p>u = ½ × stress × strain = σ²/2Y = ½Yε² (J/m³) | U = ½ × stress × strain × volume = ½FΔL | = graph ke neeche ka AREA | spring ka ½kx² jaisa</p></div>
-<div class="card"><h3>Shocker Facts</h3><p>Steel MORE elastic than rubber (kam strain @ same stress!) | Poisson σ = lateral/longitudinal strain ≈ 0.3 metals, &lt; 0.5 hamesha | kheencho → wire patli hoti hai</p></div>
+<div class="card"><h3>Table Map ⭐</h3>
+<p>Modern law: properties = periodic function of ATOMIC NUMBER Z (Moseley) | 18 groups, 7 periods | s=G1-2, p=G13-18, d=G3-12 (transition), f=neeche 2 rows | period lengths 2,8,8,18,18,32,32 | metals left, non-metals top-right, metalloids zigzag (Si, Ge)</p></div>
+<div class="card"><h3>Config → Position ⭐</h3>
+<p>Period = sabse bada n | Group: s/p-block me valence e⁻ (p-block: +10) | Na 3s¹ → P3, G1 | Cl 3s²3p⁵ → P3, G17 | d-block: (n−1)d + ns electrons (Fe 3d⁶4s² → G8) | noble gases G18</p></div>
+<div class="card"><h3>Atomic Radius ⭐</h3>
+<p>L→R: ghat-ta (same shell, zyada nuclear charge = tight magnet) | up→down: badhta (naya shell) | Na⁺ < Na, Cl⁻ > Cl | isoelectronic: Z zyada → chhota | N³⁻ > O²⁻ > F⁻ > Na⁺ > Mg²⁺</p></div>
+<div class="card"><h3>Ionization Enthalpy ⭐⭐</h3>
+<p>L→R: badhta | up→down: ghat-ta | EXCEPTIONS: Be > B, N > O, Mg > Al, P > S | reason: full-filled (s², p⁶) / half-filled (p³) configs extra stable | Cs sabse aasaani se e⁻ deta hai</p></div>
+<div class="card"><h3>EGH + EN Trap ⭐</h3>
+<p>electron gain enthalpy: CL sabse negative (−349), F NAHI (−328) - chhote F me repulsion! | EN: F = 4.0 highest | MASTER TRICK: size/metallic → bottom-left (Cs) | IE/EN/non-metallic → top-right (F) | oxides: left basic (Na₂O), right acidic (SO₃), middle amphoteric (Al₂O₃)</p></div>
 </section>
-
 <div class="navrow">
 <button class="btn" id="prev">← Peeche</button>
 <button class="btn hot" id="next">Aage →</button>
 </div>
-<p class="credit">Learn With Rahul - Class 11 Physics Ch 8 Mechanical Properties of Solids Visual Walkthrough</p>
+<p class="credit">Learn With Rahul - Class 11 Chemistry Ch 3 Periodicity Visual Walkthrough</p>
 </div>
-
 <script>
 const scenes=[...document.querySelectorAll('.scene')];
 let cur=0;
@@ -115,282 +123,228 @@ function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')
 function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
 function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
 function line(g,x1,y1,x2,y2,col,w,dash){g.strokeStyle=col;g.lineWidth=w||1.5;if(dash)g.setLineDash(dash);g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();g.setLineDash([])}
-function arrow(g,x1,y1,x2,y2,col,w){
-  line(g,x1,y1,x2,y2,col,w||2.5);
-  const a=Math.atan2(y2-y1,x2-x1),s=9;
-  g.fillStyle=col;g.beginPath();g.moveTo(x2,y2);
-  g.lineTo(x2-s*Math.cos(a-0.45),y2-s*Math.sin(a-0.45));
-  g.lineTo(x2-s*Math.cos(a+0.45),y2-s*Math.sin(a+0.45));
-  g.closePath();g.fill();
-}
+const CY='#22d3ee',MG='#e879f9',GD='#ffd166',GR='#7CFC98',TX='#9aa0b8',AX='#2c2c4d',RD='#ff5555';
+const SUP={'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};
+const sup=n=>(''+n).split('').map(c=>SUP[c]||c).join('');
 
-// ---------- SCENE 1: stress-strain curve journey ----------
+// ---------- SCENE 1: position decoder ----------
 const [c1,g1]=ctx('cv1');
-const S1={e:0};
-document.getElementById('e1slide').oninput=e=>{S1.e=+e.target.value;document.getElementById('e1val').textContent='ε = '+(S1.e/100).toFixed(2)};
-// curve control points (strain, stress) normalized
-const PTS=[[0,0],[1.0,1.0],[1.5,1.2],[2.6,2.2],[3.4,1.9]];
-const NAMES=['O','A','B','C','D'];
-const PT_LBL=['O (start)','A: proportional limit','B: elastic limit (yield)','C: UTS (max stress)','D: FRACTURE'];
-function sigOf(e){
-  for(let i=1;i<PTS.length;i++){
-    if(e<=PTS[i][0]){const [e0,s0]=PTS[i-1],[e1,s1]=PTS[i];return s0+(s1-s0)*(e-e0)/(e1-e0)}
-  }
-  return PTS[PTS.length-1][1];
-}
-function draw1(t){
+let z1=11;
+document.getElementById('z1').oninput=e=>{z1=+e.target.value;document.getElementById('z1v').textContent=z1};
+const SYM=['','H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca'];
+const CONF=['','1s¹','1s²','[He] 2s¹','[He] 2s²','[He] 2s²2p¹','[He] 2s²2p²','[He] 2s²2p³','[He] 2s²2p⁴','[He] 2s²2p⁵','[He] 2s²2p⁶','[Ne] 3s¹','[Ne] 3s²','[Ne] 3s²3p¹','[Ne] 3s²3p²','[Ne] 3s²3p³','[Ne] 3s²3p⁴','[Ne] 3s²3p⁵','[Ne] 3s²3p⁶','[Ar] 4s¹','[Ar] 4s²'];
+function shells(z){const sh=[0,0,0,0];let rem=z;const cap=[2,8,8,2];for(let i=0;i<4;i++){const t=Math.min(cap[i],rem);sh[i]=t;rem-=t}return sh.filter(n=>n>0)}
+function draw1(){
   const g=g1,W=c1.width,H=c1.height;g.clearRect(0,0,W,H);
-  const X=e=>90+e*88, Y=s=>300-s*80;
-  // axes
-  line(g,90,300,430,300,'#2c2c4d',2);line(g,90,300,90,40,'#2c2c4d',2);
-  label(g,'strain ε →',370,322,'#565672');
-  label(g,'stress σ',40,52,'#565672');
-  // full curve faint
-  g.strokeStyle='#3b3b5c';g.lineWidth=2;g.beginPath();
-  for(let i=0;i<=100;i++){const e=3.4*i/100;const x=X(e),y=Y(sigOf(e));i===0?g.moveTo(x,y):g.lineTo(x,y)}
-  g.stroke();
-  // travelled part bright
-  const e=S1.e/100;
-  g.strokeStyle='#22d3ee';g.lineWidth=3;g.beginPath();
-  for(let i=0;i<=100;i++){const ee=Math.min(e,3.4*i/100);const x=X(ee),y=Y(sigOf(ee));i===0?g.moveTo(x,y):g.lineTo(x,y);if(3.4*i/100>=e)break}
-  g.stroke();
-  // named points
-  for(let i=0;i<PTS.length;i++){
-    const x=X(PTS[i][0]),y=Y(PTS[i][1]);
-    dot(g,x,y,4,'#e879f9');
-    label(g,NAMES[i],x-4,y-12,'#e879f9');
-  }
-  // current dot
-  const cx=X(e),cy=Y(sigOf(e));
-  dot(g,cx,cy,6,'#facc15');
-  // region message
-  let msg;
-  if(e<=1.0)msg='O→A: PROPORTIONAL - Hooke valid, seedhi line (σ = Yε)';
-  else if(e<=1.5)msg='A→B: ELASTIC LIMIT tak - curve hui, par force hatao toh WAPAS aa jayegi';
-  else if(e<=2.6)msg='B→C: PLASTIC region - permanent set shuru! Ab wapas nahi aayegi';
-  else if(e<3.4)msg='C→D: UTS cross! NECK ban rahi hai (beech se patli) - break aane wala hai...';
-  else msg='D: FRACTURE - wire TOOT gayi!';
-  label(g,msg,90,26,'#9aa0c9');
-  // wire visual
-  const wx=520,wy=170,baseLen=100,wlen=baseLen*(1+e*0.32);
-  label(g,'wire (zoomed)',wx-10,120,'#565672');
-  const broken=e>=3.4;
-  const neck=e>2.6?Math.min(0.7,(e-2.6)/0.8*0.7):0;
-  // clamp
-  g.fillStyle='#23233d';g.fillRect(wx-14,wy-26,14,52);
-  label(g,'clamp',wx-16,wy+52,'#565672');
-  if(!broken){
-    g.fillStyle='#7dd3fc';
-    g.beginPath();
-    const th=12;
-    g.moveTo(wx,wy-th/2);
-    g.lineTo(wx+wlen*0.5,wy-th/2*(1-neck));
-    g.lineTo(wx+wlen,wy-th/2);
-    g.lineTo(wx+wlen,wy+th/2);
-    g.lineTo(wx+wlen*0.5,wy+th/2*(1-neck));
-    g.lineTo(wx,wy+th/2);
-    g.closePath();g.fill();
-    if(neck>0.05)label(g,'NECK!',wx+wlen*0.5-24,wy-24,'#f87171');
-  }else{
-    g.fillStyle='#7dd3fc';
-    g.fillRect(wx,wy-6,wlen*0.42,12);
-    g.fillRect(wx+wlen*0.58,wy-6,wlen*0.42,12);
-    g.strokeStyle='#f87171';g.lineWidth=2;
-    g.beginPath();g.moveTo(wx+wlen*0.42,wy-10);g.lineTo(wx+wlen*0.48,wy);g.lineTo(wx+wlen*0.42,wy+10);g.stroke();
-    g.beginPath();g.moveTo(wx+wlen*0.58,wy-10);g.lineTo(wx+wlen*0.52,wy);g.lineTo(wx+wlen*0.58,wy+10);g.stroke();
-    label(g,'TOOT GAYI!',wx+wlen*0.32,wy-34,'#f87171');
-  }
-  arrow(g,wx+wlen+6,wy,Math.min(wx+wlen+40,W-26),wy,'#e879f9',3);
-  label(g,'F',Math.min(wx+wlen+44,W-20),wy+5,'#e879f9');
-  document.getElementById('v1read').innerHTML='strain = <b>'+(e).toFixed(2)+'</b> (normalized), stress = <b>'+sigOf(e).toFixed(2)+'</b> (normalized). '+msg+' <b>Yaad rakho: A, B, C, D ke naam aur order - NEET direct poochta hai!</b>';
+  const t=performance.now()/1000;
+  const sh=shells(z1),n=sh.length,val=sh[n-1];
+  const cx=250,cy=175;
+  dot(g,cx,cy,16,'#1a1a35');
+  g.fillStyle='#fff';g.font='bold 13px sans-serif';g.fillText('Z='+z1,cx-14,cy+4);
+  sh.forEach((cnt,i)=>{
+    const r=42+i*34;
+    const outer=i===n-1;
+    g.strokeStyle=outer?CY:'#2c2c4d';g.lineWidth=outer?2.5:1.2;
+    g.beginPath();g.arc(cx,cy,r,0,7);g.stroke();
+    label(g,'n='+(i+1),cx+r-12,cy-4,outer?CY:'#44446a');
+    for(let k=0;k<cnt;k++){
+      const a=-Math.PI/2+k*2*Math.PI/cnt+ (outer?t*0.5:t*0.15*(i+1));
+      const x=cx+r*Math.cos(a),y=cy+r*Math.sin(a);
+      const newest=outer&&k===cnt-1;
+      dot(g,x,y,newest?5.5:4,newest?GD:(outer?MG:'#555577'));
+    }
+  });
+  // group calc
+  const noble=(n===1&&val===2)||(n>1&&val===8);
+  const grp=noble?18:(val<=2?val:10+val);
+  g.fillStyle='#fff';g.font='bold 16px sans-serif';
+  g.fillText(SYM[z1]+'  ('+CONF[z1]+')',470,80);
+  g.fillStyle=CY;g.font='14px sans-serif';
+  g.fillText('period = max n = '+n,470,118);
+  g.fillText('valence e⁻ = '+val+(n<=1?'':' (outermost shell)'),470,146);
+  g.fillStyle=MG;
+  g.fillText(noble?'FULL OUTER SHELL - noble gas!':'group = '+(val<=2?val+'  (s-block)':val+' + 10 = '+grp+'  (p-block)'),470,174);
+  g.fillStyle=GD;g.font='bold 17px sans-serif';
+  g.fillText('→ Period '+n+',  Group '+grp,470,214);
+  g.fillStyle=TX;g.font='12px sans-serif';
+  g.fillText('gold dot = sabse naya electron (abhi ghusa!)',470,244);
+  document.getElementById('r1').innerHTML='<b>'+SYM[z1]+' (Z='+z1+'): '+CONF[z1]+'</b> → shells ['+sh.join(', ')+'] → <b>Period '+n+', Group '+grp+'</b>.'+(noble?' Outer shell FULL - Group 18 noble gas (react nahi karta 😴)':(val<=2?' s-block metal.':' p-block: group = valence + 10 trick!'));
 }
 
-// ---------- SCENE 2: Hooke's law lab ----------
+// ---------- SCENE 2: size map ----------
 const [c2,g2]=ctx('cv2');
-const S2={F:60};
-document.getElementById('f2slide').oninput=e=>{S2.F=+e.target.value;document.getElementById('f2val').textContent='F = '+S2.F+' N'};
-const ELIM=150;
-function draw2(t){
+let view2='per';
+document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{view2=b.dataset.v;document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('sel',x===b))});
+function bub(g,x,y,r,sym,col,val){
+  g.strokeStyle=col;g.lineWidth=2;g.beginPath();g.arc(x,y,r,0,7);g.stroke();
+  g.fillStyle=col+'33';g.fill();
+  g.fillStyle='#fff';g.font='bold 13px sans-serif';g.fillText(sym,x-sym.length*4.2,y+4);
+  if(val)label(g,val,x-14,y+r+16,TX);
+}
+function draw2(){
   const g=g2,W=c2.width,H=c2.height;g.clearRect(0,0,W,H);
-  const F=S2.F,plastic=F>ELIM;
-  // spring wire: zigzag
-  const sx=70,sy=170,natLen=280,stretch=F*1.1;
-  g.fillStyle='#23233d';g.fillRect(sx-16,sy-30,16,60);
-  label(g,'wall',sx-18,sy+48,'#565672');
-  const n=12,x0=sx,x1=sx+natLen+stretch;
-  g.strokeStyle=plastic?'#f87171':'#22d3ee';g.lineWidth=3;g.beginPath();
-  g.moveTo(x0,sy);
-  for(let i=1;i<=n;i++){
-    const x=x0+(x1-x0)*i/n;
-    g.lineTo(x,sy+(i%2?-16:16)*(i<n?1:0));
+  const t=performance.now()/1000;
+  const S=0.55; // pm to px scale
+  if(view2==='per'){
+    const p2=[['Li',152],['Be',111],['B',88],['C',77],['N',70],['O',66],['F',64]];
+    const p3=[['Na',186],['Mg',160],['Al',143],['Si',117],['P',110],['S',104],['Cl',99]];
+    label(g,'Period 2:',55,105,CY);
+    p2.forEach(([s,r],i)=>bub(g,150+i*88,105,r*S*0.55,s,CY,r+' pm'));
+    label(g,'Period 3:',55,245,MG);
+    p3.forEach(([s,r],i)=>bub(g,150+i*88,245,r*S*0.55,s,MG,r+' pm'));
+    // shrink arrows
+    g.strokeStyle=GD;g.lineWidth=2.5;
+    g.beginPath();g.moveTo(150,52);g.lineTo(660,52);g.stroke();
+    g.beginPath();g.moveTo(660,52);g.lineTo(650,46);g.moveTo(660,52);g.lineTo(650,58);g.stroke();
+    label(g,'L → R: size GHAT-TA hai (nuclear magnet strong hota hai!)',230,42,GD);
+    document.getElementById('r2').innerHTML='<b>Period me L→R: radius GHAT-TA hai</b> - electrons same shell me add hote hain par nucleus ka charge badhta hai → tight kheench (effective nuclear charge ↑). Ne (noble gas) isliye nahi dikhaya - uska van der Waals radius hota hai, compare nahi karte!';
+  } else if(view2==='grp'){
+    const g1d=[['Li',152],['Na',186],['K',227],['Rb',248]];
+    const g17=[['F',64],['Cl',99],['Br',114],['I',133]];
+    label(g,'Group 1 (alkali):',120,60,CY);
+    g1d.forEach(([s,r],i)=>bub(g,180,105+i*62,r*S*0.5,s,CY,r+' pm'));
+    label(g,'Group 17 (halogens):',440,60,MG);
+    g17.forEach(([s,r],i)=>bub(g,500,105+i*62,r*S*0.5,s,MG,r+' pm'));
+    g.strokeStyle=GD;g.lineWidth=2.5;
+    g.beginPath();g.moveTo(310,95);g.lineTo(310,300);g.stroke();
+    g.beginPath();g.moveTo(310,300);g.lineTo(304,290);g.moveTo(310,300);g.lineTo(316,290);g.stroke();
+    label(g,'neeche: size BADHTA hai (naya shell = naya floor!)',330,325,GD);
+    document.getElementById('r2').innerHTML='<b>Group me upar→neeche: radius BADHTA hai</b> - har period me ek naya shell (floor upar floor). Isliye Cs (Group 1 ka sabse neeche) sabse bada metal atom!';
+  } else {
+    const iso=[['N³⁻',146,7],['O²⁻',140,8],['F⁻',133,9],['Na⁺',102,11],['Mg²⁺',72,12]];
+    label(g,'sab me 10 electrons hain (Ne jaisa config) - par Z alag!',150,55,'#fff');
+    iso.forEach(([s,r,z],i)=>{
+      const x=130+i*130;
+      bub(g,x,160,r*S*0.55,s,i%2?MG:CY,r+' pm');
+      label(g,'Z='+z,x-16,260,GD);
+    });
+    g.strokeStyle=GD;g.lineWidth=2.5;
+    g.beginPath();g.moveTo(130,305);g.lineTo(640,305);g.stroke();
+    g.beginPath();g.moveTo(640,305);g.lineTo(630,299);g.moveTo(640,305);g.lineTo(630,311);g.stroke();
+    label(g,'Z badhta → same electrons ko zyada tight kheench → size chhota',140,325,GD);
+    document.getElementById('r2').innerHTML='<b>Isoelectronic series: N³⁻ > O²⁻ > F⁻ > Na⁺ > Mg²⁺</b> - sab ke paas 10 electrons, par nuclear charge 7→12 badhta hai → zyada Z = zyada tight = chhota size. Cation chhota (Na⁺ < Na), anion bada (Cl⁻ > Cl)!';
   }
-  g.stroke();
-  arrow(g,x1+6,sy,x1+52,sy,'#e879f9',3);
-  label(g,'F = '+F+' N',x1+10,sy-16,'#e879f9');
-  // elastic limit marker
-  const limX=sx+natLen+ELIM*1.1;
-  line(g,limX,sy-52,limX,sy+40,'#f87171',1.5,[5,4]);
-  label(g,'elastic limit (150 N)',limX-56,sy+58,'#f87171');
-  if(plastic)label(g,'PLASTIC ZONE - permanent set!',sx+natLen/2,sy-64,'#f87171');
-  else label(g,'elastic zone - force hatao, wire WAPAS!',sx+natLen/2,sy-64,'#4ade80');
-  // real numbers
-  const A=1e-6,L=2,Y=2e11;
-  const dL=F*L/(A*Y);
-  label(g,'asli steel wire (L=2m, A=1mm²): ΔL = '+(dL*1000).toFixed(2)+' mm',70,300,'#565672');
-  // mini graph
-  const gx=560,gy=300;
-  line(g,gx,gy,gx+170,gy,'#2c2c4d',2);line(g,gx,gy,gx,gy-180,'#2c2c4d',2);
-  label(g,'ε',gx+176,gy+4,'#565672');label(g,'σ',gx-14,gy-172,'#565672');
-  g.strokeStyle='#22d3ee';g.lineWidth=2.5;g.beginPath();g.moveTo(gx,gy);g.lineTo(gx+105,gy-150);g.stroke();
-  g.strokeStyle='#f87171';g.beginPath();g.moveTo(gx+105,gy-150);g.lineTo(gx+150,gy-168);g.stroke();
-  const t2=Math.min(F,200)/200;
-  const dotx=gx+150*t2,doty=t2<=0.75?gy-150*(t2/0.75):gy-150-18*((t2-0.75)/0.25);
-  dot(g,dotx,doty,5,'#facc15');
-  label(g,'linear = Hooke',gx+18,gy-158,'#9aa0c9');
-  document.getElementById('v2read').innerHTML='F = <b>'+F+' N</b> → '+(plastic?'status: <b>PLASTIC (limit cross!)</b> - ab force hatao toh bhi permanent stretch rahega.':'status: <b>ELASTIC</b> - force hatao, wire bilkul wapas. stress ∝ strain (Hooke!).')+' Steel wire pe asli stretch sirf <b>'+(dL*1000).toFixed(2)+' mm</b> - Y = 2×10¹¹ Pa itna BADA hai!';
 }
 
-// ---------- SCENE 3: three moduli ----------
+// ---------- SCENE 3: IE zigzag ----------
 const [c3,g3]=ctx('cv3');
-const S3={mode:'Y',f:50};
-function setM(m){S3.mode=m;['Y','B','G'].forEach(k=>document.getElementById('m'+k).classList.toggle('sel',k===m))}
-document.getElementById('mY').onclick=()=>setM('Y');
-document.getElementById('mB').onclick=()=>setM('B');
-document.getElementById('mG').onclick=()=>setM('G');
-document.getElementById('f3slide').oninput=e=>{S3.f=+e.target.value;document.getElementById('f3val').textContent=S3.f+'%'};
-function draw3(t){
+let pe3='2';
+document.querySelectorAll('[data-pe]').forEach(b=>b.onclick=()=>{pe3=b.dataset.pe;document.querySelectorAll('[data-pe]').forEach(x=>x.classList.toggle('sel',x===b))});
+const IE2=[['Li',520],['Be',899],['B',801],['C',1086],['N',1402],['O',1314],['F',1681],['Ne',2081]];
+const IE3=[['Na',496],['Mg',738],['Al',578],['Si',787],['P',1012],['S',1000],['Cl',1251],['Ar',1521]];
+const STABLE2={Be:'2s² FULL',N:'2p³ HALF-FILLED'};
+const STABLE3={Mg:'3s² FULL',P:'3p³ HALF-FILLED'};
+function draw3(){
   const g=g3,W=c3.width,H=c3.height;g.clearRect(0,0,W,H);
-  const f=S3.f/100;
-  if(S3.mode==='Y'){
-    const bx=150,by=170,bl=340,bh=44,st=f*60;
-    // clamps
-    g.fillStyle='#23233d';g.fillRect(bx-18,by-34,18,112);
-    label(g,'L',bx+bl/2-6,by-58,'#565672');
-    line(g,bx,by-52,bx+bl,by-52,'#565672',1);line(g,bx,by-58,bx,by-46,'#565672',1);line(g,bx+bl,by-58,bx+bl,by-46,'#565672',1);
-    // bar stretched
-    g.fillStyle='#22d3ee';g.fillRect(bx,by-bh/2,bl+st,bh);
-    g.strokeStyle='#565672';g.setLineDash([5,4]);g.strokeRect(bx,by-bh/2,bl,bh);g.setLineDash([]);
-    arrow(g,bx+bl+st+6,by,bx+bl+st+58,by,'#e879f9',3);
-    label(g,'F',bx+bl+st+62,by+5,'#e879f9');
-    // dL marker
-    line(g,bx+bl,by+bh/2+16,bx+bl+st,by+bh/2+16,'#4ade80',2);
-    label(g,'ΔL',bx+bl+st/2-8,by+bh/2+34,'#4ade80');
-    label(g,'Young: LENGTH change resist karta hai',150,70,'#9aa0c9');
-    label(g,'steel Y ≈ 2×10¹¹ Pa - buildings me steel rods isliye!',150,90,'#565672');
-    document.getElementById('v3read').innerHTML='<b>Y = (F/A) / (ΔL/L) = FL/(A·ΔL)</b> - jitna BADA Y, utna kam stretch. Wire apne khud ke weight se bhi stretch hoti hai: ΔL = ρgL²/2Y (half effective, kyunki weight distributed hai!).';
-  }else if(S3.mode==='B'){
-    const cx=330,cy=170,s=110,sh=f*16;
-    // dashed original cube
-    g.strokeStyle='#565672';g.setLineDash([5,4]);g.strokeRect(cx-s/2,cy-s/2,s,s);g.setLineDash([]);
-    // squeezed cube
-    g.fillStyle='#22d3ee';g.fillRect(cx-s/2+sh,cy-s/2+sh,s-2*sh,s-2*sh);
-    // inward arrows on 4 sides
-    const d=40;
-    arrow(g,cx-s/2-d,cy,cx-s/2-6,cy,'#e879f9',3);
-    arrow(g,cx+s/2+d,cy,cx+s/2+6,cy,'#e879f9',3);
-    arrow(g,cx,cy-s/2-d,cx,cy-s/2-6,'#e879f9',3);
-    arrow(g,cx,cy+s/2+d,cx,cy+s/2+6,'#e879f9',3);
-    label(g,'p (pressure sab taraf se)',cx+56,cy-s/2-46,'#e879f9');
-    label(g,'ΔV shrink (zoomed)',cx+s/2+56,cy+6,'#4ade80');
-    label(g,'Bulk: VOLUME change resist karta hai',150,70,'#9aa0c9');
-    label(g,'compressibility k = 1/B - kitna aasani se dabta hai',150,90,'#565672');
-    document.getElementById('v3read').innerHTML='<b>B = −p / (ΔV/V) = −pV/ΔV</b> - minus ka matlab: pressure badhao toh volume GHATTA hai. Solids ka B bohot bada (mushkil se dabte hain), gases ka chhota.';
-  }else{
-    const bx=250,by=230,w=260,h=100,sh=f*90;
-    // dashed original rectangle
-    g.strokeStyle='#565672';g.setLineDash([5,4]);g.strokeRect(bx,by-h,w,h);g.setLineDash([]);
-    // sheared parallelogram
-    g.fillStyle='#22d3ee';g.beginPath();
-    g.moveTo(bx,by);g.lineTo(bx+w,by);g.lineTo(bx+w+sh,by-h);g.lineTo(bx+sh,by-h);g.closePath();g.fill();
-    arrow(g,bx+w+sh+8,by-h,bx+w+sh+56,by-h,'#e879f9',3);
-    label(g,'F (top pe, parallel)',bx+w+sh-40,by-h-16,'#e879f9');
-    label(g,'base FIXED',bx+70,by+22,'#565672');
-    // theta arc
-    g.strokeStyle='#4ade80';g.lineWidth=2;g.beginPath();g.arc(bx,by,70,-Math.PI/2+Math.atan2(sh,h),0);g.stroke();
-    label(g,'θ',bx+30,by-64,'#4ade80');
-    label(g,'Shear: SHAPE change resist karta hai (twist)',150,70,'#9aa0c9');
-    label(g,'θ chhota (radian mein) = F/(A·G)',150,90,'#565672');
-    document.getElementById('v3read').innerHTML='<b>G = (F/A) / θ</b> - shearing stress / shear angle. G ko rigidity modulus bhi bolte hain. Relation yaad rakho: <b>Y = 2G(1+σ) = 3B(1−2σ) = 9BG/(3B+G)</b> - teeno moduli + Poisson ek dusre se judte hain!';
-  }
+  const t=performance.now()/1000;
+  const D=pe3==='2'?IE2:IE3,ST=pe3==='2'?STABLE2:STABLE3;
+  const max=2200,x0=70,y0=280,bw=64,gap=20;
+  const Y=v=>y0-v/max*230;
+  line(g,x0-10,y0,x0+D.length*(bw+gap),y0,AX,2);
+  D.forEach(([s,v],i)=>{
+    const x=x0+i*(bw+gap);
+    const stable=ST[s];
+    const prev=D[i-1];
+    const dip=prev&&v<prev[1];
+    const col=stable?GD:(dip?RD:CY);
+    const grow=Math.min(1,(t%1.5)/1.2);
+    g.fillStyle=col+'55';g.fillRect(x,Y(v),bw,y0-Y(v));
+    g.strokeStyle=col;g.lineWidth=stable?2.5:1.5;g.strokeRect(x,Y(v),bw,y0-Y(v));
+    g.fillStyle='#fff';g.font='bold 13px sans-serif';g.fillText(s,x+bw/2-8,y0+18);
+    label(g,''+v,x+bw/2-14,Y(v)-8,col);
+    if(stable)label(g,'⭐ '+stable,x-2,Y(v)-26,GD);
+    if(dip){label(g,'DIP!',x+8,Y(v)-26,RD);}
+  });
+  // trend line
+  g.strokeStyle='#555588';g.lineWidth=1.5;g.setLineDash([5,4]);g.beginPath();
+  D.forEach(([s,v],i)=>{const x=x0+i*(bw+gap)+bw/2;i?g.lineTo(x,Y(v)):g.moveTo(x,Y(v))});
+  g.stroke();g.setLineDash([]);
+  g.fillStyle=TX;g.font='12px sans-serif';
+  g.fillText('IE (kJ/mol) - electron ukhaadne ki energy',x0,315);
+  const ex=pe3==='2'?'Be > B (2s² full stable) aur N > O (2p³ half-filled stable)':'Mg > Al (3s² full stable) aur P > S (3p³ half-filled stable)';
+  document.getElementById('r3').innerHTML='<b>Period '+pe3+' exceptions: '+ex+'.</b> General trend L→R IE badhta hai (size chhota → tight pakad), par full/half-filled subshell wale apna electron NAHI dena chahte - isliye dip! Ye 4 pairs ratta maar lo, har saal aata hai.';
 }
 
-// ---------- SCENE 4: elastic PE ----------
+// ---------- SCENE 4: F vs Cl trap ----------
 const [c4,g4]=ctx('cv4');
-const S4={e:10};
-document.getElementById('e4slide').oninput=e=>{S4.e=+e.target.value;document.getElementById('e4val').textContent='ε = '+(S4.e/1000).toFixed(3)};
-function draw4(t){
+let pr4='eg';
+document.querySelectorAll('[data-pr]').forEach(b=>b.onclick=()=>{pr4=b.dataset.pr;document.querySelectorAll('[data-pr]').forEach(x=>x.classList.toggle('sel',x===b))});
+function draw4(){
   const g=g4,W=c4.width,H=c4.height;g.clearRect(0,0,W,H);
-  const gx=100,gy=260,Y=2e11;
-  const eps=S4.e/1000, sig=Y*eps;
-  const X=e=>gx+e/0.02*420, Yy=s=>gy-s/4e9*200;
-  // axes
-  line(g,gx,gy,gx+470,gy,'#2c2c4d',2);line(g,gx,gy,gx,gy-220,'#2c2c4d',2);
-  label(g,'strain ε',gx+430,gy+26,'#565672');label(g,'stress σ',gx-36,gy-206,'#565672');
-  // line
-  line(g,gx,gy,X(0.02),Yy(4e9),'#22d3ee',2.5);
-  // shaded area up to eps
-  g.fillStyle='#e879f955';g.beginPath();
-  g.moveTo(gx,gy);g.lineTo(X(eps),gy);g.lineTo(X(eps),Yy(sig));g.closePath();g.fill();
-  dot(g,X(eps),Yy(sig),6,'#facc15');
-  label(g,'u = AREA = ½ × σ × ε',gx+150,gy-206,'#e879f9');
-  // energy bar
-  const u=0.5*sig*eps;
-  const bx=620,bh=200,fill=Math.min(1,u/4e7)*bh;
-  g.fillStyle='#1a1a30';g.fillRect(bx,gy-bh,46,bh);
-  g.fillStyle='#e879f9';g.fillRect(bx,gy-fill,46,fill);
-  g.strokeStyle='#33335c';g.strokeRect(bx,gy-bh,46,bh);
-  label(g,'energy',bx-4,gy+22,'#565672');
-  label(g,(u/1e6).toFixed(1)+'×10⁶',bx-12,gy-bh-24,'#e879f9');
-  label(g,'J/m³',bx+2,gy-bh-8,'#e879f9');
-  document.getElementById('v4read').innerHTML='ε = <b>'+eps.toFixed(3)+'</b>, σ = Yε = 2×10¹¹ × '+eps.toFixed(3)+' = <b>'+(sig/1e8).toFixed(1)+'×10⁸ Pa</b> → energy density u = ½σε = <b>'+(u/1e6).toFixed(2)+'×10⁶ J/m³</b>. Strain DOUBLE karo → energy 4× (square!). Pole vault ka pole yahi energy wapas deta hai.';
+  const t=performance.now()/1000;
+  const D=pr4==='eg'?[['F',328],['Cl',349],['Br',325]]:[['F',4.0],['Cl',3.0],['Br',2.8]];
+  const win=pr4==='eg'?1:0;
+  const max=pr4==='eg'?400:4.5;
+  const x0=180,y0=270,bw=90,gap=70;
+  D.forEach(([s,v],i)=>{
+    const x=x0+i*(bw+gap);
+    const h=v/max*190;
+    const isW=i===win;
+    const pulse=isW?1+0.06*Math.sin(t*4):1;
+    g.fillStyle=(isW?GD:CY)+'55';g.fillRect(x,y0-h*pulse,bw,h*pulse);
+    g.strokeStyle=isW?GD:CY;g.lineWidth=isW?3:1.5;g.strokeRect(x,y0-h*pulse,bw,h*pulse);
+    g.fillStyle='#fff';g.font='bold 15px sans-serif';g.fillText(s,x+bw/2-6,y0+20);
+    label(g,(pr4==='eg'?'−':'')+v+(pr4==='eg'?' kJ/mol':''),x+bw/2-24,y0-h*pulse-10,isW?GD:CY);
+    if(isW){g.font='20px sans-serif';g.fillText('👑',x+bw/2-10,y0-h*pulse-32)}
+  });
+  g.fillStyle='#fff';g.font='bold 16px sans-serif';
+  g.fillText(pr4==='eg'?'WINNER: Cl (sabse zyada energy release!)':'WINNER: F (4.0 = duniya ka max)',x0-60,60);
+  g.fillStyle=TX;g.font='13px sans-serif';
+  if(pr4==='eg'){
+    g.fillText('F chhota hai → naya electron ghusne pe cramped space me repulsion',x0-60,90);
+    g.fillText('→ F ka shauk Cl se KAM (−328 vs −349). EXAM TRAP!',x0-60,110);
+  } else {
+    g.fillText('EN = bond ke shared electrons kheenchne ki taakat (Pauling scale)',x0-60,90);
+    g.fillText('F sabse electronegative. Noble gases ka EN hota hi nahi (bond nahi banate)',x0-60,110);
+  }
+  document.getElementById('r4').innerHTML=pr4==='eg'?'<b>TRAP: electron gain enthalpy me Cl > F!</b> (−349 vs −328 kJ/mol). F itna chhota hai ki incoming electron ko andar ki density repel karti hai. "Sabse negative EGH" = Cl, "sabse zyada EN" = F - dono alag sawaal!':'<b>EN ka king F hai (4.0)</b> - L→R badhta, up→down ghat-ta. Master trick: <b>size/metallic character bottom-left (Cs) ki taraf, IE/EN/non-metallic top-right (F) ki taraf</b> - ye 2 lines se saare trends yaad!';
 }
 
-// ---------- SCENE 5: steel vs rubber + Poisson ----------
+// ---------- SCENE 5: quiz ----------
 const [c5,g5]=ctx('cv5');
-const S5={s:50};
-document.getElementById('s5slide').oninput=e=>{S5.s=+e.target.value;document.getElementById('s5val').textContent=S5.s+'%'};
-function draw5(t){
+const QS=[
+ {q:'[Ne] 3s² 3p³ wale element ki position?',opts:['Period 3, Group 13','Period 3, Group 15','Period 2, Group 15'],ans:1,why:'max n = 3 → Period 3 | valence = 2+3 = 5 → p-block: 5+10 = Group 15 (ye P hai!)'},
+ {q:'Period 2 me sabse zyada IE kis order me?',opts:['O > N','N > O','Be > B aur N > O dono sahi'],ans:2,why:'N = 2p³ half-filled (extra stable) → N ka IE (1402) O (1314) se zyada | Be (2s² full) > B (801) bhi yaad rakho!'},
+ {q:'N³⁻, O²⁻, F⁻, Na⁺, Mg²⁺ me sabse CHHOTA?',opts:['N³⁻','F⁻','Mg²⁺'],ans:2,why:'sab isoelectronic (10e⁻) - Z sabse zyada Mg²⁺ (12) ka → nucleus tight kheenchta hai → sabse chhota'},
+ {q:'Sabse NEGATIVE electron gain enthalpy kiska?',opts:['F','Cl','Br'],ans:1,why:'TRAP! F nahi - Cl (−349 kJ/mol). F bahut chhota hai, incoming electron repel hota hai (−328)'},
+ {q:'Electronegativity sabse zyada?',opts:['F (4.0)','O (3.5)','Cl (3.0)'],ans:0,why:'F = 4.0 Pauling scale ka max. EN ka koi exception nahi - EGH wala trap (Cl) se confuse mat hona!'},
+];
+let qi=0,qScore={ok:0,tot:0},qDone=false;
+function drawScore(){g5.fillStyle='#0b0b16';g5.fillRect(10,58,220,30);g5.fillStyle=TX;g5.font='13px sans-serif';g5.fillText('score: '+qScore.ok+'/'+qScore.tot,20,80)}
+function renderQ(){
+  qDone=false;
+  const Q=QS[qi];
   const g=g5,W=c5.width,H=c5.height;g.clearRect(0,0,W,H);
-  const sig=S5.s/100*1e6; // Pa, same stress on both
-  const Ys=2e11,Yr=1e7;
-  const es=sig/Ys, er=sig/Yr;
-  // strain bars (zoomed x1e6 display)
-  label(g,'same stress σ = '+(sig/1e6).toFixed(2)+'×10⁶ Pa dono pe:',60,44,'#9aa0c9');
-  const bx=200,maxw=460;
-  label(g,'steel',150,108,'#7dd3fc');
-  g.fillStyle='#1a1a30';g.fillRect(bx,92,maxw,20);
-  g.fillStyle='#22d3ee';g.fillRect(bx,92,Math.max(2,es*1e6/100*maxw),20);
-  label(g,'ε = '+(es*1e6).toFixed(1)+'×10⁻⁶',bx+maxw+10,108,'#22d3ee');
-  label(g,'rubber',140,148,'#e879f9');
-  g.fillStyle='#1a1a30';g.fillRect(bx,132,maxw,20);
-  g.fillStyle='#e879f9';g.fillRect(bx,132,Math.min(maxw,Math.max(2,er/0.1*maxw)),20);
-  label(g,'ε = '+(er*100).toFixed(1)+'%',bx+maxw+10,148,'#e879f9');
-  label(g,'STEEL ka strain 20,000× KAM → steel zyada ELASTIC! (definition: kam deform hona)',60,196,'#4ade80');
-  // poisson visual
-  const wy=270,L=340,th0=26,eps=S5.s/100*0.01,pr=0.3;
-  const stretch=eps*L*60,thin=pr*eps*th0*60;
-  g.fillStyle='#22d3ee';
-  g.beginPath();
-  g.moveTo(200,wy-th0/2);
-  g.lineTo(200+L+stretch,wy-Math.max(2,th0-thin)/2);
-  g.lineTo(200+L+stretch,wy+Math.max(2,th0-thin)/2);
-  g.lineTo(200,wy+th0/2);
-  g.closePath();g.fill();
-  g.strokeStyle='#565672';g.setLineDash([4,4]);g.strokeRect(200,wy-th0/2,L,th0);g.setLineDash([]);
-  label(g,'kheencho → LAMBI + PATLI! σ = 0.3 (metal)',200,wy-44,'#9aa0c9');
-  label(g,'thickness zoom ×60',560,wy+44,'#565672');
-  document.getElementById('v5read').innerHTML='Steel: ε = <b>'+(es*1e6).toFixed(1)+'×10⁻⁶</b>, rubber: ε = <b>'+(er*100).toFixed(1)+'%</b> - SAME stress pe! Curve jitna STEEP, modulus utna BADA, material utna ELASTIC. Poisson ratio σ = lateral strain / longitudinal strain ≈ <b>0.3 metals</b>, hamesha <b>&lt; 0.5</b> (volume badh nahi sakta stretch mein - trap question!).';
+  g.fillStyle='#fff';g.font='15px sans-serif';
+  g.fillText('Q'+(qi+1)+'/'+QS.length+':  '+Q.q,20,50);
+  drawScore();
+  const box=document.getElementById('quizBtns');box.innerHTML='';
+  Q.opts.forEach((o,j)=>{
+    const b=document.createElement('button');b.className='btn';b.textContent=o;
+    b.onclick=()=>{
+      if(qDone)return;qDone=true;qScore.tot++;
+      const good=j===Q.ans;if(good)qScore.ok++;drawScore();
+      document.getElementById('r5').innerHTML=(good?'✅ <b style="color:'+GR+'">SAHI!</b> ':'❌ Sahi: <b style="color:'+GD+'">'+Q.opts[Q.ans]+'</b> | ')+Q.why;
+      const nb=document.createElement('button');nb.className='btn hot';nb.textContent=qi<QS.length-1?'Agla Sawaal →':'Phir Se ↻';
+      nb.onclick=()=>{qi=(qi+1)%QS.length;renderQ()};
+      box.appendChild(nb);
+    };
+    box.appendChild(b);
+  });
+  document.getElementById('r5').innerHTML='sahi jawab chuno...';
 }
+renderQ();
+function draw5(){}
 
-const DRAW=[draw1,draw2,draw3,draw4,draw5,()=>{}];
-let last=performance.now(),nowT=0;
+let last=performance.now();
 function tick(now){
-  const dt=Math.min(0.05,(now-last)/1000);last=now;nowT=now/1000;
-  if(DRAW[cur])DRAW[cur](nowT,dt);
+  const dt=Math.min(0.05,(now-last)/1000);last=now;
+  if(cur==0)draw1();
+  if(cur==1)draw2();
+  if(cur==2)draw3();
+  if(cur==3)draw4();
+  if(cur==4)draw5();
   requestAnimationFrame(tick);
 }
-go(0);
 requestAnimationFrame(tick);
-</script>
-</body>
-</html>
+</script></body></html>
