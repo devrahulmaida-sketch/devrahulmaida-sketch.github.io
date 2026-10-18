@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Geometry Ka Visual Walkthrough - Class 11 Maths Ch 11</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07070d;color:#e8e8f2;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:18px 12px 40px}
+.wrap{max-width:820px;margin:0 auto}
+.badge{display:inline-block;font-size:.75em;padding:4px 12px;border:1px solid #3b3b5c;border-radius:999px;color:#9aa0c9;margin-bottom:10px}
+h1{font-size:1.7em;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+.tag{text-align:center;color:#9aa0c9;font-size:.9em;margin:8px 0 4px}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0 18px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2a2a45;border:0;cursor:pointer;padding:0}
+.dot.on{background:#22d3ee;box-shadow:0 0 8px #22d3ee88}
+.scene{display:none}
+.scene.on{display:block}
+h2{font-size:1.15em;color:#7dd3fc;margin-bottom:6px}
+.sub{color:#b9b9d6;font-size:.88em;margin-bottom:12px;line-height:1.5}
+canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;border-radius:12px;margin:8px 0}
+.readout{font-size:.9em;color:#c9c9e0;background:#0e0e1c;border:1px solid #26264a;border-radius:10px;padding:10px 14px;margin:8px 0;line-height:1.55;min-height:52px}
+.readout b{color:#7dd3fc}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.btn{background:#181830;color:#c9c9e0;border:1px solid #33335c;border-radius:10px;padding:8px 14px;font-size:.85em;cursor:pointer}
+.btn.sel{border-color:#e879f9;color:#e879f9;background:#22122a}
+.btn:active{transform:scale(.97)}
+.sliderrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.85em;color:#c9c9e0}
+.sliderrow input[type=range]{flex:1;accent-color:#22d3ee}
+.sliderrow b{color:#e879f9;min-width:64px;text-align:right}
+.recap .card{background:#0e0e1c;border:1px solid #26264a;border-radius:12px;padding:14px 16px;margin:10px 0}
+.recap .card h3{color:#e879f9;font-size:.95em;margin-bottom:6px}
+.recap .card p{font-size:.86em;color:#c9c9e0;line-height:1.6;font-family:ui-monospace,monospace}
+.navrow{display:flex;justify-content:space-between;margin-top:18px}
+.credit{text-align:center;color:#565672;font-size:.75em;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="text-align:center"><span class="badge">Class 11 Maths - Chapter 11 - Introduction to 3D Geometry</span></div>
+<h1>3D Space Ka Visual Walkthrough</h1>
+<p class="tag">5 animated scenes - teen axes me point ghumao, octant quiz khelo, distance ki double Pythagoras, section formula, aur 3D shapes pehchano.</p>
+<div class="dots" id="dots"></div>
+
+<section class="scene on">
+<h2>1. 3D Space Explorer - Teen Axes, Ek Point</h2>
+<p class="sub">2D = Google Maps (flat), 3D = drone delivery (height bhi!). Har point ko TEEN coordinates: <b>(x, y, z)</b>. Sliders ghumao aur point ko space me fly karte dekho - z upar, x aage, y side. Dashed lines dikhati hain point planes pe kahan girta hai.</p>
+<canvas id="cv1" width="760" height="380"></canvas>
+<div class="sliderrow">x <input type="range" id="x1" min="-5" max="5" value="3" step="0.5"> <b id="x1v">3</b></div>
+<div class="sliderrow">y <input type="range" id="y1" min="-5" max="5" value="2" step="0.5"> <b id="y1v">2</b></div>
+<div class="sliderrow">z <input type="range" id="z1" min="-5" max="5" value="4" step="0.5"> <b id="z1v">4</b></div>
+<div class="readout" id="r1"></div>
+</section>
+
+<section class="scene">
+<h2>2. Octant Quiz - Space Ke 8 Sections ⭐</h2>
+<p class="sub">Teen planes space ko <b>8 octants</b> me kaat-te hain (2D me 4 quadrants the, 3D me double!). TRICK: octant sirf <b>signs ka game</b> hai - values matter nahi karti, sirf +/− dekho. Point dekhke octant batao:</p>
+<canvas id="cv2" width="760" height="300"></canvas>
+<div class="btnrow" id="octBtns"></div>
+<div class="btnrow"><button class="btn hot" id="nextOct">Naya Point →</button></div>
+<div class="readout" id="r2"></div>
+</section>
+
+<section class="scene">
+<h2>3. Distance Formula - Double Pythagoras</h2>
+<p class="sub">Room ki diagonal socho: pehle <b>floor ki diagonal</b> √(Δx²+Δy²), phir us pe <b>deewar ka triangle</b> z ke saath! Final: <b>d = √(Δx²+Δy²+Δz²)</b> - 2D formula me bas ek z-term aur. Point B ko ghumao:</p>
+<canvas id="cv3" width="760" height="380"></canvas>
+<div class="sliderrow">B.x <input type="range" id="bx3" min="-5" max="5" value="4" step="0.5"> <b id="bx3v">4</b></div>
+<div class="sliderrow">B.y <input type="range" id="by3" min="-5" max="5" value="3" step="0.5"> <b id="by3v">3</b></div>
+<div class="sliderrow">B.z <input type="range" id="bz3" min="-5" max="5" value="5" step="0.5"> <b id="bz3v">5</b></div>
+<div class="readout" id="r3"></div>
+</section>
+
+<section class="scene">
+<h2>4. Section Formula - Segment Ko Ratio Me Baanto</h2>
+<p class="sub">A(−4,−2,1) aur B(4,3,5) ko join karne wali line pe point P ratio <b>m:n</b> me: <b>P = ((mx₂+nx₁)/(m+n), ...)</b> - har coordinate ka weighted average! Midpoint = 1:1 special case. TRAP: m B ke saath, n A ke saath cross hota hai!</p>
+<canvas id="cv4" width="760" height="380"></canvas>
+<div class="sliderrow">m <input type="range" id="m4" min="0" max="5" value="1" step="1"> <b id="m4v">1</b></div>
+<div class="sliderrow">n <input type="range" id="n4" min="1" max="5" value="1" step="1"> <b id="n4v">1</b></div>
+<div class="readout" id="r4"></div>
+</section>
+
+<section class="scene">
+<h2>5. Shape Detective - 3D Me Triangle Pehchano ⭐</h2>
+<p class="sub">EXAM FAVORITE: "ye teen points kya banate hain?" Teeno distances nikalo - <b>equilateral</b> (3 same), <b>isosceles</b> (2 same), <b>right</b> (Pythagoras satisfy), <b>collinear</b> (AB+BC=AC). C vertex ko ghumao aur classification LIVE badalte dekho:</p>
+<canvas id="cv5" width="760" height="360"></canvas>
+<div class="sliderrow">C.x <input type="range" id="cx5" min="-5" max="5" value="0" step="0.5"> <b id="cx5v">0</b></div>
+<div class="sliderrow">C.y <input type="range" id="cy5" min="-5" max="5" value="3" step="0.5"> <b id="cy5v">3</b></div>
+<div class="sliderrow">C.z <input type="range" id="cz5" min="-5" max="5" value="4" step="0.5"> <b id="cz5v">4</b></div>
+<div class="readout" id="r5"></div>
+</section>
+
+<section class="scene recap">
+<h2>Formula Recap - Screenshot Le Lo!</h2>
+<div class="card"><h3>Setup</h3><p>point = (x, y, z) | axes teeno perpendicular, origin (0,0,0) | planes: XY (z=0), YZ (x=0), ZX (y=0) | axis pe point: x-axis (a,0,0), XY plane (a,b,0) - ek coordinate ZERO</p></div>
+<div class="card"><h3>Octants ⭐</h3><p>8 octants, sirf SIGNS ka game | Octant I = (+,+,+) | "(−2,4,7) kahan?" → (−,+,+) bas dekho | values matter NAHI karti</p></div>
+<div class="card"><h3>Distance ⭐</h3><p>d = √[(x₂−x₁)² + (y₂−y₁)² + (z₂−z₁)²] | origin se: √(x²+y²+z²) | 2D + ek z-term bas | collinearity: AB + BC = AC</p></div>
+<div class="card"><h3>Section Formula ⭐</h3><p>internal m:n → ((mx₂+nx₁)/(m+n), (my₂+ny₁)/(m+n), (mz₂+nz₁)/(m+n)) | TRAP: m cross B ke saath | midpoint = ((x₁+x₂)/2, ...) | external: m−n | centroid = ((x₁+x₂+x₃)/3, ...)</p></div>
+<div class="card"><h3>Shape Identification ⭐</h3><p>equilateral: 3 sides same | isosceles: 2 same | right: Pythagoras a²+b²=c² | collinear: AB+BC=AC | square: 4 sides + 2 diagonals same | chapter = sirf 2 formulas (distance + section), dono 2D ke twins!</p></div>
+</section>
+<div class="navrow">
+<button class="btn" id="prev">← Peeche</button>
+<button class="btn hot" id="next">Aage →</button>
+</div>
+<p class="credit">Learn With Rahul - Class 11 Maths Ch 11 Introduction to 3D Geometry Visual Walkthrough</p>
+</div>
+
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+let cur=0;
+const dotsBox=document.getElementById('dots');
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
+function line(g,x1,y1,x2,y2,col,w,dash){g.strokeStyle=col;g.lineWidth=w||1.5;if(dash)g.setLineDash(dash);g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();g.setLineDash([])}
+function arrow(g,x1,y1,x2,y2,col,w){
+  line(g,x1,y1,x2,y2,col,w||2.5);
+  const a=Math.atan2(y2-y1,x2-x1),s=9;
+  g.fillStyle=col;g.beginPath();g.moveTo(x2,y2);
+  g.lineTo(x2-s*Math.cos(a-0.45),y2-s*Math.sin(a-0.45));
+  g.lineTo(x2-s*Math.cos(a+0.45),y2-s*Math.sin(a+0.45));
+  g.closePath();g.fill();
+}
+const CY='#22d3ee',MG='#f0f',GD='#ffd166',GR='#7CFC98',TX='#9aa0b8',AX='#2c2c4d';
+// oblique projection: x right, y back-left, z up
+const SC=22;
+function proj(x,y,z,ox,oy){return [ox+SC*(x-0.62*y), oy-SC*(z-0.38*y)]}
+function axes3d(g,ox,oy,len){
+  const X=proj(len,0,0,ox,oy),Y=proj(0,len,0,ox,oy),Z=proj(0,0,len,ox,oy);
+  const Xn=proj(-len,0,0,ox,oy),Yn=proj(0,-len,0,ox,oy),Zn=proj(0,0,-len,ox,oy);
+  arrow(g,Xn[0],Xn[1],X[0],X[1],CY,2);arrow(g,Yn[0],Yn[1],Y[0],Y[1],GR,2);arrow(g,Zn[0],Zn[1],Z[0],Z[1],MG,2);
+  label(g,'x',X[0]+4,X[1]+4,CY);label(g,'y',Y[0]-12,Y[1]+4,GR);label(g,'z',Z[0]+4,Z[1]+4,MG);
+  dot(g,ox,oy,3,'#fff');label(g,'O',ox-14,oy+14,'#fff');
+}
+
+// ---------- SCENE 1: explorer ----------
+const [c1,g1]=ctx('cv1');
+let P1={x:3,y:2,z:4};
+for(const ax of['x','y','z'])document.getElementById(ax+'1').oninput=e=>{P1[ax]=+e.target.value;document.getElementById(ax+'1v').textContent=e.target.value};
+function draw1(){
+  const g=g1,W=c1.width,H=c1.height;g.clearRect(0,0,W,H);
+  const ox=400,oy=230;
+  axes3d(g,ox,oy,6.5);
+  const p=proj(P1.x,P1.y,P1.z,ox,oy);
+  const pf=proj(P1.x,P1.y,0,ox,oy); // drop to XY plane
+  const px=proj(P1.x,0,0,ox,oy),py=proj(0,P1.y,0,ox,oy);
+  // floor guides
+  line(g,ox,oy,px[0],px[1],CY,1.2,[4,4]);
+  line(g,px[0],px[1],pf[0],pf[1],GR,1.2,[4,4]);
+  line(g,pf[0],pf[1],p[0],p[1],MG,1.5,[5,4]);
+  dot(g,pf[0],pf[1],3,TX);label(g,'('+P1.x+', '+P1.y+', 0)',pf[0]+8,pf[1]+14,TX);
+  dot(g,p[0],p[1],6,GD);
+  label(g,'P('+P1.x+', '+P1.y+', '+P1.z+')',p[0]+10,p[1]-8,GD);
+  // grid ticks on floor
+  for(let i=-5;i<=5;i++){if(!i)continue;const t1=proj(i,0,0,ox,oy);line(g,t1[0],t1[1]-3,t1[0],t1[1]+3,'#22223a',1)}
+  let plane=P1.z===0?'z=0 → point XY PLANE pe hai!':(P1.x===0?'x=0 → point YZ PLANE pe!':(P1.y===0?'y=0 → point ZX PLANE pe!':''));
+  document.getElementById('r1').innerHTML='P = <b style="color:'+GD+'">('+P1.x+', '+P1.y+', '+P1.z+')</b> | x-axis (cyan), y-axis (green), z-axis (magenta) | origin se distance = √('+P1.x+'²+'+P1.y+'²+'+P1.z+'²) = <b>'+Math.hypot(P1.x,P1.y,P1.z).toFixed(2)+'</b>'+(plane?' | <span style="color:'+GD+'">⚠ '+plane+'</span>':'');
+}
+
+// ---------- SCENE 2: octant quiz ----------
+const [c2,g2]=ctx('cv2');
+let QP=null,answered=false,score={ok:0,tot:0};
+const SIGNS=['+++','-++','--+','+-+','++-','-+-','---','+--'];
+function newQP(){
+  const g=()=> (Math.floor(Math.random()*8)+2)*(Math.random()<0.5?-1:1);
+  QP={x:g(),y:g(),z:g()};answered=false;
+  document.getElementById('r2').innerHTML='point = <b style="color:'+GD+'">('+QP.x+', '+QP.y+', '+QP.z+')</b> - kis octant me?';
+}
+const box=document.getElementById('octBtns');
+SIGNS.forEach((sg,i)=>{
+  const b=document.createElement('button');b.className='btn';b.textContent='(' + sg.split('').join(',') + ')';
+  b.onclick=()=>{
+    if(answered)return;answered=true;
+    const correct=(Math.sign(QP.x)>0?'+':'-')+(Math.sign(QP.y)>0?'+':'-')+(Math.sign(QP.z)>0?'+':'-');
+    const good=sg===correct;score.tot++;if(good)score.ok++;
+    document.getElementById('r2').innerHTML=(good?'✅ <b style="color:'+GR+'">SAHI!</b>':'❌ Sahi jawab: <b style="color:'+GD+'">('+correct.split('').join(',')+')</b>')+' | signs dekho: x='+Math.sign(QP.x)+', y='+Math.sign(QP.y)+', z='+Math.sign(QP.z)+' | score: '+score.ok+'/'+score.tot;
+    [...box.children].forEach((bb,j)=>{if(SIGNS[j]===correct)bb.classList.add('hot')});
+  };
+  box.appendChild(b);
+});
+document.getElementById('nextOct').onclick=()=>{[...box.children].forEach(bb=>bb.classList.remove('hot'));newQP()};
+function draw2(){
+  const g=g2,W=c2.width,H=c2.height;g.clearRect(0,0,W,H);
+  const ox=420,oy=180;
+  axes3d(g,ox,oy,6);
+  if(QP){
+    const sc=14;
+    const p=[ox+sc*(QP.x-0.62*QP.y), oy-sc*(QP.z-0.38*QP.y)];
+    const pf=[ox+sc*(QP.x-0.62*QP.y), oy-sc*(0-0.38*QP.y)];
+    line(g,pf[0],pf[1],p[0],p[1],MG,1.3,[5,4]);
+    dot(g,p[0],p[1],6,GD);
+    label(g,'?',p[0]+10,p[1]-8,GD);
+  }
+}
+newQP();
+
+// ---------- SCENE 3: distance ----------
+const [c3,g3]=ctx('cv3');
+let B3={x:4,y:3,z:5};const A3={x:-2,y:-1,z:1};
+for(const ax of['x','y','z'])document.getElementById('b'+ax+'3').oninput=e=>{B3[ax]=+e.target.value;document.getElementById('b'+ax+'3v').textContent=e.target.value};
+function draw3(){
+  const g=g3,W=c3.width,H=c3.height;g.clearRect(0,0,W,H);
+  const ox=380,oy=230;
+  axes3d(g,ox,oy,6.5);
+  const a=proj(A3.x,A3.y,A3.z,ox,oy),b=proj(B3.x,B3.y,B3.z,ox,oy);
+  const af=proj(A3.x,A3.y,0,ox,oy),bf=proj(B3.x,B3.y,0,ox,oy);
+  // floor shadows
+  line(g,a[0],a[1],af[0],af[1],TX,1,[4,4]);line(g,b[0],b[1],bf[0],bf[1],TX,1,[4,4]);
+  // floor diagonal (cyan) then wall triangle (magenta)
+  line(g,af[0],af[1],bf[0],bf[1],CY,2.5);
+  line(g,bf[0],bf[1],b[0],b[1],MG,2.5);
+  line(g,a[0],a[1],b[0],b[1],GD,3);
+  dot(g,a[0],a[1],5,CY);label(g,'A('+A3.x+','+A3.y+','+A3.z+')',a[0]-60,a[1]+16,CY);
+  dot(g,b[0],b[1],5,MG);label(g,'B('+B3.x+','+B3.y+','+B3.z+')',b[0]+10,b[1]-8,MG);
+  label(g,'floor diag',(af[0]+bf[0])/2,(af[1]+bf[1])/2+14,CY);
+  label(g,'height Δz',bf[0]+8,(bf[1]+b[1])/2,MG);
+  const dx=B3.x-A3.x,dy=B3.y-A3.y,dz=B3.z-A3.z;
+  const fl=Math.hypot(dx,dy),d=Math.hypot(dx,dy,dz);
+  document.getElementById('r3').innerHTML='Δ=('+dx+', '+dy+', '+dz+') | <span style="color:'+CY+'">floor diagonal = √('+dx+'²+'+dy+'²) = '+fl.toFixed(2)+'</span> | phir deewar triangle: d = √('+fl.toFixed(2)+'²+'+dz+'²) = <b style="color:'+GD+'">'+d.toFixed(2)+'</b> | seedha: √('+dx+'²+'+dy+'²+'+dz+'²) = <b>'+Math.sqrt(dx*dx+dy*dy+dz*dz).toFixed(2)+'</b> - SAME!';
+}
+
+// ---------- SCENE 4: section formula ----------
+const [c4,g4]=ctx('cv4');
+let m4=1,n4=1;
+document.getElementById('m4').oninput=e=>{m4=+e.target.value;document.getElementById('m4v').textContent=m4};
+document.getElementById('n4').oninput=e=>{n4=+e.target.value;document.getElementById('n4v').textContent=n4};
+const A4={x:-4,y:-2,z:1},B4={x:4,y:3,z:5};
+function draw4(){
+  const g=g4,W=c4.width,H=c4.height;g.clearRect(0,0,W,H);
+  const ox=380,oy=220;
+  axes3d(g,ox,oy,6.5);
+  const a=proj(A4.x,A4.y,A4.z,ox,oy),b=proj(B4.x,B4.y,B4.z,ox,oy);
+  line(g,a[0],a[1],b[0],b[1],AX,3);
+  const den=m4+n4;
+  const P=(m4*B4.x+n4*A4.x)/den,Q=(m4*B4.y+n4*A4.y)/den,R=(m4*B4.z+n4*A4.z)/den;
+  const p=proj(P,Q,R,ox,oy);
+  // segment coloring: A->P gets n parts? visually: AP:PB = m:n
+  line(g,a[0],a[1],p[0],p[1],CY,3.5);line(g,p[0],p[1],b[0],b[1],MG,3.5);
+  dot(g,a[0],a[1],5,CY);label(g,'A('+A4.x+','+A4.y+','+A4.z+')',a[0]-70,a[1]+16,CY);
+  dot(g,b[0],b[1],5,MG);label(g,'B('+B4.x+','+B4.y+','+B4.z+')',b[0]+10,b[1]-8,MG);
+  dot(g,p[0],p[1],7,GD);label(g,'P',p[0]+10,p[1]+4,GD);
+  label(g,'m='+m4,(a[0]+p[0])/2,(a[1]+p[1])/2-8,CY);
+  label(g,'n='+n4,(p[0]+b[0])/2,(p[1]+b[1])/2-8,MG);
+  const mid=m4===1&&n4===1?' | <span style="color:'+GR+'">MIDPOINT! (1:1 special case)</span>':'';
+  const edge=m4===0?' | ⚠ m=0 → P = A khud (ratio 0:n)':'';
+  document.getElementById('r4').innerHTML='AP : PB = <b>'+m4+' : '+n4+'</b> | P = (('+m4+'·B + '+n4+'·A)/'+(den)+') = <b style="color:'+GD+'">('+P.toFixed(2)+', '+Q.toFixed(2)+', '+R.toFixed(2)+')</b> | cross multiply yaad rakho: <b>m B ke saath, n A ke saath</b>'+mid+edge;
+}
+
+// ---------- SCENE 5: shape detective ----------
+const [c5,g5]=ctx('cv5');
+let C5={x:0,y:3,z:4};const A5={x:-3,y:-2,z:0},B5={x:3,y:-2,z:0};
+for(const ax of['x','y','z'])document.getElementById('c'+ax+'5').oninput=e=>{C5[ax]=+e.target.value;document.getElementById('c'+ax+'5v').textContent=e.target.value};
+function d3(P,Q){return Math.hypot(P.x-Q.x,P.y-Q.y,P.z-Q.z)}
+function draw5(){
+  const g=g5,W=c5.width,H=c5.height;g.clearRect(0,0,W,H);
+  const ox=380,oy=210;
+  axes3d(g,ox,oy,6);
+  const a=proj(A5.x,A5.y,A5.z,ox,oy),b=proj(B5.x,B5.y,B5.z,ox,oy),c=proj(C5.x,C5.y,C5.z,ox,oy);
+  line(g,a[0],a[1],b[0],b[1],CY,2.5);line(g,b[0],b[1],c[0],c[1],MG,2.5);line(g,c[0],c[1],a[0],a[1],GR,2.5);
+  dot(g,a[0],a[1],5,CY);label(g,'A',a[0]-16,a[1]+14,CY);
+  dot(g,b[0],b[1],5,MG);label(g,'B',b[0]+10,b[1]+14,MG);
+  dot(g,c[0],c[1],5,GD);label(g,'C',c[0]+10,c[1]-8,GD);
+  const AB=d3(A5,B5),BC=d3(B5,C5),CA=d3(C5,A5);
+  label(g,'AB='+AB.toFixed(2),(a[0]+b[0])/2,(a[1]+b[1])/2+14,CY);
+  label(g,'BC='+BC.toFixed(2),(b[0]+c[0])/2,(b[1]+c[1])/2,MG);
+  label(g,'CA='+CA.toFixed(2),(c[0]+a[0])/2,(c[1]+a[1])/2-8,GR);
+  const s=[AB,BC,CA].sort((p,q)=>p-q);
+  const eq=(u,v)=>Math.abs(u-v)<0.05;
+  let kind,why;
+  if(AB+0.05>=BC+CA||BC+0.05>=AB+CA||CA+0.05>=AB+BC){
+    if(Math.abs(AB+BC-CA)<0.08||Math.abs(BC+CA-AB)<0.08||Math.abs(CA+AB-BC)<0.08){kind='COLLINEAR';why='ek side = baaki dono ka sum (AB+BC=AC wala trap) - triangle hi nahi!'}
+    else{kind='DEGENERATE';why='triangle inequality fail - ye teen points triangle nahi bana sakte'}
+  }else if(eq(AB,BC)&&eq(BC,CA)){kind='EQUILATERAL ⭐';why='teeno sides same: '+AB.toFixed(2)}
+  else if(Math.abs(s[0]*s[0]+s[1]*s[1]-s[2]*s[2])<0.35){kind='RIGHT TRIANGLE ⭐';why=s[0].toFixed(2)+'² + '+s[1].toFixed(2)+'² = '+(s[0]*s[0]+s[1]*s[1]).toFixed(2)+' ≈ '+s[2].toFixed(2)+'² = '+(s[2]*s[2]).toFixed(2)+' (Pythagoras!)'}
+  else if(eq(AB,BC)||eq(BC,CA)||eq(CA,AB)){kind='ISOSCELES';why='2 sides same'}
+  else{kind='SCALENE';why='teeno sides alag'}
+  document.getElementById('r5').innerHTML='AB='+AB.toFixed(2)+' | BC='+BC.toFixed(2)+' | CA='+CA.toFixed(2)+'<br>Verdict: <b style="color:'+GD+'">'+kind+'</b> - '+why;
+}
+
+let last=performance.now();
+function tick(now){
+  if(cur==0)draw1();
+  if(cur==1)draw2();
+  if(cur==3)draw3();
+  if(cur==4)draw4();
+  if(cur==5)draw5();
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script></body></html>
