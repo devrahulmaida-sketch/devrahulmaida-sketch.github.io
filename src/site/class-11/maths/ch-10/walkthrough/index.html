@@ -134,7 +134,7 @@ const S1={c:0,anim:1};
 const CUTS=[
  {name:'CIRCLE',tilt:0,cond:'plane axis ke PERPENDICULAR',desc:'sab points centre se barabar door - ellipse ka special case (e = 0)!',col:'#4ade80'},
  {name:'ELLIPSE',tilt:0.45,cond:'plane thoda TILT (slant se kam)',desc:'band oval - planets ki orbits bhi yahi hain!',col:'#22d3ee'},
- {name:'PARABOLA',tilt:0.95,cond:'plane slant line ke PARALLEL',desc:'khula curve - projectile ka rasta, dish antenna ka shape!',col:'#fbbf24'},
+ {name:'PARABOLA',tilt:1.04,cond:'plane slant line ke PARALLEL',desc:'khula curve - projectile ka rasta, dish antenna ka shape!',col:'#fbbf24'},
  {name:'HYPERBOLA',tilt:1.35,cond:'plane aur STEEP - dono nappes kaati',desc:'do khule branches - shadow ke edge, cooling towers!',col:'#e879f9'}];
 [...document.querySelectorAll('.cut')].forEach(b=>b.onclick=()=>{S1.c=+b.dataset.c;S1.anim=0;[...document.querySelectorAll('.cut')].forEach(x=>x.classList.toggle('sel',x===b))});
 function drawCone(g,cx,cy,halfH,halfW){
@@ -154,11 +154,14 @@ function draw1(t,dt){
   const C=CUTS[S1.c];
   const cx=190,cy=170,halfH=120,halfW=70;
   drawCone(g,cx,cy,halfH,halfW);
-  // slicing plane: animated tilt
+  // slicing plane: animated tilt; cuts 0-2 slice only the top nappe (offset above apex)
   const tilt=C.tilt*S1.anim;
-  const plen=105;
-  const px1=cx-Math.cos(tilt)*plen*0.7,py1=cy-Math.sin(tilt)*plen*0.7;
-  const px2=cx+Math.cos(tilt)*plen,py2=cy+Math.sin(tilt)*plen;
+  const off=S1.c===3?0:-58;
+  const ox=S1.c===3?22:0;
+  const plen=S1.c===3?120:100;
+  const pcx=cx+ox,pcy=cy+off;
+  const px1=pcx-Math.cos(tilt)*plen*0.75,py1=pcy-Math.sin(tilt)*plen*0.75;
+  const px2=pcx+Math.cos(tilt)*plen,py2=pcy+Math.sin(tilt)*plen;
   line(g,px1,py1,px2,py2,C.col,3);
   dot(g,px2,py2,4,C.col);
   // resulting curve on right panel
