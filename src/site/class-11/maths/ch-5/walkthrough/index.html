@@ -216,7 +216,7 @@ function draw3(){
   g.closePath();g.fill();
   // the line x+y=4
   line(g,GX3(xA),GY3(yA1),GX3(xB),GY3(yB1),wantBelow?CY:MG,3,solid?null:[8,6]);
-  label(g,'x + y = 4',GX3(5.2),GY3(-1.2)-6,wantBelow?CY:MG);
+  label(g,'x + y = 4',GX3(6.3),GY3(-2.3)-6,wantBelow?CY:MG);
   // test point
   const val=px3+py3;
   let ok;
@@ -243,7 +243,7 @@ function draw4(dt){
     g.fillStyle='rgba(34,211,238,.12)';
     g.beginPath();g.moveTo(GX3(xA),GY3(-4));g.lineTo(GX3(xA),GY3(4-xA));g.lineTo(GX3(xB),GY3(4-xB));g.lineTo(GX3(xB),GY3(-4));g.closePath();g.fill();
     line(g,GX3(xA),GY3(4-xA),GX3(xB),GY3(4-xB),CY,3);
-    label(g,'x + y = 4',GX3(4.6),GY3(-0.6)-8,CY);
+    label(g,'x + y = 4',GX3(-4.8),GY3(7.9)-4,CY);
   }
   // stage 2: x-y<=2 i.e. y>=x-2 (magenta)
   if(t4>2){
