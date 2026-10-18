@@ -216,7 +216,7 @@ function draw3(){
   line(g,a[0],a[1],b[0],b[1],GD,3);
   dot(g,a[0],a[1],5,CY);label(g,'A('+A3.x+','+A3.y+','+A3.z+')',a[0]-60,a[1]+16,CY);
   dot(g,b[0],b[1],5,MG);label(g,'B('+B3.x+','+B3.y+','+B3.z+')',b[0]+10,b[1]-8,MG);
-  label(g,'floor diag',(af[0]+bf[0])/2,(af[1]+bf[1])/2+14,CY);
+  label(g,'floor diag',(af[0]+bf[0])/2-30,(af[1]+bf[1])/2+30,CY);
   label(g,'height Δz',bf[0]+8,(bf[1]+b[1])/2,MG);
   const dx=B3.x-A3.x,dy=B3.y-A3.y,dz=B3.z-A3.z;
   const fl=Math.hypot(dx,dy),d=Math.hypot(dx,dy,dz);
@@ -242,9 +242,9 @@ function draw4(){
   line(g,a[0],a[1],p[0],p[1],CY,3.5);line(g,p[0],p[1],b[0],b[1],MG,3.5);
   dot(g,a[0],a[1],5,CY);label(g,'A('+A4.x+','+A4.y+','+A4.z+')',a[0]-70,a[1]+16,CY);
   dot(g,b[0],b[1],5,MG);label(g,'B('+B4.x+','+B4.y+','+B4.z+')',b[0]+10,b[1]-8,MG);
-  dot(g,p[0],p[1],7,GD);label(g,'P',p[0]+10,p[1]+4,GD);
+  dot(g,p[0],p[1],7,GD);label(g,'P',p[0]+10,p[1]+16,GD);
   label(g,'m='+m4,(a[0]+p[0])/2,(a[1]+p[1])/2-8,CY);
-  label(g,'n='+n4,(p[0]+b[0])/2,(p[1]+b[1])/2-8,MG);
+  label(g,'n='+n4,(p[0]+b[0])/2,(p[1]+b[1])/2+18,MG);
   const mid=m4===1&&n4===1?' | <span style="color:'+GR+'">MIDPOINT! (1:1 special case)</span>':'';
   const edge=m4===0?' | ⚠ m=0 → P = A khud (ratio 0:n)':'';
   document.getElementById('r4').innerHTML='AP : PB = <b>'+m4+' : '+n4+'</b> | P = (('+m4+'·B + '+n4+'·A)/'+(den)+') = <b style="color:'+GD+'">('+P.toFixed(2)+', '+Q.toFixed(2)+', '+R.toFixed(2)+')</b> | cross multiply yaad rakho: <b>m B ke saath, n A ke saath</b>'+mid+edge;
@@ -266,8 +266,8 @@ function draw5(){
   dot(g,c[0],c[1],5,GD);label(g,'C',c[0]+10,c[1]-8,GD);
   const AB=d3(A5,B5),BC=d3(B5,C5),CA=d3(C5,A5);
   label(g,'AB='+AB.toFixed(2),(a[0]+b[0])/2,(a[1]+b[1])/2+14,CY);
-  label(g,'BC='+BC.toFixed(2),(b[0]+c[0])/2,(b[1]+c[1])/2,MG);
-  label(g,'CA='+CA.toFixed(2),(c[0]+a[0])/2,(c[1]+a[1])/2-8,GR);
+  label(g,'BC='+BC.toFixed(2),(b[0]+c[0])/2+12,(b[1]+c[1])/2+14,MG);
+  label(g,'CA='+CA.toFixed(2),(c[0]+a[0])/2-58,(c[1]+a[1])/2-6,GR);
   const s=[AB,BC,CA].sort((p,q)=>p-q);
   const eq=(u,v)=>Math.abs(u-v)<0.05;
   let kind,why;
