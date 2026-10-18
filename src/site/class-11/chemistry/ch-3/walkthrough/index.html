@@ -201,14 +201,14 @@ function draw2(){
   } else if(view2==='grp'){
     const g1d=[['Li',152],['Na',186],['K',227],['Rb',248]];
     const g17=[['F',64],['Cl',99],['Br',114],['I',133]];
-    label(g,'Group 1 (alkali):',120,60,CY);
-    g1d.forEach(([s,r],i)=>bub(g,180,105+i*62,r*S*0.5,s,CY,r+' pm'));
-    label(g,'Group 17 (halogens):',440,60,MG);
-    g17.forEach(([s,r],i)=>bub(g,500,105+i*62,r*S*0.5,s,MG,r+' pm'));
+    label(g,'Group 1 (alkali):',110,50,CY);
+    g1d.forEach(([s,r],i)=>{const y=80+i*70;bub(g,180,y,r*S*0.26,s,CY);label(g,r+' pm',234,y+4,TX);});
+    label(g,'Group 17 (halogens):',430,50,MG);
+    g17.forEach(([s,r],i)=>{const y=80+i*70;bub(g,500,y,r*S*0.26,s,MG);label(g,r+' pm',554,y+4,TX);});
     g.strokeStyle=GD;g.lineWidth=2.5;
-    g.beginPath();g.moveTo(310,95);g.lineTo(310,300);g.stroke();
-    g.beginPath();g.moveTo(310,300);g.lineTo(304,290);g.moveTo(310,300);g.lineTo(316,290);g.stroke();
-    label(g,'neeche: size BADHTA hai (naya shell = naya floor!)',330,325,GD);
+    g.beginPath();g.moveTo(310,80);g.lineTo(310,290);g.stroke();
+    g.beginPath();g.moveTo(310,290);g.lineTo(304,280);g.moveTo(310,290);g.lineTo(316,280);g.stroke();
+    label(g,'neeche: size BADHTA hai (naya shell = naya floor!)',330,318,GD);
     document.getElementById('r2').innerHTML='<b>Group me upar→neeche: radius BADHTA hai</b> - har period me ek naya shell (floor upar floor). Isliye Cs (Group 1 ka sabse neeche) sabse bada metal atom!';
   } else {
     const iso=[['N³⁻',146,7],['O²⁻',140,8],['F⁻',133,9],['Na⁺',102,11],['Mg²⁺',72,12]];
