@@ -193,7 +193,7 @@ function draw2(t){
   const gy=190;
   line(g,40,gy+40,W-40,gy+40,'#2c2c4d',2);
   // distance ruler marks every d/4
-  for(let i=0;i<=4;i++){const mx=80+d*px*i/4;line(g,mx,gy+44,mx,gy+52,'#3b3b5c',1.2);label(g,(d*i/4).toFixed(0)+'m',mx-8,gy+66,'#565672')}
+  if(d*px>=200)for(let i=0;i<=4;i++){const mx=80+d*px*i/4;line(g,mx,gy+44,mx,gy+52,'#3b3b5c',1.2);label(g,(d*i/4).toFixed(0)+'m',mx-8,gy+66,'#565672')}
   const running=S2.t0>=0;
   const el=running?Math.min(tstop,t-S2.t0):0;
   const dist=S2.v*el-0.5*a*el*el;
