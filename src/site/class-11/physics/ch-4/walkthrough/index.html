@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laws of Motion Ka Visual Walkthrough - Class 11 Physics Ch 4</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07070d;color:#e8e8f2;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:18px 12px 40px}
+.wrap{max-width:820px;margin:0 auto}
+.badge{display:inline-block;font-size:.75em;padding:4px 12px;border:1px solid #3b3b5c;border-radius:999px;color:#9aa0c9;margin-bottom:10px}
+h1{font-size:1.7em;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+.tag{text-align:center;color:#9aa0c9;font-size:.9em;margin:8px 0 4px}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0 18px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2a2a45;border:0;cursor:pointer;padding:0}
+.dot.on{background:#22d3ee;box-shadow:0 0 8px #22d3ee88}
+.scene{display:none}
+.scene.on{display:block}
+h2{font-size:1.15em;color:#7dd3fc;margin-bottom:6px}
+.sub{color:#b9b9d6;font-size:.88em;margin-bottom:12px;line-height:1.5}
+canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;border-radius:12px;margin:8px 0}
+.readout{font-size:.9em;color:#c9c9e0;background:#0e0e1c;border:1px solid #26264a;border-radius:10px;padding:10px 14px;margin:8px 0;line-height:1.55;min-height:52px}
+.readout b{color:#7dd3fc}
+.fact{font-size:.85em;color:#a8a8cc;background:#0e0e1c;border-left:3px solid #22d3ee;border-radius:0 8px 8px 0;padding:9px 12px;margin:8px 0;line-height:1.5}
+.fact b{color:#e879f9}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.btn{background:#181830;color:#c9c9e0;border:1px solid #33335c;border-radius:10px;padding:8px 14px;font-size:.85em;cursor:pointer}
+.btn.sel{border-color:#e879f9;color:#e879f9;background:#22122a}
+.btn.hot{background:#22d3ee;color:#06202a;border-color:#22d3ee;font-weight:700}
+.btn:active{transform:scale(.97)}
+.sliderrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.85em;color:#c9c9e0}
+.sliderrow input[type=range]{flex:1;accent-color:#22d3ee}
+.sliderrow b{color:#e879f9;min-width:64px;text-align:right}
+.recap .card{background:#0e0e1c;border:1px solid #26264a;border-radius:12px;padding:14px 16px;margin:10px 0}
+.recap .card h3{color:#e879f9;font-size:.95em;margin-bottom:6px}
+.recap .card p{font-size:.86em;color:#c9c9e0;line-height:1.6;font-family:ui-monospace,monospace}
+.navrow{display:flex;justify-content:space-between;margin-top:18px}
+.credit{text-align:center;color:#565672;font-size:.75em;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="text-align:center"><span class="badge">Class 11 Physics - Chapter 4 - Laws of Motion</span></div>
+<h1>Laws of Motion Ka Visual Walkthrough</h1>
+<p class="tag">5 animated scenes - inertia ki race khelo, catch laga ke impulse samjho, lift mein weight badlo, friction ko slip karwao, banked road pe car ghumao.</p>
+<div class="dots" id="dots"></div>
+
+<section class="scene on">
+<h2>1. Inertia Ki Race - Mass Hi Sab Kuch Hai</h2>
+<p class="sub">Newton ka first law: object apni state APNI marzi se nahi badalta - isi aalas ko <b>inertia</b> kehte hain. Mass = inertia ka measure! Dono blocks pe SAME force lagao aur dekho kaun zyada "na-nu-nu-nu" karta hai:</p>
+<canvas id="cv1" width="760" height="340"></canvas>
+<div class="sliderrow"><span>Force F (dono pe same)</span><input type="range" id="f1slide" min="2" max="20" value="10"><b id="f1val">F = 10 N</b></div>
+<div class="sliderrow"><span>Block A ka mass</span><input type="range" id="m1slide" min="1" max="10" value="6"><b id="m1val">mA = 6 kg</b></div>
+<div class="btnrow"><button class="btn hot" id="race1">Race Shuru!</button></div>
+<div class="readout" id="v1read"></div>
+<div class="fact"><b>Feel:</b> inertia = aalas! Bus achanak chale toh body PEECHE jhukti hai (rest mein rehna chahti hai), bus ruke toh AAGE girte hain (motion mein rehna chahti hai), turn pe seedha jaana chahti hai. Mass zyada = state badalna aur mushkil.</div>
+</section>
+
+<section class="scene">
+<h2>2. Catch Lagao - Impulse Ka Game</h2>
+<p class="sub">Second law ka asli roop: F = dp/dt (constant mass pe <b>F = ma</b>). Impulse J = F x Δt = Δp. Cricket ball ka momentum FIXED hai - par <b>Δt badhao (haath peeche kheencho) toh F ghat jaata hai</b>. Slider se catch time badlo:</p>
+<canvas id="cv2" width="760" height="340"></canvas>
+<div class="sliderrow"><span>catch time Δt</span><input type="range" id="dt2slide" min="5" max="100" value="15"><b id="dt2val">Δt = 0.15 s</b></div>
+<div class="btnrow"><button class="btn hot" id="catch2">Ball Phenko!</button></div>
+<div class="readout" id="v2read"></div>
+<div class="fact"><b>Real life:</b> cricket catch mein haath peeche, airbags, gym mats, helmet ka foam - sab Δt badha ke F ghatate hain. Exam trap: "object chal raha hai toh force zaroori hai" - GALAT! Uniform velocity pe net force ZERO. Force velocity ka CHANGE banata hai.</div>
+</section>
+
+<section class="scene">
+<h2>3. Lift Ka Weight - Normal Force Ka Jadoo</h2>
+<p class="sub">FBD ka rule: sirf OBJECT PE lage forces dikhao! Lift mein 2 forces: neeche mg (fixed), upar Normal (scale ka reading). Lift accelerate karo aur N badalta dekho - <b>free fall mein N = 0</b> (weightlessness)!</p>
+<canvas id="cv3" width="760" height="360"></canvas>
+<div class="sliderrow"><span>lift acceleration a (upar +)</span><input type="range" id="a3slide" min="-98" max="30" value="0"><b id="a3val">a = 0.0 m/s2</b></div>
+<div class="readout" id="v3read"></div>
+<div class="fact"><b>Formula:</b> upar accelerate → N = m(g+a) - BHAARI feel; neeche → N = m(g-a) - HALKA feel; free fall (a = -g) → N = 0 - weightless! Third law yaad rakho: action-reaction DO ALAG OBJECTS pe hote hain, isliye cancel NAHI hote.</div>
+</section>
+
+<section class="scene">
+<h2>4. Friction - Self-Adjusting Dost Ki Limit</h2>
+<p class="sub">Static friction <b>self-adjusting</b> hai - utna hi lagta hai jitna zaroorat, max μ<sub>s</sub>N tak! Force dheere dheere badhao: block tikka rehta hai... phir SLIP! Uske baad kinetic friction (μ<sub>k</sub>N, HAMESHA chhota) le leta hai:</p>
+<canvas id="cv4" width="760" height="380"></canvas>
+<div class="sliderrow"><span>applied force F</span><input type="range" id="f4slide" min="0" max="100" value="0"><b id="f4val">F = 0 N</b></div>
+<div class="sliderrow"><span>mu-s (roughness)</span><input type="range" id="mu4slide" min="20" max="80" value="50"><b id="mu4val">mu-s = 0.50</b></div>
+<div class="readout" id="v4read"></div>
+<div class="fact"><b>Yaad rakho:</b> f<sub>s</sub> ≤ μ<sub>s</sub>N (self-adjusting), f<sub>k</sub> = μ<sub>k</sub>N (constant), μ<sub>k</sub> &lt; μ<sub>s</sub> hamesha, rolling sabse kam (isliye wheels!). Incline pe: mg sinθ neeche kheenchta, N = mg cosθ, slip condition tanθ &gt; μ<sub>s</sub> (angle of repose!).</div>
+</section>
+
+<section class="scene">
+<h2>5. Banked Road - Bina Friction Ka Turn</h2>
+<p class="sub">Circular turn ke liye centripetal force kisi REAL force se aana chahiye. Banked road pe Normal ka horizontal component kaam aata hai - <b>friction ke bina bhi!</b> Angle ghumao, ideal speed dekho. Velodrome aur railway tracks aise hi design hote hain:</p>
+<canvas id="cv5" width="760" height="360"></canvas>
+<div class="sliderrow"><span>banking angle θ</span><input type="range" id="th5slide" min="0" max="40" value="20"><b id="th5val">θ = 20°</b></div>
+<div class="sliderrow"><span>turn radius r</span><input type="range" id="r5slide" min="50" max="200" value="100"><b id="r5val">r = 100 m</b></div>
+<div class="readout" id="v5read"></div>
+<div class="fact"><b>Level road</b> pe sirf friction centripetal deta hai: v<sub>max</sub> = √(μrg) - isse tez toh skid! <b>Banked</b>: tanθ = v²/rg. Friction ke SAATH banked: v<sub>max</sub> = √(rg(μ+tanθ)/(1-μtanθ)). Centrifugal force sirf ghoomte frame mein FEEL hota hai - inertial frame mein woh real NAHI hai!</div>
+</section>
+
+<section class="scene recap">
+<h2 style="text-align:center;color:#e879f9">Formula Pack - Screenshot Le Lo</h2>
+<div class="card"><h3>Teeno Laws</h3><p>1st: no external force → no state change (inertia!) | 2nd: F = dp/dt = ma (constant mass) | 3rd: action-reaction EQUAL-OPPOSITE par DO ALAG objects pe (cancel nahi hote!)</p></div>
+<div class="card"><h3>Momentum + Impulse</h3><p>p = mv | J = F x Δt = Δp | catch: Δt badhao → F ghatao (airbags, gym mats)</p></div>
+<div class="card"><h3>Connected Bodies / Lift</h3><p>N = m(g+a) upar accelerate | N = m(g-a) neeche | free fall: N = 0 (weightless!) | FBD: sirf object PE lage forces</p></div>
+<div class="card"><h3>Friction</h3><p>static: f<sub>s</sub> ≤ μ<sub>s</sub>N (self-adjusting) | kinetic: f<sub>k</sub> = μ<sub>k</sub>N | μ<sub>k</sub> &lt; μ<sub>s</sub> &lt;&lt; rolling | incline: mg sinθ vs N = mg cosθ, slip jab tanθ &gt; μ<sub>s</sub></p></div>
+<div class="card"><h3>Circular Turn</h3><p>level road: v<sub>max</sub> = √(μrg) | banked (no friction): tanθ = v²/rg | banked + friction: v<sub>max</sub> = √(rg(μ+tanθ)/(1-μtanθ))</p></div>
+</section>
+
+<div class="navrow">
+<button class="btn" id="prev">← Peeche</button>
+<button class="btn hot" id="next">Aage →</button>
+</div>
+<p class="credit">Learn With Rahul - Class 11 Physics Ch 4 Laws of Motion Visual Walkthrough</p>
+</div>
+
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+let cur=0;
+const dotsBox=document.getElementById('dots');
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i==0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j==cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j==cur));document.getElementById('prev').style.visibility=cur==0?'hidden':'visible';document.getElementById('next').textContent=cur==scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
+function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')]}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
+function line(g,x1,y1,x2,y2,col,w,dash){g.strokeStyle=col;g.lineWidth=w||1.5;if(dash)g.setLineDash(dash);g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();g.setLineDash([])}
+function arrow(g,x1,y1,x2,y2,col,w){
+  line(g,x1,y1,x2,y2,col,w||2.5);
+  const a=Math.atan2(y2-y1,x2-x1),s=9;
+  g.fillStyle=col;g.beginPath();g.moveTo(x2,y2);
+  g.lineTo(x2-s*Math.cos(a-0.45),y2-s*Math.sin(a-0.45));
+  g.lineTo(x2-s*Math.cos(a+0.45),y2-s*Math.sin(a+0.45));
+  g.closePath();g.fill();
+}
+function block(g,x,y,w,h,col,txt){
+  g.fillStyle='#12122a';g.strokeStyle=col;g.lineWidth=2;
+  g.beginPath();g.roundRect(x-w/2,y-h/2,w,h,6);g.fill();g.stroke();
+  if(txt){g.fillStyle=col;g.font='bold 13px sans-serif';g.textAlign='center';g.fillText(txt,x,y+4);g.textAlign='left'}
+}
+const TAU=Math.PI*2;
+const L=(a,b,p)=>a+(b-a)*p;
+const ease=p=>p*p*(3-2*p);
+
+// ---------- SCENE 1: inertia race ----------
+const [c1,g1]=ctx('cv1');
+const S1={F:10,mA:6,t0:-1};
+document.getElementById('f1slide').oninput=e=>{S1.F=+e.target.value;document.getElementById('f1val').textContent='F = '+S1.F+' N'};
+document.getElementById('m1slide').oninput=e=>{S1.mA=+e.target.value;document.getElementById('m1val').textContent='mA = '+S1.mA+' kg'};
+document.getElementById('race1').onclick=()=>{S1.t0=nowT};
+const mB=2; // block B fixed 2 kg
+function draw1(t){
+  const g=g1,W=c1.width,H=c1.height;g.clearRect(0,0,W,H);
+  const running=S1.t0>=0;
+  const tt=running?Math.min(4,(t-S1.t0)):0;
+  const aA=S1.F/S1.mA, aB=S1.F/mB;
+  const scale=90; // px per m
+  const xA=90+aA*tt*tt/2*scale*0.25, xB=90+aB*tt*tt/2*scale*0.25;
+  // lanes
+  const yA=110,yB=240;
+  line(g,60,yA+40,W-30,yA+40,'#2c2c4d',2);line(g,60,yB+40,W-30,yB+40,'#2c2c4d',2);
+  label(g,'LANE A',64,yA-52,'#565672');label(g,'LANE B',64,yB-52,'#565672');
+  // blocks
+  const sA=34+S1.mA*4, sB=34+mB*4;
+  block(g,xA,yA,sA,44,'#e879f9','A');
+  block(g,xB,yB,sB,44,'#22d3ee','B');
+  label(g,'mA = '+S1.mA+' kg',xA-24,yA+64,'#e879f9');
+  label(g,'mB = 2 kg',xB-20,yB+64,'#22d3ee');
+  // force arrows while accelerating
+  if(running&&tt<3.9){
+    arrow(g,xA-sA/2-52,yA,xA-sA/2-6,yA,'#fbbf24',3);
+    arrow(g,xB-sB/2-52,yB,xB-sB/2-6,yB,'#fbbf24',3);
+    label(g,'F = '+S1.F+' N',xA-sA/2-58,yA-14,'#fbbf24');
+    label(g,'F = '+S1.F+' N',xB-sB/2-58,yB-14,'#fbbf24');
+  }
+  if(running&&tt>=4){
+    const win=aB>aA?'B (halka!)':'A';
+    label(g,'RACE KHATAM - jeeta: '+win,W/2-120,30,'#4ade80');
+  }
+  if(!running)label(g,'"Race Shuru!" dabao - dono pe EK JAISI force lagegi',200,30,'#565672');
+  document.getElementById('v1read').innerHTML='a = F/m: Block A: '+S1.F+'/'+S1.mA+' = <b>'+aA.toFixed(2)+' m/s2</b> | Block B: '+S1.F+'/2 = <b>'+aB.toFixed(2)+' m/s2</b>. SAME force, par halka B tez bhaga! Zyada mass = zyada inertia = zyada "na-nu-nu".';
+}
+
+// ---------- SCENE 2: impulse catch ----------
+const [c2,g2]=ctx('cv2');
+const S2={dt:0.15,t0:-1};
+document.getElementById('dt2slide').oninput=e=>{S2.dt=+e.target.value/100;document.getElementById('dt2val').textContent='Δt = '+S2.dt.toFixed(2)+' s'};
+document.getElementById('catch2').onclick=()=>{S2.t0=nowT};
+const Bm=0.15,Bv=20; // cricket ball 150 g at 20 m/s
+function draw2(t){
+  const g=g2,W=c2.width,H=c2.height;g.clearRect(0,0,W,H);
+  const dp=Bm*Bv, F=dp/S2.dt;
+  const cy=150;
+  // glove target zone
+  const gx=560;
+  const pull=Bv*S2.dt/2*15; // pull-back px (avg speed v/2 over dt), scaled
+  // ground
+  line(g,40,cy+70,W-40,cy+70,'#2c2c4d',2);
+  const running=S2.t0>=0;
+  const fly=1.2; // seconds to reach glove
+  let bx, gloveX=gx;
+  if(!running){bx=120}
+  else{
+    const el=t-S2.t0;
+    if(el<fly){bx=L(120,gx,el/fly)}
+    else{
+      const ce=Math.min(1,(el-fly)/Math.max(0.05,S2.dt*1.6));
+      gloveX=gx+pull*ease(ce); bx=gloveX-16;
+    }
+  }
+  // glove (hand)
+  g.fillStyle='#181830';g.strokeStyle='#4ade80';g.lineWidth=2;
+  g.beginPath();g.roundRect(gloveX-14,cy-42,34,84,10);g.fill();g.stroke();
+  label(g,'HAATH',gloveX-22,cy+66,'#4ade80');
+  // ball
+  dot(g,bx,cy,14,'#fbbf24');
+  label(g,'ball: 0.15 kg, 20 m/s',60,cy-60,'#9aa0c9');
+  if(running&&t-S2.t0>=fly){
+    // force arrow on hand
+    const fl=Math.min(160,F*3);
+    arrow(g,gloveX+60,cy,gloveX+60-fl,cy,'#f87171',3);
+    label(g,'F = '+F.toFixed(1)+' N',gloveX+56-fl,cy-16,'#f87171');
+  }
+  // force bar
+  const maxF=dp/0.05;
+  g.fillStyle='#1a1a30';g.fillRect(80,262,600,16);
+  g.fillStyle=F>200?'#f87171':(F>40?'#fbbf24':'#4ade80');
+  g.fillRect(80,262,600*(F/maxF),16);
+  label(g,'force on hand',80,256,'#9aa0c9');
+  const pct=Math.round(100*F/maxF);
+  document.getElementById('v2read').innerHTML='Δp = mv = 0.15 x 20 = <b>'+dp.toFixed(1)+' kg m/s</b> (fixed!) | F = Δp/Δt = '+dp.toFixed(1)+'/'+S2.dt.toFixed(2)+' = <b>'+F.toFixed(1)+' N</b> ('+pct+'% of max). '+(S2.dt<0.2?'Jhatke se pakda - HAATH KO LAGI!':'Aram se peeche kheencha - haath surakshit!');
+}
+
+// ---------- SCENE 3: lift / normal force ----------
+const [c3,g3]=ctx('cv3');
+const S3={a:0};
+document.getElementById('a3slide').oninput=e=>{S3.a=+e.target.value/10;document.getElementById('a3val').textContent='a = '+S3.a.toFixed(1)+' m/s2'};
+const pM=60,grav=9.8;
+function draw3(t){
+  const g=g3,W=c3.width,H=c3.height;g.clearRect(0,0,W,H);
+  const a=S3.a, N=Math.max(0,pM*(grav+a)), mg=pM*grav;
+  const cx=380;
+  // lift bobbing: visual vertical motion direction hint
+  const bob=a>0?-6*Math.abs(Math.sin(t*2)):(a<0?6*Math.abs(Math.sin(t*2)):0);
+  const ly=60+bob, lh=260;
+  // lift shaft
+  g.strokeStyle='#3b3b5c';g.lineWidth=2;
+  g.strokeRect(cx-130,ly,260,lh);
+  // cables
+  line(g,cx,0,cx,ly,'#3b3b5c',3);
+  // floor of lift
+  line(g,cx-130,ly+lh,cx+130,ly+lh,'#8f8fb8',3);
+  // scale
+  g.fillStyle='#181830';g.strokeStyle='#22d3ee';g.lineWidth=2;
+  g.beginPath();g.roundRect(cx-46,ly+lh-18,92,18,4);g.fill();g.stroke();
+  label(g,'SCALE',cx-20,ly+lh-24,'#22d3ee');
+  // person
+  const py=ly+lh-18;
+  dot(g,cx,py-66,12,'#e879f9'); // head
+  line(g,cx,py-54,cx,py-20,'#e879f9',3); // body
+  line(g,cx,py-46,cx-18,py-30,'#e879f9',2.5); // arm L
+  line(g,cx,py-46,cx+18,py-30,'#e879f9',2.5); // arm R
+  line(g,cx,py-20,cx-12,py,'#e879f9',2.5); // leg L
+  line(g,cx,py-20,cx+12,py,'#e879f9',2.5); // leg R
+  // FBD panel on right
+  const fx=620,fy=170;
+  dot(g,fx,fy,10,'#e879f9');
+  label(g,'FBD (person)',fx-46,fy-66,'#7dd3fc');
+  const nlen=Math.min(120,N*0.18), mlen=mg*0.18;
+  arrow(g,fx,fy-16,fx,fy-16-nlen,'#4ade80',3);
+  arrow(g,fx,fy+16,fx,fy+16+mlen,'#f87171',3);
+  label(g,'N = '+N.toFixed(0)+' N',fx+14,fy-16-nlen+4,'#4ade80');
+  label(g,'mg = '+mg.toFixed(0)+' N',fx+14,fy+16+mlen+4,'#f87171');
+  // status
+  const st=a>0.05?('UPAR accelerate: BHAARI feel!'):(a<-9.7?'FREE FALL: N = 0 - weightless!':(a<-0.05?'NEECHE accelerate: HALKA feel':'uniform/rest: N = mg normal'));
+  label(g,st,cx-150,ly-16,a>0.05?'#fbbf24':(a<-0.05?'#e879f9':'#9aa0c9'));
+  if(a<-9.7)label(g,'(a = -g: lift aur person dono gir rahe!)',cx-150,ly+lh+26,'#e879f9');
+  document.getElementById('v3read').innerHTML='m = 60 kg, a = <b>'+a.toFixed(1)+' m/s2</b> | N = m(g+a) = 60 x (9.8 '+(a>=0?'+':'-')+' '+Math.abs(a).toFixed(1)+') = <b>'+N.toFixed(0)+' N</b> | asli weight mg = '+mg.toFixed(0)+' N. Scale ka reading = Normal force = apparent weight!';
+}
+
+// ---------- SCENE 4: friction ----------
+const [c4,g4]=ctx('cv4');
+const S4={F:0,mu:0.5,x:120,v:0};
+document.getElementById('f4slide').oninput=e=>{S4.F=+e.target.value;document.getElementById('f4val').textContent='F = '+S4.F+' N'};
+document.getElementById('mu4slide').oninput=e=>{S4.mu=+e.target.value/100;document.getElementById('mu4val').textContent='mu-s = '+S4.mu.toFixed(2)};
+const bM=10;
+function draw4(t,dtf){
+  const g=g4,W=c4.width,H=c4.height;g.clearRect(0,0,W,H);
+  const muk=S4.mu*0.6, N=bM*grav, fmax=S4.mu*N, fk=muk*N;
+  const slipped=S4.F>fmax;
+  const fr=slipped?fk:S4.F;
+  if(slipped){S4.v+=((S4.F-fk)/bM)*dtf*14;S4.x+=S4.v*dtf*14;if(S4.x>700){S4.x=700;S4.v=0}}
+  else{S4.v=0}
+  const gy=170;
+  // surface with hatching
+  line(g,40,gy+34,W-40,gy+34,'#8f8fb8',2.5);
+  for(let x=52;x<W-40;x+=18)line(g,x,gy+34,x-8,gy+44,'#3b3b5c',1.2);
+  // block
+  block(g,S4.x,gy,64,44,'#22d3ee','10 kg');
+  // applied force arrow
+  if(S4.F>0){const fl=S4.F*1.1;arrow(g,S4.x+34,gy,S4.x+34+fl,gy,'#fbbf24',3);label(g,'F = '+S4.F+' N',S4.x+40+fl>700?S4.x-90:S4.x+44+fl*0.4,gy-16,'#fbbf24')}
+  // friction arrow
+  if(fr>0){const fl2=fr*1.1;arrow(g,S4.x-34,gy,S4.x-34-fl2,gy,'#f87171',3);label(g,'f = '+fr.toFixed(0)+' N',S4.x-44-fl2-40,gy-16,'#f87171')}
+  // status
+  label(g,slipped?'KINETIC: slip ho gaya! f = mu-k x N (constant)':'STATIC: friction F ke barabar adjust kar raha hai',300,gy-56,slipped?'#f87171':'#4ade80');
+  // friction vs applied graph
+  const gx0=80,gy0=330,gw=560,gh=110;
+  line(g,gx0,gy0,gx0+gw,gy0,'#2c2c4d',1.5);line(g,gx0,gy0,gx0,gy0-gh,'#2c2c4d',1.5);
+  label(g,'applied F →',gx0+gw-80,gy0+18,'#565672');
+  label(g,'friction',gx0-52,gy0-gh+10,'#565672');
+  // ideal curve: 45deg up to fmax, then drop to fk
+  const sc=gw/100, scy=gh/100; // 100N full scale both axes
+  g.strokeStyle='#4ade80';g.lineWidth=2;g.beginPath();
+  g.moveTo(gx0,gy0);g.lineTo(gx0+fmax*sc,gy0-fmax*scy);
+  g.stroke();
+  g.strokeStyle='#f87171';g.beginPath();
+  g.moveTo(gx0+fmax*sc,gy0-fk*scy);g.lineTo(gx0+gw,gy0-fk*scy);g.stroke();
+  label(g,'f-max = mu-s N = '+fmax.toFixed(0)+'N',gx0+fmax*sc+6,gy0-fmax*scy-8,'#4ade80');
+  label(g,'f-k = mu-k N = '+fk.toFixed(0)+'N',gx0+gw-150,gy0-fk*scy-8,'#f87171');
+  // current point
+  const px=gx0+S4.F*sc, py=gy0-fr*scy;
+  dot(g,px,py,6,'#fbbf24');
+  document.getElementById('v4read').innerHTML=(slipped?'<b>SLIP!</b> F = '+S4.F+' N &gt; f-max '+fmax.toFixed(0)+' N → kinetic friction <b>'+fk.toFixed(0)+' N</b> (mu-k = '+muk.toFixed(2)+'), net force '+(S4.F-fk).toFixed(0)+' N, block accelerate kar raha hai (a = '+((S4.F-fk)/bM).toFixed(1)+' m/s2)':'F = '+S4.F+' N ≤ f-max '+fmax.toFixed(0)+' N → static friction EXACTLY <b>'+fr.toFixed(0)+' N</b> lagaya (self-adjusting dost!) - block tika hua hai. mu-s = '+S4.mu.toFixed(2)+', N = mg = '+N.toFixed(0)+' N');
+}
+
+// ---------- SCENE 5: banked road ----------
+const [c5,g5]=ctx('cv5');
+const S5={th:20,r:100};
+document.getElementById('th5slide').oninput=e=>{S5.th=+e.target.value;document.getElementById('th5val').textContent='θ = '+S5.th+'°'};
+document.getElementById('r5slide').oninput=e=>{S5.r=+e.target.value;document.getElementById('r5val').textContent='r = '+S5.r+' m'};
+function draw5(t){
+  const g=g5,W=c5.width,H=c5.height;g.clearRect(0,0,W,H);
+  const th=S5.th*Math.PI/180;
+  const v=Math.sqrt(S5.r*grav*Math.tan(th));
+  const cx=300,cy=240;
+  // banked surface: line rising to the right
+  const dx=210*Math.cos(th), dy=210*Math.sin(th);
+  line(g,cx-dx,cy+dy,cx+dx,cy-dy,'#8f8fb8',4);
+  // support structure
+  line(g,cx-dx,cy+dy,cx-dx,cy+150,'#3b3b5c',2);line(g,cx+dx,cy-dy,cx+dx,cy+150,'#3b3b5c',2);
+  line(g,cx-dx,cy+150,cx+dx,cy+150,'#3b3b5c',2);
+  label(g,'banking θ = '+S5.th+'°',cx-dx+10,cy+dy+26,'#9aa0c9');
+  // car on surface (center)
+  const ux=Math.cos(th),uy=-Math.sin(th); // up-slope unit
+  const nx=Math.sin(th),ny=-Math.cos(th); // surface normal unit (up-left? check: perpendicular pointing away from surface up-left)
+  // car body
+  g.save();g.translate(cx,cy);g.rotate(-th);
+  g.fillStyle='#12122a';g.strokeStyle='#22d3ee';g.lineWidth=2;
+  g.beginPath();g.roundRect(-34,-22,68,20,5);g.fill();g.stroke();
+  dot(g,-18,0,7,'#565672');dot(g,18,0,7,'#565672');
+  g.restore();
+  label(g,'CAR',cx-14,cy-38,'#22d3ee');
+  // forces: mg down, N perpendicular to surface
+  arrow(g,cx,cy-24,cx,cy+62,'#f87171',3);
+  label(g,'mg',cx+10,cy+58,'#f87171');
+  const nx2=-Math.sin(th),ny2=-Math.cos(th);
+  const ntx=cx+nx2*110,nty=cy-24+ny2*110;
+  arrow(g,cx,cy-24,ntx,nty,'#4ade80',3);
+  label(g,'N',ntx-16,nty-8,'#4ade80');
+  // decomposition dashed helpers
+  line(g,cx,cy-24,cx,nty,'#3b3b5c',1.2,[4,4]);
+  line(g,cx,nty,ntx,nty,'#3b3b5c',1.2,[4,4]);
+  // horizontal component arrow from car towards circle centre (left)
+  arrow(g,cx,cy-24,cx-90,cy-24,'#e879f9',2.5);
+  label(g,'N sinθ = centripetal!',cx-240,cy-32,'#e879f9');
+  label(g,'N cosθ = mg ko balance',cx+16,nty+30,'#9aa0c9');
+  // readout
+  const kmh=v*3.6;
+  document.getElementById('v5read').innerHTML='θ = '+S5.th+'°, r = '+S5.r+' m → ideal speed v = √(rg tanθ) = √('+S5.r+' x 9.8 x '+Math.tan(th).toFixed(3)+') = <b>'+v.toFixed(1)+' m/s = '+kmh.toFixed(0)+' km/h</b> - is speed pe friction ki ZAROORAT NAHI! '+(S5.th===0?'θ = 0 (level road): tanθ = 0 → v = 0? Matlab level road pe centripetal SIRF friction de sakta hai: v-max = √(μrg)!':'');
+}
+
+const DRAW=[draw1,draw2,draw3,draw4,draw5,()=>{}];
+let last=performance.now(),nowT=0;
+function tick(now){
+  const dt=Math.min(0.05,(now-last)/1000);last=now;nowT=now/1000;
+  if(DRAW[cur])DRAW[cur](nowT,dt);
+  requestAnimationFrame(tick);
+}
+go(0);
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
