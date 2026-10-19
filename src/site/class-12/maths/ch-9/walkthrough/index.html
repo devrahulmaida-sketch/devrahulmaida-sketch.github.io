@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Differential Equations - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Maths - Chapter 9 - Differential Equations</div>
+<h1>DEs Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - order-degree detective, general se particular solution, variable separable, IF wala linear DE, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Order &amp; Degree Detective ⭐</h2>
+<p class="why">Order = sabse HIGH derivative kitni baar. Degree = highest derivative ki POWER (polynomial banaake!). DE choose karo, order-degree guess karo - canvas pe highest derivative glow karega aur reason milega.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="300"></canvas>
+<div class="btnrow" id="deBtns"></div>
+<div class="btnrow">
+<span style="color:#8fa0c8;font-size:13px;align-self:center">Order:</span>
+<div id="oBtns" style="display:flex;gap:10px"></div>
+</div>
+<div class="btnrow">
+<span style="color:#8fa0c8;font-size:13px;align-self:center">Degree:</span>
+<div id="dBtns" style="display:flex;gap:10px"></div>
+</div>
+<div class="readout" id="r0">DE choose karke order aur degree guess karo!</div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. General → Particular Solution ⭐⭐</h2>
+<p class="why">Order n → general solution me EXACTLY n arbitrary constants! Har constant value = ek alag curve (family of curves). Initial condition daalo - ek hi curve bachti hai = PARTICULAR solution. Sliders se constants ghumao, condition pin karo.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" id="famBtns"></div>
+<div class="slrow" id="slA"><label>constant A</label><input type="range" id="cA" min="-3" max="3" step="0.5" value="1"><span class="v" id="vA">1</span></div>
+<div class="slrow" id="slB" style="display:none"><label>constant B</label><input type="range" id="cB" min="-3" max="3" step="0.5" value="1"><span class="v" id="vB">1</span></div>
+<div class="btnrow"><button id="pinBtn">📌 Initial condition lagao</button></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Variable Separable - Alag Karo, Integrate Karo ⭐⭐</h2>
+<p class="why">DE solve karne ka DEFAULT pehla attempt: x+dx ek taraf, y+dy doosri taraf, dono side integral! Stepper se har step dekho, phir C slider se solution FAMILY ghumao - har C ek alag curve.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" id="vsBtns"></div>
+<div class="btnrow"><button id="vsStep">Agla step →</button><button id="vsReset">↺ Reset</button></div>
+<div class="slrow"><label>constant C</label><input type="range" id="vsC" min="-2" max="2" step="0.25" value="0.5"><span class="v" id="vvsC">0.5</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Linear DE - Integrating Factor Wala Game ⭐⭐</h2>
+<p class="why">dy/dx + P(x)y = Q(x) → IF = e^(∫P dx) → multiply karo → LHS exact derivative! y·IF = ∫(Q·IF)dx + C. Direct 5-marker formula. Stepper chalao; toggle se dx/dy wala second type bhi dekho.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" id="linBtns"></div>
+<div class="btnrow"><button id="linStep">Agla step →</button><button id="linReset">↺ Reset</button></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - DEs Pakke? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: order = highest derivative, degree = uski power (polynomial me!), constants = order, separable pehle try, linear me IF = e^∫P!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Order &amp; Degree ⭐</h3><p>Order = sabse HIGH derivative ki order | Degree = highest derivative ki POWER (fractions/radicals clear karke, polynomial form me!) | sin(dy/dx) = x → degree defined NAHI</p></div>
+<div class="rcard"><h3>Solutions ⭐⭐</h3><p>General solution: arbitrary constants | Order n → EXACTLY n constants! | Particular: initial condition se constants fix | Verify: differentiate karke DE me DAALO</p></div>
+<div class="rcard"><h3>Variable Separable ⭐⭐</h3><p>dy/dx = f(x)g(y) → dy/g(y) = f(x)dx → dono side ∫ | dy/dx = y → y = Aeˣ | dy/dx = x/y → y² − x² = C | DEFAULT pehla attempt!</p></div>
+<div class="rcard"><h3>Homogeneous ⭐</h3><p>Pehchan: har term same degree / F(y/x) form | Substitute y = vx → dy/dx = v + x·dv/dx → separable ban jaata hai! | v = y/x wapas daalna mat bhoolo</p></div>
+<div class="rcard"><h3>Linear DE (IF) ⭐⭐</h3><p>dy/dx + P(x)y = Q(x) → IF = e^(∫P dx) → y·IF = ∫(Q·IF)dx + C | dx/dy type: x·IF = ∫(Q·IF)dy + C | Pehle dy/dx ka coefficient 1 karo!</p></div>
+<div class="rcard"><h3>Exam Tips ⭐</h3><p>Verify-solution 2-marker = free marks | IF formula direct 5-marker | Particular solution me C nikalna second half | y·dy/dx dikhe → NOT linear!</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 9 Differential Equations Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+// ============ SCENE 1: Order & Degree detective ============
+inits[0]=(()=>{
+const DES=[
+ {label:"dy/dx + y = 0",o:1,d:1,hi:[0,5],why:"Highest derivative = dy/dx (1 baar) → order 1. Uski power 1 → degree 1."},
+ {label:"(d²y/dx²)³ + dy/dx = 0",o:2,d:3,hi:[1,8],why:"Highest derivative = d²y/dx² → order 2. Uski POWER 3 → degree 3!"},
+ {label:"sin(dy/dx) = x",o:1,d:-1,hi:[4,9],why:"Order 1 (dy/dx). Par degree DEFINED NAHI - derivative sin ke andar hai, polynomial nahi ban sakta!"},
+ {label:"d²y/dx² + y = 0",o:2,d:1,hi:[0,7],why:"Highest = d²y/dx² → order 2, power 1 → degree 1."},
+ {label:"(dy/dx)² + y² = 1",o:1,d:2,hi:[1,5],why:"Order 1 (dy/dx hi highest). Power 2 → degree 2."}
+];
+let di=0,pickO=0,pickD=0;
+const db=document.getElementById("deBtns"),ob=document.getElementById("oBtns"),gb=document.getElementById("dBtns");
+DES.forEach((de,i)=>{const b=document.createElement("button");b.textContent=de.label;b.onclick=()=>{di=i;pickO=0;pickD=0;sync();draw();};db.appendChild(b);});
+[1,2,3].forEach(n=>{const b=document.createElement("button");b.textContent=n;b.onclick=()=>{pickO=n;sync();check();};ob.appendChild(b);});
+[["1",1],["2",2],["3",3],["NAHI",-1]].forEach(([t,v])=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>{pickD=v;sync();check();};gb.appendChild(b);});
+function sync(){[...db.children].forEach((b,i)=>b.classList.toggle("sel",i===di));[...ob.children].forEach((b,i)=>b.classList.toggle("sel",i+1===pickO));[...gb.children].forEach((b,i)=>b.classList.toggle("sel",[1,2,3,-1][i]===pickD));}
+function check(){const de=DES[di],r=document.getElementById("r0");
+ if(!pickO||!pickD){r.innerHTML="Order aur degree dono pick karo...";return;}
+ const oOk=pickO===de.o,dOk=pickD===de.d;
+ r.innerHTML=(oOk?"<span style='color:"+GR+"'>Order "+de.o+" ✓</span> ":"<span style='color:"+RD+"'>Order "+pickO+" ✗ (sahi: "+de.o+")</span> ")+"| "+(dOk?"<span style='color:"+GR+"'>Degree "+(de.d<0?"defined NAHI":de.d)+" ✓</span>":"<span style='color:"+RD+"'>Degree "+(pickD<0?"NAHI":pickD)+" ✗ (sahi: "+(de.d<0?"defined NAHI":de.d)+")</span>")+"<br><span style='color:#9fb0d8'>"+de.why+"</span>";}
+function draw(){const c=ctx("cv0");c.clearRect(0,0,920,300);const de=DES[di];
+ c.strokeStyle="#2d2d52";c.strokeRect(40,90,840,110);
+ txt(c,de.label,460,160,CY,"bold 30px 'Cascadia Code',monospace","center");
+ if(pickO||pickD){const m=c.measureText(de.label);const w0=m.width;const x0=460-w0/2;
+  const pre=de.label.slice(0,de.hi[0]),mid=de.label.slice(de.hi[0],de.hi[1]+1);
+  const x1=x0+c.measureText(pre).width,w1=c.measureText(mid).width;
+  c.strokeStyle=MG;c.lineWidth=2.5;c.strokeRect(x1-4,128,w1+8,42);
+  txt(c,"highest derivative",x1+w1/2,120,MG,"13px 'Cascadia Code',monospace","center");c.lineWidth=1;}
+ txt(c,"DE "+(di+1)+" / "+DES.length,60,50,DM,"13px 'Cascadia Code',monospace");
+ txt(c,"guess karo, phir glow dekho!",860,50,DM,"13px 'Cascadia Code',monospace","right");}
+return function(){sync();draw();document.getElementById("r0").innerHTML="DE choose karke order aur degree guess karo!";};
+})();
+// ============ SCENE 2: General -> Particular ============
+inits[1]=(()=>{
+const FAMS=[
+ {name:"y = A·eˣ  (order 1 DE ka general solution)",fn:(x,A,B)=>A*Math.exp(x),consts:["A"],pin:{txt:"y(0) = 2",A:2,B:0,pt:[0,2]},
+  note:"Order 1 → sirf 1 constant (A). Har A = ek curve. y(0)=2 daalo → A=2 → PARTICULAR solution y = 2eˣ!"},
+ {name:"y = A·eˣ + B·e⁻ˣ  (order 2: y″ − y = 0)",fn:(x,A,B)=>A*Math.exp(x)+B*Math.exp(-x),consts:["A","B"],pin:{txt:"y(0)=2, y′(0)=0",A:1,B:1,pt:[0,2]},
+  note:"Order 2 → 2 constants (A, B)! Do conditions chahiye: y(0)=2 → A+B=2; y′(0)=0 → A−B=0 → A=B=1 → y = eˣ + e⁻ˣ."}
+];
+let fi=0,pinned=false;
+const fb=document.getElementById("famBtns");
+FAMS.forEach((f,i)=>{const b=document.createElement("button");b.textContent=i===0?"y = A·eˣ":"y = A·eˣ + B·e⁻ˣ";b.onclick=()=>{fi=i;pinned=false;sync();draw();};fb.appendChild(b);});
+const sA=document.getElementById("cA"),sB=document.getElementById("cB");
+sA.oninput=()=>{pinned=false;draw();};sB.oninput=()=>{pinned=false;draw();};
+document.getElementById("pinBtn").onclick=()=>{pinned=!pinned;if(pinned){const p=FAMS[fi].pin;sA.value=p.A;sB.value=p.B;}draw();};
+function sync(){[...fb.children].forEach((b,i)=>b.classList.toggle("sel",i===fi));
+ document.getElementById("slB").style.display=fi===1?"flex":"none";}
+const X=t=>460+t*150,Y=v=>165-v*26;
+function plot(c,fn,col,lw){c.strokeStyle=col;c.lineWidth=lw;c.beginPath();let st=false;
+ for(let px=20;px<=900;px+=3){const t=(px-460)/150,v=fn(t);const py=Y(v);
+  if(py<-40||py>370){st=false;continue;}
+  if(!st){c.moveTo(px,py);st=true;}else c.lineTo(px,py);}c.stroke();c.lineWidth=1;}
+function draw(){const c=ctx("cv1");c.clearRect(0,0,920,330);const F=FAMS[fi];
+ const A=parseFloat(sA.value),B=fi===1?parseFloat(sB.value):0;
+ document.getElementById("vA").textContent=A;document.getElementById("vB").textContent=B;
+ c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(20,165);c.lineTo(900,165);c.moveTo(460,10);c.lineTo(460,320);c.stroke();
+ const ghosts=[[-2,-1],[-1,1],[-0.5,-0.5],[0.5,0.5],[1,1],[2,-2]];
+ ghosts.forEach(([ga,gb])=>plot(c,x=>F.fn(x,ga,fi===1?gb:0),"rgba(91,100,136,0.35)",1));
+ plot(c,x=>F.fn(x,A,B),CY,3);
+ if(pinned){const p=F.pin;c.fillStyle=MG;c.beginPath();c.arc(X(p.pt[0]),Y(p.pt[1]),6,0,7);c.fill();
+  txt(c,"📌 "+p.txt,X(p.pt[0])+12,Y(p.pt[1])-8,MG,"bold 14px 'Cascadia Code',monospace");}
+ txt(c,F.name,30,30,YL,"bold 15px 'Cascadia Code',monospace");
+ txt(c,"grey = family (doosri constant values)",30,312,DM,"12px 'Cascadia Code',monospace");
+ document.getElementById("r1").innerHTML="<span class='hl'>"+F.name+"</span><br>A = "+A+(fi===1?", B = "+B:"")+" → y(0) = "+(Math.round(F.fn(0,A,B)*100)/100)+(pinned?"<br><span style='color:"+GR+"'>PINNED: "+FAMS[fi].pin.txt+" → unique PARTICULAR solution! ✓</span>":"")+"<br><span style='color:#9fb0d8'>"+FAMS[fi].note+"</span>";}
+return function(){sync();draw();};
+})();
+// ============ SCENE 3: Variable Separable ============
+inits[2]=(()=>{
+const P=[
+ {name:"dy/dx = y",steps:["dy/dx = y","dy/y = dx   ← SEPARATE! y+dy left, x+dx right","∫ dy/y = ∫ dx","ln|y| = x + C","y = Aeˣ   (A = e^C) - growth/decay family!"],
+  fam:(x,C)=>Math.exp(x+C),dual:true,dom:()=>true,
+  note:"y = Aeˣ: population, radioactive decay - sab isi family se!"},
+ {name:"dy/dx = x/y",steps:["dy/dx = x/y","y dy = x dx   ← SEPARATE!","∫ y dy = ∫ x dx","y²/2 = x²/2 + C₁","y² − x² = C   - HYPERBOLA family!"],
+  fam:(x,C)=>Math.sqrt(x*x+C),dual:true,dom:(x,C)=>x*x+C>=0,
+  note:"C>0: khuli hyperbola | C=0: lines y=±x | C<0: |x| ≥ √|C| pe hi defined!"}];
+let pi=0,step=0;
+const vb=document.getElementById("vsBtns");
+P.forEach((p,i)=>{const b=document.createElement("button");b.textContent=p.name;b.onclick=()=>{pi=i;step=0;sync();draw();};vb.appendChild(b);});
+document.getElementById("vsStep").onclick=()=>{if(step<P[pi].steps.length-1){step++;draw();}};
+document.getElementById("vsReset").onclick=()=>{step=0;draw();};
+const sC=document.getElementById("vsC");sC.oninput=draw;
+function sync(){[...vb.children].forEach((b,i)=>b.classList.toggle("sel",i===pi));}
+const X=t=>460+t*55,Y=v=>165-v*20;
+function branch(c,fn,sgn,C,col){c.strokeStyle=col;c.beginPath();let st=false;
+ for(let px=20;px<=900;px+=3){const t=(px-460)/55;if(!P[pi].dom(t,C)){st=false;continue;}
+  const v=sgn*fn(t,C),py=Y(v);if(py<-30||py>360){st=false;continue;}
+  if(!st){c.moveTo(px,py);st=true;}else c.lineTo(px,py);}c.stroke();}
+function draw(){const c=ctx("cv2");c.clearRect(0,0,920,330);const pr=P[pi];
+ const C=parseFloat(sC.value);document.getElementById("vvsC").textContent=C;
+ c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(20,165);c.lineTo(900,165);c.moveTo(460,10);c.lineTo(460,320);c.stroke();
+ [-1.5,-0.5,0.5,1.5].forEach(g=>{c.globalAlpha=.28;branch(c,pr.fam,1,g,DM);if(pr.dual)branch(c,pr.fam,-1,g,DM);c.globalAlpha=1;});
+ c.lineWidth=3;branch(c,pr.fam,1,C,CY);if(pr.dual)branch(c,pr.fam,-1,C,CY);c.lineWidth=1;
+ txt(c,"Steps (Agla step dabao):",30,26,YL,"bold 14px 'Cascadia Code',monospace");
+ pr.steps.forEach((s,i)=>{if(i<=step)txt(c,(i===step?"▶ ":"   ")+s,30,58+i*26,i===step?MG:(i<step?"#9fb0d8":DM),"14px 'Cascadia Code',monospace");});
+ document.getElementById("r2").innerHTML="C = "+C+" → <span class='cy'>bold curve(s)</span> = is C wali solution | grey = family<br><span style='color:#9fb0d8'>"+pr.note+"</span>";}
+return function(){sync();draw();};
+})();
+// ============ SCENE 4: Linear DE - IF machine ============
+inits[3]=(()=>{
+const P=[
+ {name:"dy/dx + y = eˣ",steps:["dy/dx + y = eˣ     (standard form ✓  P(x)=1, Q(x)=eˣ)","IF = e^(∫P dx) = e^(∫1 dx) = eˣ","dono taraf × IF:  eˣ·dy/dx + eˣ·y = e²ˣ","LHS ban gaya EXACT derivative:  d/dx [y·eˣ] = e²ˣ","Integrate:  y·eˣ = ∫e²ˣ dx = e²ˣ/2 + C","y = eˣ/2 + Ce⁻ˣ   ✓ SOLVED!"],
+  chk:"Check: dy/dx = eˣ/2 − Ce⁻ˣ → dy/dx + y = eˣ ✓"},
+ {name:"dx/dy + x = y",steps:["dx/dy + x = y     (SECOND type: x dependent! P(y)=1, Q(y)=y)","IF = e^(∫P dy) = e^(∫1 dy) = eʸ","dono taraf × IF:  eʸ·dx/dy + eʸ·x = y·eʸ","LHS = d/dy [x·eʸ] = y·eʸ","Integrate:  x·eʸ = ∫y·eʸ dy = (y−1)eʸ + C","x = y − 1 + Ce⁻ʸ   ✓ SOLVED!"],
+  chk:"Check: dx/dy = 1 − Ce⁻ʸ → dx/dy + x = y ✓"}];
+let pi=0,step=0;
+const lb=document.getElementById("linBtns");
+P.forEach((p,i)=>{const b=document.createElement("button");b.textContent=p.name;b.onclick=()=>{pi=i;step=0;sync();draw();};lb.appendChild(b);});
+document.getElementById("linStep").onclick=()=>{if(step<P[pi].steps.length-1){step++;draw();}};
+document.getElementById("linReset").onclick=()=>{step=0;draw();};
+function sync(){[...lb.children].forEach((b,i)=>b.classList.toggle("sel",i===pi));}
+function draw(){const c=ctx("cv3");c.clearRect(0,0,920,330);const pr=P[pi];
+ txt(c,"IF machine - har step dhyan se:",30,26,YL,"bold 14px 'Cascadia Code',monospace");
+ pr.steps.forEach((s,i)=>{if(i>step)return;
+  if(i===step){c.fillStyle="rgba(232,121,249,0.12)";c.fillRect(18,42+i*40,884,32);}
+  txt(c,(i===step?"▶ ":"   ")+s,30,64+i*40,i===step?MG:(i<step?"#b9c4e4":DM),"15px 'Cascadia Code',monospace");
+  if(i===1&&i<=step){txt(c,"⭐ IF = e^(∫P dx) - formula ratt lo!",620,26,CY,"bold 13px 'Cascadia Code',monospace");}});
+ if(step===pr.steps.length-1)txt(c,pr.chk,30,318,GR,"13px 'Cascadia Code',monospace");
+ document.getElementById("r3").innerHTML="<span class='hl'>Flow: standard form → P pehchano → IF = e^∫P → y·IF = ∫(Q·IF) + C</span><br><span style='color:#9fb0d8'>Trap: dy/dx ka coefficient 1 nahi hai to PEHLE divide karo - warna P galat! y·dy/dx dikhe = NOT linear.</span>";}
+return function(){sync();draw();};
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"(d²y/dx²) + (dy/dx)³ = 0 ka ORDER kya hai?",o:["1","2","3","5"],a:1,w:"Highest derivative d²y/dx² → order 2 (uski power nahi, COUNT dekho!)"},
+ {q:"(dy/dx)⁴ + y = x ki DEGREE kya hai?",o:["1","2","4","defined nahi"],a:2,w:"Highest derivative dy/dx, uski power 4 → degree 4."},
+ {q:"Order 3 DE ke general solution me kitne arbitrary constants?",o:["1","2","3","0"],a:2,w:"Order n → EXACTLY n constants. Order 3 → 3 constants!"},
+ {q:"dy/dx + P(x)·y = Q(x) ka Integrating Factor?",o:["e^∫Q dx","e^∫P dx","∫P dx","e^(P·x)"],a:1,w:"IF = e^(∫P dx) - P ke integral ki exponential!"},
+ {q:"Homogeneous DE solve karne ke liye kya substitute karte hain?",o:["y = vx","v = xy","y = v + x","x = vy²"],a:0,w:"y = vx → dy/dx = v + x·dv/dx → DE separable ban jaata hai!"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! DEs PAKKE! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i,b);bb.appendChild(b);});}
+function ans(i,b){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
