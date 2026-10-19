@@ -267,8 +267,8 @@ function infDraw(){
   // asymptote
   g.strokeStyle=GD;g.lineWidth=2;g.setLineDash([7,6]);
   g.beginPath();g.moveTo(50,yOf(Sinf));g.lineTo(730,yOf(Sinf));g.stroke();g.setLineDash([]);
-  g.fillStyle=GD;g.font='12px ui-monospace,monospace';g.textAlign='right';
-  g.fillText('S∞ = a/(1−r) = '+fmt(Sinf),726,yOf(Sinf)-12);
+  g.fillStyle=GD;g.font='12px ui-monospace,monospace';g.textAlign='left';
+  g.fillText('S∞ = a/(1−r) = '+fmt(Sinf),56,yOf(Sinf)-12);
   g.textAlign='center';
   // partial sums
   const dots=[];
@@ -431,6 +431,7 @@ function qRender(){
   });
 }
 qRender();
+
 </script>
 </body>
 </html>
