@@ -192,9 +192,9 @@ function draw(tick){
  if(defR&&Math.abs(rhl)<=3.2){c.strokeStyle=MG;c.lineWidth=3;c.beginPath();c.moveTo(ax+8,Q(rhl));c.lineTo(ax+34,Q(rhl));c.stroke();c.beginPath();c.arc(ax+4,Q(rhl),4,0,7);c.stroke();}
  if(faOK&&Math.abs(fa)<=3.2){c.fillStyle=YL;c.beginPath();c.arc(ax,Q(fa),6,0,7);c.fill();}
  // checklist boxes
- const bx=690;let by=44;
+ const bx=678;let by=44;
  c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
- c.beginPath();c.roundRect(676,16,240,112,10);c.fill();c.stroke();
+ c.beginPath();c.roundRect(664,16,252,112,10);c.fill();c.stroke();
  txt(c,"CONTINUITY CHECKLIST at a = "+a.toFixed(1),bx+95,by-16,YL,"bold 13px 'Cascadia Code',monospace","center");
  function chk(label,ok,na){c.fillStyle=na?DM:(ok?GR:RD);c.font="bold 14px 'Cascadia Code',monospace";c.textAlign="left";c.fillText((na?"— ":(ok?"✓ ":"✗ "))+label,bx,by);by+=26;}
  chk("① LHL = RHL (limit EXISTS)",limOK);
