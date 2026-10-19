@@ -264,14 +264,13 @@ const DFS=[
 ];
 let dfI=0;
 function drawDef(){
- const a=+$("dfA").value;$("dfAv").textContent=a;
- const D=DFS[dfI];
+ const a=+$("dfA").value;const D=DFS[dfI];$("dfAv").textContent=D.sym?a:"π";
  const cv=$("defCv"),ctx=cv.getContext("2d");
  ctx.clearRect(0,0,900,340);ctx.fillStyle="#0b0b16";ctx.fillRect(0,0,900,340);
  const X=t=>450+t*(dfI===2?110:120), Y=v=>300-v*(dfI===2?120:26);
  ctx.strokeStyle="#2d2d52";ctx.beginPath();ctx.moveTo(30,300);ctx.lineTo(880,300);ctx.moveTo(450,15);ctx.lineTo(450,320);ctx.stroke();
  // shaded area -a..a (sym) or 0..a (sin)
- const lo=D.sym?-a:0, hi=a;
+ const lo=D.sym?-a:0, hi=D.sym?a:D.dom;
  ctx.beginPath();ctx.moveTo(X(lo),300);
  for(let t=lo;t<=hi;t+=0.02)ctx.lineTo(X(t),Y(Math.max(0,D.f(t))));
  ctx.lineTo(X(hi),300);ctx.closePath();
