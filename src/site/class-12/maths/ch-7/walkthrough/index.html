@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrals - Interactive Visual Walkthrough | Class 12 Maths Ch 7</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#05050c;color:#e8e8f4;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;padding:18px 14px 40px}
+.wrap{max-width:1060px;margin:0 auto}
+.tag{display:inline-block;font-size:.72rem;letter-spacing:.12em;color:#22d3ee;border:1px solid #22d3ee55;padding:4px 12px;border-radius:999px;margin-bottom:12px}
+h1{font-size:clamp(1.6rem,4vw,2.4rem);background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:6px}
+.sub{color:#9a9ab8;font-size:.95rem;margin-bottom:16px}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0 22px}
+.dots span{width:9px;height:9px;border-radius:50%;background:#26263c;cursor:pointer;transition:all .3s}
+.dots span.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none;animation:fadeIn .45s ease}
+.scene.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.scene h2{color:#7dd3fc;font-size:1.25rem;margin-bottom:6px}
+.scene .desc{color:#a8a8c8;font-size:.9rem;margin-bottom:14px;line-height:1.5}
+.panel{background:#0b0b16;border:1px solid #1e1e34;border-radius:14px;padding:16px;margin-bottom:12px}
+canvas{display:block;width:100%;border-radius:10px}
+.readout{background:#101020;border:1px solid #22d3ee33;border-radius:10px;padding:10px 14px;font-family:Consolas,monospace;font-size:.85rem;color:#c4b5fd;margin-top:10px;line-height:1.6}
+.readout b{color:#22d3ee}
+.hl{color:#e879f9;font-weight:700}
+.grn{color:#34d399;font-weight:700}
+.red{color:#f87171;font-weight:700}
+.ylw{color:#fbbf24;font-weight:700}
+.ctl-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
+button.pick{background:#14142a;border:1px solid #2d2d52;color:#c9c9e8;padding:7px 14px;border-radius:8px;cursor:pointer;font-size:.82rem;transition:all .2s}
+button.pick:hover{border-color:#22d3ee}
+button.pick.on{background:#22d3ee22;border-color:#22d3ee;color:#22d3ee;font-weight:700}
+.sl-row{display:flex;align-items:center;gap:12px;margin:6px 0;font-size:.85rem}
+.sl-row label{width:150px;color:#9a9ab8}
+.sl-row .val{width:56px;text-align:right;color:#e879f9;font-family:monospace;font-weight:700}
+input[type=range]{flex:1;accent-color:#22d3ee;height:4px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:12px 0}
+.chip{min-width:44px;padding:8px 6px;text-align:center;border-radius:9px;border:1.5px solid #2d2d52;background:#101024;color:#8a8ab0;font-family:monospace;font-size:.82rem;cursor:pointer;transition:all .18s;user-select:none}
+.chip:hover{border-color:#7dd3fc}
+.chip.inA{background:#22d3ee26;border-color:#22d3ee;color:#7dd3fc;font-weight:700}
+.chip.inB{background:#e879f926;border-color:#e879f9;color:#f0abfc;font-weight:700}
+.chip.inAB{background:linear-gradient(135deg,#22d3ee33,#e879f933);border-color:#fff;color:#fff;font-weight:700}
+.chip.hit{background:#34d39926;border-color:#34d399;color:#6ee7b7;font-weight:700}
+.chip.static{cursor:default}
+.navrow{display:flex;justify-content:space-between;margin-top:18px}
+.navrow button{background:#14142a;border:1px solid #2d2d52;color:#c9c9e8;padding:10px 22px;border-radius:10px;cursor:pointer;font-size:.9rem;transition:all .2s}
+.navrow button:hover{border-color:#22d3ee;color:#22d3ee}
+.navrow button:disabled{opacity:.3;cursor:default}
+.qcard{background:#0b0b16;border:1px solid #1e1e34;border-radius:14px;padding:18px}
+.qtext{font-size:1rem;color:#e8e8f4;margin-bottom:14px;line-height:1.5}
+.qopts{display:flex;flex-direction:column;gap:8px}
+.qopts button{background:#101024;border:1px solid #2d2d52;color:#c9c9e8;padding:10px 14px;border-radius:9px;cursor:pointer;font-size:.88rem;text-align:left;transition:all .2s;font-family:Consolas,monospace}
+.qopts button:hover{border-color:#22d3ee}
+.qopts button.right{background:#34d39922;border-color:#34d399;color:#6ee7b7}
+.qopts button.wrong{background:#f8717122;border-color:#f87171;color:#fca5a5}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.rcard{background:#0b0b16;border:1px solid #1e1e34;border-radius:12px;padding:14px}
+.rcard h3{color:#e879f9;font-size:.95rem;margin-bottom:8px}
+.rcard p{font-size:.83rem;color:#a8a8c8;line-height:1.6;font-family:Consolas,monospace}
+.foot{margin-top:26px;text-align:center;color:#55557a;font-size:.78rem}
+.legend{display:flex;gap:16px;justify-content:center;font-size:.78rem;color:#9a9ab8;margin:6px 0;flex-wrap:wrap}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="tag">Class 12 Maths - Chapter 7 - Integrals</div>
+<h1>Integrals Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - differentiation ka ULTA, substitution signal, ILATE by-parts machine, King property area, aur quiz.</p>
+<div class="dots" id="dots"></div>
+
+<!-- SCENE 1: Anti-derivative -->
+<div class="scene" id="s0">
+<h2>1. Integration = Differentiation Ka ULTA ⭐</h2>
+<p class="desc">n ghumao: neeche f(x) = xⁿ, upar uska anti-derivative F(x) = xⁿ⁺¹/(n+1). <b>+C ka slider</b> ghumao - poori FAMILY shift hoti hai, sabki derivative SAME! Isliye indefinite integral mein +C HAMESHA.</p>
+<div class="panel">
+  <canvas id="antiCv" width="900" height="340"></canvas>
+  <div class="sl-row"><label>power n (f = xⁿ)</label><input type="range" id="anN" min="0" max="5" step="1" value="2"><span class="val" id="anNv">2</span></div>
+  <div class="sl-row"><label>constant C</label><input type="range" id="anC" min="-3" max="3" step="0.5" value="0"><span class="val" id="anCv">0</span></div>
+  <div class="readout" id="r1"></div>
+</div>
+</div>
+
+<!-- SCENE 2: Substitution -->
+<div class="scene" id="s1">
+<h2>2. Substitution Signal - Kis Ko t Banao? ⭐⭐</h2>
+<p class="desc">Signal: integrand mein ek <b>function AUR uska derivative</b> dono dikhein - andar wale ko <b>t</b> maano! Har round mein sahi t pe click karo. f′/f dikhe to seedha ln|f|!</p>
+<div class="panel">
+  <div class="qtext" id="subQ" style="font-family:Consolas,monospace;font-size:1.05rem"></div>
+  <div class="ctl-row" id="subBtns"></div>
+  <div class="readout" id="r2" style="display:none"></div>
+  <div class="ctl-row"><button class="pick" id="subNext" style="display:none">Agla →</button></div>
+</div>
+</div>
+
+<!-- SCENE 3: By parts ILATE -->
+<div class="scene" id="s2">
+<h2>3. By Parts Machine - ILATE Se u Chuno ⭐⭐</h2>
+<p class="desc">∫u·v dx = u∫v dx − ∫(u′·∫v dx)dx. u kaun? <b>ILATE</b>: Inverse, Log, Algebraic, Trig, Exponential - jo pehle aaye, wahi u. Har product mein SAHI u pe click karo!</p>
+<div class="panel">
+  <div class="qtext" id="bpQ" style="font-family:Consolas,monospace;font-size:1.05rem"></div>
+  <div class="ctl-row" id="bpBtns"></div>
+  <div class="readout" id="r3" style="display:none"></div>
+  <div class="ctl-row"><button class="pick" id="bpNext" style="display:none">Agla →</button></div>
+</div>
+</div>
+
+<!-- SCENE 4: Definite + King -->
+<div class="scene" id="s3">
+<h2>4. Definite Integral - Area, King Aur Even/Odd ⭐⭐</h2>
+<p class="desc">Definite mein <b>F(b) − F(a)</b>, +C nahi! Canvas pe AREA dekho. <b>KING property</b>: ∫₀ᵃf(x)dx = ∫₀ᵃf(a−x)dx - area mirror pe bhi SAME. EVEN function pe symmetric area DOUBLE, ODD pe ZERO!</p>
+<div class="panel">
+  <div class="ctl-row" id="dfBtns">
+    <button class="pick on" data-f="0">f = x² (EVEN)</button>
+    <button class="pick" data-f="1">f = x³ (ODD)</button>
+    <button class="pick" data-f="2">f = sin x on [0,π]</button>
+  </div>
+  <canvas id="defCv" width="900" height="340"></canvas>
+  <div class="sl-row"><label>limit a</label><input type="range" id="dfA" min="0.5" max="3" step="0.1" value="2"><span class="val" id="dfAv">2</span></div>
+  <div class="ctl-row"><button class="pick" id="kingBtn">KING mirror dikhao</button></div>
+  <div class="readout" id="r4"></div>
+</div>
+</div>
+
+<!-- SCENE 5: Quiz -->
+<div class="scene" id="s4">
+<h2>5. Rapid Quiz - Integrals Pakke?</h2>
+<p class="desc">5 sawaal. Yaad rakho: power ek badhao, 1/x = ln|x|, signal = function+derivative, u = ILATE, definite mein +C nahi!</p>
+<div class="qcard">
+  <div class="qtext" id="qText"></div>
+  <div class="qopts" id="quizBtns"></div>
+  <div class="readout" id="r5" style="display:none"></div>
+</div>
+</div>
+
+<!-- RECAP -->
+<div class="scene" id="s5">
+<h2>Formula Recap - Screenshot Le Lo!</h2>
+<div class="recap-grid">
+  <div class="rcard"><h3>Basics ⭐</h3><p>∫ = differentiation ka ulta | ∫xⁿdx = xⁿ⁺¹/(n+1) + C (n ≠ −1) | ∫1/x dx = ln|x| + C | +C HAMESHA (indefinite)</p></div>
+  <div class="rcard"><h3>Substitution ⭐⭐</h3><p>Signal: function + uska derivative dikhe → andar wala = t | f′/f → ln|f| | ∫2x·sin(x²)dx: t = x² → −cos(x²) + C</p></div>
+  <div class="rcard"><h3>By Parts ⭐⭐</h3><p>∫uv = u∫v − ∫(u′∫v) | u choose: ILATE (Inverse, Log, Algebraic, Trig, Exp) | ∫ln x dx = x ln x − x + C</p></div>
+  <div class="rcard"><h3>Special Forms ⭐</h3><p>∫1/(x²+a²) = (1/a)tan⁻¹(x/a) | ∫1/√(a²−x²) = sin⁻¹(x/a) | Quadratic neeche → complete the square</p></div>
+  <div class="rcard"><h3>Definite ⭐⭐</h3><p>∫ₐᵇ = F(b) − F(a), +C NAHI | KING: ∫₀ᵃf(x)dx = ∫₀ᵃf(a−x)dx | EVEN: 2×∫₀ᵃ | ODD: 0 (symmetric limits)</p></div>
+</div>
+</div>
+
+<div class="navrow">
+<button id="prevBtn">← Peeche</button>
+<button id="nextBtn">Aage →</button>
+</div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 7 Integrals Visual Walkthrough</div>
+</div>
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const rnd=(x,d=3)=>{const v=Math.round(x*Math.pow(10,d))/Math.pow(10,d);return String(v);};
+
+/* ---------- SCENE 1: anti-derivative family ---------- */
+function plotAxes(ctx,x0,y0,W,H){
+ ctx.strokeStyle="#2d2d52";ctx.lineWidth=1.5;ctx.beginPath();
+ ctx.moveTo(40,y0);ctx.lineTo(W-20,y0);ctx.moveTo(x0,15);ctx.lineTo(x0,H-15);ctx.stroke();
+}
+function drawAnti(){
+ const n=+$("anN").value,C=+$("anC").value;
+ $("anNv").textContent=n;$("anCv").textContent=C;
+ const cv=$("antiCv"),ctx=cv.getContext("2d");
+ ctx.clearRect(0,0,900,340);ctx.fillStyle="#0b0b16";ctx.fillRect(0,0,900,340);
+ const W=900,H=340,x0=130,y0=300; // plot f on right region? simple: x in [-3,3] mapped
+ const X=t=>450+t*120, Y=v=>170-v*22;
+ // axes
+ ctx.strokeStyle="#2d2d52";ctx.beginPath();ctx.moveTo(30,170);ctx.lineTo(880,170);ctx.moveTo(450,15);ctx.lineTo(450,330);ctx.stroke();
+ const f=x=>Math.pow(x,n);
+ const F=x=>Math.pow(x,n+1)/(n+1)+C;
+ // f curve cyan
+ ctx.beginPath();let started=false;
+ for(let px=30;px<=880;px+=2){const x=(px-450)/120;const y=f(x);if(y>7||y<-7){started=false;continue;}const py=170-y*22;if(!started){ctx.moveTo(px,py);started=true;}else ctx.lineTo(px,py);}
+ ctx.strokeStyle="#22d3ee";ctx.lineWidth=2.5;ctx.stroke();
+ // F curve magenta
+ ctx.beginPath();started=false;
+ for(let px=30;px<=880;px+=2){const x=(px-450)/120;const y=F(x);if(y>7||y<-7){started=false;continue;}const py=170-y*22;if(!started){ctx.moveTo(px,py);started=true;}else ctx.lineTo(px,py);}
+ ctx.strokeStyle="#e879f9";ctx.lineWidth=2.5;ctx.stroke();
+ // ghost family (C=-2,2) thin
+ [[-2,"#e879f944"],[2,"#e879f944"]].forEach(([cC,col])=>{ctx.beginPath();let st=false;for(let px=30;px<=880;px+=3){const x=(px-450)/120;const y=Math.pow(x,n+1)/(n+1)+cC;if(y>7||y<-7){st=false;continue;}const py=170-y*22;if(!st){ctx.moveTo(px,py);st=true;}else ctx.lineTo(px,py);}ctx.strokeStyle=col;ctx.lineWidth=1.2;ctx.stroke();});
+ ctx.fillStyle="#7dd3fc";ctx.font="bold 15px Consolas";ctx.textAlign="left";
+ ctx.fillText("f(x) = x^"+n,40,34);
+ ctx.fillStyle="#f0abfc";
+ const rhs=n===0?"x":"x^"+(n+1)+"/"+(n+1);
+ ctx.fillText("F(x) = "+rhs+" + C",40,54);
+ $("r1").innerHTML="f(x) = <span class='hl'>x<sup>"+n+"</sup></span> &nbsp;⇒&nbsp; ∫x<sup>"+n+"</sup>dx = <span class='hl'>"+(n===0?"x":"x<sup>"+(n+1)+"</sup>/"+(n+1))+" + C</span><br>Check ulta: d/dx ["+(n===0?"x":"x<sup>"+(n+1)+"</sup>/"+(n+1))+" + C] = x<sup>"+n+"</sup> ✓ &nbsp;|&nbsp; C = "+C+" ghumaya - curve shift hui, <span class='grn'>derivative SAME</span> - isliye +C likhna mat bhoolo!";
+}
+["anN","anC"].forEach(id=>$(id).addEventListener("input",drawAnti));
+
+/* ---------- SCENE 2: substitution rounds ---------- */
+const SUBS=[
+ {q:"∫ 2x · sin(x²) dx — t kya banaoge?",opts:["t = sin(x²)","t = x²  (andar wala!)","t = 2x"],a:1,why:"t = x² ⇒ dt = 2x dx ⇒ ∫ sin t dt = −cos t = <span class='grn'>−cos(x²) + C</span>. Andar ka x² + uska derivative 2x DONO the - signal pakka!"},
+ {q:"∫ (3x²)/(x³+5) dx — signal pehchano, t = ?",opts:["t = 3x²","t = x³+5  (neeche wala!)","t = x"],a:1,why:"t = x³+5 ⇒ dt = 3x² dx ⇒ ∫ dt/t = ln|t| = <span class='grn'>ln|x³+5| + C</span>. f′/f dikha → seedha ln|f|!"},
+ {q:"∫ cos x · e^(sin x) dx — t = ?",opts:["t = sin x  (andar wala!)","t = e^(sin x)","t = cos x"],a:0,why:"t = sin x ⇒ dt = cos x dx ⇒ ∫ eᵗ dt = eᵗ = <span class='grn'>e^(sin x) + C</span>. sin x + cos x dono present - signal!"}
+];
+let subI=0,subDone=0,subScore=0;
+function drawSub(){
+ $("r2").style.display="none";$("subNext").style.display="none";
+ if(subI>=SUBS.length){
+  $("subQ").innerHTML="Rounds khatam! Score: <span class='grn'>"+subScore+"/3</span> - signal: <b>function + uska derivative</b> dikhe, andar wala = t!";
+  $("subBtns").innerHTML="";
+  const rb=document.createElement("button");rb.className="pick";rb.textContent="Phir Se ↻";rb.onclick=()=>{subI=0;subScore=0;drawSub();};$("subBtns").appendChild(rb);
+  return;
+ }
+ const s=SUBS[subI];
+ $("subQ").innerHTML="<b>Round "+(subI+1)+"/3.</b> "+s.q;
+ const bx=$("subBtns");bx.innerHTML="";
+ s.opts.forEach((o,i)=>{
+  const b=document.createElement("button");b.className="pick";b.textContent=o;
+  b.onclick=()=>{
+   [...bx.children].forEach(x=>x.onclick=null);
+   if(i===s.a){b.style.borderColor="#34d399";b.style.color="#6ee7b7";subScore++;}else{b.style.borderColor="#f87171";b.style.color="#fca5a5";bx.children[s.a].style.borderColor="#34d399";bx.children[s.a].style.color="#6ee7b7";}
+   $("r2").style.display="block";$("r2").innerHTML=s.why;
+   $("subNext").style.display="inline-block";
+  };
+  bx.appendChild(b);
+ });
+}
+$("subNext").onclick=()=>{subI++;drawSub();};
+
+/* ---------- SCENE 3: by parts ILATE ---------- */
+const BPS=[
+ {q:"∫ x·eˣ dx — u kaun?",opts:["u = x (A: Algebraic)","u = eˣ (E: Exponential)"],a:0,why:"ILATE: <b>A</b> pehle, <b>E</b> baad mein ⇒ u = x. ∫x·eˣ = x·eˣ − ∫1·eˣ = <span class='grn'>x·eˣ − eˣ + C = eˣ(x−1) + C</span>"},
+ {q:"∫ x·sin x dx — u kaun?",opts:["u = sin x (T: Trig)","u = x (A: Algebraic)"],a:1,why:"ILATE: <b>A</b> pehle, <b>T</b> baad ⇒ u = x. ∫x·sin x = x(−cos x) − ∫1·(−cos x) = <span class='grn'>−x cos x + sin x + C</span>"},
+ {q:"∫ ln x dx — trick kya hai?",opts:["u = ln x, v = 1 (L pehle!)","u = 1, v = ln x"],a:0,why:"ln x = ln x · <b>1</b>. ILATE: <b>L</b> sabse aage ⇒ u = ln x. ∫ln x = ln x·x − ∫(1/x)·x = <span class='grn'>x ln x − x + C</span> - classic trick!"}
+];
+let bpI=0,bpScore=0;
+function drawBP(){
+ $("r3").style.display="none";$("bpNext").style.display="none";
+ if(bpI>=BPS.length){
+  $("bpQ").innerHTML="Rounds khatam! Score: <span class='grn'>"+bpScore+"/3</span> - ILATE yaad rakho: <b>I</b>nverse, <b>L</b>og, <b>A</b>lgebraic, <b>T</b>rig, <b>E</b>xponential!";
+  $("bpBtns").innerHTML="";
+  const rb=document.createElement("button");rb.className="pick";rb.textContent="Phir Se ↻";rb.onclick=()=>{bpI=0;bpScore=0;drawBP();};$("bpBtns").appendChild(rb);
+  return;
+ }
+ const s=BPS[bpI];
+ $("bpQ").innerHTML="<b>Round "+(bpI+1)+"/3.</b> "+s.q;
+ const bx=$("bpBtns");bx.innerHTML="";
+ s.opts.forEach((o,i)=>{
+  const b=document.createElement("button");b.className="pick";b.textContent=o;
+  b.onclick=()=>{
+   [...bx.children].forEach(x=>x.onclick=null);
+   if(i===s.a){b.style.borderColor="#34d399";b.style.color="#6ee7b7";bpScore++;}else{b.style.borderColor="#f87171";b.style.color="#fca5a5";bx.children[s.a].style.borderColor="#34d399";bx.children[s.a].style.color="#6ee7b7";}
+   $("r3").style.display="block";$("r3").innerHTML=s.why;
+   $("bpNext").style.display="inline-block";
+  };
+  bx.appendChild(b);
+ });
+}
+$("bpNext").onclick=()=>{bpI++;drawBP();};
+
+/* ---------- SCENE 4: definite + king ---------- */
+let kingOn=false;
+const DFS=[
+ {f:x=>x*x,ant:x=>x*x*x/3,name:"x²",kind:"EVEN",dom:3,sym:true},
+ {f:x=>x*x*x,ant:x=>Math.pow(x,4)/4,name:"x³",kind:"ODD",dom:3,sym:true},
+ {f:x=>Math.sin(x),ant:x=>-Math.cos(x),name:"sin x",kind:"on [0,π]",dom:Math.PI,sym:false}
+];
+let dfI=0;
+function drawDef(){
+ const a=+$("dfA").value;$("dfAv").textContent=a;
+ const D=DFS[dfI];
+ const cv=$("defCv"),ctx=cv.getContext("2d");
+ ctx.clearRect(0,0,900,340);ctx.fillStyle="#0b0b16";ctx.fillRect(0,0,900,340);
+ const X=t=>450+t*(dfI===2?110:120), Y=v=>300-v*(dfI===2?120:26);
+ ctx.strokeStyle="#2d2d52";ctx.beginPath();ctx.moveTo(30,300);ctx.lineTo(880,300);ctx.moveTo(450,15);ctx.lineTo(450,320);ctx.stroke();
+ // shaded area -a..a (sym) or 0..a (sin)
+ const lo=D.sym?-a:0, hi=a;
+ ctx.beginPath();ctx.moveTo(X(lo),300);
+ for(let t=lo;t<=hi;t+=0.02)ctx.lineTo(X(t),Y(Math.max(0,D.f(t))));
+ ctx.lineTo(X(hi),300);ctx.closePath();
+ ctx.fillStyle="rgba(34,211,238,0.18)";ctx.fill();
+ // mirror area for king
+ if(kingOn){ctx.beginPath();ctx.moveTo(X(lo),300);for(let t=lo;t<=hi;t+=0.02)ctx.lineTo(X(t),Y(Math.max(0,D.f(hi+lo-t))));ctx.lineTo(X(hi),300);ctx.closePath();ctx.fillStyle="rgba(232,121,249,0.13)";ctx.fill();}
+ // curve
+ ctx.beginPath();let st=false;
+ for(let px=30;px<=880;px+=2){const t=(px-450)/(dfI===2?110:120);const y=D.f(t);if(Y(y)<5||Y(y)>335){st=false;continue;}if(!st){ctx.moveTo(px,Y(y));st=true;}else ctx.lineTo(px,Y(y));}
+ ctx.strokeStyle="#22d3ee";ctx.lineWidth=2.5;ctx.stroke();
+ // limit lines
+ [lo,hi].forEach(t=>{ctx.strokeStyle="#e879f9";ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(X(t),300);ctx.lineTo(X(t),Y(Math.max(0,D.f(t))));ctx.stroke();ctx.setLineDash([]);});
+ const area=Math.abs(D.ant(hi)-D.ant(lo));
+ let note;
+ if(D.sym){
+  const pos=D.ant(a)-D.ant(0), neg=D.ant(0)-D.ant(-a);
+  note=dfI===0?"EVEN: ∫₋ₐᵃ x² = 2 × ∫₀ᵃ x² = 2 × "+rnd(a*a*a/3)+" = <span class='hl'>"+rnd(2*a*a*a/3)+"</span> - symmetric area DOUBLE!":"ODD: ∫₋ₐᵃ x³ = "+rnd(Math.pow(a,4)/4)+" + ("+rnd(-Math.pow(a,4)/4)+") = <span class='grn'>0</span> - dono sides CANCEL!";
+ }else{
+  note="∫₀^π sin x dx = [−cos x]₀^π = (−cos π) − (−cos 0) = 1 + 1 = <span class='hl'>2</span> - poora hump ka area EXACTLY 2!";
+ }
+ $("r4").innerHTML="f = <span class='hl'>"+D.name+"</span> ("+D.kind+"), limit a = "+a+(kingOn?" | <span class='ylw'>KING ON: f(a−x) ka mirror area (magenta) - SAME total!</span>":"")+"<br>"+note+(kingOn?"<br><span class='grn'>KING: ∫₀ᵃf(x)dx = ∫₀ᵃf(a−x)dx - function ulto, area wahi!</span>":"");
+}
+$("dfA").addEventListener("input",drawDef);
+$("kingBtn").onclick=()=>{kingOn=!kingOn;$("kingBtn").classList.toggle("on",kingOn);drawDef();};
+[...$("dfBtns").children].forEach(b=>b.onclick=()=>{dfI=+b.dataset.f;[...$("dfBtns").children].forEach(x=>x.classList.toggle("on",x===b));drawDef();});
+
+/* ---------- SCENE 5: quiz ---------- */
+const QS=[
+ {q:"∫ x⁵ dx = ?",opts:["x⁶/6 + C","5x⁴ + C","x⁶ + C","x⁵/5 + C"],a:0},
+ {q:"∫ (1/x) dx = ?",opts:["0 + C","x⁰/0 + C","ln|x| + C","1/x² + C"],a:2},
+ {q:"∫ 2x·cos(x²) dx = ?",opts:["sin(x²) + C","−sin(x²) + C","cos(x²) + C","2 sin(x²) + C"],a:0},
+ {q:"∫ x·ln x dx mein u kaun (ILATE)?",opts:["u = x","u = ln x","koi bhi","by parts nahi lagega"],a:1},
+ {q:"∫₋₂² x³ dx = ?",opts:["8","4","0","16"],a:2}
+];
+let qi=0,score=0;
+function drawQ(){
+ $("r5").style.display="none";
+ if(qi>=QS.length){
+  $("qText").innerHTML="Quiz khatam! Score: <span class='grn'>"+score+"/5</span> "+(score===5?"- PERFECT! Integrals PAKKE! ✅":score>=3?"- Badhiya! Ek aur round?":"- recap dekh ke phir aao!");
+  const bx=$("quizBtns");bx.innerHTML="";
+  const rb=document.createElement("button");rb.textContent="Phir Se ↻";rb.onclick=()=>{qi=0;score=0;drawQ();};bx.appendChild(rb);
+  $("r5").style.display="block";
+  $("r5").innerHTML="<b>"+score+"/5</b> - Shabash! Integrals ab pakke. Formula recap pe jaake screenshot le lo!";
+  return;
+ }
+ $("qText").innerHTML="<b>Q"+(qi+1)+"/5.</b> "+QS[qi].q;
+ const bx=$("quizBtns");bx.innerHTML="";
+ QS[qi].opts.forEach((o,i)=>{
+  const b=document.createElement("button");b.textContent=o;
+  b.onclick=()=>{
+   if(i===QS[qi].a){b.classList.add("right");score++;}else{b.classList.add("wrong");bx.children[QS[qi].a].classList.add("right");}
+   [...bx.children].forEach(x=>x.onclick=null);
+   const nb=document.createElement("button");nb.textContent="Agla →";nb.style.marginTop="6px";nb.onclick=()=>{qi++;drawQ();};bx.appendChild(nb);
+  };
+  bx.appendChild(b);
+ });
+}
+
+/* ---------- NAV ---------- */
+const N=6;let cur=0;
+const dots=$("dots");
+for(let i=0;i<N;i++){const s=document.createElement("span");s.onclick=()=>go(i);dots.appendChild(s);}
+function go(i){
+ cur=Math.max(0,Math.min(N-1,i));
+ for(let k=0;k<N;k++){$("s"+k).classList.toggle("on",k===cur);dots.children[k].classList.toggle("on",k===cur);}
+ $("prevBtn").disabled=cur===0;$("nextBtn").disabled=cur===N-1;
+ if(cur===0)drawAnti(); else if(cur===1)drawSub(); else if(cur===2)drawBP(); else if(cur===3)drawDef(); else if(cur===4)drawQ();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+$("prevBtn").onclick=()=>go(cur-1);$("nextBtn").onclick=()=>go(cur+1);
+go(0);
+})();
+</script>
+</body>
+</html>
