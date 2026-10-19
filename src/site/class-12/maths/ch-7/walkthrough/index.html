@@ -277,7 +277,7 @@ function drawDef(){
  ctx.lineTo(X(hi),300);ctx.closePath();
  ctx.fillStyle="rgba(34,211,238,0.18)";ctx.fill();
  // mirror area for king
- if(kingOn){ctx.beginPath();ctx.moveTo(X(lo),300);for(let t=lo;t<=hi;t+=0.02)ctx.lineTo(X(t),Y(Math.max(0,D.f(hi+lo-t))));ctx.lineTo(X(hi),300);ctx.closePath();ctx.fillStyle="rgba(232,121,249,0.13)";ctx.fill();}
+ if(kingOn){ctx.beginPath();ctx.moveTo(X(0),300);for(let t=0;t<=hi;t+=0.02)ctx.lineTo(X(t),Y(Math.max(0,D.f(hi-t))));ctx.lineTo(X(hi),300);ctx.closePath();ctx.fillStyle="rgba(232,121,249,0.16)";ctx.fill();}
  // curve
  ctx.beginPath();let st=false;
  for(let px=30;px<=880;px+=2){const t=(px-450)/(dfI===2?110:120);const y=D.f(t);if(Y(y)<5||Y(y)>335){st=false;continue;}if(!st){ctx.moveTo(px,Y(y));st=true;}else ctx.lineTo(px,Y(y));}
