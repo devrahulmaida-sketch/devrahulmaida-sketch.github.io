@@ -248,9 +248,9 @@ function drawVenn(){
 $("adExcl").onclick=()=>{const i=$("adI");i.value=0;drawVenn();};
 
 /* ---------- SCENE 4: At least one ---------- */
-let alN=[ ],alAnim=0;
+let curP=1/6;
 function drawAL(){
- const n=+$("alN").value,p=+$("alP").value;
+ const n=+$("alN").value,p=curP;
  $("alNv").textContent=n; $("alPv").textContent=rnd(p);
  const pnone=Math.pow(1-p,n), pone=1-pnone;
  const cv=$("alCv"),ctx=cv.getContext("2d");
@@ -275,8 +275,9 @@ function drawAL(){
  "P(at least one) = 1 − "+rnd(pnone)+" = <span class='grn'>"+rnd(pone)+"</span>"+
  (n*p>1?"<br><span class='red'>GALAT tareeka: n × p = "+rnd(n*p,2)+" - 1 se ZYADA, impossible! Isliye complement hi sahi raasta.</span>":"<br><span class='ylw'>Dhyan: n × p = "+rnd(n*p,2)+" seedha answer nahi - overlap double count hota. Complement use karo!</span>");
 }
-["alN","alP"].forEach(id=>$(id).addEventListener("input",drawAL));
-[...$("alBtns").children].forEach(b=>b.onclick=()=>{[...$("alBtns").children].forEach(x=>x.classList.toggle("on",x===b));$("alP").value=b.dataset.p;drawAL();});
+$("alN").addEventListener("input",drawAL);
+$("alP").addEventListener("input",()=>{curP=+$("alP").value;drawAL();});
+[...$("alBtns").children].forEach(b=>b.onclick=()=>{[...$("alBtns").children].forEach(x=>x.classList.toggle("on",x===b));curP=+b.dataset.p;$("alP").value=b.dataset.p;drawAL();});
 
 /* ---------- SCENE 5: Quiz ---------- */
 const QS=[
