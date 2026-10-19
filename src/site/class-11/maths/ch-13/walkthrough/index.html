@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statistics Ka Visual Walkthrough - Class 11 Maths Ch 13</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#07070d;color:#e8e8f2;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;padding:18px 12px 40px}
+.wrap{max-width:820px;margin:0 auto}
+.badge{display:inline-block;font-size:.75em;padding:4px 12px;border:1px solid #3b3b5c;border-radius:999px;color:#9aa0c9;margin-bottom:10px}
+h1{font-size:1.7em;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;text-align:center}
+.tag{text-align:center;color:#9aa0c9;font-size:.9em;margin:8px 0 4px}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0 18px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2a2a45;border:0;cursor:pointer;padding:0}
+.dot.on{background:#22d3ee;box-shadow:0 0 8px #22d3ee88}
+.scene{display:none}
+.scene.on{display:block}
+h2{font-size:1.15em;color:#7dd3fc;margin-bottom:6px}
+.sub{color:#b9b9d6;font-size:.88em;margin-bottom:12px;line-height:1.5}
+canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;border-radius:12px;margin:8px 0}
+.readout{font-size:.9em;color:#c9c9e0;background:#0e0e1c;border:1px solid #26264a;border-radius:10px;padding:10px 14px;margin:8px 0;line-height:1.55;min-height:52px}
+.readout b{color:#7dd3fc}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.btn{background:#181830;color:#c9c9e0;border:1px solid #33335c;border-radius:10px;padding:8px 14px;font-size:.85em;cursor:pointer}
+.btn.sel{border-color:#e879f9;color:#e879f9;background:#22122a}
+.btn.hot{border-color:#22d3ee;color:#22d3ee}
+.btn:active{transform:scale(.97)}
+.sliderrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:.85em;color:#c9c9e0}
+.sliderrow input[type=range]{flex:1;accent-color:#22d3ee}
+.sliderrow b{color:#e879f9;min-width:64px;text-align:right}
+.recap .card{background:#0e0e1c;border:1px solid #26264a;border-radius:12px;padding:14px 16px;margin:10px 0}
+.recap .card h3{color:#e879f9;font-size:.95em;margin-bottom:6px}
+.recap .card p{font-size:.86em;color:#c9c9e0;line-height:1.6;font-family:ui-monospace,monospace}
+.navrow{display:flex;justify-content:space-between;margin-top:18px}
+.credit{text-align:center;color:#565672;font-size:.75em;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="text-align:center"><span class="badge">Class 11 Maths - Chapter 13 - Statistics</span></div>
+<h1>Statistics Ka Visual Walkthrough</h1>
+<p class="tag">5 animated scenes - data ko DRAG karke dispersion feel karo, mean deviation aur variance ki machines, CV se consistency battle, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<section class="scene on">
+<h2>1. Dispersion Playground - Dots Ko DRAG Karo ⭐</h2>
+<p class="sub">Team A (cyan) aur Team B (gold) - dono ka mean SAME hai. <b>Gold dots ko drag karo</b> - spread badalte hi range aur σ LIVE badalte hain. Shaded band = mean ± σ. Kaun zyada consistent?</p>
+<canvas id="cv1" width="760" height="300" style="cursor:grab;touch-action:none"></canvas>
+<div class="readout" id="r1"></div>
+</section>
+
+<section class="scene">
+<h2>2. Mean Deviation - Doori Ka Average ⭐</h2>
+<p class="sub">5 values (sliders) aur unka mean (gold line). Har point ka mean se <b>distance</b> magenta segment hai. <b>SIGNED vs ABSOLUTE toggle dabao</b> - signed deviations ka sum HAMESHA 0 hota hai (isliye absolute lena padta hai!).</p>
+<canvas id="cv2" width="760" height="320"></canvas>
+<div class="btnrow" id="mdBtns"></div>
+<div id="mdSliders"></div>
+<div class="readout" id="r2"></div>
+</section>
+
+<section class="scene">
+<h2>3. Variance & SD Machine - Square Karke Dekho ⭐</h2>
+<p class="sub">Mean deviation ka |x| clumsy hai - isliye <b>square</b> karte hain. Har squared deviation ek block (area = (xᵢ−x̄)²). Variance = blocks ka average, σ = uska root. <b>DIRECT vs SHORTCUT toggle</b>: σ² = mean of squares − square of mean - dono ka answer MATCH!</p>
+<canvas id="cv3" width="760" height="320"></canvas>
+<div class="btnrow" id="varBtns"></div>
+<div id="varSliders"></div>
+<div class="readout" id="r3"></div>
+</section>
+
+<section class="scene">
+<h2>4. CV Battle - Kaun Zyada Consistent? ⭐</h2>
+<p class="sub">Do teams alag means ke saath - raw σ se compare nahi hota, isliye <b>CV = (σ/mean) × 100</b>. Sliders se dono teams ke mean aur σ ghumao - CV ka LIVE battle dekho. <b>Kam CV = zyada consistent!</b></p>
+<canvas id="cv4" width="760" height="300"></canvas>
+<div id="cvSliders"></div>
+<div class="readout" id="r4"></div>
+</section>
+
+<section class="scene">
+<h2>5. Rapid Quiz - Statistics Pakki?</h2>
+<p class="sub">5 sawaal. Yaad rakho: <b>σ² = (1/n)Σ(xᵢ−x̄)² = (1/n)Σxᵢ² − x̄²</b>, <b>CV = σ/x̄ × 100</b>, <b>same number add ⇒ σ unchanged</b>!</p>
+<canvas id="cv5" width="760" height="140"></canvas>
+<div class="btnrow" id="quizBtns"></div>
+<div class="readout" id="r5"></div>
+</section>
+
+<section class="scene recap">
+<h2>Formula Recap - Screenshot Le Lo!</h2>
+<div class="card"><h3>Dispersion ⭐</h3>
+<p>data mean se kitna BIKHRA hai | kam dispersion = zyada consistent | measures: Range, Mean Deviation, Variance, SD</p></div>
+<div class="card"><h3>Range & Mean Deviation</h3>
+<p>Range = max − min (sirf 2 extremes!) | M.D. about mean = (1/n)Σ|xᵢ − x̄| | grouped: Σfᵢ|xᵢ−x̄|/Σfᵢ | absolute KYUN? signed sum hamesha 0!</p></div>
+<div class="card"><h3>Variance & SD ⭐</h3>
+<p>σ² = (1/n)Σ(xᵢ−x̄)² | SHORTCUT: σ² = (1/n)Σxᵢ² − x̄² | grouped: (1/N)Σfᵢxᵢ² − x̄² | σ = √variance (original units me!)</p></div>
+<div class="card"><h3>CV ⭐</h3>
+<p>CV = (σ/x̄) × 100 | kam CV = zyada CONSISTENT | kab? jab means alag hon ya units alag hon | same mean to seedha σ compare karo</p></div>
+<div class="card"><h3>Properties & Tricks ⭐</h3>
+<p>har value + c ⇒ mean +c, σ UNCHANGED | har value × a ⇒ mean ×a, σ ×|a| | assumed mean: u = xᵢ−A | TABLE banao: xᵢ, fᵢ, fᵢxᵢ, xᵢ², fᵢxᵢ² - calculation mistakes hi asli villain!</p></div>
+</section>
+<div class="navrow">
+<button class="btn" id="prev">← Peeche</button>
+<button class="btn hot" id="next">Aage →</button>
+</div>
+<p class="credit">Learn With Rahul - Class 11 Maths Ch 13 Statistics Visual Walkthrough</p>
+</div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+let cur=0;
+const dotsBox=document.getElementById('dots');
+scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i===0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
+function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j===cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j===cur));document.getElementById('prev').style.visibility=cur===0?'hidden':'visible';document.getElementById('next').textContent=cur===scenes.length-1?'Shuru Se Phir ↻':'Aage →';if(cur===0)startS1();}
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur===scenes.length-1?0:cur+1);
+const CY='#22d3ee',MG='#e879f9',GD='#fbbf24',TX='#e8e8f2',MUT='#9aa0c9';
+function ctxOf(id){const c=document.getElementById(id);const g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);return g}
+function fmt(x){return Number.isInteger(x)?x.toLocaleString('en-IN'):(+x.toFixed(3)).toLocaleString('en-IN')}
+function sup(n){return String(n).split('').map(d=>'⁰¹²³⁴⁵⁶⁷⁸⁹'[+d]||d).join('')}
+function sub(n){return String(n).split('').map(d=>'₀₁₂₃₄₅₆₇₈₉'[+d]||d).join('')}
+function mean(a){return a.reduce((s,v)=>s+v,0)/a.length}
+function sd(a){const m=mean(a);return Math.sqrt(mean(a.map(v=>(v-m)*(v-m))))}
+
+// ---------- Scene 1: dispersion playground (drag gold dots) ----------
+// number line 20..100 mapped to canvas x 60..720
+let tA=[64,68,70,70,72,76],tB=[40,55,70,70,85,100],dragI=-1,s1T=1,s1RAF=null;
+const NX=v=>60+(v-20)/80*660, NV=x=>20+(x-60)/660*80;
+function s1row(g,data,y,col,draggable){
+  const m=mean(data),s=sd(data);
+  // mean +- sd band
+  g.fillStyle=col+'22';g.fillRect(NX(m-s),y-26,Math.max(2,NX(m+s)-NX(m-s)),52);
+  g.strokeStyle=col+'66';g.lineWidth=1;g.strokeRect(NX(m-s),y-26,Math.max(2,NX(m+s)-NX(m-s)),52);
+  // mean line
+  g.strokeStyle=GD;g.lineWidth=2;g.setLineDash([6,5]);
+  g.beginPath();g.moveTo(NX(m),y-32);g.lineTo(NX(m),y+32);g.stroke();g.setLineDash([]);
+  g.fillStyle=GD;g.font='11px ui-monospace,monospace';g.textAlign='center';
+  g.fillText('mean '+fmt(m),NX(m),y-38);
+  // dots (spread same-value dots vertically to avoid stacking)
+  const sorted=data.map((v,i)=>({v,i})).sort((a,b)=>a.v-b.v);
+  const off={};let last=null,cnt=0;
+  for(const{v,i}of sorted){if(v===last)cnt++;else cnt=0;last=v;off[i]=cnt}
+  for(let i=0;i<data.length;i++){
+    const oy=(off[i]||0)*13;
+    g.fillStyle=col;g.beginPath();g.arc(NX(data[i]),y+14-oy,draggable?9:7,0,7);g.fill();
+    g.fillStyle='#07070d';g.font='bold 9px ui-monospace,monospace';g.textAlign='center';
+    g.fillText(data[i],NX(data[i]),y+14-oy+0.5);
+  }
+}
+function s1draw(){
+  const g=ctxOf('cv1');
+  g.font='bold 13px ui-monospace,monospace';g.textAlign='left';
+  g.fillStyle=CY;g.fillText('Team A (consistent)',60,30);
+  g.fillStyle=GD;g.fillText('Team B (DRAG karo!)',60,140);
+  s1row(g,tA,70,CY,false);
+  s1row(g,tB,180,GD,true);
+  // axis
+  g.strokeStyle='#3b3b5c';g.lineWidth=1.5;g.beginPath();g.moveTo(60,240);g.lineTo(720,240);g.stroke();
+  g.fillStyle=MUT;g.font='10px ui-monospace,monospace';g.textAlign='center';
+  for(let v=20;v<=100;v+=10){g.fillText(v,NX(v),254);g.strokeStyle='#26264a';g.beginPath();g.moveTo(NX(v),30);g.lineTo(NX(v),240);g.stroke()}
+  const mA=mean(tA),mB=mean(tB),sA=sd(tA),sB=sd(tB);
+  const rA=Math.max(...tA)-Math.min(...tA),rB=Math.max(...tB)-Math.min(...tB);
+  document.getElementById('r1').innerHTML='<b>Team A:</b> mean '+fmt(mA)+', range '+rA+', σ = '+fmt(sA)+' &nbsp;|&nbsp; <b>Team B:</b> mean '+fmt(mB)+', range '+rB+', σ = '+fmt(sB)+'<br>'+
+    (Math.abs(mA-mB)<0.5?'<b>Means SAME</b> - lekin ':'Means ab alag hain - ')+
+    (sB>sA?'Team B ka σ ZYADA = zyada upar-neeche, KAM consistent. Average jhooth bol sakta hai - dispersion bataata hai asli kahani!':sB<sA?'Team B ka σ ab A se KAM - tumne B ko A se bhi zyada consistent bana diya!':'Dono ka σ barabar - same consistency!');
+}
+function s1pos(e){const r=document.getElementById('cv1').getBoundingClientRect();return{x:(e.clientX-r.left)/r.width*760,y:(e.clientY-r.top)/r.width*760}}
+function s1down(e){const p=s1pos(e);let best=-1,bd=1e9;const sorted=tB.map((v,i)=>({v,i})).sort((a,b)=>a.v-b.v);const off={};let last=null,cnt=0;for(const{v,i}of sorted){if(v===last)cnt++;else cnt=0;last=v;off[i]=cnt}
+  for(let i=0;i<tB.length;i++){const oy=(off[i]||0)*13,dx=p.x-NX(tB[i]),dy=p.y-(180+14-oy);const d=Math.hypot(dx,dy);if(d<bd){bd=d;best=i}}
+  if(bd<18){dragI=best;e.preventDefault()}}
+function s1move(e){if(dragI<0)return;const p=s1pos(e);tB[dragI]=Math.max(20,Math.min(100,Math.round(NV(p.x))));s1T=1;s1draw()}
+function s1up(){dragI=-1}
+function startS1(){s1T=0;if(s1RAF)cancelAnimationFrame(s1RAF);const t0=performance.now();function tick(t){if(cur!==0)return;s1T=Math.min(1,(t-t0)/600);s1draw();if(s1T<1)s1RAF=requestAnimationFrame(tick)}s1RAF=requestAnimationFrame(tick)}
+{const c=document.getElementById('cv1');c.addEventListener('pointerdown',s1down);c.addEventListener('pointermove',s1move);c.addEventListener('pointerup',s1up);c.addEventListener('pointerleave',s1up)}
+s1draw();
+
+// ---------- Scene 2: mean deviation ----------
+let md=[6,8,10,12,14],mdAbs=true;
+const MX2=v=>60+v/20*660;
+function mdBtnsRender(){
+  const box=document.getElementById('mdBtns');box.innerHTML='';
+  for(const[m,label]of[[true,'ABSOLUTE |xᵢ−x̄| (asli mean deviation)'],[false,'SIGNED (xᵢ−x̄) - dekho kya hota hai!']]){
+    const b=document.createElement('button');b.className='btn'+(m===mdAbs?' sel':'');b.textContent=label;
+    b.onclick=()=>{mdAbs=m;mdBtnsRender();mdDraw()};box.appendChild(b);
+  }
+}
+function mdSlidersRender(){
+  const box=document.getElementById('mdSliders');box.innerHTML='';
+  for(let i=0;i<5;i++){
+    const d=document.createElement('div');d.className='sliderrow';
+    d.innerHTML='x'+sub(i+1)+' <input type="range" id="mdS'+i+'" min="0" max="20" step="1" value="'+md[i]+'"> <b id="mdS'+i+'v">'+md[i]+'</b>';
+    box.appendChild(d);
+    document.getElementById('mdS'+i).oninput=e=>{md[i]=+e.target.value;document.getElementById('mdS'+i+'v').textContent=md[i];mdDraw()};
+  }
+}
+function mdDraw(){
+  const g=ctxOf('cv2');
+  const m=mean(md);
+  // axis
+  g.strokeStyle='#3b3b5c';g.lineWidth=1.5;g.beginPath();g.moveTo(60,270);g.lineTo(720,270);g.stroke();
+  g.fillStyle=MUT;g.font='10px ui-monospace,monospace';g.textAlign='center';
+  for(let v=0;v<=20;v+=2){g.fillText(v,MX2(v),284);g.strokeStyle='#26264a';g.beginPath();g.moveTo(MX2(v),20);g.lineTo(MX2(v),270);g.stroke()}
+  // mean line
+  g.strokeStyle=GD;g.lineWidth=2;g.setLineDash([6,5]);g.beginPath();g.moveTo(MX2(m),30);g.lineTo(MX2(m),270);g.stroke();g.setLineDash([]);
+  g.fillStyle=GD;g.font='12px ui-monospace,monospace';g.fillText('x̄ = '+fmt(m),MX2(m),22);
+  // bars: each xᵢ at its row
+  const rowH=40;
+  let tot=0,totSigned=0;
+  for(let i=0;i<5;i++){
+    const y=60+i*rowH;
+    const dev=md[i]-m;
+    tot+=Math.abs(dev);totSigned+=dev;
+    // point
+    g.fillStyle=CY;g.beginPath();g.arc(MX2(md[i]),y,8,0,7);g.fill();
+    g.fillStyle='#07070d';g.font='bold 9px ui-monospace,monospace';g.fillText(md[i],MX2(md[i]),y+0.5);
+    // deviation segment
+    if(Math.abs(dev)>0.01){
+      g.strokeStyle=mdAbs?MG:(dev>0?'#34d399':'#f87171');g.lineWidth=3;
+      g.beginPath();g.moveTo(MX2(m),y);g.lineTo(MX2(md[i]),y);g.stroke();
+    }
+    g.fillStyle=mdAbs?MG:(dev>0?'#34d399':'#f87171');g.font='11px ui-monospace,monospace';g.textAlign='left';
+    const lbl=mdAbs?'|d| = '+fmt(Math.abs(dev)):'d = '+(dev>=0?'+':'')+fmt(dev);
+    g.fillText(lbl,Math.max(MX2(m),MX2(md[i]))+10,y);
+    g.textAlign='center';
+  }
+  const el=document.getElementById('r2');
+  if(mdAbs)el.innerHTML='<b>M.D. = (1/n) Σ|xᵢ − x̄| = '+md.map(v=>'|'+v+'−'+fmt(m)+'|').join(' + ')+' / 5 = '+fmt(tot)+'/5 = '+fmt(tot/5)+'</b>. Har point ka mean se AVERAGE doori. Direction matter nahi karta - sirf DOORI!';
+  else el.innerHTML='<b>SIGNED sum = '+md.map(v=>'('+v+'−'+fmt(m)+')').join(' + ')+' = '+fmt(totSigned)+'</b> - positive aur negative CANCEL ho gaye! Signed deviations ka sum <b>HAMESHA 0</b> hota hai (mean ki definition hi yehi hai). Isliye dispersion ke liye absolute (ya square) lena PADTA hai - warna har data "perfectly consistent" lagta!';
+}
+mdBtnsRender();mdSlidersRender();mdDraw();
+
+// ---------- Scene 3: variance & SD machine ----------
+let vd=[4,6,8,10,12],varMode='direct';
+function varBtnsRender(){
+  const box=document.getElementById('varBtns');box.innerHTML='';
+  for(const[m,label]of[['direct','DIRECT: (1/n)Σ(xᵢ−x̄)²'],['shortcut','SHORTCUT: (1/n)Σxᵢ² − x̄²']]){
+    const b=document.createElement('button');b.className='btn'+(m===varMode?' sel':'');b.textContent=label;
+    b.onclick=()=>{varMode=m;varBtnsRender();varDraw()};box.appendChild(b);
+  }
+}
+function varSlidersRender(){
+  const box=document.getElementById('varSliders');box.innerHTML='';
+  for(let i=0;i<5;i++){
+    const d=document.createElement('div');d.className='sliderrow';
+    d.innerHTML='x'+sub(i+1)+' <input type="range" id="vdS'+i+'" min="0" max="20" step="1" value="'+vd[i]+'"> <b id="vdS'+i+'v">'+vd[i]+'</b>';
+    box.appendChild(d);
+    document.getElementById('vdS'+i).oninput=e=>{vd[i]=+e.target.value;document.getElementById('vdS'+i+'v').textContent=vd[i];varDraw()};
+  }
+}
+function varDraw(){
+  const g=ctxOf('cv3');
+  const m=mean(vd);
+  const devs=vd.map(v=>v-m),sqs=devs.map(d=>d*d);
+  const varD=mean(sqs);
+  const msq=mean(vd.map(v=>v*v)),varS=msq-m*m;
+  const sigma=Math.sqrt(varD);
+  // left: blocks for squared deviations (area-ish, scaled sqrt for visibility)
+  const maxSq=Math.max(1,...sqs);
+  g.font='bold 12px ui-monospace,monospace';g.textAlign='left';g.fillStyle=MUT;
+  g.fillText(varMode==='direct'?'squared deviations (xᵢ−x̄)²:':'xᵢ² blocks (shortcut ke liye):',40,26);
+  const vals=varMode==='direct'?sqs:vd.map(v=>v*v);
+  const maxV=Math.max(1,...vals);
+  for(let i=0;i<5;i++){
+    const x=40+i*72,h=8+120*Math.sqrt(vals[i]/maxV);
+    g.fillStyle=i===0?CY:'#16405a';g.fillRect(x,200-h,60,h);
+    g.strokeStyle=i===0?CY:'#33335c';g.lineWidth=1;g.strokeRect(x,200-h,60,h);
+    g.fillStyle=MUT;g.font='10px ui-monospace,monospace';g.textAlign='center';
+    g.fillText(varMode==='direct'?'('+vd[i]+'−'+fmt(m)+')²':vd[i]+'²',x+30,214);
+    if(vals[i]>0)g.fillText(fmt(vals[i]),x+30,192-h);
+  }
+  // right panel: computation
+  const px=430;
+  g.textAlign='left';g.font='bold 13px ui-monospace,monospace';g.fillStyle=GD;
+  g.fillText('x̄ = '+fmt(m),px,60);
+  g.fillStyle=TX;g.font='12px ui-monospace,monospace';
+  if(varMode==='direct'){
+    g.fillText('Σ(xᵢ−x̄)² = '+sqs.map(s=>fmt(s)).join(' + '),px,88);
+    g.fillText('       = '+fmt(sqs.reduce((a,b)=>a+b,0)),px,108);
+    g.fillText('σ² = '+fmt(sqs.reduce((a,b)=>a+b,0))+' / 5 = '+fmt(varD),px,132);
+  }else{
+    g.fillText('(1/n)Σxᵢ² = '+fmt(msq),px,88);
+    g.fillText('x̄² = '+fmt(m*m),px,108);
+    g.fillText('σ² = '+fmt(msq)+' − '+fmt(m*m)+' = '+fmt(varS),px,132);
+  }
+  g.fillStyle=MG;g.font='bold 15px ui-monospace,monospace';
+  g.fillText('σ = √'+fmt(varD)+' = '+fmt(sigma),px,164);
+  g.fillStyle='#34d399';g.font='12px ui-monospace,monospace';
+  g.fillText(varMode==='direct'?'shortcut se bhi '+fmt(varS)+' aata - MATCH ✓':'direct se bhi '+fmt(varD)+' aata - MATCH ✓',px,190);
+  // scale line at bottom: points + sd band
+  const y=270,X3=v=>60+v/20*660;
+  g.strokeStyle='#3b3b5c';g.lineWidth=1.5;g.beginPath();g.moveTo(60,y);g.lineTo(720,y);g.stroke();
+  g.fillStyle=CY+'22';g.fillRect(X3(m-sigma),y-14,Math.max(2,X3(m+sigma)-X3(m-sigma)),28);
+  g.strokeStyle=GD;g.setLineDash([6,5]);g.beginPath();g.moveTo(X3(m),y-24);g.lineTo(X3(m),y+24);g.stroke();g.setLineDash([]);
+  const sorted=vd.map((v,i)=>({v,i})).sort((a,b)=>a.v-b.v);const off={};let last=null,cnt=0;
+  for(const{v,i}of sorted){if(v===last)cnt++;else cnt=0;last=v;off[i]=cnt}
+  for(let i=0;i<5;i++){g.fillStyle=CY;g.beginPath();g.arc(X3(vd[i]),y-6-(off[i]||0)*14,7,0,7);g.fill();
+    g.fillStyle='#07070d';g.font='bold 9px ui-monospace,monospace';g.textAlign='center';g.fillText(vd[i],X3(vd[i]),y-6-(off[i]||0)*14+0.5)}
+  g.fillStyle=MUT;g.font='10px ui-monospace,monospace';g.textAlign='center';
+  for(let v=0;v<=20;v+=5)g.fillText(v,X3(v),y+16);
+  g.fillStyle=GD;g.fillText('x̄',X3(m),y+30);
+  document.getElementById('r3').innerHTML=(varMode==='direct'
+    ?'<b>σ² = (1/5) Σ(xᵢ−x̄)² = '+fmt(varD)+'</b>, to <b>σ = '+fmt(sigma)+'</b>. Squaring ka bonus: |x| se maths karna mushkil, x² smooth hota hai (calculus friendly!).'
+    :'<b>SHORTCUT: σ² = (1/5)Σxᵢ² − x̄² = '+fmt(msq)+' − '+fmt(m*m)+' = '+fmt(varS)+'</b> - direct wala hi answer, bina har deviation nikale! Bade numbers pe assumed mean u = xᵢ − A se aur easy.')
+    +' Properties: sab me SAME number add karo to σ UNCHANGED (pura data saath-saath khisakta hai), ×a karo to σ ×|a|.';
+}
+varBtnsRender();varSlidersRender();varDraw();
+
+// ---------- Scene 4: CV battle ----------
+let cvA={m:50,s:5},cvB={m:30,s:4};
+function cvSlidersRender(){
+  const box=document.getElementById('cvSliders');box.innerHTML='';
+  const defs=[['cvAm','Team A mean',20,100,1,cvA.m],['cvAs','Team A σ',1,15,0.5,cvA.s],['cvBm','Team B mean',10,80,1,cvB.m],['cvBs','Team B σ',1,15,0.5,cvB.s]];
+  for(const[id,label,min,max,step,val]of defs){
+    const d=document.createElement('div');d.className='sliderrow';
+    d.innerHTML=label+' <input type="range" id="'+id+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+val+'"> <b id="'+id+'v">'+val+'</b>';
+    box.appendChild(d);
+    document.getElementById(id).oninput=cvRead;
+  }
+  cvRead();
+}
+function cvRead(){
+  cvA.m=+document.getElementById('cvAm').value;cvA.s=+document.getElementById('cvAs').value;
+  cvB.m=+document.getElementById('cvBm').value;cvB.s=+document.getElementById('cvBs').value;
+  document.getElementById('cvAmv').textContent=cvA.m;document.getElementById('cvAsv').textContent=cvA.s;
+  document.getElementById('cvBmv').textContent=cvB.m;document.getElementById('cvBsv').textContent=cvB.s;
+  cvDraw();
+}
+function cvDraw(){
+  const g=ctxOf('cv4');
+  const cv1=cvA.s/cvA.m*100,cv2=cvB.s/cvB.m*100;
+  const winA=cv1<cv2;
+  // draw two "bell-ish" distributions as filled curves on own axes
+  function bell(cx,base,m,s,col,label,cvv,win){
+    const scale=150; // x units per axis: show mean ± 4σ mapped from value range
+    const v2x=v=>cx+(v-m)/(4*s)*160;
+    g.strokeStyle='#3b3b5c';g.lineWidth=1.5;g.beginPath();g.moveTo(cx-190,base);g.lineTo(cx+190,base);g.stroke();
+    g.fillStyle=col+'33';g.beginPath();g.moveTo(v2x(m-4*s),base);
+    for(let i=0;i<=60;i++){const v=m-4*s+8*s*i/60;const y=Math.exp(-((v-m)*(v-m))/(2*s*s));g.lineTo(v2x(v),base-y*70)}
+    g.lineTo(v2x(m+4*s),base);g.closePath();g.fill();
+    g.strokeStyle=col;g.lineWidth=2;g.beginPath();
+    for(let i=0;i<=60;i++){const v=m-4*s+8*s*i/60;const y=Math.exp(-((v-m)*(v-m))/(2*s*s));const X=v2x(v),Y=base-y*70;if(i===0)g.moveTo(X,Y);else g.lineTo(X,Y)}
+    g.stroke();
+    // mean line and sd band
+    g.strokeStyle=GD;g.setLineDash([5,4]);g.beginPath();g.moveTo(v2x(m),base-80);g.lineTo(v2x(m),base);g.stroke();g.setLineDash([]);
+    g.strokeStyle=MG;g.lineWidth=2;g.beginPath();g.moveTo(v2x(m-s),base+8);g.lineTo(v2x(m+s),base+8);g.stroke();
+    g.fillStyle=MUT;g.font='10px ui-monospace,monospace';g.textAlign='center';
+    g.fillText(fmt(m-s),v2x(m-s),base+22);g.fillText(fmt(m+s),v2x(m+s),base+22);g.fillText('mean '+fmt(m),v2x(m),base-84);
+    g.font='bold 13px ui-monospace,monospace';g.textAlign='left';
+    g.fillStyle=col;g.fillText(label,cx-190,base-104);
+    g.fillStyle=win?'#34d399':TX;g.fillText('CV = '+fmt(cvv)+'%'+(win?'  ✓ WINNER':'  '),cx-190,base-60);
+  }
+  bell(220,180,cvA.m,cvA.s,CY,'Team A (mean '+fmt(cvA.m)+', σ '+fmt(cvA.s)+')',cv1,winA);
+  bell(560,180,cvB.m,cvB.s,GD,'Team B (mean '+fmt(cvB.m)+', σ '+fmt(cvB.s)+')',cv2,!winA);
+  g.fillStyle=MUT;g.font='11px ui-monospace,monospace';g.textAlign='center';
+  g.fillText('magenta bracket = mean ± σ',380,240);
+  const el=document.getElementById('r4');
+  const note=Math.abs(cvA.m-cvB.m)<0.01?'Means SAME hain - yahan CV ki jagah seedha σ compare kar sakte the. '
+    :((cv1<cv2&&cvA.s>cvB.s)||(cv2<cv1&&cvB.s>cvA.s))?'Dekho! Jiska σ ZYADA hai uska CV KAM - raw σ se galat jawab milta, CV ne bachaya! ':'';
+  el.innerHTML='<b>Team A:</b> CV = σ/x̄ × 100 = '+fmt(cvA.s)+'/'+cvA.m+' × 100 = <b>'+fmt(cv1)+'%</b> &nbsp;|&nbsp; <b>Team B:</b> CV = '+fmt(cvB.s)+'/'+cvB.m+' × 100 = <b>'+fmt(cv2)+'%</b><br>'+note+'<b>'+(winA?'Team A':'Team B')+' zyada CONSISTENT</b> (kam CV). Rule: jab means ya units alag hon, raw σ nahi - CV se compare karo!';
+}
+cvSlidersRender();
+
+// ---------- Scene 5: quiz ----------
+const QUIZ=[
+ {q:'Q1/5: Data 12, 7, 25, 3, 18 ka RANGE kitna?',o:['22','15','25','18'],a:0,why:'Range = max − min = 25 − 3 = 22. Sirf 2 extreme values use hoti hain!'},
+ {q:'Q2/5: Data 2, 4, 6, 8, 10 ka standard deviation σ?',o:['8','2√2','40','4'],a:1,why:'Mean = 6, Σ(xᵢ−x̄)² = 16+4+0+4+16 = 40, σ² = 40/5 = 8, σ = √8 = 2√2 ≈ 2.83.'},
+ {q:'Q3/5: n = 5, Σxᵢ = 30, Σxᵢ² = 200. SHORTCUT se variance?',o:['4','36','40','164'],a:0,why:'σ² = (1/n)Σxᵢ² − x̄² = 200/5 − 6² = 40 − 36 = 4.'},
+ {q:'Q4/5: Team A (mean 50, σ 5), Team B (mean 30, σ 3.6). Kaun ZYADA consistent?',o:['A (CV 10%)','B (CV 12%)','Dono same','Keh nahi sakte'],a:0,why:'CV(A) = 5/50×100 = 10%, CV(B) = 3.6/30×100 = 12%. Kam CV = A zyada consistent!'},
+ {q:'Q5/5: Har observation ko 3 se MULTIPLY kar diya. Purana σ = 2 tha, naya σ?',o:['2','6','9','5'],a:1,why:'×a karne pe σ ×|a| ho jaata hai: 2×3 = 6. (Same number ADD karne pe σ unchanged rehta!)'}
+];
+let qi=0,qScore=0,qLock=false;
+function qCanvas(txt){
+  const g=ctxOf('cv5');
+  g.font='15px ui-monospace,monospace';g.fillStyle=TX;g.textAlign='left';g.textBaseline='top';
+  const words=txt.split(' ');let line='',y=18;
+  for(const w of words){if(g.measureText(line+w).width>700){g.fillText(line,24,y);y+=26;line=''}line+=w+' '}
+  g.fillText(line,24,y);
+  g.fillStyle=MUT;g.font='12px ui-monospace,monospace';g.fillText('score: '+qScore+'/'+QUIZ.length,24,120);
+}
+function qRender(){
+  const box=document.getElementById('quizBtns');box.innerHTML='';qLock=false;
+  if(qi>=QUIZ.length){
+    qCanvas('Quiz khatam! Score: '+qScore+'/'+QUIZ.length+(qScore===5?' - PERFECT! Statistics PAKKI! ✅':' - recap scene pe ek baar aur dekho!'));
+    document.getElementById('r5').innerHTML=qScore===5?'<b>5/5 - Shabash!</b> Statistics ab pakki. Formula recap pe jaake screenshot le lo!':qScore+'/5 sahi. Jo galat hue unke concepts recap scene me hain - ek baar aur dohrao!';
+    const b=document.createElement('button');b.className='btn hot';b.textContent='Phir Se ↻';b.onclick=()=>{qi=0;qScore=0;qRender()};box.appendChild(b);return;
+  }
+  const Q=QUIZ[qi];qCanvas(Q.q);
+  document.getElementById('r5').innerHTML='Sahi jawab chuno...';
+  Q.o.forEach((opt,idx)=>{
+    const b=document.createElement('button');b.className='btn';b.textContent=opt;
+    b.onclick=()=>{
+      if(qLock)return;qLock=true;
+      if(idx===Q.a){qScore++;b.classList.add('hot');document.getElementById('r5').innerHTML='<b>✅ SAHI!</b> '+Q.why}
+      else{b.classList.add('sel');box.children[Q.a].classList.add('hot');document.getElementById('r5').innerHTML='<b>❌ Galat.</b> Sahi: <b>'+Q.o[Q.a]+'</b>. '+Q.why}
+      const nb=document.createElement('button');nb.className='btn';nb.textContent='Agla →';nb.onclick=()=>{qi++;qRender()};box.appendChild(nb);
+    };
+    box.appendChild(b);
+  });
+}
+qRender();
+
+</script>
+</body>
+</html>
