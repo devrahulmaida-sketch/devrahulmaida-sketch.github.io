@@ -308,7 +308,7 @@ function fDraw(){
     g.fillStyle=CY;g.textAlign='center';g.fillText('A('+fmt(x1)+','+fmt(y1)+')',X(x1),Y(y1)-14);
     g.fillStyle=GD;g.fillText('B('+fmt(x2)+','+fmt(y2)+')',X(x2),Y(y2)-14);}
   if(fForm==='ic'){const{a,b}=FP.ic;dot(g,a,0,GD,7);dot(g,0,b,MG,7);
-    g.fillStyle=GD;g.textAlign='center';g.fillText('(a, 0) = ('+fmt(a)+', 0)',X(a),Y(0)+16);
+    g.fillStyle=GD;g.textAlign='center';g.fillText('(a, 0) = ('+fmt(a)+', 0)',X(a),Y(0)+28);
     g.fillStyle=MG;g.textAlign='left';g.fillText('(0, b) = (0, '+fmt(b)+')',X(0)+10,Y(b)-10);}
   if(fForm==='nm'){const{al,p}=FP.nm,rd=al*Math.PI/180,fx=p*Math.cos(rd),fy=p*Math.sin(rd);
     g.strokeStyle=MG;g.lineWidth=3;g.beginPath();g.moveTo(X(0),Y(0));g.lineTo(X(fx),Y(fy));g.stroke();
@@ -348,7 +348,7 @@ function dSlidersRender(){
   const defs=dMode==='point'
     ?[['dA','A',-4,4,1,DL.A],['dB','B',-4,4,1,DL.B],['dC','C',-15,15,1,DL.C],['dX','x₁',-8,8,1,DL.x1],['dY','y₁',-5,5,1,DL.y1]]
     :[['dA','A',-4,4,1,DL.A],['dB','B',-4,4,1,DL.B],['dC','C₁',-15,15,1,DL.C],['dC2','C₂',-15,15,1,DL.C2]];
-  for(const[id,label,min,max,step,val]of defs[dMode]){
+  for(const[id,label,min,max,step,val]of defs){
     box.appendChild(mkSlider(id,label,min,max,step,val));
     document.getElementById(id).oninput=dRead;
   }
