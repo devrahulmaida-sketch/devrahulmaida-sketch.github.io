@@ -139,8 +139,8 @@ const DES=[
 let di=0,pickO=0,pickD=0;
 const db=document.getElementById("deBtns"),ob=document.getElementById("oBtns"),gb=document.getElementById("dBtns");
 DES.forEach((de,i)=>{const b=document.createElement("button");b.textContent=de.label;b.onclick=()=>{di=i;pickO=0;pickD=0;sync();draw();};db.appendChild(b);});
-[1,2,3].forEach(n=>{const b=document.createElement("button");b.textContent=n;b.onclick=()=>{pickO=n;sync();check();};ob.appendChild(b);});
-[["1",1],["2",2],["3",3],["NAHI",-1]].forEach(([t,v])=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>{pickD=v;sync();check();};gb.appendChild(b);});
+[1,2,3].forEach(n=>{const b=document.createElement("button");b.textContent=n;b.onclick=()=>{pickO=n;sync();check();draw();};ob.appendChild(b);});
+[["1",1],["2",2],["3",3],["NAHI",-1]].forEach(([t,v])=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>{pickD=v;sync();check();draw();};gb.appendChild(b);});
 function sync(){[...db.children].forEach((b,i)=>b.classList.toggle("sel",i===di));[...ob.children].forEach((b,i)=>b.classList.toggle("sel",i+1===pickO));[...gb.children].forEach((b,i)=>b.classList.toggle("sel",[1,2,3,-1][i]===pickD));}
 function check(){const de=DES[di],r=document.getElementById("r0");
  if(!pickO||!pickD){r.innerHTML="Order aur degree dono pick karo...";return;}
