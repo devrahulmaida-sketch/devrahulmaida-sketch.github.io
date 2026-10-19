@@ -216,11 +216,12 @@ function draw(tick){
  txt(c,"Vector form:",bx,by,DM,"13px 'Cascadia Code',monospace");by+=26;
  txt(c,"r⃗ = ("+L.a.join(", ")+") + λ("+L.b.join(", ")+")",bx,by,CY,"bold 14px 'Cascadia Code',monospace");by+=32;
  txt(c,"Cartesian form:",bx,by,DM,"13px 'Cascadia Code',monospace");by+=26;
- txt(c,"(x−"+L.a[0]+")/"+L.b[0]+" = (y−"+show(L.a[1])+")/"+L.b[1],bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=24;
- txt(c,"  = (z−"+show(L.a[2])+")/"+L.b[2],bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=30;
+ txt(c,nm("x",L.a[0])+"/"+dn(L.b[0])+" = "+nm("y",L.a[1])+"/"+dn(L.b[1]),bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=24;
+ txt(c,"  = "+nm("z",L.a[2])+"/"+dn(L.b[2]),bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=30;
  txt(c,"λ = "+lam.toFixed(1)+" pe point:",bx,by,DM,"13px 'Cascadia Code',monospace");by+=24;
  txt(c,"("+fmt(cur[0],1)+", "+fmt(cur[1],1)+", "+fmt(cur[2],1)+")",bx,by,YL,"bold 15px 'Cascadia Code',monospace");
- function show(v){return v<0?("("+v+")"):(""+v);}
+ function nm(n,v){return v<0?("("+n+"+"+(-v)+")"):("("+n+"−"+v+")");}
+ function dn(v){return v<0?("("+v+")"):(""+v);}
  document.getElementById("r1").innerHTML=(L.two?("Two points se direction = Q − P = ("+L.q.join(", ")+") − ("+L.a.join(", ")+") = <span class='hl'>("+L.b.join(", ")+")</span><br>"):"")+"Line = <span class='cy'>r⃗ = ("+L.a.join(", ")+") + λ("+L.b.join(", ")+")</span>  |  λ = <span class='hl'>"+lam.toFixed(1)+"</span> pe point = <span class='hl'>("+fmt(cur[0],1)+", "+fmt(cur[1],1)+", "+fmt(cur[2],1)+")</span><br>λ = 0 → point a⃗ itself. λ badhao → direction b⃗ me travel! Negative λ → ulta rasta.<br><span style='color:#9fb0d8'>Cartesian me denominator 0 aaye to wo coordinate CONSTANT hai - special case, panic nahi!</span>";
 }
 sL.oninput=()=>draw();
