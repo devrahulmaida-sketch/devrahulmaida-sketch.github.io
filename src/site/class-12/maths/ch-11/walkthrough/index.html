@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three Dimensional Geometry - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Maths - Chapter 11 - Three Dimensional Geometry</div>
+<h1>Three Dimensional Geometry Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - DRs-DCs normalizer (rotating 3D!), line builder with lambda dial, angle-between-lines machine, shortest distance calculator, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. DRs → DCs Normalizer - Line Ki Disha ⭐⭐</h2>
+<p class="why">Direction ratios (a, b, c) = recipe ka ratio - infinite hain. Direction cosines (l, m, n) = EXACT unit vector - UNIQUE! Convert: sab ko √(a²+b²+c²) se divide karo. Golden identity: l² + m² + n² = 1 HAMESHA. Sliders ghumao - arrow rotate hota dekho, identity LIVE verify karo!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>a (x ratio)</label><input type="range" id="drA" min="-6" max="6" step="1" value="2"><span class="v" id="vdrA">2</span></div>
+<div class="slrow"><label>b (y ratio)</label><input type="range" id="drB" min="-6" max="6" step="1" value="-3"><span class="v" id="vdrB">-3</span></div>
+<div class="slrow"><label>c (z ratio)</label><input type="range" id="drC" min="-6" max="6" step="1" value="6"><span class="v" id="vdrC">6</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Line Builder - Lambda Dial Ghumao ⭐⭐</h2>
+<p class="why">Line fix karne ke liye: ek POINT + ek DIRECTION. Vector form: r⃗ = a⃗ + λb⃗. Cartesian: (x−x₁)/a = (y−y₁)/b = (z−z₁)/c. λ = line pe ghoomne ka DIAL - λ=0 pe point a⃗, badhao to direction me chalo! Two-point mode me direction = Q − P khud niklega.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" id="lbBtns"></div>
+<div class="slrow"><label>λ (lambda dial)</label><input type="range" id="lbL" min="-20" max="20" step="1" value="5"><span class="v" id="vlbL">0.5</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Do Lines Ka Angle - Dot Product Wapas ⭐</h2>
+<p class="why">Lines ka angle = unke DIRECTION VECTORS ka angle: cos θ = (a₁a₂+b₁b₂+c₁c₂)/(√...·√...) - Ch 10 ka dot product! PERPENDICULAR: dot = 0. PARALLEL: DRs proportional. Angle hamesha ACUTE (modulus). Famous pairs try karo - (1,2,3)·(4,−5,2) = 0 dekho!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" id="agBtns"></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Shortest Distance - Skew Lines Ka Gap ⭐⭐</h2>
+<p class="why">Skew lines: na parallel, na intersect - alag planes me. SD = |(a⃗₂−a⃗₁)·(b⃗₁×b⃗₂)| / |b⃗₁×b⃗₂| - "points ka difference, cross pe project, cross se divide"! SD = 0 → lines INTERSECT. Parallel lines: d = |b⃗×(a⃗₂−a⃗₁)|/|b⃗|. 5-marker ka fixed recipe - step-by-step dekho!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" id="sdBtns"></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - 3D Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: DRs → DCs = normalize (√sum of squares se divide); line = point + λ×direction; angle = dot product; perpendicular = dot 0; SD recipe: a₂−a₁, cross, dot, divide; aur PLANES DELETED - boards me sirf LINES!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>DCs & DRs ⭐⭐</h3><p>l = cos α, m = cos β, n = cos γ | l²+m²+n² = 1 (golden!) | DRs (a,b,c) = DCs ke proportional | DRs→DCs: a/√(a²+b²+c²) etc | Two points DRs = (x₂−x₁, y₂−y₁, z₂−z₁)</p></div>
+<div class="rcard"><h3>Line Ki Equations ⭐⭐</h3><p>Vector: r⃗ = a⃗ + λb⃗ (point + λ×direction) | Cartesian: (x−x₁)/a = (y−y₁)/b = (z−z₁)/c | Two points: r⃗ = a⃗ + λ(b⃗−a⃗) | Denominator 0 = wo coordinate CONSTANT</p></div>
+<div class="rcard"><h3>Angle Between Lines ⭐</h3><p>cos θ = (a₁a₂+b₁b₂+c₁c₂)/(√(a₁²+b₁²+c₁²)·√(a₂²+b₂²+c₂²)) | PERPENDICULAR: dot = 0 | PARALLEL: DRs proportional | Angle hamesha ACUTE (modulus!)</p></div>
+<div class="rcard"><h3>Shortest Distance (Skew) ⭐⭐</h3><p>SD = |(a⃗₂−a⃗₁)·(b⃗₁×b⃗₂)| / |b⃗₁×b⃗₂| | SD = 0 → lines INTERSECT/coplanar | Recipe: a₂−a₁ → cross → dot → divide</p></div>
+<div class="rcard"><h3>Parallel Lines Ka SD ⭐</h3><p>d = |b⃗×(a⃗₂−a⃗₁)| / |b⃗| | Dono lines ka SAME direction b⃗ use karo | Cartesian aaye to pehle vector form me convert karo</p></div>
+<div class="rcard"><h3>DELETED - Planes! ⭐⭐</h3><p>Rationalized NCERT: plane equations, coplanar lines, plane-plane/line-plane angle, point-plane distance - SAB DELETE! | Chapter ab sirf LINES | JEE me planes HAIN - alag se cover karo</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 11 Three Dimensional Geometry Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+// ---- 3D helpers: rotate around z by th, oblique project ----
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+ const ng=[[[0,0,0],[-L,0,0],CY],[[0,0,0],[0,-L,0],MG],[[0,0,0],[0,0,-L],YL]];
+ ng.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1;c.globalAlpha=0.18;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ============ SCENE 1: DRs -> DCs normalizer ============
+inits[0]=(()=>{
+const sA=document.getElementById("drA"),sB=document.getElementById("drB"),sC=document.getElementById("drC");
+function draw(tick){
+ const c=ctx("cv0");c.clearRect(0,0,920,330);
+ const a=parseInt(sA.value),b=parseInt(sB.value),d=parseInt(sC.value);
+ document.getElementById("vdrA").textContent=a;document.getElementById("vdrB").textContent=b;document.getElementById("vdrC").textContent=d;
+ const th=(tick!==undefined)?tick*0.03:0.6;
+ const ox=300,oy=185,u=24;
+ drawAxes(c,ox,oy,u,th,4.5);
+ const zero=(a===0&&b===0&&d===0);
+ if(!zero){
+  const tip=proj(rot3([a*0.55,b*0.55,d*0.55],th),ox,oy,u);
+  arrow3(c,[ox,oy],tip,YL,4);
+  c.fillStyle=YL;c.beginPath();c.arc(tip[0],tip[1],5,0,7);c.fill();
+  txt(c,"("+a+", "+b+", "+d+")",tip[0]+10,tip[1]-8,YL,"bold 13px 'Cascadia Code',monospace");
+ }
+ const mag=Math.sqrt(a*a+b*b+d*d);
+ const l=zero?NaN:a/mag,m=zero?NaN:b/mag,n=zero?NaN:d/mag;
+ const sum=zero?NaN:l*l+m*m+n*n;
+ const bx=560;let by=60;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(545,30,360,250,10);c.fill();c.stroke();
+ txt(c,"DRs = ("+a+", "+b+", "+d+")",bx,by,CY,"bold 15px 'Cascadia Code',monospace");by+=30;
+ txt(c,"√(a²+b²+c²) = √"+(a*a+b*b+d*d)+" = "+fmt(mag,3),bx,by,DM,"14px 'Cascadia Code',monospace");by+=30;
+ if(zero){txt(c,"(0,0,0) direction NAHI ho sakta!",bx,by,RD,"bold 14px 'Cascadia Code',monospace");by+=30;}
+ else{
+  txt(c,"l = a/mag = "+fmt(l,4),bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=26;
+  txt(c,"m = b/mag = "+fmt(m,4),bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=26;
+  txt(c,"n = c/mag = "+fmt(n,4),bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=30;
+  txt(c,"l²+m²+n² = "+fmt(sum,3)+" ✓ (HAMESHA 1!)",bx,by,GR,"bold 14px 'Cascadia Code',monospace");by+=28;
+  const dg=x=>fmt(Math.acos(Math.max(-1,Math.min(1,x)))*180/Math.PI,1);
+  txt(c,"α="+dg(l)+"° β="+dg(m)+"° γ="+dg(n)+"°",bx,by,MG,"13px 'Cascadia Code',monospace");
+ }
+ document.getElementById("r0").innerHTML=zero?"Sab zero mat rakho - <span class='hl'>direction hi khatam</span>! Koi bhi ek non-zero rakho.":("DRs <span class='hl'>("+a+", "+b+", "+d+")</span> ko <span class='cy'>NORMALIZE</span> karo: sab ko √"+(a*a+b*b+d*d)+" = "+fmt(mag,3)+" se divide → DCs <span class='cy'>("+fmt(l,3)+", "+fmt(m,3)+", "+fmt(n,3)+")</span><br>Check: l²+m²+n² = <span class='hl'>"+fmt(sum,3)+"</span> = 1 ✓ | DRs infinite ho sakte hain (2,−3,6) = (4,−6,12) = (1,−1.5,3) - par DCs UNIQUE!<br><span style='color:#9fb0d8'>Feel: DRs = recipe ka ratio, DCs = exact unit vector. α, β, γ = axes ke saath angles!</span>");
+}
+[sA,sB,sC].forEach(s=>s.oninput=()=>draw());
+anims[0]=(t)=>draw(t);
+return ()=>draw(12);
+})();
+// ============ SCENE 2: Line builder - lambda dial ============
+inits[1]=(()=>{
+const LINES=[
+ {n:"point + direction",a:[1,2,3],b:[2,-1,1],two:false},
+ {n:"point + direction 2",a:[0,-1,2],b:[3,0,-2],two:false},
+ {n:"P(1,0,2) & Q(3,4,1)",a:[1,0,2],b:[2,4,-1],two:true,q:[3,4,1]},
+ {n:"P(-1,2,0) & Q(2,-1,3)",a:[-1,2,0],b:[3,-3,3],two:true,q:[2,-1,3]}];
+let li=0;
+const sL=document.getElementById("lbL");
+const bb=document.getElementById("lbBtns");
+LINES.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{li=i;[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===li));draw();};bb.appendChild(b);});
+bb.children[li].classList.add("sel");
+function draw(tick){
+ const c=ctx("cv1");c.clearRect(0,0,920,330);
+ const L=LINES[li];
+ const lam=parseInt(sL.value)/10;
+ document.getElementById("vlbL").textContent=lam.toFixed(1);
+ const th=(tick!==undefined)?tick*0.025:0.6;
+ const ox=320,oy=180,u=26;
+ drawAxes(c,ox,oy,u,th,4.5);
+ // line: draw long segment through a +/- big lambda
+ const P=l=>[L.a[0]+l*L.b[0],L.a[1]+l*L.b[1],L.a[2]+l*L.b[2]];
+ const p1=proj(rot3(P(-3.5),th),ox,oy,u),p2=proj(rot3(P(3.5),th),ox,oy,u);
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ // point a marker
+ const pa=proj(rot3(L.a,th),ox,oy,u);
+ c.fillStyle=MG;c.beginPath();c.arc(pa[0],pa[1],6,0,7);c.fill();
+ txt(c,"a⃗",pa[0]-18,pa[1]-8,MG,"bold 13px 'Cascadia Code',monospace");
+ if(L.two){const pq=proj(rot3(L.q,th),ox,oy,u);c.fillStyle=DM;c.beginPath();c.arc(pq[0],pq[1],5,0,7);c.fill();txt(c,"Q",pq[0]+8,pq[1]-6,DM,"bold 12px 'Cascadia Code',monospace");}
+ // moving point
+ const cur=P(lam);
+ const pc=proj(rot3(cur,th),ox,oy,u);
+ c.fillStyle=YL;c.shadowColor=YL;c.shadowBlur=12;c.beginPath();c.arc(pc[0],pc[1],7,0,7);c.fill();c.shadowBlur=0;
+ txt(c,"λ="+lam.toFixed(1),pc[0]+10,pc[1]-8,YL,"bold 13px 'Cascadia Code',monospace");
+ // board
+ const bx=590;let by=64;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(575,30,330,220,10);c.fill();c.stroke();
+ txt(c,"Vector form:",bx,by,DM,"13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"r⃗ = ("+L.a.join(", ")+") + λ("+L.b.join(", ")+")",bx,by,CY,"bold 14px 'Cascadia Code',monospace");by+=32;
+ txt(c,"Cartesian form:",bx,by,DM,"13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"(x−"+L.a[0]+")/"+L.b[0]+" = (y−"+show(L.a[1])+")/"+L.b[1],bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=24;
+ txt(c,"  = (z−"+show(L.a[2])+")/"+L.b[2],bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=30;
+ txt(c,"λ = "+lam.toFixed(1)+" pe point:",bx,by,DM,"13px 'Cascadia Code',monospace");by+=24;
+ txt(c,"("+fmt(cur[0],1)+", "+fmt(cur[1],1)+", "+fmt(cur[2],1)+")",bx,by,YL,"bold 15px 'Cascadia Code',monospace");
+ function show(v){return v<0?("("+v+")"):(""+v);}
+ document.getElementById("r1").innerHTML=(L.two?("Two points se direction = Q − P = ("+L.q.join(", ")+") − ("+L.a.join(", ")+") = <span class='hl'>("+L.b.join(", ")+")</span><br>"):"")+"Line = <span class='cy'>r⃗ = ("+L.a.join(", ")+") + λ("+L.b.join(", ")+")</span>  |  λ = <span class='hl'>"+lam.toFixed(1)+"</span> pe point = <span class='hl'>("+fmt(cur[0],1)+", "+fmt(cur[1],1)+", "+fmt(cur[2],1)+")</span><br>λ = 0 → point a⃗ itself. λ badhao → direction b⃗ me travel! Negative λ → ulta rasta.<br><span style='color:#9fb0d8'>Cartesian me denominator 0 aaye to wo coordinate CONSTANT hai - special case, panic nahi!</span>";
+}
+sL.oninput=()=>draw();
+anims[1]=(t)=>draw(t);
+return ()=>draw(12);
+})();
+// ============ SCENE 3: Angle between two lines ============
+inits[2]=(()=>{
+const PAIRS=[
+ {n:"(1,2,3) & (4,−5,2)",b1:[1,2,3],b2:[4,-5,2]},
+ {n:"(1,2,3) & (2,4,6)",b1:[1,2,3],b2:[2,4,6]},
+ {n:"(1,1,0) & (1,0,0)",b1:[1,1,0],b2:[1,0,0]},
+ {n:"(2,1,2) & (1,−1,0)",b1:[2,1,2],b2:[1,-1,0]},
+ {n:"(1,−2,2) & (−2,4,−4)",b1:[1,-2,2],b2:[-2,4,-4]}];
+let pi=0;
+const bb=document.getElementById("agBtns");
+PAIRS.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{pi=i;[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===pi));draw();};bb.appendChild(b);});
+bb.children[pi].classList.add("sel");
+function draw(tick){
+ const c=ctx("cv2");c.clearRect(0,0,920,330);
+ const P=PAIRS[pi];
+ const th=(tick!==undefined)?tick*0.025:0.6;
+ const ox=300,oy=185,u=30;
+ drawAxes(c,ox,oy,u,th,4.2);
+ // direction vectors from origin (scaled)
+ const s1=2.6/Math.max(...P.b1.map(Math.abs)),s2=2.6/Math.max(...P.b2.map(Math.abs));
+ const t1=proj(rot3(P.b1.map(v=>v*s1),th),ox,oy,u),t2=proj(rot3(P.b2.map(v=>v*s2),th),ox,oy,u);
+ arrow3(c,[ox,oy],t1,CY,3.5);
+ arrow3(c,[ox,oy],t2,MG,3.5);
+ txt(c,"b⃗₁",t1[0]+8,t1[1]-6,CY,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"b⃗₂",t2[0]+8,t2[1]-6,MG,"bold 14px 'Cascadia Code',monospace");
+ // angle arc (2D approx between tips)
+ const a1=Math.atan2(t1[1]-oy,t1[0]-ox),a2=Math.atan2(t2[1]-oy,t2[0]-ox);
+ c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.arc(ox,oy,46,Math.min(a1,a2),Math.max(a1,a2));c.stroke();
+ txt(c,"θ",ox+54*Math.cos((a1+a2)/2)-4,oy+54*Math.sin((a1+a2)/2)+4,YL,"bold 15px 'Cascadia Code',monospace");
+ // math
+ const dot=P.b1[0]*P.b2[0]+P.b1[1]*P.b2[1]+P.b1[2]*P.b2[2];
+ const m1=Math.hypot(...P.b1),m2=Math.hypot(...P.b2);
+ const cos=Math.abs(dot)/(m1*m2);
+ const thdg=Math.acos(Math.min(1,cos))*180/Math.PI;
+ let verdict,vcol;
+ const ratio=P.b1[0]/P.b2[0];
+ const parallel=(P.b1[0]*P.b2[1]===P.b1[1]*P.b2[0])&&(P.b1[1]*P.b2[2]===P.b1[2]*P.b2[1])&&(P.b1[0]*P.b2[2]===P.b1[2]*P.b2[0]);
+ if(dot===0){verdict="PERPENDICULAR - dot = 0! (sabse zyada pucha jaata hai)";vcol=GR;}
+ else if(parallel){verdict="PARALLEL - DRs proportional! angle = 0°";vcol=YL;}
+ else{verdict="Angle = "+fmt(thdg,1)+"° (ACUTE - modulus lagake)";vcol="#e8e8f2";}
+ const bx=560;let by=62;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(545,30,362,240,10);c.fill();c.stroke();
+ txt(c,"b⃗₁ = ("+P.b1.join(", ")+")",bx,by,CY,"bold 14px 'Cascadia Code',monospace");by+=26;
+ txt(c,"b⃗₂ = ("+P.b2.join(", ")+")",bx,by,MG,"bold 14px 'Cascadia Code',monospace");by+=30;
+ txt(c,"dot = "+P.b1[0]+"×"+P.b2[0]+" + "+P.b1[1]+"×"+P.b2[1]+" + "+P.b1[2]+"×"+P.b2[2],bx,by,DM,"13px 'Cascadia Code',monospace");by+=24;
+ txt(c,"    = "+dot,bx,by,"#e8e8f2","bold 15px 'Cascadia Code',monospace");by+=28;
+ txt(c,"|b⃗₁| = "+fmt(m1,3)+"  |b⃗₂| = "+fmt(m2,3),bx,by,DM,"13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"cos θ = |dot|/(mags) = "+fmt(cos,4),bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=28;
+ txt(c,"θ = "+fmt(thdg,1)+"°",bx,by,YL,"bold 16px 'Cascadia Code',monospace");
+ txt(c,verdict,460,318,vcol,"bold 14.5px 'Cascadia Code',monospace","center");
+ document.getElementById("r2").innerHTML="b⃗₁·b⃗₂ = <span class='hl'>"+dot+"</span>  |  cos θ = |"+dot+"|/("+fmt(m1,3)+"×"+fmt(m2,3)+") = <span class='cy'>"+fmt(cos,4)+"</span>  →  θ = <span class='hl'>"+fmt(thdg,1)+"°</span><br><span style='color:"+vcol+"'>"+verdict+"</span><br><span style='color:#9fb0d8'>Lines ka angle = direction vectors ka angle - Ch 10 vectors hi chal raha hai yahan! DCs se bhi: cos θ = l₁l₂+m₁m₂+n₁n₂.</span>";
+}
+anims[2]=(t)=>draw(t);
+return ()=>draw(12);
+})();
+// ============ SCENE 4: Shortest distance machine ============
+inits[3]=(()=>{
+const CASES=[
+ {n:"SKEW: SD = 2",a1:[0,0,0],b1:[1,0,0],a2:[0,1,2],b2:[0,1,0]},
+ {n:"INTERSECT: SD = 0",a1:[0,0,0],b1:[1,0,0],a2:[0,1,0],b2:[1,1,0]},
+ {n:"SKEW: SD = 11/√14",a1:[1,2,-1],b1:[2,1,0],a2:[0,1,3],b2:[1,-1,1]},
+ {n:"PARALLEL: d = 1",a1:[0,0,0],b1:[1,2,2],a2:[1,0,1],b2:[1,2,2]}];
+let ci=0;
+const bb=document.getElementById("sdBtns");
+CASES.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{ci=i;[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===ci));draw();};bb.appendChild(b);});
+bb.children[ci].classList.add("sel");
+function cross(u,v){return [u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];}
+function dot(u,v){return u[0]*v[0]+u[1]*v[1]+u[2]*v[2];}
+function sub(u,v){return [u[0]-v[0],u[1]-v[1],u[2]-v[2]];}
+function mag(u){return Math.hypot(...u);}
+function draw(tick){
+ const c=ctx("cv3");c.clearRect(0,0,920,330);
+ const K=CASES[ci];
+ const th=(tick!==undefined)?tick*0.02:0.6;
+ const ox=330,oy=185,u=34;
+ drawAxes(c,ox,oy,u,th,4.2);
+ const d=sub(K.a2,K.a1);
+ const cr=cross(K.b1,K.b2);
+ const crm=mag(cr);
+ const parallel=crm<1e-9;
+ let sd,pA,pB,steps;
+ if(!parallel){
+  sd=Math.abs(dot(d,cr))/crm;
+  // exact closest points: solve 2x2
+  const b11=dot(K.b1,K.b1),b12=dot(K.b1,K.b2),b22=dot(K.b2,K.b2);
+  const dd=sub(K.a1,K.a2);
+  const r1=-dot(dd,K.b1),r2=-dot(dd,K.b2);
+  const det=b11*(-b22)-b12*(-b12);
+  const lam=(r1*(-b22)-(-b12)*r2)/det,mu=(b11*r2-r1*b12)/det;
+  pA=[K.a1[0]+lam*K.b1[0],K.a1[1]+lam*K.b1[1],K.a1[2]+lam*K.b1[2]];
+  pB=[K.a2[0]+mu*K.b2[0],K.a2[1]+mu*K.b2[1],K.a2[2]+mu*K.b2[2]];
+  steps="a⃗₂−a⃗₁ = ("+d.join(", ")+") | b⃗₁×b⃗₂ = ("+cr.join(", ")+") | |cross| = "+fmt(crm,3)+" | dot = "+dot(d,cr);
+ }else{
+  const cr2=cross(K.b1,d);
+  sd=mag(cr2)/mag(K.b1);
+  const dd=sub(K.a2,K.a1);
+  const t=dot(dd,K.b1)/dot(K.b1,K.b1);
+  pB=[K.a2[0],K.a2[1],K.a2[2]];
+  pA=[K.a1[0]+t*K.b1[0],K.a1[1]+t*K.b1[1],K.a1[2]+t*K.b1[2]];
+  steps="b⃗×(a⃗₂−a⃗₁) = ("+cr2.join(", ")+") | |b⃗×d| = "+fmt(mag(cr2),3)+" | |b⃗| = "+fmt(mag(K.b1),3);
+ }
+ // draw lines
+ function seg(a,b,col){const t1=proj(rot3([a[0]-3.2*b[0],a[1]-3.2*b[1],a[2]-3.2*b[2]],th),ox,oy,u);
+  const t2=proj(rot3([a[0]+3.2*b[0],a[1]+3.2*b[1],a[2]+3.2*b[2]],th),ox,oy,u);
+  c.strokeStyle=col;c.lineWidth=3;c.beginPath();c.moveTo(t1[0],t1[1]);c.lineTo(t2[0],t2[1]);c.stroke();}
+ seg(K.a1,K.b1,CY);seg(K.a2,K.b2,MG);
+ // common perpendicular
+ const q1=proj(rot3(pA,th),ox,oy,u),q2=proj(rot3(pB,th),ox,oy,u);
+ c.strokeStyle=YL;c.lineWidth=3;c.setLineDash([7,5]);c.beginPath();c.moveTo(q1[0],q1[1]);c.lineTo(q2[0],q2[1]);c.stroke();c.setLineDash([]);
+ c.fillStyle=YL;c.beginPath();c.arc(q1[0],q1[1],5,0,7);c.fill();c.beginPath();c.arc(q2[0],q2[1],5,0,7);c.fill();
+ if(sd>0.05)txt(c,"SD",((q1[0]+q2[0])/2)+8,(q1[1]+q2[1])/2,YL,"bold 14px 'Cascadia Code',monospace");
+ let verdict,vcol;
+ if(parallel){verdict="PARALLEL lines - d = "+fmt(sd,3)+" (alag formula: |b⃗×(a⃗₂−a⃗₁)|/|b⃗|)";vcol=YL;}
+ else if(sd<1e-9){verdict="SD = 0 → lines INTERSECT karti hain (coplanar)!";vcol=GR;}
+ else{verdict="SKEW lines - shortest distance = "+fmt(sd,3)+" units";vcol=CY;}
+ txt(c,verdict,460,318,vcol,"bold 14.5px 'Cascadia Code',monospace","center");
+ // board
+ const bx=600;let by=64;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(585,30,322,240,10);c.fill();c.stroke();
+ txt(c,"L1: r⃗ = ("+K.a1.join(",")+") + λ("+K.b1.join(",")+")",bx,by,CY,"bold 13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"L2: r⃗ = ("+K.a2.join(",")+") + μ("+K.b2.join(",")+")",bx,by,MG,"bold 13px 'Cascadia Code',monospace");by+=34;
+ if(!parallel){
+  txt(c,"a⃗₂−a⃗₁ = ("+d.join(", ")+")",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=24;
+  txt(c,"b⃗₁×b⃗₂ = ("+cr.join(", ")+")",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=24;
+  txt(c,"dot = "+dot(d,cr)+"  |cross| = "+fmt(crm,3),bx,by,DM,"13px 'Cascadia Code',monospace");by+=28;
+ }else{
+  txt(c,"directions PROPORTIONAL → parallel!",bx,by,YL,"13px 'Cascadia Code',monospace");by+=24;
+  txt(c,"d = |b⃗×(a⃗₂−a⃗₁)| / |b⃗|",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=28;
+ }
+ txt(c,"SD = "+fmt(sd,3),bx,by,YL,"bold 17px 'Cascadia Code',monospace");
+ document.getElementById("r3").innerHTML=steps+"<br><span class='hl'>SD = "+fmt(sd,3)+"</span>  |  <span style='color:"+vcol+"'>"+verdict+"</span><br><span style='color:#9fb0d8'>Recipe: a⃗₂−a⃗₁ nikalo → b⃗₁×b⃗₂ → dot → |cross| se divide. SD=0 → intersect! Yellow dashed = common perpendicular.</span>";
+}
+anims[3]=(t)=>draw(t);
+return ()=>draw(12);
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"DRs (2, −3, 6) ke DCs kya honge?",o:["(2, −3, 6) hi DCs hain","(2/7, −3/7, 6/7)","(2/√13, −3/√13, 6/√13)","(1, −3/2, 3)"],a:1,w:"√(4+9+36) = √49 = 7 se divide → (2/7, −3/7, 6/7). Check: 4/49+9/49+36/49 = 1 ✓ (1,−1.5,3) bhi DRs hain, DCs NAHI!"},
+ {q:"Point (1, 0, −2) se guzarne wali, direction (3, −1, 2) wali line ka VECTOR form?",o:["r⃗ = (3,−1,2) + λ(1,0,−2)","(x−1)/3 = y/(−1) = (z+2)/2","r⃗ = (1,0,−2) + λ(3,−1,2)","r⃗ = (1,0,−2) × λ(3,−1,2)"],a:2,w:"r⃗ = a⃗ + λb⃗ = POINT + λ×DIRECTION = (1,0,−2) + λ(3,−1,2). (Option B sahi CARTESIAN form hai - par vector form nahi!)"},
+ {q:"Do lines ke DRs (2, 1, −2) aur (1, 2, 2) hain. Lines kaisi hain?",o:["Parallel","Skew","60° pe inclined","Perpendicular"],a:3,w:"dot = 2×1 + 1×2 + (−2)×2 = 2+2−4 = 0 → PERPENDICULAR! Dot zero check sabse pehle karo."},
+ {q:"Do lines ka shortest distance SD = 0 aaya. Matlab?",o:["Lines parallel hain","Lines skew hain","Lines intersect/coplanar hain","Lines perpendicular hain"],a:2,w:"SD = 0 → lines INTERSECT karti hain (ya coplanar hain) - yehi intersect condition hai!"},
+ {q:"Rationalized CBSE boards syllabus me PLANES ka kya karein?",o:["Plane equations bhi padhne hain","Planes DELETED - sirf LINES padhne hain","Sirf plane-plane angle aata hai","Planes optional hain"],a:1,w:"Rationalized NCERT: planes ke SAARE topics DELETE - boards me chapter ab sirf LINES ka hai! (JEE me planes hain - alag se cover karna.)"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! 3D Geometry PAKKA! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
