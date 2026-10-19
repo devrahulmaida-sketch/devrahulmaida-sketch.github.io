@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application of Derivatives - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Maths - Chapter 6 - Application of Derivatives</div>
+<h1>Application of Derivatives Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - rate of change, increasing/decreasing sign chart, maxima-minima tests, word-problem optimizer, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Rate of Change - Speedometer Wala Derivative ⭐</h2>
+<p class="why">Balloon phool raha hai: radius badhe to area kitni SPEED se badhta hai? Relation likho (A = πr²), dono taraf TIME ke respect me differentiate karo: dA/dt = 2πr·dr/dt. dr/dt NEGATIVE = leak (ghat raha!). Units zaroor likho!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>radius r (cm)</label><input type="range" id="rcR" min="2" max="20" step="1" value="10"><span class="v" id="vrcR">10</span></div>
+<div class="slrow"><label>dr/dt (cm/s)</label><input type="range" id="rcV" min="-3" max="3" step="0.5" value="2"><span class="v" id="vrcV">2</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Increasing / Decreasing - Sign Chart Machine ⭐⭐</h2>
+<p class="why">f′(x) &gt; 0 → increasing (graph UP), f′(x) &lt; 0 → decreasing (graph DOWN). Critical points (f′=0) se number line todo, har zone me sign check karo. Slider se point chalao - tangent ka slope aur sign LIVE dekho. Yehi 4-marker ka framework!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" id="fnBtns"></div>
+<div class="slrow"><label>x position</label><input type="range" id="idX" min="-30" max="50" step="1" value="10"><span class="v" id="vidX">1.0</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Maxima &amp; Minima - Peaks aur Valleys ⭐⭐</h2>
+<p class="why">f(x) = x³ − 3x ka landscape. Critical points jahan f′=0: c = −1 aur c = 1. FIRST derivative test: sign + se − → MAX, − se + → MIN. SECOND derivative test: f″(c) &lt; 0 → max (neeche-muh katora), f″(c) &gt; 0 → min (upar-muh). Point chalao ya critical pe jump karo!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" id="mmBtns"></div>
+<div class="slrow"><label>x position</label><input type="range" id="mmX" min="-25" max="25" step="1" value="-20"><span class="v" id="vmmX">-2.0</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Word Problem Optimizer - 5-Marker Machine ⭐⭐</h2>
+<p class="why">Classic moves: constraint se ek variable hatao → single-variable function → f′=0 → f″ se confirm. (a) Perimeter 40 ka MAX area rectangle = SQUARE hamesha! (b) 24×24 sheet se open box: corners cut karke MAX volume. Slider se shape badlo - curve pe live point aur MAX marker dekho!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" id="wpBtns"></div>
+<div class="slrow"><label id="wpLbl">width x</label><input type="range" id="wpX" min="1" max="19" step="1" value="6"><span class="v" id="vwpX">6</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - AOD Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: rate problems me time ke respect me differentiate; sign chart bina inc/dec mat bolo; f″(c)&gt;0 = min; fixed sum me product max jab barabar; closed interval me ENDPOINTS bhi check!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Rate of Change ⭐</h3><p>Relation likho → dono taraf d/dt | dA/dt = 2πr·dr/dt (circle), dV/dt = 4πr²·dr/dt (sphere) | Negative rate = quantity GHAT rahi | UNITS likhna mat bhoolo!</p></div>
+<div class="rcard"><h3>Increasing / Decreasing ⭐⭐</h3><p>f′(x) &gt; 0 → strictly increasing, f′(x) &lt; 0 → strictly decreasing | Critical points (f′=0) se intervals todo → har zone me sign | Sign chart = 4-marker framework</p></div>
+<div class="rcard"><h3>First Derivative Test ⭐⭐</h3><p>c critical point (f′=0 ya undefined) | f′: + → − at c =&gt; local MAX | f′: − → + at c =&gt; local MIN | sign same =&gt; na max na min</p></div>
+<div class="rcard"><h3>Second Derivative Test ⭐⭐</h3><p>f″(c) &lt; 0 → local MAX (neeche-muh katora) | f″(c) &gt; 0 → local MIN (upar-muh) | f″(c) = 0 → test FAIL, first test lagao</p></div>
+<div class="rcard"><h3>Absolute Max/Min ⭐⭐</h3><p>Closed [a,b]: critical points AUR endpoints a, b dono check | Sabse bada value = absolute max, sabse chhota = absolute min | Endpoints bhoolna = marks katna!</p></div>
+<div class="rcard"><h3>Word Problems + Deleted ⭐</h3><p>Fixed perimeter max area = SQUARE | x+y=k max product: x=y=k/2 | Constraint se variable hatao pehle! | DELETED: tangents-normals equations, approximations (differentials)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 6 Application of Derivatives Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+// ============ SCENE 1: Rate of change - balloon ============
+inits[0]=(()=>{
+const sR=document.getElementById("rcR"),sV=document.getElementById("rcV");
+function fmt(x){return (Math.round(x*100)/100).toFixed(2);}
+function draw(tick){
+ const c=ctx("cv0");c.clearRect(0,0,920,330);
+ const r=parseFloat(sR.value),v=parseFloat(sV.value);
+ document.getElementById("vrcR").textContent=r;
+ document.getElementById("vrcV").textContent=v;
+ const dA=2*Math.PI*r*v, dV=4*Math.PI*r*r*v;
+ const cx=250,cy=170,R=20+r*5.5;
+ const growing=v>0, shrinking=v<0;
+ const col=growing?CY:shrinking?RD:DM;
+ // ripple rings (animated)
+ if(tick!==undefined&&v!==0){for(let k=0;k<3;k++){const ph=((tick*4+k*38)%114)/114;c.globalAlpha=0.35*(1-ph);c.strokeStyle=col;c.lineWidth=2;c.beginPath();c.arc(cx,cy,R+ph*40,0,7);c.stroke();}c.globalAlpha=1;}
+ c.fillStyle=growing?"rgba(34,211,238,0.13)":shrinking?"rgba(248,113,113,0.13)":"rgba(91,100,136,0.13)";
+ c.strokeStyle=col;c.lineWidth=3;
+ c.beginPath();c.arc(cx,cy,R,0,7);c.fill();c.stroke();
+ // radius arrow
+ c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(cx+R*0.72,cy-R*0.72);c.stroke();
+ txt(c,"r = "+r+" cm",cx+R*0.32,cy-R*0.42,YL,"bold 14px 'Cascadia Code',monospace");
+ // velocity arrow
+ if(v!==0){c.strokeStyle=col;c.lineWidth=4;c.beginPath();c.moveTo(cx-R,cy+R+26);c.lineTo(cx-R+Math.abs(v)*40,cy+R+26);c.stroke();
+  c.beginPath();const tipx=cx-R+Math.abs(v)*40;c.moveTo(tipx,cy+R+26);c.lineTo(tipx-10,cy+R+20);c.lineTo(tipx-10,cy+R+32);c.closePath();c.fillStyle=col;c.fill();
+  txt(c,"dr/dt = "+v+" cm/s "+(growing?"(PHOOL raha)":"(LEAK - ghat raha!)"),cx-R,cy+R+52,col,"bold 13px 'Cascadia Code',monospace");}
+ else txt(c,"dr/dt = 0 - radius STATIC (koi change nahi)",cx-R,cy+R+52,DM,"bold 13px 'Cascadia Code',monospace");
+ txt(c,"Balloon: A = πr²  →  differentiate w.r.t. TIME",560,60,YL,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"dA/dt = 2πr · dr/dt",560,100,"#e8e8f2","16px 'Cascadia Code',monospace","center");
+ txt(c,"= 2π × "+r+" × "+v+" = "+(dA>=0?"":"− ")+fmt(Math.abs(dA))+" cm²/s",560,132,col,"bold 16px 'Cascadia Code',monospace","center");
+ txt(c,"Sphere volume: dV/dt = 4πr² · dr/dt = "+(dV>=0?"":"− ")+fmt(Math.abs(dV))+" cm³/s",560,168,DM,"13px 'Cascadia Code',monospace","center");
+ txt(c,growing?"rate POSITIVE → area BADH raha hai":shrinking?"rate NEGATIVE → area GHAT raha hai":"rate ZERO → koi change nahi",560,200,col,"bold 13px 'Cascadia Code',monospace","center");
+ document.getElementById("r0").innerHTML="Chain rule TIME pe: A = πr² hai r ka, aur r hai t ka → <span class='cy'>dA/dt = 2πr · (dr/dt)</span><br>Daalo: 2π × "+r+" × ("+v+") = <span class='hl'>"+fmt(dA)+" cm²/s</span>  |  sphere volume: 4π × "+r+"² × ("+v+") = <span class='hl'>"+fmt(dV)+" cm³/s</span><br><span style='color:#9fb0d8'>"+(shrinking?"Negative rate = quantity GHAT rahi hai (leak/shrink) - sign MAT chhodo!":growing?"Units likho - cm²/s, cm³/s - examiner inpe bhi marks deta hai!":"dr/dt = 0 matlab koi rate of change nahi - dA/dt bhi 0!")+"</span>";
+}
+sR.oninput=()=>draw();sV.oninput=()=>draw();
+anims[0]=(t)=>{if(parseFloat(sV.value)!==0)draw(t);};
+return ()=>draw();
+})();
+// ============ SCENE 2: Increasing/decreasing sign machine ============
+inits[1]=(()=>{
+const FNS=[
+ {n:"f(x) = x² − 4x + 3",fs:"x² − 4x + 3",f:x=>x*x-4*x+3,df:x=>2*x-4,dfs:"2x − 4",crit:[2],x0:-1,x1:5},
+ {n:"f(x) = x³ − 3x",fs:"x³ − 3x",f:x=>x*x*x-3*x,df:x=>3*x*x-3,dfs:"3x² − 3",crit:[-1,1],x0:-2.5,x1:2.5}
+];
+let fi=0;
+const bb=document.getElementById("fnBtns");
+FNS.forEach((fn,i)=>{const b=document.createElement("button");b.textContent=fn.n;b.onclick=()=>{fi=i;const F=FNS[fi];sX.value=Math.round((F.x0+F.x1)/2*10);sync();draw();};bb.appendChild(b);});
+function sync(){[...bb.children].forEach((x,i)=>x.classList.toggle("sel",i===fi));}
+const sX=document.getElementById("idX");
+function sgn(v){return v>0.0001?1:v<-0.0001?-1:0;}
+function draw(){
+ const c=ctx("cv1");c.clearRect(0,0,920,330);
+ const F=FNS[fi];
+ let x=parseFloat(sX.value)/10;
+ if(x<F.x0){x=F.x0;}if(x>F.x1){x=F.x1;}
+ document.getElementById("vidX").textContent=x.toFixed(1);
+ // plot area: x in [F.x0,F.x1], y auto-range
+ let ymin=1e9,ymax=-1e9;for(let px=F.x0;px<=F.x1;px+=0.05){const y=F.f(px);if(y<ymin)ymin=y;if(y>ymax)ymax=y;}
+ ymin=Math.min(ymin,0)-0.5;ymax=Math.max(ymax,0)+0.5;
+ const PX=t=>60+(t-F.x0)/(F.x1-F.x0)*600, PY=v=>280-(v-ymin)/(ymax-ymin)*230;
+ // zone tints
+ let z=F.x0;const zones=[];
+ const bounds=[F.x0,...F.crit,F.x1];
+ for(let i=0;i<bounds.length-1;i++){const m=(bounds[i]+bounds[i+1])/2;zones.push({a:bounds[i],b:bounds[i+1],s:sgn(F.df(m))});}
+ zones.forEach(z2=>{c.fillStyle=z2.s>0?"rgba(52,211,153,0.07)":"rgba(248,113,113,0.07)";const xa=PX(z2.a),xb=PX(z2.b);c.fillRect(xa,40,xb-xa,250);});
+ // axes
+ c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(PX(F.x0),PY(0));c.lineTo(PX(F.x1),PY(0));c.stroke();
+ txt(c,"x",PX(F.x1)+6,PY(0)+4,DM,"12px monospace");
+ // critical verticals
+ F.crit.forEach(cv=>{c.strokeStyle=YL;c.setLineDash([5,4]);c.beginPath();c.moveTo(PX(cv),40);c.lineTo(PX(cv),290);c.stroke();c.setLineDash([]);});
+ // curve colored by sign
+ for(let i=0;i<zones.length;i++){const z2=zones[i];c.strokeStyle=z2.s>0?GR:RD;c.lineWidth=3;c.beginPath();
+  for(let px=z2.a;px<=z2.b+0.001;px+=0.03){const X=PX(px),Y=PY(F.f(px));if(px===z2.a)c.moveTo(X,Y);else c.lineTo(X,Y);}c.stroke();}
+ // critical point dots
+ F.crit.forEach(cv=>{c.fillStyle=YL;c.beginPath();c.arc(PX(cv),PY(F.f(cv)),5,0,7);c.fill();txt(c,"f′=0 @ x="+cv,PX(cv),PY(F.f(cv))-12,YL,"bold 12px 'Cascadia Code',monospace","center");});
+ // moving point + tangent
+ const fx=F.f(x),dfx=F.df(x);
+ const ts=1.1;c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();
+ c.moveTo(PX(x-ts),PY(fx-dfx*ts));c.lineTo(PX(x+ts),PY(fx+dfx*ts));c.stroke();
+ c.fillStyle=CY;c.beginPath();c.arc(PX(x),PY(fx),6,0,7);c.fill();
+ // sign chart strip
+ txt(c,"SIGN CHART of f′:",700,60,YL,"bold 13px 'Cascadia Code',monospace","center");
+ let sy=92;
+ zones.forEach(z2=>{txt(c,"("+z2.a+", "+z2.b+")",640,sy,"#c9d4ff","13px 'Cascadia Code',monospace","right");
+  txt(c,z2.s>0?"f′ > 0  →  INCREASING ↗":"f′ < 0  →  DECREASING ↘",660,sy,z2.s>0?GR:RD,"bold 13px 'Cascadia Code',monospace");sy+=26;});
+ F.crit.forEach(cv=>{});
+ // readout
+ const s2=sgn(dfx);
+ document.getElementById("r1").innerHTML="f(x) = "+F.fs+"  →  f′(x) = "+F.dfs+"  |  critical: f′=0 at x = "+F.crit.join(", ")+"<br>x = "+x.toFixed(1)+" pe: f′("+x.toFixed(1)+") = <span class='hl'>"+(Math.round(dfx*100)/100).toFixed(2)+"</span> → "+(s2>0?"<span class='cy'>POSITIVE slope - yahan INCREASING ↗</span>":s2<0?"<span style='color:#f87171;font-weight:700'>NEGATIVE slope - yahan DECREASING ↘</span>":"<span class='hl'>ZERO slope - CRITICAL POINT (direction badalne wala!)</span>")+"<br><span style='color:#9fb0d8'>Tangent line dekho - upar ja rahi (positive) ya neeche (negative)? Zones: har interval me f′ ka sign hi verdict hai.</span>";
+}
+sX.oninput=draw;
+return ()=>{sync();draw();};
+})();
+// ============ SCENE 3: Maxima/minima landscape ============
+inits[2]=(()=>{
+const f=x=>x*x*x-3*x, df=x=>3*x*x-3, d2f=x=>6*x;
+const sX=document.getElementById("mmX");
+const bb=document.getElementById("mmBtns");
+[["c = −1 (max?) pe jump",-10],["c = 1 (min?) pe jump",10],["x = 0 (not critical)",0]].forEach(p=>{
+ const b=document.createElement("button");b.textContent=p[0];b.onclick=()=>{sX.value=p[1];draw();};bb.appendChild(b);});
+const X0=-2.5,X1=2.5,Y0=-3,Y1=3;
+const PX=t=>70+(t-X0)/(X1-X0)*780, PY=v=>290-(v-Y0)/(Y1-Y0)*250;
+function draw(){
+ const c=ctx("cv2");c.clearRect(0,0,920,330);
+ const x=parseFloat(sX.value)/10;
+ document.getElementById("vmmX").textContent=x.toFixed(1);
+ // zone tints by f' sign
+ [[X0,-1,df(-2)>0],[-1,1,df(0)>0],[1,X1,df(2)>0]].forEach(z=>{c.fillStyle=z[2]?"rgba(52,211,153,0.07)":"rgba(248,113,113,0.07)";c.fillRect(PX(z[0]),40,PX(z[1])-PX(z[0]),250);});
+ // axes
+ c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(PX(X0),PY(0));c.lineTo(PX(X1),PY(0));c.stroke();
+ // curve
+ c.strokeStyle="#e8e8f2";c.lineWidth=3;c.beginPath();
+ for(let px=X0;px<=X1+0.001;px+=0.02){const X=PX(px),Y=PY(f(px));if(px===X0)c.moveTo(X,Y);else c.lineTo(X,Y);}c.stroke();
+ // critical markers
+ c.fillStyle=MG;c.beginPath();c.arc(PX(-1),PY(2),8,0,7);c.fill();
+ txt(c,"LOCAL MAX (−1, 2)",PX(-1),PY(2)-18,MG,"bold 13px 'Cascadia Code',monospace","center");
+ c.fillStyle=CY;c.beginPath();c.arc(PX(1),PY(-2),8,0,7);c.fill();
+ txt(c,"LOCAL MIN (1, −2)",PX(1),PY(-2)+30,CY,"bold 13px 'Cascadia Code',monospace","center");
+ // moving point + tangent + concavity indicator
+ const fx=f(x),dfx=df(x),d2=d2f(x);
+ const ts=0.9;c.strokeStyle=YL;c.lineWidth=2.5;c.beginPath();
+ c.moveTo(PX(x-ts),PY(fx-dfx*ts));c.lineTo(PX(x+ts),PY(fx+dfx*ts));c.stroke();
+ c.fillStyle=YL;c.beginPath();c.arc(PX(x),PY(fx),6,0,7);c.fill();
+ // katora (concavity) mini-arc
+ const kx=830,ky=90;
+ c.strokeStyle=d2>0?GR:d2<0?RD:DM;c.lineWidth=3;c.beginPath();
+ if(d2>0){c.arc(kx,ky-8,20,0.35,Math.PI-0.35);}
+ else if(d2<0){c.arc(kx,ky+8,20,Math.PI+0.35,-0.35);}
+ c.stroke();
+ txt(c,d2>0?"f″>0 UPAR-muh":"f″<0 NEECHE-muh",kx,ky+34,d2>0?GR:d2<0?RD:DM,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"f″(x)=6x @ x="+x.toFixed(1)+" = "+d2.toFixed(1),kx,ky+52,DM,"11px 'Cascadia Code',monospace","center");
+ // readout: nearest critical?
+ const near=Math.abs(x-(-1))<0.12?-1:Math.abs(x-1)<0.12?1:0;
+ let html="f(x) = x³ − 3x  →  f′(x) = 3x² − 3 = 3(x−1)(x+1)  →  f′=0 at <span class='hl'>x = −1, 1</span>  |  f″(x) = 6x<br>";
+ if(near===-1)html+="<span class='cy'>@ c = −1:</span> FIRST test: left (x=−1.5) f′=+"+df(-1.5).toFixed(2)+" ↗, right (x=−0.5) f′="+df(-0.5).toFixed(2)+" ↘ → sign + se − → <span class='hl'>LOCAL MAX, f(−1) = 2</span>  |  SECOND test: f″(−1) = −6 &lt; 0 → <span class='hl'>MAX confirm!</span>";
+ else if(near===1)html+="<span class='cy'>@ c = 1:</span> FIRST test: left (x=0.5) f′="+df(0.5).toFixed(2)+" ↘, right (x=1.5) f′=+"+df(1.5).toFixed(2)+" ↗ → sign − se + → <span class='hl'>LOCAL MIN, f(1) = −2</span>  |  SECOND test: f″(1) = +6 &gt; 0 → <span class='hl'>MIN confirm!</span>";
+ else html+="x = "+x.toFixed(1)+" pe: f′ = <span class='hl'>"+dfx.toFixed(2)+"</span> ("+(dfx>0?"increasing ↗":dfx<0?"decreasing ↘":"critical!")+"), f″ = "+d2.toFixed(1)+" ("+(d2>0?"upar-muh katora":"neeche-muh katora")+")  |  <span style='color:#9fb0d8'>Critical points pe slider le jao - dono tests LIVE dekho!</span>";
+ document.getElementById("r2").innerHTML=html+"<br><span style='color:#9fb0d8'>f″(c)=0 ho to second test FAIL - first derivative test (sign chart) lagao!</span>";
+}
+sX.oninput=draw;
+return ()=>draw();
+})();
+// ============ SCENE 4: Word problem optimizer ============
+inits[3]=(()=>{
+const SC=[
+ {n:"Rectangle: perimeter 40",lbl:"width x (cm)",min:1,max:19,v0:6,
+  q:x=>x*(20-x),qd:x=>20-2*x,qmax:10,qmaxv:100,unit:"cm²",
+  fname:"A(x) = x(20 − x)"},
+ {n:"Open box: 24×24 sheet",lbl:"corner cut x (cm)",min:1,max:11,v0:3,
+  q:x=>x*Math.pow(24-2*x,2),qd:x=>(24-2*x)*(24-6*x),qmax:4,qmaxv:1024,unit:"cm³",
+  fname:"V(x) = x(24 − 2x)²"}
+];
+let si=0;
+const bb=document.getElementById("wpBtns"),sX=document.getElementById("wpX"),lb=document.getElementById("wpLbl");
+SC.forEach((sc,i)=>{const b=document.createElement("button");b.textContent=sc.n;b.onclick=()=>{si=i;sX.min=sc.min;sX.max=sc.max;sX.value=sc.v0;sync();draw();};bb.appendChild(b);});
+function sync(){[...bb.children].forEach((x,i)=>x.classList.toggle("sel",i===si));}
+function draw(){
+ const c=ctx("cv3");c.clearRect(0,0,920,330);
+ const S=SC[si],x=parseFloat(sX.value);
+ lb.textContent=S.lbl;document.getElementById("vwpX").textContent=x;
+ const qv=S.q(x);
+ // LEFT: shape drawing
+ if(si===0){
+  const h=20-x,sc=9,bx=60,by=60;
+  c.fillStyle="rgba(34,211,238,0.15)";c.strokeStyle=Math.abs(x-h)<0.01?MG:CY;c.lineWidth=Math.abs(x-h)<0.01?4:2.5;
+  c.fillRect(bx,by,x*sc,h*sc);c.strokeRect(bx,by,x*sc,h*sc);
+  txt(c,"x = "+x,bx+x*sc/2,by+x*sc/2? by+h*sc+18:by+18,CY,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,h+"",bx-24,by+h*sc/2,CY,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,Math.abs(x-h)<0.01?"SQUARE! (max area)":"rectangle",bx+x*sc/2,by-12,Math.abs(x-h)<0.01?MG:DM,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"A = "+x+" × "+h+" = "+qv+" cm²",bx+x*sc/2,by+h*sc+40,Math.abs(x-h)<0.01?MG:"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ }else{
+  const side=24-2*x,sc=7,bx=90,by=80;
+  // net: base square + 4 flaps
+  c.fillStyle="rgba(34,211,238,0.15)";c.strokeStyle=CY;c.lineWidth=2;
+  c.fillRect(bx,by,side*sc,side*sc);c.strokeRect(bx,by,side*sc,side*sc);
+  c.fillStyle="rgba(232,121,249,0.18)";
+  [[bx,by-x*sc,side*sc,x*sc],[bx,by+side*sc,side*sc,x*sc],[bx-x*sc,by,x*sc,side*sc],[bx+side*sc,by,x*sc,side*sc]].forEach(r=>{c.fillRect(...r);c.strokeRect(...r);});
+  // cut corners
+  c.fillStyle="rgba(248,113,113,0.25)";c.strokeStyle=RD;
+  [[bx-x*sc,by-x*sc],[bx+side*sc,by-x*sc],[bx-x*sc,by+side*sc],[bx+side*sc,by+side*sc]].forEach(p=>{c.fillRect(p[0],p[1],x*sc,x*sc);c.strokeRect(p[0],p[1],x*sc,x*sc);});
+  txt(c,"base = "+side+" × "+side+", height = "+x,bx+side*sc/2,by+side*sc+x*sc+24,CY,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"V = "+side+"² × "+x+" = "+qv+" cm³",bx+side*sc/2,by+side*sc+x*sc+44,Math.abs(x-S.qmax)<0.01?MG:"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+  txt(c,"red = cut corners (x × x)",bx+side*sc/2,by-x*sc-12,RD,"12px 'Cascadia Code',monospace","center");
+ }
+ // RIGHT: quantity curve with max marker + current point
+ const gx0=560,gx1=890,gy0=290,gy1=50;
+ let qmaxAll=0;for(let px=S.min;px<=S.max;px+=0.2)qmaxAll=Math.max(qmaxAll,S.q(px));
+ const QX=t=>gx0+(t-S.min)/(S.max-S.min)*(gx1-gx0), QY=v=>gy0-(v/qmaxAll)*(gy0-gy1);
+ c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(gx0,gy0);c.lineTo(gx1,gy0);c.stroke();
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;c.beginPath();
+ for(let px=S.min;px<=S.max+0.001;px+=0.1){const X=QX(px),Y=QY(S.q(px));if(px===S.min)c.moveTo(X,Y);else c.lineTo(X,Y);}c.stroke();
+ // max marker
+ c.strokeStyle=MG;c.setLineDash([4,4]);c.beginPath();c.moveTo(QX(S.qmax),gy0);c.lineTo(QX(S.qmax),QY(S.qmaxv));c.stroke();c.setLineDash([]);
+ c.fillStyle=MG;c.beginPath();c.arc(QX(S.qmax),QY(S.qmaxv),6,0,7);c.fill();
+ txt(c,"MAX @ x="+S.qmax+" → "+S.qmaxv+" "+S.unit,QX(S.qmax),QY(S.qmaxv)-12,MG,"bold 12px 'Cascadia Code',monospace","center");
+ // current point
+ c.fillStyle=YL;c.beginPath();c.arc(QX(x),QY(qv),6,0,7);c.fill();
+ txt(c,"you: x="+x,QX(x),QY(qv)+22,YL,"bold 12px 'Cascadia Code',monospace","center");
+ // readout
+ const dqv=S.qd(x);
+ let steps;
+ if(si===0)steps="Constraint: 2(x+y)=40 → y = 20 − x  →  A(x) = x(20−x) = 20x − x²<br>A′(x) = 20 − 2x = 0 → <span class='hl'>x = 10</span>  |  A″(x) = −2 &lt; 0 → <span class='hl'>MAXIMUM!</span>  |  x = y = 10 → SQUARE, A = 100 cm²";
+ else steps="Constraint: sheet 24, cut x → base (24−2x), height x  →  V(x) = x(24−2x)²<br>V′(x) = (24−2x)(24−6x) = 0 → x = 12 (REJECT - base 0!) ya <span class='hl'>x = 4</span>  |  V″(4) &lt; 0 → <span class='hl'>MAXIMUM!</span>  |  V = 4 × 16² = 1024 cm³";
+ document.getElementById("r3").innerHTML="<span class='cy'>"+S.fname+"</span>  |  abhi: x = "+x+" → value = <span class='hl'>"+qv+" "+S.unit+"</span> (curve pe yellow dot)  |  f′("+x+") = "+(Math.round(dqv*10)/10)+"<br>"+steps+"<br><span style='color:#9fb0d8'>Move: constraint se variable hatao → f′=0 solve → f″ se confirm → units ke saath answer. Steps pe marks!</span>";
+}
+sX.oninput=draw;
+return ()=>{si=0;sX.min=SC[0].min;sX.max=SC[0].max;sX.value=SC[0].v0;sync();draw();};
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"Balloon ka radius 2 cm/s se badh raha hai. r = 10 cm pe area ka rate dA/dt = ? (A = πr²)",o:["20π cm²/s","40π cm²/s","80π cm²/s","400π cm²/s"],a:1,w:"dA/dt = 2πr·dr/dt = 2π(10)(2) = 40π cm²/s. Relation → d/dt → values daalo!"},
+ {q:"f(x) = x² − 6x + 5 KAB decreasing hai?",o:["x > 3 me","Har jagah increasing","x < 3 me","Sirf x = 3 pe"],a:2,w:"f′(x) = 2x − 6 < 0 jab x < 3. Sign chart: critical x=3 ke LEFT decreasing, RIGHT increasing."},
+ {q:"Critical point c pe f″(c) > 0 hai. To c kya hai?",o:["Local maximum","Test FAIL - first test lagao","Point of inflection","Local minimum"],a:3,w:"f″(c) > 0 → upar-muh katora → local MIN. (f″(c) < 0 hota to MAX.)"},
+ {q:"x + y = 20 ho to product xy ka MAXIMUM value = ?",o:["100","25","200","40"],a:0,w:"Classic: fixed sum me product max jab x = y = 10 → xy = 100. (A″ = −2 < 0 confirm!)"},
+ {q:"f(x) = x² − 2x ka [0, 3] me ABSOLUTE maximum kahan hai?",o:["x = 1 (critical point)","x = 3 (endpoint)","x = 0 (endpoint)","Kahin nahi"],a:1,w:"Closed interval: critical x=1 → f=−1 (min), endpoints f(0)=0, f(3)=3 → absolute MAX endpoint x=3 pe = 3! Endpoints MAT bhoolo!"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! AOD PAKKA! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
+</body>
+</html>
