@@ -221,8 +221,8 @@ function draw3(){
   g.save();
   if(op3===0){g.globalAlpha=puls;g.fillStyle=GD;g.beginPath();g.arc(AXX,AYY,RR,0,7);g.fill();g.beginPath();g.arc(BXX,BYY,RR,0,7);g.fill();}
   if(op3===1){g.globalAlpha=puls+0.15;g.fillStyle=GD;g.beginPath();g.arc(AXX,AYY,RR,0,7);g.clip();g.beginPath();g.arc(BXX,BYY,RR,0,7);g.fill();}
-  if(op3===2){g.globalAlpha=puls;g.fillStyle=GD;g.beginPath();g.arc(AXX,AYY,RR,0,7);g.fill();g.globalCompositeOperation='destination-out';g.beginPath();g.arc(BXX,BYY,RR,0,7);g.fill();}
-  if(op3===3){g.globalAlpha=puls;g.fillStyle=GD;g.beginPath();g.arc(BXX,BYY,RR,0,7);g.fill();g.globalCompositeOperation='destination-out';g.beginPath();g.arc(AXX,AYY,RR,0,7);g.fill();}
+  if(op3===2){g.globalAlpha=puls;g.fillStyle=GD;g.beginPath();g.arc(AXX,AYY,RR,0,7);g.fill();g.globalAlpha=1;g.globalCompositeOperation='destination-out';g.beginPath();g.arc(BXX,BYY,RR,0,7);g.fill();}
+  if(op3===3){g.globalAlpha=puls;g.fillStyle=GD;g.beginPath();g.arc(BXX,BYY,RR,0,7);g.fill();g.globalAlpha=1;g.globalCompositeOperation='destination-out';g.beginPath();g.arc(AXX,AYY,RR,0,7);g.fill();}
   if(op3===4){g.globalAlpha=puls;g.fillStyle=GD;g.beginPath();g.rect(UX,UY,UW,UH);g.arc(AXX,AYY,RR,0,7);g.fill('evenodd');}
   g.restore();
   vennOutlines(g,t);
@@ -248,10 +248,10 @@ function draw4(){
   g.save();
   g.beginPath();g.rect(L,Y,320,200);g.clip();
   g.globalAlpha=0.45;g.fillStyle=GD;
-  g.beginPath();g.rect(L,Y,320,200);
-  g.arc(L+110,Y+105,58,0,7);g.arc(L+205,Y+105,58,0,7);
-  if(dm4===0){g.fill();g.globalCompositeOperation='destination-out';g.beginPath();g.arc(L+110,Y+105,58,0,7);g.fill();g.beginPath();g.arc(L+205,Y+105,58,0,7);g.fill();}
-  else{g.fill();g.globalCompositeOperation='destination-out';g.beginPath();g.arc(L+110,Y+105,58,0,7);g.clip();g.beginPath();g.arc(L+205,Y+105,58,0,7);g.fill();}
+  g.beginPath();g.rect(L,Y,320,200);g.fill();
+  g.globalAlpha=1;g.globalCompositeOperation='destination-out';
+  if(dm4===0){g.beginPath();g.arc(L+110,Y+105,58,0,7);g.fill();g.beginPath();g.arc(L+205,Y+105,58,0,7);g.fill();}
+  else{g.beginPath();g.arc(L+110,Y+105,58,0,7);g.clip();g.beginPath();g.arc(L+205,Y+105,58,0,7);g.fill();}
   g.restore();
   mini(g,L,Y);
   // RIGHT panel: flipped form via two alpha shadings
