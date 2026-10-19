@@ -250,7 +250,7 @@ function draw4(){
   g.globalAlpha=0.45;g.fillStyle=GD;
   g.beginPath();g.rect(L,Y,320,200);
   g.arc(L+110,Y+105,58,0,7);g.arc(L+205,Y+105,58,0,7);
-  if(dm4===0){g.fill('evenodd')}
+  if(dm4===0){g.fill();g.globalCompositeOperation='destination-out';g.beginPath();g.arc(L+110,Y+105,58,0,7);g.fill();g.beginPath();g.arc(L+205,Y+105,58,0,7);g.fill();}
   else{g.fill();g.globalCompositeOperation='destination-out';g.beginPath();g.arc(L+110,Y+105,58,0,7);g.clip();g.beginPath();g.arc(L+205,Y+105,58,0,7);g.fill();}
   g.restore();
   mini(g,L,Y);
