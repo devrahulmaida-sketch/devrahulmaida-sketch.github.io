@@ -247,14 +247,14 @@ function draw(){
  if(d2>0){c.arc(kx,ky-8,20,0.35,Math.PI-0.35);}
  else if(d2<0){c.arc(kx,ky+8,20,Math.PI+0.35,-0.35);}
  c.stroke();
- txt(c,d2>0?"f″>0 UPAR-muh":"f″<0 NEECHE-muh",kx,ky+34,d2>0?GR:d2<0?RD:DM,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,d2>0?"f″>0 UPAR-muh":d2<0?"f″<0 NEECHE-muh":"f″=0 FLAT (inflection)",kx,ky+34,d2>0?GR:d2<0?RD:DM,"bold 12px 'Cascadia Code',monospace","center");
  txt(c,"f″(x)=6x @ x="+x.toFixed(1)+" = "+d2.toFixed(1),kx,ky+52,DM,"11px 'Cascadia Code',monospace","center");
  // readout: nearest critical?
  const near=Math.abs(x-(-1))<0.12?-1:Math.abs(x-1)<0.12?1:0;
  let html="f(x) = x³ − 3x  →  f′(x) = 3x² − 3 = 3(x−1)(x+1)  →  f′=0 at <span class='hl'>x = −1, 1</span>  |  f″(x) = 6x<br>";
  if(near===-1)html+="<span class='cy'>@ c = −1:</span> FIRST test: left (x=−1.5) f′=+"+df(-1.5).toFixed(2)+" ↗, right (x=−0.5) f′="+df(-0.5).toFixed(2)+" ↘ → sign + se − → <span class='hl'>LOCAL MAX, f(−1) = 2</span>  |  SECOND test: f″(−1) = −6 &lt; 0 → <span class='hl'>MAX confirm!</span>";
  else if(near===1)html+="<span class='cy'>@ c = 1:</span> FIRST test: left (x=0.5) f′="+df(0.5).toFixed(2)+" ↘, right (x=1.5) f′=+"+df(1.5).toFixed(2)+" ↗ → sign − se + → <span class='hl'>LOCAL MIN, f(1) = −2</span>  |  SECOND test: f″(1) = +6 &gt; 0 → <span class='hl'>MIN confirm!</span>";
- else html+="x = "+x.toFixed(1)+" pe: f′ = <span class='hl'>"+dfx.toFixed(2)+"</span> ("+(dfx>0?"increasing ↗":dfx<0?"decreasing ↘":"critical!")+"), f″ = "+d2.toFixed(1)+" ("+(d2>0?"upar-muh katora":"neeche-muh katora")+")  |  <span style='color:#9fb0d8'>Critical points pe slider le jao - dono tests LIVE dekho!</span>";
+ else html+="x = "+x.toFixed(1)+" pe: f′ = <span class='hl'>"+dfx.toFixed(2)+"</span> ("+(dfx>0?"increasing ↗":dfx<0?"decreasing ↘":"critical!")+"), f″ = "+d2.toFixed(1)+" ("+(d2>0?"upar-muh katora":d2<0?"neeche-muh katora":"f″=0 FLAT - inflection point zone!")+")  |  <span style='color:#9fb0d8'>Critical points pe slider le jao - dono tests LIVE dekho!</span>";
  document.getElementById("r2").innerHTML=html+"<br><span style='color:#9fb0d8'>f″(c)=0 ho to second test FAIL - first derivative test (sign chart) lagao!</span>";
 }
 sX.oninput=draw;
