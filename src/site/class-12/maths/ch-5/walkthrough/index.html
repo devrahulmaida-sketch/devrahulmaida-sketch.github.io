@@ -193,12 +193,14 @@ function draw(tick){
  if(faOK&&Math.abs(fa)<=3.2){c.fillStyle=YL;c.beginPath();c.arc(ax,Q(fa),6,0,7);c.fill();}
  // checklist boxes
  const bx=690;let by=44;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(676,16,240,112,10);c.fill();c.stroke();
  txt(c,"CONTINUITY CHECKLIST at a = "+a.toFixed(1),bx+95,by-16,YL,"bold 13px 'Cascadia Code',monospace","center");
  function chk(label,ok,na){c.fillStyle=na?DM:(ok?GR:RD);c.font="bold 14px 'Cascadia Code',monospace";c.textAlign="left";c.fillText((na?"— ":(ok?"✓ ":"✗ "))+label,bx,by);by+=26;}
  chk("① LHL = RHL (limit EXISTS)",limOK);
  chk("② f(a) DEFINED",faOK);
  chk("③ limit = f(a) (EQUAL)",limOK&&eqOK);
- txt(c,verdict,460,348-16,vcol,"bold 15px 'Cascadia Code',monospace","center");
+ txt(c,verdict,460,318,vcol,"bold 15px 'Cascadia Code',monospace","center");
  const fv=x=>{const v=f(x);return isFinite(v)?(Math.round(v*100)/100).toFixed(2):"undef";};
  document.getElementById("r0").innerHTML=FNS[fi].n+"  |  a = <span class='hl'>"+a.toFixed(1)+"</span><br>LHL = f(a⁻) ≈ <span class='cy'>"+fv(a-h)+"</span>  |  RHL = f(a⁺) ≈ <span class='cy'>"+fv(a+h)+"</span>  |  f(a) = <span class='cy'>"+fv(a)+"</span><br><span style='color:"+vcol+"'>"+verdict+"</span><br><span style='color:#9fb0d8'>TEEN conditions: limit EXISTS + f(a) DEFINED + dono EQUAL - ek bhi fail to DISCONTINUOUS!</span>";
 }
