@@ -108,7 +108,7 @@ const scenes=[...document.querySelectorAll('.scene')];
 let cur=0;
 const dotsBox=document.getElementById('dots');
 scenes.forEach((s,i)=>{const d=document.createElement('button');d.className='dot'+(i===0?' on':'');d.onclick=()=>go(i);dotsBox.appendChild(d)});
-function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j===cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j===cur));document.getElementById('prev').style.visibility=cur===0?'hidden':'visible';document.getElementById('next').textContent=cur===scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
+function go(i){if(i===2&&typeof startSweep==='function')startSweep();cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=>s.classList.toggle('on',j===cur));[...dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j===cur));document.getElementById('prev').style.visibility=cur===0?'hidden':'visible';document.getElementById('next').textContent=cur===scenes.length-1?'Shuru Se Phir ↻':'Aage →'}
 document.getElementById('prev').onclick=()=>go(cur-1);
 document.getElementById('next').onclick=()=>go(cur===scenes.length-1?0:cur+1);
 function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')]}
@@ -276,7 +276,7 @@ function draw3(){
   g.fillText('line yahan: '+cuts+' cut'+(cuts===1?'':'s')+' | max: '+maxCuts,30,36);
   if(done){
     g.fillStyle=G.fn?GR:RD;g.font='bold 16px sans-serif';
-    g.fillText(G.fn?'MAX 1 cut → FUNCTION ✓':'MAX '+maxCuts+' cuts → FUNCTION NAHI ✗',30,312);
+    g.fillText(G.fn?('MAX '+maxCuts+' cut'+(maxCuts===1?'':'s')+' → FUNCTION ✓'):'MAX '+maxCuts+' cuts → FUNCTION NAHI ✗',30,312);
     document.getElementById('r3').innerHTML='<b>'+G.name+'</b> - '+G.why;
   } else {
     document.getElementById('r3').innerHTML='magenta line sweep ho rahi hai... <b>gold dots</b> = intersections gino. Max kitne cuts?';
