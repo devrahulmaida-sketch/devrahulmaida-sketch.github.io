@@ -170,7 +170,7 @@ const CASES=[
 ];
 const AL=['1','2','3'],BL=['a','b','c','d'];
 let ci=0,cScore={ok:0,tot:0},cDone=false;
-function ys(n){const y0=165-(n-1)*55;return Array.from({length:n},(_,i)=>y0+i*110)}
+function ys(n){const span=Math.min(220,(n-1)*110);const step=n>1?span/(n-1):0;return Array.from({length:n},(_,i)=>165-span/2+i*step)}
 function arr(g,x1,y1,x2,y2,col,prog){
   const cx=(x1+x2)/2,cy=(y1+y2)/2-34;
   const N=40,pts=[];
@@ -210,7 +210,7 @@ function draw2(){
   const g=g2,W=c2.width,H=c2.height;g.clearRect(0,0,W,H);
   const t=performance.now()/1000;
   const C=CASES[ci];
-  label(g,'A (domain)',110,60,CY);label(g,'B (codomain)',575,60,MG);
+  label(g,'A (domain)',100,322,CY);label(g,'B (codomain)',555,322,MG);
   const ya=ys(C.an),yb=ys(C.bn);
   label(g,'Diagram '+(ci+1)+'/'+CASES.length+':',30,36,TX);
   drawDetScore();
@@ -220,7 +220,7 @@ function draw2(){
   });
   ya.forEach((y,i)=>{dot(g,140,y,9,CY);g.fillStyle='#06202a';g.font='bold 11px sans-serif';g.fillText(AL[i],137,y+4)});
   yb.forEach((y,i)=>{dot(g,620,y,9,MG);g.fillStyle='#2a0a22';g.font='bold 11px sans-serif';g.fillText(BL[i],617,y+4)});
-  label(g,'har input se kitne arrows? gino!',290,315,TX);
+  label(g,'har input se kitne arrows? gino!',270,36,TX);
 }
 
 // --------- SCENE 3: vertical line test ---------
