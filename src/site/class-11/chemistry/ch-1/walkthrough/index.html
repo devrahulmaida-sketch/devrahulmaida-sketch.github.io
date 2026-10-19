@@ -214,7 +214,7 @@ function draw3(){
   const V=s3vals();
   const max=Math.max(...V.map(v=>v[1]));
   const cols=[CY,MG,GD];
-  V.forEach(([e,v,txt],i)=>{
+  if(st3<4) V.forEach(([e,v,txt],i)=>{
     const x=110+i*150,bw=90;
     const h=40+v/max*180;
     g.fillStyle=cols[i]+'55';g.fillRect(x,270-h,bw,h);
@@ -228,9 +228,10 @@ function draw3(){
   if(st3===2) g.fillText('sabse chhota = 3.33 → sabko 3.33 se divide karo',30,40);
   if(st3===3) g.fillText('ratio 1 : 2 : 1 → EMPIRICAL formula = CH₂O (mass 30 u)',30,40);
   if(st3>=4){
-    g.fillStyle='#fff';g.font='bold 20px sans-serif';
-    g.fillText('n = 180 / 30 = 6  →  C₆H₁₂O₆ = GLUCOSE! 🍬',170,120);
-    g.fillStyle=GR;g.font='14px sans-serif';g.fillText('molecular = n × empirical',250,150);
+    g.fillStyle=TX;g.font='15px sans-serif';g.fillText('ratio 1:2:1 → empirical CH₂O (30 u)',230,110);
+    g.fillStyle='#fff';g.font='bold 24px sans-serif';
+    g.fillText('n = 180 / 30 = 6  →  C₆H₁₂O₆ = GLUCOSE! 🍬',120,170);
+    g.fillStyle=GR;g.font='15px sans-serif';g.fillText('molecular = n × empirical',270,215);
   }
   document.getElementById('r3').innerHTML=st3<4?'<b>Step '+(st3+1)+':</b> '+['% ko gram maano - 100 g sample me C = 40 g, H = 6.67 g, O = 53.33 g.','moles nikalo - C: 40/12 = 3.33, H: 6.67/1 = 6.67, O: 53.33/16 = 3.33 mol.','sabse chhote (3.33) se divide - C: 1, H: 2, O: 1.','whole-number ratio 1:2:1 → empirical formula <b>CH₂O</b> (empirical mass = 30 u).'][st3]:'<b>Molecular formula:</b> n = molecular mass / empirical mass = 180/30 = <b>6</b> → 6 × CH₂O = <b>C₆H₁₂O₆ (glucose)</b>! Ye 4+1 steps har numerical me same hain.';
 }
