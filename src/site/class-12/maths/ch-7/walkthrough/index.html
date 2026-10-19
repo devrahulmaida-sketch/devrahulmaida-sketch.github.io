@@ -291,7 +291,7 @@ function drawDef(){
  }else{
   note="∫₀^π sin x dx = [−cos x]₀^π = (−cos π) − (−cos 0) = 1 + 1 = <span class='hl'>2</span> - poora hump ka area EXACTLY 2!";
  }
- $("r4").innerHTML="f = <span class='hl'>"+D.name+"</span> ("+D.kind+"), limit a = "+a+(kingOn?" | <span class='ylw'>KING ON: f(a−x) ka mirror area (magenta) - SAME total!</span>":"")+"<br>"+note+(kingOn?"<br><span class='grn'>KING: ∫₀ᵃf(x)dx = ∫₀ᵃf(a−x)dx - function ulto, area wahi!</span>":"");
+ $("r4").innerHTML="f = <span class='hl'>"+D.name+"</span> ("+D.kind+"), limit a = "+(D.sym?a:"π")+(kingOn?" | <span class='ylw'>KING ON: f(a−x) ka mirror area (magenta) - SAME total!</span>":"")+"<br>"+note+(kingOn?"<br><span class='grn'>KING: ∫₀ᵃf(x)dx = ∫₀ᵃf(a−x)dx - function ulto, area wahi!</span>":"");
 }
 $("dfA").addEventListener("input",drawDef);
 $("kingBtn").onclick=()=>{kingOn=!kingOn;$("kingBtn").classList.toggle("on",kingOn);drawDef();};
