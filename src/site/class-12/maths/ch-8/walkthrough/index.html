@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application of Integrals - Interactive Visual Walkthrough | Class 12 Maths Ch 8</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#05050c;color:#e8e8f4;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;padding:18px 14px 40px}
+.wrap{max-width:1060px;margin:0 auto}
+.tag{display:inline-block;font-size:.72rem;letter-spacing:.12em;color:#22d3ee;border:1px solid #22d3ee55;padding:4px 12px;border-radius:999px;margin-bottom:12px}
+h1{font-size:clamp(1.6rem,4vw,2.4rem);background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:6px}
+.sub{color:#9a9ab8;font-size:.95rem;margin-bottom:16px}
+.dots{display:flex;gap:8px;justify-content:center;margin:14px 0 22px}
+.dots span{width:9px;height:9px;border-radius:50%;background:#26263c;cursor:pointer;transition:all .3s}
+.dots span.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none;animation:fadeIn .45s ease}
+.scene.on{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.scene h2{color:#7dd3fc;font-size:1.25rem;margin-bottom:6px}
+.scene .desc{color:#a8a8c8;font-size:.9rem;margin-bottom:14px;line-height:1.5}
+.panel{background:#0b0b16;border:1px solid #1e1e34;border-radius:14px;padding:16px;margin-bottom:12px}
+canvas{display:block;width:100%;border-radius:10px}
+.readout{background:#101020;border:1px solid #22d3ee33;border-radius:10px;padding:10px 14px;font-family:Consolas,monospace;font-size:.85rem;color:#c4b5fd;margin-top:10px;line-height:1.6}
+.readout b{color:#22d3ee}
+.hl{color:#e879f9;font-weight:700}
+.grn{color:#34d399;font-weight:700}
+.red{color:#f87171;font-weight:700}
+.ylw{color:#fbbf24;font-weight:700}
+.ctl-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
+button.pick{background:#14142a;border:1px solid #2d2d52;color:#c9c9e8;padding:7px 14px;border-radius:8px;cursor:pointer;font-size:.82rem;transition:all .2s}
+button.pick:hover{border-color:#22d3ee}
+button.pick.on{background:#22d3ee22;border-color:#22d3ee;color:#22d3ee;font-weight:700}
+.sl-row{display:flex;align-items:center;gap:12px;margin:6px 0;font-size:.85rem}
+.sl-row label{width:150px;color:#9a9ab8}
+.sl-row .val{width:56px;text-align:right;color:#e879f9;font-family:monospace;font-weight:700}
+input[type=range]{flex:1;accent-color:#22d3ee;height:4px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:12px 0}
+.chip{min-width:44px;padding:8px 6px;text-align:center;border-radius:9px;border:1.5px solid #2d2d52;background:#101024;color:#8a8ab0;font-family:monospace;font-size:.82rem;cursor:pointer;transition:all .18s;user-select:none}
+.chip:hover{border-color:#7dd3fc}
+.chip.inA{background:#22d3ee26;border-color:#22d3ee;color:#7dd3fc;font-weight:700}
+.chip.inB{background:#e879f926;border-color:#e879f9;color:#f0abfc;font-weight:700}
+.chip.inAB{background:linear-gradient(135deg,#22d3ee33,#e879f933);border-color:#fff;color:#fff;font-weight:700}
+.chip.hit{background:#34d39926;border-color:#34d399;color:#6ee7b7;font-weight:700}
+.chip.static{cursor:default}
+.navrow{display:flex;justify-content:space-between;margin-top:18px}
+.navrow button{background:#14142a;border:1px solid #2d2d52;color:#c9c9e8;padding:10px 22px;border-radius:10px;cursor:pointer;font-size:.9rem;transition:all .2s}
+.navrow button:hover{border-color:#22d3ee;color:#22d3ee}
+.navrow button:disabled{opacity:.3;cursor:default}
+.qcard{background:#0b0b16;border:1px solid #1e1e34;border-radius:14px;padding:18px}
+.qtext{font-size:1rem;color:#e8e8f4;margin-bottom:14px;line-height:1.5}
+.qopts{display:flex;flex-direction:column;gap:8px}
+.qopts button{background:#101024;border:1px solid #2d2d52;color:#c9c9e8;padding:10px 14px;border-radius:9px;cursor:pointer;font-size:.88rem;text-align:left;transition:all .2s;font-family:Consolas,monospace}
+.qopts button:hover{border-color:#22d3ee}
+.qopts button.right{background:#34d39922;border-color:#34d399;color:#6ee7b7}
+.qopts button.wrong{background:#f8717122;border-color:#f87171;color:#fca5a5}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.rcard{background:#0b0b16;border:1px solid #1e1e34;border-radius:12px;padding:14px}
+.rcard h3{color:#e879f9;font-size:.95rem;margin-bottom:8px}
+.rcard p{font-size:.83rem;color:#a8a8c8;line-height:1.6;font-family:Consolas,monospace}
+.foot{margin-top:26px;text-align:center;color:#55557a;font-size:.78rem}
+.legend{display:flex;gap:16px;justify-content:center;font-size:.78rem;color:#9a9ab8;margin:6px 0;flex-wrap:wrap}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="tag">Class 12 Maths - Chapter 8 - Application of Integrals</div>
+<h1>Areas Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - strips se area, negative-area trap, do curves ke BEECH ka area, circle-ellipse standards, aur quiz.</p>
+<div class="dots" id="dots"></div>
+
+<!-- SCENE 1: strips -->
+<div class="scene" id="s0">
+<h2>1. Area = Strips Ka SUM - Integration Kyun? ⭐</h2>
+<p class="desc">Curve ke neeche ka area = patli-patli RECTANGLE strips ka sum. Slider se strips badhao - estimate EXACT integral ki taraf converge hota hai! Yahi hai definite integral ka matlab.</p>
+<div class="panel">
+  <div class="ctl-row" id="stBtns">
+    <button class="pick on" data-f="0">f = x² on [0,3]</button>
+    <button class="pick" data-f="1">f = sin x on [0,π]</button>
+  </div>
+  <canvas id="stCv" width="900" height="330"></canvas>
+  <div class="sl-row"><label>strips n</label><input type="range" id="stN" min="2" max="40" step="1" value="6"><span class="val" id="stNv">6</span></div>
+  <div class="readout" id="r1"></div>
+</div>
+</div>
+
+<!-- SCENE 2: negative trap -->
+<div class="scene" id="s1">
+<h2>2. Negative Area Ka TRAP - |Value| Lo! ⭐</h2>
+<p class="desc">Curve x-axis ke NEECHE jaaye to integral NEGATIVE aata hai - par AREA hamesha positive! Signed integral vs TOTAL area ka difference canvas pe dekho. sin x ka [0,2π] signed = 0, area = 4!</p>
+<div class="panel">
+  <div class="ctl-row" id="ngBtns">
+    <button class="pick on" data-f="0">f = sin x on [0,2π]</button>
+    <button class="pick" data-f="1">f = x−1 on [0,3]</button>
+  </div>
+  <canvas id="ngCv" width="900" height="330"></canvas>
+  <div class="readout" id="r2"></div>
+</div>
+</div>
+
+<!-- SCENE 3: between curves -->
+<div class="scene" id="s2">
+<h2>3. Do Curves Ke BEECH Ka Area ⭐⭐</h2>
+<p class="desc">Area = ∫(UPPER − LOWER) dx, limits = <b>intersection points</b>! Confusion ho to TEST POINT daal ke dekho kaun upar hai. Preset choose karo - shading, intersections aur exact area sab LIVE.</p>
+<div class="panel">
+  <div class="ctl-row" id="bcBtns">
+    <button class="pick on" data-f="0">y = x vs y = x²</button>
+    <button class="pick" data-f="1">y = 2−x² vs y = x²</button>
+    <button class="pick" data-f="2">y = √x vs y = x²</button>
+  </div>
+  <canvas id="bcCv" width="900" height="330"></canvas>
+  <div class="readout" id="r3"></div>
+</div>
+</div>
+
+<!-- SCENE 4: standard shapes -->
+<div class="scene" id="s3">
+<h2>4. Standard Shapes - Circle &amp; Ellipse ⭐</h2>
+<p class="desc">Circle ka area integration se: quadrant ka area <b>4×</b> karo = πa². Ellipse mein bas πab! Slider se size ghumao - quadrant shading aur formula LIVE.</p>
+<div class="panel">
+  <div class="ctl-row" id="shBtns">
+    <button class="pick on" data-f="0">Circle x²+y² = a²</button>
+    <button class="pick" data-f="1">Ellipse x²/a²+y²/b² = 1</button>
+  </div>
+  <canvas id="shCv" width="900" height="330"></canvas>
+  <div class="sl-row"><label id="shLbl">radius a</label><input type="range" id="shA" min="1" max="3" step="0.25" value="2"><span class="val" id="shAv">2</span></div>
+  <div class="readout" id="r4"></div>
+</div>
+</div>
+
+<!-- SCENE 5: Quiz -->
+<div class="scene" id="s4">
+<h2>5. Rapid Quiz - Areas Pakke?</h2>
+<p class="desc">5 sawaal. Yaad rakho: sketch → limits → integrate; negative → |value|; beech ka area = upper − lower; circle πa², ellipse πab!</p>
+<div class="qcard">
+  <div class="qtext" id="qText"></div>
+  <div class="qopts" id="quizBtns"></div>
+  <div class="readout" id="r5" style="display:none"></div>
+</div>
+</div>
+
+<!-- RECAP -->
+<div class="scene" id="s5">
+<h2>Formula Recap - Screenshot Le Lo!</h2>
+<div class="recap-grid">
+  <div class="rcard"><h3>Concept ⭐</h3><p>Area = ∫ₐᵇ f(x) dx = strips ka sum | Integral NEGATIVE aaye → |value| lo | Area hamesha positive, units: sq units</p></div>
+  <div class="rcard"><h3>Simple Areas ⭐</h3><p>Sketch → limits → integrate | EVEN function: 2 × half | ∫₀³ x² = 9 | sin x 0-π = 2, 0-2π ka AREA = 4 (signed 0!)</p></div>
+  <div class="rcard"><h3>Between Curves ⭐⭐</h3><p>Area = ∫(UPPER − LOWER) dx | Limits = INTERSECTION points | Test point se upar/neeche check | ∫₀¹(x−x²) = 1/6</p></div>
+  <div class="rcard"><h3>Standard ⭐</h3><p>Circle x²+y²=a²: πa² (4 × quadrant) | Ellipse x²/a²+y²/b²=1: πab | Parabola: symmetry 2× use karo</p></div>
+  <div class="rcard"><h3>Exam Tips</h3><p>5-marker fixed pattern: sketch + limits + integrate + units | General two-curve case DELETED syllabus se</p></div>
+</div>
+</div>
+
+<div class="navrow">
+<button id="prevBtn">← Peeche</button>
+<button id="nextBtn">Aage →</button>
+</div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 8 Application of Integrals Visual Walkthrough</div>
+</div>
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const rnd=(x,d=3)=>{const v=Math.round(x*Math.pow(10,d))/Math.pow(10,d);return String(v);};
+
+/* ---------- SCENE 1: strips ---------- */
+const STS=[
+ {f:x=>x*x,lo:0,hi:3,exact:9,name:"x²",ex:"∫₀³ x² dx = [x³/3]₀³ = 9",sx:110,sy:26},
+ {f:x=>Math.sin(x),lo:0,hi:Math.PI,exact:2,name:"sin x",ex:"∫₀^π sin x dx = 2",sx:120,sy:120}
+];
+let stI=0;
+function drawSt(){
+ const n=+$("stN").value;$("stNv").textContent=n;
+ const S=STS[stI];
+ const cv=$("stCv"),ctx=cv.getContext("2d");
+ ctx.clearRect(0,0,900,330);ctx.fillStyle="#0b0b16";ctx.fillRect(0,0,900,330);
+ const X=t=>120+(t-S.lo)*S.sx, Y=v=>300-v*S.sy;
+ ctx.strokeStyle="#2d2d52";ctx.beginPath();ctx.moveTo(30,300);ctx.lineTo(880,300);ctx.moveTo(120,15);ctx.lineTo(120,320);ctx.stroke();
+ const dx=(S.hi-S.lo)/n;
+ let sum=0;
+ for(let i=0;i<n;i++){
+  const x0=S.lo+i*dx, h=S.f(x0+dx/2); sum+=h*dx;
+  ctx.fillStyle="rgba(34,211,238,0.30)";
+  ctx.fillRect(X(x0),Y(h),dx*S.sx-1,h*S.sy);
+  ctx.strokeStyle="#155e75";ctx.strokeRect(X(x0),Y(h),dx*S.sx-1,h*S.sy);
+ }
+ ctx.beginPath();let st=false;
+ for(let px=30;px<=880;px+=2){const t=S.lo+(px-120)/S.sx;const y=S.f(t);if(t<S.lo-0.5||t>S.hi+0.5){st=false;continue;}const py=Y(y);if(py<5||py>320){st=false;continue;}if(!st){ctx.moveTo(px,py);st=true;}else ctx.lineTo(px,py);}
+ ctx.strokeStyle="#22d3ee";ctx.lineWidth=2.5;ctx.stroke();
+ const err=Math.abs(sum-S.exact);
+ $("r1").innerHTML="f = <span class='hl'>"+S.name+"</span>, n = "+n+" strips (midpoint): estimate ≈ <span class='ylw'>"+rnd(sum)+"</span> | EXACT: "+S.ex+" = <span class='grn'>"+S.exact+"</span><br>gap = "+rnd(err,3)+" - n badhao, gap SHRINK! n → ∞ pe strips ka sum hi integral hai.";
+}
+$("stN").addEventListener("input",drawSt);
+[...$("stBtns").children].forEach(b=>b.onclick=()=>{stI=+b.dataset.f;[...$("stBtns").children].forEach(x=>x.classList.toggle("on",x===b));drawSt();});
+
+/* ---------- SCENE 2: negative trap ---------- */
+const NGS=[
+ {f:x=>Math.sin(x),lo:0,hi:2*Math.PI,name:"sin x on [0,2π]",sx:62,sy:95,
+  parts:[{a:0,b:Math.PI,val:2},{a:Math.PI,b:2*Math.PI,val:-2}],
+  note:"Signed integral = 2 + (−2) = <span class='red'>0</span> - par AREA = |2| + |−2| = <span class='grn'>4</span>!"},
+ {f:x=>x-1,lo:0,hi:3,name:"x−1 on [0,3]",sx:210,sy:60,
+  parts:[{a:0,b:1,val:-0.5},{a:1,b:3,val:2}],
+  note:"Signed = −0.5 + 2 = <span class='ylw'>1.5</span> - par AREA = |−0.5| + 2 = <span class='grn'>2.5</span>!"}
+];
+let ngI=0;
+function drawNg(){
+ const G=NGS[ngI];
+ const cv=$("ngCv"),ctx=cv.getContext("2d");
+ ctx.clearRect(0,0,900,330);ctx.fillStyle="#0b0b16";ctx.fillRect(0,0,900,330);
+ const X=t=>140+(t-G.lo)*G.sx, Y=v=>170-v*G.sy;
+ ctx.strokeStyle="#2d2d52";ctx.beginPath();ctx.moveTo(30,170);ctx.lineTo(880,170);ctx.moveTo(140,15);ctx.lineTo(140,320);ctx.stroke();
+ G.parts.forEach((p,i)=>{
+  const pos=p.val>0;
+  ctx.beginPath();ctx.moveTo(X(p.a),170);
+  for(let t=p.a;t<=p.b;t+=0.02)ctx.lineTo(X(t),Y(G.f(t)));
+  ctx.lineTo(X(p.b),170);ctx.closePath();
+  ctx.fillStyle=pos?"rgba(52,211,153,0.28)":"rgba(248,113,113,0.28)";
+  ctx.fill();
+ });
+ ctx.beginPath();let st=false;
+ for(let px=30;px<=880;px+=2){const t=G.lo+(px-140)/G.sx;if(t<G.lo||t>G.hi){st=false;continue;}const py=Y(G.f(t));if(py<5||py>320){st=false;continue;}if(!st){ctx.moveTo(px,py);st=true;}else ctx.lineTo(px,py);}
+ ctx.strokeStyle="#22d3ee";ctx.lineWidth=2.5;ctx.stroke();
+ ctx.font="bold 14px Consolas";ctx.textAlign="center";
+ G.parts.forEach(p=>{const mid=(p.a+p.b)/2;ctx.fillStyle=p.val>0?"#6ee7b7":"#fca5a5";ctx.fillText((p.val>0?"+":"−")+Math.abs(p.val),X(mid),Y(p.val>0?G.f(mid)*0.5:G.f(mid)*0.5)-6);});
+ $("r2").innerHTML="f = <span class='hl'>"+G.name+"</span> - GREEN above axis, RED below<br>"+G.note+"<br><span class='ylw'>Rule: integral negative → |value| lo. Area KABHI negative nahi!</span>";
+}
+[...$("ngBtns").children].forEach(b=>b.onclick=()=>{ngI=+b.dataset.f;[...$("ngBtns").children].forEach(x=>x.classList.toggle("on",x===b));drawNg();});
+
+/* ---------- SCENE 3: between curves ---------- */
+const BCS=[
+ {up:x=>x,dn:x=>x*x,lo:0,hi:1,un:"y = x",ln:"y = x²",area:1/6,ex:"∫₀¹(x − x²)dx = 1/2 − 1/3 = 1/6 ≈ 0.167",sx:520,sy:420,inter:"x = x² ⇒ x = 0, 1"},
+ {up:x=>2-x*x,dn:x=>x*x,lo:-1,hi:1,un:"y = 2−x²",ln:"y = x²",area:8/3,ex:"2×∫₀¹(2−2x²)dx = 2×(2 − 2/3) = 8/3 ≈ 2.667",sx:240,sy:95,inter:"2−x² = x² ⇒ x = ±1"},
+ {up:x=>Math.sqrt(x),dn:x=>x*x,lo:0,hi:1,un:"y = √x",ln:"y = x²",area:1/3,ex:"∫₀¹(√x − x²)dx = 2/3 − 1/3 = 1/3 ≈ 0.333",sx:520,sy:420,inter:"√x = x² ⇒ x = 0, 1"}
+];
+let bcI=0;
+function drawBc(){
+ const B=BCS[bcI];
+ const cv=$("bcCv"),ctx=cv.getContext("2d");
+ ctx.clearRect(0,0,900,330);ctx.fillStyle="#0b0b16";ctx.fillRect(0,0,900,330);
+ const xmid=(B.lo+B.hi)/2;
+ const X=t=>450+(t-xmid)*B.sx, Y=v=>200-v*B.sy;
+ ctx.strokeStyle="#2d2d52";ctx.beginPath();ctx.moveTo(30,200);ctx.lineTo(880,200);ctx.moveTo(450,15);ctx.lineTo(450,320);ctx.stroke();
+ // between shading
+ ctx.beginPath();
+ let st=false;
+ for(let t=B.lo;t<=B.hi;t+=0.01){const px=X(t),py=Y(B.up(t));if(py<5||py>325){st=false;continue;}if(!st){ctx.moveTo(px,py);st=true;}else ctx.lineTo(px,py);}
+ for(let t=B.hi;t>=B.lo;t-=0.01){const px=X(t),py=Y(B.dn(t));if(py<5||py>325)continue;ctx.lineTo(px,py);}
+ ctx.closePath();ctx.fillStyle="rgba(232,121,249,0.25)";ctx.fill();
+ // curves
+ [[B.up,"#22d3ee"],[B.dn,"#fbbf24"]].forEach(([fn,col])=>{
+  ctx.beginPath();let s2=false;
+  for(let px=30;px<=880;px+=2){const t=(px-450)/B.sx+xmid;const y=fn(t);if(!isFinite(y)){s2=false;continue;}const py=Y(y);if(py<5||py>325){s2=false;continue;}if(!s2){ctx.moveTo(px,py);s2=true;}else ctx.lineTo(px,py);}
+  ctx.strokeStyle=col;ctx.lineWidth=2.5;ctx.stroke();
+ });
+ // intersection dots
+ [B.lo,B.hi].forEach(t=>{ctx.beginPath();ctx.arc(X(t),Y(B.up(t)),6,0,Math.PI*2);ctx.fillStyle="#e879f9";ctx.fill();ctx.strokeStyle="#fff";ctx.stroke();});
+ ctx.fillStyle="#f0abfc";ctx.font="bold 14px Consolas";ctx.textAlign="center";
+ ctx.fillText("intersection",X(B.hi),Y(B.up(B.hi))-14);
+ $("r3").innerHTML="<span class='hl'>"+B.un+"</span> (cyan) UPPER, <span class='ylw'>"+B.ln+"</span> (yellow) LOWER | intersections: "+B.inter+"<br>Area = ∫(upper − lower) = "+B.ex+" sq units &nbsp;|&nbsp; test point x = 0.5: "+rnd(B.up(0.5),2)+" vs "+rnd(B.dn(0.5),2)+" - jo BADA wahi upper!";
+}
+[...$("bcBtns").children].forEach(b=>b.onclick=()=>{bcI=+b.dataset.f;[...$("bcBtns").children].forEach(x=>x.classList.toggle("on",x===b));drawBc();});
+
+/* ---------- SCENE 4: standard shapes ---------- */
+let shI=0;
+function drawSh(){
+ const a=+$("shA").value;$("shAv").textContent=a;
+ const cv=$("shCv"),ctx=cv.getContext("2d");
+ ctx.clearRect(0,0,900,330);ctx.fillStyle="#0b0b16";ctx.fillRect(0,0,900,330);
+ const b=shI===0?a:a*0.6;
+ const X=t=>300+t*80, Y=v=>170-v*80;
+ ctx.strokeStyle="#2d2d52";ctx.beginPath();ctx.moveTo(30,170);ctx.lineTo(880,170);ctx.moveTo(300,15);ctx.lineTo(300,320);ctx.stroke();
+ // quadrant shading (first quadrant) x in [0,a], y = b*sqrt(1-x²/a²)
+ ctx.beginPath();ctx.moveTo(X(0),170);
+ for(let t=0;t<=a;t+=0.01)ctx.lineTo(X(t),Y(b*Math.sqrt(Math.max(0,1-t*t/(a*a)))));
+ ctx.lineTo(X(a),170);ctx.closePath();
+ ctx.fillStyle="rgba(34,211,238,0.28)";ctx.fill();
+ // full curve
+ ctx.beginPath();
+ for(let d=0;d<=360;d+=2){const t=d*Math.PI/180;const px=X(a*Math.cos(t)),py=Y(b*Math.sin(t));if(d===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);}
+ ctx.closePath();ctx.strokeStyle="#22d3ee";ctx.lineWidth=2.5;ctx.stroke();
+ ctx.fillStyle="#7dd3fc";ctx.font="bold 14px Consolas";ctx.textAlign="left";
+ ctx.fillText("quadrant ×4",X(a*0.35),Y(b*0.45));
+ // formula text on right
+ ctx.textAlign="left";ctx.fillStyle="#c4b5fd";ctx.font="15px Consolas";
+ if(shI===0){
+  ctx.fillText("x² + y² = a², a = "+a,520,120);
+  ctx.fillText("quadrant = ∫₀ᵃ √(a²−x²) dx",520,150);
+  ctx.fillText("= πa²/4 = "+rnd(Math.PI*a*a/4,3),520,180);
+  ctx.fillText("TOTAL = 4 × quadrant = πa²",520,210);
+  ctx.fillStyle="#e879f9";ctx.fillText("= "+rnd(Math.PI*a*a,3)+" sq units",520,240);
+  $("r4").innerHTML="Circle radius <span class='hl'>"+a+"</span>: quadrant area × 4 = πa² = <span class='grn'>"+rnd(Math.PI*a*a,3)+"</span> sq units &nbsp;|&nbsp; a = 1 ⇒ π, a = 2 ⇒ 4π ≈ 12.57";
+ }else{
+  ctx.fillText("x²/a² + y²/b² = 1, a = "+a+", b = "+rnd(a*0.6),520,120);
+  ctx.fillText("quadrant = ∫₀ᵃ b√(1−x²/a²) dx",520,150);
+  ctx.fillText("= πab/4 = "+rnd(Math.PI*a*b/4,3),520,180);
+  ctx.fillText("TOTAL = πab",520,210);
+  ctx.fillStyle="#e879f9";ctx.fillText("= "+rnd(Math.PI*a*b,3)+" sq units",520,240);
+  $("r4").innerHTML="Ellipse a = <span class='hl'>"+a+"</span>, b = <span class='hl'>"+rnd(a*0.6)+"</span>: area = πab = <span class='grn'>"+rnd(Math.PI*a*b,3)+"</span> sq units &nbsp;|&nbsp; b = a ho to circle hi ban jaata!";
+ }
+}
+$("shA").addEventListener("input",drawSh);
+[...$("shBtns").children].forEach(b=>b.onclick=()=>{shI=+b.dataset.f;$("shLbl").textContent=shI===0?"radius a":"semi-axis a";[...$("shBtns").children].forEach(x=>x.classList.toggle("on",x===b));drawSh();});
+
+/* ---------- SCENE 5: quiz ---------- */
+const QS=[
+ {q:"y = x² ke neeche 0 se 3 tak ka area?",opts:["9","3","27","6"],a:0},
+ {q:"Curve x-axis ke neeche ho aur integral −5 aaye. Area = ?",opts:["−5","5","0","2.5"],a:1},
+ {q:"y = x aur y = x² ke beech 0 se 1 ka area?",opts:["1/2","1/3","1/6","1"],a:2},
+ {q:"Circle x² + y² = 9 ka area?",opts:["3π","6π","9π","81π"],a:2},
+ {q:"Do curves ke beech ke area ki limits kahan se aati hain?",opts:["x = 0 aur x = 1 hamesha","intersection points se","y-axis se","guess karo"],a:1}
+];
+let qi=0,score=0;
+function drawQ(){
+ $("r5").style.display="none";
+ if(qi>=QS.length){
+  $("qText").innerHTML="Quiz khatam! Score: <span class='grn'>"+score+"/5</span> "+(score===5?"- PERFECT! Areas PAKKE! ✅":score>=3?"- Badhiya! Ek aur round?":"- recap dekh ke phir aao!");
+  const bx=$("quizBtns");bx.innerHTML="";
+  const rb=document.createElement("button");rb.textContent="Phir Se ↻";rb.onclick=()=>{qi=0;score=0;drawQ();};bx.appendChild(rb);
+  $("r5").style.display="block";
+  $("r5").innerHTML="<b>"+score+"/5</b> - Shabash! Areas ab pakke. Formula recap pe jaake screenshot le lo!";
+  return;
+ }
+ $("qText").innerHTML="<b>Q"+(qi+1)+"/5.</b> "+QS[qi].q;
+ const bx=$("quizBtns");bx.innerHTML="";
+ QS[qi].opts.forEach((o,i)=>{
+  const b=document.createElement("button");b.textContent=o;
+  b.onclick=()=>{
+   if(i===QS[qi].a){b.classList.add("right");score++;}else{b.classList.add("wrong");bx.children[QS[qi].a].classList.add("right");}
+   [...bx.children].forEach(x=>x.onclick=null);
+   const nb=document.createElement("button");nb.textContent="Agla →";nb.style.marginTop="6px";nb.onclick=()=>{qi++;drawQ();};bx.appendChild(nb);
+  };
+  bx.appendChild(b);
+ });
+}
+
+/* ---------- NAV ---------- */
+const N=6;let cur=0;
+const dots=$("dots");
+for(let i=0;i<N;i++){const s=document.createElement("span");s.onclick=()=>go(i);dots.appendChild(s);}
+function go(i){
+ cur=Math.max(0,Math.min(N-1,i));
+ for(let k=0;k<N;k++){$("s"+k).classList.toggle("on",k===cur);dots.children[k].classList.toggle("on",k===cur);}
+ $("prevBtn").disabled=cur===0;$("nextBtn").disabled=cur===N-1;
+ if(cur===0)drawSt(); else if(cur===1)drawNg(); else if(cur===2)drawBc(); else if(cur===3)drawSh(); else if(cur===4)drawQ();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+$("prevBtn").onclick=()=>go(cur-1);$("nextBtn").onclick=()=>go(cur+1);
+go(0);
+})();
+</script>
+</body>
+</html>
