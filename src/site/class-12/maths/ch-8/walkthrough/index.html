@@ -229,9 +229,9 @@ function drawNg(){
 
 /* ---------- SCENE 3: between curves ---------- */
 const BCS=[
- {up:x=>x,dn:x=>x*x,lo:0,hi:1,un:"y = x",ln:"y = x²",area:1/6,ex:"∫₀¹(x − x²)dx = 1/2 − 1/3 = 1/6 ≈ 0.167",sx:520,sy:420,inter:"x = x² ⇒ x = 0, 1"},
- {up:x=>2-x*x,dn:x=>x*x,lo:-1,hi:1,un:"y = 2−x²",ln:"y = x²",area:8/3,ex:"2×∫₀¹(2−2x²)dx = 2×(2 − 2/3) = 8/3 ≈ 2.667",sx:240,sy:95,inter:"2−x² = x² ⇒ x = ±1"},
- {up:x=>Math.sqrt(x),dn:x=>x*x,lo:0,hi:1,un:"y = √x",ln:"y = x²",area:1/3,ex:"∫₀¹(√x − x²)dx = 2/3 − 1/3 = 1/3 ≈ 0.333",sx:520,sy:420,inter:"√x = x² ⇒ x = 0, 1"}
+ {up:x=>x,dn:x=>x*x,lo:0,hi:1,un:"y = x",ln:"y = x²",area:1/6,ex:"∫₀¹(x − x²)dx = 1/2 − 1/3 = 1/6 ≈ 0.167",sx:520,sy:260,oy:300,inter:"x = x² ⇒ x = 0, 1"},
+ {up:x=>2-x*x,dn:x=>x*x,lo:-1,hi:1,un:"y = 2−x²",ln:"y = x²",area:8/3,ex:"2×∫₀¹(2−2x²)dx = 2×(2 − 2/3) = 8/3 ≈ 2.667",sx:240,sy:95,oy:280,inter:"2−x² = x² ⇒ x = ±1"},
+ {up:x=>Math.sqrt(x),dn:x=>x*x,lo:0,hi:1,un:"y = √x",ln:"y = x²",area:1/3,ex:"∫₀¹(√x − x²)dx = 2/3 − 1/3 = 1/3 ≈ 0.333",sx:520,sy:260,oy:300,inter:"√x = x² ⇒ x = 0, 1"}
 ];
 let bcI=0;
 function drawBc(){
@@ -239,8 +239,8 @@ function drawBc(){
  const cv=$("bcCv"),ctx=cv.getContext("2d");
  ctx.clearRect(0,0,900,330);ctx.fillStyle="#0b0b16";ctx.fillRect(0,0,900,330);
  const xmid=(B.lo+B.hi)/2;
- const X=t=>450+(t-xmid)*B.sx, Y=v=>200-v*B.sy;
- ctx.strokeStyle="#2d2d52";ctx.beginPath();ctx.moveTo(30,200);ctx.lineTo(880,200);ctx.moveTo(450,15);ctx.lineTo(450,320);ctx.stroke();
+ const X=t=>450+(t-xmid)*B.sx, Y=v=>B.oy-v*B.sy;
+ ctx.strokeStyle="#2d2d52";ctx.beginPath();ctx.moveTo(30,B.oy);ctx.lineTo(880,B.oy);const vx=X(0);if(vx>30&&vx<880){ctx.moveTo(vx,15);ctx.lineTo(vx,320);}ctx.stroke();
  // between shading
  ctx.beginPath();
  let st=false;
