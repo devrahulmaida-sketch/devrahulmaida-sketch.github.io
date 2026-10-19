@@ -249,7 +249,7 @@ function tank(g,x,n,quot,col,isLR,t){
   g.fillStyle='#fff';g.font='bold 14px sans-serif';g.fillText((Math.round(n*100)/100)+' mol',x+18,bot+22);
   g.fillStyle=isLR?RD:TX;g.font='12px sans-serif';
   g.fillText('÷ coeff = '+(Math.round(quot*100)/100),x+12,bot+40);
-  if(isLR){const b=6+2*Math.sin(t*5);g.font='bold 15px sans-serif';g.fillStyle=RD;g.fillText('⭐ LR!',x+30,top-b)}
+  if(isLR){const b=10+2*Math.sin(t*5);g.font='bold 15px sans-serif';g.fillStyle=RD;g.fillText('⭐ LR!',x+30,top-b)}
 }
 function draw4(){
   const g=g4,W=c4.width,H=c4.height;g.clearRect(0,0,W,H);
@@ -261,9 +261,9 @@ function draw4(){
   const qMin=Math.min(qN,qH);
   const nh3=2*qMin,nh3g=Math.round(nh3*17*10)/10;
   const exN=lrN?0:nN-qH*1,exH=lrN?nH-qN*3:0;
-  label(g,'N₂',98,58,CY);label(g,'H₂',268,58,MG);
-  tank(g,60,nN,qN,CY,!lrN&&!tie,t);
-  tank(g,230,nH,qH,MG,lrN&&!tie,t);
+  label(g,'N₂',98,50,CY);label(g,'H₂',268,50,MG);
+  tank(g,60,nN,qN,CY,lrN&&!tie,t);
+  tank(g,230,nH,qH,MG,!lrN&&!tie,t);
   // arrow to product
   line(g,360,170,430,170,GD,2.5);line(g,430,170,422,164,GD,2.5);line(g,430,170,422,176,GD,2.5);
   // product box
