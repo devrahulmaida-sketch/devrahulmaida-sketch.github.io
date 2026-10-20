@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Determinants - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Maths - Chapter 4 - Determinants</div>
+<h1>Determinants Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - 2x2 determinant machine (criss-cross!), 3x3 expansion lab with cofactors, adjoint builder, inverse + equations solver, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Determinant Machine - Criss-Cross ⭐</h2>
+<p class="why">Sirf SQUARE matrix ka determinant hota hai! 2×2 ka formula: |a b; c d| = ad − bc - MAIN diagonal (a·d) MINUS other diagonal (b·c). det ek NUMBER hai (matrix nahi!) - positive, negative ya ZERO. Zero aaya to matrix SINGULAR - inverse nahi banega! Sliders ghumao - criss-cross dekho!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>a, b</label><input type="range" id="dA" min="-6" max="6" step="1" value="2"><span class="v" id="vdA">2</span><input type="range" id="dB" min="-6" max="6" step="1" value="3"><span class="v" id="vdB">3</span></div>
+<div class="slrow"><label>c, d</label><input type="range" id="dC" min="-6" max="6" step="1" value="1"><span class="v" id="vdC">1</span><input type="range" id="dD" min="-6" max="6" step="1" value="4"><span class="v" id="vdD">4</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. 3×3 Expansion Lab - Cofactors ⭐⭐</h2>
+<p class="why">KISI bhi row ya column se expand karo - answer SAME aata hai! Formula: element × uska COFACTOR, phir add. Sign pattern chessboard: + − + / − + − / + − +. Minor Mᵢⱼ = row+column hata ke bacha determinant; Cofactor Cᵢⱼ = (−1)^(i+j)·Mᵢⱼ. SMART MOVE: jis line me sabse zyada ZERO ho wahi choose karo! Expansion line badal ke dekho - har baar same answer!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" id="exBtns"></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Adjoint Builder - Cofactor ka Transpose ⭐</h2>
+<p class="why">adj A = cofactor matrix ka TRANSPOSE! 2×2 shortcut ⭐: [a b; c d] → [d −b; −c a] - diagonal SWAP, off-diagonal ke signs FLIP! Golden identity: A·(adj A) = (adj A)·A = |A|·I - yahi inverse ki jaan hai. Sliders badlo - adj aur identity dono LIVE verify hote dekho!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>a, b</label><input type="range" id="jA" min="-5" max="5" step="1" value="2"><span class="v" id="vjA">2</span><input type="range" id="jB" min="-5" max="5" step="1" value="1"><span class="v" id="vjB">1</span></div>
+<div class="slrow"><label>c, d</label><input type="range" id="jC" min="-5" max="5" step="1" value="3"><span class="v" id="vjC">3</span><input type="range" id="jD" min="-5" max="5" step="1" value="4"><span class="v" id="vjD">4</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Inverse + Equations Solver ⭐⭐</h2>
+<p class="why">A⁻¹ = adj A / |A| - TABHI jab |A| ≠ 0! Equations ko AX = B me likho → solution X = A⁻¹B. TEEN CASES (5-marker pattern!): (1) |A| ≠ 0 → UNIQUE solution. (2) |A| = 0, (adj A)B ≠ O → NO solution. (3) |A| = 0, (adj A)B = O → infinitely many (ya no - further check). Systems try karo - kaunsa case laga dekho!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" id="eqBtns"></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Determinants Pakke? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: 2×2 = ad−bc criss-cross; sign pattern chessboard; minor = row+col delete, cofactor = sign × minor; adj = cofactor transpose (2×2: diagonal swap + sign flip); A⁻¹ = adj/|A| SIRF jab det ≠ 0; 3 cases: det≠0 unique, det=0+adjB≠O none, det=0+adjB=O infinite ya no solution (further check); triangular ka det = diagonal product!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Determinant Basics ⭐</h3><p>Sirf SQUARE matrix ka! | 2×2: |a b; c d| = ad − bc | det = NUMBER (matrix nahi) | det = 0 → SINGULAR (no inverse) | |kA| = kⁿ|A| (n×n) | |AB| = |A||B|</p></div>
+<div class="rcard"><h3>3×3 Expansion ⭐⭐</h3><p>KISI row/column se expand - same answer! | Sign: + − + / − + − / + − + | Minor Mᵢⱼ = row+col delete karke bacha det | Cofactor Cᵢⱼ = (−1)^(i+j)Mᵢⱼ | SMART: max zeros wali line choose karo | Triangular: det = diagonal product!</p></div>
+<div class="rcard"><h3>Adjoint ⭐</h3><p>adj A = cofactor matrix ka TRANSPOSE | 2×2: [a b; c d] → [d −b; −c a] (diagonal swap, signs flip!) | Golden: A·(adj A) = (adj A)·A = |A|·I | |adj A| = |A|^(n−1)</p></div>
+<div class="rcard"><h3>Inverse ⭐⭐</h3><p>A⁻¹ = adj A / |A| - SIRF jab |A| ≠ 0! | det = 0 → singular, NO inverse | |A⁻¹| = 1/|A| | (A⁻¹)⁻¹ = A | Steps: det → cofactors → adj → divide</p></div>
+<div class="rcard"><h3>Equations AX = B ⭐⭐</h3><p>X = A⁻¹B | det ≠ 0 → UNIQUE | det = 0 & (adj A)B ≠ O → NO solution | det = 0 & (adj A)B = O → infinitely many/no (check) | Homogeneous (B=O): det ≠ 0 → sirf trivial; det = 0 → infinite!</p></div>
+<div class="rcard"><h3>DELETED + Tips ⭐</h3><p>DELETED (rationalized NCERT): determinant PROPERTIES (row operations se simplify karna) - ab direct expansion + adjoint/inverse + equations pe focus! | Exam tip: pehle |A| check - zero to mehnat bekar | Sign pattern galti = sabse common error!</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 4 Determinants Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ============ SCENE 1: 2x2 determinant machine ============
+inits[0]=(()=>{
+const sA=document.getElementById("dA"),sB=document.getElementById("dB"),sC=document.getElementById("dC"),sD=document.getElementById("dD");
+function cell(c,x,y,v,col,big){
+ c.fillStyle="rgba(13,13,28,0.95)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(x-42,y-30,84,60,8);c.fill();c.stroke();
+ txt(c,""+v,x,y+(big?9:7),col||"#e8e8f2","bold "+(big?26:22)+"px 'Cascadia Code',monospace","center");
+}
+function bracket(c,x1,y1,x2,y2,col){
+ c.strokeStyle=col;c.lineWidth=3;c.beginPath();
+ c.moveTo(x1+8,y1);c.lineTo(x1,y1);c.lineTo(x1,y2);c.lineTo(x1+8,y2);c.stroke();c.beginPath();
+ c.moveTo(x2-8,y1);c.lineTo(x2,y1);c.lineTo(x2,y2);c.lineTo(x2-8,y2);c.stroke();
+}
+function draw(){
+ const c=ctx("cv0");c.clearRect(0,0,920,330);
+ const a=parseInt(sA.value),b=parseInt(sB.value),cc=parseInt(sC.value),d=parseInt(sD.value);
+ document.getElementById("vdA").textContent=a;document.getElementById("vdB").textContent=b;
+ document.getElementById("vdC").textContent=cc;document.getElementById("vdD").textContent=d;
+ // matrix at left
+ const m={x1:170,y1:95,x2:290,y2:95,x3:170,y3:215,x4:290,y4:215};
+ cell(c,m.x1,m.y1,a,CY);cell(c,m.x2,m.y2,b,MG);
+ cell(c,m.x3,m.y3,cc,MG);cell(c,m.x4,m.y4,d,CY);
+ bracket(c,105,55,355,255,"#e8e8f2");
+ txt(c,"a",m.x1,m.y1-40,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"b",m.x2,m.y2-40,MG,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"c",m.x3,m.y3+52,MG,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"d",m.x4,m.y4+52,CY,"bold 13px 'Cascadia Code',monospace","center");
+ // criss-cross arrows: main diagonal a->d (cyan), other c->b (magenta)
+ arrow2(c,m.x1+18,m.y1+14,m.x4-18,m.y4-14,CY,3.5);
+ arrow2(c,m.x3+18,m.y3-14,m.x2-18,m.y2+14,MG,3.5);
+ txt(c,"MAIN diagonal (a·d) - CYAN",(m.x1+m.x4)/2+15,(m.y1+m.y4)/2+115,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"other diagonal (b·c) - MAGENTA, MINUS hoga!",(m.x1+m.x4)/2+15,(m.y1+m.y4)/2+135,MG,"bold 13px 'Cascadia Code',monospace","center");
+ const det=a*d-b*cc;
+ // board
+ const bx=560;let by=62;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(500,30,405,270,10);c.fill();c.stroke();
+ txt(c,"det = a·d − b·c",bx,by,YL,"bold 16px 'Cascadia Code',monospace");by+=32;
+ txt(c,"    = ("+a+")("+d+") − ("+b+")("+cc+")",bx,by,"#e8e8f2","15px 'Cascadia Code',monospace");by+=28;
+ txt(c,"    = "+(a*d)+" − ("+(b*cc)+")",bx,by,"#e8e8f2","15px 'Cascadia Code',monospace");by+=30;
+ txt(c,"det = "+det,bx,by,det===0?RD:CY,"bold 26px 'Cascadia Code',monospace");by+=40;
+ if(det===0){
+  txt(c,"det = 0 → SINGULAR matrix!",bx,by,RD,"bold 15px 'Cascadia Code',monospace");by+=26;
+  txt(c,"Inverse NAHI banega - rows/columns",bx,by,RD,"13px 'Cascadia Code',monospace");by+=22;
+  txt(c,"parallel hain (ek doosre ka multiple)!",bx,by,RD,"13px 'Cascadia Code',monospace");
+ }else{
+  txt(c,"det ≠ 0 → NON-SINGULAR ✓",bx,by,GR,"bold 15px 'Cascadia Code',monospace");by+=26;
+  txt(c,"Inverse possible! A⁻¹ = adj A / "+det,bx,by,GR,"13px 'Cascadia Code',monospace");by+=24;
+  txt(c,"Bonus: |kA| = k²·det (2×2, n=2)",bx,by,DM,"13px 'Cascadia Code',monospace");
+ }
+ document.getElementById("r0").innerHTML="det = <span class='hl'>"+det+"</span>"+(det===0?" - <span style='color:"+RD+"'>SINGULAR! Iska koi inverse nahi. Rows parallel ka matlab: equations dependent!</span>":" - <span class='cy'>non-singular, inverse banega!</span>")+"<br><span style='color:#9fb0d8'>Criss-cross yaad rakho: CYAN main diagonal MINUS MAGENTA other diagonal. det sirf SQUARE matrix ka hota hai - 2×3 ka nahi!</span>";
+}
+[sA,sB,sC,sD].forEach(s=>s.addEventListener("input",draw));
+return function(){draw();};
+})();
+// ============ SCENE 2: 3x3 expansion lab ============
+inits[1]=(()=>{
+const MATS=[
+ {n:"Triangular (zeros!)",m:[[1,2,3],[0,4,5],[0,0,6]]},
+ {n:"Full matrix",m:[[2,1,3],[1,0,2],[4,3,1]]},
+ {n:"SINGULAR (R2 = 2×R1)",m:[[1,2,3],[2,4,6],[1,1,1]]}];
+let mi=0,line=0; // line 0-2 = rows, 3-5 = cols
+const bb=document.getElementById("exBtns");
+MATS.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{mi=i;sync();draw();};bb.appendChild(b);});
+["R1","R2","R3","C1","C2","C3"].forEach((nm,i)=>{const b=document.createElement("button");b.textContent=nm;b.onclick=()=>{line=i;sync();draw();};bb.appendChild(b);});
+function sync(){[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===mi||j===3+line));}
+sync();
+function minor2(m,dr,dc){const v=[];for(let i=0;i<3;i++){if(i===dr)continue;for(let j=0;j<3;j++){if(j===dc)continue;v.push(m[i][j]);}}return v[0]*v[3]-v[1]*v[2];}
+function det3(m){return m[0][0]*(m[1][1]*m[2][2]-m[1][2]*m[2][1])-m[0][1]*(m[1][0]*m[2][2]-m[1][2]*m[2][0])+m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0]);}
+function draw(){
+ const c=ctx("cv1");c.clearRect(0,0,920,330);
+ const m=MATS[mi].m, D=det3(m);
+ // matrix grid left
+ const gx=70,gy=52,cs=58;
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
+ c.beginPath();c.moveTo(gx+8,gy-14);c.lineTo(gx,gy-14);c.lineTo(gx,gy+3*cs+14);c.lineTo(gx+8,gy+3*cs+14);c.stroke();
+ c.beginPath();c.moveTo(gx+3*cs-8,gy-14);c.lineTo(gx+3*cs,gy-14);c.lineTo(gx+3*cs,gy+3*cs+14);c.lineTo(gx+3*cs-8,gy+3*cs+14);c.stroke();
+ for(let i=0;i<3;i++)for(let j=0;j<3;j++){
+  const x=gx+j*cs+cs/2,y=gy+i*cs+cs/2;
+  const inLine=(line<3&&i===line)||(line>=3&&j===line-3);
+  const sgn=((i+j)%2===0)?"+":"−";
+  if(inLine){c.fillStyle="rgba(34,211,238,0.16)";c.fillRect(gx+j*cs+2,gy+i*cs+2,cs-4,cs-4);}
+  txt(c,""+m[i][j],x,y+9,inLine?CY:"#e8e8f2","bold 20px 'Cascadia Code',monospace","center");
+  txt(c,sgn,x-cs/2+11,y-cs/2+16,((i+j)%2===0)?GR:RD,"bold 13px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"chessboard signs: + − + / − + − / + − +",gx+3*cs/2,gy+3*cs+42,DM,"12px 'Cascadia Code',monospace","center");
+ // expansion terms
+ const terms=[];
+ for(let k=0;k<3;k++){
+  const i=line<3?line:k, j=line<3?k:line-3;
+  const sgn=((i+j)%2===0)?1:-1;
+  const M=minor2(m,i,j);
+  terms.push({e:m[i][j],sgn,M,i,j,prod:sgn*m[i][j]*M});
+ }
+ const bx=330;let by=56;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(310,28,598,278,10);c.fill();c.stroke();
+ txt(c,"Expansion along "+(line<3?("ROW "+(line+1)):("COLUMN "+(line-2)))+":",bx,by,YL,"bold 15px 'Cascadia Code',monospace");by+=28;
+ terms.forEach(t=>{
+  txt(c,(t.sgn>0?"+ ":"− ")+"("+t.e+") × M"+(t.i+1)+(t.j+1)+" = "+(t.sgn>0?"":"−")+"("+t.e+")("+t.M+") = "+t.prod,bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=25;
+ });
+ const sum=terms.reduce((s,t)=>s+t.prod,0);
+ by+=6;
+ txt(c,"det = "+terms[0].prod+" "+(terms[1].prod>=0?"+ ":"− ")+Math.abs(terms[1].prod)+" "+(terms[2].prod>=0?"+ ":"− ")+Math.abs(terms[2].prod)+" = "+sum,bx,by,CY,"bold 15px 'Cascadia Code',monospace");by+=34;
+ txt(c,"|A| = "+D,bx,by,D===0?RD:YL,"bold 26px 'Cascadia Code',monospace");by+=32;
+ if(D===0)txt(c,"SINGULAR! (R2 = 2×R1 - dependent rows → det 0)",bx,by,RD,"bold 13px 'Cascadia Code',monospace");
+ else if(mi===0)txt(c,"TRIANGULAR shortcut: 1×4×6 = 24 (diagonal product!)",bx,by,GR,"bold 13px 'Cascadia Code',monospace");
+ else txt(c,"Sabse zyada ZERO wali line = fastest expansion!",bx,by,GR,"bold 13px 'Cascadia Code',monospace");
+ document.getElementById("r1").innerHTML="|A| = <span class='hl'>"+D+"</span> - R1/R2/R3/C1/C2/C3 SAB se SAME answer aata hai (try karke dekho!)<br><span style='color:#9fb0d8'>Cofactor Cᵢⱼ = (−1)^(i+j) × Minor Mᵢⱼ (row+col delete karke bacha det). "+(mi===2?"<span style='color:"+RD+"'>Ye matrix SINGULAR hai - proportional rows ka det HAMESHA 0!</span>":"Smart move: zeros wali line choose karo - poore terms FREE me zero!")+"</span>";
+}
+return function(){draw();};
+})();
+// ============ SCENE 3: Adjoint builder + golden identity ============
+inits[2]=(()=>{
+const sA=document.getElementById("jA"),sB=document.getElementById("jB"),sC=document.getElementById("jC"),sD=document.getElementById("jD");
+function mcell(c,x,y,v,col,hl){
+ c.fillStyle=hl?"rgba(250,204,21,0.15)":"rgba(13,13,28,0.95)";c.strokeStyle=hl?YL:"#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(x-34,y-24,68,48,8);c.fill();c.stroke();
+ txt(c,""+v,x,y+8,col||"#e8e8f2","bold 19px 'Cascadia Code',monospace","center");
+}
+function mbracket(c,x1,y1,x2,y2){
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;c.beginPath();
+ c.moveTo(x1+7,y1);c.lineTo(x1,y1);c.lineTo(x1,y2);c.lineTo(x1+7,y2);c.stroke();c.beginPath();
+ c.moveTo(x2-7,y1);c.lineTo(x2,y1);c.lineTo(x2,y2);c.lineTo(x2-7,y2);c.stroke();
+}
+function draw(){
+ const c=ctx("cv2");c.clearRect(0,0,920,330);
+ const a=parseInt(sA.value),b=parseInt(sB.value),cc=parseInt(sC.value),d=parseInt(sD.value);
+ document.getElementById("vjA").textContent=a;document.getElementById("vjB").textContent=b;
+ document.getElementById("vjC").textContent=cc;document.getElementById("vjD").textContent=d;
+ const det=a*d-b*cc;
+ // A matrix (left)
+ txt(c,"A",70,42,CY,"bold 16px 'Cascadia Code',monospace","center");
+ mcell(c,52,80,a,CY);mcell(c,132,80,b,MG);mcell(c,52,150,cc,MG);mcell(c,132,150,d,CY);
+ mbracket(c,6,50,178,180);
+ // transformation arrows
+ arrow2(c,52,95,132,135,GR,2.5);txt(c,"a↔d SWAP",92,120,GR,"bold 11px 'Cascadia Code',monospace","center");
+ arrow2(c,132,95,52,135,RD,2.5);txt(c,"signs FLIP",92,105,RD,"bold 11px 'Cascadia Code',monospace","center");
+ // adj A (middle)
+ txt(c,"adj A",290,42,MG,"bold 16px 'Cascadia Code',monospace","center");
+ mcell(c,272,80,d,CY,true);mcell(c,352,80,-b,RD,true);mcell(c,272,150,-cc,RD,true);mcell(c,352,150,a,CY,true);
+ mbracket(c,226,50,398,180);
+ txt(c,"= [d  −b; −c  a]",290,205,DM,"12px 'Cascadia Code',monospace","center");
+ // golden identity board
+ const p11=a*d+b*(-cc),p12=a*(-b)+b*a,p21=cc*d+d*(-cc),p22=cc*(-b)+d*a;
+ const bx=470;let by=52;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(440,26,468,282,10);c.fill();c.stroke();
+ txt(c,"GOLDEN IDENTITY: A·(adj A) = |A|·I",bx,by,YL,"bold 14px 'Cascadia Code',monospace");by+=28;
+ txt(c,"A·(adj A) =",bx,by,DM,"13px 'Cascadia Code',monospace");by+=25;
+ txt(c,"  ["+a+"·"+d+" + "+b+"·("+(-cc)+")   "+a+"·("+(-b)+") + "+b+"·"+a+"]",bx,by,"#e8e8f2","12.5px 'Cascadia Code',monospace");by+=22;
+ txt(c,"  ["+cc+"·"+d+" + "+d+"·("+(-cc)+")   "+cc+"·("+(-b)+") + "+d+"·"+a+"]",bx,by,"#e8e8f2","12.5px 'Cascadia Code',monospace");by+=25;
+ txt(c,"= ["+p11+"  "+p12+";  "+p21+"  "+p22+"]",bx,by,CY,"bold 14px 'Cascadia Code',monospace");by+=25;
+ txt(c,"|A|·I = ["+det+"  0;  0  "+det+"]  "+((p11===det&&p12===0&&p21===0&&p22===det)?"✓ MATCH!":"✗??"),bx,by,GR,"bold 13px 'Cascadia Code',monospace");by+=28;
+ txt(c,"|A| = "+det,bx,by,det===0?RD:YL,"bold 20px 'Cascadia Code',monospace");by+=24;
+ if(det===0)txt(c,"det=0 → A·(adjA)=ZERO matrix (singular!)",bx,by,RD,"bold 12px 'Cascadia Code',monospace");
+ else txt(c,"Divide by |A| → A⁻¹ = adj A / "+det,bx,by,GR,"bold 12px 'Cascadia Code',monospace");
+ document.getElementById("r2").innerHTML="adj A = <span class='hl'>["+d+"  "+(-b)+";  "+(-cc)+"  "+a+"]</span> (diagonal SWAP: "+a+"↔"+d+", signs FLIP: "+b+"→"+(-b)+", "+cc+"→"+(-cc)+")  |  A·(adj A) = <span class='cy'>["+p11+" "+p12+"; "+p21+" "+p22+"] = |A|·I ✓</span><br><span style='color:#9fb0d8'>Ye identity inverse ka formula deti hai: dono taraf |A| se divide karo → A⁻¹ = adj A / |A|. 3×3 me 9 cofactors nikalne padte hain - sign pattern DOUBLE-CHECK (sabse common galti)!</span>";
+}
+[sA,sB,sC,sD].forEach(s=>s.addEventListener("input",draw));
+return function(){draw();};
+})();
+// ============ SCENE 4: Inverse + equations solver ============
+inits[3]=(()=>{
+const SYS=[
+ {n:"2x+3y=12, x−y=1",a1:2,b1:3,c1:12,a2:1,b2:-1,c2:1},
+ {n:"x+y=3, 2x+2y=8 (NO?)",a1:1,b1:1,c1:3,a2:2,b2:2,c2:8},
+ {n:"x+y=3, 2x+2y=6 (INFINITE?)",a1:1,b1:1,c1:3,a2:2,b2:2,c2:6},
+ {n:"3x−y=5, 2x+y=10",a1:3,b1:-1,c1:5,a2:2,b2:1,c2:10}];
+let si=0;
+const bb=document.getElementById("eqBtns");
+SYS.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{si=i;[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===si));draw();};bb.appendChild(b);});
+bb.children[si].classList.add("sel");
+function draw(){
+ const c=ctx("cv3");c.clearRect(0,0,920,330);
+ const S=SYS[si];
+ const det=S.a1*S.b2-S.b1*S.a2;
+ const adjB1=S.b2*S.c1-S.b1*S.c2, adjB2=-S.a2*S.c1+S.a1*S.c2;
+ const ox=250,oy=200,u=26;
+ grid2(c,ox,oy,u);
+ const X1=ox-8.5*u,X2=ox+8.5*u;
+ // line 1: a1x+b1y=c1 (cyan), line 2: a2x+b2y=c2 (magenta)
+ function drawLine(a1,b1,c1,col,dash){
+  if(b1===0){const x=c1/a1;c.strokeStyle=col;c.lineWidth=3;if(dash)c.setLineDash([7,5]);
+   c.beginPath();c.moveTo(ox+x*u,10);c.lineTo(ox+x*u,320);c.stroke();c.setLineDash([]);return;}
+  const xa=-8.5,xb=8.5,ya=(c1-a1*xa)/b1,yb=(c1-a1*xb)/b1;
+  c.strokeStyle=col;c.lineWidth=3;if(dash)c.setLineDash([7,5]);
+  c.beginPath();c.moveTo(ox+xa*u,oy-ya*u);c.lineTo(ox+xb*u,oy-yb*u);c.stroke();c.setLineDash([]);
+ }
+ const overlap=(det===0&&adjB1===0&&adjB2===0);
+ drawLine(S.a1,S.b1,S.c1,CY,false);
+ drawLine(S.a2,S.b2,S.c2,MG,overlap);
+ txt(c,"L1: "+S.a1+"x + ("+S.b1+")y = "+S.c1,30,30,CY,"bold 13px 'Cascadia Code',monospace");
+ txt(c,"L2: "+S.a2+"x + ("+S.b2+")y = "+S.c2,30,50,MG,"bold 13px 'Cascadia Code',monospace");
+ let sol=null;
+ if(det!==0){sol=[adjB1/det,adjB2/det];
+  const px=ox+sol[0]*u,py=oy-sol[1]*u;
+  c.fillStyle=YL;c.beginPath();c.arc(px,py,7,0,7);c.fill();
+  c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.arc(px,py,12,0,7);c.stroke();
+  txt(c,"("+fmt(sol[0],2)+", "+fmt(sol[1],2)+")",px+14,py-8,YL,"bold 14px 'Cascadia Code',monospace");
+ }
+ // board
+ const bx=560;let by=56;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(530,28,378,282,10);c.fill();c.stroke();
+ txt(c,"AX = B   A = ["+S.a1+" "+S.b1+"; "+S.a2+" "+S.b2+"]",bx,by,DM,"13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"|A| = "+S.a1+"·"+S.b2+" − ("+S.b1+")·"+S.a2+" = "+det,bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=28;
+ if(det!==0){
+  txt(c,"|A| ≠ 0 → UNIQUE SOLUTION!",bx,by,GR,"bold 15px 'Cascadia Code',monospace");by+=26;
+  txt(c,"adj A = ["+S.b2+"  "+(-S.b1)+";  "+(-S.a2)+"  "+S.a1+"]",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=24;
+  txt(c,"X = A⁻¹B = (adj A)B / |A|",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=24;
+  txt(c,"  = ["+adjB1+", "+adjB2+"] / ("+det+")",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=26;
+  txt(c,"x = "+fmt(sol[0],3)+",  y = "+fmt(sol[1],3),bx,by,YL,"bold 18px 'Cascadia Code',monospace");by+=28;
+  txt(c,"Lines EK point pe cross (yellow dot!)",bx,by,GR,"12px 'Cascadia Code',monospace");
+ }else if(adjB1!==0||adjB2!==0){
+  txt(c,"|A| = 0 aur (adj A)B = ["+adjB1+", "+adjB2+"] ≠ O",bx,by,RD,"bold 13px 'Cascadia Code',monospace");by+=26;
+  txt(c,"→ NO SOLUTION (inconsistent!)",bx,by,RD,"bold 16px 'Cascadia Code',monospace");by+=26;
+  txt(c,"Lines PARALLEL hain - kabhi nahi",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=22;
+  txt(c,"milengi! (same slope, alag line)",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=26;
+  txt(c,"Equations contradict: LHS same, RHS alag",bx,by,DM,"12px 'Cascadia Code',monospace");
+ }else{
+  txt(c,"|A| = 0 aur (adj A)B = [0, 0] = O",bx,by,MG,"bold 13px 'Cascadia Code',monospace");by+=26;
+  txt(c,"→ INFINITELY MANY solutions!",bx,by,MG,"bold 16px 'Cascadia Code',monospace");by+=26;
+  txt(c,"Lines COINCIDE - ek hi line dono!",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=22;
+  txt(c,"L2 = 2 × L1 (dashed = overlap)",bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=26;
+  txt(c,"Har point of line ek solution hai",bx,by,DM,"12px 'Cascadia Code',monospace");
+ }
+ document.getElementById("r3").innerHTML="|A| = <span class='hl'>"+det+"</span> → "+(det!==0?"<span class='cy'>UNIQUE: x = "+fmt(sol[0],3)+", y = "+fmt(sol[1],3)+" (X = A⁻¹B)</span>":(adjB1!==0||adjB2!==0)?"<span style='color:"+RD+"'>NO SOLUTION - parallel lines! ((adj A)B ≠ O)</span>":"<span style='color:"+MG+"'>INFINITELY MANY - coincident lines! ((adj A)B = O)</span>")+"<br><span style='color:#9fb0d8'>5-marker flow: pehle |A| dekho → non-zero to X = A⁻¹B; zero to (adj A)B check karo. Homogeneous (B=O): det ≠ 0 → sirf trivial (0,0); det = 0 → infinitely many!</span>";
+}
+return function(){draw();};
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"|3 2; 1 4| = ?",o:["14","10","−10","5"],a:1,w:"ad − bc = 3·4 − 2·1 = 12 − 2 = 10. MAIN diagonal minus OTHER diagonal - criss-cross!"},
+ {q:"3×3 expansion me position (2,3) ka sign kya hai?",o:["+ (plus)","− (minus)","Matrix pe depend karta","Hamesha 0"],a:1,w:"(−1)^(i+j) = (−1)^5 = −1. Chessboard: + − + / − + − / + − + - position (2,3) minus wali hai!"},
+ {q:"A = [a b; c d] ka adjoint?",o:["[a −b; −c d]","[d −b; −c a]","[d b; c a]","[−d b; c −a]"],a:1,w:"2×2 shortcut: diagonal SWAP (a↔d), off-diagonal signs FLIP (b→−b, c→−c) → [d −b; −c a]!"},
+ {q:"AX = B me |A| = 0 AUR (adj A)B ≠ O ho to system ka kya hoga?",o:["Unique solution","NO solution (inconsistent)","Infinitely many solutions","Sirf trivial solution"],a:1,w:"det = 0 + (adj A)B ≠ O → NO SOLUTION! (Teen cases: det≠0 → unique; det=0 & adjB≠O → none; det=0 & adjB=O → infinite/check.)"},
+ {q:"|1 2 3; 0 4 5; 0 0 6| = ?",o:["24","12","18","6"],a:0,w:"TRIANGULAR matrix! det = diagonal product = 1×4×6 = 24. First column ke 2 zeros = free terms!"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! Determinants PAKKE! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
