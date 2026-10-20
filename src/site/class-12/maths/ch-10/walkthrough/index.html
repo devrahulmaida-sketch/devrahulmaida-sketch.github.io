@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vector Algebra - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Maths - Chapter 10 - Vector Algebra</div>
+<h1>Vector Algebra Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - addition machine (triangle law!), section formula divider, dot product lab with projection, cross product + area (rotating 3D), aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Addition Machine - Triangle Law ⭐</h2>
+<p class="why">Vector = magnitude + DIRECTION. Add kaise kare: pehle vector ka HEAD doosre ki TAIL se jodo - tail-to-head RESULTANT! Components me super easy: (a₁+b₁, a₂+b₂). Sliders se dono vectors badlo - resultant, magnitude, unit vector sab LIVE!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>a⃗ = (a₁, a₂)</label><input type="range" id="vA1" min="-6" max="6" step="1" value="4"><span class="v" id="vvA1">4</span><input type="range" id="vA2" min="-6" max="6" step="1" value="2"><span class="v" id="vvA2">2</span></div>
+<div class="slrow"><label>b⃗ = (b₁, b₂)</label><input type="range" id="vB1" min="-6" max="6" step="1" value="1"><span class="v" id="vvB1">1</span><input type="range" id="vB2" min="-6" max="6" step="1" value="3"><span class="v" id="vvB2">3</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Section Formula - AB ko m:n me Baanto ⭐</h2>
+<p class="why">P, AB ko m:n (internal) me divide kare → p⃗ = (m·b⃗ + n·a⃗)/(m+n). Yaad rakho: "cross-multiply and add" - m wale ko DOOR wale point B se, n wale ko A se (ulti taraf ke weight!). m:n badlo - P segment pe slide karta dekho!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" id="sfBtns"></div>
+<div class="slrow"><label>m : n</label><input type="range" id="sfM" min="1" max="5" step="1" value="1"><span class="v" id="vsfM">1</span><span style="color:#8fa0c8">:</span><input type="range" id="sfN" min="1" max="5" step="1" value="2"><span class="v" id="vsfN">2</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Dot Product Lab - Perpendicular Test ⭐⭐</h2>
+<p class="why">a⃗·b⃗ = |a⃗||b⃗|cos θ = a₁b₁ + a₂b₂ - answer SCALAR! Perpendicular test: dot = 0 ⟺ PERPENDICULAR (sabse zyada use!). Projection = (a⃗·b⃗)/|b⃗| - a⃗ ka b⃗ pe SHADOW. Vectors ghumao - angle, dot, shadow sab LIVE!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" id="dpBtns"></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Cross Product + Area - Rotating 3D ⭐⭐</h2>
+<p class="why">a⃗×b⃗ = |a⃗||b⃗|sin θ · n̂ - ek VECTOR jo dono ke PERPENDICULAR (right-hand rule!). ANTI-commutative: a⃗×b⃗ = −(b⃗×a⃗) - SWAP button dabao, arrow FLIP dekho! |a⃗×b⃗| = parallelogram ka AREA (shaded). Parallel test: a⃗×b⃗ = 0⃗!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" id="cpBtns"></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Vectors Pakke? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: add = components alag-alag; section formula = cross-weight (m door wale se!); dot = SCALAR, dot=0 ⟺ perpendicular; cross = VECTOR perpendicular dono ke, cross=0 ⟺ parallel; |a×b| = parallelogram area; scalar triple DELETED!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Vector Basics ⭐</h3><p>Vector = magnitude + direction | |a⃗| = √(a₁²+a₂²+a₃²) | Unit: â = a⃗/|a⃗| | AB⃗ = B − A (head − tail) | î, ĵ, k̂ = axes unit vectors</p></div>
+<div class="rcard"><h3>Addition & Section Formula ⭐</h3><p>Triangle law: head-to-tail resultant | Components alag-alag add | λa⃗: magnitude |λ| guna | Section (internal m:n): p⃗ = (m·b⃗ + n·a⃗)/(m+n) - m DOOR wale se!</p></div>
+<div class="rcard"><h3>Dot Product ⭐⭐</h3><p>a⃗·b⃗ = |a⃗||b⃗|cos θ = a₁b₁+a₂b₂+a₃b₃ = SCALAR | dot = 0 ⟺ PERPENDICULAR | cos θ = (a⃗·b⃗)/(|a⃗||b⃗|) | Projection of a⃗ on b⃗ = (a⃗·b⃗)/|b⃗|</p></div>
+<div class="rcard"><h3>Cross Product ⭐⭐</h3><p>a⃗×b⃗ = |a⃗||b⃗|sin θ · n̂ = VECTOR ⊥ dono ke | Determinant: |î ĵ k̂; a; b| | ANTI-commutative: a⃗×b⃗ = −(b⃗×a⃗) | a⃗×b⃗ = 0⃗ ⟺ PARALLEL</p></div>
+<div class="rcard"><h3>Area & Tests ⭐⭐</h3><p>Parallelogram area = |a⃗×b⃗| | Triangle area = ½|a⃗×b⃗| | Collinearity: AB⃗ = λAC⃗ | Common ⊥ vector: ±(a⃗×b⃗)/|a⃗×b⃗|</p></div>
+<div class="rcard"><h3>Applications + DELETED ⭐</h3><p>Work W = F⃗·d⃗ (dot) | Torque τ⃗ = r⃗×F⃗ (cross) | î×ĵ = k̂, ĵ×k̂ = î, k̂×î = ĵ (cyclic) | DELETED: scalar triple product a⃗·(b⃗×c⃗) - ab nahi padhna!</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 10 Vector Algebra Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ============ SCENE 1: Addition machine - triangle law ============
+inits[0]=(()=>{
+const sA1=document.getElementById("vA1"),sA2=document.getElementById("vA2"),sB1=document.getElementById("vB1"),sB2=document.getElementById("vB2");
+function draw(){
+ const c=ctx("cv0");c.clearRect(0,0,920,330);
+ const a1=parseInt(sA1.value),a2=parseInt(sA2.value),b1=parseInt(sB1.value),b2=parseInt(sB2.value);
+ document.getElementById("vvA1").textContent=a1;document.getElementById("vvA2").textContent=a2;
+ document.getElementById("vvB1").textContent=b1;document.getElementById("vvB2").textContent=b2;
+ const ox=300,oy=170,u=26;
+ grid2(c,ox,oy,u);
+ const P=(x,y)=>[ox+x*u,oy-y*u];
+ // a from origin
+ let p=P(a1,a2);arrow2(c,ox,oy,p[0],p[1],CY,3.5);txt(c,"a⃗",(ox+p[0])/2-16,(oy+p[1])/2-6,CY,"bold 14px 'Cascadia Code',monospace");
+ // b from a's head (triangle law)
+ let p2=P(a1+b1,a2+b2);arrow2(c,p[0],p[1],p2[0],p2[1],MG,3.5);txt(c,"b⃗",(p[0]+p2[0])/2+8,(p[1]+p2[1])/2-6,MG,"bold 14px 'Cascadia Code',monospace");
+ // ghost b from origin (parallelogram hint)
+ let pg=P(b1,b2);c.globalAlpha=0.3;arrow2(c,ox,oy,pg[0],pg[1],MG,2);c.globalAlpha=1;
+ c.globalAlpha=0.3;arrow2(c,pg[0],pg[1],p2[0],p2[1],CY,2);c.globalAlpha=1;
+ // resultant
+ arrow2(c,ox,oy,p2[0],p2[1],YL,4.5);
+ txt(c,"a⃗+b⃗",(ox+p2[0])/2+10,(oy+p2[1])/2+16,YL,"bold 15px 'Cascadia Code',monospace");
+ c.fillStyle=YL;c.beginPath();c.arc(p2[0],p2[1],5,0,7);c.fill();
+ const r1=a1+b1,r2=a2+b2;
+ const mag=Math.hypot(r1,r2);
+ const ux=r1/mag,uy=r2/mag;
+ const bx=590;let by=64;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(575,30,330,240,10);c.fill();c.stroke();
+ txt(c,"a⃗ = ("+a1+", "+a2+")",bx,by,CY,"bold 14px 'Cascadia Code',monospace");by+=26;
+ txt(c,"b⃗ = ("+b1+", "+b2+")",bx,by,MG,"bold 14px 'Cascadia Code',monospace");by+=30;
+ txt(c,"a⃗+b⃗ = ("+a1+"+"+b1+", "+a2+"+"+b2+")",bx,by,DM,"13px 'Cascadia Code',monospace");by+=24;
+ txt(c,"       = ("+r1+", "+r2+")",bx,by,YL,"bold 16px 'Cascadia Code',monospace");by+=30;
+ txt(c,"|a⃗+b⃗| = √("+r1+"²+"+r2+"²) = "+fmt(mag,3),bx,by,"#e8e8f2","13.5px 'Cascadia Code',monospace");by+=28;
+ if(mag>0)txt(c,"unit: ("+fmt(ux,3)+", "+fmt(uy,3)+")",bx,by,GR,"13.5px 'Cascadia Code',monospace");
+ else txt(c,"RESULTANT ZERO - vectors cancel!",bx,by,RD,"bold 13px 'Cascadia Code',monospace");
+ document.getElementById("r0").innerHTML="Components alag-alag add: a⃗+b⃗ = ("+a1+"+"+b1+", "+a2+"+"+b2+") = <span class='hl'>("+r1+", "+r2+")</span>  |  magnitude = <span class='cy'>"+fmt(mag,3)+"</span><br>Triangle law: pehle vector ka HEAD doosre ki TAIL se - yellow RESULTANT tail-to-head! Faded arrows = parallelogram law (same answer!).<br><span style='color:#9fb0d8'>"+(mag===0?"Dono vectors ek dusre ko CANCEL kar rahe - resultant 0⃗!":"Unit vector = vector ko apne magnitude se divide: ("+fmt(ux,3)+", "+fmt(uy,3)+")")+"</span>";
+}
+[sA1,sA2,sB1,sB2].forEach(s=>s.oninput=()=>draw());
+return ()=>draw();
+})();
+// ============ SCENE 2: Section formula divider ============
+inits[1]=(()=>{
+const PTS=[
+ {n:"A(1,2) & B(4,8)",a:[1,2],b:[4,8]},
+ {n:"A(-2,1) & B(4,-3)",a:[-2,1],b:[4,-3]},
+ {n:"A(0,0) & B(6,6)",a:[0,0],b:[6,6]},
+ {n:"A(-4,-2) & B(5,4)",a:[-4,-2],b:[5,4]}];
+let pi=0;
+const sM=document.getElementById("sfM"),sN=document.getElementById("sfN");
+const bb=document.getElementById("sfBtns");
+PTS.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{pi=i;[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===pi));draw();};bb.appendChild(b);});
+bb.children[pi].classList.add("sel");
+function draw(){
+ const c=ctx("cv1");c.clearRect(0,0,920,330);
+ const K=PTS[pi];
+ const m=parseInt(sM.value),n=parseInt(sN.value);
+ document.getElementById("vsfM").textContent=m;document.getElementById("vsfN").textContent=n;
+ const ox=330,oy=180,u=30;
+ grid2(c,ox,oy,u);
+ const P=(x,y)=>[ox+x*u,oy-y*u];
+ const pa=P(K.a[0],K.a[1]),pb=P(K.b[0],K.b[1]);
+ // segment
+ c.strokeStyle=DM;c.lineWidth=3;c.beginPath();c.moveTo(pa[0],pa[1]);c.lineTo(pb[0],pb[1]);c.stroke();
+ // A,B markers
+ c.fillStyle=CY;c.beginPath();c.arc(pa[0],pa[1],7,0,7);c.fill();
+ txt(c,"A("+K.a[0]+","+K.a[1]+")",pa[0]-20,pa[1]+22,CY,"bold 13px 'Cascadia Code',monospace");
+ c.fillStyle=MG;c.beginPath();c.arc(pb[0],pb[1],7,0,7);c.fill();
+ txt(c,"B("+K.b[0]+","+K.b[1]+")",pb[0]-20,pb[1]-14,MG,"bold 13px 'Cascadia Code',monospace");
+ // P = (m*B + n*A)/(m+n)
+ const px=(m*K.b[0]+n*K.a[0])/(m+n),py=(m*K.b[1]+n*K.a[1])/(m+n);
+ const pp=P(px,py);
+ // colored sub-segments: A->P (n part), P->B (m part)
+ c.strokeStyle=GR;c.lineWidth=6;c.globalAlpha=0.55;c.beginPath();c.moveTo(pa[0],pa[1]);c.lineTo(pp[0],pp[1]);c.stroke();
+ c.strokeStyle=YL;c.beginPath();c.moveTo(pp[0],pp[1]);c.lineTo(pb[0],pb[1]);c.stroke();c.globalAlpha=1;
+ c.fillStyle=YL;c.shadowColor=YL;c.shadowBlur=14;c.beginPath();c.arc(pp[0],pp[1],8,0,7);c.fill();c.shadowBlur=0;
+ txt(c,"P("+fmt(px,2)+", "+fmt(py,2)+")",pp[0]+12,pp[1]-10,YL,"bold 13px 'Cascadia Code',monospace");
+ txt(c,"AP : PB = "+m+" : "+n,ox,316,DM,"bold 13px 'Cascadia Code',monospace","center");
+ // board
+ const bx=600;let by=64;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(585,30,322,250,10);c.fill();c.stroke();
+ txt(c,"p⃗ = (m·b⃗ + n·a⃗)/(m+n)",bx,by,YL,"bold 14px 'Cascadia Code',monospace");by+=30;
+ txt(c,"m="+m+" (B side), n="+n+" (A side)",bx,by,DM,"13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"x = ("+m+"×"+K.b[0]+" + "+n+"×"+K.a[0]+")/"+(m+n),bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=24;
+ txt(c,"  = "+(m*K.b[0]+n*K.a[0])+"/"+(m+n)+" = "+fmt(px,3),bx,by,CY,"bold 13.5px 'Cascadia Code',monospace");by+=26;
+ txt(c,"y = ("+m+"×"+K.b[1]+" + "+n+"×"+K.a[1]+")/"+(m+n),bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=24;
+ txt(c,"  = "+(m*K.b[1]+n*K.a[1])+"/"+(m+n)+" = "+fmt(py,3),bx,by,CY,"bold 13.5px 'Cascadia Code',monospace");by+=30;
+ txt(c,"TRICK: m DOOR wale (B) se multiply!",bx,by,GR,"bold 12px 'Cascadia Code',monospace");
+ document.getElementById("r1").innerHTML="P divides AB in <span class='hl'>"+m+" : "+n+"</span> (internal) → p⃗ = (m·b⃗ + n·a⃗)/(m+n) = <span class='hl'>("+fmt(px,3)+", "+fmt(py,3)+")</span><br>Cross-weight: m wale ko B se, n wale ko A se - ULTI taraf ke weights! (m zyada → P, B ke PAAS)<br><span style='color:#9fb0d8'>Green part : Yellow part = "+m+" : "+n+". Midpoint = special case m = n = 1!</span>";
+}
+[sM,sN].forEach(s=>s.oninput=()=>draw());
+return ()=>draw();
+})();
+// ============ SCENE 3: Dot product lab ============
+inits[2]=(()=>{
+const PAIRS=[
+ {n:"(3,4) & (2,1)",a:[3,4],b:[2,1]},
+ {n:"(4,2) & (−2,4) PERP?",a:[4,2],b:[-2,4]},
+ {n:"(3,1) & (−4,1) obtuse",a:[3,1],b:[-4,1]},
+ {n:"(2,2) & (3,3) same dir",a:[2,2],b:[3,3]},
+ {n:"(5,0) & (0,0) zero vector",a:[5,0],b:[0,0]}];
+let pi=0;
+const bb=document.getElementById("dpBtns");
+PAIRS.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{pi=i;[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===pi));draw();};bb.appendChild(b);});
+bb.children[pi].classList.add("sel");
+function draw(){
+ const c=ctx("cv2");c.clearRect(0,0,920,330);
+ const K=PAIRS[pi];
+ const ox=300,oy=185,u=34;
+ grid2(c,ox,oy,u);
+ const P=(x,y)=>[ox+x*u,oy-y*u];
+ const pa=P(K.a[0],K.a[1]),pb=P(K.b[0],K.b[1]);
+ const mb=Math.hypot(K.b[0],K.b[1]);
+ const dot=K.a[0]*K.b[0]+K.a[1]*K.b[1];
+ // projection shadow of a on b
+ if(mb>0){
+  const t=dot/(mb*mb);
+  const sh=[K.b[0]*t,K.b[1]*t];
+  const ps=P(sh[0],sh[1]);
+  c.strokeStyle=GR;c.lineWidth=2.5;c.setLineDash([6,4]);
+  c.beginPath();c.moveTo(pa[0],pa[1]);c.lineTo(ps[0],ps[1]);c.stroke();c.setLineDash([]);
+  c.fillStyle=GR;c.beginPath();c.arc(ps[0],ps[1],5,0,7);c.fill();
+  txt(c,"shadow",ps[0]+8,ps[1]+16,GR,"12px 'Cascadia Code',monospace");
+ }
+ arrow2(c,ox,oy,pa[0],pa[1],CY,3.5);txt(c,"a⃗",pa[0]+8,pa[1]-8,CY,"bold 15px 'Cascadia Code',monospace");
+ if(mb>0){arrow2(c,ox,oy,pb[0],pb[1],MG,3.5);txt(c,"b⃗",pb[0]+8,pb[1]-8,MG,"bold 15px 'Cascadia Code',monospace");}
+ else txt(c,"b⃗ = 0⃗ (zero vector - direction UNDEFINED!)",ox,oy-10,RD,"bold 13px 'Cascadia Code',monospace","center");
+ // angle arc
+ const ma=Math.hypot(K.a[0],K.a[1]);
+ if(ma>0&&mb>0){
+  const a1=Math.atan2(-(pa[1]-oy),pa[0]-ox),a2=Math.atan2(-(pb[1]-oy),pb[0]-ox);
+  let d1=a2-a1;while(d1>Math.PI)d1-=2*Math.PI;while(d1<-Math.PI)d1+=2*Math.PI;
+  c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.arc(ox,oy,42,Math.PI-a1,Math.PI-a1-d1,d1>0);c.stroke();
+ }
+ const cos=(ma>0&&mb>0)?dot/(ma*mb):NaN;
+ const th=isNaN(cos)?NaN:Math.acos(Math.max(-1,Math.min(1,cos)))*180/Math.PI;
+ let verdict,vcol;
+ if(mb===0||ma===0){verdict="Zero vector se dot = 0 - par perpendicular KEHNA galat (direction hi nahi!)";vcol=YL;}
+ else if(dot===0){verdict="dot = 0 → PERPENDICULAR! (sabse useful test)";vcol=GR;}
+ else if(dot>0){verdict="dot > 0 → ACUTE angle ("+fmt(th,1)+"°) - saath saath!";vcol=CY;}
+ else{verdict="dot < 0 → OBTUSE angle ("+fmt(th,1)+"°) - opposite jhukav!";vcol=MG;}
+ const bx=590;let by=62;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(575,30,332,250,10);c.fill();c.stroke();
+ txt(c,"a⃗·b⃗ = "+K.a[0]+"×"+K.b[0]+" + "+K.a[1]+"×"+K.b[1],bx,by,DM,"13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"      = "+(K.a[0]*K.b[0])+" + ("+(K.a[1]*K.b[1])+") = "+dot,bx,by,YL,"bold 15px 'Cascadia Code',monospace");by+=30;
+ txt(c,"|a⃗| = "+fmt(ma,3)+"  |b⃗| = "+fmt(mb,3),bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"cos θ = "+(isNaN(cos)?"undef":fmt(cos,4))+"  θ = "+(isNaN(th)?"undef":fmt(th,1)+"°"),bx,by,"#e8e8f2","13px 'Cascadia Code',monospace");by+=28;
+ if(mb>0)txt(c,"projection = dot/|b⃗| = "+fmt(dot/mb,3),bx,by,GR,"13px 'Cascadia Code',monospace");
+ txt(c,verdict,460,318,vcol,"bold 14px 'Cascadia Code',monospace","center");
+ document.getElementById("r2").innerHTML="a⃗·b⃗ = <span class='hl'>"+dot+"</span> (SCALAR - vector nahi!)  |  θ = <span class='cy'>"+(isNaN(th)?"undef":fmt(th,1)+"°")+"</span>  |  projection = <span class='cy'>"+(mb>0?fmt(dot/mb,3):"undef")+"</span><br><span style='color:"+vcol+"'>"+verdict+"</span><br><span style='color:#9fb0d8'>Green dashed = a⃗ ka b⃗ pe SHADOW. Same direction → max positive, perpendicular → 0, opposite → negative!</span>";
+}
+return ()=>draw();
+})();
+// ============ SCENE 4: Cross product + area ============
+inits[3]=(()=>{
+const CASES=[
+ {n:"î × ĵ = k̂",a:[1,0,0],b:[0,1,0]},
+ {n:"(2,1,0) × (1,3,0)",a:[2,1,0],b:[1,3,0]},
+ {n:"(1,2,2) × (2,1,−1)",a:[1,2,2],b:[2,1,-1]},
+ {n:"(1,2,3) × (2,4,6) PARALLEL?",a:[1,2,3],b:[2,4,6]}];
+let ci=0,swap=false;
+const bb=document.getElementById("cpBtns");
+CASES.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{ci=i;swap=false;[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===ci));draw();};bb.appendChild(b);});
+const swB=document.createElement("button");swB.textContent="⇄ SWAP order";swB.style.borderColor=YL;swB.style.color=YL;
+swB.onclick=()=>{swap=!swap;draw();};bb.appendChild(swB);
+bb.children[ci].classList.add("sel");
+function cross(u,v){return [u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];}
+function draw(tick){
+ const c=ctx("cv3");c.clearRect(0,0,920,330);
+ const K=CASES[ci];
+ const A=swap?K.b:K.a, B=swap?K.a:K.b;
+ const cr=cross(A,B);
+ const area=Math.hypot(...cr);
+ const th=(tick!==undefined)?tick*0.02:0.6;
+ const ox=300,oy=185,u=42;
+ drawAxes(c,ox,oy,u,th,3.6);
+ const O=[ox,oy];
+ const pA=proj(rot3(A,th),ox,oy,u),pB=proj(rot3(B,th),ox,oy,u),pAB=proj(rot3([A[0]+B[0],A[1]+B[1],A[2]+B[2]],th),ox,oy,u);
+ // parallelogram shaded
+ c.fillStyle="rgba(250,204,21,0.13)";
+ c.beginPath();c.moveTo(ox,oy);c.lineTo(pA[0],pA[1]);c.lineTo(pAB[0],pAB[1]);c.lineTo(pB[0],pB[1]);c.closePath();c.fill();
+ c.strokeStyle="rgba(250,204,21,0.5)";c.lineWidth=1.5;c.stroke();
+ arrow3(c,O,pA,CY,3.5);txt(c,swap?"b⃗":"a⃗",pA[0]+8,pA[1]-6,CY,"bold 14px 'Cascadia Code',monospace");
+ arrow3(c,O,pB,MG,3.5);txt(c,swap?"a⃗":"b⃗",pB[0]+8,pB[1]-6,MG,"bold 14px 'Cascadia Code',monospace");
+ if(area>0.01){
+  const pC2=proj(rot3(cr.map(v=>v*2.2/Math.max(...cr.map(Math.abs))),th),ox,oy,u);
+  arrow3(c,O,pC2,YL,4);
+  txt(c,(swap?"b⃗×a⃗":"a⃗×b⃗"),pC2[0]+8,pC2[1]-6,YL,"bold 14px 'Cascadia Code',monospace");
+ }else{
+  txt(c,"a⃗×b⃗ = 0⃗ → PARALLEL! (area = 0)",ox,30,RD,"bold 14px 'Cascadia Code',monospace","center");
+ }
+ // board
+ const bx=590;let by=58;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(575,26,332,262,10);c.fill();c.stroke();
+ txt(c,(swap?"b⃗×a⃗":"a⃗×b⃗")+" = ("+A.join(",")+")×("+B.join(",")+")",bx,by,YL,"bold 13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"î("+A[1]+"×"+B[2]+" − "+A[2]+"×"+B[1]+") = "+cr[0],bx,by,"#e8e8f2","12.5px 'Cascadia Code',monospace");by+=24;
+ txt(c,"ĵ("+A[2]+"×"+B[0]+" − "+A[0]+"×"+B[2]+") = "+cr[1],bx,by,"#e8e8f2","12.5px 'Cascadia Code',monospace");by+=24;
+ txt(c,"k̂("+A[0]+"×"+B[1]+" − "+A[1]+"×"+B[0]+") = "+cr[2],bx,by,"#e8e8f2","12.5px 'Cascadia Code',monospace");by+=28;
+ txt(c,"= ("+cr.join(", ")+")",bx,by,CY,"bold 15px 'Cascadia Code',monospace");by+=28;
+ txt(c,"|cross| = parallelogram AREA = "+fmt(area,3),bx,by,GR,"bold 13px 'Cascadia Code',monospace");by+=26;
+ txt(c,"triangle area = "+fmt(area/2,3),bx,by,DM,"13px 'Cascadia Code',monospace");by+=26;
+ txt(c,swap?"SWAPPED! Sign FLIP hua dekha?":"SWAP dabao - arrow FLIP hoga!",bx,by,swap?RD:YL,"bold 12px 'Cascadia Code',monospace");
+ document.getElementById("r3").innerHTML=(swap?"b⃗×a⃗":"a⃗×b⃗")+" = <span class='hl'>("+cr.join(", ")+")</span> - dono ke PERPENDICULAR vector! | <span class='cy'>area = "+fmt(area,3)+"</span>"+(area<0.01?" | <span style='color:"+RD+"'>DRs proportional → cross = 0⃗ → PARALLEL test PASS!</span>":"")+"<br><span style='color:#9fb0d8'>Determinant form: pehli row î ĵ k̂, phir components. ANTI-commutative: order ulta → sign ulta (SWAP se dekho!). Right-hand rule: fingers a⃗ se b⃗ curl, thumb = cross direction.</span>";
+}
+anims[3]=(t)=>draw(t);
+return ()=>draw(12);
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"a⃗ = (2, 3, −1), b⃗ = (1, −2, 2) ho to a⃗·b⃗ = ?",o:["6","−6","0","−2"],a:1,w:"2×1 + 3×(−2) + (−1)×2 = 2 − 6 − 2 = −6. Components multiply karke ADD - dot hamesha SCALAR!"},
+ {q:"Do NON-ZERO vectors ka dot product 0 ho to vectors kaise hain?",o:["Parallel","Perpendicular","Equal","Collinear"],a:1,w:"a⃗·b⃗ = |a⃗||b⃗|cos θ = 0 → cos θ = 0 → θ = 90° PERPENDICULAR! Sabse zyada use hone wala test."},
+ {q:"a⃗×b⃗ aur b⃗×a⃗ me kya relation hai?",o:["Dono barabar hote hain","a⃗×b⃗ = −(b⃗×a⃗)","Dono hamesha zero hain","Koi relation nahi"],a:1,w:"Cross product ANTI-commutative hai - order ulta kiya to sign ulta! (Dot product commutative tha - ye difference yaad rakho.)"},
+ {q:"a⃗ = (3, 0, 0) aur b⃗ = (0, 4, 0) se bane parallelogram ka area = ?",o:["7","1","12","6"],a:2,w:"a⃗×b⃗ = (0×0−0×4, 0×0−3×0, 3×4−0×0) = (0,0,12) → |cross| = 12 = AREA! (3×4 rectangle hi hai.)"},
+ {q:"A(1,2) aur B(4,8) ko 1:2 (internal) me divide karne wala point P?",o:["(3, 6)","(2, 4)","(2.5, 5)","(3, 5)"],a:1,w:"p⃗ = (m·b⃗ + n·a⃗)/(m+n) = (1×(4,8) + 2×(1,2))/3 = (6/3, 12/3) = (2,4). m DOOR wale (B) se multiply!"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! Vectors PAKKE! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
