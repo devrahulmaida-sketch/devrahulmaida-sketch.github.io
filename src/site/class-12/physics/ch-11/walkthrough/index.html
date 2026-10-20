@@ -212,28 +212,28 @@ function draw(t){
  txt(c,"φ = "+ph.toFixed(1)+" eV",573,318,MG,"bold 11px 'Cascadia Code',monospace","center");
  for(let k=0;k<n;k++){
   const y=100+k*45;
-  const x=((t*6+k*93)%380)+30;
+  const x=((t*6+k*93)%520)+30;
   c.fillStyle=col;c.globalAlpha=0.3;c.beginPath();c.arc(x,y,13,0,7);c.fill();c.globalAlpha=1;
   c.fillStyle=col;c.beginPath();c.arc(x,y,6,0,7);c.fill();
   if(em){
    const ex=560-((t*6+k*93)%380)+(560-30)-380+30;
    const ex2=590+(((t*5+k*61)%260));
    const sp=Math.min(1.8,0.5+Math.sqrt(K)*0.8);
-   const xx=590+(((t*4*sp+k*61)%300));
+   const xx=590+(((t*4*sp+k*61)%250));
    c.fillStyle="#22d3ee";c.beginPath();c.arc(xx,y,5,0,7);c.fill();
    txt(c,"e−",xx,y-9,CY,"10px 'Cascadia Code',monospace","center");
-   arrow2(c,xx+8,y,xx+8+Math.min(46,10+Math.sqrt(K)*22),y,YL,2);
+   arrow2(c,xx+8,y,xx+8+Math.min(40,10+Math.sqrt(K)*20),y,YL,2);
   }
  }
  txt(c,"photon E = "+fmt(E,2)+" eV",290,300,col,"bold 12px 'Cascadia Code',monospace","center");
  if(em){
-  txt(c,"EMISSION! K_max = "+fmt(K,2)+" eV",750,200,GR,"bold 14px 'Cascadia Code',monospace","center");
+  txt(c,"EMISSION! K_max = "+fmt(K,2)+" eV",750,50,GR,"bold 14px 'Cascadia Code',monospace","center");
  }else{
   txt(c,"NO EMISSION",750,190,RD,"bold 16px 'Cascadia Code',monospace","center");
   txt(c,"E < φ - intensity badhao,",750,214,DM,"11px 'Cascadia Code',monospace","center");
   txt(c,"phir bhi kuch nahi",750,230,DM,"11px 'Cascadia Code',monospace","center");
  }
- txt(c,"threshold λ₀ = "+Math.round(L0)+" nm",750,80,YL,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"threshold λ₀ = "+Math.round(L0)+" nm",750,72,YL,"bold 12px 'Cascadia Code',monospace","center");
  const ro=document.getElementById("r1");
  ro.innerHTML="E = 1240/"+sL.value+" = <span class='hl'>"+fmt(E,2)+" eV</span>, φ = "+ph.toFixed(1)+" eV, threshold λ₀ = 1240/φ = <span class='hl'>"+Math.round(L0)+" nm</span> | "+(em?"K_max = E − φ = <span class='hl'>"+fmt(K,2)+" eV</span> (V_s = "+fmt(K,2)+" V), electrons ∝ intensity "+n+" (current), K_max intensity se NAHI badhti":"E ≤ φ → <span class='hl'>NO emission</span> (f &lt; f₀), intensity "+n+" se koi fark nahi")+" | λ chhoti karo → K_max badhti";
 }
@@ -259,12 +259,12 @@ function draw(){
  if(mode===0){
   const X=v=>x0+v/1.6e15*(x1-x0),Y=k=>y0-k/6*(y0-y1);
   txt(c,"K_max (eV)",x0+6,y1+10,DM,"11px 'Cascadia Code',monospace");
-  txt(c,"f (Hz)",x1-4,y0+22,DM,"11px 'Cascadia Code',monospace","right");
+  txt(c,"f (Hz)",x1-4,y0+30,DM,"11px 'Cascadia Code',monospace","right");
   for(let k=1;k<=5;k++){c.strokeStyle="#1a1a33";c.lineWidth=1;c.beginPath();c.moveTo(x0,Y(k));c.lineTo(x1,Y(k));c.stroke();txt(c,""+k,x0-8,Y(k)+4,DM,"10px 'Cascadia Code',monospace","right");}
   for(let k=0;k<=1.5;k+=0.5){txt(c,k.toFixed(1)+"e15",X(k*1e15),y0+14,DM,"10px 'Cascadia Code',monospace","center");}
   c.strokeStyle=MG;c.lineWidth=3;c.beginPath();c.moveTo(X(f0),y0);c.lineTo(X(1.6e15),Y(Math.min(6,HE*1.6e15-ph)));c.stroke();
   c.fillStyle=YL;c.beginPath();c.arc(X(f0),y0,5,0,7);c.fill();
-  txt(c,"f₀ = "+fmt(f0/1e15,2)+"e15",Math.min(X(f0)+8,520),y0-8,YL,"bold 11px 'Cascadia Code',monospace");
+  txt(c,"f₀ = "+fmt(f0/1e15,2)+"e15",X(f0)-8,y0-8,YL,"bold 11px 'Cascadia Code',monospace","right");
   txt(c,"slope = h (sab metals me SAME)",x0+300,y1+30,MG,"bold 12px 'Cascadia Code',monospace","center");
   txt(c,"K_max = hf − φ",x0+300,y1+52,"#aab4d8","12px 'Cascadia Code',monospace","center");
   if(em){c.fillStyle=CY;c.beginPath();c.arc(X(f),Y(K),7,0,7);c.fill();
@@ -277,7 +277,7 @@ function draw(){
  }else{
   const X=v=>335+v*53,Y=i=>y0-i/2*(y0-y1);
   txt(c,"photocurrent I",x0+6,y1+10,DM,"11px 'Cascadia Code',monospace");
-  txt(c,"collector voltage V",x1-4,y0+22,DM,"11px 'Cascadia Code',monospace","right");
+  txt(c,"collector voltage V",x1-4,y0+30,DM,"11px 'Cascadia Code',monospace","right");
   for(let v=-4;v<=4;v+=2){txt(c,""+v,X(v),y0+14,DM,"10px 'Cascadia Code',monospace","center");}
   c.strokeStyle="#2d2d52";c.lineWidth=1;c.beginPath();c.moveTo(X(0),y1);c.lineTo(X(0),y0);c.stroke();
   const Vs=em?K:0;
@@ -286,10 +286,11 @@ function draw(){
    c.stroke();c.setLineDash([]);};
   if(em){
    cv(2,MG,[6,5]);cv(1,CY,[]);
-   txt(c,"intensity 2× (dashed): saturation double, V_s SAME",x0+300,y1+16,MG,"11px 'Cascadia Code',monospace","center");
-   txt(c,"intensity 1× (solid)",x0+300,y1+34,CY,"11px 'Cascadia Code',monospace","center");
+   txt(c,"2× intensity (dashed): sat double",84,70,MG,"11px 'Cascadia Code',monospace","left");
+   txt(c,"1× intensity (solid)",84,88,CY,"11px 'Cascadia Code',monospace","left");
+   txt(c,"V_s dono me SAME",84,106,YL,"11px 'Cascadia Code',monospace","left");
    c.fillStyle=YL;c.beginPath();c.arc(X(-Vs),y0,6,0,7);c.fill();
-   txt(c,"−V_s = −"+fmt(Vs,2)+" V",Math.max(X(-Vs)-4,x0+60),y0-12,YL,"bold 11px 'Cascadia Code',monospace","left");
+   txt(c,"−V_s = −"+fmt(Vs,2)+" V",Math.max(X(-Vs),122),y0+30,YL,"bold 11px 'Cascadia Code',monospace","center");
    txt(c,"saturation",X(4.2),Y(1)-8,CY,"10px 'Cascadia Code',monospace","center");
   }else{
    cv(1,RD,[]);
