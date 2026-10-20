@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrices - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Maths - Chapter 2 - Inverse Trigonometric Functions</div>
+<h1>Inverse Trig Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - branch explorer, principal value machine, fold-trap lab, all-6 branch chart, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Branch Explorer - Answer Ka Ghar ⭐⭐</h2>
+<p class="why">Inverse trig = VALUE se ANGLE wapas. Par har value ke infinite angles hote hain (sin periodic!) - isliye domain RESTRICT karke function ko one-one banate hain. Jo angle PRINCIPAL BRANCH se aata hai, wahi answer! Function chuno, x slider ghumao - curve pe point aur uska branch-ke-andar answer dekho. sin⁻¹x ≠ 1/sin x yaad rakho!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow" id="fnBtns"><button data-f="sin" class="sel">sin⁻¹</button><button data-f="cos">cos⁻¹</button><button data-f="tan">tan⁻¹</button></div>
+<div class="slrow"><label>x</label><input type="range" id="bx" min="-1" max="1" step="0.05" value="0.5"><span class="v" id="vbx">0.50</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Principal Value Machine - Standard Values ⭐</h2>
+<p class="why">Board exam ka bread-and-butter: standard values ke principal values. Method: pehle angle socho jiska sin/cos/tan ye value ho → phir BRANCH check karo → wahi answer (radians me!). Buttons dabao - teeno functions ka answer ek saath gauges pe dekho. Negative inputs pe dhyan: cos⁻¹ alag behave karta hai (π − cos⁻¹x)!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" id="pvBtns"></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Fold Trap Lab - sin⁻¹(sin θ) ≠ θ! ⭐⭐</h2>
+<p class="why">Sabse zyada marks katne wala trap: sin⁻¹(sin θ) = θ SIRF jab θ khud branch [−π/2, π/2] me ho. Bahar ho toh answer FOLD ho jaata hai - magenta curve dekho, wo zigzag hai! θ slider ko 90° se aage ghumao aur fold ko LIVE dekho. Highlighted band = principal branch. cos⁻¹(cos θ) ka bhi yahi scene hai, branch [0, π] ke saath.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>θ</label><input type="range" id="thS" min="-180" max="360" step="5" value="120"><span class="v" id="vthS">120°</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. All-6 Branch Chart - Poora Parivaar ⭐⭐</h2>
+<p class="why">6 functions, 6 branches - ek hi jagah yaad karo. sin⁻¹, cos⁻¹, tan⁻¹ toh pakke, par cot⁻¹ (domain R, branch (0,π)), sec⁻¹ aur cosec⁻¹ (|x| ≥ 1, beech ka gap!) bhi aate hain. Har button pe curve, domain, branch aur SHAPE dekho: sin⁻¹ increasing ↑, cos⁻¹ decreasing ↓, tan⁻¹ S-shape. Excluded points pe bracket OPEN!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" id="b6Btns"></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Inverse Trig Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: branches (sin⁻¹ [−π/2,π/2], cos⁻¹ [0,π], tan⁻¹ (−π/2,π/2), cot⁻¹ (0,π) domain R, sec⁻¹ [0,π]−{π/2}, cosec⁻¹ [−π/2,π/2]−{0}); evaluation = angle socho → branch check; negative: sin⁻¹(−x)=−sin⁻¹x, cos⁻¹(−x)=π−cos⁻¹x; sin⁻¹(sin θ)=θ sirf branch ke andar; elementary properties DELETED!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Concept ⭐</h3><p>Inverse = value se angle | Domain restrict karke one-one banate (tabhi inverse FUNCTION!) | sin⁻¹x ≠ 1/sin x | Principal value = branch ke andar wala answer | Answer radians me</p></div>
+<div class="rcard"><h3>Branches ⭐⭐</h3><p>sin⁻¹: [−π/2, π/2], domain [−1,1] | cos⁻¹: [0, π], domain [−1,1] | tan⁻¹: (−π/2, π/2), domain R</p></div>
+<div class="rcard"><h3>Branches 2 ⭐</h3><p>cot⁻¹: (0, π), domain R (0, π EXCLUDED!) | sec⁻¹: [0, π] − {π/2}, domain |x| ≥ 1 | cosec⁻¹: [−π/2, π/2] − {0}, domain |x| ≥ 1</p></div>
+<div class="rcard"><h3>Evaluation ⭐</h3><p>Angle socho → BRANCH check karo → wahi principal value | Negative input: sin⁻¹(−x) = −sin⁻¹x, tan⁻¹(−x) = −tan⁻¹x, cos⁻¹(−x) = π − cos⁻¹x | Standard values (1/2, √2/2, √3/2, 0, ±1) ratti honi chahiye!</p></div>
+<div class="rcard"><h3>Fold Trap ⭐⭐</h3><p>sin⁻¹(sin θ) = θ SIRF θ ∈ [−π/2, π/2] | Bahar ho → equivalent branch angle (fold!) | cos⁻¹(cos θ) = θ sirf θ ∈ [0, π] | Ye trap har saal marks kaat-ta hai!</p></div>
+<div class="rcard"><h3>Syllabus + Shapes ⭐</h3><p>Elementary properties (identities) DELETED - mat padho! | Focus: domain/range + principal values | Shapes: sin⁻¹ ↑ increasing, cos⁻¹ ↓ decreasing, tan⁻¹ S-shape (asymptotes ±π/2)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 2 Inverse Trigonometric Functions Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ---- inverse trig shared helpers ----
+const PI=Math.PI;
+function pf(v){ // pi-fraction formatter
+ const fr=[[0,"0"],[1/6,"π/6"],[1/4,"π/4"],[1/3,"π/3"],[1/2,"π/2"],[2/3,"2π/3"],[3/4,"3π/4"],[5/6,"5π/6"],[1,"π"],[-1/6,"−π/6"],[-1/4,"−π/4"],[-1/3,"−π/3"],[-1/2,"−π/2"],[-2/3,"−2π/3"],[-3/4,"−3π/4"],[-5/6,"−5π/6"],[-1,"−π"]];
+ for(const f of fr)if(Math.abs(v/PI-f[0])<0.004)return f[1];
+ return fmt(v,3);
+}
+function dg(v){return Math.round(v*180/PI)+"°";}
+// fn table: name, label, dom, view {xmin,xmax,ymin,ymax}, f(x), branch label
+const FNS={
+ sin:{lb:"sin⁻¹",dom:[-1,1],v:{xmin:-1.35,xmax:1.35,ymin:-1.9,ymax:1.9},f:x=>Math.asin(x),br:"[−π/2, π/2]",mono:"increasing ↑"},
+ cos:{lb:"cos⁻¹",dom:[-1,1],v:{xmin:-1.35,xmax:1.35,ymin:-0.55,ymax:3.6},f:x=>Math.acos(x),br:"[0, π]",mono:"decreasing ↓"},
+ tan:{lb:"tan⁻¹",dom:[-5,5],v:{xmin:-5.4,xmax:5.4,ymin:-1.9,ymax:1.9},f:x=>Math.atan(x),br:"(−π/2, π/2)",mono:"increasing ↑, S-shape"}};
+// ============ SCENE 1: Branch explorer ============
+inits[0]=(()=>{
+let fn="sin";const sl=document.getElementById("bx");
+function draw(){
+ const c=ctx("cv0");c.clearRect(0,0,920,330);
+ const F=FNS[fn],V=F.v;
+ let x=parseFloat(sl.value);
+ x=Math.min(F.dom[1],Math.max(F.dom[0],x));
+ document.getElementById("vbx").textContent=fmt(x,2);
+ const ox=460,oy=165;
+ const u=430/Math.max(Math.abs(V.xmin),V.xmax),v=140/Math.max(Math.abs(V.ymin),V.ymax);
+ // grid + axes
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=Math.ceil(V.xmin);i<=Math.floor(V.xmax);i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();}
+ for(let j=-3;j<=3;j++){if(j*PI/2>V.ymin-0.1&&j*PI/2<V.ymax+0.1){c.beginPath();c.moveTo(20,oy-j*PI/2*v);c.lineTo(900,oy-j*PI/2*v);c.stroke();
+  txt(c,pf(j*PI/2),8,oy-j*PI/2*v+4,DM,"11px 'Cascadia Code',monospace");}}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+ // tan asymptotes
+ if(fn==="tan"){c.strokeStyle=YL;c.lineWidth=1.2;c.setLineDash([6,5]);
+  c.beginPath();c.moveTo(20,oy-PI/2*v);c.lineTo(900,oy-PI/2*v);c.stroke();
+  c.beginPath();c.moveTo(20,oy+PI/2*v);c.lineTo(900,oy+PI/2*v);c.stroke();c.setLineDash([]);
+  txt(c,"asymptote y = π/2",640,oy-PI/2*v-7,YL,"12px 'Cascadia Code',monospace");
+  txt(c,"asymptote y = −π/2",640,oy+PI/2*v+15,YL,"12px 'Cascadia Code',monospace");}
+ // curve
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();let first=true;
+ for(let px=30;px<=890;px+=3){const xx=(px-ox)/u;if(xx<F.dom[0]-0.001||xx>F.dom[1]+0.001)continue;
+  const yy=F.f(xx);const py=oy-yy*v;
+  if(first){c.moveTo(px,py);first=false;}else c.lineTo(px,py);}
+ c.stroke();
+ // point + dashed guides
+ const y=F.f(x),px=ox+x*u,py=oy-y*v;
+ c.strokeStyle=MG;c.lineWidth=1.3;c.setLineDash([4,4]);
+ c.beginPath();c.moveTo(px,oy);c.lineTo(px,py);c.stroke();
+ c.beginPath();c.moveTo(ox,py);c.lineTo(px,py);c.stroke();c.setLineDash([]);
+ c.fillStyle=YL;c.beginPath();c.arc(px,py,7,0,7);c.fill();c.strokeStyle="#0a0a14";c.lineWidth=2;c.stroke();
+ txt(c,"x = "+fmt(x,2),px,oy+(py<oy?22:-12),MG,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,F.lb+"("+fmt(x,2)+") = "+pf(y),Math.min(Math.max(px,200),660),py+(py<40?22:-12),YL,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"x →",870,oy-8,DM,"12px 'Cascadia Code',monospace");
+ txt(c,"y",ox+10,24,DM,"12px 'Cascadia Code',monospace");
+ document.getElementById("r0").innerHTML=
+  "<span class='hl'>"+F.lb+"("+fmt(x,2)+") = "+pf(y)+" rad = "+dg(y)+"</span>  |  Domain (input x): <span class='hl'>["+F.dom[0]+", "+F.dom[1]+"]</span>  |  Principal branch (answer): <span class='hl'>"+F.br+"</span>  |  Graph: "+F.mono+". Answer HAMESHA is branch ke andar - isliye inverse FUNCTION ban paata hai!";
+}
+function setFn(f){fn=f;const F=FNS[f];sl.min=F.dom[0];sl.max=F.dom[1];sl.step=(f==="tan")?0.1:0.05;
+ let x=parseFloat(sl.value);x=Math.min(F.dom[1],Math.max(F.dom[0],x));sl.value=x;
+ document.querySelectorAll("#fnBtns button").forEach(b=>b.classList.toggle("sel",b.dataset.f===f));draw();}
+document.querySelectorAll("#fnBtns button").forEach(b=>b.onclick=()=>setFn(b.dataset.f));
+sl.oninput=draw;
+return function(){setFn(fn);};
+})();
+// ============ SCENE 2: Principal value machine ============
+inits[1]=(()=>{
+const VALS=[["0",0],["1/2",0.5],["√2/2",Math.SQRT1_2],["√3/2",Math.sqrt(3)/2],["1",1],["−1/2",-0.5],["−√2/2",-Math.SQRT1_2],["−√3/2",-Math.sqrt(3)/2],["−1",-1]];
+let cur=1;
+function gauge(c,y,lo,hi,val,col,lb){
+ const x0=70,x1=850,w=x1-x0;
+ txt(c,lb,8,y+5,col,"bold 14px 'Cascadia Code',monospace");
+ c.strokeStyle="#2d2d52";c.lineWidth=6;c.lineCap="round";
+ c.beginPath();c.moveTo(x0,y);c.lineTo(x1,y);c.stroke();c.lineCap="butt";
+ for(let k=Math.ceil(lo*6/PI);k<=Math.floor(hi*6/PI);k++){
+  const a=k*PI/6,px=x0+(a-lo)/(hi-lo)*w;
+  c.strokeStyle=DM;c.lineWidth=1.5;c.beginPath();c.moveTo(px,y-8);c.lineTo(px,y+8);c.stroke();
+  txt(c,pf(a),px,y+22,DM,"10px 'Cascadia Code',monospace","center");}
+ const px=x0+(val-lo)/(hi-lo)*w;
+ c.fillStyle=col;c.beginPath();c.arc(px,y,9,0,7);c.fill();c.strokeStyle="#0a0a14";c.lineWidth=2;c.stroke();
+ txt(c,pf(val),px,y-16,col,"bold 13px 'Cascadia Code',monospace","center");}
+function draw(){
+ const c=ctx("cv1");c.clearRect(0,0,920,330);
+ const x=VALS[cur][1],xl=VALS[cur][0];
+ txt(c,"x = "+xl,20,28,YL,"bold 17px 'Cascadia Code',monospace");
+ gauge(c,95,-PI/2,PI/2,Math.asin(x),CY,"sin⁻¹");
+ gauge(c,195,0,PI,Math.acos(x),MG,"cos⁻¹");
+ gauge(c,295,-PI/2,PI/2,Math.atan(x),GR,"tan⁻¹");
+ const s=Math.asin(x),co=Math.acos(x),t=Math.atan(x);
+ document.getElementById("r1").innerHTML=
+  "sin⁻¹("+xl+") = <span class='hl'>"+pf(s)+" = "+dg(s)+"</span>  |  cos⁻¹("+xl+") = <span class='hl'>"+pf(co)+" = "+dg(co)+"</span>  |  tan⁻¹("+xl+") = <span class='hl'>"+pf(t)+" = "+dg(t)+"</span><br>"+
+  (x<0?"NEGATIVE input: sin⁻¹(−x) = −sin⁻¹x, tan⁻¹(−x) = −tan⁻¹x (odd!) par cos⁻¹(−x) = <span class='hl'>π − cos⁻¹x</span> (kyunki cos⁻¹ ka branch [0,π] hai!).":
+  x===0?"Zero sabka apna-apna: sin⁻¹ 0 = 0, cos⁻¹ 0 = π/2, tan⁻¹ 0 = 0 - branches ke hisaab se!":
+  "Method: angle socho jiska sin/cos/tan ye value ho → phir BRANCH check karo → wahi principal value!");
+}
+const bb=document.getElementById("pvBtns");
+VALS.forEach((v,i)=>{const b=document.createElement("button");b.textContent=v[0];b.onclick=()=>{cur=i;
+ [...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===i));draw();};bb.appendChild(b);});
+return function(){bb.children[cur].classList.add("sel");draw();};
+})();
+// ============ SCENE 3: Fold trap lab - sin⁻¹(sin θ) ============
+inits[2]=(()=>{
+const sl=document.getElementById("thS");
+function draw(){
+ const c=ctx("cv2");c.clearRect(0,0,920,330);
+ const thd=parseInt(sl.value),th=thd*PI/180;
+ document.getElementById("vthS").textContent=thd+"°";
+ const xmin=-PI,xmax=2*PI,ymin=-2,ymax=2.2;
+ const ox=60+(0-xmin)/(xmax-xmin)*800,oy=165;
+ const u=800/(xmax-xmin),v=64;
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let k=-1;k<=2;k++){const px=ox+k*PI*u;c.beginPath();c.moveTo(px,10);c.lineTo(px,320);c.stroke();
+  txt(c,pf(k*PI),px,oy+14,DM,"11px 'Cascadia Code',monospace","center");}
+ for(let j=-1;j<=1;j++){c.beginPath();c.moveTo(20,oy-j*v);c.lineTo(900,oy-j*v);c.stroke();}
+ // branch band highlight on θ-axis
+ c.fillStyle="rgba(34,211,238,0.10)";c.fillRect(ox-PI/2*u,12,PI*u,306);
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+ txt(c,"θ →",868,oy-8,DM,"12px 'Cascadia Code',monospace");
+ // sin curve
+ c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();
+ for(let px=60;px<=860;px+=3){const t=(px-ox)/u;c.lineTo(px,oy-Math.sin(t)*v);}c.stroke();
+ txt(c,"sin θ",ox+1.25*PI*u,oy+1*v-6,CY,"bold 13px 'Cascadia Code',monospace");
+ // fold curve sin⁻¹(sin θ)
+ c.strokeStyle=MG;c.lineWidth=3;c.beginPath();
+ for(let px=60;px<=860;px+=3){const t=(px-ox)/u;c.lineTo(px,oy-Math.asin(Math.sin(t))*v);}c.stroke();
+ txt(c,"sin⁻¹(sin θ)",ox-0.28*PI*u,oy-1.62*v,MG,"bold 13px 'Cascadia Code',monospace");
+ // current θ markers
+ const px=ox+th*u;
+ const s1=Math.sin(th),s2=Math.asin(Math.sin(th));
+ c.strokeStyle=YL;c.lineWidth=1.2;c.setLineDash([5,5]);
+ c.beginPath();c.moveTo(px,14);c.lineTo(px,318);c.stroke();c.setLineDash([]);
+ c.fillStyle=CY;c.beginPath();c.arc(px,oy-s1*v,6,0,7);c.fill();
+ c.fillStyle=MG;c.beginPath();c.arc(px,oy-s2*v,6,0,7);c.fill();
+ const inBr=th>=-PI/2-1e-9&&th<=PI/2+1e-9;
+ txt(c,"θ = "+thd+"°",px,30,YL,"bold 13px 'Cascadia Code',monospace","center");
+ document.getElementById("r2").innerHTML=
+  "θ = <span class='hl'>"+thd+"° ("+pf(th)+")</span>  |  sin θ = "+fmt(s1,3)+"  |  sin⁻¹(sin θ) = <span class='hl'>"+pf(s2)+" = "+dg(s2)+"</span>  "+
+  (inBr?"= θ ✓ - θ branch ke ANDAR hai, fold nahi hua!":"≠ θ ✗ - θ branch [−π/2, π/2] ke BAHAR, answer FOLD ho ke "+pf(s2)+" aa gaya!")+
+  "<br>TRAPS: sin⁻¹x ≠ 1/sin x (ye (sin x)⁻¹ NAHI!)  |  sin⁻¹(sin θ) = θ SIRF jab θ ∈ [−π/2, π/2]  |  cos⁻¹(cos θ) = θ sirf jab θ ∈ [0, π]";
+}
+sl.oninput=draw;
+return draw;
+})();
+// ============ SCENE 4: All-6 branch chart ============
+inits[3]=(()=>{
+const F6={
+ "sin⁻¹":{f:x=>Math.asin(x),dom:[[-1,1]],v:{xmin:-1.5,xmax:1.5,ymin:-1.9,ymax:1.9},rng:"[−π/2, π/2]",dm:"[−1, 1]",sh:"increasing ↑",note:"sin ko [−π/2, π/2] pe restrict kiya"},
+ "cos⁻¹":{f:x=>Math.acos(x),dom:[[-1,1]],v:{xmin:-1.5,xmax:1.5,ymin:-0.55,ymax:3.6},rng:"[0, π]",dm:"[−1, 1]",sh:"decreasing ↓",note:"cos ko [0, π] pe restrict kiya"},
+ "tan⁻¹":{f:x=>Math.atan(x),dom:[[-6,6]],v:{xmin:-6.4,xmax:6.4,ymin:-1.9,ymax:1.9},rng:"(−π/2, π/2)",dm:"R (saare reals!)",sh:"increasing ↑, S-shape",note:"tan ko (−π/2, π/2) pe restrict kiya - asymptotes ±π/2"},
+ "cot⁻¹":{f:x=>PI/2-Math.atan(x),dom:[[-6,6]],v:{xmin:-6.4,xmax:6.4,ymin:-0.55,ymax:3.6},rng:"(0, π)",dm:"R (saare reals!)",sh:"decreasing ↓",note:"cot ko (0, π) pe restrict kiya - 0 aur π EXCLUDED (open!)"},
+ "sec⁻¹":{f:x=>Math.acos(1/x),dom:[[-6,-1],[1,6]],v:{xmin:-6.4,xmax:6.4,ymin:-0.55,ymax:3.6},rng:"[0, π] − {π/2}",dm:"(−∞, −1] ∪ [1, ∞)",sh:"2 branches",note:"sec ko [0, π/2) ∪ (π/2, π] pe - π/2 EXCLUDED (sec undefined!)"},
+ "cosec⁻¹":{f:x=>Math.asin(1/x),dom:[[-6,-1],[1,6]],v:{xmin:-6.4,xmax:6.4,ymin:-1.9,ymax:1.9},rng:"[−π/2, π/2] − {0}",dm:"(−∞, −1] ∪ [1, ∞)",sh:"2 branches",note:"cosec ko [−π/2, 0) ∪ (0, π/2] pe - 0 EXCLUDED"}};
+let fn="sin⁻¹";
+function draw(){
+ const c=ctx("cv3");c.clearRect(0,0,920,330);
+ const F=F6[fn],V=F.v;
+ const ox=460,oy=165;
+ const u=430/Math.max(Math.abs(V.xmin),V.xmax),v=140/Math.max(Math.abs(V.ymin),V.ymax);
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=Math.ceil(V.xmin);i<=Math.floor(V.xmax);i++){if(!i)continue;c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();}
+ for(let k=-1;k<=2;k++){if(k*PI/2>V.ymin-0.05&&k*PI/2<V.ymax+0.05){c.beginPath();c.moveTo(20,oy-k*PI/2*v);c.lineTo(900,oy-k*PI/2*v);c.stroke();
+  txt(c,pf(k*PI/2),8,oy-k*PI/2*v+4,DM,"11px 'Cascadia Code',monospace");}}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+ txt(c,"x →",870,oy-8,DM,"12px 'Cascadia Code',monospace");
+ // asymptote dashes for tan/cot
+ if(fn==="tan⁻¹"||fn==="cot⁻¹"){c.strokeStyle=YL;c.lineWidth=1.1;c.setLineDash([5,5]);
+  const ys=fn==="tan⁻¹"?[PI/2,-PI/2]:[0,PI];
+  ys.forEach(a=>{c.beginPath();c.moveTo(20,oy-a*v);c.lineTo(900,oy-a*v);c.stroke();});c.setLineDash([]);}
+ // curves (one stroke per domain interval)
+ c.strokeStyle=CY;c.lineWidth=3;
+ F.dom.forEach(D=>{c.beginPath();let first=true;
+  for(let px=30;px<=890;px+=2){const xx=(px-ox)/u;if(xx<D[0]||xx>D[1])continue;
+   const yy=F.f(xx);if(!isFinite(yy))continue;
+   if(first){c.moveTo(px,oy-yy*v);first=false;}else c.lineTo(px,oy-yy*v);}
+  c.stroke();});
+ // domain gap shading for sec/cosec
+ if(F.dom.length>1){c.fillStyle="rgba(248,113,113,0.10)";
+  const g0=ox+F.dom[0][1]*u,g1=ox+F.dom[1][0]*u;
+  c.fillRect(g0,12,g1-g0,306);
+  txt(c,"|x| < 1: domain me NAHI",ox,300,RD,"12px 'Cascadia Code',monospace","center");}
+ txt(c,fn+" x",ox+8,26,CY,"bold 16px 'Cascadia Code',monospace");
+ document.getElementById("r3").innerHTML=
+  "<span class='hl'>"+fn+" x</span>  |  Domain: <span class='hl'>"+F.dm+"</span>  |  Principal branch (range): <span class='hl'>"+F.rng+"</span>  |  Shape: <span class='hl'>"+F.sh+"</span><br>"+F.note+" - taaki function ONE-ONE ban jaaye aur inverse exist kare!";
+}
+const bb=document.getElementById("b6Btns");
+Object.keys(F6).forEach(k=>{const b=document.createElement("button");b.textContent=k+" x";b.onclick=()=>{fn=k;
+ [...bb.children].forEach(x=>x.classList.toggle("sel",x.textContent===k+" x"));draw();};bb.appendChild(b);});
+return function(){bb.children[0].classList.add("sel");fn="sin⁻¹";draw();};
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"sin⁻¹(1/2) ki principal value kya hai?",o:["π/6","5π/6","−π/6","π/3"],a:0,w:"sin(π/6) = 1/2 aur π/6 branch [−π/2, π/2] me hai ✓. 5π/6 pe bhi sin = 1/2, par wo branch ke BAHAR - isliye answer sirf π/6!"},
+ {q:"cos⁻¹(−1/2) ki principal value kya hai?",o:["π/3","−π/3","2π/3","5π/6"],a:2,w:"cos⁻¹ ka branch [0, π] - negative aaye toh π − cos⁻¹(1/2) = π − π/3 = 2π/3. −π/3 branch me hi nahi!"},
+ {q:"sin⁻¹(sin(2π/3)) = ?",o:["2π/3","π/3","−π/3","5π/6"],a:1,w:"TRAP! 2π/3 branch [−π/2, π/2] ke BAHAR hai. sin(2π/3) = sin(π/3) = √3/2, toh sin⁻¹ FOLD karke π/3 deta hai - 2π/3 nahi!"},
+ {q:"cot⁻¹x ka domain aur principal value branch kya hai?",o:["domain [−1,1], branch (0,π)","domain R, branch (0,π)","domain R, branch [−π/2,π/2]","domain R−{0}, branch (0,π)"],a:1,w:"cot⁻¹ POORI R pe defined hai (har real x ke liye!), branch (0, π) - 0 aur π EXCLUDED kyunki wahan cot undefined hai."},
+ {q:"New NCERT syllabus me is chapter se kya DELETED hua hai?",o:["Principal value branches","Elementary properties (identities)","sin⁻¹, cos⁻¹, tan⁻¹ ke graphs","Domain restriction concept"],a:1,w:"Elementary properties/identities DELETED! Ab focus sirf: domain/range, principal value branches, aur evaluation. Yaad rakho: sin⁻¹ ↑, cos⁻¹ ↓, tan⁻¹ S-shape!"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! Inverse Trig PAKKA! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
