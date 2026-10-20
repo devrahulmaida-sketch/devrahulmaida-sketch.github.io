@@ -177,7 +177,7 @@ function draw(t){
  txt(c,"θ="+(th*180/Math.PI).toFixed(0)+"°",ox+58*Math.cos(th/2),oy-58*Math.sin(th/2)+4,YL,"13px 'Cascadia Code',monospace","center");
  // F direction: out of page (dot) or into page (cross); q(vxB): for v along +x, B above, vxB out of page (+z)
  const out=qpos?(Math.sin(th)>=0):(Math.sin(th)<0);
- const fx=650,fy=170,rad=26+150*Math.min(1,F/1.6e-12);
+ const fx=650,fy=170,rad=26+55*Math.min(1,F/1.6e-12);
  c.strokeStyle=CY;c.lineWidth=4;c.beginPath();c.arc(fx,fy,Math.max(26,rad),0,7);c.stroke();
  if(out){c.fillStyle=CY;c.beginPath();c.arc(fx,fy,7,0,7);c.fill();}
  else{c.strokeStyle=CY;c.lineWidth=4;c.beginPath();c.moveTo(fx-10,fy-10);c.lineTo(fx+10,fy+10);c.moveTo(fx+10,fy-10);c.lineTo(fx-10,fy+10);c.stroke();}
@@ -240,7 +240,7 @@ function draw(t){
  const hx=430,hw=460,hy=175,hr=Math.min(80,rp*0.7);
  txt(c,"side view - helix",hx+hw/2,40,DM,"12px 'Cascadia Code',monospace","center");
  c.strokeStyle="#2d2d52";c.lineWidth=1;c.beginPath();c.moveTo(hx,hy);c.lineTo(hx+hw,hy);c.stroke();
- if(rp>3){
+ if(rp>3&&pitch>=0.05){
   c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();
   const pitchPx=Math.min(90,pitch*9);
   for(let x=0;x<=hw;x+=2){const ph2=x/Math.max(20,pitchPx)*Math.PI;const y=hy-hr*Math.sin(ph2);if(x===0)c.moveTo(hx+x,y);else c.lineTo(hx+x,y);}
@@ -249,6 +249,11 @@ function draw(t){
   const dph=dh/Math.max(20,pitchPx)*Math.PI;
   c.fillStyle=YL;c.beginPath();c.arc(hx+dh,hy-hr*Math.sin(dph),6,0,7);c.fill();
   txt(c,"pitch = "+pitch.toFixed(2),hx+hw/2,hy+hr+35,MG,"13px 'Cascadia Code',monospace","center");
+ } else if(rp>3){
+  const vx=hx+hw/2;
+  c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();c.moveTo(vx,hy-hr);c.lineTo(vx,hy+hr);c.stroke();
+  c.fillStyle=YL;c.beginPath();c.arc(vx,hy-hr*Math.sin(t*0.15),6,0,7);c.fill();
+  txt(c,"pitch = 0 → side se sirf up-down dikhta (circle hi hai)",hx+hw/2,hy+hr+35,MG,"13px 'Cascadia Code',monospace","center");
  } else {
   c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();c.moveTo(hx,hy);c.lineTo(hx+hw,hy);c.stroke();
   const dh=(t*3)%hw;c.fillStyle=YL;c.beginPath();c.arc(hx+dh,hy,6,0,7);c.fill();
