@@ -183,7 +183,7 @@ function draw(t){
  txt(c,"Field lines: BAHAR N se S, ANDAR S se N - CLOSED LOOPS!",460,24,"#aab4d8","bold 13px 'Cascadia Code',monospace","center");
  if(!broken){
   const cx=460,cy=170;
-  [130,175,220].forEach(C=>fieldLine(cx,cy,C,CY));
+  [65,95,125].forEach(C=>fieldLine(cx,cy,C,CY));
   arrow2(c,570,cy,636,cy,YL,3);
   arrow2(c,350,cy,284,cy,YL,3);
   magnet(360,cy,200);
@@ -192,7 +192,7 @@ function draw(t){
  }else{
   [[300,130],[560,130]].forEach(([px,len],idx)=>{
    const cx=px+len/2,cy=170;
-   [78,110,142].forEach(C=>fieldLine(cx,cy,C,CY));
+   [55,80,105].forEach(C=>fieldLine(cx,cy,C,CY));
    arrow2(c,px+len+10,cy,px+len+52,cy,YL,3);
    arrow2(c,px-10,cy,px-52,cy,YL,3);
    magnet(px,cy,len);
