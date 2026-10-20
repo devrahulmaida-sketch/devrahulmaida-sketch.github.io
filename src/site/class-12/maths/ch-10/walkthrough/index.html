@@ -274,7 +274,7 @@ function draw(){
  if(ma>0&&mb>0){
   const a1=Math.atan2(-(pa[1]-oy),pa[0]-ox),a2=Math.atan2(-(pb[1]-oy),pb[0]-ox);
   let d1=a2-a1;while(d1>Math.PI)d1-=2*Math.PI;while(d1<-Math.PI)d1+=2*Math.PI;
-  c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.arc(ox,oy,42,Math.PI-a1,Math.PI-a1-d1,d1>0);c.stroke();
+  c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.arc(ox,oy,42,-a1,-a1-d1,d1>0);c.stroke();
  }
  const cos=(ma>0&&mb>0)?dot/(ma*mb):NaN;
  const th=isNaN(cos)?NaN:Math.acos(Math.max(-1,Math.min(1,cos)))*180/Math.PI;
