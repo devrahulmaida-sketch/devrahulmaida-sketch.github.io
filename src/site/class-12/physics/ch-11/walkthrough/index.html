@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dual Nature of Radiation and Matter - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 11 - Dual Nature of Radiation and Matter</div>
+<h1>Dual Nature of Radiation and Matter Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - photon lab, photoelectric lab, Einstein graph lab, de Broglie lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Light - Wave Bhi, Photon Bhi ⭐</h2>
+<p class="why">Wave evidence: interference aur diffraction. Particle evidence: photoelectric effect. Photon ki energy E = hf = hc/λ aur momentum p = h/λ = E/c (h ≈ 6.626×10⁻³⁴ J s). Intensity badhao → photons ki SANKHYA badhti hai; frequency badhao → HAR photon ki energy badhti hai. 2× intensity se har photon double energetic NAHI hota!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>wavelength λ (nm)</label><input type="range" id="pL" min="200" max="800" step="50" value="400"><span class="v" id="vlpL">400 nm</span></div>
+<div class="slrow"><label>intensity (photons/sec)</label><input type="range" id="pI" min="1" max="5" step="1" value="2"><span class="v" id="vlpI">2</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Photoelectric Effect Lab ⭐⭐</h2>
+<p class="why">Metal pe light daalo: threshold frequency f₀ se NEECHE (f &lt; f₀) kitni bhi intensity - emission ZERO! f₀ ke upar emission lagbhag turant. Fixed f pe intensity badhao → electrons ki sankhya (current) badhti hai, par maximum kinetic energy NAHI. Ek photon - ek electron: K_max = hf − φ, jahan φ = hf₀ work function (material pe depend). Shortcut: E(eV) ≈ 1240/λ(nm).</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="slrow"><label>wavelength λ (nm)</label><input type="range" id="eL" min="200" max="700" step="50" value="300"><span class="v" id="vleL">300 nm</span></div>
+<div class="slrow"><label>intensity</label><input type="range" id="eI" min="1" max="5" step="1" value="2"><span class="v" id="vleI">2</span></div>
+<div class="slrow"><label>work function φ (eV)</label><input type="range" id="eP" min="2" max="5" step="0.5" value="2.5"><span class="v" id="vleP">2.5 eV</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Einstein Equation aur Graphs ⭐⭐</h2>
+<p class="why">K_max = hf − φ = h(f − f₀) = eV_s (V_s = stopping potential ka magnitude). Graph K_max vs f: SEEDHI line, slope = h (sab metals ka SAME!), x-intercept = f₀. Photocurrent vs voltage: positive V pe saturation current (intensity se badhta), reverse V pe current stopping potential −V_s pe zero. Frequency badhao → |V_s| badhta hai; sirf intensity badhao → V_s NAHI.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="gK">K_max vs f graph</button><button id="gV">Current vs Voltage graph</button></div>
+<div class="slrow"><label>wavelength λ (nm)</label><input type="range" id="gL" min="200" max="700" step="50" value="300"><span class="v" id="vlgL">300 nm</span></div>
+<div class="slrow"><label>work function φ (eV)</label><input type="range" id="gP" min="2" max="5" step="0.5" value="2.5"><span class="v" id="vlgP">2.5 eV</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. de Broglie Matter Waves ⭐</h2>
+<p class="why">Har moving particle ki wavelength: λ = h/p = h/(mv) (nonrelativistic). Electron V volt se accelerate: p = √(2meV), λ = h/√(2meV), handy: λ(Å) ≈ 12.27/√V. V badhao → speed badhi → λ GHATI. Macroscopic cheez ka momentum bada → λ bahut hi chhoti - isliye daily life me wave character nahi dikhta!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="dE">Electron</button><button id="dB">Cricket ball (0.15 kg, 30 m/s)</button></div>
+<div class="slrow"><label>accelerating voltage V (volt)</label><input type="range" id="dV" min="25" max="400" step="25" value="100"><span class="v" id="vldV">100 V</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Dual Nature Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: intensity = photon count, frequency = energy per photon; f &lt; f₀ pe emission zero; K_max = hf − φ = eV_s; graph slope = h; λ(Å) ≈ 12.27/√V.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Photon ⭐</h3><p>E = hf = hc/λ | p = h/λ = E/c | h ≈ 6.626×10⁻³⁴ J s | E(eV) ≈ 1240/λ(nm) | Intensity = photon RATE, frequency = energy per photon | 2× intensity ≠ 2× photon energy</p></div>
+<div class="rcard"><h3>Observations ⭐</h3><p>Threshold f₀: f &lt; f₀ → NO emission, kitni bhi intensity | f &gt; f₀ → turant emission | f fixed: intensity↑ → current↑, K_max same | f₀ material pe depend</p></div>
+<div class="rcard"><h3>Einstein ⭐⭐</h3><p>1 photon : 1 electron | K_max = hf − φ = h(f−f₀) = eV_s | φ = hf₀ | |V_s| frequency se badhta, intensity se nahi</p></div>
+<div class="rcard"><h3>Graphs ⭐</h3><p>K_max vs f: seedhi line, slope = h, x-intercept = f₀ | I vs V: +V saturation (intensity se↑) | −V_s pe current zero | V_s frequency/material se</p></div>
+<div class="rcard"><h3>de Broglie ⭐</h3><p>λ = h/p = h/(mv) | Electron V se: p = √(2meV), λ = h/√(2meV) | λ(Å) ≈ 12.27/√V | v↑ → λ↓ | Macroscopic: λ ~ 10⁻³⁴ m, imperceptible</p></div>
+<div class="rcard"><h3>Numericals ⭐⭐</h3><p>λ nm me lo: E(eV) = 1240/λ | K_max(eV) = E − φ(eV) | K_max &lt; 0 ka matlab emission NAHI | V_s = K_max/e (volt me K_max eV ke barabar)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 11 Dual Nature of Radiation and Matter Visual Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+function lamCol(l){return l<380?"#a78bfa":l<450?"#8b5cf6":l<495?"#3b82f6":l<570?"#34d399":l<590?"#facc15":l<620?"#fb923c":l<=700?"#f87171":"#9a3412";}
+function lamName(l){return l<380?"UV":l<=700?"visible":"IR";}
+inits[0]=(()=>{
+const c=ctx("cv0");
+const sL=document.getElementById("pL"),sI=document.getElementById("pI");
+let tt=0;
+function draw(t){
+ tt=t;
+ const L=parseFloat(sL.value),n=parseInt(sI.value);
+ document.getElementById("vlpL").textContent=sL.value+" nm";
+ document.getElementById("vlpI").textContent=sI.value;
+ const E=1240/L,f=3e17/L,p=6.626e-34/(L*1e-9);
+ const col=lamCol(L);
+ c.clearRect(0,0,920,330);
+ txt(c,"LIGHT = WAVE (propagation) + PHOTON (energy packets)",460,24,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ const per=L/8;
+ c.strokeStyle=col;c.lineWidth=2.5;c.globalAlpha=0.9;c.beginPath();
+ for(let x=20;x<=640;x+=2){const y=100+22*Math.sin((x-t*4)/per*6.283);if(x===20)c.moveTo(x,y);else c.lineTo(x,y);}
+ c.stroke();c.globalAlpha=1;
+ txt(c,"wave: period ∝ λ",330,150,DM,"11px 'Cascadia Code',monospace","center");
+ const lanes=[200,222,244,266,288];
+ for(let k=0;k<n;k++){
+  const y=lanes[k]-30;
+  const x=((t*5+k*137)%620)+20;
+  c.fillStyle=col;c.globalAlpha=0.25;c.beginPath();c.arc(x,y,16,0,7);c.fill();c.globalAlpha=1;
+  c.fillStyle=col;c.beginPath();c.arc(x,y,7,0,7);c.fill();
+ }
+ txt(c,"photons: "+n+" packets, har ek E = "+fmt(E,2)+" eV",330,308,"#aab4d8","bold 11px 'Cascadia Code',monospace","center");
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.strokeRect(670,50,230,230);
+ txt(c,"E = hf = hc/λ",785,76,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"E = "+fmt(E,2)+" eV",785,108,YL,"bold 15px 'Cascadia Code',monospace","center");
+ txt(c,"f = "+fmt(f/1e14,2)+"e14 Hz",785,138,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+ txt(c,"p = "+fmt(p*1e27,2)+"e-27",785,168,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+ txt(c,"kg m/s",785,186,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,lamName(L)+" light",785,222,col,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"total rate ∝ "+n+" × "+fmt(E,2),785,252,MG,"11px 'Cascadia Code',monospace","center");
+ document.getElementById("r0").innerHTML="λ = "+sL.value+" nm → E = 1240/λ = <span class='hl'>"+fmt(E,2)+" eV</span>, f = c/λ = <span class='hl'>"+fmt(f/1e14,2)+"×10¹⁴ Hz</span>, p = h/λ = <span class='hl'>"+fmt(p*1e27,2)+"×10⁻²⁷ kg m/s</span> | intensity "+n+" → "+n+" photons/sec, <span class='hl'>energy per photon SAME</span> | λ aadha karo → E double (f badhti hai)";
+}
+[sL,sI].forEach(s=>s.addEventListener("input",()=>draw(tt)));
+anims[0]=(t)=>draw(t);
+return function(){draw(tt);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1");
+const sL=document.getElementById("eL"),sI=document.getElementById("eI"),sP=document.getElementById("eP");
+let tt=0;
+function draw(t){
+ tt=t;
+ const L=parseFloat(sL.value),n=parseInt(sI.value),ph=parseFloat(sP.value);
+ document.getElementById("vleL").textContent=sL.value+" nm";
+ document.getElementById("vleI").textContent=sI.value;
+ document.getElementById("vleP").textContent=ph.toFixed(1)+" eV";
+ const E=1240/L,K=E-ph,em=K>0,L0=1240/ph;
+ const col=lamCol(L);
+ c.clearRect(0,0,920,330);
+ txt(c,"PHOTOELECTRIC EFFECT: 1 photon → 1 electron (agar E > φ)",460,22,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ c.fillStyle="#3d4470";c.fillRect(560,70,26,230);
+ txt(c,"metal",573,60,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"φ = "+ph.toFixed(1)+" eV",573,318,MG,"bold 11px 'Cascadia Code',monospace","center");
+ for(let k=0;k<n;k++){
+  const y=100+k*45;
+  const x=((t*6+k*93)%380)+30;
+  c.fillStyle=col;c.globalAlpha=0.3;c.beginPath();c.arc(x,y,13,0,7);c.fill();c.globalAlpha=1;
+  c.fillStyle=col;c.beginPath();c.arc(x,y,6,0,7);c.fill();
+  if(em){
+   const ex=560-((t*6+k*93)%380)+(560-30)-380+30;
+   const ex2=590+(((t*5+k*61)%260));
+   const sp=Math.min(1.8,0.5+Math.sqrt(K)*0.8);
+   const xx=590+(((t*4*sp+k*61)%300));
+   c.fillStyle="#22d3ee";c.beginPath();c.arc(xx,y,5,0,7);c.fill();
+   txt(c,"e−",xx,y-9,CY,"10px 'Cascadia Code',monospace","center");
+   arrow2(c,xx+8,y,xx+8+Math.min(46,10+Math.sqrt(K)*22),y,YL,2);
+  }
+ }
+ txt(c,"photon E = "+fmt(E,2)+" eV",290,300,col,"bold 12px 'Cascadia Code',monospace","center");
+ if(em){
+  txt(c,"EMISSION! K_max = "+fmt(K,2)+" eV",750,200,GR,"bold 14px 'Cascadia Code',monospace","center");
+ }else{
+  txt(c,"NO EMISSION",750,190,RD,"bold 16px 'Cascadia Code',monospace","center");
+  txt(c,"E < φ - intensity badhao,",750,214,DM,"11px 'Cascadia Code',monospace","center");
+  txt(c,"phir bhi kuch nahi",750,230,DM,"11px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"threshold λ₀ = "+Math.round(L0)+" nm",750,80,YL,"bold 12px 'Cascadia Code',monospace","center");
+ const ro=document.getElementById("r1");
+ ro.innerHTML="E = 1240/"+sL.value+" = <span class='hl'>"+fmt(E,2)+" eV</span>, φ = "+ph.toFixed(1)+" eV, threshold λ₀ = 1240/φ = <span class='hl'>"+Math.round(L0)+" nm</span> | "+(em?"K_max = E − φ = <span class='hl'>"+fmt(K,2)+" eV</span> (V_s = "+fmt(K,2)+" V), electrons ∝ intensity "+n+" (current), K_max intensity se NAHI badhti":"E ≤ φ → <span class='hl'>NO emission</span> (f &lt; f₀), intensity "+n+" se koi fark nahi")+" | λ chhoti karo → K_max badhti";
+}
+[sL,sI,sP].forEach(s=>s.addEventListener("input",()=>draw(tt)));
+anims[1]=(t)=>draw(t);
+return function(){draw(tt);};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2");
+const sL=document.getElementById("gL"),sP=document.getElementById("gP");
+const bK=document.getElementById("gK"),bV=document.getElementById("gV");
+let mode=0;
+const HE=4.136e-15;
+function draw(){
+ const L=parseFloat(sL.value),ph=parseFloat(sP.value);
+ document.getElementById("vlgL").textContent=sL.value+" nm";
+ document.getElementById("vlgP").textContent=ph.toFixed(1)+" eV";
+ const E=1240/L,K=E-ph,em=K>0,f=3e17/L,f0=ph/HE;
+ c.clearRect(0,0,920,330);
+ const x0=70,x1=600,y0=290,y1=30;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.moveTo(x0,y1);c.lineTo(x0,y0);c.lineTo(x1,y0);c.stroke();
+ bK.style.borderColor=mode===0?CY:"";bV.style.borderColor=mode===1?CY:"";
+ if(mode===0){
+  const X=v=>x0+v/1.6e15*(x1-x0),Y=k=>y0-k/6*(y0-y1);
+  txt(c,"K_max (eV)",x0+6,y1+10,DM,"11px 'Cascadia Code',monospace");
+  txt(c,"f (Hz)",x1-4,y0+22,DM,"11px 'Cascadia Code',monospace","right");
+  for(let k=1;k<=5;k++){c.strokeStyle="#1a1a33";c.lineWidth=1;c.beginPath();c.moveTo(x0,Y(k));c.lineTo(x1,Y(k));c.stroke();txt(c,""+k,x0-8,Y(k)+4,DM,"10px 'Cascadia Code',monospace","right");}
+  for(let k=0;k<=1.5;k+=0.5){txt(c,k.toFixed(1)+"e15",X(k*1e15),y0+14,DM,"10px 'Cascadia Code',monospace","center");}
+  c.strokeStyle=MG;c.lineWidth=3;c.beginPath();c.moveTo(X(f0),y0);c.lineTo(X(1.6e15),Y(Math.min(6,HE*1.6e15-ph)));c.stroke();
+  c.fillStyle=YL;c.beginPath();c.arc(X(f0),y0,5,0,7);c.fill();
+  txt(c,"f₀ = "+fmt(f0/1e15,2)+"e15",Math.min(X(f0)+8,520),y0-8,YL,"bold 11px 'Cascadia Code',monospace");
+  txt(c,"slope = h (sab metals me SAME)",x0+300,y1+30,MG,"bold 12px 'Cascadia Code',monospace","center");
+  txt(c,"K_max = hf − φ",x0+300,y1+52,"#aab4d8","12px 'Cascadia Code',monospace","center");
+  if(em){c.fillStyle=CY;c.beginPath();c.arc(X(f),Y(K),7,0,7);c.fill();
+   c.setLineDash([3,4]);c.strokeStyle=CY;c.lineWidth=1;c.beginPath();c.moveTo(X(f),y0);c.lineTo(X(f),Y(K));c.lineTo(x0,Y(K));c.stroke();c.setLineDash([]);
+   txt(c,"("+fmt(f/1e15,2)+"e15, "+fmt(K,2)+" eV)",Math.min(X(f)+10,600),Y(K)-10,CY,"bold 11px 'Cascadia Code',monospace","right");
+  }else{
+   c.fillStyle=RD;c.beginPath();c.arc(X(f),y0,7,0,7);c.fill();
+   txt(c,"f < f₀: K_max < 0 → NO emission",X(f)+12,y0-22,RD,"bold 11px 'Cascadia Code',monospace");
+  }
+ }else{
+  const X=v=>335+v*53,Y=i=>y0-i/2*(y0-y1);
+  txt(c,"photocurrent I",x0+6,y1+10,DM,"11px 'Cascadia Code',monospace");
+  txt(c,"collector voltage V",x1-4,y0+22,DM,"11px 'Cascadia Code',monospace","right");
+  for(let v=-4;v<=4;v+=2){txt(c,""+v,X(v),y0+14,DM,"10px 'Cascadia Code',monospace","center");}
+  c.strokeStyle="#2d2d52";c.lineWidth=1;c.beginPath();c.moveTo(X(0),y1);c.lineTo(X(0),y0);c.stroke();
+  const Vs=em?K:0;
+  const cv=(sat,col,dash)=>{c.strokeStyle=col;c.lineWidth=3;c.setLineDash(dash);c.beginPath();
+   for(let v=-5;v<=5.01;v+=0.1){const s=em?Math.max(0,Math.min(1,(v+Vs)/(Vs+2))):0;const y=Y(sat*s);if(v===-5)c.moveTo(X(v),y);else c.lineTo(X(v),y);}
+   c.stroke();c.setLineDash([]);};
+  if(em){
+   cv(2,MG,[6,5]);cv(1,CY,[]);
+   txt(c,"intensity 2× (dashed): saturation double, V_s SAME",x0+300,y1+16,MG,"11px 'Cascadia Code',monospace","center");
+   txt(c,"intensity 1× (solid)",x0+300,y1+34,CY,"11px 'Cascadia Code',monospace","center");
+   c.fillStyle=YL;c.beginPath();c.arc(X(-Vs),y0,6,0,7);c.fill();
+   txt(c,"−V_s = −"+fmt(Vs,2)+" V",Math.max(X(-Vs)-4,x0+60),y0-12,YL,"bold 11px 'Cascadia Code',monospace","left");
+   txt(c,"saturation",X(4.2),Y(1)-8,CY,"10px 'Cascadia Code',monospace","center");
+  }else{
+   cv(1,RD,[]);
+   txt(c,"E < φ: NO emission → I = 0 har V pe",x0+300,y1+60,RD,"bold 12px 'Cascadia Code',monospace","center");
+  }
+ }
+ c.fillStyle="#e8e8f2";
+ txt(c,"E = "+fmt(E,2)+" eV",650,70,CY,"bold 13px 'Cascadia Code',monospace");
+ txt(c,"φ = "+ph.toFixed(1)+" eV",650,96,MG,"bold 13px 'Cascadia Code',monospace");
+ txt(c,em?"K_max = "+fmt(K,2)+" eV":"K_max < 0",650,122,em?GR:RD,"bold 13px 'Cascadia Code',monospace");
+ txt(c,em?"V_s = "+fmt(K,2)+" V":"V_s: n/a",650,148,YL,"bold 13px 'Cascadia Code',monospace");
+ document.getElementById("r2").innerHTML="E = 1240/"+sL.value+" = <span class='hl'>"+fmt(E,2)+" eV</span>, φ = "+ph.toFixed(1)+" eV (f₀ = φ/h = "+fmt(f0/1e15,2)+"×10¹⁵ Hz) | "+(em?"K_max = E − φ = <span class='hl'>"+fmt(K,2)+" eV</span> = eV_s → <span class='hl'>V_s = "+fmt(K,2)+" V</span>":"K_max = E − φ &lt; 0 → <span class='hl'>NO emission</span>")+" | λ chhoti karo (f badhao) → V_s badhta; intensity se V_s NAHI";
+}
+[sL,sP].forEach(s=>s.addEventListener("input",draw));
+bK.onclick=()=>{mode=0;draw();};bV.onclick=()=>{mode=1;draw();};
+return function(){draw();};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3");
+const sV=document.getElementById("dV"),bE=document.getElementById("dE"),bB=document.getElementById("dB");
+let ball=false,tt=0;
+function draw(t){
+ tt=t;
+ const V=parseFloat(sV.value);
+ document.getElementById("vldV").textContent=sV.value+" V";
+ bE.style.borderColor=ball?"":CY;bB.style.borderColor=ball?MG:"";
+ sV.disabled=ball;sV.style.opacity=ball?0.35:1;
+ const h=6.626e-34,me=9.109e-31,e=1.602e-19;
+ const lamE=h/Math.sqrt(2*me*e*V);
+ const lamB=h/(0.15*30);
+ c.clearRect(0,0,920,330);
+ txt(c,ball?"CRICKET BALL: p = 0.15 × 30 = 4.5 kg m/s":"ELECTRON accelerated through "+sV.value+" V",330,26,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ if(!ball){
+  const A=lamE*1e10,per=A*30;
+  c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+  for(let x=30;x<=640;x+=2){const y=150+55*Math.sin((x-t*3)/per*6.283);if(x===30)c.moveTo(x,y);else c.lineTo(x,y);}
+  c.stroke();
+  c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.moveTo(60,235);c.lineTo(60+per,235);c.stroke();
+  c.beginPath();c.moveTo(60,229);c.lineTo(60,241);c.moveTo(60+per,229);c.lineTo(60+per,241);c.stroke();
+  txt(c,"λ = "+fmt(A,2)+" Å",60+per/2,260,YL,"bold 12px 'Cascadia Code',monospace","center");
+  txt(c,"V badhao → λ ghatti hai (λ ∝ 1/√V)",330,306,DM,"11px 'Cascadia Code',monospace","center");
+ }else{
+  c.strokeStyle=MG;c.lineWidth=3;c.beginPath();c.moveTo(30,150);c.lineTo(640,150);c.stroke();
+  const bx=60+((t*6)%520);
+  c.fillStyle="#e8e8f2";c.beginPath();c.arc(bx,150,14,0,7);c.fill();
+  c.strokeStyle=RD;c.lineWidth=2;c.beginPath();c.arc(bx,150,14,0.6,2.5);c.stroke();
+  txt(c,"λ = 1.5×10⁻³⁴ m",330,220,MG,"bold 14px 'Cascadia Code',monospace","center");
+  txt(c,"nucleus ~10⁻¹⁵ m se 10¹⁹ guna chhoti - koi wave nahi dikhti",330,246,DM,"11px 'Cascadia Code',monospace","center");
+  txt(c,"bada momentum → imperceptibly chhoti λ",330,306,DM,"11px 'Cascadia Code',monospace","center");
+ }
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.strokeRect(670,50,230,230);
+ txt(c,"λ = h/p = h/(mv)",785,76,CY,"bold 13px 'Cascadia Code',monospace","center");
+ if(!ball){
+  txt(c,"p = √(2meV)",785,106,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+  txt(c,"λ = "+fmt(lamE*1e10,3)+" Å",785,146,YL,"bold 15px 'Cascadia Code',monospace","center");
+  txt(c,"12.27/√V = "+fmt(12.27/Math.sqrt(V),3),785,176,"#e8e8f2","12px 'Cascadia Code',monospace","center");
+  txt(c,"(shortcut)",785,194,DM,"11px 'Cascadia Code',monospace","center");
+ }else{
+  txt(c,"m = 0.15 kg",785,106,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+  txt(c,"v = 30 m/s",785,126,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+  txt(c,"λ = 1.47e-34 m",785,166,MG,"bold 14px 'Cascadia Code',monospace","center");
+ }
+ document.getElementById("r3").innerHTML=ball?"Cricket ball: p = mv = 4.5 kg m/s → λ = h/p = <span class='hl'>"+(lamB*1e34).toFixed(2)+"×10⁻³⁴ m</span> - itni chhoti ki wave character kabhi nahi dikhta":"Electron, V = "+sV.value+" V: λ = h/√(2meV) = <span class='hl'>"+fmt(lamE*1e10,3)+" Å</span> (shortcut 12.27/√V = "+fmt(12.27/Math.sqrt(V),3)+" Å) | V 4× → λ aadha | atomic spacing ~ Å → electron diffraction possible";
+}
+sV.addEventListener("input",()=>draw(tt));
+bE.onclick=()=>{ball=false;draw(tt);};bB.onclick=()=>{ball=true;draw(tt);};
+anims[3]=(t)=>draw(t);
+return function(){draw(tt);};
+})();
+inits[4]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Threshold se upar fixed frequency pe light ki intensity double kar di. Kya hoga?",opts:["Har electron ki K_max double","Electrons ki sankhya (current) badhegi, K_max same","Stopping potential double","Emission ruk jaayega"],a:1,why:"Intensity = photon RATE. Ek photon - ek electron: zyada photons → zyada electrons (current), par har photon ki energy hf same, to K_max aur V_s NAHI badhte."},
+{q:"f < f₀ hai aur intensity bahut zyada hai. Kya milega?",opts:["Dheere dheere emission","Thodi der baad emission","Koi emission NAHI","Sirf low-energy electrons"],a:2,why:"f < f₀ → photon energy hf < φ, ek photon ek electron ko nikaal nahi sakta. Kitni bhi intensity - emission ZERO. (Above threshold emission lagbhag turant hota hai.)"},
+{q:"K_max vs f graph ki slope kya deti hai?",opts:["Planck constant h (sab metals ka same)","Work function φ","Threshold frequency f₀","Electron ka charge e"],a:0,why:"K_max = hf − φ: seedhi line, slope = h, x-intercept = f₀. Metals badlo to line parallel shift hoti hai, slope same rehti hai."},
+{q:"λ = 310 nm ka photon, work function φ = 2.5 eV. K_max?",opts:["4.0 eV","1.5 eV","2.5 eV","6.5 eV"],a:1,why:"E = 1240/310 = 4.0 eV. K_max = E − φ = 4.0 − 2.5 = 1.5 eV, to stopping potential V_s = 1.5 V."},
+{q:"Electron ka accelerating voltage 4 guna kar diya. de Broglie wavelength?",opts:["4 guna","2 guna","Same","Aadha"],a:3,why:"λ = h/√(2meV) ∝ 1/√V. V 4× → λ aadha. Shortcut: λ(Å) ≈ 12.27/√V."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Photon aur matter wave dono pakke! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+go(0);
+</script></body></html>
