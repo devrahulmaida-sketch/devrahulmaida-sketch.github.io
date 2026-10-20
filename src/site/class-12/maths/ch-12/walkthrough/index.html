@@ -232,11 +232,11 @@ function draw(){
   const px=ox+p[1]*u,py=oy-p[2]*u,H=i===best;
   c.fillStyle=H?GR:"#fff";c.beginPath();c.arc(px,py,H?9:5.5,0,7);c.fill();
   if(H){c.strokeStyle=GR;c.lineWidth=2;c.stroke();}
-  txt(c,p[0]+" ("+fmt(p[1],0)+", "+fmt(p[2],2).replace(/\.?0+$/,"")+")",px,py-14,H?GR:"#fff","bold 12px 'Cascadia Code',monospace","center");
+  txt(c,p[0]+" ("+p[1]+", "+fmt(p[2],2).replace(/\.?0+$/,"")+")",px,py-14,H?GR:"#fff","bold 12px 'Cascadia Code',monospace","center");
   txt(c,"Z="+fmt(zs[i],2).replace(/\.?0+$/,""),px,py+20,H?GR:DM,"bold 12px 'Cascadia Code',monospace","center");});
  // table right side
  txt(c,"Corner  |  Z",640,60,CY,"bold 14px 'Cascadia Code',monospace");
- PTS.forEach((p,i)=>{txt(c,p[0]+" ("+fmt(p[1],0)+","+fmt(p[2],2).replace(/\.?0+$/,"")+")  |  "+fmt(zs[i],2).replace(/\.?0+$/,"")+(i===best?"  ← BEST":""),640,90+i*28,i===best?GR:"#e8e8f2","bold 13px 'Cascadia Code',monospace");});
+ PTS.forEach((p,i)=>{txt(c,p[0]+" ("+p[1]+","+fmt(p[2],2).replace(/\.?0+$/,"")+")  |  "+fmt(zs[i],2).replace(/\.?0+$/,"")+(i===best?"  ← BEST":""),640,90+i*28,i===best?GR:"#e8e8f2","bold 13px 'Cascadia Code',monospace");});
  txt(c,(O.min?"MINIMUM":"MAXIMUM")+" = "+fmt(zs[best],2).replace(/\.?0+$/,"")+" @ corner "+PTS[best][0],640,230,GR,"bold 16px 'Cascadia Code',monospace");
  document.getElementById("r1").innerHTML=
   "CORNER POINT THEOREM: bounded feasible region ka max/min <span class='hl'>HAMESHA kisi corner pe</span> milta hai - andar kahin nahi! Method: (1) corners nikalo, (2) har corner pe Z, (3) table → best. <span class='hl'>"+O.lb+" → "+fmt(zs[best],2).replace(/\.?0+$/,"")+" @ "+PTS[best][0]+"</span>. Objective badlo - winner badal jaata hai!";
