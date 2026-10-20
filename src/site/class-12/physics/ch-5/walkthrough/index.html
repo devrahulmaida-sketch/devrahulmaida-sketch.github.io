@@ -283,15 +283,13 @@ function draw(t){
  const stat=th===0?"STABLE equilibrium (chhota dhakka wapas kheench lega)":th===180?"UNSTABLE! (chhoti si disturbance se palat jaayega)":th===90?"torque MAXIMUM yahan":"field isse align karna chahta hai (torque laga raha)";
  txt(c,stat,250,306,th===180?RD:th===0?GR:"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
  const bx=560,bw=320;
- txt(c,"τ = mB sinθ",bx+bw/2,80,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"τ = mB sinθ = "+tau.toFixed(2)+" mB"+(th===90?" (MAX)":""),bx+bw/2,80,CY,"bold 13px 'Cascadia Code',monospace","center");
  c.fillStyle="#1a1a33";c.fillRect(bx,96,bw,22);
  c.fillStyle=CY;c.fillRect(bx,96,bw*tau,22);
- txt(c,tau.toFixed(2)+" mB"+(th===90?" MAX":""),bx+bw*tau+8,112,CY,"12px 'Cascadia Code',monospace");
- txt(c,"U = −mB cosθ",bx+bw/2,166,MG,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"U = −mB cosθ = "+U.toFixed(2)+" mB"+(th===0?" (MIN)":th===180?" (MAX)":""),bx+bw/2,166,MG,"bold 13px 'Cascadia Code',monospace","center");
  c.fillStyle="#1a1a33";c.fillRect(bx,182,bw,22);
  const uw=(U+1)/2;
  c.fillStyle=MG;c.fillRect(bx,182,bw*uw,22);
- txt(c,U.toFixed(2)+" mB"+(th===0?" (MIN - stable)":th===180?" (MAX - unstable)":""),bx+bw+8,198,MG,"12px 'Cascadia Code',monospace");
  txt(c,"W(0→θ) = mB(1−cosθ) = "+W.toFixed(2)+" mB",bx+bw/2,250,DM,"12px 'Cascadia Code',monospace","center");
  txt(c,"0 se 180° ghumao: W = 2mB",bx+bw/2,276,DM,"12px 'Cascadia Code',monospace","center");
  document.getElementById("r2").innerHTML="θ = "+th+"°: τ = mB sinθ = <span class='hl'>"+tau.toFixed(2)+" mB</span>"+(th===90?" (MAXIMUM!)":"")+" | U = −mB cosθ = <span class='hl'>"+U.toFixed(2)+" mB</span> | "+stat+" | electric dipole ka pE wala formula yaad? τ = p×E aur τ = m×B - <span class='hl'>pattern ek, field alag!</span>";
