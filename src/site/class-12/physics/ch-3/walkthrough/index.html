@@ -183,7 +183,7 @@ function draw(t){
  // electron drift arrow - LEFT
  arrow2(c,760,40,560,40,MG,3);
  txt(c,"← electrons drift (ULTA!), sirf "+vdmm.toFixed(3)+" mm/s",560,28,MG,"13px 'Cascadia Code',monospace");
- txt(c,"(speed on screen EXAGGERATED - asli drift bahut slow!)",460,322,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"(speed on screen EXAGGERATED - asli drift bahut slow!)",460,258,DM,"11px 'Cascadia Code',monospace","center");
  const tsec=1/vd;
  const tmin=tsec/60;
  const tstr=tsec<120?tsec.toFixed(0)+" s":tmin<120?tmin.toFixed(1)+" min":(tmin/60).toFixed(1)+" hours";
@@ -245,7 +245,7 @@ function draw(t){
  txt(c,M.name+" (ρ = "+M.rho.toExponential(1)+" Ω·m)",bx+bw/2,105,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
  const trend=M.semi?"T ↑ → R ↓ (zyada free carriers!)":"T ↑ → R ↑ (α = "+M.al+"/°C)";
  txt(c,trend,bx+bw/2,195,M.semi?GR:YL,"12px 'Cascadia Code',monospace","center");
- document.getElementById("r1").innerHTML="R = ρL/A = <span class='hl'>"+fmtR(R)+"</span>"+(dT>0?" (ΔT="+dT+"°C pe; 0°C pe "+fmtR(R0)+")":"")+" | V = 10 V pe current I = V/R = <span class='hl'>"+(10/R>=1?(10/R).toFixed(2)+" A":(10000/R).toFixed(1)+" mA")+"</span> | "+(M.semi?"<span class='hl'>semiconductor: T badhao to R GHATTA hai</span>":"metal: T badhao to R badhta hai");
+ document.getElementById("r1").innerHTML="R = ρL/A = <span class='hl'>"+fmtR(R)+"</span>"+(dT>0?" (ΔT="+dT+"°C pe; 0°C pe "+fmtR(R0)+")":"")+" | V = 10 V pe current I = V/R = <span class='hl'>"+(10/R>=1?(10/R).toFixed(2)+" A":10/R>=0.001?(10000/R).toFixed(1)+" mA":(1e7/R).toFixed(1)+" µA")+"</span> | "+(M.semi?"<span class='hl'>semiconductor: T badhao to R GHATTA hai</span>":"metal: T badhao to R badhta hai");
 }
 ["mC","mN","mS"].forEach(id=>{document.getElementById(id).onclick=()=>{mat=id;draw(0);};});
 [sL,sA,sT].forEach(s=>s.addEventListener("input",()=>draw(0)));
@@ -268,10 +268,11 @@ function draw(t){
  // circuit rectangle
  const x1=180,y1=90,x2=740,y2=250;
  c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
- c.beginPath();c.moveTo(x1+120,y1);c.lineTo(x2-120,y1);c.stroke();
+ c.beginPath();c.moveTo(x1+120,y1);c.lineTo(x2,y1);c.stroke();
  c.beginPath();c.moveTo(x2,y1);c.lineTo(x2,y2);c.stroke();
  c.beginPath();c.moveTo(x2,y2);c.lineTo(x1,y2);c.stroke();
- c.beginPath();c.moveTo(x1,y2);c.lineTo(x1,y1);c.stroke();
+ c.beginPath();c.moveTo(x1,y2);c.lineTo(x1,y1+88);c.stroke();
+ c.beginPath();c.moveTo(x1,y1+44);c.lineTo(x1,y1+14);c.stroke();
  // battery on left
  c.lineWidth=2.5;
  c.beginPath();c.moveTo(x1-12,y1-14);c.lineTo(x1+12,y1-14);c.stroke();
@@ -296,7 +297,7 @@ function draw(t){
  txt(c,"R = "+R.toFixed(1)+" Ω",x2+34,(y1+y2)/2,short?RD:CY,"bold 14px 'Cascadia Code',monospace");
  // current arrow on top
  arrow2(c,400,y1-8,560,y1-8,YL,3);
- txt(c,"I = "+I.toFixed(2)+" A",480,y1-16,YL,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"I = "+I.toFixed(2)+" A",480,y1-26,YL,"bold 13px 'Cascadia Code',monospace","center");
  // terminal voltage big display
  txt(c,"TERMINAL VOLTAGE",460,300,DM,"12px 'Cascadia Code',monospace","center");
  txt(c,"V = ε − Ir = "+V.toFixed(2)+" V",460,322,short?RD:GR,"bold 18px 'Cascadia Code',monospace","center");
