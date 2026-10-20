@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrices - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Maths - Chapter 3 - Matrices</div>
+<h1>Matrices Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - order explorer, operations lab, multiplication machine (row × column!), transpose + symmetric lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Order Explorer - Row Pehle, Column Baad ⭐</h2>
+<p class="why">Matrix = numbers ka rectangular GRID (Excel sheet jaisa!). Order m × n = m rows, n columns. Element aᵢⱼ = i-th ROW, j-th COLUMN - "row pehle, column baad me"! m aur n badlo - grid aur TYPE dono dekho (row matrix, column matrix, square!). Highlighted cell ka ADDRESS padhna seekho!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>rows m</label><input type="range" id="oM" min="1" max="4" step="1" value="2"><span class="v" id="voM">2</span><label>cols n</label><input type="range" id="oN" min="1" max="4" step="1" value="3"><span class="v" id="voN">3</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Operations Lab - Add + Scalar ⭐</h2>
+<p class="why">Addition/subtraction SIRF same-order matrices me - corresponding elements jodo (A + B = B + A, commutative!). Scalar multiplication kA = HAR element ko k se (sirf ek pe nahi!). k slider ghumao - poore matrix pe effect dekho. Dono operations element-by-element!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="slrow"><label>scalar k</label><input type="range" id="opK" min="-3" max="3" step="1" value="2"><span class="v" id="vopK">2</span><span style="color:#8fa0c8;font-size:13px">(k = 0 → ZERO matrix!)</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Multiplication Machine - Row × Column ⭐⭐</h2>
+<p class="why">A(m×n) × B(n×p) possible SIRF jab A ke columns = B ki rows → result m×p. Element (i,j) = A ki row i · B ka column j (dot product - matching pairs multiply karke ADD!). TRAPS: AB ≠ BA generally! Aur AB = O ho sakta hai bina A ya B zero ke! Cell buttons se har element ka hisaab dekho!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" id="mmBtns"></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Transpose + Symmetric Lab ⭐⭐</h2>
+<p class="why">Transpose A′: rows ko COLUMNS bana do (m×n → n×m). Golden rule: (AB)′ = B′A′ - ORDER ULAT jaata hai! Symmetric: A′ = A (diagonal ke across mirror). Skew-symmetric: A′ = −A (diagonal ZAROOR 0!). POWER MOVE: har square matrix = ½(A+A′) [symmetric] + ½(A−A′) [skew] - direct 3-marker!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" id="trBtns"></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Matrices Pakke? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: order = rows × columns, aᵢⱼ = row i col j; add = same order only, kA = har element; multiply = row × column dot, AB ≠ BA, AB = O trap; transpose rules (AB)′ = B′A′; symmetric A′=A, skew A′=−A (diagonal 0!); ½(A+A′) + ½(A−A′) decomposition; (AB)⁻¹ = B⁻¹A⁻¹!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Matrix Basics ⭐</h3><p>Matrix = numbers ka grid | Order m × n = m rows, n cols | aᵢⱼ = row i, col j (row PEHLE!) | Equal: same order + same elements | Total elements = m×n</p></div>
+<div class="rcard"><h3>Types ⭐</h3><p>Row: 1×n | Column: m×1 | Square: m=n | Zero O: sab 0 | Diagonal: sirf aᵢᵢ non-zero | Scalar: diagonal sab EQUAL | Identity I: diagonal 1 (AI = IA = A!) | Upper/Lower triangular</p></div>
+<div class="rcard"><h3>Operations ⭐⭐</h3><p>Add/Subtract: SIRF same order, element-wise | A+B = B+A ✓ | kA = HAR element × k | Multiply: A(m×n)×B(n×p) = m×p (cols A = rows B!) | (i,j) = row i · col j</p></div>
+<div class="rcard"><h3>Multiplication Traps ⭐⭐</h3><p>AB ≠ BA generally (commutative NAHI!) | AB = O possible bina A=O ya B=O! | Associative: (AB)C = A(BC) ✓ | Distributive: A(B+C) = AB+AC ✓ | Kabhi AB possible, BA possible hi nahi!</p></div>
+<div class="rcard"><h3>Transpose + Symmetric ⭐⭐</h3><p>(A′)′ = A | (A+B)′ = A′+B′ | (kA)′ = kA′ | (AB)′ = B′A′ (order FLIP!) | Symmetric: A′ = A | Skew: A′ = −A (diagonal 0!) | A = ½(A+A′) + ½(A−A′)</p></div>
+<div class="rcard"><h3>Invertible + DELETED ⭐</h3><p>A invertible ⟺ ∃B: AB = BA = I (B = A⁻¹, UNIQUE) | (AB)⁻¹ = B⁻¹A⁻¹ (order FLIP!) | Inverse nikalna = adjoint method (Ch 4!) | DELETED: elementary row/column operations - ab nahi padhne!</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 3 Matrices Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ============ SCENE 1: Order explorer ============
+inits[0]=(()=>{
+const sM=document.getElementById("oM"),sN=document.getElementById("oN");
+let hi=1,hj=2,tick=0;
+function draw(){
+ const c=ctx("cv0");c.clearRect(0,0,920,330);
+ const m=parseInt(sM.value),n=parseInt(sN.value);
+ document.getElementById("voM").textContent=m;document.getElementById("voN").textContent=n;
+ hi=Math.min(hi,m-1);hj=Math.min(hj,n-1);
+ const cs=Math.min(64,Math.floor(430/Math.max(m,n)));
+ const gx=90,gy=165-(m*cs)/2;
+ // brackets
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;c.beginPath();
+ c.moveTo(gx+7,gy-12);c.lineTo(gx,gy-12);c.lineTo(gx,gy+m*cs+12);c.lineTo(gx+7,gy+m*cs+12);c.stroke();c.beginPath();
+ c.moveTo(gx+n*cs-7,gy-12);c.lineTo(gx+n*cs,gy-12);c.lineTo(gx+n*cs,gy+m*cs+12);c.lineTo(gx+n*cs-7,gy+m*cs+12);c.stroke();
+ for(let i=0;i<m;i++)for(let j=0;j<n;j++){
+  const x=gx+j*cs,y=gy+i*cs,H=(i===hi&&j===hj);
+  c.fillStyle=H?"rgba(250,204,21,0.20)":"rgba(13,13,28,0.9)";c.strokeStyle=H?YL:"#2d2d52";c.lineWidth=H?2.5:1.2;
+  c.fillRect(x+3,y+3,cs-6,cs-6);c.strokeRect(x+3,y+3,cs-6,cs-6);
+  txt(c,""+(i*n+j+1)*3,x+cs/2,y+cs/2+7,H?YL:"#e8e8f2","bold "+(cs>50?19:16)+"px 'Cascadia Code',monospace","center");
+  txt(c,"a"+(i+1)+(j+1),x+cs/2,y+cs-9,H?YL:DM,"10px 'Cascadia Code',monospace","center");
+ }
+ // row/col labels for highlighted
+ txt(c,"← row "+(hi+1),gx+n*cs+14,gy+hi*cs+cs/2+5,CY,"bold 13px 'Cascadia Code',monospace");
+ txt(c,"col "+(hj+1),gx+hj*cs+cs/2,gy-18,MG,"bold 13px 'Cascadia Code',monospace","center");
+ let type;
+ if(m===1&&n===1)type="1×1 - ek hi element!";
+ else if(m===1)type="ROW MATRIX (1×"+n+")";
+ else if(n===1)type="COLUMN MATRIX ("+m+"×1)";
+ else if(m===n)type="SQUARE MATRIX (order "+m+")";
+ else type="RECTANGULAR matrix ("+m+"×"+n+")";
+ const bx=560;let by=70;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(500,36,405,258,10);c.fill();c.stroke();
+ txt(c,"Order: "+m+" × "+n,bx,by,YL,"bold 22px 'Cascadia Code',monospace");by+=32;
+ txt(c,"("+m+" rows, "+n+" columns)",bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=28;
+ txt(c,"Total elements = "+m+"×"+n+" = "+(m*n),bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=32;
+ txt(c,type,bx,by,CY,"bold 15px 'Cascadia Code',monospace");by+=32;
+ txt(c,"Highlighted: a"+(hi+1)+(hj+1)+" = "+((hi*n+hj+1)*3),bx,by,YL,"bold 15px 'Cascadia Code',monospace");by+=26;
+ txt(c,"= row "+(hi+1)+", column "+(hj+1)+" wala element",bx,by,DM,"13px 'Cascadia Code',monospace");by+=24;
+ txt(c,"Address: row PEHLE, column BAAD ME!",bx,by,GR,"bold 13px 'Cascadia Code',monospace");
+ document.getElementById("r0").innerHTML="Order <span class='hl'>"+m+" × "+n+"</span> - "+type+" | elements = <span class='cy'>"+(m*n)+"</span> | highlighted <span class='cy'>a"+(hi+1)+(hj+1)+"</span> (row "+(hi+1)+", col "+(hj+1)+")<br><span style='color:#9fb0d8'>aᵢⱼ ka i = ROW, j = COLUMN. Yellow cell har kuch second me aage badhta hai - address padhne ki practice karo! Equal matrices: SAME order + har element same.</span>";
+}
+[sM,sN].forEach(s=>s.addEventListener("input",draw));
+anims[0]=(t)=>{if(t%22===0){hj++;if(hj>=parseInt(sN.value)){hj=0;hi=(hi+1)%parseInt(sM.value);}draw();}};
+return function(){draw();};
+})();
+// ============ SCENE 2: Operations lab ============
+inits[1]=(()=>{
+const A=[[2,3,1],[0,-1,4]],B=[[1,0,5],[3,2,-2]];
+const sK=document.getElementById("opK");
+let hi=0,tick=0;
+function mgrid(c,M,gx,gy,cs,col,hl){
+ for(let i=0;i<2;i++)for(let j=0;j<3;j++){
+  const H=hl&&(i*3+j===hi);
+  c.fillStyle=H?"rgba(250,204,21,0.22)":"rgba(13,13,28,0.9)";c.strokeStyle=H?YL:"#2d2d52";c.lineWidth=H?2.5:1.2;
+  const x=gx+j*cs,y=gy+i*cs;
+  c.fillRect(x+2,y+2,cs-4,cs-4);c.strokeRect(x+2,y+2,cs-4,cs-4);
+  txt(c,""+M[i][j],x+cs/2,y+cs/2+6,H?YL:(col||"#e8e8f2"),"bold 16px 'Cascadia Code',monospace","center");
+ }
+ c.strokeStyle="#e8e8f2";c.lineWidth=2;c.beginPath();
+ c.moveTo(gx+5,gy-7);c.lineTo(gx,gy-7);c.lineTo(gx,gy+2*cs+7);c.lineTo(gx+5,gy+2*cs+7);c.stroke();c.beginPath();
+ c.moveTo(gx+3*cs-5,gy-7);c.lineTo(gx+3*cs,gy-7);c.lineTo(gx+3*cs,gy+2*cs+7);c.lineTo(gx+3*cs-5,gy+2*cs+7);c.stroke();
+}
+function draw(){
+ const c=ctx("cv1");c.clearRect(0,0,920,330);
+ const k=parseInt(sK.value);document.getElementById("vopK").textContent=k;
+ const cs=40;
+ // A + B = C
+ txt(c,"A",88,42,CY,"bold 15px 'Cascadia Code',monospace","center");
+ mgrid(c,A,20,55,cs,CY,true);
+ txt(c,"+",192,115,"#e8e8f2","bold 22px 'Cascadia Code',monospace","center");
+ txt(c,"B",258,42,MG,"bold 15px 'Cascadia Code',monospace","center");
+ mgrid(c,B,190,55,cs,MG,true);
+ txt(c,"=",362,115,"#e8e8f2","bold 22px 'Cascadia Code',monospace","center");
+ const C=A.map((r,i)=>r.map((v,j)=>v+B[i][j]));
+ txt(c,"A+B",428,42,YL,"bold 15px 'Cascadia Code',monospace","center");
+ mgrid(c,C,360,55,cs,YL,true);
+ const i0=Math.floor(hi/3),j0=hi%3;
+ txt(c,A[i0][j0]+" + ("+B[i0][j0]+") = "+C[i0][j0],240,205,YL,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"har element ALAG-ALAG add - same order zaroori!",240,228,DM,"12px 'Cascadia Code',monospace","center");
+ // kA
+ const bx=590;let by=60;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(560,36,345,258,10);c.fill();c.stroke();
+ txt(c,"k·A   (k = "+k+")",bx,by,YL,"bold 16px 'Cascadia Code',monospace");by+=30;
+ const KA=A.map(r=>r.map(v=>k*v));
+ for(let i=0;i<2;i++){let row="[ ";
+  for(let j=0;j<3;j++)row+=(KA[i][j]>=0?" ":"")+KA[i][j]+"  ";
+  txt(c,row+"]",bx+10,by,k===0?RD:"#e8e8f2","bold 17px 'Cascadia Code',monospace");by+=28;}
+ by+=8;
+ if(k===0){txt(c,"k=0 → ZERO matrix O!",bx,by,RD,"bold 14px 'Cascadia Code',monospace");by+=24;}
+ txt(c,"HAR element × "+k+" (ek pe nahi - SAB pe!)",bx,by,GR,"bold 12.5px 'Cascadia Code',monospace");by+=24;
+ txt(c,"Example: k·a₁₂ = "+k+"×3 = "+(k*3),bx,by,DM,"13px 'Cascadia Code',monospace");by+=22;
+ txt(c,"Negative k → signs flip + scale",bx,by,DM,"13px 'Cascadia Code',monospace");
+ document.getElementById("r1").innerHTML="A+B element-wise: har pair alag se jodo (yellow cell cycle hota hai dekho!) | kA = <span class='hl'>HAR element × "+k+"</span>"+(k===0?" - <span style='color:"+RD+"'>k=0 diya to ZERO matrix!</span>":"")+"<br><span style='color:#9fb0d8'>Addition SIRF same-order me (2×3 + 2×3 ✓, 2×3 + 2×2 ✗). A+B = B+A commutative hai. Scalar multiply DISTRIBUTE hota hai: k(A+B) = kA + kB.</span>";
+}
+sK.addEventListener("input",draw);
+anims[1]=(t)=>{if(t%20===0){hi=(hi+1)%6;draw();}};
+return function(){draw();};
+})();
+// ============ SCENE 3: Multiplication machine ============
+inits[2]=(()=>{
+const EXAMPLES=[
+ {n:"A(2×3) × B(3×2)",A:[[2,1,3],[0,4,1]],B:[[1,2],[3,0],[1,5]]},
+ {n:"TRAP: AB = O (dono non-zero!)",A:[[1,0],[0,0]],B:[[0,0],[1,0]]}];
+let ei=0,ci=0,cj=0;
+const bb=document.getElementById("mmBtns");
+EXAMPLES.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{ei=i;ci=0;cj=0;sync();draw();};bb.appendChild(b);});
+const cells=[];
+function sync(){[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===ei||j===2+ci*10+cj));}
+function rebuildCells(){
+ [...bb.children].slice(2).forEach(x=>x.remove());
+ const A=EXAMPLES[ei].A,B=EXAMPLES[ei].B;
+ cells.length=0;
+ for(let i=0;i<A.length;i++)for(let j=0;j<B[0].length;j++){
+  const b=document.createElement("button");b.textContent="C"+(i+1)+(j+1);
+  const ii=i,jj=j;b.onclick=()=>{ci=ii;cj=jj;sync();draw();};
+  bb.appendChild(b);cells.push(b);
+ }
+}
+function markCellSel(){cells.forEach((x,k)=>{const A=EXAMPLES[ei].A,B=EXAMPLES[ei].B;const i=Math.floor(k/B[0].length),j=k%B[0].length;x.classList.toggle("sel",i===ci&&j===cj);});}
+function mgrid(c,M,gx,gy,cs,col,hlR,hlC){
+ const rows=M.length,cols=M[0].length;
+ for(let i=0;i<rows;i++)for(let j=0;j<cols;j++){
+  const H=(i===hlR)||(j===hlC);
+  c.fillStyle=H?"rgba(250,204,21,0.18)":"rgba(13,13,28,0.9)";c.strokeStyle=H?YL:"#2d2d52";c.lineWidth=H?2:1.2;
+  const x=gx+j*cs,y=gy+i*cs;
+  c.fillRect(x+2,y+2,cs-4,cs-4);c.strokeRect(x+2,y+2,cs-4,cs-4);
+  txt(c,""+M[i][j],x+cs/2,y+cs/2+6,H?YL:(col||"#e8e8f2"),"bold 15px 'Cascadia Code',monospace","center");
+ }
+ c.strokeStyle="#e8e8f2";c.lineWidth=2;c.beginPath();
+ c.moveTo(gx+5,gy-7);c.lineTo(gx,gy-7);c.lineTo(gx,gy+rows*cs+7);c.lineTo(gx+5,gy+rows*cs+7);c.stroke();c.beginPath();
+ c.moveTo(gx+cols*cs-5,gy-7);c.lineTo(gx+cols*cs,gy-7);c.lineTo(gx+cols*cs,gy+rows*cs+7);c.lineTo(gx+cols*cs-5,gy+rows*cs+7);c.stroke();
+}
+function draw(){
+ const c=ctx("cv2");c.clearRect(0,0,920,330);
+ const E=EXAMPLES[ei],A=E.A,B=E.B;
+ const m=A.length,nn=B.length,p=B[0].length;
+ // C = A×B
+ const C=A.map((r,i)=>B[0].map((_,j)=>r.reduce((s,v,k)=>s+v*B[k][j],0)));
+ mgrid(c,A,30,80,42,CY,ci,-1);
+ txt(c,"A ("+m+"×"+nn+")",30+nn*21,62,CY,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"×",30+nn*42+22,150,"#e8e8f2","bold 20px 'Cascadia Code',monospace","center");
+ mgrid(c,B,30+nn*42+45,80,42,MG,-1,cj);
+ txt(c,"B ("+nn+"×"+p+")",30+nn*42+45+p*21,62,MG,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"=",30+nn*42+45+p*42+18,150,"#e8e8f2","bold 20px 'Cascadia Code',monospace","center");
+ mgrid(c,C,30+nn*42+45+p*42+38,80,42,GR,ci,cj);
+ txt(c,"C ("+m+"×"+p+")",30+nn*42+45+p*42+38+p*21,62,GR,"bold 14px 'Cascadia Code',monospace","center");
+ // dot product computation board
+ const row=A[ci],col=B.map(r=>r[cj]);
+ const parts=row.map((v,k)=>v+"·"+col[k]);
+ const vals=row.map((v,k)=>v*col[k]);
+ const bx=470;let by=64;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(445,30,462,278,10);c.fill();c.stroke();
+ txt(c,"C"+(ci+1)+(cj+1)+" = (row "+(ci+1)+" of A) · (col "+(cj+1)+" of B)",bx,by,YL,"bold 14px 'Cascadia Code',monospace");by+=28;
+ txt(c,"= ["+row.join(", ")+"] · ["+col.join(", ")+"]",bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=26;
+ txt(c,"= "+parts.join(" + "),bx,by,"#e8e8f2","14px 'Cascadia Code',monospace");by+=26;
+ txt(c,"= "+vals.join(" + ")+" = "+C[ci][cj],bx,by,CY,"bold 16px 'Cascadia Code',monospace");by+=30;
+ txt(c,"Check: A ke COLUMNS ("+nn+") = B ki ROWS ("+nn+") ✓",bx,by,GR,"bold 13px 'Cascadia Code',monospace");by+=24;
+ txt(c,"Result order: "+m+"×"+p+" (bahar wale numbers!)",bx,by,DM,"13px 'Cascadia Code',monospace");by+=24;
+ if(ei===1){
+  txt(c,"AB = O aaya - par A ≠ O, B ≠ O!",bx,by,RD,"bold 14px 'Cascadia Code',monospace");by+=24;
+  txt(c,"Ye numbers jaisa NAHI hai - matrices ka",bx,by,RD,"12.5px 'Cascadia Code',monospace");by+=20;
+  txt(c,"product zero ho sakta hai bina kisi zero ke!",bx,by,RD,"12.5px 'Cascadia Code',monospace");
+ }else{
+  txt(c,"TRAPS: AB ≠ BA generally! BA yahan",bx,by,DM,"12.5px 'Cascadia Code',monospace");by+=20;
+  txt(c,"(3×2)×(2×3) = 3×3 hota - DIFFERENT order!",bx,by,DM,"12.5px 'Cascadia Code',monospace");
+ }
+ markCellSel();
+ document.getElementById("r2").innerHTML="C"+(ci+1)+(cj+1)+" = <span class='hl'>"+C[ci][cj]+"</span> = "+parts.join(" + ")+" | Result C = <span class='cy'>"+JSON.stringify(C)+"</span>"+(ei===1?"<br><span style='color:"+RD+"'>ZERO PRODUCT TRAP: dono matrices non-zero, phir bhi AB = O! (AB = O ⟹ A = O ya B = O GALAT hai!)</span>":"<br><span style='color:#9fb0d8'>Row ko column se MILAO: matching pairs multiply → add. Har C cell button dabao - apna row-column pair dekho!</span>");
+}
+rebuildCells();sync();
+return function(){draw();};
+})();
+// ============ SCENE 4: Transpose + symmetric lab ============
+inits[3]=(()=>{
+const MATS=[
+ {n:"Symmetric (A′=A)",m:[[1,2,3],[2,4,5],[3,5,6]]},
+ {n:"Skew-symmetric (A′=−A)",m:[[0,2,-3],[-2,0,4],[3,-4,0]]},
+ {n:"Neither (decompose!)",m:[[1,2,3],[0,4,5],[1,0,6]]}];
+let mi=0;
+const bb=document.getElementById("trBtns");
+MATS.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.n;b.onclick=()=>{mi=i;[...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===mi));draw();};bb.appendChild(b);});
+bb.children[mi].classList.add("sel");
+function tr(M){return M[0].map((_,j)=>M.map(r=>r[j]));}
+function mgrid(c,M,gx,gy,cs,col,mirror){
+ for(let i=0;i<3;i++)for(let j=0;j<3;j++){
+  const MIR=mirror&&i!==j;
+  c.fillStyle=MIR?"rgba(34,211,238,0.10)":"rgba(13,13,28,0.9)";c.strokeStyle=(i===j&&mirror)?DM:"#2d2d52";c.lineWidth=1.2;
+  const x=gx+j*cs,y=gy+i*cs;
+  c.fillRect(x+2,y+2,cs-4,cs-4);c.strokeRect(x+2,y+2,cs-4,cs-4);
+  txt(c,""+M[i][j],x+cs/2,y+cs/2+6,col||"#e8e8f2","bold 16px 'Cascadia Code',monospace","center");
+ }
+ c.strokeStyle="#e8e8f2";c.lineWidth=2;c.beginPath();
+ c.moveTo(gx+5,gy-7);c.lineTo(gx,gy-7);c.lineTo(gx,gy+3*cs+7);c.lineTo(gx+5,gy+3*cs+7);c.stroke();c.beginPath();
+ c.moveTo(gx+3*cs-5,gy-7);c.lineTo(gx+3*cs,gy-7);c.lineTo(gx+3*cs,gy+3*cs+7);c.lineTo(gx+3*cs-5,gy+3*cs+7);c.stroke();
+}
+function fmtM(M){return "[ "+M.map(r=>r.map(v=>(v%1===0?v:v.toFixed(1))).join(", ")).join(" ; ")+" ]";}
+function draw(){
+ const c=ctx("cv3");c.clearRect(0,0,920,330);
+ const M=MATS[mi].m,T=tr(M);
+ mgrid(c,M,40,70,44,CY,true);
+ txt(c,"A",106,52,CY,"bold 15px 'Cascadia Code',monospace","center");
+ txt(c,"→ transpose →",245,145,YL,"bold 13px 'Cascadia Code',monospace","center");
+ mgrid(c,T,330,70,44,MG,false);
+ txt(c,"A′",396,52,MG,"bold 15px 'Cascadia Code',monospace","center");
+ // verdict
+ const sym=M.every((r,i)=>r.every((v,j)=>v===T[i][j]));
+ const skew=M.every((r,i)=>r.every((v,j)=>v===-T[i][j]));
+ let verdict,vcol;
+ if(sym){verdict="A′ = A → SYMMETRIC!";vcol=GR;}
+ else if(skew){verdict="A′ = −A → SKEW-SYMMETRIC!";vcol=MG;}
+ else{verdict="Na symmetric, na skew - par DECOMPOSE ho jaayega!";vcol=YL;}
+ txt(c,verdict,260,240,vcol,"bold 14px 'Cascadia Code',monospace","center");
+ if(skew)txt(c,"Dekho: diagonal SAB 0 hai (aᵢᵢ = −aᵢᵢ ⟹ 0!)",260,262,RD,"bold 12px 'Cascadia Code',monospace","center");
+ else if(sym)txt(c,"Dekho: diagonal ke across MIRROR image",260,262,GR,"bold 12px 'Cascadia Code',monospace","center");
+ // decomposition board
+ const PS=M.map((r,i)=>r.map((v,j)=>(v+T[i][j])/2));
+ const PK=M.map((r,i)=>r.map((v,j)=>(v-T[i][j])/2));
+ const bx=560;let by=58;
+ c.fillStyle="rgba(13,13,28,0.94)";c.strokeStyle="#2d2d52";c.lineWidth=1.5;
+ c.beginPath();c.roundRect(530,26,378,282,10);c.fill();c.stroke();
+ txt(c,"POWER MOVE (3-marker!):",bx,by,YL,"bold 14px 'Cascadia Code',monospace");by+=26;
+ txt(c,"A = ½(A+A′) + ½(A−A′)",bx,by,"#e8e8f2","bold 14px 'Cascadia Code',monospace");by+=28;
+ txt(c,"½(A+A′) = "+fmtM(PS),bx,by,GR,"12.5px 'Cascadia Code',monospace");by+=24;
+ txt(c,"  → SYMMETRIC part ✓",bx,by,GR,"12.5px 'Cascadia Code',monospace");by+=24;
+ txt(c,"½(A−A′) = "+fmtM(PK),bx,by,MG,"12.5px 'Cascadia Code',monospace");by+=24;
+ txt(c,"  → SKEW-SYMMETRIC part ✓",bx,by,MG,"12.5px 'Cascadia Code',monospace");by+=26;
+ txt(c,"Dono ko add karo → A wapas! ✓",bx,by,CY,"bold 12.5px 'Cascadia Code',monospace");by+=24;
+ txt(c,"(AB)′ = B′A′ - order ULAT jaata hai!",bx,by,DM,"12px 'Cascadia Code',monospace");
+ document.getElementById("r3").innerHTML=verdict.replace('→','⟹')+" | ½(A+A′) = <span class='cy'>"+fmtM(PS)+"</span> (symmetric) + ½(A−A′) = <span class='cy'>"+fmtM(PK)+"</span> (skew)<br><span style='color:#9fb0d8'>HAR square matrix = symmetric + skew-symmetric! Transpose: rows → columns. Rules: (A′)′ = A, (kA)′ = kA′, (AB)′ = B′A′ (sabse tested!).</span>";
+}
+return function(){draw();};
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"Matrix A = [2 3; 1 −4] me element a₂₁ kaunsa hai?",o:["3","1","−4","2"],a:1,w:"a₂₁ = row 2, column 1 = 1. ROW pehle, COLUMN baad me! (a₁₂ = 3 hota.)"},
+ {q:"A(2×3) × B(3×5) ka result kis order ka hoga?",o:["2×5","3×3","5×2","Multiplication possible nahi"],a:0,w:"A ke columns (3) = B ki rows (3) ✓ possible! Result = BAHAR wale numbers: 2×5."},
+ {q:"(AB)′ = ?",o:["A′B′","B′A′","(BA)′","AB"],a:1,w:"Transpose me ORDER ULAT jaata hai: (AB)′ = B′A′. Inverse me bhi yahi: (AB)⁻¹ = B⁻¹A⁻¹!"},
+ {q:"Skew-symmetric matrix ke DIAGONAL elements kya hote hain?",o:["Kuch bhi ho sakte","Hamesha 1","Hamesha 0","Sab equal non-zero"],a:2,w:"A′ = −A ⟹ diagonal pe aᵢᵢ = −aᵢᵢ ⟹ 2aᵢᵢ = 0 ⟹ aᵢᵢ = 0. Diagonal ZAROOR zero!"},
+ {q:"A ≠ O aur B ≠ O ho, phir bhi AB = O aa sakta hai?",o:["Kabhi nahi","HAAN, possible hai!","Sirf jab A = B ho","Sirf identity ke liye"],a:1,w:"Matrices me zero-product rule FAIL hota hai! Example: [1 0; 0 0] × [0 0; 1 0] = [0 0; 0 0] - dono non-zero, product ZERO!"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! Matrices PAKKE! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
