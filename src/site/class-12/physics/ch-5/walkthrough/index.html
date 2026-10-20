@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnetism and Matter - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 5 - Magnetism and Matter</div>
+<h1>Magnetism and Matter Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - bar magnet lab, dipole field lab, torque-energy lab, materials lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Bar Magnet - Magnet Ka ABCD ⭐</h2>
+<p class="why">Bar magnet ke do poles - N aur S. Monopole KABHI nahi milta: tod do to har tukda apna N-S wala chhota magnet ban jaata hai (atom tak - har electron khud magnet hai!). Properties: iron ko ATTRACT, free magnet N-S me ALIGN (directive - compass ka basis), like poles repel. Field lines: BAHAR N se S, ANDAR S se N - CLOSED loops! (Electric lines + se − pe khatam hoti hain, magnetic kabhi khatam nahi hoti.) Kabhi intersect nahi, dense = strong.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="mW">Whole Magnet</button><button id="mB">Tod Do! (2 pieces)</button></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Magnetic Dipole Field - Axial vs Equatorial ⭐</h2>
+<p class="why">Bar magnet = current solenoid (same field pattern!) - dono magnetic dipoles, moment m (S se N). AXIAL line pe B = (μ₀/4π)·2m/r³ (m ki direction me), EQUATORIAL pe B = (μ₀/4π)·m/r³ (m ke OPPOSITE) - axial EXACTLY DOUBLE, electric dipole wala hi factor 2! Dono 1/r³ se girte hain: doori DOUBLE → field 1/8! Current loop ka bhi dipole moment hota: m = NIA - coil, solenoid, magnet sab ek family.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="slrow"><label>dipole moment m (A·m²)</label><input type="range" id="dM" min="1" max="10" step="1" value="5"><span class="v" id="vldM">5</span></div>
+<div class="slrow"><label>probe distance r (m)</label><input type="range" id="dR" min="0.5" max="3" step="0.1" value="1"><span class="v" id="vldR">1.0 m</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Uniform Field Me Magnet - Torque aur Energy ⭐</h2>
+<p class="why">Uniform field B me bar magnet pe torque τ = mB sinθ (vector: τ = m×B) - field magnet ko apne saath ALIGN karna chahta hai! θ=0: torque ZERO, U = −mB (MINIMUM - stable equilibrium, chhota dhakka wapas kheench le aata hai). θ=90°: torque MAX. θ=180°: torque phir zero par U = +mB (MAX - UNSTABLE, palat jaayega!). Ghumane ka work: W = mB(cosθ₁ − cosθ₂); 0 se 180° = 2mB. Compass needle isi torque se N-S align hoti hai (Earth ka field!).</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>magnet angle θ</label><input type="range" id="tT" min="0" max="180" step="15" value="60"><span class="v" id="vltT">60°</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Magnetic Materials - Dia, Para, Ferro ⭐⭐</h2>
+<p class="why">DIAMAGNETIC: field ko weakly REPEL - lines andar se door dhakelta (Bi, Cu, Ag, water; χ chhota NEGATIVE ~−10⁻⁵). PARAMAGNETIC: weakly attract - atoms ke permanent dipoles align (Al, Na, Pt, oxygen; χ chhota POSITIVE ~10⁻⁵ se 10⁻³). FERROMAGNETIC: STRONGLY attract - DOMAINS (lakhs aligned atoms) field ke saath line me, lines andar KHEENCH leta (Fe, Co, Ni; χ ~10³!). Curie temperature ke upar ferro → para (iron: 1043 K). Permanent magnets = hard ferro (steel, Alnico); electromagnets = soft iron. Trick: DIA = डरावना, PARA = प्यार, FERRO = फ़ुल प्यार!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="tD">Diamagnetic (χ≈−10⁻⁵)</button><button id="tP">Paramagnetic (χ≈+10⁻⁴)</button><button id="tF">Ferromagnetic (χ≈10³)</button></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Magnetism Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: monopole nahi milta, field lines closed loops (bahar N→S, andar S→N), axial = 2× equatorial (dono 1/r³), θ=0 stable aur θ=180 unstable, DIA repel PARA weak FERRO strong!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Bar Magnet ⭐</h3><p>Do poles, monopole NAHI - todne pe har tukda N-S magnet | Attract iron, align N-S (directive) | Like repel, unlike attract | Lines: bahar N→S, andar S→N = CLOSED loops | Kabhi intersect nahi | m = q_m×2l (S se N)</p></div>
+<div class="rcard"><h3>Dipole Field ⭐</h3><p>Magnet = solenoid (same pattern) | Axial: B = (μ₀/4π)·2m/r³ | Equatorial: B = (μ₀/4π)·m/r³, OPPOSITE m - axial DOUBLE | Dono 1/r³: r double → B = 1/8 | Loop: m = NIA</p></div>
+<div class="rcard"><h3>Torque + Energy ⭐</h3><p>τ = mB sinθ (m×B) | θ=0: τ=0, U=−mB STABLE | θ=90°: τ MAX | θ=180°: U=+mB UNSTABLE | W = mB(cosθ₁−cosθ₂); 0→180 = 2mB | Compass = Earth field me alignment</p></div>
+<div class="rcard"><h3>Magnetization ⭐</h3><p>M = dipole moment per volume (A/m) | M = χH, B = μ₀(H+M) | χ sign se material pehchano: dia −, para +, ferro +++ | Para response T badhane pe kam</p></div>
+<div class="rcard"><h3>Dia + Para ⭐</h3><p>DIA: weakly REPEL, χ ~−10⁻⁵ (Bi, Cu, Ag, water) - lines door dhakelta | PARA: weakly attract, χ ~10⁻⁵-10⁻³ (Al, Na, Pt, O₂) - dipoles align | Trick: DIA=डरावना, PARA=प्यार</p></div>
+<div class="rcard"><h3>Ferro + Curie ⭐⭐</h3><p>FERRO: STRONG attract, χ ~10³ (Fe, Co, Ni) | DOMAINS align → strong magnet, lines andar KHEENCHTA | Curie T ke upar ferro→para (Fe: 1043 K) | Hard (steel, Alnico) = permanent; soft iron = electromagnet</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 5 Magnetism and Matter Visual Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+inits[0]=(()=>{
+const c=ctx("cv0");
+const bw=document.getElementById("mW"),bb=document.getElementById("mB");
+let broken=false;
+function fieldLine(cx,cy,C,col){
+ c.strokeStyle=col;c.lineWidth=1.8;c.beginPath();
+ for(let d=6;d<=354;d+=3){
+  const th=d*Math.PI/180,r=C*Math.sin(th)*Math.sin(th);
+  const x=cx+r*Math.cos(th),y=cy-r*Math.sin(th);
+  d===6?c.moveTo(x,y):c.lineTo(x,y);
+ }
+ c.stroke();
+ const p1=pt(cx,cy,C,84),p2=pt(cx,cy,C,96);
+ arrow2(c,p1[0],p1[1],p2[0],p2[1],col,2.5);
+ const p3=pt(cx,cy,C,264),p4=pt(cx,cy,C,276);
+ arrow2(c,p3[0],p3[1],p4[0],p4[1],col,2.5);
+}
+function pt(cx,cy,C,deg){
+ const th=deg*Math.PI/180,r=C*Math.sin(th)*Math.sin(th);
+ return [cx+r*Math.cos(th),cy-r*Math.sin(th)];
+}
+function magnet(x,cy,len,col){
+ const h=44;
+ c.fillStyle="#1a1a33";c.fillRect(x,cy-h/2,len,h);
+ c.fillStyle="#e879f9";c.fillRect(x,cy-h/2,len/2,h);
+ c.fillStyle="#22d3ee";c.fillRect(x+len/2,cy-h/2,len/2,h);
+ c.strokeStyle="#3d4470";c.lineWidth=1.5;c.strokeRect(x,cy-h/2,len,h);
+ txt(c,"S",x+len/4,cy+6,"#05050c","bold 18px 'Cascadia Code',monospace","center");
+ txt(c,"N",x+3*len/4,cy+6,"#05050c","bold 18px 'Cascadia Code',monospace","center");
+}
+function draw(t){
+ bw.style.background=!broken?"#1d2a55":"#12122a";bw.style.color=!broken?CY:"#aab4d8";
+ bb.style.background=broken?"#1d2a55":"#12122a";bb.style.color=broken?CY:"#aab4d8";
+ c.clearRect(0,0,920,330);
+ txt(c,"Field lines: BAHAR N se S, ANDAR S se N - CLOSED LOOPS!",460,24,"#aab4d8","bold 13px 'Cascadia Code',monospace","center");
+ if(!broken){
+  const cx=460,cy=170;
+  [130,175,220].forEach(C=>fieldLine(cx,cy,C,CY));
+  arrow2(c,570,cy,636,cy,YL,3);
+  arrow2(c,350,cy,284,cy,YL,3);
+  magnet(360,cy,200);
+  txt(c,"magnet ke ANDAR bhi lines jaati hain (S se N)!",460,312,MG,"12px 'Cascadia Code',monospace","center");
+  document.getElementById("r0").innerHTML="WHOLE magnet: lines N pole se nikli, bahar ghoom ke S me ghusi, andar S se N - <span class='hl'>CLOSED LOOPS (electric lines se farak: wo charges pe khatam hoti hain!)</span> | dense lines = strong field | kabhi intersect NAHI | m = q_m × 2l, direction S se N | ab TOD KE dekho →";
+ }else{
+  [[300,130],[560,130]].forEach(([px,len],idx)=>{
+   const cx=px+len/2,cy=170;
+   [78,110,142].forEach(C=>fieldLine(cx,cy,C,CY));
+   arrow2(c,px+len+10,cy,px+len+52,cy,YL,3);
+   arrow2(c,px-10,cy,px-52,cy,YL,3);
+   magnet(px,cy,len);
+  });
+  txt(c,"cut face pe NAYA pole ban gaya!",460,60,YL,"bold 13px 'Cascadia Code',monospace","center");
+  document.getElementById("r0").innerHTML="TODA! Har tukda apna <span class='hl'>poora N-S magnet</span> ban gaya - cut faces pe NAYE poles (S···N | S···N). Monopole mila? <span class='hl'>KABHI NAHI!</span> Atom tak todte jao - har electron khud chhota magnet hai. Isliye magnet = current loop family (m = NIA) se deep connection!";
+ }
+}
+bw.addEventListener("click",()=>{broken=false;draw(0);});
+bb.addEventListener("click",()=>{broken=true;draw(0);});
+return function(){broken=false;draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1");
+const sM=document.getElementById("dM"),sR=document.getElementById("dR");
+function draw(t){
+ const m=parseFloat(sM.value),r=parseFloat(sR.value);
+ document.getElementById("vldM").textContent=sM.value;
+ document.getElementById("vldR").textContent=r.toFixed(1)+" m";
+ const Bax=2e-7*m/(r*r*r),Beq=1e-7*m/(r*r*r);
+ c.clearRect(0,0,920,330);
+ txt(c,"MAGNETIC DIPOLE (magnet = solenoid = loop, m = NIA)",260,26,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ const cx=230,cy=175;
+ c.setLineDash([3,5]);c.strokeStyle="#3d4470";c.lineWidth=1;
+ c.beginPath();c.moveTo(cx,cy-100);c.lineTo(cx,cy+100);c.stroke();
+ c.beginPath();c.moveTo(cx-80,cy);c.lineTo(cx+430,cy);c.stroke();c.setLineDash([]);
+ txt(c,"equatorial",cx+6,cy-86,DM,"10px 'Cascadia Code',monospace");
+ txt(c,"axial",cx+330,cy-10,DM,"10px 'Cascadia Code',monospace","center");
+ c.fillStyle="#e879f9";c.fillRect(cx-45,cy-14,45,28);
+ c.fillStyle="#22d3ee";c.fillRect(cx,cy-14,45,28);
+ c.strokeStyle="#3d4470";c.strokeRect(cx-45,cy-14,90,28);
+ txt(c,"S",cx-22,cy+5,"#05050c","bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"N",cx+22,cy+5,"#05050c","bold 14px 'Cascadia Code',monospace","center");
+ arrow2(c,cx-16,cy+24,cx+16,cy+24,GR,2.5);
+ txt(c,"m",cx,cy+40,GR,"bold 12px 'Cascadia Code',monospace","center");
+ const axx=cx+60+r*110;
+ c.fillStyle=YL;c.beginPath();c.arc(axx,cy,7,0,7);c.fill();
+ const al=Math.max(14,Math.min(64,Bax*3e7));
+ arrow2(c,axx+9,cy,axx+9+al,cy,YL,3);
+ txt(c,"B_ax → (m ki direction)",axx,cy+24,YL,"10px 'Cascadia Code',monospace","center");
+ txt(c,"r",axx-16,cy-14,DM,"10px 'Cascadia Code',monospace","center");
+ const eqy=cy-r*36;
+ if(eqy>44){
+  c.fillStyle=YL;c.beginPath();c.arc(cx,eqy,7,0,7);c.fill();
+  const el=Math.max(12,Math.min(50,Beq*3e7));
+  arrow2(c,cx-9,eqy,cx-9-el,eqy,MG,3);
+  txt(c,"B_eq ← (m ke OPPOSITE)",cx-16-el,eqy+4,MG,"10px 'Cascadia Code',monospace","right");
+ }
+ txt(c,"1/r³ se girta: r DOUBLE → B = 1/8!",690,60,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"electric dipole wala hi factor 2",690,88,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"axial = 2 × equatorial",690,112,CY,"bold 12px 'Cascadia Code',monospace","center");
+ const B2=2e-7*m/Math.pow(2*r,3);
+ const fu=v=>v>=1e-3?(v*1e3).toFixed(2)+" mT":(v*1e6).toFixed(2)+" µT";
+ document.getElementById("r1").innerHTML="m = "+sM.value+" A·m², r = "+r.toFixed(1)+" m: B_axial = (μ₀/4π)·2m/r³ = <span class='hl'>"+fu(Bax)+"</span> | B_equatorial = (μ₀/4π)·m/r³ = <span class='hl'>"+fu(Beq)+"</span> | axial/equatorial = <span class='hl'>EXACTLY 2</span> | r DOUBLE pe B_ax sirf <span class='hl'>"+fu(B2)+"</span> (1/8!) | loop ka m = NIA - coil, solenoid, magnet ek hi family";
+}
+[sM,sR].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2");
+const sT=document.getElementById("tT");
+function draw(t){
+ const th=parseFloat(sT.value);
+ document.getElementById("vltT").textContent=sT.value+"°";
+ const rad=th*Math.PI/180;
+ const tau=Math.sin(rad),U=-Math.cos(rad),W=1-Math.cos(rad);
+ c.clearRect(0,0,920,330);
+ txt(c,"UNIFORM B me compass needle (Earth ka field aisa hi!)",460,26,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ for(let yy=64;yy<=300;yy+=52){arrow2(c,60,yy,430,yy,"#3d55c8",2.5);}
+ txt(c,"B →",418,50,CY,"bold 14px 'Cascadia Code',monospace","center");
+ const nx=250,ny=180,pl=80;
+ const hx=nx+pl*Math.cos(rad),hy=ny-pl*Math.sin(rad);
+ const tx=nx-pl*Math.cos(rad),ty=ny+pl*Math.sin(rad);
+ c.setLineDash([4,6]);c.strokeStyle=DM;c.lineWidth=1;
+ c.beginPath();c.moveTo(nx,ny);c.lineTo(nx+pl+30,ny);c.stroke();c.setLineDash([]);
+ if(th>0){
+  c.strokeStyle=YL;c.lineWidth=2;
+  c.beginPath();c.arc(nx,ny,40,-rad,0);c.stroke();
+  txt(c,"θ="+th+"°",nx+58,ny-30,YL,"bold 13px 'Cascadia Code',monospace");
+ }
+ c.fillStyle="#e879f9";
+ c.beginPath();c.moveTo(tx,ty-9);c.lineTo(nx,ny);c.lineTo(tx,ty+9);c.closePath();c.fill();
+ c.fillStyle=CY;
+ c.beginPath();c.moveTo(hx,hy-9);c.lineTo(nx,ny);c.lineTo(hx,hy+9);c.closePath();c.fill();
+ txt(c,"S",tx,ty-14,"#f472b6","bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"N",hx,hy-14,CY,"bold 12px 'Cascadia Code',monospace","center");
+ arrow2(c,tx,ty,hx,hy,GR,2);
+ const stat=th===0?"STABLE equilibrium (chhota dhakka wapas kheench lega)":th===180?"UNSTABLE! (chhoti si disturbance se palat jaayega)":th===90?"torque MAXIMUM yahan":"field isse align karna chahta hai (torque laga raha)";
+ txt(c,stat,250,306,th===180?RD:th===0?GR:"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ const bx=560,bw=320;
+ txt(c,"τ = mB sinθ",bx+bw/2,80,CY,"bold 13px 'Cascadia Code',monospace","center");
+ c.fillStyle="#1a1a33";c.fillRect(bx,96,bw,22);
+ c.fillStyle=CY;c.fillRect(bx,96,bw*tau,22);
+ txt(c,tau.toFixed(2)+" mB"+(th===90?" MAX":""),bx+bw*tau+8,112,CY,"12px 'Cascadia Code',monospace");
+ txt(c,"U = −mB cosθ",bx+bw/2,166,MG,"bold 13px 'Cascadia Code',monospace","center");
+ c.fillStyle="#1a1a33";c.fillRect(bx,182,bw,22);
+ const uw=(U+1)/2;
+ c.fillStyle=MG;c.fillRect(bx,182,bw*uw,22);
+ txt(c,U.toFixed(2)+" mB"+(th===0?" (MIN - stable)":th===180?" (MAX - unstable)":""),bx+bw+8,198,MG,"12px 'Cascadia Code',monospace");
+ txt(c,"W(0→θ) = mB(1−cosθ) = "+W.toFixed(2)+" mB",bx+bw/2,250,DM,"12px 'Cascadia Code',monospace","center");
+ txt(c,"0 se 180° ghumao: W = 2mB",bx+bw/2,276,DM,"12px 'Cascadia Code',monospace","center");
+ document.getElementById("r2").innerHTML="θ = "+th+"°: τ = mB sinθ = <span class='hl'>"+tau.toFixed(2)+" mB</span>"+(th===90?" (MAXIMUM!)":"")+" | U = −mB cosθ = <span class='hl'>"+U.toFixed(2)+" mB</span> | "+stat+" | electric dipole ka pE wala formula yaad? τ = p×E aur τ = m×B - <span class='hl'>pattern ek, field alag!</span>";
+}
+sT.addEventListener("input",()=>draw(0));
+return function(){draw(0);};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3");
+const btns={D:document.getElementById("tD"),P:document.getElementById("tP"),F:document.getElementById("tF")};
+let mode="D";
+const info={
+ D:{chi:"χ ≈ −10⁻⁵ (chhota NEGATIVE)",ex:"Bi, Cu, Ag, water, NaCl",beh:"field ko weakly REPEL - lines block se DOOR bhagti hain, andar field thoda kam",extra:"DIA = डरावना - field se darr ke bhaagta!"},
+ P:{chi:"χ ≈ +10⁻⁵ to 10⁻³ (chhota POSITIVE)",ex:"Al, Na, Pt, oxygen",beh:"weakly ATTRACT - atoms ke permanent dipoles field ke saath align, lines halki andar kheenchi",extra:"PARA = प्यार - thoda sa attract! Temperature badhane pe response kam."},
+ F:{chi:"χ ≈ 10³ (bahut BADA positive)",ex:"Fe, Co, Ni, gadolinium",beh:"STRONGLY attract - DOMAINS (lakhs aligned atoms) align ho jaate hain, lines andar KHEENCH leta",extra:"FERRO = फ़ुल प्यार! Curie T (Fe: 1043 K) ke upar → paramagnetic. Hard ferro = permanent magnet (steel, Alnico); soft iron = electromagnet."}
+};
+function draw(t){
+ for(const k in btns){btns[k].style.background=k===mode?"#1d2a55":"#12122a";btns[k].style.color=k===mode?CY:"#aab4d8";}
+ c.clearRect(0,0,920,330);
+ const x0=400,x1=560,y0=110,y1=230;
+ const lines=[70,110,150,190,230,270];
+ lines.forEach(y=>{
+  const inside=y>y0&&y<y1;
+  if(mode==="D"&&inside){
+   const away=y<(y0+y1)/2?-46:46;
+   c.strokeStyle="#3d55c8";c.lineWidth=2;c.beginPath();
+   c.moveTo(40,y);c.lineTo(x0-70,y);
+   c.quadraticCurveTo((x0+x1)/2,y+away*1.7,x1+70,y);
+   c.lineTo(880,y);c.stroke();
+   arrow2(c,300,y,336,y,"#3d55c8",2);
+  }else if(mode==="F"){
+   let yy=y;
+   if(y<=y0)yy=y0+6+(y0-y)*0.12;
+   if(y>=y1)yy=y1-6-(y-y1)*0.12;
+   c.strokeStyle="#3d55c8";c.lineWidth=2;c.beginPath();
+   c.moveTo(40,y);c.lineTo(x0,yy);c.lineTo(x1,yy);c.lineTo(880,y);c.stroke();
+   arrow2(c,300,y,336,y,"#3d55c8",2);
+  }else{
+   c.strokeStyle="#3d55c8";c.lineWidth=2;c.beginPath();
+   c.moveTo(40,y);c.lineTo(880,y);c.stroke();
+   arrow2(c,300,y,336,y,"#3d55c8",2);
+  }
+ });
+ if(mode==="F"){
+  for(let yy=y0+10;yy<y1-6;yy+=12){arrow2(c,x0+30,yy,x1-30,yy,YL,1.8);}
+ }else if(mode==="P"){
+  for(let yy=y0+18;yy<y1-6;yy+=30){arrow2(c,x0+40,yy,x1-40,yy,YL,1.8);}
+ }
+ c.fillStyle=mode==="F"?"rgba(232,121,249,0.25)":mode==="P"?"rgba(34,211,238,0.15)":"rgba(94,100,136,0.18)";
+ c.fillRect(x0,y0,x1-x0,y1-y0);
+ c.strokeStyle=DM;c.lineWidth=2;c.strokeRect(x0,y0,x1-x0,y1-y0);
+ txt(c,mode==="D"?"DIA block":mode==="P"?"PARA block":"FERRO block",(x0+x1)/2,(y0+y1)/2+4,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"external field B →",770,52,CY,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,info[mode].extra,(x0+x1)/2,306,YL,"12px 'Cascadia Code',monospace","center");
+ document.getElementById("r3").innerHTML="<span class='hl'>"+(mode==="D"?"DIAMAGNETIC":mode==="P"?"PARAMAGNETIC":"FERROMAGNETIC")+"</span>: "+info[mode].beh+" | "+info[mode].chi+" | examples: <span class='hl'>"+info[mode].ex+"</span>"+(mode==="F"?" | M = χH, B = μ₀(H+M) - magnetization ka measure A/m":"");
+}
+Object.keys(btns).forEach(k=>btns[k].addEventListener("click",()=>{mode=k;draw(0);}));
+return function(){mode="D";draw(0);};
+})();
+inits[4]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Bar magnet ko beech se tod diya. Kya milega?",opts:["Ek N pole aur ek S pole alag-alag","Har tukda apna N-S wala poora magnet","Dono tukde non-magnetic","Ek tukda N, ek tukda S"],a:1,why:"Magnetic monopole exist NAHI karta! Har tukde ke do poles (cut faces pe naye poles bante). Atom tak jao - har electron khud ek chhota magnet hai."},
+{q:"Bar magnet ke ANDAR magnetic field lines kahan se kahan jaati hain?",opts:["N se S","S se N - closed loops banati hain","Andar koi field nahi hota","Poles se bahar hi rehti hain"],a:1,why:"BAHAR N se S, ANDAR S se N - isliye magnetic field lines CLOSED LOOPS hoti hain. Electric lines se basic farak: wo + pe shuru − pe khatam hoti hain!"},
+{q:"Bar magnet ke axis pe doori DOUBLE kar do. Axial field kitna ho jaayega?",opts:["Aadha","1/4","1/8","Same"],a:2,why:"B = (μ₀/4π)·2m/r³ - 1/r³ se girta hai! r double → 1/8. Aur axial EXACTLY DOUBLE hota hai equatorial ka (electric dipole wala hi pattern)."},
+{q:"Uniform field me bar magnet kab STABLE equilibrium me hota hai?",opts:["θ = 90° pe (torque max)","θ = 0° pe (U = −mB minimum)","θ = 180° pe (U max)","Kisi bhi angle pe"],a:1,why:"θ=0: aligned with field, U = −mB MINIMUM = stable (chhota dhakka wapas kheench lega). θ=180° bhi torque zero hai par U = +mB MAX = unstable - palat jaayega! Compass isi liye kaam karta hai."},
+{q:"Kaunsa material magnetic field lines ko andar KHEENCH leta hai (χ ≈ 10³)?",opts:["Copper (diamagnetic)","Aluminium (paramagnetic)","Iron (ferromagnetic)","Water (diamagnetic)"],a:2,why:"FERROMAGNETIC (Fe, Co, Ni): χ ~10³, domains align → lines andar kheenchta. DIA (Cu, water) lines door DHAKELTA hai. Curie temperature (Fe: 1043 K) ke upar ferro → para!"}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Magnetism and matter dono pakke! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+go(0);
+</script></body></html>
