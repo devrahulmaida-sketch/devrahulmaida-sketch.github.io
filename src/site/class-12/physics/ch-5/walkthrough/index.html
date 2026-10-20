@@ -341,7 +341,7 @@ function draw(t){
  c.fillStyle=mode==="F"?"rgba(232,121,249,0.25)":mode==="P"?"rgba(34,211,238,0.15)":"rgba(94,100,136,0.18)";
  c.fillRect(x0,y0,x1-x0,y1-y0);
  c.strokeStyle=DM;c.lineWidth=2;c.strokeRect(x0,y0,x1-x0,y1-y0);
- txt(c,mode==="D"?"DIA block":mode==="P"?"PARA block":"FERRO block",(x0+x1)/2,(y0+y1)/2+4,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ txt(c,mode==="D"?"DIA block":mode==="P"?"PARA block":"FERRO block",(x0+x1)/2,y0-10,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
  txt(c,"external field B →",770,52,CY,"bold 12px 'Cascadia Code',monospace","center");
  txt(c,info[mode].extra,(x0+x1)/2,306,YL,"12px 'Cascadia Code',monospace","center");
  document.getElementById("r3").innerHTML="<span class='hl'>"+(mode==="D"?"DIAMAGNETIC":mode==="P"?"PARAMAGNETIC":"FERROMAGNETIC")+"</span>: "+info[mode].beh+" | "+info[mode].chi+" | examples: <span class='hl'>"+info[mode].ex+"</span>"+(mode==="F"?" | M = χH, B = μ₀(H+M) - magnetization ka measure A/m":"");
