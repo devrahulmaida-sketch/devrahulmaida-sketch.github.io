@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wave Optics - Visual Walkthrough | Learn With Rahul</title>
+<title>Moving Charges and Magnetism - Visual Walkthrough | Learn With Rahul</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
@@ -42,9 +42,9 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </head>
 <body>
 <div class="wrap">
-<div class="crumb">Class 12 Physics - Chapter 10 - Wave Optics</div>
-<h1>Wave Optics Ka Visual Walkthrough</h1>
-<p class="sub">5 animated scenes - Huygens refraction lab, superposition lab, YDSE fringe lab, diffraction lab, aur quiz.</p>
+<div class="crumb">Class 12 Physics - Chapter 4 - Moving Charges and Magnetism</div>
+<h1>Moving Charges Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - Lorentz force lab, circle-helix lab, field sources lab, galvanometer lab, aur quiz.</p>
 <div class="dots" id="dots"></div>
 <div class="scene" id="sc0">
 <h2>1. Huygens Principle - Wavefronts aur Refraction ⭐⭐</h2>
@@ -283,7 +283,7 @@ function draw(t){
  c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.moveTo(470,40);c.lineTo(470,125);c.stroke();
  txt(c,"screen",436,137,YL,"12px 'Cascadia Code',monospace");
  txt(c,"D = "+D.toFixed(1)+" m",330,152,DM,"12px 'Cascadia Code',monospace");
- txt(c,"dono slits EK hi source se → phase LOCKED (coherent!)",560,60,"#aab4d8","12px 'Cascadia Code',monospace");
+ txt(c,"dono slits EK source se → phase LOCKED!",560,60,"#aab4d8","12px 'Cascadia Code',monospace");
  txt(c,"β = λD/d = "+betaMM.toFixed(2)+" mm",560,80,YL,"bold 13px 'Cascadia Code',monospace");
  // fringe screen
  const win=0.025,fs=beta/6;
@@ -351,7 +351,7 @@ function draw(t){
   const y=(px-470)/430*win;
   const al=Math.PI*aM*y/(lamM*Math.sqrt(D*D+y*y));
   const s=Math.abs(al)<1e-9?1:Math.sin(al)/al;
-  const I=Math.pow(s,4);
+  const I=Math.pow(Math.abs(s),1.2);
   c.fillStyle="rgba("+rr+","+gg+","+bb+","+I.toFixed(3)+")";
   c.fillRect(px,172,1,108);
  }
