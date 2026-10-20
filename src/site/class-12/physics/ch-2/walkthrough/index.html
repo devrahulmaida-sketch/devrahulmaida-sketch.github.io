@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrostatic Potential and Capacitance - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 2 - Electrostatic Potential and Capacitance</div>
+<h1>Electrostatic Potential Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - potential lab, E-V relation lab, potential energy lab, capacitor lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Electric Potential - Energy Ka Height Map ⭐</h2>
+<p class="why">Potential V = W/q₀ - unit positive charge ko infinity se us point tak laane me kitna work. SCALAR hai (no direction!), unit volt. Point charge ka V = kQ/r - field 1/r² se girta hai, potential sirf 1/r se! Aur scalar hone ka sabse bada fayda: system ka potential seedha ADD: V = kΣqᵢ/rᵢ - vector components ki jhanjhat nahi!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>charge Q₁ (µC)</label><input type="range" id="pQ1" min="-10" max="10" step="1" value="5"><span class="v" id="vlpQ1">+5 µC</span></div>
+<div class="slrow"><label>charge Q₂ (µC)</label><input type="range" id="pQ2" min="-10" max="10" step="1" value="-3"><span class="v" id="vlpQ2">−3 µC</span></div>
+<div class="slrow"><label>probe distance r (m)</label><input type="range" id="pR" min="0.2" max="2" step="0.1" value="1"><span class="v" id="vlpR">1.0 m</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. E aur V Ka Rishta - Field = Slope ⭐</h2>
+<p class="why">E = −dV/dx: field, potential ka NEGATIVE gradient hai - potential = pahad ki height, field = slope! Uniform field me ΔV = −E·Δr: do plates ke beech E = V/d. Equipotential surfaces pe har point same V - unpe charge move karne me ZERO work (W = qΔV = 0); field lines equipotential ke hamesha PERPENDICULAR, aur do equipotentials kabhi intersect nahi karti. Electron volt: 1 eV = 1.6×10⁻¹⁹ J - 1 electron ko 1 V se accelerate karne ki energy.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="slrow"><label>battery voltage V</label><input type="range" id="uV" min="10" max="200" step="10" value="100"><span class="v" id="vluV">100 V</span></div>
+<div class="slrow"><label>plate gap d (cm)</label><input type="range" id="uD" min="1" max="10" step="0.5" value="5"><span class="v" id="vluD">5.0 cm</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Potential Energy - Charges Ki Stored Taakat ⭐</h2>
+<p class="why">Do charges ka system: U = kq₁q₂/r. LIKE charges: U POSITIVE - paas laane me work karna pada, door bhejne pe energy milegi. UNLIKE: U NEGATIVE - bound system, alag karne me work karna padega. 3 charges ka system: har PAIR ka U add karo: U = k(q₁q₂/r₁₂ + q₂q₃/r₂₃ + q₁q₃/r₁₃) - sirf pairs, kuch double count nahi! Scalar hai to seedha sum - isliye energy se sochna easy.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="u2">2 Charges</button><button id="u3">3 Charges (pair sum)</button></div>
+<div class="slrow"><label>charge q₁ (µC)</label><input type="range" id="eQ1" min="-6" max="6" step="1" value="3"><span class="v" id="vleQ1">+3 µC</span></div>
+<div class="slrow"><label>charge q₂ (µC)</label><input type="range" id="eQ2" min="-6" max="6" step="1" value="4"><span class="v" id="vleQ2">+4 µC</span></div>
+<div class="slrow"><label>separation r (m)</label><input type="range" id="eR" min="0.2" max="2" step="0.1" value="1"><span class="v" id="vleR">1.0 m</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Capacitor Lab - Charge Ka Bank ⭐⭐</h2>
+<p class="why">Capacitance C = Q/V (farad; practical µF/pF). Parallel plate: C = ε₀A/d - area Upar, doori Neeche! Dielectric daalo to C = KC₀. EXAM FAVOURITE: battery CONNECTED rahe to V constant, charge K times badhta hai; battery DISCONNECT karke dielectric daalo to Q constant, voltage 1/K! Energy U = ½CV² = ½Q²/C = ½QV - aur energy FIELD me stored hai: density u = ½ε₀E². Combination: SERIES me 1/C = Σ1/Cᵢ (same Q, sabse chhote se chhoti), PARALLEL me C = ΣCᵢ (same V) - resistors ke bilkul ULTE!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:8px"><button id="k1">Air (K=1)</button><button id="k2">Mica (K=6)</button><button id="k3">Water (K=80)</button><button id="batt">Battery: CONNECTED</button></div>
+<div class="slrow"><label>plate area A (cm²)</label><input type="range" id="cA" min="10" max="200" step="10" value="100"><span class="v" id="vlcA">100 cm²</span></div>
+<div class="slrow"><label>plate gap d (mm)</label><input type="range" id="cD" min="0.5" max="5" step="0.5" value="1"><span class="v" id="vlcD">1.0 mm</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Potential Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: V scalar (seedha add!), field 1/r² par potential 1/r, equipotential pe ZERO work, dielectric me connected vs disconnected ka farak, capacitors resistors ke ULTE combine hote hain!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Potential ⭐</h3><p>V = W/q₀, SCALAR, volt | Point charge V = kQ/r (∝1/r; field 1/r²!) | System: V = kΣqᵢ/rᵢ seedha add | Dipole: V = kp cosθ/r², equatorial pe ZERO | E = −dV/dx; uniform me ΔV = −E·Δr</p></div>
+<div class="rcard"><h3>Equipotential ⭐</h3><p>Har point same V | Move karne me W = qΔV = ZERO | Field lines hamesha PERPENDICULAR | Kabhi intersect nahi | Point charge: concentric spheres; uniform field: parallel planes | 1 eV = 1.6×10⁻¹⁹ J</p></div>
+<div class="rcard"><h3>Potential Energy ⭐</h3><p>U = kq₁q₂/r | Like: U positive (door bhejna energy deta); unlike: negative (bound) | 3 charges: har PAIR add, double count nahi | Dipole: U = −pE cosθ (θ=0 stable)</p></div>
+<div class="rcard"><h3>Conductor + Dielectric ⭐</h3><p>Conductor: andar E = 0, charge surface pe, surface equipotential, E = σ/ε₀ ⊥ | Shielding: cavity me E = 0 | Dielectric: polarize hoke E = E₀/K (water K≈80) | Dielectric strength air ≈ 3×10⁶ V/m</p></div>
+<div class="rcard"><h3>Capacitance ⭐⭐</h3><p>C = Q/V (farad) | Parallel plate C = ε₀A/d | Dielectric se C = KC₀ | Battery CONNECTED: V const, Q → KQ | DISCONNECTED: Q const, V → V/K | Isolated sphere C = 4πε₀R</p></div>
+<div class="rcard"><h3>Combination + Energy ⭐⭐</h3><p>Series: 1/C = Σ1/Cᵢ (same Q, V divide, chhote se CHHOTI) | Parallel: C = ΣCᵢ (same V) - resistors ke ULTE | U = ½CV² = ½Q²/C = ½QV | Density u = ½ε₀E² (energy FIELD me!)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 2 Electrostatic Potential and Capacitance Visual Walkthrough</div>
+</div>
+<script>
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+inits[0]=(()=>{
+const c=ctx("cv0");
+const s1=document.getElementById("pQ1"),s2=document.getElementById("pQ2"),sR=document.getElementById("pR");
+function draw(t){
+ const q1=parseFloat(s1.value),q2=parseFloat(s2.value),r=parseFloat(sR.value);
+ document.getElementById("vlpQ1").textContent=(q1>0?"+":"")+s1.value+" µC";
+ document.getElementById("vlpQ2").textContent=(q2>0?"+":"")+s2.value+" µC";
+ document.getElementById("vlpR").textContent=r.toFixed(1)+" m";
+ c.clearRect(0,0,920,330);
+ const cy=200,x1=230,x2=650,sc=110;
+ const px=x1+r*sc;
+ const r2=Math.abs(x2-px)/sc;
+ c.setLineDash([3,5]);c.strokeStyle="#3d4470";c.lineWidth=1;
+ c.beginPath();c.moveTo(60,cy);c.lineTo(700,cy);c.stroke();c.setLineDash([]);
+ [[x1,q1,"Q₁",CY],[x2,q2,"Q₂",MG]].forEach(([x,q,lb,col])=>{
+  c.fillStyle=q===0?"#2a2a44":(q>0?col:"#f472b6");
+  c.beginPath();c.arc(x,cy,22,0,7);c.fill();
+  txt(c,q===0?"0":(q>0?"+":"−"),x,cy+6,"#05050c","bold 20px 'Cascadia Code',monospace","center");
+  txt(c,lb,x,cy-36,col,"bold 13px 'Cascadia Code',monospace","center");
+ });
+ c.setLineDash([4,6]);c.strokeStyle=YL;c.lineWidth=1.5;
+ c.beginPath();c.moveTo(x1,cy+40);c.lineTo(px,cy+40);c.stroke();
+ c.beginPath();c.moveTo(x2,cy+40);c.lineTo(px,cy+40);c.stroke();c.setLineDash([]);
+ txt(c,"r₁ = "+r.toFixed(1)+" m",(x1+px)/2,cy+58,YL,"11px 'Cascadia Code',monospace","center");
+ txt(c,"r₂ = "+r2.toFixed(1)+" m",(x2+px)/2,cy+58,YL,"11px 'Cascadia Code',monospace","center");
+ c.fillStyle=GR;c.beginPath();c.arc(px,cy,8,0,7);c.fill();
+ txt(c,"probe",px,cy-20,GR,"11px 'Cascadia Code',monospace","center");
+ txt(c,"SCALAR SUM: V = V₁ + V₂ (seedha add - vectors ki jhanjhat NAHI!)",400,26,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ const gx0=724,gx1=896,gy0=290,gy1=200;
+ c.strokeStyle="#3d4470";c.lineWidth=1.5;
+ c.beginPath();c.moveTo(gx0,gy0);c.lineTo(gx1,gy0);c.stroke();
+ c.beginPath();c.moveTo(gx0,gy0);c.lineTo(gx0,gy1);c.stroke();
+ txt(c,"r →",(gx0+gx1)/2,gy0+18,DM,"10px 'Cascadia Code',monospace","center");
+ c.strokeStyle=GR;c.lineWidth=2.5;c.beginPath();
+ for(let i=0;i<=40;i++){const rr=0.2+i*0.045;const gx=gx0+(rr-0.2)/1.8*(gx1-gx0);const gy=gy0-(0.2/rr)*(gy0-gy1);i===0?c.moveTo(gx,gy):c.lineTo(gx,gy);}
+ c.stroke();
+ txt(c,"V ∝ 1/r",gx0+96,gy1+16,GR,"bold 11px 'Cascadia Code',monospace","center");
+ c.strokeStyle=CY;c.lineWidth=2;c.beginPath();
+ for(let i=0;i<=40;i++){const rr=0.2+i*0.045;const gx=gx0+(rr-0.2)/1.8*(gx1-gx0);const gy=gy0-(0.04/(rr*rr))*(gy0-gy1);i===0?c.moveTo(gx,gy):c.lineTo(gx,gy);}
+ c.stroke();
+ txt(c,"E ∝ 1/r² (tez girna!)",gx0+96,gy1+40,CY,"bold 11px 'Cascadia Code',monospace","center");
+ txt(c,"1 eV = 1.6×10⁻¹⁹ J",80,300,DM,"11px 'Cascadia Code',monospace","center");
+ const V1=9e3*q1/r,V2=9e3*q2/r2,Vt=V1+V2,E1=9e3*Math.abs(q1)/(r*r);
+ const fv=v=>Math.abs(v)>=1000?(v/1000).toFixed(1)+" kV":v.toFixed(0)+" V";
+ document.getElementById("r0").innerHTML="V₁ = kQ₁/r₁ = <span class='hl'>"+fv(V1)+"</span> | V₂ = kQ₂/r₂ = <span class='hl'>"+fv(V2)+"</span> | TOTAL V = V₁+V₂ = <span class='hl'>"+fv(Vt)+"</span> (scalar - sirf ADD!) | compare: Q₁ ka FIELD yahan E = "+(E1>=1000?(E1/1000).toFixed(1)+" kV/m":E1.toFixed(0)+" V/m")+" - field 1/r² se, potential sirf 1/r se girta!";
+}
+[s1,s2,sR].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1");
+const sV=document.getElementById("uV"),sD=document.getElementById("uD");
+function draw(t){
+ const V=parseFloat(sV.value),dcm=parseFloat(sD.value);
+ document.getElementById("vluV").textContent=sV.value+" V";
+ document.getElementById("vluD").textContent=dcm.toFixed(1)+" cm";
+ const E=V/(dcm/100);
+ c.clearRect(0,0,920,330);
+ const cy=175,gap=dcm*30;
+ const xl=380-gap/2,xr=380+gap/2;
+ c.strokeStyle=GR;c.lineWidth=2;c.setLineDash([6,6]);
+ [0.25,0.5,0.75].forEach(f=>{
+  const x=xl+gap*f;
+  c.beginPath();c.moveTo(x,60);c.lineTo(x,290);c.stroke();
+ });
+ c.setLineDash([]);
+ txt(c,"equipotential planes (same V - move karne me ZERO work)",380,46,GR,"11px 'Cascadia Code',monospace","center");
+ for(let yy=88;yy<=270;yy+=60){
+  arrow2(c,xl+14,yy,xl+gap*0.4,yy,"#3d55c8",2.5);
+ }
+ txt(c,"E →",xl+gap*0.4+20,92,CY,"bold 13px 'Cascadia Code',monospace","center");
+ c.strokeStyle=CY;c.lineWidth=5;
+ c.beginPath();c.moveTo(xl,55);c.lineTo(xl,295);c.stroke();
+ c.strokeStyle=MG;c.lineWidth=5;
+ c.beginPath();c.moveTo(xr,55);c.lineTo(xr,295);c.stroke();
+ for(let yy=70;yy<290;yy+=44){txt(c,"+",xl,yy+4,CY,"bold 14px 'Cascadia Code',monospace","center");txt(c,"−",xr,yy+4,"#f472b6","bold 16px 'Cascadia Code',monospace","center");}
+ txt(c,"+ plate (V = "+sV.value+" V)",xl,312,CY,"12px 'Cascadia Code',monospace","center");
+ txt(c,"− plate (V = 0)",xr,312,"#f472b6","12px 'Cascadia Code',monospace","center");
+ c.setLineDash([4,6]);c.strokeStyle=YL;c.lineWidth=1.5;
+ c.beginPath();c.moveTo(xl,330-14);c.lineTo(xr,330-14);c.stroke();c.setLineDash([]);
+ txt(c,"d = "+dcm.toFixed(1)+" cm",380,326,YL,"11px 'Cascadia Code',monospace","center");
+ const ex=xl+gap*0.62,ey=200;
+ c.fillStyle=YL;c.beginPath();c.arc(ex,ey,9,0,7);c.fill();
+ txt(c,"e⁻",ex,ey+24,YL,"bold 11px 'Cascadia Code',monospace","center");
+ arrow2(c,ex-12,ey,ex-56,ey,RD,3.5);
+ txt(c,"electron − plate se + plate ki taraf accelerate!",ex+150,ey-16,RD,"11px 'Cascadia Code',monospace","center");
+ txt(c,"E = V/d (UNIFORM)",120,120,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"V = pahad ki HEIGHT",120,160,"#aab4d8","12px 'Cascadia Code',monospace","center");
+ txt(c,"E = SLOPE = −dV/dx",120,186,"#aab4d8","12px 'Cascadia Code',monospace","center");
+ txt(c,"field lines ⊥ equipotential",120,226,GR,"12px 'Cascadia Code',monospace","center");
+ txt(c,"do equipotential KABHI",120,252,GR,"12px 'Cascadia Code',monospace","center");
+ txt(c,"intersect nahi karti!",120,274,GR,"12px 'Cascadia Code',monospace","center");
+ document.getElementById("r1").innerHTML="E = V/d = "+sV.value+"/"+(dcm/100).toFixed(2)+" = <span class='hl'>"+E.toFixed(0)+" V/m (uniform, har point same)</span> | electron poore gap cross kare to energy gain = e×V = <span class='hl'>"+sV.value+" eV</span> (1 eV = 1.6×10⁻¹⁹ J) | gap AADHA karo (d/2) to E DOUBLE = <span class='hl'>"+(2*E).toFixed(0)+" V/m</span> | equipotential pe slide karo: W = qΔV = <span class='hl'>0</span>";
+}
+[sV,sD].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2");
+const s1=document.getElementById("eQ1"),s2=document.getElementById("eQ2"),sR=document.getElementById("eR");
+const b2=document.getElementById("u2"),b3=document.getElementById("u3");
+let mode=2;
+function draw(t){
+ const q1=parseFloat(s1.value),q2=parseFloat(s2.value),r=parseFloat(sR.value);
+ document.getElementById("vleQ1").textContent=(q1>0?"+":"")+s1.value+" µC";
+ document.getElementById("vleQ2").textContent=(q2>0?"+":"")+s2.value+" µC";
+ document.getElementById("vleR").textContent=r.toFixed(1)+" m";
+ b2.style.background=mode===2?"#1d2a55":"#12122a";b2.style.color=mode===2?CY:"#aab4d8";
+ b3.style.background=mode===3?"#1d2a55":"#12122a";b3.style.color=mode===3?CY:"#aab4d8";
+ c.clearRect(0,0,920,330);
+ const x1=200,x2=200+r*250,cy=200;
+ const drawQ=(x,y,q,lb)=>{c.fillStyle=q===0?"#2a2a44":(q>0?CY:"#f472b6");c.beginPath();c.arc(x,y,20,0,7);c.fill();txt(c,q===0?"0":(q>0?"+":"−"),x,y+6,"#05050c","bold 18px 'Cascadia Code',monospace","center");txt(c,lb,x,y-32,DM,"bold 12px 'Cascadia Code',monospace","center");};
+ c.setLineDash([4,6]);c.strokeStyle="#3d4470";c.lineWidth=1.5;
+ c.beginPath();c.moveTo(x1,cy+36);c.lineTo(x2,cy+36);c.stroke();c.setLineDash([]);
+ txt(c,"r = "+r.toFixed(1)+" m",(x1+x2)/2,cy+54,DM,"12px 'Cascadia Code',monospace","center");
+ drawQ(x1,cy,q1,"q₁");drawQ(x2,cy,q2,"q₂");
+ const like=(q1*q2)>0;
+ if(q1!==0&&q2!==0){
+  if(like){
+   arrow2(c,x1-26,cy,x1-80,cy,RD,3.5);arrow2(c,x2+26,cy,x2+80,cy,RD,3.5);
+   txt(c,"door bhaagna chahte hain - stored energy release!",(x1+x2)/2,40,RD,"12px 'Cascadia Code',monospace","center");
+  }else{
+   arrow2(c,x1+26,cy,x1+80,cy,GR,3.5);arrow2(c,x2-26,cy,x2-80,cy,GR,3.5);
+   txt(c,"ek dusre ko kheenchte hain - BOUND system (U negative)",(x1+x2)/2,40,GR,"12px 'Cascadia Code',monospace","center");
+  }
+ }
+ const U12=9e-3*q1*q2/r;
+ let Utot=U12,detail="U = kq₁q₂/r = (9×10⁹ × "+s1.value+"µ × "+s2.value+"µ)/"+r.toFixed(1);
+ if(mode===3){
+  const q3=2,ax=(x1+x2)/2,ay=56;
+  drawQ(ax,ay,q3,"q₃ (+2µC)");
+  c.setLineDash([3,5]);c.strokeStyle="#3d4470";c.lineWidth=1;
+  c.beginPath();c.moveTo(x1,cy-24);c.lineTo(ax,ay+24);c.stroke();
+  c.beginPath();c.moveTo(x2,cy-24);c.lineTo(ax,ay+24);c.stroke();c.setLineDash([]);
+  txt(c,"r₁₃ = 1.0 m",(x1+ax)/2-58,(cy+ay)/2-8,DM,"10px 'Cascadia Code',monospace","center");
+  txt(c,"r₂₃ = 1.0 m",(x2+ax)/2+58,(cy+ay)/2-8,DM,"10px 'Cascadia Code',monospace","center");
+  const U13=9e-3*q1*q3/1,U23=9e-3*q2*q3/1;
+  Utot=U12+U13+U23;
+  detail="U = k[q₁q₂/r₁₂ + q₂q₃/r₂₃ + q₁q₃/r₁₃] = "+U12.toFixed(3)+" + "+U23.toFixed(3)+" + "+U13.toFixed(3)+" J (har PAIR ek baar - double count NAHI!)";
+ }else{
+  detail+=" = "+U12.toFixed(3)+" J";
+ }
+ txt(c,"scalar hai - seedha ADD karo, components ki zaroorat nahi!",460,300,DM,"12px 'Cascadia Code',monospace","center");
+ const interp=q1===0||q2===0?"koi interaction energy nahi (q=0)":like?"U POSITIVE: paas laane me work kiya - ye energy ab stored hai":"U NEGATIVE: bound system - alag karne me work dena padega";
+ document.getElementById("r2").innerHTML=detail+" | TOTAL U = <span class='hl'>"+Utot.toFixed(3)+" J</span> | <span class='hl'>"+interp+"</span> | atomic physics me energy eV me: 1 eV = 1.6×10⁻¹⁹ J";
+}
+b2.addEventListener("click",()=>{mode=2;draw(0);});
+b3.addEventListener("click",()=>{mode=3;draw(0);});
+[s1,s2,sR].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){mode=2;draw(0);};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3");
+const sA=document.getElementById("cA"),sD=document.getElementById("cD");
+const bk={k1:[1,"Air"],k2:[6,"Mica"],k3:[80,"Water"]};
+let K=1,Kname="Air",conn=true;
+const bb=document.getElementById("batt");
+function draw(t){
+ const A=parseFloat(sA.value),d=parseFloat(sD.value);
+ document.getElementById("vlcA").textContent=sA.value+" cm²";
+ document.getElementById("vlcD").textContent=d.toFixed(1)+" mm";
+ Object.keys(bk).forEach(id=>{const on=bk[id][0]===K;document.getElementById(id).style.background=on?"#1d2a55":"#12122a";document.getElementById(id).style.color=on?CY:"#aab4d8";});
+ bb.textContent=conn?"Battery: CONNECTED (V const)":"Battery: DISCONNECTED (Q const)";
+ c.clearRect(0,0,920,330);
+ const gap=d*40,cx=330,cy=170;
+ const h=60+(A-10)/190*130;
+ const xl=cx-gap/2,xr=cx+gap/2;
+ if(K>1){
+  c.fillStyle="rgba(232,121,249,0.13)";
+  c.fillRect(xl,cy-h/2,gap,h);
+  txt(c,Kname+" dielectric (K="+K+")",cx,cy-h/2-10,MG,"11px 'Cascadia Code',monospace","center");
+ }
+ c.strokeStyle=CY;c.lineWidth=5;c.beginPath();c.moveTo(xl,cy-h/2);c.lineTo(xl,cy+h/2);c.stroke();
+ c.strokeStyle=MG;c.lineWidth=5;c.beginPath();c.moveTo(xr,cy-h/2);c.lineTo(xr,cy+h/2);c.stroke();
+ for(let yy=cy-h/2+14;yy<cy+h/2-6;yy+=Math.max(18,h/6)){
+  txt(c,"+",xl,yy+4,CY,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"−",xr,yy+4,"#f472b6","bold 15px 'Cascadia Code',monospace","center");
+ }
+ if(gap>60){
+  for(let yy=cy-h/2+22;yy<cy+h/2-14;yy+=Math.max(26,h/4)){
+   arrow2(c,xl+10,yy,xr-10,yy,"#3d55c8",2);
+  }
+ }
+ txt(c,"A = "+sA.value+" cm²",xl-70,cy,CY,"11px 'Cascadia Code',monospace","center");
+ txt(c,"d = "+d.toFixed(1)+" mm",cx,cy+h/2+22,YL,"11px 'Cascadia Code',monospace","center");
+ if(conn){
+  c.strokeStyle=YL;c.lineWidth=2;
+  c.beginPath();c.moveTo(70,70);c.lineTo(110,70);c.stroke();
+  c.lineWidth=5;c.beginPath();c.moveTo(110,58);c.lineTo(110,82);c.stroke();
+  c.lineWidth=2;c.beginPath();c.moveTo(126,64);c.lineTo(126,76);c.stroke();
+  txt(c,"+ 100V −",90,100,YL,"11px 'Cascadia Code',monospace","center");
+  txt(c,"battery connected",95,120,DM,"10px 'Cascadia Code',monospace","center");
+ }else{
+  txt(c,"battery DISCONNECTED",100,90,RD,"bold 12px 'Cascadia Code',monospace","center");
+  txt(c,"(charge trapped - Q fixed!)",100,110,DM,"10px 'Cascadia Code',monospace","center");
+ }
+ const C=K*8.854e-12*(A*1e-4)/(d*1e-3);
+ const C0=8.854e-12*(A*1e-4)/(d*1e-3);
+ const Q0=C0*100;
+ const fC=v=>v>=1e-9?(v*1e9).toFixed(2)+" nF":(v*1e12).toFixed(1)+" pF";
+ const fQ=v=>v>=1e-6?(v*1e6).toFixed(2)+" µC":(v*1e9).toFixed(1)+" nC";
+ let Vcap,Qcap;
+ if(conn){Vcap=100;Qcap=C*100;}else{Vcap=100/K;Qcap=Q0;}
+ const U=0.5*C*Vcap*Vcap;
+ const Ed=Vcap/(d*1e-3);
+ txt(c,"C = Kε₀A/d",640,120,CY,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"area ↑ ya gap ↓ → C ↑",640,146,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"COMBINATION (resistors ke ULTE!)",700,196,"#aab4d8","bold 11px 'Cascadia Code',monospace","center");
+ txt(c,"Series 2µF+4µF: 1/C=1/2+1/4 → C=1.33 µF",700,222,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"Parallel: C=2+4 = 6 µF",700,246,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"series: same Q | parallel: same V",700,270,DM,"11px 'Cascadia Code',monospace","center");
+ document.getElementById("r3").innerHTML="C = "+K+" × ε₀ × "+(A*1e-4).toFixed(3)+"/"+(d*1e-3).toFixed(4)+" = <span class='hl'>"+fC(C)+"</span> (K="+K+" se C "+K+"×!) | "+(conn?"BATTERY CONNECTED: V = <span class='hl'>100 V</span> (fixed), Q = CV = <span class='hl'>"+fQ(Qcap)+"</span> - dielectric daalne pe charge "+K+"× ho gaya!":"BATTERY DISCONNECTED: Q = <span class='hl'>"+fQ(Qcap)+"</span> (trapped), V = Q/C = <span class='hl'>"+Vcap.toFixed(1)+" V</span> - dielectric daalne pe voltage 1/"+K+" ho gaya!")+" | energy U = ½CV² = <span class='hl'>"+(U*1e6).toFixed(2)+" µJ</span>, field E = "+(Ed/1000).toFixed(1)+" kV/m, density u = ½ε₀E²";
+}
+Object.keys(bk).forEach(id=>document.getElementById(id).addEventListener("click",()=>{K=bk[id][0];Kname=bk[id][1];draw(0);}));
+bb.addEventListener("click",()=>{conn=!conn;draw(0);});
+[sA,sD].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){K=1;Kname="Air";conn=true;draw(0);};
+})();
+inits[4]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"5 charges ke system ka kisi point pe TOTAL potential nikaalna hai. Kya karo?",opts:["Har charge ka potential VECTOR ki tarah components todke add karo","SCALAR hai - sabka algebraic sum seedha add karo","Pehle total E nikalo, phir integrate karo","Sabse bade charge ka hi potential lo"],a:1,why:"Potential SCALAR hai! V = kΣqᵢ/rᵢ - bas signs ke saath seedha ADD. Yehi potential ka sabse bada fayda hai: vector jhanjhat zero!"},
+{q:"Point charge se doori DOUBLE kar do. Potential (V) aur field (E) kya honge?",opts:["V half, E one-fourth","V one-fourth, E half","Dono half","Dono one-fourth"],a:0,why:"V = kQ/r ∝ 1/r → half. E = kQ/r² ∝ 1/r² → one-fourth. Exam me ye mix-up sabse common galti hai!"},
+{q:"Ek charge ko equipotential surface ke ALONG move karne me kitna work karna padega?",opts:["qV jitna","ZERO","Infinite - move hi nahi kar sakte","Path pe depend karta hai"],a:1,why:"W = qΔV aur equipotential pe ΔV = 0, to W = 0 - chahe kitna bhi ghuma lo! Isliye field lines equipotential ke perpendicular hoti hain."},
+{q:"Charged parallel plate capacitor ki battery DISCONNECT karke plates ke beech dielectric (K) bhar diya. Kya hoga?",opts:["V constant, Q K times badh gaya","Q constant, V 1/K ho gaya (C K times)","Q constant, V bhi same","C same, bas energy badhi"],a:1,why:"DISCONNECTED = charge ka rasta nahi, Q trapped. C = KC₀ ho jaati hai, to V = Q/C = V₀/K GHT jaata hai. (Connected hota to ulta: V fixed, Q ×K - ye confusion exam favourite hai!)"},
+{q:"2 µF aur 4 µF capacitors SERIES me hain. Equivalent capacitance?",opts:["6 µF","4/3 µF (≈1.33 µF)","3 µF","2 µF"],a:1,why:"Series: 1/C = 1/2 + 1/4 = 3/4 → C = 4/3 µF. Capacitors resistors ke ULTE: series me reciprocal add (result sabse chhote se bhi CHHOTI!), parallel me direct add."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Potential aur capacitance dono pakke! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+go(0);
+</script></body></html>
