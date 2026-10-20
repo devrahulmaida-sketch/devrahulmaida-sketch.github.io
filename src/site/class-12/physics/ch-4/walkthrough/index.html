@@ -374,10 +374,11 @@ function draw(t){
   const I=p/1000,frac=I/Ig,tau=N*I*A*Bf;
   document.getElementById("vgP").textContent=p.toFixed(1)+" mA";
   dial(c,frac,"galvanometer (φ ∝ I)");
-  txt(c,"coil: N=100, A=2×10⁻⁴ m², B=0.1 T",560,120,DM,"13px 'Cascadia Code',monospace","center");
-  txt(c,"τ = NIAB = "+(tau*1e6).toFixed(2)+" µN·m",560,150,CY,"bold 15px 'Cascadia Code',monospace","center");
-  txt(c,"spring kφ se balance → φ ∝ I (radial field: θ=90° hamesha, linear scale)",560,185,GR,"13px 'Cascadia Code',monospace","center");
-  txt(c,"deflection = "+(frac*100).toFixed(0)+"% of full scale",560,215,YL,"bold 14px 'Cascadia Code',monospace","center");
+  txt(c,"coil: N=100, A=2×10⁻⁴ m², B=0.1 T",620,110,DM,"13px 'Cascadia Code',monospace","center");
+  txt(c,"τ = NIAB = "+(tau*1e6).toFixed(2)+" µN·m",620,145,CY,"bold 15px 'Cascadia Code',monospace","center");
+  txt(c,"kφ se balance → φ ∝ I",620,180,GR,"14px 'Cascadia Code',monospace","center");
+  txt(c,"(radial field → linear scale)",620,202,DM,"12px 'Cascadia Code',monospace","center");
+  txt(c,"deflection = "+(frac*100).toFixed(0)+"% of full scale",620,235,YL,"bold 14px 'Cascadia Code',monospace","center");
   msg="I = "+p.toFixed(1)+" mA | τ = NIAB sinθ (radial field me θ = 90° → τ = NIAB = <span class='hl'>"+(tau*1e6).toFixed(2)+" µN·m</span>) | balance: nIAB = kφ → <span class='hl'>φ ∝ I</span> | deflection <span class='hl'>"+(frac*100).toFixed(0)+"%</span> of full scale (I_g = 10 mA)";
  } else if(mode==="A"){
   const I=p,S=Ig*G/(I-Ig);
