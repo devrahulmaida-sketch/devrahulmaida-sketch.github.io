@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alternating Current - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 7 - Alternating Current</div>
+<h1>AC Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - RMS wave lab, R/L/C phase lab, LCR resonance lab, transformer lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. RMS Lab - 230 V Ka Asli Matlab ⭐⭐</h2>
+<p class="why">AC har half-cycle pe direction badalta hai - pure cycle ka average ZERO! Toh ghar ki 230 V kya hai? RMS value: woh DC value jo same resistor me utni hi heating kare. V_rms = V₀/√2, I_rms = I₀/√2. 230 V RMS hai - peak V₀ = 230√2 ≈ 325 V! Half-cycle average = 2V₀/π. Bulb dekho - uski heating RMS se decide hoti hai!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>peak V₀</label><input type="range" id="aV" min="50" max="325" step="5" value="325"><span class="v" id="vaV">325 V</span></div>
+<div class="slrow"><label>frequency f</label><input type="range" id="aF" min="10" max="100" step="5" value="50"><span class="v" id="vaF">50 Hz</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Phase Lab - ELI the ICE Man ⭐⭐</h2>
+<p class="why">Resistor: V aur I SAME phase me. Inductor: X_L = ωL, current voltage se 90° PEECHE (lag) - frequency badhao toh opposition badhta hai. Capacitor: X_C = 1/(ωC), current voltage se 90° AAGE (lead) - frequency badhao toh opposition ghatta. Yaad rakho: ELI the ICE man - E leads I in L; I leads E in C! Element chuno aur phasor + waves dekho.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="bR">Resistor R</button><button id="bL">Inductor L</button><button id="bC">Capacitor C</button></div>
+<div class="slrow"><label>frequency f</label><input type="range" id="pF" min="10" max="200" step="5" value="50"><span class="v" id="vpF">50 Hz</span></div>
+<div class="slrow"><label id="pValLab">L (mH)</label><input type="range" id="pV" min="10" max="200" step="5" value="100"><span class="v" id="vpV">100 mH</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. LCR Lab - Impedance aur Resonance ⭐⭐</h2>
+<p class="why">Series LCR me voltages VECTOR add hote hain (L ka +90°, C ka −90°), arithmetic add NAHI! Z = √[R² + (X_L − X_C)²], tanφ = (X_L − X_C)/R. f badhao → X_L badhta, X_C ghatta. Jab X_L = X_C → RESONANCE: Z = R minimum, current MAXIMUM, φ = 0! (L = 0.2 H, C = 50 µF fixed - f aur R ghumao, curve ka peak dekho.)</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>frequency f</label><input type="range" id="lF" min="20" max="200" step="1" value="50"><span class="v" id="vlF">50 Hz</span></div>
+<div class="slrow"><label>resistance R</label><input type="range" id="lR" min="5" max="100" step="5" value="20"><span class="v" id="vlR">20 Ω</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Transformer Lab - Voltage Ka Jadu ⭐</h2>
+<p class="why">Mutual induction se AC voltage badlo! Ideal transformer: V_s/V_p = N_s/N_p, I_s/I_p = N_p/N_s - power same rehti hai. Step-up (N_s &gt; N_p): voltage badhe, current ghate. Isliye power lines high voltage pe - same power ke liye I kam → I²R loss bahut kam! Turns ghumao aur loss comparison dekho. Yaad rakho: transformer steady DC pe kaam NAHI karta.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="slrow"><label>primary turns N_p</label><input type="range" id="tP" min="100" max="1000" step="100" value="500"><span class="v" id="vtP">500</span></div>
+<div class="slrow"><label>secondary turns N_s</label><input type="range" id="tS" min="100" max="2000" step="100" value="1000"><span class="v" id="vtS">1000</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - AC Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: V_rms = V₀/√2 (230 V RMS hai, peak 325 V!), ELI the ICE man (L me I lag, C me I lead), Z = √[R² + (X_L − X_C)²], resonance pe Z = R min aur I max, P = V_rms I_rms cosφ (pure L/C me zero!), V_s/V_p = N_s/N_p, transformer sirf AC pe!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>AC + RMS ⭐⭐</h3><p>i(t) = I₀ sin ωt, ω = 2πf | India: f = 50 Hz | I_rms = I₀/√2, V_rms = V₀/√2 | 230 V = RMS, peak = 230√2 ≈ 325 V | Full-cycle avg = 0, half-cycle avg = 2I₀/π</p></div>
+<div class="rcard"><h3>R / L / C Phase ⭐⭐</h3><p>R: V, I same phase | L: X_L = ωL, I 90° LAG (f ↑ → X_L ↑) | C: X_C = 1/(ωC), I 90° LEAD (f ↑ → X_C ↓) | ELI the ICE man: E leads I in L, I leads E in C</p></div>
+<div class="rcard"><h3>Series LCR ⭐⭐</h3><p>Z = √[R² + (X_L − X_C)²] | tanφ = (X_L − X_C)/R | I_rms = V_rms/Z | Phasors VECTOR add hote hain - arithmetic nahi!</p></div>
+<div class="rcard"><h3>Resonance ⭐⭐</h3><p>X_L = X_C → ω₀ = 1/√(LC) | Z = R MINIMUM, current MAXIMUM, φ = 0 | L aur C ke effects cancel, par unke individual voltages bade ho sakte hain</p></div>
+<div class="rcard"><h3>Power Factor ⭐</h3><p>P = V_rms I_rms cosφ = I_rms²R | cosφ = R/Z | Pure L/C: φ = 90°, P = 0 - WATTLESS current | Apparent power VI (VA) ≠ real power VI cosφ (W)</p></div>
+<div class="rcard"><h3>Transformer + Traps ⭐</h3><p>V_s/V_p = N_s/N_p, I_s/I_p = N_p/N_s | Step-up: N_s &gt; N_p | Sirf AC - steady DC pe NAHI | Traps: 230 V peak NAHI RMS hai | lead/lag ulta mat karo | Z arithmetic sum nahi | resonance pe Z minimum</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 7 Alternating Current Visual Walkthrough</div>
+</div>
+<script>
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ============ SCENE 1: RMS Lab ============
+inits[0]=(()=>{
+const c=ctx("cv0");
+const sV=document.getElementById("aV"),sF=document.getElementById("aF");
+function draw(t){
+ const V0=parseFloat(sV.value),f=parseFloat(sF.value);
+ const Vr=V0/Math.SQRT2,Vh=2*V0/Math.PI,T=1/f,w=2*Math.PI*f;
+ document.getElementById("vaV").textContent=V0.toFixed(0)+" V";
+ document.getElementById("vaF").textContent=f.toFixed(0)+" Hz";
+ c.fillStyle="#05050c";c.fillRect(0,0,920,330);
+ const ox=70,oy=175,pv=0.42;
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let x=ox+40;x<=900;x+=40){c.beginPath();c.moveTo(x,25);c.lineTo(x,320);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(ox,25);c.lineTo(ox,320);c.stroke();
+ c.beginPath();c.moveTo(ox,oy);c.lineTo(900,oy);c.stroke();
+ c.strokeStyle=YL;c.setLineDash([3,5]);c.lineWidth=1.5;
+ c.beginPath();c.moveTo(ox,oy-V0*pv);c.lineTo(900,oy-V0*pv);c.stroke();c.setLineDash([]);
+ txt(c,"peak V0 = "+V0.toFixed(0)+" V",896,oy-V0*pv-6,YL,"13px 'Cascadia Code',monospace","right");
+ c.strokeStyle=MG;c.setLineDash([7,5]);c.lineWidth=2;
+ c.beginPath();c.moveTo(ox,oy-Vr*pv);c.lineTo(900,oy-Vr*pv);c.stroke();
+ c.beginPath();c.moveTo(ox,oy+Vr*pv);c.lineTo(900,oy+Vr*pv);c.stroke();
+ c.setLineDash([]);
+ txt(c,"V_rms = "+Vr.toFixed(1)+" V",896,oy-Vr*pv+16,MG,"bold 13px 'Cascadia Code',monospace","right");
+ const phase=(t*0.15)%(2*Math.PI);
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+ for(let x=ox;x<=900;x++){const th=phase+(x-ox)/(900-ox)*2*Math.PI;const y=oy-V0*pv*Math.sin(th);if(x===ox)c.moveTo(x,y);else c.lineTo(x,y);}
+ c.stroke();
+ const yd=oy-V0*pv*Math.sin(phase+2*Math.PI);
+ c.fillStyle=YL;c.beginPath();c.arc(896,yd,6,0,7);c.fill();
+ const vi=V0*Math.sin(phase);
+ c.fillStyle=GR;c.fillRect(42,oy,14,-vi*pv);
+ txt(c,"v(t)",49,oy+18,GR,"12px 'Cascadia Code',monospace","center");
+ const glow=Math.min(1,(Vr/230)*(Vr/230));
+ c.save();c.globalAlpha=0.25+0.75*glow;
+ c.fillStyle=YL;c.beginPath();c.arc(45,55,14,0,7);c.fill();
+ c.globalAlpha=0.18*glow;c.beginPath();c.arc(45,55,30,0,7);c.fill();
+ c.restore();
+ c.fillStyle="#8fa0c8";c.fillRect(39,70,12,8);
+ txt(c,"bulb heat ∝ V_rms²",45,98,"#8fa0c8","11px 'Cascadia Code',monospace","center");
+ txt(c,"one period T = "+T.toFixed(3)+" s",485,318,DM,"12px 'Cascadia Code',monospace","center");
+ document.getElementById("r0").innerHTML="V_rms = V₀/√2 = <span class='hl'>"+Vr.toFixed(1)+" V</span> | half-cycle avg = 2V₀/π = <span class='hl'>"+Vh.toFixed(1)+" V</span> | T = 1/f = <span class='hl'>"+T.toFixed(3)+" s</span> | ω = 2πf = <span class='hl'>"+w.toFixed(1)+" rad/s</span>";
+}
+anims[0]=t=>draw(t);
+[sV,sF].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+// ============ SCENE 2: Phase Lab R/L/C ============
+inits[1]=(()=>{
+const c=ctx("cv1");
+let el="L";
+const sF=document.getElementById("pF"),sV=document.getElementById("pV");
+const btns={R:document.getElementById("bR"),L:document.getElementById("bL"),C:document.getElementById("bC")};
+const labV=document.getElementById("pValLab");
+function calc(){
+ const f=parseFloat(sF.value),v=parseFloat(sV.value),w=2*Math.PI*f;
+ let X,phi;
+ if(el==="R"){X=v;phi=0;}
+ else if(el==="L"){X=w*v/1000;phi=Math.PI/2;}
+ else{X=1e6/(w*v);phi=-Math.PI/2;}
+ return {f,w,X,phi,I:230/X};
+}
+function draw(t){
+ const p=calc();
+ document.getElementById("vpF").textContent=p.f.toFixed(0)+" Hz";
+ document.getElementById("vpV").textContent=sV.value+(el==="R"?" Ω":el==="L"?" mH":" µF");
+ c.fillStyle="#05050c";c.fillRect(0,0,920,330);
+ const cx=185,cy=180,u=95,rot=t*0.06;
+ c.strokeStyle="#1a1a33";c.lineWidth=1;c.beginPath();c.arc(cx,cy,u+12,0,7);c.stroke();
+ c.beginPath();c.moveTo(cx-u-18,cy);c.lineTo(cx+u+18,cy);c.stroke();
+ c.beginPath();c.moveTo(cx,cy-u-18);c.lineTo(cx,cy+u+18);c.stroke();
+ const aV=rot,aI=rot-p.phi;
+ arrow2(c,cx,cy,cx+u*Math.cos(aV),cy-u*Math.sin(aV),CY,3);
+ arrow2(c,cx,cy,cx+0.72*u*Math.cos(aI),cy-0.72*u*Math.sin(aI),MG,3);
+ txt(c,"V",cx+(u+16)*Math.cos(aV),cy-(u+16)*Math.sin(aV)+5,CY,"bold 15px 'Cascadia Code',monospace","center");
+ txt(c,"I",cx+(0.72*u+16)*Math.cos(aI),cy-(0.72*u+16)*Math.sin(aI)+5,MG,"bold 15px 'Cascadia Code',monospace","center");
+ const phD=p.phi*180/Math.PI;
+ txt(c,Math.abs(phD)<0.5?"φ = 0° - SAME PHASE":"φ = 90° - I "+(phD>0?"PEECHE (lag)":"AAGE (lead)"),cx,cy+135,YL,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"phasor - CCW ghoomta hai",cx,40,DM,"12px 'Cascadia Code',monospace","center");
+ const wx=380,ww=520,wy=180,amp=75;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(wx,wy);c.lineTo(wx+ww,wy);c.stroke();
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let x=wx;x<=wx+ww;x+=52){c.beginPath();c.moveTo(x,60);c.lineTo(x,300);c.stroke();}
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+ for(let x=wx;x<=wx+ww;x++){const th=rot+2*Math.PI*(x-wx)/ww;const y=wy-amp*Math.sin(th);if(x===wx)c.moveTo(x,y);else c.lineTo(x,y);}
+ c.stroke();
+ c.strokeStyle=MG;c.lineWidth=3;c.beginPath();
+ for(let x=wx;x<=wx+ww;x++){const th=rot-p.phi+2*Math.PI*(x-wx)/ww;const y=wy-amp*0.75*Math.sin(th);if(x===wx)c.moveTo(x,y);else c.lineTo(x,y);}
+ c.stroke();
+ txt(c,"V",wx+8,wy-amp-10,CY,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"I",wx+8,wy+amp+20,MG,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"ek cycle - time aage →",wx+ww/2,318,DM,"12px 'Cascadia Code',monospace","center");
+ let msg;
+ if(el==="R")msg="R = <span class='hl'>"+p.X.toFixed(0)+" Ω</span> | I_rms = 230/R = <span class='hl'>"+p.I.toFixed(2)+" A</span> | V aur I <span class='hl'>SAME PHASE</span> | P = V_rms I_rms = <span class='hl'>"+(230*p.I).toFixed(0)+" W</span>";
+ else if(el==="L")msg="X_L = ωL = 2πfL = <span class='hl'>"+p.X.toFixed(1)+" Ω</span> | I_rms = 230/X_L = <span class='hl'>"+p.I.toFixed(2)+" A</span> | current voltage se <span class='hl'>90° PEECHE</span> | f ↑ → X_L ↑";
+ else msg="X_C = 1/(ωC) = <span class='hl'>"+p.X.toFixed(1)+" Ω</span> | I_rms = 230/X_C = <span class='hl'>"+p.I.toFixed(2)+" A</span> | current voltage se <span class='hl'>90° AAGE</span> | f ↑ → X_C ↓";
+ document.getElementById("r1").innerHTML=msg;
+}
+function setEl(e){el=e;Object.keys(btns).forEach(k=>{btns[k].style.borderColor=k===e?CY:"#2d2d52";btns[k].style.color=k===e?CY:"#c9c9e0";});
+ labV.textContent=e==="R"?"R (Ω)":e==="L"?"L (mH)":"C (µF)";draw(0);}
+Object.keys(btns).forEach(k=>{btns[k].onclick=()=>setEl(k);});
+anims[1]=t=>draw(t);
+[sF,sV].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){setEl("L");};
+})();
+// ============ SCENE 3: LCR impedance + resonance ============
+inits[2]=(()=>{
+const c=ctx("cv2");
+const sF=document.getElementById("lF"),sR=document.getElementById("lR");
+const L=0.2,C=50e-6,V=230;
+const F0=1/(2*Math.PI*Math.sqrt(L*C));
+function calc(){
+ const f=parseFloat(sF.value),R=parseFloat(sR.value),w=2*Math.PI*f;
+ const XL=w*L,XC=1/(w*C);
+ const Z=Math.sqrt(R*R+(XL-XC)*(XL-XC));
+ const phi=Math.atan2(XL-XC,R);
+ return {f,R,w,XL,XC,Z,phi,I:V/Z};
+}
+function draw(t){
+ const p=calc();
+ document.getElementById("vlF").textContent=p.f.toFixed(0)+" Hz";
+ document.getElementById("vlR").textContent=p.R.toFixed(0)+" Ω";
+ c.fillStyle="#05050c";c.fillRect(0,0,920,330);
+ const ox=110,oy=250,sc=0.45;
+ const Rx=p.R*sc,up=p.XL*sc,dn=p.XC*sc,net=(p.XL-p.XC)*sc;
+ c.strokeStyle="#2d2d52";c.lineWidth=1;
+ c.beginPath();c.moveTo(30,oy);c.lineTo(430,oy);c.stroke();
+ txt(c,"impedance triangle",230,40,DM,"12px 'Cascadia Code',monospace","center");
+ arrow2(c,ox,oy,ox+Rx,oy,GR,3);
+ txt(c,"R = "+p.R.toFixed(0)+" Ω",ox+Rx/2,oy+18,GR,"13px 'Cascadia Code',monospace","center");
+ if(up>2){arrow2(c,ox+Rx,oy,ox+Rx,oy-up,CY,3);txt(c,"X_L = "+p.XL.toFixed(1)+" Ω",ox+Rx+8,oy-up+4,CY,"13px 'Cascadia Code',monospace");}
+ if(dn>2){arrow2(c,ox+Rx,oy,ox+Rx,oy+dn,MG,3);txt(c,"X_C = "+p.XC.toFixed(1)+" Ω",ox+Rx+8,oy+dn-4,MG,"13px 'Cascadia Code',monospace");}
+ if(Math.abs(net)>2){arrow2(c,ox,oy,ox+Rx,oy-net,YL,3);}
+ arrow2(c,ox,oy,ox+Rx,oy-net,RD,4);
+ const phD=p.phi*180/Math.PI;
+ txt(c,"Z = "+p.Z.toFixed(1)+" Ω",(2*ox+Rx)/2-12,oy-net/2-8,RD,"bold 13px 'Cascadia Code',monospace","right");
+ txt(c,"φ = "+phD.toFixed(1)+"° "+(phD>0.5?"(I lags V)":phD<-0.5?"(I leads V)":"(pure R!)"),ox+Rx+10,oy-net/2+4,YL,"13px 'Cascadia Code',monospace");
+ const gx=485,gw=415,gy=292,gh=235;
+ const Imax=V/p.R*1.12,ys=gh/Imax;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(gx,gy);c.lineTo(gx+gw,gy);c.stroke();
+ c.beginPath();c.moveTo(gx,gy);c.lineTo(gx,gy-gh-8);c.stroke();
+ txt(c,"I(f) curve",gx+gw/2,gy+22,DM,"12px 'Cascadia Code',monospace","center");
+ txt(c,"20 Hz",gx,gy+38,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"200 Hz",gx+gw,gy+38,DM,"11px 'Cascadia Code',monospace","center");
+ const fx=F0=>gx+(F0-20)/180*gw;
+ c.strokeStyle=MG;c.setLineDash([5,5]);c.lineWidth=1.5;
+ c.beginPath();c.moveTo(fx(F0),gy);c.lineTo(fx(F0),gy-gh-8);c.stroke();c.setLineDash([]);
+ txt(c,"f₀ = "+F0.toFixed(1)+" Hz",fx(F0),gy-gh-14,MG,"bold 12px 'Cascadia Code',monospace","center");
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+ for(let f=20;f<=200;f+=1){const w=2*Math.PI*f;const Z=Math.sqrt(p.R*p.R+Math.pow(w*L-1/(w*C),2));const I=V/Z;
+  const x=gx+(f-20)/180*gw,y=gy-I*ys;if(f===20)c.moveTo(x,y);else c.lineTo(x,y);}
+ c.stroke();
+ const dx=gx+(p.f-20)/180*gw,dy=gy-p.I*ys;
+ c.fillStyle=YL;c.beginPath();c.arc(dx,dy,6,0,7);c.fill();
+ txt(c,"I = "+p.I.toFixed(2)+" A",dx,dy-14,YL,"bold 13px 'Cascadia Code',monospace","center");
+ if(Math.abs(p.f-F0)<1.5){txt(c,"RESONANCE! Z = R min, I MAX",gx+gw/2,75,RD,"bold 18px 'Cascadia Code',monospace","center");}
+ document.getElementById("r2").innerHTML="X_L = ωL = <span class='hl'>"+p.XL.toFixed(1)+" Ω</span> | X_C = 1/(ωC) = <span class='hl'>"+p.XC.toFixed(1)+" Ω</span> | Z = √[R²+(X_L−X_C)²] = <span class='hl'>"+p.Z.toFixed(1)+" Ω</span> | tanφ = "+((p.XL-p.XC)/p.R).toFixed(2)+" → φ = <span class='hl'>"+phD.toFixed(1)+"°</span> | I_rms = 230/Z = <span class='hl'>"+p.I.toFixed(2)+" A</span>"+(Math.abs(p.f-F0)<1.5?" | <span class='hl'>RESONANCE - X_L = X_C!</span>":"");
+}
+anims[2]=t=>draw(t);
+[sF,sR].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+// ============ SCENE 4: Transformer Lab ============
+inits[3]=(()=>{
+const c=ctx("cv3");
+const sP=document.getElementById("tP"),sS=document.getElementById("tS");
+const Vp=230,P=11500,Rl=2;
+function calc(){
+ const Np=parseFloat(sP.value),Ns=parseFloat(sS.value);
+ const Vs=Vp*Ns/Np,Is=P/Vs,loss=Is*Is*Rl,Ip=P/Vp,lossP=Ip*Ip*Rl;
+ return {Np,Ns,Vs,Is,loss,Ip,lossP,up:Ns>Np,down:Ns<Np};
+}
+function draw(t){
+ const p=calc();
+ document.getElementById("vtP").textContent=p.Np.toFixed(0);
+ document.getElementById("vtS").textContent=p.Ns.toFixed(0);
+ c.fillStyle="#05050c";c.fillRect(0,0,920,330);
+ const x1=330,x2=590,y1=80,y2=250;
+ c.strokeStyle="#8fa0c8";c.lineWidth=12;c.strokeRect(x1,y1,x2-x1,y2-y1);
+ c.fillStyle="#05050c";c.fillRect(x1+26,y1+26,x2-x1-52,y2-y1-52);
+ const per=[[x1+46,y1+46],[x2-46,y1+46],[x2-46,y2-46],[x1+46,y2-46]];
+ const segL=[per[1][0]-per[0][0],per[2][1]-per[1][1],per[2][0]-per[3][0],per[3][1]-per[0][1]];
+ const tot=segL[0]+segL[1]+segL[2]+segL[3];
+ for(let k=0;k<7;k++){
+  let d=((t*0.012+k/7)%1)*tot;
+  let px=per[0][0],py=per[0][1];
+  if(d<segL[0]){px=per[0][0]+d;py=per[0][1];}
+  else if(d<segL[0]+segL[1]){px=per[1][0];py=per[1][1]+(d-segL[0]);}
+  else if(d<segL[0]+segL[1]+segL[2]){px=per[2][0]-(d-segL[0]-segL[1]);py=per[2][1];}
+  else{px=per[3][0];py=per[3][1]-(d-segL[0]-segL[1]-segL[2]);}
+  c.fillStyle=CY;c.beginPath();c.arc(px,py,4,0,7);c.fill();
+ }
+ txt(c,"flux (AC hi badalta hai!)",(x1+x2)/2,(y1+y2)/2+4,DM,"12px 'Cascadia Code',monospace","center");
+ const nP=Math.round(p.Np/100),nS=Math.round(p.Ns/100);
+ c.lineWidth=3;
+ for(let i=0;i<nP;i++){const yy=y1+20+i*((y2-y1-40)/Math.max(1,nP));
+  c.strokeStyle=YL;c.beginPath();c.arc(x1,yy,14,Math.PI*0.5,Math.PI*1.5);c.stroke();}
+ for(let i=0;i<nS;i++){const yy=y1+20+i*((y2-y1-40)/Math.max(1,nS));
+  c.strokeStyle=MG;c.beginPath();c.arc(x2,yy,14,-Math.PI*0.5,Math.PI*0.5);c.stroke();}
+ txt(c,"PRIMARY",x1-70,60,YL,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"N_p = "+p.Np.toFixed(0),x1-70,80,YL,"13px 'Cascadia Code',monospace","center");
+ txt(c,"V_p = 230 V",x1-70,100,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+ txt(c,"SECONDARY",x2+80,60,MG,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"N_s = "+p.Ns.toFixed(0),x2+80,80,MG,"13px 'Cascadia Code',monospace","center");
+ txt(c,"V_s = "+p.Vs.toFixed(0)+" V",x2+80,100,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ arrow2(c,x1-110,150,x1-30,150,YL,3);
+ arrow2(c,x2+30,150,x2+110,150,MG,3);
+ const tag=p.up?"STEP-UP ⬆":p.down?"STEP-DOWN ⬇":"SAME RATIO";
+ txt(c,tag,(x1+x2)/2,45,p.up?GR:p.down?RD:DM,"bold 16px 'Cascadia Code',monospace","center");
+ txt(c,"P = 11.5 kW transmit karna hai, line R = 2 Ω:",(x1+x2)/2,285,"#c9c9e0","13px 'Cascadia Code',monospace","center");
+ txt(c,"V_s pe: I = "+p.Is.toFixed(1)+" A → loss = "+(p.loss>=1000?(p.loss/1000).toFixed(1)+" kW":p.loss.toFixed(0)+" W")+"   |   230 V pe: I = "+p.Ip.toFixed(0)+" A → loss = "+(p.lossP/1000).toFixed(2)+" kW",(x1+x2)/2,308,p.loss<p.lossP?GR:RD,"bold 13px 'Cascadia Code',monospace","center");
+ document.getElementById("r3").innerHTML="V_s = V_p × N_s/N_p = 230 × "+p.Ns.toFixed(0)+"/"+p.Np.toFixed(0)+" = <span class='hl'>"+p.Vs.toFixed(0)+" V</span> | <span class='hl'>"+tag+"</span> | I_s = P/V_s = <span class='hl'>"+p.Is.toFixed(1)+" A</span> | loss = I²R = <span class='hl'>"+(p.loss>=1000?(p.loss/1000).toFixed(1)+" kW":p.loss.toFixed(0)+" W")+"</span> (230 V pe: "+(p.lossP/1000).toFixed(2)+" kW!) | input power = output power | sirf AC pe kaam karta!";
+}
+anims[3]=t=>draw(t);
+[sP,sS].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"Ghar ki supply '230 V' - ye 230 kya hai?",o:["Peak voltage 230 V hai","RMS value hai - peak toh 230√2 ≈ 325 V hai","Pure cycle ka average voltage","DC jaisa constant voltage"],a:1,w:"230 V RMS value hai! Peak V₀ = 230√2 ≈ 325 V. Pure cycle ka average toh ZERO hota hai (AC reverse hota hai). RMS = woh DC value jo same resistor me utni hi heating kare."},
+ {q:"Pure inductor me AC current, voltage ke respect me kahan hai?",o:["90° PEECHE (lag) - ELI the ICE man","90° AAGE (lead)","Same phase me","180° opposite"],a:0,w:"ELI the ICE man: E leads I in L - voltage aage, current 90° PEECHE. Capacitor me ulta (I leads E). X_L = ωL - frequency badhao toh opposition badhta hai."},
+ {q:"Series LCR circuit resonance pe kya hota hai?",o:["Z maximum, current zero","X_L = X_C, Z = R minimum, current MAXIMUM","Capacitor short circuit ho jaata hai","Frequency zero ho jaati hai"],a:1,w:"Resonance pe X_L = X_C (ω₀ = 1/√LC) - opposite effects cancel! Z = R minimum, I = V/R maximum, φ = 0. L aur C ke individual voltages phir bhi bade ho sakte hain."},
+ {q:"Pure inductor (R = 0) ka average power consumption kitna?",o:["V_rms × I_rms","I_rms² × X_L","Infinite","ZERO - cosφ = cos 90° = 0"],a:3,w:"P = V_rms I_rms cosφ. Pure L me φ = 90° → cosφ = 0 → P = ZERO! Energy store aur return hoti rehti hai - koi consumption nahi. Isko wattless current kehte hain."},
+ {q:"Transformer me N_s > N_p hai. Kya hoga?",o:["Step-DOWN: voltage ghategi","Voltage same rahegi","Steady DC pe bhi kaam karega","Step-UP: voltage badhegi, current ghatega"],a:3,w:"V_s/V_p = N_s/N_p > 1 → voltage BADHEGI (step-up). Power same → current GHATEGA. Isliye transmission high voltage pe - I kam toh I²R loss kam! Aur transformer sirf AC pe kaam karta hai, DC pe nahi."}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! AC PAKKA! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
+</body>
+</html>
