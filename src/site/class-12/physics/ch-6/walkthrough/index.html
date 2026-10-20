@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electromagnetic Induction - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 6 - Electromagnetic Induction</div>
+<h1>EMI Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - Faraday flux lab, Lenz magnet lab, motional EMF rails, AC generator, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Faraday Lab - Flux Badlo, EMF Banao ⭐⭐</h2>
+<p class="why">Φ = BA cosθ (θ = B aur area NORMAL ke beech!). Faraday ka law: ε = −N dΦ/dt - CHANGE hi EMF banata hai, flux bada hona kaafi nahi! dB/dt slider se field badlao - bulb dekho jalta hua. Rate ZERO karo → EMF gayab. θ = 90° karo → flux hi zero!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>angle θ</label><input type="range" id="fTh" min="0" max="90" step="1" value="0"><span class="v" id="vfTh">0°</span></div>
+<div class="slrow"><label>dB/dt (T/s)</label><input type="range" id="fRate" min="-2" max="2" step="0.1" value="0.5"><span class="v" id="vfRate">0.5 T/s</span></div>
+<div class="slrow"><label>turns N</label><input type="range" id="fN" min="10" max="100" step="10" value="50"><span class="v" id="vfN">50</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Lenz Lab - Magnet Ko Roko! ⭐⭐</h2>
+<p class="why">Induced current CHANGE ko oppose karta hai. Magnet paas lao → coil ka samne wala face N ban jaata hai (repel = oppose!). Door le jao → S ban jaata hai (attract = oppose!). Ruka magnet = koi current NAHI. Yehi energy conservation hai - oppose na ho toh free energy! Magnet slider ghumao ya ▶ Chalao dabao.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="slrow"><label>magnet position</label><input type="range" id="mX" min="0" max="100" step="1" value="20"><span class="v" id="vmX">20</span><button id="playBtn">▶ Chalao</button></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Motional EMF - Rails Pe Rod ⭐⭐</h2>
+<p class="why">Rod B field me chalti hai → andar ke charges pe F = qv×B → + upar, − neeche → EMF! ε = Blv (teeno perpendicular hon). Current I = ε/R, aur rod pe drag force F = B²l²v/R - isliye rod ko khinchna padta hai, P = Fv = εI (energy conserved!). v aur B badhao, bulb dekho!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>velocity v</label><input type="range" id="rV" min="0.5" max="5" step="0.1" value="2"><span class="v" id="vrV">2.0 m/s</span></div>
+<div class="slrow"><label>field B</label><input type="range" id="rB" min="0.2" max="2" step="0.1" value="1"><span class="v" id="vrB">1.0 T</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. AC Generator - Ghumo aur Banao ⭐⭐</h2>
+<p class="why">Coil B field me ghoomti hai → flux oscillate karta hai → ε = NBAω sin ωt. Peak ε₀ = NBAω. Dhyan do: coil VERTICAL (flux MAX) pe ε = ZERO, coil HORIZONTAL (flux zero) pe ε MAX - kyunki EMF rate of change pe depend karta hai! Har half cycle pe current REVERSE - isliye ALTERNATING current. India: 50 Hz, ω ≈ 314 rad/s.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="slrow"><label>ω (rad/s)</label><input type="range" id="gW" min="1" max="10" step="0.5" value="5"><span class="v" id="vgW">5.0 rad/s</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - EMI Pakki? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: Φ = BA cosθ (θ normal se!), ε = −N dΦ/dt, Lenz = oppose karo (paas N, door S), ε = Blv + F = B²l²v/R, inductor U = ½LI², generator ε₀ = NBAω, 50 Hz = India!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Flux + Faraday ⭐⭐</h3><p>Φ = BA cosθ (weber), θ = B↔normal | ε = −N dΦ/dt | CHANGE hi EMF banata hai - flux constant toh EMF zero, chahe flux kitna bhi bada!</p></div>
+<div class="rcard"><h3>Lenz ⭐⭐</h3><p>Induced current change ko OPPOSE | Paas aata N-pole → face N ban jao (repel) | Door jaata → S (attract) | Yehi energy conservation hai</p></div>
+<div class="rcard"><h3>Motional EMF ⭐⭐</h3><p>ε = Blv (B, l, v mutually perpendicular) | I = ε/R | Drag force F = B²l²v/R | P = Fv = εI | Right-hand rule for current</p></div>
+<div class="rcard"><h3>Inductance ⭐</h3><p>Self: ε = −L dI/dt | Energy U = ½LI² | Energy density u = B²/2μ₀ | Mutual: ε₂ = −M dI₁/dt</p></div>
+<div class="rcard"><h3>AC Generator ⭐</h3><p>ε = NBAω sin ωt | Peak ε₀ = NBAω | Flux MAX pe ε = 0, flux ZERO pe ε MAX | Har half cycle pe current reverse | India: 50 Hz, ω ≈ 314 rad/s</p></div>
+<div class="rcard"><h3>Traps ⭐</h3><p>θ plane se NAHI, normal se | "Oppose" matlab cancel nahi - resist | Blv sirf perpendicular case | Eddy currents: oppose motion (brakes) ya waste energy (laminated core isliye!)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 6 Electromagnetic Induction Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ============ SCENE 1: Faraday flux lab ============
+inits[0]=(()=>{
+const thS=document.getElementById("fTh"),rtS=document.getElementById("fRate"),nS=document.getElementById("fN");
+let B=1.0;const A=0.5;
+function draw(){
+ const c=ctx("cv0");c.clearRect(0,0,920,330);
+ const deg=parseFloat(thS.value),th=deg*Math.PI/180,rate=parseFloat(rtS.value),N=parseFloat(nS.value);
+ document.getElementById("vfTh").textContent=deg+"\u00B0";
+ document.getElementById("vfRate").textContent=rate.toFixed(1)+" T/s";
+ document.getElementById("vfN").textContent=N;
+ const phi=B*A*Math.cos(th),eps=-N*A*Math.cos(th)*rate;
+ // coil face view (circle) at left
+ const cx=235,cy=170,R=100;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.arc(cx,cy,R+14,0,7);c.stroke();
+ c.strokeStyle=CY;c.lineWidth=4;c.beginPath();c.arc(cx,cy,R,0,7);c.stroke();
+ // normal (dashed vertical)
+ c.setLineDash([6,5]);c.strokeStyle=DM;c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(cx,cy-R-38);c.stroke();c.setLineDash([]);
+ txt(c,"normal",cx+8,cy-R-34,DM,"13px 'Cascadia Code',monospace");
+ // B arrows at angle th from vertical, count ~ B
+ const nL=1+Math.round(B*5);
+ for(let i=0;i<nL;i++){
+  const off=(i-(nL-1)/2)*(150/Math.max(nL-1,1)||0);
+  const bx=cx+off,by=cy+ ((i%2)?26:-20);
+  const ex=bx+Math.sin(th)*64,ey=by-Math.cos(th)*64;
+  arrow2(c,bx,by,ex,ey,MG,2.5);
+ }
+ txt(c,"B = "+B.toFixed(2)+" T (field, angle \u03B8 normal se)",cx-118,cy+R+34,MG,"bold 13px 'Cascadia Code',monospace");
+ txt(c,"coil: N = "+N+" turns, A = 0.5 m\u00B2",cx-118,cy+R+52,CY,"13px 'Cascadia Code',monospace");
+ // theta arc between normal and first B arrow
+ c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.arc(cx,cy-40,26,-Math.PI/2,-Math.PI/2+th);c.stroke();
+ txt(c,"\u03B8",cx+Math.sin(th/2)*40+6,cy-40-Math.cos(th/2)*40+5,YL,"bold 14px 'Cascadia Code',monospace");
+ // bulb right side
+ const bx2=680,by2=150;
+ const glow=Math.min(1,Math.abs(eps)/30);
+ c.fillStyle="rgba(250,204,21,"+(0.12+0.75*glow)+")";c.beginPath();c.arc(bx2,by2,34,0,7);c.fill();
+ c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.arc(bx2,by2,34,0,7);c.stroke();
+ c.strokeStyle="#e8e8f2";c.lineWidth=2;c.beginPath();c.moveTo(bx2-12,by2+34);c.lineTo(bx2+12,by2+34);c.moveTo(bx2-9,by2+42);c.lineTo(bx2+9,by2+42);c.stroke();
+ txt(c,"bulb",bx2,by2+66,DM,"13px 'Cascadia Code',monospace","center");
+ txt(c,"\u03A6 = "+fmt(phi,3)+" Wb",560,240,CY,"bold 20px 'Cascadia Code',monospace");
+ txt(c,"\u03B5 = "+fmt(eps,2)+" V",560,272,glow>0.02?YL:DM,"bold 20px 'Cascadia Code',monospace");
+ const note=(rate===0)?"dB/dt = 0 \u2192 EMF ZERO! CHANGE hi EMF banata hai - yehi Faraday ka point!":(deg===90?"\u03B8 = 90\u00B0 \u2192 cos\u03B8 = 0 \u2192 flux bhi zero, EMF bhi zero!":"B badal raha hai \u2192 flux badla \u2192 EMF bana \u2192 bulb jala!");
+ document.getElementById("r0").innerHTML="\u03A6 = BA cos\u03B8 = "+B.toFixed(2)+" \u00D7 0.5 \u00D7 cos "+deg+"\u00B0 = <span class='hl'>"+fmt(phi,3)+" Wb</span>  |  \u03B5 = \u2212N\u00B7d\u03A6/dt = \u2212"+N+" \u00D7 0.5 \u00D7 cos "+deg+"\u00B0 \u00D7 ("+rate.toFixed(1)+") = <span class='hl'>"+fmt(eps,2)+" V</span>  |  "+note;
+}
+[thS,rtS,nS].forEach(s=>s.addEventListener("input",draw));
+anims[0]=function(){const rate=parseFloat(rtS.value);if(rate!==0){B+=rate*0.045;if(B>2)B=0.15;if(B<0.15)B=2;draw();}};
+return draw;
+})();
+// ============ SCENE 2: Lenz magnet lab ============
+inits[1]=(()=>{
+const xS=document.getElementById("mX"),pB=document.getElementById("playBtn");
+let mx=220,prev=220,playing=false,pdir=1;
+const COILX=660;
+function draw(){
+ const c=ctx("cv1");c.clearRect(0,0,920,330);
+ const x=parseFloat(xS.value);mx=x;
+ const vx=mx-prev;prev=mx;
+ document.getElementById("vmX").textContent=x;
+ // side view: magnet bar (left), coil ring (right)
+ const d=COILX-mx-40; // gap to coil face
+ // field lines from N pole into coil, density ~ 1/d^2
+ const dens=Math.max(0.06,Math.min(1,22000/(d*d+900)));
+ c.strokeStyle="rgba(232,232,242,0.25)";c.lineWidth=1.5;
+ const nf=1+Math.round(dens*6);
+ for(let i=0;i<nf;i++){const yy=120+i*(90/Math.max(nf-1,1)||0);arrow2(c,mx+62,yy,COILX-46,165+(yy-165)*0.4,"rgba(232,232,242,0.3)",1.5);}
+ // magnet
+ c.fillStyle=RD;c.fillRect(mx,130,62,70); // N side facing coil
+ c.fillStyle="#3b82f6";c.fillRect(mx-62,130,62,70);
+ txt(c,"S",mx-31,172,"#fff","bold 18px 'Cascadia Code',monospace","center");
+ txt(c,"N",mx+31,172,"#fff","bold 18px 'Cascadia Code',monospace","center");
+ // coil ring (side view = circle outline)
+ c.strokeStyle=CY;c.lineWidth=4;c.beginPath();c.arc(COILX,165,58,0,7);c.stroke();
+ // state
+ let state,face,dir;
+ if(Math.abs(vx)<0.01){state="Magnet RUKA hai \u2192 flux change nahi \u2192 induced current ZERO!";face="\u2014";dir="none";}
+ else if(vx>0){state="Magnet PAAS aa raha \u2192 flux BADH raha \u2192 induced current OPPOSE karega";face="N";dir="acw";}
+ else{state="Magnet DOOR ja raha \u2192 flux GHAT raha \u2192 induced current rokne ki koshish karega";face="S";dir="cw";}
+ // face view (right panel): what magnet sees
+ const fx=820,fy=120;
+ txt(c,"magnet ki nazar se:",fx-70,40,DM,"12px 'Cascadia Code',monospace");
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();c.arc(fx,fy,44,0,7);c.stroke();
+ if(dir!=="none"){
+  const a0=performance.now()/400;
+  for(let k=0;k<3;k++){
+   const ang=a0*(dir==="acw"?1:-1)+k*2.09;
+   const px=fx+Math.cos(ang)*44,py=fy+Math.sin(ang)*44;
+   const tang=ang+(dir==="acw"?Math.PI/2:-Math.PI/2);
+   arrow2(c,px,py,px+Math.cos(tang)*14,py+Math.sin(tang)*14,YL,2.5);
+  }
+ }
+ txt(c,face,fx,fy+7,(face==="N"?RD:(face==="S"?"#3b82f6":DM)),"bold 26px 'Cascadia Code',monospace","center");
+ txt(c,dir==="none"?"":(dir==="acw"?"anticlockwise":"clockwise"),fx,fy+62,YL,"12px 'Cascadia Code',monospace","center");
+ document.getElementById("r1").innerHTML=state+"  |  coil ka samne wala face: <span class='hl'>"+face+"</span>"+(face==="N"?" = magnet ko REPPEL kare (dhakka deke oppose!)":face==="S"?" = magnet ko ATTRACT kare (khinch ke oppose!)":"")+"  |  <span class='cy'>Lenz = energy conservation: oppose na kare toh free energy ban jaati!</span>";
+}
+xS.addEventListener("input",draw);
+pB.onclick=()=>{playing=!playing;pB.textContent=playing?"\u23F8 Roko":"\u25B6 Chalao";pB.classList.toggle("sel",playing);};
+anims[1]=function(){if(!playing)return;let x=parseFloat(xS.value)+pdir*3;if(x>100){x=100;pdir=-1;}if(x<0){x=0;pdir=1;}xS.value=x;draw();};
+return draw;
+})();
+// ============ SCENE 3: Motional EMF rails ============
+inits[2]=(()=>{
+const vS=document.getElementById("rV"),bS=document.getElementById("rB");
+let rx=200;
+const Y1=110,Y2=220,L=1,R=5;
+function draw(){
+ const c=ctx("cv2");c.clearRect(0,0,920,330);
+ const v=parseFloat(vS.value),B=parseFloat(bS.value);
+ document.getElementById("vrV").textContent=v.toFixed(1)+" m/s";
+ document.getElementById("vrB").textContent=B.toFixed(1)+" T";
+ const eps=B*L*v,I=eps/R,F=B*B*L*L*v/R,P=F*v;
+ // B into page: crosses
+ const nb=2+Math.round(B*6);
+ for(let i=0;i<nb;i++){for(let j=0;j<2;j++){
+  const gx=100+i*((760)/Math.max(nb-1,1)),gy=90+j*110;
+  c.strokeStyle="rgba(232,232,242,0.22)";c.lineWidth=2;
+  c.beginPath();c.arc(gx,gy,7,0,7);c.stroke();
+  c.beginPath();c.moveTo(gx-4,gy-4);c.lineTo(gx+4,gy+4);c.moveTo(gx+4,gy-4);c.lineTo(gx-4,gy+4);c.stroke();
+ }}
+ txt(c,"B (into page) = "+B.toFixed(1)+" T",640,52,MG,"bold 13px 'Cascadia Code',monospace");
+ // rails
+ c.strokeStyle="#8fa0c8";c.lineWidth=3;
+ c.beginPath();c.moveTo(60,Y1);c.lineTo(860,Y1);c.stroke();
+ c.beginPath();c.moveTo(60,Y2);c.lineTo(860,Y2);c.stroke();
+ // resistor/bulb at left
+ c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.moveTo(60,Y1);c.lineTo(60,Y2);c.stroke();
+ const glow=Math.min(1,I/1.6);
+ c.fillStyle="rgba(250,204,21,"+(0.1+0.8*glow)+")";c.beginPath();c.arc(60,(Y1+Y2)/2,13,0,7);c.fill();
+ c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.arc(60,(Y1+Y2)/2,13,0,7);c.stroke();
+ txt(c,"R = 5 \u03A9",44,252,YL,"12px 'Cascadia Code',monospace","center");
+ // current arrows on rails (up through rod, left on top rail, right on bottom)
+ arrow2(c,rx-130,Y1,rx-30,Y1,GR,2.5);
+ arrow2(c,rx-30,Y2,rx-130,Y2,GR,2.5);
+ // rod
+ c.strokeStyle=MG;c.lineWidth=6;c.beginPath();c.moveTo(rx,Y1);c.lineTo(rx,Y2);c.stroke();
+ arrow2(c,rx,Y1+18,rx,Y1+2,GR,2.5); // current up inside rod
+ txt(c,"+",rx+12,Y1+16,RD,"bold 15px 'Cascadia Code',monospace");
+ txt(c,"\u2212",rx+12,Y2-8,"#3b82f6","bold 15px 'Cascadia Code',monospace");
+ arrow2(c,rx+8,165,rx+58,165,CY,3);txt(c,"v = "+v.toFixed(1),rx+64,169,CY,"bold 13px 'Cascadia Code',monospace");
+ txt(c,"rod l = 1 m",rx-40,250,MG,"12px 'Cascadia Code',monospace");
+ document.getElementById("r2").innerHTML="\u03B5 = Blv = "+B.toFixed(1)+" \u00D7 1 \u00D7 "+v.toFixed(1)+" = <span class='hl'>"+fmt(eps,2)+" V</span>  |  I = \u03B5/R = <span class='hl'>"+fmt(I,2)+" A</span>  |  F = B\u00B2l\u00B2v/R = <span class='hl'>"+fmt(F,3)+" N</span> (yehi drag - rod ko khinchna padta hai!)  |  P = Fv = "+fmt(P,2)+" W = \u03B5I \u2713 energy conserved  |  charges pe F = qv\u00D7B: + upar, \u2212 neeche";
+}
+[vS,bS].forEach(s=>s.addEventListener("input",draw));
+anims[2]=function(){rx+=parseFloat(vS.value)*9;if(rx>820)rx=140;draw();};
+return draw;
+})();
+// ============ SCENE 4: AC Generator ============
+inits[3]=(()=>{
+const wS=document.getElementById("gW");
+let th=0;
+const N=50,Bf=0.5,Ar=0.5;
+function draw(){
+ const c=ctx("cv3");c.clearRect(0,0,920,330);
+ const w=parseFloat(wS.value);
+ document.getElementById("vgW").textContent=w.toFixed(1)+" rad/s";
+ const eps0=N*Bf*Ar*w,eps=eps0*Math.sin(th);
+ // left: field magnets N (left) S (right), coil rotating edge-on
+ c.fillStyle=RD;c.fillRect(60,90,56,150);txt(c,"N",88,172,"#fff","bold 20px 'Cascadia Code',monospace","center");
+ c.fillStyle="#3b82f6";c.fillRect(364,90,56,150);txt(c,"S",392,172,"#fff","bold 20px 'Cascadia Code',monospace","center");
+ for(let i=0;i<5;i++){arrow2(c,124,110+i*30,356,110+i*30,"rgba(232,232,242,0.2)",1.5);}
+ // coil edge-on: segment rotated, vertical when cos? draw with half-width = 95*|cos th|? coil rotates about vertical axis
+ const cx=240,cy=165,hw=95*Math.cos(th);
+ c.strokeStyle=CY;c.lineWidth=5;c.beginPath();c.moveTo(cx-hw,cy-70);c.lineTo(cx-hw,cy+70);c.stroke();
+ c.beginPath();c.moveTo(cx+hw,cy-70);c.lineTo(cx+hw,cy+70);c.stroke();
+ c.lineWidth=2;c.beginPath();c.moveTo(cx-hw,cy-70);c.lineTo(cx+hw,cy-70);c.moveTo(cx-hw,cy+70);c.lineTo(cx+hw,cy+70);c.stroke();
+ // rotation arrow
+ c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.arc(cx,cy-95,16,-0.4,2.2);c.stroke();
+ arrow2(c,cx+16*Math.cos(2.2),cy-95+16*Math.sin(2.2),cx+16*Math.cos(2.2)+8,cy-95+16*Math.sin(2.2)+6,YL,2);
+ txt(c,"\u03C9",cx+22,cy-88,YL,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"\u03B8 = "+(Math.round((th%(2*Math.PI))*180/Math.PI))+"\u00B0",cx-30,300,CY,"13px 'Cascadia Code',monospace");
+ // right: sine graph
+ const gx0=490,gy=165,gw=390,gh=110;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(gx0,gy-gh-14);c.lineTo(gx0,gy+gh+14);c.stroke();
+ c.beginPath();c.moveTo(gx0,gy);c.lineTo(gx0+gw,gy);c.stroke();
+ c.strokeStyle=GR;c.lineWidth=2.5;c.beginPath();
+ for(let px=0;px<=gw;px++){const a=px/gw*4*Math.PI;const yy=gy-Math.sin(a)*gh;if(px===0)c.moveTo(gx0+px,yy);else c.lineTo(gx0+px,yy);}
+ c.stroke();
+ const da=(th%(4*Math.PI))/(4*Math.PI)*gw,dy=gy-Math.sin(th)*gh;
+ c.fillStyle=YL;c.beginPath();c.arc(gx0+da,dy,6,0,7);c.fill();
+ txt(c,"\u03B5\u2080 = "+fmt(eps0,1)+" V",gx0+6,gy-gh+6,GR,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"+\u03B5\u2080",gx0-38,gy-gh+8,DM,"11px 'Cascadia Code',monospace");
+ txt(c,"\u2212\u03B5\u2080",gx0-38,gy+gh+4,DM,"11px 'Cascadia Code',monospace");
+ txt(c,"\u03B8 = \u03C9t \u2192",gx0+gw-70,gy+24,DM,"12px 'Cascadia Code',monospace");
+ const s=Math.sin(th);
+ const phase=Math.abs(s)<0.15?"coil vertical: \u03A6 MAX par \u03B5 = 0! (rate of change zero)":(Math.abs(s)>0.985?"coil horizontal: \u03A6 zero par \u03B5 MAX!":"beach ka phase");
+ document.getElementById("r3").innerHTML="\u03B8 = \u03C9t = "+(Math.round(th*180/Math.PI))+"\u00B0  |  \u03B5 = NBA\u03C9 sin \u03C9t = "+N+"\u00D7"+Bf+"\u00D7"+Ar+"\u00D7"+w.toFixed(1)+" \u00D7 sin \u03B8 = <span class='hl'>"+fmt(eps,1)+" V</span>  |  \u03B5\u2080 = NBA\u03C9 = <span class='hl'>"+fmt(eps0,1)+" V</span>  |  "+phase+"  |  har half cycle pe current REVERSE = isliye 'ALTERNATING'  |  India ka AC: 50 Hz \u2192 \u03C9 = 2\u03C0f \u2248 314 rad/s";
+}
+wS.addEventListener("input",draw);
+anims[3]=function(){th+=parseFloat(wS.value)*0.045;draw();};
+return draw;
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"\u03A6 = BA cos\u03B8 me \u03B8 kya hai?",o:["B aur coil ke PLANE ke beech ka angle","B aur AREA NORMAL ke beech ka angle","A aur B ke beech ka angle","Koi bhi angle chalega"],a:1,w:"\u03B8 = B aur area ke NORMAL ke beech ka angle! \u03B8 = 0 \u2192 flux MAX (BA), \u03B8 = 90\u00B0 \u2192 flux ZERO. Plane se angle mat lena - classic trap!"},
+ {q:"Magnet ka N pole coil ki taraf AA raha hai. Coil ka samne wala face kya banega?",o:["N ban jaata hai - magnet ko REPEL kare","S ban jaata hai - magnet ko attract kare","Pehle N phir S","Kuch nahi banta"],a:0,w:"Flux BADH raha \u2192 Lenz: induced current change ko OPPOSE kare \u2192 face N ban ke dhakka dega! Magnet DOOR jaaye toh S ban ke khinchega. Yehi energy conservation hai."},
+ {q:"Motional EMF \u03B5 = Blv kab lagta hai?",o:["Sirf jab B bahut strong ho","Jab B, l, v teeno MUTUALLY PERPENDICULAR ho","Jab rod copper ki ho","Kisi bhi orientation pe"],a:1,w:"\u03B5 = Blv ke liye B, rod ki length l, aur velocity v teeno mutually PERPENDICULAR chahiye. Charges pe F = qv\u00D7B se separation \u2192 EMF. Drag force F = B\u00B2l\u00B2v/R."},
+ {q:"Coil ka flux CONSTANT hai (change nahi ho raha). Induced EMF kitna?",o:["Maximum","Negative","ZERO - change hi EMF banata hai!","Infinite"],a:2,w:"Faraday: \u03B5 = \u2212N d\u03A6/dt. d\u03A6/dt = 0 \u2192 \u03B5 = 0. Flux bada hona kaafi NAHI - flux CHANGE hona zaroori! Faraday lab me rate slider 0 karke dekho."},
+ {q:"AC generator me coil ki angular speed \u03C9 DOUBLE kar di. Peak EMF \u03B5\u2080 = NBA\u03C9 ka kya hoga?",o:["Same rahega","Half ho jaayega","DOUBLE ho jaayega","4 guna ho jaayega"],a:2,w:"\u03B5\u2080 = NBA\u03C9 \u2192 \u03C9 ke DIRECTLY proportional! Speed double \u2192 \u03B5\u2080 double. Aur frequency bhi double (f = \u03C9/2\u03C0). India me f = 50 Hz fixed hai!"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! EMI PAKKA! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
