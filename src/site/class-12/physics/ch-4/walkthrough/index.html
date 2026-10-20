@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moving Charges and Magnetism - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 4 - Moving Charges and Magnetism</div>
+<h1>Moving Charges Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - Lorentz force lab, circle-helix lab, field sources lab, galvanometer lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Lorentz Force Lab - F = qv×B ⭐⭐</h2>
+<p class="why">Moving charge pe magnetic force F = |q|vB sinθ. Direction right-hand rule se - NEGATIVE charge ke liye ULTA! Sabse zaroori baat: force hamesha velocity ke PERPENDICULAR → work done ZERO, speed change nahi hoti, sirf direction! Aur static charge (v = 0) pe magnetic force bhi ZERO - magnetic field sirf moving charges ko pakadta hai.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>speed v (×10⁶ m/s)</label><input type="range" id="lV" min="1" max="10" step="0.5" value="5"><span class="v" id="vlV">5.0</span></div>
+<div class="slrow"><label>field B (T)</label><input type="range" id="lB" min="0.5" max="5" step="0.1" value="2"><span class="v" id="vlB">2.0 T</span></div>
+<div class="slrow"><label>angle θ (v ↔ B)</label><input type="range" id="lT" min="0" max="180" step="5" value="90"><span class="v" id="vlT">90°</span></div>
+<div class="btnrow" style="margin-top:8px"><button id="qSign">Charge: +e (proton)</button></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Circle aur Helix - r = mv/qB ⭐⭐</h2>
+<p class="why">v ⊥ B → magnetic force centripetal ban jaata hai → charge CIRCLE me ghoomta hai! r = mv/(qB), T = 2πm/(qB) - T velocity pe depend NAHI karta (tez particle bada circle, same time!). v ∥ B → force zero, seedhi line. Angle θ pe dono milke HELIX (spring jaisa), pitch = v∥ × T. v badhao - circle bada hota hai par T same! (demo units: m = 1, q = +1)</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="slrow"><label>speed v</label><input type="range" id="cV" min="1" max="10" step="0.5" value="5"><span class="v" id="vcV">5.0</span></div>
+<div class="slrow"><label>field B</label><input type="range" id="cB" min="0.5" max="3" step="0.1" value="1"><span class="v" id="vcB">1.0</span></div>
+<div class="slrow"><label>angle θ (v ↔ B)</label><input type="range" id="cT" min="0" max="90" step="5" value="30"><span class="v" id="vcT">30°</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Field Sources - Wire, Loop, Solenoid ⭐⭐</h2>
+<p class="why">Teen B-formulas 80% questions cover karte hain! Infinite wire: B = μ₀I/(2πd) - 1/d se girta hai, right-hand thumb rule. Loop ke CENTER: B = μ₀NI/(2R) - anticlockwise current → field tumhari TARAF. Solenoid ke ANDAR: B = μ₀nI uniform (n = turns per meter), bahar ≈ zero. Source chuno, sliders ghumao, field dekho!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="sW">Straight Wire</button><button id="sL">Loop Center</button><button id="sS">Solenoid</button></div>
+<div class="slrow"><label>current I</label><input type="range" id="sI" min="1" max="10" step="0.5" value="5"><span class="v" id="vsI">5.0 A</span></div>
+<div class="slrow"><label id="sParLab">distance d</label><input type="range" id="sP" min="0.2" max="2" step="0.1" value="0.5"><span class="v" id="vsP">0.5 m</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Galvanometer Lab - Ammeter aur Voltmeter ⭐⭐</h2>
+<p class="why">Coil pe torque τ = NIAB sinθ, spring ka restoring torque kφ - balance pe φ ∝ I (radial field se θ = 90° hamesha, linear scale!). AMMETER banana? Parallel me CHHOTA shunt S = I_g·G/(I − I_g) - zyada current bypass. VOLTMETER? Series me BADA resistance R = V/I_g − G. (Demo galvanometer: G = 50 Ω, full-scale I_g = 10 mA, N = 100, A = 2×10⁻⁴ m², B = 0.1 T.)</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="mG">Galvanometer</button><button id="mA">Ammeter</button><button id="mV">Voltmeter</button></div>
+<div class="slrow"><label id="gParLab">current I</label><input type="range" id="gP" min="1" max="10" step="0.5" value="5"><span class="v" id="vgP">5.0 mA</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Magnetism Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: F = qvB sinθ (work ZERO!), r = mv/qB aur T speed pe depend nahi, wire μ₀I/2πd + loop μ₀NI/2R + solenoid μ₀nI, parallel wires same direction ATTRACT, τ = NIAB sinθ, ammeter = parallel chhota shunt, voltmeter = series bada R!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Lorentz Force ⭐⭐</h3><p>F = q(v × B), |F| = |q|vB sinθ | Negative charge: direction ULTA | F hamesha v ke ⊥ → work ZERO, speed constant | Static charge pe force = 0 | Total: F = q(E + v×B)</p></div>
+<div class="rcard"><h3>Circle + Helix ⭐⭐</h3><p>v ⊥ B: circle, r = mv/(|q|B), T = 2πm/(|q|B) - T speed pe depend NAHI | f = |q|B/(2πm) cyclotron frequency | Angle θ pe HELIX, pitch = v cosθ × T | r = p/(|q|B)</p></div>
+<div class="rcard"><h3>Field Formulas ⭐⭐</h3><p>Infinite wire: B = μ₀I/(2πd) | Loop center: B = μ₀NI/(2R) | Loop axis: B = μ₀IR²/(2(R²+x²)^3/2) | Arc: (θ/2π) × loop ka B | Solenoid: B = μ₀nI (andar uniform)</p></div>
+<div class="rcard"><h3>Force + Torque ⭐⭐</h3><p>Conductor: F = BIL sinθ (Fleming left-hand) | Parallel wires: F/L = μ₀I₁I₂/(2πd) - SAME direction ATTRACT, opposite repel | Loop pe τ = NIAB sinθ = mB sinθ, m = NIA</p></div>
+<div class="rcard"><h3>Galvanometer ⭐⭐</h3><p>nIAB = kφ → φ ∝ I (radial field = linear scale) | Ammeter: parallel CHHOTA shunt S = I_gG/(I−I_g), resistance LOW | Voltmeter: series BADA R = V/I_g − G, resistance HIGH</p></div>
+<div class="rcard"><h3>Traps ⭐</h3><p>−q ki direction ulta mat bhoolo | T velocity pe depend nahi karta | Work = 0 → KE constant | Like currents ATTRACT (charges repel!) | Ammeter circuit me SERIES, voltmeter PARALLEL me lagta hai</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 4 Moving Charges and Magnetism Visual Walkthrough</div>
+</div>
+<script>
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ============ SCENE 1: Lorentz Force Lab ============
+inits[0]=(()=>{
+const c=ctx("cv0");
+const sV=document.getElementById("lV"),sB=document.getElementById("lB"),sT=document.getElementById("lT");
+const sgnBtn=document.getElementById("qSign");
+let qpos=true;
+function draw(t){
+ const v=parseFloat(sV.value),B=parseFloat(sB.value),th=parseFloat(sT.value)*Math.PI/180;
+ const F=1.6e-19*v*1e6*B*Math.sin(th);
+ document.getElementById("vlV").textContent=v.toFixed(1);
+ document.getElementById("vlB").textContent=B.toFixed(1)+" T";
+ document.getElementById("vlT").textContent=(th*180/Math.PI).toFixed(0)+"°";
+ c.fillStyle="#05050c";c.fillRect(0,0,920,330);
+ const ox=260,oy=200,u=1;
+ const vL=40+v*12,bL=40+B*26;
+ // v arrow along +x
+ arrow2(c,ox,oy,ox+vL,oy,RD,4);
+ txt(c,"v",ox+vL+14,oy+5,RD,"bold 16px 'Cascadia Code',monospace");
+ // B arrow at angle th from v (above axis)
+ const bx=ox+bL*Math.cos(th),by=oy-bL*Math.sin(th);
+ arrow2(c,ox,oy,bx,by,MG,4);
+ txt(c,"B",bx+14*Math.cos(th)+6,by-14*Math.sin(th)+5,MG,"bold 16px 'Cascadia Code',monospace");
+ // angle arc (screen y-down: canvas arc angle = -math angle)
+ c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.arc(ox,oy,45,-th,0);c.stroke();
+ txt(c,"θ="+(th*180/Math.PI).toFixed(0)+"°",ox+58*Math.cos(th/2),oy-58*Math.sin(th/2)+4,YL,"13px 'Cascadia Code',monospace","center");
+ // F direction: out of page (dot) or into page (cross); q(vxB): for v along +x, B above, vxB out of page (+z)
+ const out=qpos?(Math.sin(th)>=0):(Math.sin(th)<0);
+ const fx=650,fy=170,rad=26+150*Math.min(1,F/1.6e-12);
+ c.strokeStyle=CY;c.lineWidth=4;c.beginPath();c.arc(fx,fy,Math.max(26,rad),0,7);c.stroke();
+ if(out){c.fillStyle=CY;c.beginPath();c.arc(fx,fy,7,0,7);c.fill();}
+ else{c.strokeStyle=CY;c.lineWidth=4;c.beginPath();c.moveTo(fx-10,fy-10);c.lineTo(fx+10,fy+10);c.moveTo(fx+10,fy-10);c.lineTo(fx-10,fy+10);c.stroke();}
+ txt(c,"F",fx,fy-Math.max(26,rad)-10,CY,"bold 18px 'Cascadia Code',monospace","center");
+ txt(c,out?"OUT of page (tumhari taraf)":"INTO page (andar)",fx,fy+Math.max(26,rad)+24,CY,"13px 'Cascadia Code',monospace","center");
+ // force bar
+ const barW=Math.min(260,F/1.6e-12*260);
+ c.fillStyle="#1a1a33";c.fillRect(ox,275,260,14);
+ c.fillStyle=CY;c.fillRect(ox,275,barW,14);
+ txt(c,"F magnitude",ox+135,270,DM,"12px 'Cascadia Code',monospace","center");
+ txt(c,"work = F·v = 0 (F ⊥ v hamesha!)",650,290,GR,"bold 13px 'Cascadia Code',monospace","center");
+ let Fs;
+ if(F===0)Fs="0 N";
+ else if(F>=1e-12)Fs=(F*1e12).toFixed(2)+" × 10⁻¹² N";
+ else if(F>=1e-15)Fs=(F*1e15).toFixed(2)+" × 10⁻¹⁵ N";
+ else Fs=(F*1e18).toFixed(2)+" × 10⁻¹⁸ N";
+ document.getElementById("r0").innerHTML="F = |q|vB sinθ = (1.6×10⁻¹⁹) × "+(v*1e6).toExponential(1)+" × "+B.toFixed(1)+" × sin "+(th*180/Math.PI).toFixed(0)+"° = <span class='hl'>"+Fs+"</span> | direction: <span class='hl'>"+(out?"OUT of page":"INTO page")+(qpos?"":" (−q → ulta!)")+"</span> | work done = <span class='hl'>ZERO</span> (F ⊥ v → speed constant, sirf direction badalti hai)";
+}
+sgnBtn.onclick=()=>{qpos=!qpos;sgnBtn.textContent=qpos?"Charge: +e (proton)":"Charge: −e (electron)";draw(0);};
+[sV,sB,sT].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+// ============ SCENE 2: Circle + Helix ============
+inits[1]=(()=>{
+const c=ctx("cv1");
+const sV=document.getElementById("cV"),sB=document.getElementById("cB"),sT=document.getElementById("cT");
+function draw(t){
+ const v=parseFloat(sV.value),B=parseFloat(sB.value),th=parseFloat(sT.value)*Math.PI/180;
+ const vp=v*Math.sin(th),vl=v*Math.cos(th);
+ const r=vp/B,T=2*Math.PI/B,f=B/(2*Math.PI),pitch=vl*T;
+ document.getElementById("vcV").textContent=v.toFixed(1);
+ document.getElementById("vcB").textContent=B.toFixed(1);
+ document.getElementById("vcT").textContent=(th*180/Math.PI).toFixed(0)+"°";
+ c.fillStyle="#05050c";c.fillRect(0,0,920,330);
+ // LEFT: top view circle
+ const cx=210,cy=175;
+ const rp=Math.min(115,r*11);
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.beginPath();c.arc(cx,cy,120,0,7);c.stroke();
+ // B crosses grid
+ c.fillStyle="#3d3d6b";
+ for(let gx=cx-100;gx<=cx+100;gx+=40)for(let gy=cy-100;gy<=cy+100;gy+=40){
+  if(Math.hypot(gx-cx,gy-cy)<115){txt(c,"×",gx,gy+4,"#3d3d6b","14px 'Cascadia Code',monospace","center");}
+ }
+ txt(c,"top view - B INTO page",cx,40,DM,"12px 'Cascadia Code',monospace","center");
+ if(rp>3){
+  c.strokeStyle=CY;c.lineWidth=3;c.beginPath();c.arc(cx,cy,rp,0,7);c.stroke();
+  const ph=t*0.05*Math.max(0.3,B);
+  const px=cx+rp*Math.cos(ph),py=cy+rp*Math.sin(ph);
+  c.fillStyle=YL;c.beginPath();c.arc(px,py,7,0,7);c.fill();
+  c.strokeStyle=DM;c.lineWidth=1.5;c.beginPath();c.moveTo(cx,cy);c.lineTo(px,py);c.stroke();
+  txt(c,"r", (cx+px)/2+10,(cy+py)/2-6,CY,"bold 14px 'Cascadia Code',monospace");
+ } else {
+  // straight line motion
+  const px=cx-115+((t*2)%230);
+  c.strokeStyle=CY;c.lineWidth=3;c.beginPath();c.moveTo(cx-115,cy);c.lineTo(cx+115,cy);c.stroke();
+  c.fillStyle=YL;c.beginPath();c.arc(px,cy,7,0,7);c.fill();
+  txt(c,"v ∥ B → force ZERO, seedhi line",cx,cy-130,YL,"12px 'Cascadia Code',monospace","center");
+ }
+ // RIGHT: helix side view
+ const hx=430,hw=460,hy=175,hr=Math.min(80,rp*0.7);
+ txt(c,"side view - helix",hx+hw/2,40,DM,"12px 'Cascadia Code',monospace","center");
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.beginPath();c.moveTo(hx,hy);c.lineTo(hx+hw,hy);c.stroke();
+ if(rp>3){
+  c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();
+  const pitchPx=Math.min(90,pitch*9);
+  for(let x=0;x<=hw;x+=2){const ph2=x/Math.max(20,pitchPx)*Math.PI;const y=hy-hr*Math.sin(ph2);if(x===0)c.moveTo(hx+x,y);else c.lineTo(hx+x,y);}
+  c.stroke();
+  const dh=(t*3)%hw;
+  const dph=dh/Math.max(20,pitchPx)*Math.PI;
+  c.fillStyle=YL;c.beginPath();c.arc(hx+dh,hy-hr*Math.sin(dph),6,0,7);c.fill();
+  txt(c,"pitch = "+pitch.toFixed(2),hx+hw/2,hy+hr+35,MG,"13px 'Cascadia Code',monospace","center");
+ } else {
+  c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();c.moveTo(hx,hy);c.lineTo(hx+hw,hy);c.stroke();
+  const dh=(t*3)%hw;c.fillStyle=YL;c.beginPath();c.arc(hx+dh,hy,6,0,7);c.fill();
+  txt(c,"θ = 0 → helix nahi, seedhi line",hx+hw/2,hy+50,MG,"13px 'Cascadia Code',monospace","center");
+ }
+ document.getElementById("r1").innerHTML="v⊥ = "+vp.toFixed(2)+", v∥ = "+vl.toFixed(2)+" | r = mv⊥/(qB) = <span class='hl'>"+r.toFixed(2)+"</span> | T = 2πm/(qB) = <span class='hl'>"+T.toFixed(2)+" s (v pe depend NAHI!)</span> | f = "+f.toFixed(3)+" Hz | pitch = v∥×T = <span class='hl'>"+pitch.toFixed(2)+"</span> (demo units: m=1, q=+1)";
+}
+anims[1]=t=>draw(t);
+[sV,sB,sT].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+// ============ SCENE 3: Field Sources ============
+inits[2]=(()=>{
+const c=ctx("cv2");
+let src="W";
+const sI=document.getElementById("sI"),sP=document.getElementById("sP");
+const btns={W:document.getElementById("sW"),L:document.getElementById("sL"),S:document.getElementById("sS")};
+const lab=document.getElementById("sParLab");
+const MU0=4*Math.PI*1e-7;
+function draw(t){
+ const I=parseFloat(sI.value),p=parseFloat(sP.value);
+ document.getElementById("vsI").textContent=I.toFixed(1)+" A";
+ c.fillStyle="#05050c";c.fillRect(0,0,920,330);
+ let B,formula;
+ if(src==="W"){
+  B=MU0*I/(2*Math.PI*p);formula="B = μ₀I/(2πd) = (2×10⁻⁷)×"+I.toFixed(1)+"/"+p.toFixed(1);
+  document.getElementById("vsP").textContent=p.toFixed(1)+" m";
+  const wx=300;
+  c.strokeStyle=YL;c.lineWidth=5;c.beginPath();c.moveTo(wx,40);c.lineTo(wx,300);c.stroke();
+  arrow2(c,wx,200,wx,80,YL,5);
+  txt(c,"I = "+I.toFixed(1)+" A",wx+14,90,YL,"bold 14px 'Cascadia Code',monospace");
+  for(let k=1;k<=3;k++){const rr=k*55;
+   c.strokeStyle="#3d3d6b";c.setLineDash([6,5]);c.lineWidth=2;
+   c.beginPath();c.arc(wx,180,rr,0,7);c.stroke();c.setLineDash([]);}
+  // observation point at distance d (scale 0.5m=110px)
+  const px=wx+p*220;
+  c.fillStyle=CY;c.beginPath();c.arc(px,180,7,0,7);c.fill();
+  txt(c,"⊙ B (out)",px,160,CY,"bold 14px 'Cascadia Code',monospace","center");
+  c.strokeStyle=GR;c.lineWidth=2;c.setLineDash([3,3]);
+  c.beginPath();c.moveTo(wx,180);c.lineTo(px,180);c.stroke();c.setLineDash([]);
+  txt(c,"d = "+p.toFixed(1)+" m",(wx+px)/2,200,GR,"13px 'Cascadia Code',monospace","center");
+  txt(c,"right-hand thumb rule: thumb = current, fingers = B curl",620,300,DM,"12px 'Cascadia Code',monospace","center");
+ } else if(src==="L"){
+  const N=Math.round(p*25);B=MU0*N*I/(2*0.1);formula="B = μ₀NI/(2R) = (4π×10⁻⁷)×"+N+"×"+I.toFixed(1)+"/(2×0.1)";
+  document.getElementById("vsP").textContent=N+" turns";
+  const lx=330,ly=180,lr=110;
+  c.strokeStyle=YL;c.lineWidth=4;c.beginPath();c.arc(lx,ly,lr,0,7);c.stroke();
+  for(let k=0;k<N;k++){const a=k/N*2*Math.PI;
+   c.fillStyle=YL;c.beginPath();c.arc(lx+lr*Math.cos(a),ly+lr*Math.sin(a),4,0,7);c.fill();}
+  txt(c,"R = 0.1 m, N = "+N,lx,ly+lr+28,DM,"13px 'Cascadia Code',monospace","center");
+  // current direction arrow on loop (anticlockwise)
+  arrow2(c,lx-lr-2,ly-14,lx-lr+2,ly-34,YL,3);
+  // center field arrow (out of page)
+  c.fillStyle=CY;c.beginPath();c.arc(lx,ly,26,0,7);c.stroke();
+  c.strokeStyle=CY;c.lineWidth=3;c.beginPath();c.arc(lx,ly,26,0,7);c.stroke();
+  c.fillStyle=CY;c.beginPath();c.arc(lx,ly,7,0,7);c.fill();
+  txt(c,"⊙ B at center",lx,ly-40,CY,"bold 14px 'Cascadia Code',monospace","center");
+  txt(c,"anticlockwise current → B tumhari TARAF",620,300,DM,"12px 'Cascadia Code',monospace","center");
+ } else {
+  const n=Math.round(p*2500);B=MU0*n*I;formula="B = μ₀nI = (4π×10⁻⁷)×"+n+"×"+I.toFixed(1);
+  document.getElementById("vsP").textContent=n+" turns/m";
+  const sx=180,sw=560,sy=140,sh=100;
+  c.strokeStyle="#2d2d52";c.lineWidth=2;c.strokeRect(sx,sy,sw,sh);
+  const loops=Math.max(4,Math.round(n/400));
+  c.strokeStyle=YL;c.lineWidth=3;
+  for(let k=0;k<=loops;k++){const xx=sx+30+k*(sw-60)/loops;
+   c.beginPath();c.ellipse(xx,sy,14,10,0,0,Math.PI);c.stroke();
+   c.beginPath();c.ellipse(xx,sy+sh,14,10,0,Math.PI,2*Math.PI);c.stroke();}
+  for(let k=0;k<7;k++){const xx=sx+50+k*(sw-100)/6;
+   arrow2(c,xx,sy+sh/2,xx+40,sy+sh/2,CY,3);}
+  txt(c,"andar: uniform B = μ₀nI",sx+sw/2,sy+sh/2-16,CY,"bold 14px 'Cascadia Code',monospace","center");
+  txt(c,"bahar ≈ ZERO",sx+sw/2,sy-14,DM,"13px 'Cascadia Code',monospace","center");
+  txt(c,"n = "+n+" turns/m (density matter karti hai, total turns nahi!)",sx+sw/2,sy+sh+28,DM,"12px 'Cascadia Code',monospace","center");
+ }
+ let Bs;
+ if(B>=1e-3)Bs=(B*1e3).toFixed(2)+" mT";
+ else if(B>=1e-6)Bs=(B*1e6).toFixed(2)+" µT";
+ else Bs=B.toExponential(2)+" T";
+ document.getElementById("r2").innerHTML=formula+" = <span class='hl'>"+Bs+"</span>"+(src==="W"?" | 1/d se girta hai":src==="L"?" | turns N badhao → B direct proportional":" | andar uniform, bahar ≈ 0");
+}
+function setSrc(s){src=s;Object.keys(btns).forEach(k=>{btns[k].style.borderColor=k===s?CY:"#2d2d52";btns[k].style.color=k===s?CY:"#c9c9e0";});
+ lab.textContent=s==="W"?"distance d":s==="L"?"turns N (×25)":"n (×2500 per m)";
+ const sp=document.getElementById("sP");
+ if(s==="W"){sp.min=0.2;sp.max=2;sp.step=0.1;sp.value=0.5;}
+ else if(s==="L"){sp.min=0.2;sp.max=2;sp.step=0.04;sp.value=0.4;}
+ else{sp.min=0.2;sp.max=2;sp.step=0.04;sp.value=0.4;}
+ draw(0);}
+Object.keys(btns).forEach(k=>{btns[k].onclick=()=>setSrc(k);});
+[sI,sP].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){setSrc("W");};
+})();
+// ============ SCENE 4: Galvanometer Lab ============
+inits[3]=(()=>{
+const c=ctx("cv3");
+let mode="G";
+const sP=document.getElementById("gP");
+const btns={G:document.getElementById("mG"),A:document.getElementById("mA"),V:document.getElementById("mV")};
+const lab=document.getElementById("gParLab");
+const G=50,Ig=0.01,N=100,A=2e-4,Bf=0.1;
+function dial(c,frac,label){
+ const dx=250,dy=290,dr=190;
+ c.strokeStyle="#2d2d52";c.lineWidth=3;c.beginPath();c.arc(dx,dy,dr,Math.PI,2*Math.PI);c.stroke();
+ for(let k=0;k<=10;k++){const a=Math.PI+k/10*Math.PI;
+  const x1=dx+(dr-14)*Math.cos(a),y1=dy+(dr-14)*Math.sin(a),x2=dx+dr*Math.cos(a),y2=dy+dr*Math.sin(a);
+  c.strokeStyle="#5b6488";c.lineWidth=2;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+ const a=Math.PI+Math.max(0,Math.min(1,frac))*Math.PI;
+ arrow2(c,dx,dy,dx+(dr-24)*Math.cos(a),dy+(dr-24)*Math.sin(a),RD,4);
+ c.fillStyle="#8fa0c8";c.beginPath();c.arc(dx,dy,8,0,7);c.fill();
+ txt(c,label,dx,dy-dr-14,CY,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"0",dx-dr+6,dy+18,DM,"12px 'Cascadia Code',monospace","center");
+ txt(c,"full",dx+dr-6,dy+18,DM,"12px 'Cascadia Code',monospace","center");
+}
+function draw(t){
+ const p=parseFloat(sP.value);
+ c.fillStyle="#05050c";c.fillRect(0,0,920,330);
+ let msg;
+ if(mode==="G"){
+  const I=p/1000,frac=I/Ig,tau=N*I*A*Bf;
+  document.getElementById("vgP").textContent=p.toFixed(1)+" mA";
+  dial(c,frac,"galvanometer (φ ∝ I)");
+  txt(c,"coil: N=100, A=2×10⁻⁴ m², B=0.1 T",560,120,DM,"13px 'Cascadia Code',monospace","center");
+  txt(c,"τ = NIAB = "+(tau*1e6).toFixed(2)+" µN·m",560,150,CY,"bold 15px 'Cascadia Code',monospace","center");
+  txt(c,"spring kφ se balance → φ ∝ I (radial field: θ=90° hamesha, linear scale)",560,185,GR,"13px 'Cascadia Code',monospace","center");
+  txt(c,"deflection = "+(frac*100).toFixed(0)+"% of full scale",560,215,YL,"bold 14px 'Cascadia Code',monospace","center");
+  msg="I = "+p.toFixed(1)+" mA | τ = NIAB sinθ (radial field me θ = 90° → τ = NIAB = <span class='hl'>"+(tau*1e6).toFixed(2)+" µN·m</span>) | balance: nIAB = kφ → <span class='hl'>φ ∝ I</span> | deflection <span class='hl'>"+(frac*100).toFixed(0)+"%</span> of full scale (I_g = 10 mA)";
+ } else if(mode==="A"){
+  const I=p,S=Ig*G/(I-Ig);
+  document.getElementById("vgP").textContent=p.toFixed(1)+" A";
+  dial(c,1,"ammeter (target "+p.toFixed(1)+" A)");
+  // shunt sketch
+  const bx=520,bw=300;
+  c.strokeStyle="#5b6488";c.lineWidth=3;
+  c.strokeRect(bx,120,bw,90);
+  txt(c,"G = 50 Ω",bx+bw/2,170,CY,"bold 14px 'Cascadia Code',monospace","center");
+  c.strokeStyle=YL;c.lineWidth=3;
+  c.beginPath();c.moveTo(bx,165);c.lineTo(bx,250);c.lineTo(bx+bw,250);c.lineTo(bx+bw,165);c.stroke();
+  txt(c,"shunt S = "+S.toFixed(4)+" Ω (parallel)",bx+bw/2,275,YL,"bold 14px 'Cascadia Code',monospace","center");
+  txt(c,"I_g = 10 mA galvo se, baaki "+(p-0.01).toFixed(2)+" A shunt se!",bx+bw/2,105,GR,"13px 'Cascadia Code',monospace","center");
+  msg="Target: I = <span class='hl'>"+p.toFixed(1)+" A</span> measure karna | shunt S = I_g·G/(I − I_g) = 0.01×50/"+(p-0.01).toFixed(2)+" = <span class='hl'>"+S.toFixed(4)+" Ω</span> PARALLEL me | ammeter ka total resistance bahut LOW (circuit me SERIES lagta hai)";
+ } else {
+  const V=p*10,R=V/Ig-G;
+  document.getElementById("vgP").textContent=V.toFixed(0)+" V";
+  dial(c,1,"voltmeter (target "+V.toFixed(0)+" V)");
+  const bx=500,bw=340;
+  c.strokeStyle="#5b6488";c.lineWidth=3;
+  c.strokeRect(bx,120,120,90);
+  txt(c,"G = 50 Ω",bx+60,170,CY,"bold 14px 'Cascadia Code',monospace","center");
+  c.strokeStyle=YL;c.lineWidth=3;c.strokeRect(bx+160,120,180,90);
+  txt(c,"R = "+R.toFixed(0)+" Ω (series)",bx+250,170,YL,"bold 13px 'Cascadia Code',monospace","center");
+  c.strokeStyle="#5b6488";c.beginPath();c.moveTo(bx+120,165);c.lineTo(bx+160,165);c.stroke();
+  txt(c,"full 10 mA pe "+V.toFixed(0)+" V drop → R bada chahiye",bx+bw/2,105,GR,"13px 'Cascadia Code',monospace","center");
+  msg="Target: V = <span class='hl'>"+V.toFixed(0)+" V</span> measure karna | series R = V/I_g − G = "+V.toFixed(0)+"/0.01 − 50 = <span class='hl'>"+R.toFixed(0)+" Ω</span> SERIES me | voltmeter ka total resistance bahut HIGH (circuit me PARALLEL lagta hai)";
+ }
+ document.getElementById("r3").innerHTML=msg;
+}
+function setMode(m){mode=m;Object.keys(btns).forEach(k=>{btns[k].style.borderColor=k===m?CY:"#2d2d52";btns[k].style.color=k===m?CY:"#c9c9e0";});
+ lab.textContent=m==="G"?"current I":m==="A"?"target current I":"target voltage V (×10)";
+ const sp=document.getElementById("gP");
+ if(m==="V"){sp.min=0.5;sp.max=10;sp.step=0.5;sp.value=5;}
+ else{sp.min=1;sp.max=10;sp.step=0.5;sp.value=5;}
+ draw(0);}
+Object.keys(btns).forEach(k=>{btns[k].onclick=()=>setMode(k);});
+sP.addEventListener("input",()=>draw(0));
+return function(){setMode("G");};
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"Charge B field me move kar raha hai (v ⊥ B). Magnetic force ka work done?",o:["qvB ke barabar","mv²/r ke barabar","ZERO - force hamesha velocity ke perpendicular","qE ke barabar"],a:2,w:"Magnetic force hamesha velocity ke PERPENDICULAR → work = ZERO! Speed change nahi hoti, sirf direction. Kinetic energy constant. Isliye magnetic field se seedha energy nahi mil sakti!"},
+ {q:"v ⊥ B me charge ka time period T = 2πm/(qB). v DOUBLE karne pe T ka kya hoga?",o:["Double ho jaayega","Half ho jaayega","SAME rahega - sirf m, q, B pe depend karta hai","4 guna"],a:2,w:"T = 2πm/(qB) me v kahin nahi! Tez particle BADA circle banata hai (r = mv/qB double), par same time me complete karta hai. Yehi cyclotron ka principle hai."},
+ {q:"Circular loop (N turns, radius R, current I) ke CENTER pe magnetic field?",o:["B = μ₀I/(2πR)","B = μ₀NI/(2R)","B = μ₀nI","ZERO"],a:1,w:"Loop center: B = μ₀NI/(2R). Wire ka μ₀I/(2πd) aur solenoid ka μ₀nI se confuse mat karo! Arc ho to (θ/2π) se multiply. Direction: anticlockwise current → field tumhari taraf."},
+ {q:"Do parallel wires me SAME direction me current. Unke beech force?",o:["ATTRACT - like currents attract!","REPEL - like charges ki tarah","ZERO","Pehle attract phir repel"],a:0,w:"F/L = μ₀I₁I₂/(2πd). SAME direction currents ATTRACT, opposite REPEL. Ulta lagta hai na? Electric charges me like REPEL karte hain, currents me like ATTRACT - exam trap!"},
+ {q:"Galvanometer ko AMMETER me convert karne ke liye kya kare?",o:["Series me bada resistance","Parallel me bada resistance","Parallel me CHHOTA shunt resistance","Kuch nahi, direct use karo"],a:2,w:"Ammeter: parallel me CHHOTA shunt S = I_g·G/(I − I_g) - zyada current bypass ho jaata hai, total resistance LOW. Voltmeter ke liye ulta: series me BADA R = V/I_g − G, resistance HIGH."}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! MAGNETISM PAKKA! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
+</body>
+</html>
