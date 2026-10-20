@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ray Optics - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 9 - Ray Optics</div>
+<h1>Ray Optics Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - mirror lab, refraction + TIR lab, prism lab, thin lens lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Mirror Lab - Image Kahan, Kaisi? ⭐⭐</h2>
+<p class="why">Spherical mirror ka poora khel 2 formulas ka: f = R/2 aur 1/f = 1/v + 1/u (Cartesian signs: object side NEGATIVE!). Magnification m = −v/u: negative m = inverted, |m| &gt; 1 = magnified. Concave/convex chuno, object slider ghumao - 5 classic cases LIVE dekho: beyond C → at C → C-F → at F → F ke andar!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow" id="mirBtns"><button data-m="concave" class="sel">Concave (f = −15)</button><button data-m="convex">Convex (f = +15)</button></div>
+<div class="slrow"><label>object distance u</label><input type="range" id="mU" min="8" max="60" step="1" value="45"><span class="v" id="vmU">45</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Refraction + TIR Lab - Snell Ka Rule ⭐⭐</h2>
+<p class="why">Snell's law: n₁ sin i = n₂ sin r. Denser me jaao → normal ki TARAF bend; rarer me → DOOR. Par glass → air me i badhate jao... ek angle ke BAAD refraction possible hi nahi - TOTAL INTERNAL REFLECTION! sin C = n_rare/n_dense (glass→air: C = 41.8°). Direction chuno, i slider ghumao, TIR LIVE dekho - optical fibre ka principle!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" id="dirBtns"><button data-d="a2g" class="sel">Air → Glass</button><button data-d="g2a">Glass → Air (TIR zone!)</button></div>
+<div class="slrow"><label>incidence i</label><input type="range" id="iA" min="0" max="89" step="1" value="30"><span class="v" id="viA">30°</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Prism Lab - Deviation Ka Graph ⭐⭐</h2>
+<p class="why">Prism: A = r₁ + r₂ aur δ = i + e − A. i slider ghumao - δ pehle GHATTA hai phir BADHTA hai. Beech ka sweet spot = MINIMUM DEVIATION: wahan i = e, r₁ = r₂ = A/2, andar ki ray base ke parallel! Formula: n = sin[(A+δmin)/2] / sin(A/2). A zyada karo toh second face pe TIR bhi ho sakta hai - dekho!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>prism angle A</label><input type="range" id="pA" min="30" max="75" step="1" value="60"><span class="v" id="vpA">60°</span><label>incidence i</label><input type="range" id="pI" min="20" max="89" step="1" value="48"><span class="v" id="vpI">48°</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Thin Lens Lab - 1/f = 1/v − 1/u ⭐⭐</h2>
+<p class="why">Lens mirror jaisa hi khel, par light THROUGH jaati hai: 1/f = 1/v − 1/u, m = v/u. Convex CONVERGES (real image possible), concave DIVERGES (hamesha virtual, erect, diminished). u &lt; f pe convex lens = SIMPLE MICROSCOPE (virtual, erect, magnified!). Power P = 1/f(metres) dioptre me. Slider ghumao, 5 cases phir se!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" id="lensBtns"><button data-m="convex" class="sel">Convex (f = +15)</button><button data-m="concave">Concave (f = −15)</button></div>
+<div class="slrow"><label>object distance u</label><input type="range" id="lU" min="8" max="60" step="1" value="45"><span class="v" id="vlU">45</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Optics Pakki? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: f = R/2, 1/f = 1/v + 1/u, m = −v/u; convex mirror = hamesha virtual erect diminished; Snell n₁sin i = n₂sin r, TIR = denser→rarer + i &gt; C, sin C = n_rare/n_dense; prism A = r₁+r₂, δ = i+e−A, δ_min pe i=e; thin lens 1/f = 1/v − 1/u, m = v/u, P = 1/f(m); telescope M = fₒ/fₑ, microscope M ≈ (L/fₒ)(D/fₑ)!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Mirrors ⭐⭐</h3><p>f = R/2 | 1/f = 1/v + 1/u (Cartesian!) | m = −v/u | Concave: real image possible (5 cases ratto!) | Convex: HAMESHA virtual, erect, diminished (real object ke liye)</p></div>
+<div class="rcard"><h3>Refraction + TIR ⭐⭐</h3><p>Snell: n₁ sin i = n₂ sin r | n = c/v | Boundary pe frequency SAME, wavelength badalti | TIR: denser→rarer + i &gt; C | sin C = n_rare/n_dense | Optical fibre = repeated TIR</p></div>
+<div class="rcard"><h3>Prism ⭐⭐</h3><p>A = r₁ + r₂ | δ = i + e − A | δ_min pe: i = e, r₁ = r₂ = A/2 | n = sin[(A+δmin)/2] / sin(A/2) | Dispersion: n colour pe depend - violet &gt; red deviate</p></div>
+<div class="rcard"><h3>Lenses ⭐⭐</h3><p>Spherical surface: n₂/v − n₁/u = (n₂−n₁)/R | Thin lens: 1/f = 1/v − 1/u, m = v/u | Lens maker: 1/f = (n_rel − 1)(1/R₁ − 1/R₂) | Power P = 1/f(m) dioptre | Convex converges, concave diverges</p></div>
+<div class="rcard"><h3>Microscopes ⭐</h3><p>Simple: M = D/f (infinity) ya 1 + D/f (near point), D ≈ 25 cm | Compound: M ≈ (L/fₒ)(D/fₑ) - objective real intermediate image, eyepiece aage magnify</p></div>
+<div class="rcard"><h3>Telescopes ⭐</h3><p>Astronomical (normal adjustment): |M| = fₒ/fₑ | Tube length = fₒ + fₑ | Reflecting telescope: curved MIRROR objective (no chromatic aberration!)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 9 Ray Optics Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ============ SCENE 1: Mirror lab ============
+inits[0]=(()=>{
+let mir="concave"; // f magnitude 15 (cm units, scaled)
+const sl=document.getElementById("mU");
+const FM=15,K=6,ox=640,oy=165; // pole at x=640, axis y=165
+function draw(){
+ const c=ctx("cv0");c.clearRect(0,0,920,330);
+ const U=parseFloat(sl.value);document.getElementById("vmU").textContent=U;
+ const f=(mir==="concave"?-FM:FM),u=-U;
+ const v=1/(1/f-1/u),m=-v/u;
+ // axis
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.moveTo(30,oy);c.lineTo(890,oy);c.stroke();
+ // mirror (arc-ish vertical)
+ c.strokeStyle="#e8e8f2";c.lineWidth=4;c.beginPath();
+ if(mir==="concave"){c.arc(ox+70,oy,110,-1.35,1.35);}else{c.arc(ox-70,oy,110,Math.PI-1.35,Math.PI+1.35);}
+ c.stroke();
+ // F and C marks (object side = left)
+ const fs=(mir==="concave"?-1:1);
+ txt(c,"P",ox+6,oy+20,DM,"bold 12px 'Cascadia Code',monospace","center");
+ const Fx=ox+fs*FM*K,Cx=ox+fs*2*FM*K;
+ c.fillStyle=YL;c.beginPath();c.arc(Fx,oy,4,0,7);c.fill();txt(c,"F",Fx,oy+20,YL,"bold 13px 'Cascadia Code',monospace","center");
+ c.fillStyle=MG;c.beginPath();c.arc(Cx,oy,4,0,7);c.fill();txt(c,"C",Cx,oy+20,MG,"bold 13px 'Cascadia Code',monospace","center");
+ // object arrow (left of mirror)
+ const ox1=ox+u*K,oh=70;
+ c.strokeStyle=CY;c.lineWidth=3.5;c.beginPath();c.moveTo(ox1,oy);c.lineTo(ox1,oy-oh);c.stroke();
+ arrow2(c,ox1,oy,ox1,oy-oh,CY,3.5);
+ txt(c,"object",ox1,oy+22,CY,"bold 12px 'Cascadia Code',monospace","center");
+ // image
+ const ix=ox+v*K,ih=oh*Math.abs(m);
+ const real=v<0;
+ if(Math.abs(v)<200){
+  c.strokeStyle=real?GR:YL;c.lineWidth=3.5;
+  if(m<0){c.beginPath();c.moveTo(ix,oy);c.lineTo(ix,oy+ih);c.stroke();arrow2(c,ix,oy,ix,oy+ih,real?GR:YL,3.5);}
+  else{c.beginPath();c.moveTo(ix,oy);c.lineTo(ix,oy-ih);c.stroke();arrow2(c,ix,oy,ix,oy-ih,real?GR:YL,3.5);}
+  txt(c,real?"REAL image":"VIRTUAL image",ix,oy+38,real?GR:YL,"bold 12px 'Cascadia Code',monospace","center");
+  // rays: parallel ray then through F (schematic: both meet at image tip)
+  const ity=m<0?oy+ih:oy-ih;
+  c.strokeStyle="#8fa0c8";c.lineWidth=1.6;c.beginPath();c.moveTo(ox1,oy-oh);c.lineTo(ox,oy-oh);c.stroke();
+  c.beginPath();c.moveTo(ox,oy-oh);c.lineTo(Math.min(Math.max(ix,60),860),ity);c.stroke();
+  c.beginPath();c.moveTo(ox1,oy-oh);c.lineTo(ox,oy);c.stroke();
+  c.beginPath();c.moveTo(ox,oy);c.lineTo(Math.min(Math.max(ix,60),860),ity);c.stroke();}
+ let nature;
+ if(mir==="convex")nature="VIRTUAL, erect, DIMINISHED (hamesha!)";
+ else if(U>30)nature="REAL, inverted, diminished (beyond C)";
+ else if(Math.abs(U-30)<0.5)nature="REAL, inverted, SAME SIZE (at C!)";
+ else if(U>15)nature="REAL, inverted, MAGNIFIED (C aur F ke beech)";
+ else if(Math.abs(U-15)<0.5)nature="at F - image at INFINITY!";
+ else nature="VIRTUAL, erect, MAGNIFIED (F ke andar - shaving mirror!)";
+ document.getElementById("r0").innerHTML=
+  "<span class='hl'>"+mir+"</span> mirror, f = "+(mir==="concave"?"−":"+")+FM+" cm, u = −"+U+" cm  →  1/f = 1/v + 1/u  →  <span class='hl'>v = "+fmt(v,1)+" cm</span>  |  m = −v/u = <span class='hl'>"+fmt(m,2)+"</span>  |  "+nature+"  |  f = R/2 = "+FM+" → R = "+(2*FM)+" cm";
+}
+document.querySelectorAll("#mirBtns button").forEach(b=>b.onclick=()=>{mir=b.dataset.m;
+ document.querySelectorAll("#mirBtns button").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+sl.oninput=draw;
+return draw;
+})();
+// ============ SCENE 2: Refraction + TIR lab ============
+inits[1]=(()=>{
+let dir="a2g"; // air->glass or glass->air
+const sl=document.getElementById("iA");
+const bx=460,by=175; // boundary point
+function draw(){
+ const c=ctx("cv1");c.clearRect(0,0,920,330);
+ const i=parseFloat(sl.value)*Math.PI/180;
+ document.getElementById("viA").textContent=sl.value+"°";
+ const n1=dir==="a2g"?1.0:1.5,n2=dir==="a2g"?1.5:1.0;
+ // media
+ c.fillStyle="rgba(34,211,238,0.06)";c.fillRect(30,20,860,155);
+ c.fillStyle="rgba(232,121,249,0.09)";c.fillRect(30,175,860,135);
+ txt(c,dir==="a2g"?"AIR (n = 1.0)":"GLASS (n = 1.5)",55,45,DM,"bold 13px 'Cascadia Code',monospace");
+ txt(c,dir==="a2g"?"GLASS (n = 1.5)":"AIR (n = 1.0)",55,300,DM,"bold 13px 'Cascadia Code',monospace");
+ // boundary + normal
+ c.strokeStyle="#2d2d52";c.lineWidth=3;c.beginPath();c.moveTo(30,by);c.lineTo(890,by);c.stroke();
+ c.strokeStyle=DM;c.lineWidth=1.5;c.setLineDash([6,6]);c.beginPath();c.moveTo(bx,25);c.lineTo(bx,325);c.stroke();c.setLineDash([]);
+ txt(c,"normal",bx+10,40,DM,"11px 'Cascadia Code',monospace");
+ // incident ray (from upper-left toward bx,by) angle i from normal
+ const L1=150;
+ const ix0=bx-L1*Math.sin(i),iy0=by-L1*Math.cos(i);
+ arrow2(c,ix0,iy0,bx,by,YL,3);
+ // incidence arc
+ c.strokeStyle=YL;c.lineWidth=1.5;c.beginPath();c.arc(bx,by,40,-Math.PI/2-i,-Math.PI/2);c.stroke();
+ txt(c,"i="+sl.value+"°",bx-62,by-30,YL,"bold 13px 'Cascadia Code',monospace","center");
+ const sinr=n1*Math.sin(i)/n2;
+ if(sinr<=1){
+  const r=Math.asin(sinr);
+  arrow2(c,bx,by,bx+L1*Math.sin(r),by+L1*Math.cos(r),CY,3);
+  c.strokeStyle=CY;c.lineWidth=1.5;c.beginPath();c.arc(bx,by,40,Math.PI/2-r,Math.PI/2);c.stroke();
+  txt(c,"r="+Math.round(r*180/Math.PI)+"°",bx+64,by+34,CY,"bold 13px 'Cascadia Code',monospace","center");
+  document.getElementById("r1").innerHTML=
+   "Snell: n₁ sin i = n₂ sin r  →  "+n1+"×sin "+sl.value+"° = "+n2+"×sin r  →  <span class='hl'>r = "+Math.round(r*180/Math.PI)+"°</span>  |  "+(dir==="a2g"?"Air → glass: normal ki TARAF bend (r &lt; i)":"Glass → air: normal se DOOR bend (r &gt; i)")+"  |  n = c/v: glass me light SLOW, frequency SAME, wavelength badalti hai";}
+ else{
+  // TIR: reflect
+  arrow2(c,bx,by,bx+L1*Math.sin(i),by-L1*Math.cos(i),RD,3);
+  txt(c,"REFLECTED!",bx+100,by-24,RD,"bold 14px 'Cascadia Code',monospace","center");
+  document.getElementById("r1").innerHTML=
+   "<span class='hl'>TOTAL INTERNAL REFLECTION!</span> sin r = "+n1+"×sin "+sl.value+"° / "+n2+" = "+fmt(sinr,2)+" &gt; 1 → r exist NAHI → light REFLECT ho gayi!  |  Critical angle C = sin⁻¹("+n2+"/"+n1+") = sin⁻¹(0.667) = <span class='hl'>41.8°</span>  |  i = "+sl.value+"° &gt; C ✓  |  Yehi optical fibre ka principle!";}
+}
+document.querySelectorAll("#dirBtns button").forEach(b=>b.onclick=()=>{dir=b.dataset.d;
+ document.querySelectorAll("#dirBtns button").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+sl.oninput=draw;
+return draw;
+})();
+// ============ SCENE 3: Prism lab ============
+inits[2]=(()=>{
+const sA=document.getElementById("pA"),sI=document.getElementById("pI");
+const N=1.5;
+// math coords y-up; prism apex at (0,0), opens downward
+function geo(Ad){
+ const A=Ad*Math.PI/180,ha=A/2;
+ const FL=230; // face length px
+ const apex=[460,42];
+ // screen coords: math (x,y) -> (apex + x, apexY - y); faces go down: math y negative
+ const L=[apex[0]-FL*Math.sin(ha),apex[1]+FL*Math.cos(ha)];
+ const R=[apex[0]+FL*Math.sin(ha),apex[1]+FL*Math.cos(ha)];
+ return {A,ha,apex,L,R};
+}
+function draw(){
+ const c=ctx("cv2");c.clearRect(0,0,920,330);
+ const Ad=parseFloat(sA.value),id=parseFloat(sI.value);
+ document.getElementById("vpA").textContent=Ad+"°";document.getElementById("vpI").textContent=id+"°";
+ const g=geo(Ad),i=id*Math.PI/180;
+ // prism fill
+ c.fillStyle="rgba(232,121,249,0.10)";c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
+ c.beginPath();c.moveTo(g.apex[0],g.apex[1]);c.lineTo(g.L[0],g.L[1]);c.lineTo(g.R[0],g.R[1]);c.closePath();c.fill();c.stroke();
+ txt(c,"A = "+Ad+"°",g.apex[0],g.apex[1]+28,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+ // angles (math coords): d0=-ha+i, r1, r2=A-r1, d1=-ha+r1, d2=d1-(e-r2)
+ const r1=Math.asin(Math.sin(i)/N),r2=g.A-r1;
+ const t=0.52; // entry fraction down the left face
+ // entry point on left face (screen): apex + t*(L-apex)
+ const e1x=g.apex[0]+t*(g.L[0]-g.apex[0]),e1y=g.apex[1]+t*(g.L[1]-g.apex[1]);
+ const d0=-g.ha+i; // math angle
+ // draw incident (screen: dy = -tan... use direction vector math->screen flip y)
+ const seg=(x,y,ang,len,col,w)=>{ // ang in math coords
+  const dx=Math.cos(ang),dy=Math.sin(ang);
+  return [x+dx*len,y-dy*len];};
+ const p0=[e1x,e1y];const p1=seg(e1x,e1y,d0+Math.PI,140); // back along -d0
+ arrow2(c,p1[0],p1[1],e1x,e1y,YL,3);
+ // inside: direction d1 math
+ let status="";
+ if(r2<=0){status="IMPOSSIBLE";}
+ else{
+  const d1=-g.ha+r1;
+  // intersect with right face: param solve E1 + s*d1v = apex + q*uR (math coords, origin apex)
+  const m1x=e1x-g.apex[0],m1y=g.apex[1]-e1y; // math pos of E1
+  const dv=[Math.cos(d1),Math.sin(d1)];
+  const uR=[Math.sin(g.ha),-Math.cos(g.ha)];
+  // solve m + s dv = q uR
+  const det=dv[0]*(-uR[1])-(-uR[0])*dv[1];
+  let e2x,e2y,s=0;
+  if(Math.abs(det)>1e-9){s=(m1x*uR[1]-uR[0]*m1y)/det;}
+  const q=(m1x+s*dv[0])/uR[0];
+  const e2m=[s*dv[0]+m1x,m1y+s*dv[1]];
+  e2x=g.apex[0]+e2m[0];e2y=g.apex[1]-e2m[1];
+  if(s>0&&q>0&&q<1.05*230){
+   c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();c.moveTo(e1x,e1y);c.lineTo(e2x,e2y);c.stroke();
+   const ns=N*Math.sin(r2);
+   if(ns<=1){
+    const e=Math.asin(ns),d2=d1-(e-r2);
+    const p2=seg(e2x,e2y,d2,150);
+    arrow2(c,e2x,e2y,p2[0],p2[1],GR,3);
+    const del=id+e*180/Math.PI-Ad;
+    status="OK:"+del.toFixed(1)+":"+(r1*180/Math.PI).toFixed(1)+":"+(r2*180/Math.PI).toFixed(1)+":"+(e*180/Math.PI).toFixed(1);
+    document.getElementById("r2").innerHTML=
+     "n = 1.5  |  r₁ = sin⁻¹(sin "+id+"°/1.5) = <span class='hl'>"+(r1*180/Math.PI).toFixed(1)+"°</span>  |  r₂ = A − r₁ = "+(r2*180/Math.PI).toFixed(1)+"°  |  e = sin⁻¹(1.5×sin r₂) = <span class='hl'>"+(e*180/Math.PI).toFixed(1)+"°</span>  |  <span class='hl'>δ = i + e − A = "+del.toFixed(1)+"°</span>  |  i slider ghumao - δ pehle GHATTA hai phir BADHTA hai: beech ka point = δ_min! Wahan i = e, r₁ = r₂ = A/2 → n = sin[(A+δmin)/2]/sin(A/2). Violet &gt; red deviate (dispersion)!";
+   }else{
+    status="TIR";
+    document.getElementById("r2").innerHTML="<span class='hl'>TIR at second face!</span> r₂ = "+(r2*180/Math.PI).toFixed(1)+"° → 1.5×sin r₂ = "+ns.toFixed(2)+" &gt; 1 → emergent ray NAHI! Light andar reflect ho jaayegi. A ya i badlo.";
+   }
+  }else{status="MISS";
+   document.getElementById("r2").innerHTML="Is geometry me ray second face se nahi nikal paata - A ya i adjust karo.";}
+ }
+ if(status==="IMPOSSIBLE")document.getElementById("r2").innerHTML="r₂ = A − r₁ &lt; 0 → is A pe ye incidence possible nahi. A badhao ya i ghatao.";
+}
+sA.oninput=draw;sI.oninput=draw;
+return draw;
+})();
+// ============ SCENE 4: Thin lens lab ============
+inits[3]=(()=>{
+let lens="convex";
+const sl=document.getElementById("lU");
+const FM=15,K=6.5,ox=460,oy=165;
+function draw(){
+ const c=ctx("cv3");c.clearRect(0,0,920,330);
+ const U=parseFloat(sl.value);document.getElementById("vlU").textContent=U;
+ const f=(lens==="convex"?FM:-FM),u=-U;
+ const v=1/(1/f+1/u); // 1/f = 1/v - 1/u
+ const m=v/u;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.moveTo(30,oy);c.lineTo(890,oy);c.stroke();
+ // lens
+ c.strokeStyle="#e8e8f2";c.lineWidth=3.5;c.beginPath();
+ if(lens==="convex"){c.moveTo(ox,50);c.quadraticCurveTo(ox+26,oy,ox,280);c.moveTo(ox,50);c.quadraticCurveTo(ox-26,oy,ox,280);}
+ else{c.moveTo(ox-22,50);c.quadraticCurveTo(ox,oy,ox-22,280);c.moveTo(ox+22,50);c.quadraticCurveTo(ox,oy,ox+22,280);}
+ c.stroke();
+ txt(c,lens==="convex"?"CONVEX (converging)":"CONCAVE (diverging)",ox,34,lens==="convex"?GR:RD,"bold 13px 'Cascadia Code',monospace","center");
+ // F points both sides
+ [[-1,"F₁"],[1,"F₂"]].forEach(([s,lb])=>{const fx=ox+s*FM*K*(lens==="convex"?1:-1);
+  c.fillStyle=YL;c.beginPath();c.arc(fx,oy,4,0,7);c.fill();txt(c,lb,fx,oy+20,YL,"bold 12px 'Cascadia Code',monospace","center");});
+ const ox1=ox+u*K,oh=70;
+ arrow2(c,ox1,oy,ox1,oy-oh,CY,3.5);
+ txt(c,"object",ox1,oy+22,CY,"bold 12px 'Cascadia Code',monospace","center");
+ const ix=ox+v*K,ih=oh*Math.abs(m),real=v>0;
+ if(Math.abs(v)<200){
+  const ity=m>0?oy-ih:oy+ih;
+  c.strokeStyle=real?GR:YL;c.lineWidth=3.5;
+  c.beginPath();c.moveTo(ix,oy);c.lineTo(ix,ity);c.stroke();arrow2(c,ix,oy,ix,ity,real?GR:YL,3.5);
+  txt(c,real?"REAL":"VIRTUAL",ix,oy+38,real?GR:YL,"bold 12px 'Cascadia Code',monospace","center");
+  // schematic rays meeting at image tip
+  c.strokeStyle="#8fa0c8";c.lineWidth=1.6;
+  c.beginPath();c.moveTo(ox1,oy-oh);c.lineTo(ox,oy-oh);c.stroke();
+  c.beginPath();c.moveTo(ox,oy-oh);c.lineTo(Math.min(Math.max(ix,50),870),ity);c.stroke();
+  c.beginPath();c.moveTo(ox1,oy-oh);c.lineTo(Math.min(Math.max(ix,50),870),ity);c.stroke();}
+ let nature;
+ if(lens==="concave")nature="VIRTUAL, erect, DIMINISHED (hamesha!)";
+ else if(U>30)nature="REAL, inverted, diminished (beyond 2F)";
+ else if(Math.abs(U-30)<0.5)nature="REAL, inverted, SAME SIZE (at 2F!)";
+ else if(U>15)nature="REAL, inverted, MAGNIFIED (2F aur F ke beech - projector!)";
+ else if(Math.abs(U-15)<0.5)nature="at F - image at INFINITY!";
+ else nature="VIRTUAL, erect, MAGNIFIED (F ke andar - SIMPLE MICROSCOPE!)";
+ document.getElementById("r3").innerHTML=
+  "<span class='hl'>"+lens+"</span> lens, f = "+(lens==="convex"?"+":"−")+FM+" cm, u = −"+U+" cm  →  1/f = 1/v − 1/u  →  <span class='hl'>v = "+fmt(v,1)+" cm</span>  |  m = v/u = <span class='hl'>"+fmt(m,2)+"</span>  |  "+nature+"  |  Power P = 1/f(m) = "+fmt(100/f,2)+" D";
+}
+document.querySelectorAll("#lensBtns button").forEach(b=>b.onclick=()=>{lens=b.dataset.m;
+ document.querySelectorAll("#lensBtns button").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+sl.oninput=draw;
+return draw;
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"Concave mirror ke saamne object EXACTLY C (center of curvature) pe hai. Image kaisi banegi?",o:["Virtual, erect, magnified","Real, inverted, SAME SIZE - C pe hi!","Real, inverted, magnified","Infinity pe"],a:1,w:"u = −2f → v = −2f: image bhi C pe, REAL aur inverted, m = −1 (same size!). Mirror lab me slider 30 pe dekho!"},
+ {q:"Total internal reflection KAB hota hai?",o:["Denser → rarer medium AUR i > critical angle C","Rarer → denser medium","Kisi bhi angle pe","i < C hone par"],a:0,w:"TIR ke DO conditions: (1) light denser se rarer jaaye, (2) i > C jahan sin C = n_rare/n_dense. Glass→air ke liye C = 41.8°. Optical fibre isi pe chalti hai!"},
+ {q:"Prism me MINIMUM DEVIATION kab hota hai?",o:["i = 0 hone par","Jab i = e aur r₁ = r₂ = A/2","δ = 0 hone par","A = 90° hone par"],a:1,w:"δ_min pe ray SYMMETRIC hoti hai: i = e, r₁ = r₂ = A/2, aur andar ki ray base ke PARALLEL. Formula: n = sin[(A+δmin)/2] / sin(A/2)."},
+ {q:"Convex lens ke FOCUS ke ANDAR object rakha ho (u < f). Image?",o:["Real, inverted, magnified","No image banti","Virtual, erect, MAGNIFIED - simple microscope!","Real, erect, diminished"],a:2,w:"u < f → v negative → VIRTUAL, erect, magnified image SAME side. Yehi SIMPLE MICROSCOPE (magnifying glass) ka principle! Lens lab me slider 10 pe dekho."},
+ {q:"Astronomical telescope (normal adjustment) ka angular magnification kya hai?",o:["fₒ + fₑ","fₒ / fₑ","fₑ / fₒ","(L/fₒ)(D/fₑ)"],a:1,w:"Telescope: |M| = fₒ/fₑ aur tube length = fₒ + fₑ. Bada objective focal length, chhota eyepiece → ZYADA magnification! ((L/fₒ)(D/fₑ) compound MICROSCOPE ka hai.)"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! Ray Optics PAKKA! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
