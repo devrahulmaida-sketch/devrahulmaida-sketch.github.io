@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current Electricity - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 3 - Current Electricity</div>
+<h1>Current Electricity Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - drift velocity lab, Ohm resistance lab, cell lab, Wheatstone bridge lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Drift Velocity - Electron Ka Slow Walk ⭐⭐</h2>
+<p class="why">Current I = Q/t, conventional direction POSITIVE charge ki taraf (electrons ULTA chalte hain!). Relation: I = neAv_d, jahan n = electron density, A = area, v_d = drift velocity. Shock: electrons sirf ~mm/s drift karte hain! Phir bhi switch on karte hi light kyun jal jaati hai? Kyunki ELECTRIC FIELD almost light ki speed se establish hota hai aur saare electrons EK SAATH dhakka lagate hain - pipe me paani jaisa. Kisi ek electron ko travel nahi karna!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>current I (A)</label><input type="range" id="dI" min="0.5" max="10" step="0.5" value="2"><span class="v" id="vldI">2.0 A</span></div>
+<div class="slrow"><label>wire area A (mm²)</label><input type="range" id="dA" min="0.5" max="5" step="0.5" value="1"><span class="v" id="vldA">1.0 mm²</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Ohm's Law aur R = ρL/A ⭐⭐</h2>
+<p class="why">Ohm's law: V = IR (constant temperature). Resistance R = ρL/A - LAMBA wire zyada R, MOTA wire kam. ρ sirf MATERIAL ki property (Ω·m); R shape pe bhi depend karta hai! Temperature: metals me T ↑ → R ↑ (R = R₀(1+αΔT)); semiconductors me T ↑ → R ↓ (zyada free carriers). Diode/transistor non-ohmic - V-I graph straight nahi. Superconductors: critical T ke neeche R = 0!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="mC">Copper</button><button id="mN">Nichrome</button><button id="mS">Semiconductor</button></div>
+<div class="slrow"><label>length L (m)</label><input type="range" id="oL" min="0.5" max="10" step="0.5" value="2"><span class="v" id="vloL">2.0 m</span></div>
+<div class="slrow"><label>area A (mm²)</label><input type="range" id="oA" min="0.5" max="5" step="0.5" value="1"><span class="v" id="vloA">1.0 mm²</span></div>
+<div class="slrow"><label>temperature ΔT (°C)</label><input type="range" id="oT" min="0" max="200" step="10" value="0"><span class="v" id="vloT">0°C</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Cell, EMF aur Internal Resistance ⭐</h2>
+<p class="why">EMF (ε) = cell ka total voltage jab current ZERO ho - ye FORCE nahi hai, naam misleading! Cell ka apna internal resistance r hota hai. Discharge me TERMINAL voltage V = ε − Ir (EMF se kam!); charging me V = ε + Ir. SHORT CIRCUIT (R=0): I = ε/r - max current, DANGER! Purani battery weak kyun? r badh jaata hai, voltage andar hi kho jaata hai. Max power transfer jab R = r; efficiency η = R/(R+r).</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>EMF ε (V)</label><input type="range" id="cE" min="1.5" max="12" step="0.5" value="6"><span class="v" id="vlcE">6.0 V</span></div>
+<div class="slrow"><label>internal r (Ω)</label><input type="range" id="cR" min="0.5" max="5" step="0.5" value="1"><span class="v" id="vlcR">1.0 Ω</span></div>
+<div class="slrow"><label>external R (Ω)</label><input type="range" id="cX" min="0" max="20" step="0.5" value="5"><span class="v" id="vlcX">5.0 Ω</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Wheatstone Bridge - Balance Dhundo ⭐⭐</h2>
+<p class="why">4 resistors ka diamond + beech me galvanometer. BALANCED condition: P/Q = R/S - tab galvanometer me ZERO current, beech wali branch DEAD (hata do, koi farak nahi)! B aur D same potential pe. Bridge simple series-parallel ban jaata hai. Unbalanced ho to Kirchhoff se solve karna padega - shortcut nahi! Meter bridge (practical): S = R(100−l)/l. Exam tip: PEHLE balance check karo!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="slrow"><label>P (Ω)</label><input type="range" id="wP" min="1" max="10" step="1" value="2"><span class="v" id="vlwP">2 Ω</span></div>
+<div class="slrow"><label>Q (Ω)</label><input type="range" id="wQ" min="1" max="10" step="1" value="4"><span class="v" id="vlwQ">4 Ω</span></div>
+<div class="slrow"><label>R (Ω)</label><input type="range" id="wR" min="1" max="10" step="1" value="3"><span class="v" id="vlwR">3 Ω</span></div>
+<div class="slrow"><label>S (Ω) - adjust karke balance karo!</label><input type="range" id="wS" min="1" max="10" step="1" value="5"><span class="v" id="vlwS">5 Ω</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Current Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: I = neAv_d (electrons SLOW, field FAST!), R = ρL/A, metals me T ↑ → R ↑, V = ε − Ir (discharge), short circuit I = ε/r, Wheatstone balance P/Q = R/S, series me zyada R wala bulb ZYADA glow (P = I²R)!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Current + Drift ⭐⭐</h3><p>I = Q/t; conventional direction +ve ki taraf (electrons ulta) | I = neAv_d | j = I/A = nev_d | Mobility μ = v_d/E | Drift ~mm/s SLOW, par field light-speed se establish - isliye bulb turant jalta hai</p></div>
+<div class="rcard"><h3>Ohm + Resistance ⭐⭐</h3><p>V = IR (constant T) | R = ρL/A | σ = 1/ρ, j = σE | Metals: T ↑ → R ↑, R = R₀(1+αΔT) | Semiconductors: T ↑ → R ↓ | Diode/transistor non-ohmic | Superconductor: R = 0 below critical T</p></div>
+<div class="rcard"><h3>Cells + EMF ⭐</h3><p>EMF = voltage at zero current (force NAHI!) | Discharge: V = ε − Ir | Charging: V = ε + Ir | Short circuit: I = ε/r | Series: ε₁+ε₂, r₁+r₂ | Parallel identical: ε same, r/n | Purani battery: r badhta hai</p></div>
+<div class="rcard"><h3>Kirchhoff ⭐⭐</h3><p>KCL: junction pe ΣI = 0 (charge conservation) | KVL: closed loop me ΣV = 0 (energy conservation) | Resistor current ke saath: −IR; battery − se +: +ε | Galat direction guess → negative answer, no problem</p></div>
+<div class="rcard"><h3>Wheatstone ⭐⭐</h3><p>Balanced: P/Q = R/S → galvanometer ZERO | B, D same potential, middle branch dead | Balance pe circuit simple series-parallel | Meter bridge: S = R(100−l)/l | Exam me PEHLE balance check karo</p></div>
+<div class="rcard"><h3>Power + Traps ⭐</h3><p>P = VI = I²R = V²/R | Heat H = I²Rt | 1 unit = 1 kWh = 3.6×10⁶ J | SERIES: zyada R wala bulb zyada glow (P=I²R) | PARALLEL: kam R wala zyada glow (P=V²/R) | Max power transfer: R = r | η = R/(R+r)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 3 Current Electricity Visual Walkthrough</div>
+</div>
+<script>
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+inits[0]=(()=>{
+const c=ctx("cv0");
+const sI=document.getElementById("dI"),sA=document.getElementById("dA");
+let dots=[];
+for(let k=0;k<46;k++)dots.push({x:60+Math.random()*800,y:Math.random(),j:Math.random()*6.28});
+function draw(t){
+ const I=parseFloat(sI.value),Amm=parseFloat(sA.value);
+ document.getElementById("vldI").textContent=I.toFixed(1)+" A";
+ document.getElementById("vldA").textContent=Amm.toFixed(1)+" mm²";
+ const ne=8.5e28*1.6e-19;
+ const vd=I/(ne*Amm*1e-6);
+ const vdmm=vd*1000;
+ const j=I/Amm;
+ c.clearRect(0,0,920,330);
+ const hh=30+Amm*16,y0=165-hh/2;
+ c.fillStyle="#0a1626";c.fillRect(60,y0,800,hh);
+ c.strokeStyle=DM;c.lineWidth=2;c.strokeRect(60,y0,800,hh);
+ txt(c,"copper wire (n = 8.5×10²⁸ /m³)",60,y0-8,DM,"12px 'Cascadia Code',monospace");
+ txt(c,"area A = "+Amm.toFixed(1)+" mm²",700,y0-8,DM,"12px 'Cascadia Code',monospace");
+ const spd=vdmm*55;
+ dots.forEach(d=>{
+  d.x-=spd*0.07;
+  if(d.x<62)d.x=858;
+  const yy=y0+4+d.y*(hh-8)+Math.sin(t*0.3+d.j)*2;
+  c.fillStyle=CY;c.beginPath();c.arc(d.x,yy,2.5,0,7);c.fill();
+ });
+ // E field arrow (conventional current direction) - RIGHT
+ arrow2(c,120,300,340,300,YL,3);
+ txt(c,"E field + conventional current I →",120,322,YL,"13px 'Cascadia Code',monospace");
+ // electron drift arrow - LEFT
+ arrow2(c,760,40,560,40,MG,3);
+ txt(c,"← electrons drift (ULTA!), sirf "+vdmm.toFixed(3)+" mm/s",560,28,MG,"13px 'Cascadia Code',monospace");
+ txt(c,"(speed on screen EXAGGERATED - asli drift bahut slow!)",460,322,DM,"11px 'Cascadia Code',monospace","center");
+ const tsec=1/vd;
+ const tmin=tsec/60;
+ const tstr=tsec<120?tsec.toFixed(0)+" s":tmin<120?tmin.toFixed(1)+" min":(tmin/60).toFixed(1)+" hours";
+ document.getElementById("r0").innerHTML="v_d = I/(neA) = <span class='hl'>"+vdmm.toFixed(3)+" mm/s</span> | j = I/A = <span class='hl'>"+j.toFixed(1)+" A/mm²</span> | 1 METRE travel me electron ko <span class='hl'>"+tstr+"</span>! | Phir bhi bulb TURANT jalta hai - <span class='hl'>electric field light-speed se establish</span> hota hai, saare electrons ek saath dhakka lagate hain";
+}
+[sI,sA].forEach(s=>s.addEventListener("input",()=>draw(0)));
+anims[0]=draw;
+return function(){draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1");
+const sL=document.getElementById("oL"),sA=document.getElementById("oA"),sT=document.getElementById("oT");
+const MATS={mC:{name:"Copper",rho:1.7e-8,al:0.0039,semi:false},mN:{name:"Nichrome",rho:1.1e-6,al:0.0004,semi:false},mS:{name:"Semiconductor",rho:0.5,al:0,semi:true}};
+let mat="mC";
+function fmtR(R){
+ if(R<0.01)return (R*1000).toFixed(2)+" mΩ";
+ if(R<1000)return R.toFixed(2)+" Ω";
+ if(R<1e6)return (R/1000).toFixed(2)+" kΩ";
+ return (R/1e6).toFixed(2)+" MΩ";
+}
+function draw(t){
+ const L=parseFloat(sL.value),Amm=parseFloat(sA.value),dT=parseFloat(sT.value);
+ document.getElementById("vloL").textContent=L.toFixed(1)+" m";
+ document.getElementById("vloA").textContent=Amm.toFixed(1)+" mm²";
+ document.getElementById("vloT").textContent=dT+"°C";
+ const M=MATS[mat];
+ let R=M.rho*L/(Amm*1e-6);
+ const R0=R;
+ if(!M.semi)R=R*(1+M.al*dT);
+ else R=Math.max(R*(1-0.02*dT),R*0.05);
+ c.clearRect(0,0,920,330);
+ // V-I graph
+ const gx=120,gy=280,gw=330,gh=230;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(gx,40);c.lineTo(gx,gy);c.lineTo(gx+gw,gy);c.stroke();
+ txt(c,"V (volt)",gx-14,34,CY,"13px 'Cascadia Code',monospace","center");
+ txt(c,"I",gx+gw+12,gy+4,MG,"13px 'Cascadia Code',monospace");
+ txt(c,"0",gx-16,gy+4,DM,"12px 'Cascadia Code',monospace");
+ const Vmax=12;
+ const Ifs=Math.max(Vmax/R,1e-9);
+ const expo=Math.floor(Math.log10(Ifs));
+ const Imax=Math.pow(10,expo)*Math.ceil(Ifs/Math.pow(10,expo));
+ const ImaxS=Imax>=1?Imax.toFixed(0)+" A":(Imax*1000).toFixed(0)+" mA";
+ c.strokeStyle=MG;c.lineWidth=3;c.beginPath();c.moveTo(gx,gy);
+ const Ve=Vmax*0.8,Ie=Ve/R;
+ c.lineTo(gx+Ie/Imax*gw,gy-Ve/Vmax*gh);c.stroke();
+ c.setLineDash([4,4]);c.strokeStyle="#3d4470";c.lineWidth=1;
+ c.beginPath();c.moveTo(gx+Ie/Imax*gw,gy);c.lineTo(gx+Ie/Imax*gw,gy-Ve/Vmax*gh);c.lineTo(gx,gy-Ve/Vmax*gh);c.stroke();
+ c.setLineDash([]);
+ txt(c,ImaxS,gx+gw+8,gy-8,DM,"11px 'Cascadia Code',monospace");
+ txt(c,Vmax+" V",gx-34,50,DM,"11px 'Cascadia Code',monospace");
+ txt(c,"slope = V/I = R = "+fmtR(R),gx+10,60,YL,"bold 13px 'Cascadia Code',monospace");
+ // wire bar
+ const bx=520,bw=40+L*22,bh=12+Amm*16;
+ c.fillStyle="#0a1626";c.fillRect(bx,150-bh/2,bw,bh);
+ c.strokeStyle=DM;c.lineWidth=2;c.strokeRect(bx,150-bh/2,bw,bh);
+ txt(c,"L = "+L.toFixed(1)+" m",bx+bw/2,150+bh/2+18,CY,"12px 'Cascadia Code',monospace","center");
+ txt(c,"A = "+Amm.toFixed(1)+" mm²",bx+bw/2,150-bh/2-8,MG,"12px 'Cascadia Code',monospace","center");
+ txt(c,M.name+" (ρ = "+M.rho.toExponential(1)+" Ω·m)",bx+bw/2,105,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+ const trend=M.semi?"T ↑ → R ↓ (zyada free carriers!)":"T ↑ → R ↑ (α = "+M.al+"/°C)";
+ txt(c,trend,bx+bw/2,195,M.semi?GR:YL,"12px 'Cascadia Code',monospace","center");
+ document.getElementById("r1").innerHTML="R = ρL/A = <span class='hl'>"+fmtR(R)+"</span>"+(dT>0?" (ΔT="+dT+"°C pe; 0°C pe "+fmtR(R0)+")":"")+" | V = 10 V pe current I = V/R = <span class='hl'>"+(10/R>=1?(10/R).toFixed(2)+" A":(10000/R).toFixed(1)+" mA")+"</span> | "+(M.semi?"<span class='hl'>semiconductor: T badhao to R GHATTA hai</span>":"metal: T badhao to R badhta hai");
+}
+["mC","mN","mS"].forEach(id=>{document.getElementById(id).onclick=()=>{mat=id;draw(0);};});
+[sL,sA,sT].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2");
+const sE=document.getElementById("cE"),sR=document.getElementById("cR"),sX=document.getElementById("cX");
+function draw(t){
+ const E=parseFloat(sE.value),r=parseFloat(sR.value),R=parseFloat(sX.value);
+ document.getElementById("vlcE").textContent=E.toFixed(1)+" V";
+ document.getElementById("vlcR").textContent=r.toFixed(1)+" Ω";
+ document.getElementById("vlcX").textContent=R.toFixed(1)+" Ω";
+ const I=E/(R+r);
+ const V=E-I*r;
+ const P=I*I*R;
+ const eta=R>0?R/(R+r)*100:0;
+ const short=R<0.01;
+ c.clearRect(0,0,920,330);
+ // circuit rectangle
+ const x1=180,y1=90,x2=740,y2=250;
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
+ c.beginPath();c.moveTo(x1+120,y1);c.lineTo(x2-120,y1);c.stroke();
+ c.beginPath();c.moveTo(x2,y1);c.lineTo(x2,y2);c.stroke();
+ c.beginPath();c.moveTo(x2,y2);c.lineTo(x1,y2);c.stroke();
+ c.beginPath();c.moveTo(x1,y2);c.lineTo(x1,y1);c.stroke();
+ // battery on left
+ c.lineWidth=2.5;
+ c.beginPath();c.moveTo(x1-12,y1-14);c.lineTo(x1+12,y1-14);c.stroke();
+ c.lineWidth=5;c.beginPath();c.moveTo(x1-6,y1+14);c.lineTo(x1+6,y1+14);c.stroke();
+ txt(c,"ε = "+E.toFixed(1)+" V",x1+30,y1-16,CY,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"+",x1+16,y1-8,GR,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"−",x1+16,y1+16,RD,"bold 14px 'Cascadia Code',monospace");
+ // internal r box
+ c.strokeStyle=MG;c.lineWidth=2;c.strokeRect(x1-34,y1+44,68,44);
+ txt(c,"r = "+r.toFixed(1)+" Ω",x1,y1+70,MG,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"(andar!)",x1,y1+108,DM,"11px 'Cascadia Code',monospace","center");
+ // top wire: connect battery+r into loop
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
+ c.beginPath();c.moveTo(x1,y1-14);c.lineTo(x1,y1-40);c.lineTo(x1+120,y1-40);c.lineTo(x1+120,y1);c.stroke();
+ c.beginPath();c.moveTo(x1,y1+14);c.lineTo(x1,y1+44);c.stroke();
+ // external R zigzag on right
+ c.strokeStyle=short?RD:CY;c.lineWidth=3;
+ const zx=x2,zy0=y1+30,zy1=y2-30,n=6;
+ c.beginPath();c.moveTo(zx,zy0);
+ for(let k=1;k<n;k++)c.lineTo(zx+(k%2?18:-18)+18-18,zy0+(zy1-zy0)*k/n);
+ c.lineTo(zx,zy1);c.stroke();
+ txt(c,"R = "+R.toFixed(1)+" Ω",x2+34,(y1+y2)/2,short?RD:CY,"bold 14px 'Cascadia Code',monospace");
+ // current arrow on top
+ arrow2(c,400,y1-8,560,y1-8,YL,3);
+ txt(c,"I = "+I.toFixed(2)+" A",480,y1-16,YL,"bold 13px 'Cascadia Code',monospace","center");
+ // terminal voltage big display
+ txt(c,"TERMINAL VOLTAGE",460,300,DM,"12px 'Cascadia Code',monospace","center");
+ txt(c,"V = ε − Ir = "+V.toFixed(2)+" V",460,322,short?RD:GR,"bold 18px 'Cascadia Code',monospace","center");
+ if(short){
+  c.strokeStyle=RD;c.lineWidth=3;c.strokeRect(300,278,320,46);
+  txt(c,"SHORT CIRCUIT! I = ε/r = MAX",460,272,RD,"bold 13px 'Cascadia Code',monospace","center");
+ }
+ const note=short?"DANGER: R = 0 → saara voltage internal r pe, battery heat!":Math.abs(R-r)<0.26?"R = r → MAX POWER TRANSFER point!":R<r?"R < r → zyada voltage ANDAR kho raha (weak battery feel!)":"R > r → normal, efficiency badh rahi";
+ document.getElementById("r2").innerHTML="I = ε/(R+r) = <span class='hl'>"+I.toFixed(2)+" A</span> | V = ε − Ir = <span class='hl'>"+V.toFixed(2)+" V</span>"+(short?" (ε se "+(E-V).toFixed(2)+" V internal r pe KHO gaya!":"")+" | load power P = I²R = <span class='hl'>"+P.toFixed(2)+" W</span> | efficiency η = R/(R+r) = <span class='hl'>"+eta.toFixed(0)+"%</span> | "+note;
+}
+[sE,sR,sX].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3");
+const sP=document.getElementById("wP"),sQ=document.getElementById("wQ"),sR=document.getElementById("wR"),sS=document.getElementById("wS");
+function draw(t){
+ const P=parseFloat(sP.value),Q=parseFloat(sQ.value),R=parseFloat(sR.value),S=parseFloat(sS.value);
+ document.getElementById("vlwP").textContent=sP.value+" Ω";
+ document.getElementById("vlwQ").textContent=sQ.value+" Ω";
+ document.getElementById("vlwR").textContent=sR.value+" Ω";
+ document.getElementById("vlwS").textContent=sS.value+" Ω";
+ const VB=10*Q/(P+Q),VD=10*S/(R+S);
+ const diff=VB-VD;
+ const bal=Math.abs(diff)<1e-9;
+ c.clearRect(0,0,920,330);
+ const A=[180,165],B=[460,60],C=[740,165],D=[460,270];
+ // arms
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
+ [[A,B],[B,C],[A,D],[D,C]].forEach(([p,q])=>{c.beginPath();c.moveTo(p[0],p[1]);c.lineTo(q[0],q[1]);c.stroke();});
+ // resistor boxes mid-arm
+ function rbox(p,q,label,col){
+  const mx=(p[0]+q[0])/2,my=(p[1]+q[1])/2;
+  c.fillStyle="#0a0a14";c.strokeStyle=col;c.lineWidth=2;
+  c.fillRect(mx-34,my-15,68,30);c.strokeRect(mx-34,my-15,68,30);
+  txt(c,label,mx,my+5,col,"bold 14px 'Cascadia Code',monospace","center");
+ }
+ rbox(A,B,"P = "+P+" Ω",CY);
+ rbox(B,C,"Q = "+Q+" Ω",CY);
+ rbox(A,D,"R = "+R+" Ω",MG);
+ rbox(D,C,"S = "+S+" Ω",MG);
+ // galvanometer B-D
+ c.strokeStyle=bal?GR:YL;c.lineWidth=2.5;
+ c.beginPath();c.moveTo(B[0],B[1]);c.lineTo(D[0],D[1]);c.stroke();
+ c.fillStyle="#0a0a14";c.beginPath();c.arc(460,165,26,0,7);c.fill();
+ c.strokeStyle=bal?GR:YL;c.lineWidth=2;c.beginPath();c.arc(460,165,26,0,7);c.stroke();
+ const ang=Math.max(-1,Math.min(1,diff/5))*0.9;
+ c.strokeStyle=bal?GR:RD;c.lineWidth=2.5;
+ c.beginPath();c.moveTo(460,165);c.lineTo(460+Math.sin(ang)*20,165-Math.cos(ang)*20);c.stroke();
+ txt(c,"G",460,205,bal?GR:YL,"bold 13px 'Cascadia Code',monospace","center");
+ // battery A-C
+ c.strokeStyle="#e8e8f2";c.lineWidth=2;
+ c.beginPath();c.moveTo(A[0],A[1]);c.lineTo(300,A[1]);c.stroke();
+ c.beginPath();c.moveTo(620,C[1]);c.lineTo(C[0],C[1]);c.stroke();
+ c.lineWidth=2.5;c.beginPath();c.moveTo(300,152);c.lineTo(300,178);c.stroke();
+ c.lineWidth=5;c.beginPath();c.moveTo(312,158);c.lineTo(312,172);c.stroke();
+ c.beginPath();c.moveTo(608,152);c.lineTo(608,178);c.stroke();
+ c.lineWidth=2.5;c.beginPath();c.moveTo(608,158);c.lineTo(608,172);c.stroke();
+ txt(c,"10 V",330,150,CY,"12px 'Cascadia Code',monospace");
+ // node labels
+ txt(c,"A",A[0]-18,A[1]+5,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"B",B[0],B[1]-12,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"C",C[0]+18,C[1]+5,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"D",D[0],D[1]+20,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"V_B = "+VB.toFixed(2)+" V",B[0]+120,B[1]-10,CY,"13px 'Cascadia Code',monospace","center");
+ txt(c,"V_D = "+VD.toFixed(2)+" V",D[0]+120,D[1]+22,MG,"13px 'Cascadia Code',monospace","center");
+ if(bal){
+  c.fillStyle="#0d2b1a";c.fillRect(320,298,280,26);
+  c.strokeStyle=GR;c.lineWidth=1.5;c.strokeRect(320,298,280,26);
+  txt(c,"BALANCED! G = 0, middle branch DEAD",460,316,GR,"bold 13px 'Cascadia Code',monospace","center");
+ }
+ document.getElementById("r3").innerHTML="P/Q = <span class='hl'>"+(P/Q).toFixed(2)+"</span> vs R/S = <span class='hl'>"+(R/S).toFixed(2)+"</span> | V_B − V_D = <span class='hl'>"+diff.toFixed(2)+" V</span> → "+(bal?"<span class='hl'>GALVANOMETER ZERO - B aur D same potential! Bridge ko simple series-parallel ki tarah solve karo</span>":"galvanometer deflect "+(diff>0?"RIGHT (V_B > V_D)":"LEFT (V_B < V_D)")+" - S adjust karke balance karo!");
+}
+[sP,sQ,sR,sS].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[4]=(()=>{
+const QS=[
+ {q:"Switch ON karte hi bulb TURANT kyun jal jaata hai, jabki electrons sirf ~mm/s drift karte hain?",o:["Electrons light speed se travel karte hain","Electric field almost light speed se establish hota hai - saare electrons EK SAATH dhakka lagate hain","Electrons bahut fast drift karte hain (~km/s)","Wire me electrons pehle se nahi hote"],a:1,w:"Kisi ek electron ko travel nahi karna! Field almost light speed se establish hota hai aur saari wire ke electrons ek saath drift shuru karte hain - pipe me pehle se bhare paani jaisa."},
+ {q:"Copper wire ki length DOUBLE aur area DOUBLE kar do. Resistance ka kya hoga?",o:["Double ho jaayega","Half ho jaayega","SAME rahega - 2L/2A = L/A","4 guna ho jaayega"],a:2,w:"R = ρL/A - L double aur A double → R SAME! ρ material ki property hai, R shape pe depend karta hai."},
+ {q:"Cell discharge ho raha hai (current bahar). Terminal voltage ka formula?",o:["V = ε + Ir","V = ε − Ir","V = ε hamesha","V = Ir"],a:1,w:"Discharge: V = ε − Ir (terminal EMF se KAM). Charging me ulta: V = ε + Ir. Short circuit pe V = 0, I = ε/r - max current, danger!"},
+ {q:"Wheatstone bridge BALANCED kab hota hai (galvanometer ZERO)?",o:["P + Q = R + S","P × Q = R × S","P/Q = S/R","P/Q = R/S"],a:3,w:"P/Q = R/S pe B aur D SAME potential → galvanometer me zero current → beech wali branch DEAD, circuit simple series-parallel!"},
+ {q:"Do bulbs SERIES me hain. Kaun zyada GLOW karega?",o:["Kam resistance wala","ZYADA resistance wala (P = I²R, I same)","Dono equally","Zyada current wala"],a:1,w:"Series me current SAME → P = I²R → zyada R wala zyada glow. PARALLEL me voltage same → P = V²/R → KAM R wala zyada glow. Dono confuse mat karna!"}
+];
+let qi=0,score=0;
+const box=document.getElementById("quizBox");
+function render(){
+ if(qi>=QS.length){
+  const msg=score===5?"PERFECT! CURRENT ELECTRICITY PAKKA! 🏆":score>=3?"Badhiya! "+score+"/5 - recap scene se weak topics revise kar":"Arre "+score+"/5 - scenes dobara dekh, phir try kar!";
+  box.innerHTML="<div style='text-align:center;padding:30px'><div style='font-size:42px;font-weight:700;color:"+(score>=3?GR:RD)+"'>"+score+"/5</div><p style='margin:14px 0;font-size:17px'>"+msg+"</p><button id='qRe'>↺ Phir Se Try Kar</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};
+  return;
+ }
+ const Q=QS[qi];
+ box.innerHTML="<div style='margin-bottom:6px;color:#5b6488;font-size:13px'>Sawaal "+(qi+1)+"/5 - score: "+score+"</div><h3 style='margin-bottom:12px'>"+Q.q+"</h3>"+Q.o.map((o,i)=>"<button class='qopt' data-i='"+i+"' style='display:block;width:100%;text-align:left;margin:7px 0;padding:11px 14px'>"+o+"</button>").join("")+"<div id='qFb' style='display:none;margin-top:10px'></div>";
+ box.querySelectorAll(".qopt").forEach(b=>b.onclick=()=>{
+  const i=parseInt(b.dataset.i),Q=QS[qi];
+  box.querySelectorAll(".qopt").forEach(x=>{x.disabled=true;if(parseInt(x.dataset.i)===Q.a)x.style.borderColor=GR;});
+  if(i!==Q.a)b.style.borderColor=RD;
+  if(i===Q.a)score++;
+  const fb=document.getElementById("qFb");fb.style.display="block";
+  fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+  const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);});
+}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
+</body>
+</html>
