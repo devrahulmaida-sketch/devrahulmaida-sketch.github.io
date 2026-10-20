@@ -291,8 +291,8 @@ function draw(t){
   c.fillStyle=YL;c.beginPath();c.arc(dcx,eqy,7,0,7);c.fill();
   const Ee=1/(r*r*r);
   const el=Math.max(14,Math.min(60,Ee*220));
-  arrow2(c,dcx+9,eqy,dcx+9+el,eqy,MG,3);
-  txt(c,"E_eq ← (p ke OPPOSITE)",dcx+150,eqy+4,MG,"10px 'Cascadia Code',monospace","center");
+  arrow2(c,dcx-9,eqy,dcx-9-el,eqy,MG,3);
+  txt(c,"(p ke OPPOSITE) E_eq ←",dcx-16-el,eqy+4,MG,"10px 'Cascadia Code',monospace","right");
  }
  const Eax=2/(r*r*r),Eeq=1/(r*r*r);
  for(let yy=64;yy<=290;yy+=56){arrow2(c,652,yy,886,yy,"#3d55c8",2.5);}
@@ -363,7 +363,7 @@ function draw(t){
   c.beginPath();c.arc(cx,cy,sc,0,7);c.stroke();
   c.fillStyle="rgba(34,211,238,0.08)";
   c.beginPath();c.arc(cx,cy,sc,0,7);c.fill();
-  txt(c,"shell Q = 1 µC, R = 1 m",cx,168,CY,"11px 'Cascadia Code',monospace","center");
+  txt(c,"shell Q = 1 µC, R = 1 m",cx,196,CY,"11px 'Cascadia Code',monospace","center");
  }
  c.setLineDash([3,5]);c.strokeStyle="#3d4470";c.lineWidth=1;
  c.beginPath();c.moveTo(cx,cy+10);c.lineTo(px,cy+10);c.stroke();c.setLineDash([]);
@@ -377,7 +377,7 @@ function draw(t){
  }else{
   txt(c,"E = 0 andar!",px,cy-16,GR,"bold 12px 'Cascadia Code',monospace","center");
  }
- txt(c,"Gaussian surface (imaginary!)",cx,cy+46,DM,"10px 'Cascadia Code',monospace","center");
+ txt(c,"Gaussian surface (imaginary!)",400,34,DM,"10px 'Cascadia Code',monospace","center");
  const gx0=520,gx1=896,gy0=300,gy1=190;
  c.strokeStyle="#3d4470";c.lineWidth=1.5;
  c.beginPath();c.moveTo(gx0,gy0);c.lineTo(gx1,gy0);c.stroke();
