@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear Programming - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Maths - Chapter 12 - Linear Programming</div>
+<h1>Linear Programming Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - feasible region builder, corner point method, unbounded trap lab, 5-marker solver, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Feasible Region Builder - Common Area ⭐⭐</h2>
+<p class="why">LPP = Z = ax + by ko optimize (max/min) karna, LINEAR INEQUALITIES ke rules me. Har constraint ek line + ek side. Feasible region = SAB constraints ka COMMON area - aur x ≥ 0, y ≥ 0 HAMESHA hota hai (first quadrant!). Method: line banao → (0,0) daal ke test karo → TRUE wala side. Constraints on/off karo - region LIVE badlega!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow" id="lpBtns"></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Corner Point Method - Exam Ka Raja ⭐⭐</h2>
+<p class="why">Corner Point Theorem: bounded feasible region ka max/min HAMESHA kisi CORNER pe milta hai - andar kabhi nahi! Isliye poora region check karne ki zaroorat nahi: corners nikalo → har corner pe Z → table banao → best chuno. Objective function badlo (3 buttons) - WINNER corner badal jaata hai, region wahi rehti hai!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" id="objBtns"></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Unbounded Trap Lab - Kagaz Ka Katauti ⭐</h2>
+<p class="why">Feasible region KHULA (unbounded) ho toh galti hoti hai! Rule: max/min tabhi declare karo jab TEST HALF-PLANE region se overlap CHHOD DE. Overlap hota raha → max/min exist NAHI. Yahan Z = x + 2y ko region x + y ≥ 3 pe try karo: MAX fail hoga (Z ∞ tak!), par MIN exist karta hai. Direction matter karti hai!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" id="mmBtns"><button data-m="max" class="sel">MAXIMIZE try karo</button><button data-m="min">MINIMIZE try karo</button></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. 5-Marker Solver - Poora Sawaal ⭐⭐</h2>
+<p class="why">Fixed 5-marker pattern: (1) lines draw karo (intercepts se), (2) (0,0) test se feasible region shade karo, (3) corners nikalo (intersections solve karke), (4) corner table pe Z → answer. Step-by-step aage badho - yehi 4 steps exam me likhne hain. ≥ constraints hain, toh region origin se DOOR aur unbounded - dhyan se!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow"><button id="stPrev">← Peeche</button><span class="v" id="stepLbl" style="align-self:center">Step 1 / 4</span><button id="stNext">Aage →</button></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - LPP Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: Z = ax+by optimize; constraints = linear inequalities; x,y ≥ 0 hamesha; graph: line banao → (0,0) test → TRUE wali side; feasible region = common area; max/min corners pe - har corner pe Z, table banao; unbounded ho toh half-plane overlap test - overlap raha toh max/min exist nahi; formulation DELETED, ready-made problems = fixed 5-marker!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Basics ⭐</h3><p>Z = ax + by ko optimize (maximize/minimize) | Constraints = linear inequalities | x ≥ 0, y ≥ 0 HAMESHA (first quadrant!) | Feasible region = sab constraints ka common area | Feasible region ke points = feasible solutions</p></div>
+<div class="rcard"><h3>Graph Method ⭐⭐</h3><p>Inequality ko = banao → LINE draw karo (intercepts easiest!) | (0,0) daal ke test karo → TRUE wala side shade | Sab constraints ka COMMON region | Line pe points included (≤, ≥) - solid line</p></div>
+<div class="rcard"><h3>Corner Method ⭐⭐</h3><p>Bounded region: max/min HAMESHA corner pe! | (1) Corners nikalo (line intersections solve karke) | (2) Har corner pe Z | (3) Table banao: corner | Z | (4) Best chuno - bas!</p></div>
+<div class="rcard"><h3>Unbounded ⭐</h3><p>Region khula → EXTRA CHECK zaroori | Test half-plane ax+by &gt; M (max) ya &lt; m (min) region se overlap chhode tabhi declare karo | Overlap hota raha → max/min EXIST NAHI | Unbounded ≠ hamesha fail - direction pe depend!</p></div>
+<div class="rcard"><h3>Intersections ⭐</h3><p>Corner = do lines ka intersection → equations SOLVE karo | Axis intercepts bhi corners hote hain | Sirf wo corners lo jo SAB constraints satisfy karein | Region ke BAHAR wala intersection corner nahi!</p></div>
+<div class="rcard"><h3>Syllabus ⭐</h3><p>Formulation (word problem → model) DELETED! | Ready-made problems solve karne hain | Fixed 5-marker: graph + region + corners + table | Graph paper pe saaf diagram = full marks</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Maths Ch 12 Linear Programming Visual Walkthrough</div>
+</div>
+<script>
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+// ---- LP shared helpers ----
+// clip polygon against half-plane a*x+b*y<=c (canvas coords: y down, but we work in math coords)
+function clipPoly(poly,a,b,c){
+ if(!poly.length)return poly;
+ const out=[];
+ for(let i=0;i<poly.length;i++){
+  const p=poly[i],q=poly[(i+1)%poly.length];
+  const sp=a*p[0]+b*p[1]-c,sq=a*q[0]+b*q[1]-c;
+  if(sp<=1e-9)out.push(p);
+  if((sp<0&&sq>0)||(sp>0&&sq<0)){
+   const t=sp/(sp-sq);
+   out.push([p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])]);}}
+ return out;}
+// canvas plot helper: math (0..10) -> pixels, ox=70,oy=280, u=80 (x:0-10), v=80 (y:0-3.2?) -> use per-scene scale
+function axesLP(c,ox,oy,u,xmax,ymax){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=1;i<=Math.floor(xmax);i++){c.beginPath();c.moveTo(ox+i*u,12);c.lineTo(ox+i*u,oy);c.stroke();
+  txt(c,""+i,ox+i*u,oy+14,DM,"11px 'Cascadia Code',monospace","center");}
+ for(let j=1;j<=Math.floor(ymax);j++){c.beginPath();c.moveTo(ox,oy-j*u);c.lineTo(ox+xmax*u,oy-j*u);c.stroke();
+  txt(c,""+j,ox-16,oy-j*u+4,DM,"11px 'Cascadia Code',monospace","center");}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(ox,12);c.lineTo(ox,oy);c.lineTo(ox+xmax*u,oy);c.stroke();
+ txt(c,"x",ox+xmax*u+8,oy+4,DM,"12px 'Cascadia Code',monospace");
+ txt(c,"y",ox-6,10,DM,"12px 'Cascadia Code',monospace");}
+function lineLP(c,a,b,c0,ox,oy,u,xmax,ymax,col,label,labx,laby){
+ // draw a*x+b*y=c0 across view
+ c.strokeStyle=col;c.lineWidth=2.5;c.beginPath();
+ let pts=[];
+ if(b!==0){for(let x=0;x<=xmax;x+=0.1){const y=(c0-a*x)/b;if(y>=-0.01&&y<=ymax+0.5)pts.push([x,y]);}}
+ else{const x=c0/a;for(let y=0;y<=ymax;y+=0.1)pts.push([x,y]);}
+ let started=false;
+ pts.forEach(p=>{const px=ox+p[0]*u,py=oy-p[1]*u;if(!started){c.moveTo(px,py);started=true;}else c.lineTo(px,py);});
+ c.stroke();
+ if(label)txt(c,label,labx,laby,col,"bold 13px 'Cascadia Code',monospace","center");}
+function fillPoly(c,poly,ox,oy,u,col){
+ if(poly.length<3)return;
+ c.fillStyle=col;c.beginPath();
+ poly.forEach((p,i)=>{const px=ox+p[0]*u,py=oy-p[1]*u;i?c.lineTo(px,py):c.moveTo(px,py);});
+ c.closePath();c.fill();
+ c.strokeStyle="#34d399";c.lineWidth=2;c.stroke();}
+// ============ SCENE 1: Feasible region builder ============
+inits[0]=(()=>{
+const CONS=[
+ {a:1,b:1,c:4,lb:"x + y ≤ 4",on:true,col:CY,line:"x + y = 4"},
+ {a:2,b:3,c:10,lb:"2x + 3y ≤ 10",on:true,col:MG,line:"2x + 3y = 10"}];
+const ox=90,oy=280,u=56,xmax=14,ymax=5.2;
+function draw(){
+ const c=ctx("cv0");c.clearRect(0,0,920,330);
+ axesLP(c,ox,oy,u,10,5);
+ let poly=[[0,0],[12,0],[12,5],[0,5]];
+ lineLP(c,1,1,4,ox,oy,u,10,5,CONS[0].on?CY:"#3a3a5c","x+y=4",ox+4.9*u,oy-4.05*u+22);
+ lineLP(c,2,3,10,ox,oy,u,10,5,CONS[1].on?MG:"#3a3a5c","2x+3y=10",ox+1.6*u,oy-3.6*u);
+ // always x>=0,y>=0
+ poly=clipPoly(poly,1,0,12);poly=clipPoly(poly,0,1,5);
+ poly=clipPoly(poly,-1,0,0);poly=clipPoly(poly,0,-1,0);
+ CONS.forEach(k=>{if(k.on)poly=clipPoly(poly,k.a,k.b,k.c);});
+ fillPoly(c,poly,ox,oy,u,"rgba(52,211,153,0.22)");
+ // origin test marker
+ c.fillStyle=YL;c.beginPath();c.arc(ox,oy,6,0,7);c.fill();
+ txt(c,"(0,0) test: sab constraints satisfy? → origin FEASIBLE side!",ox+130,oy-4.6*u+10,YL,"12px 'Cascadia Code',monospace","center");
+ // corner dots
+ poly.forEach(p=>{c.fillStyle="#fff";c.beginPath();c.arc(ox+p[0]*u,oy-p[1]*u,4.5,0,7);c.fill();
+  txt(c,"("+fmt(p[0],1).replace(/\.0$/,"")+","+fmt(p[1],2).replace(/\.?0+$/,"")+")",ox+p[0]*u,oy-p[1]*u-9,"#fff","bold 11px 'Cascadia Code',monospace","center");});
+ const act=CONS.filter(k=>k.on).map(k=>k.lb).join("  +  ")||"(koi constraint nahi - poora first quadrant!)";
+ document.getElementById("r0").innerHTML=
+  "Constraints: x ≥ 0, y ≥ 0 (HAMESHA!)  +  <span class='hl'>"+act+"</span><br>Feasible region = SAB constraints ka COMMON area (green) - <span class='hl'>"+poly.length+" corners</span>. Line banao → (0,0) test karo → jis side TRUE, wahi side!";
+}
+const bb=document.getElementById("lpBtns");
+CONS.forEach((k,i)=>{const b=document.createElement("button");b.textContent=k.lb;b.classList.add("sel");
+ b.onclick=()=>{k.on=!k.on;b.classList.toggle("sel",k.on);draw();};bb.appendChild(b);});
+return draw;
+})();
+// ============ SCENE 2: Corner point method ============
+inits[1]=(()=>{
+const PTS=[["A",0,0],["B",4,0],["C",2,2],["D",0,10/3]];
+const OBJS=[{lb:"Max Z = 3x + 4y",f:(x,y)=>3*x+4*y},{lb:"Max Z = 2x + 5y",f:(x,y)=>2*x+5*y},{lb:"Min Z = 5x + 3y",f:(x,y)=>5*x+3*y,min:true}];
+let oi=0;
+const ox=90,oy=280,u=56;
+function draw(){
+ const c=ctx("cv1");c.clearRect(0,0,920,330);
+ axesLP(c,ox,oy,u,10,5);
+ const poly=[[0,0],[4,0],[2,2],[0,10/3]];
+ lineLP(c,1,1,4,ox,oy,u,10,5,CY,"x+y=4",ox+4.9*u,oy-4.05*u+22);
+ lineLP(c,2,3,10,ox,oy,u,10,5,MG,"2x+3y=10",ox+1.6*u,oy-3.6*u);
+ fillPoly(c,poly,ox,oy,u,"rgba(52,211,153,0.22)");
+ const O=OBJS[oi];
+ const zs=PTS.map(p=>O.f(p[1],p[2]));
+ const best=O.min?zs.indexOf(Math.min(...zs)):zs.indexOf(Math.max(...zs));
+ PTS.forEach((p,i)=>{
+  const px=ox+p[1]*u,py=oy-p[2]*u,H=i===best;
+  c.fillStyle=H?GR:"#fff";c.beginPath();c.arc(px,py,H?9:5.5,0,7);c.fill();
+  if(H){c.strokeStyle=GR;c.lineWidth=2;c.stroke();}
+  txt(c,p[0]+" ("+fmt(p[1],0)+", "+fmt(p[2],2).replace(/\.?0+$/,"")+")",px,py-14,H?GR:"#fff","bold 12px 'Cascadia Code',monospace","center");
+  txt(c,"Z="+fmt(zs[i],2).replace(/\.?0+$/,""),px,py+20,H?GR:DM,"bold 12px 'Cascadia Code',monospace","center");});
+ // table right side
+ txt(c,"Corner  |  Z",640,60,CY,"bold 14px 'Cascadia Code',monospace");
+ PTS.forEach((p,i)=>{txt(c,p[0]+" ("+fmt(p[1],0)+","+fmt(p[2],2).replace(/\.?0+$/,"")+")  |  "+fmt(zs[i],2).replace(/\.?0+$/,"")+(i===best?"  ← BEST":""),640,90+i*28,i===best?GR:"#e8e8f2","bold 13px 'Cascadia Code',monospace");});
+ txt(c,(O.min?"MINIMUM":"MAXIMUM")+" = "+fmt(zs[best],2).replace(/\.?0+$/,"")+" @ corner "+PTS[best][0],640,230,GR,"bold 16px 'Cascadia Code',monospace");
+ document.getElementById("r1").innerHTML=
+  "CORNER POINT THEOREM: bounded feasible region ka max/min <span class='hl'>HAMESHA kisi corner pe</span> milta hai - andar kahin nahi! Method: (1) corners nikalo, (2) har corner pe Z, (3) table → best. <span class='hl'>"+O.lb+" → "+fmt(zs[best],2).replace(/\.?0+$/,"")+" @ "+PTS[best][0]+"</span>. Objective badlo - winner badal jaata hai!";
+}
+const bb=document.getElementById("objBtns");
+OBJS.forEach((o,i)=>{const b=document.createElement("button");b.textContent=o.lb;b.onclick=()=>{oi=i;
+ [...bb.children].forEach((x,j)=>x.classList.toggle("sel",j===i));draw();};bb.appendChild(b);});
+return function(){oi=0;bb.children[0].classList.add("sel");draw();};
+})();
+// ============ SCENE 3: Unbounded trap lab ============
+inits[2]=(()=>{
+let mode="max";
+const ox=90,oy=280,u=56;
+function draw(){
+ const c=ctx("cv2");c.clearRect(0,0,920,330);
+ axesLP(c,ox,oy,u,10,5);
+ // region x+y>=3, x,y>=0 -> unbounded: polygon (3,0)-(10,0)-(10,5)-(0,5)-(0,3)
+ lineLP(c,1,1,3,ox,oy,u,10,5,CY,"x+y=3",ox+2.6*u,oy-2.75*u);
+ const poly=[[3,0],[10,0],[10,5],[0,5],[0,3]];
+ fillPoly(c,poly,ox,oy,u,"rgba(52,211,153,0.18)");
+ // arrows to infinity
+ arrow2(c,ox+9.4*u,oy-0.2*u,ox+10.1*u,oy-0.2*u,GR,2);
+ arrow2(c,ox+0.2*u,oy-4.4*u,ox+0.2*u,oy-5.15*u,GR,2);
+ txt(c,"region KHULA hai - infinity tak jaata!",ox+5.2*u,oy-4.5*u,GR,"bold 13px 'Cascadia Code',monospace","center");
+ if(mode==="max"){
+  // test half-plane x+2y = 14 still overlaps
+  c.strokeStyle=YL;c.lineWidth=2;c.setLineDash([7,6]);c.beginPath();
+  c.moveTo(ox+Math.min(10,14)*u,oy);c.lineTo(ox,oy-5*u);c.stroke();c.setLineDash([]);
+  txt(c,"x+2y=14 (bada Z)",ox+6.4*u,oy-2.9*u,YL,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"Z = x + 2y MAXIMIZE karna hai...",ox+3.4*u,40,"#e8e8f2","bold 15px 'Cascadia Code',monospace","center");
+  document.getElementById("r2").innerHTML=
+   "<span class='hl'>MAX exist NAHI karta!</span> Region unbounded hai aur objective line (x+2y = k) ko kitna bhi bada karo - feasible region se OVERLAP hota hi rahega. Z = ∞ tak ja sakta hai!<br>EXTRA CHECK (syllabus rule): unbounded region me max/min tabhi bolo jab test half-plane <span class='hl'>overlap CHHOD DE</span>. Yahan overlap kabhi nahi chhoot-ta → answer: <span class='hl'>no maximum</span>.";
+ }else{
+  const pts=[["A",3,0,3],["B",0,3,6]];
+  pts.forEach(p=>{const px=ox+p[1]*u,py=oy-p[2]*u,H=p[0]==="A";
+   c.fillStyle=H?GR:"#fff";c.beginPath();c.arc(px,py,H?9:6,0,7);c.fill();if(H){c.strokeStyle=GR;c.lineWidth=2;c.stroke();}
+   txt(c,p[0]+" ("+p[1]+","+p[2]+") Z="+p[3],px+30,py+(H?22:-12),H?GR:"#fff","bold 13px 'Cascadia Code',monospace","center");});
+  txt(c,"Z = x + 2y MINIMIZE karna hai...",ox+3.4*u,40,"#e8e8f2","bold 15px 'Cascadia Code',monospace","center");
+  document.getElementById("r2").innerHTML=
+   "Corners: A(3,0) → Z=3  |  B(0,3) → Z=6  →  <span class='hl'>MINIMUM = 3 @ (3,0)</span> ✓<br>MIN ke liye test: half-plane x+2y < 3 region se overlap CHHOD deta hai ✓ - isliye minimum EXIST karta hai. Unbounded region ≠ hamesha khaarij - <span class='hl'>direction matter karti hai!</span> MAX try karo - fail hoga.";
+ }
+}
+document.querySelectorAll("#mmBtns button").forEach(b=>b.onclick=()=>{mode=b.dataset.m;
+ document.querySelectorAll("#mmBtns button").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+return function(){mode="max";document.querySelectorAll("#mmBtns button").forEach(x=>x.classList.toggle("sel",x.dataset.m==="max"));draw();};
+})();
+// ============ SCENE 4: 5-marker solver ============
+inits[3]=(()=>{
+// Min Z = 4x + 5y, s.t. x+2y >= 8, 3x+2y >= 12, x,y >= 0
+let step=1;
+const ox=90,oy=280,u=56;
+const PTS=[["A",8,0,32],["B",2,3,23],["C",0,6,30]];
+function draw(){
+ const c=ctx("cv3");c.clearRect(0,0,920,330);
+ axesLP(c,ox,oy,u,10,5);
+ lineLP(c,1,2,8,ox,oy,u,10,5,CY,step>=1?"x+2y=8":null,ox+7.6*u,oy-0.3*u);
+ lineLP(c,3,2,12,ox,oy,u,10,5,MG,step>=1?"3x+2y=12":null,ox+2.2*u,oy-4.45*u);
+ if(step>=2){
+  // region: above both lines: corners (8,0),(2,3),(0,6) opening up-right
+  const poly=[[8,0],[10,0],[10,5],[0,5],[0,6],[2,3]];
+  fillPoly(c,poly,ox,oy,u,"rgba(52,211,153,0.18)");
+  arrow2(c,ox+9.4*u,oy-0.3*u,ox+10.05*u,oy-0.3*u,GR,2);
+  arrow2(c,ox+0.3*u,oy-4.4*u,ox+0.3*u,oy-5.1*u,GR,2);}
+ if(step>=3){PTS.forEach((p,i)=>{
+  const px=ox+p[1]*u,py=oy-p[2]*u,H=(step>=4&&p[0]==="B");
+  c.fillStyle=H?GR:"#fff";c.beginPath();c.arc(px,py,H?9:5.5,0,7);c.fill();
+  if(H){c.strokeStyle=GR;c.lineWidth=2;c.stroke();}
+  txt(c,p[0]+" ("+p[1]+","+p[2]+")",px,py-12,H?GR:"#fff","bold 12px 'Cascadia Code',monospace","center");});}
+ if(step>=4){
+  txt(c,"Corner | Z=4x+5y",640,55,CY,"bold 14px 'Cascadia Code',monospace");
+  PTS.forEach((p,i)=>txt(c,p[0]+" ("+p[1]+","+p[2]+")  |  "+p[3]+(p[0]==="B"?"  ← MIN":""),640,85+i*28,p[0]==="B"?GR:"#e8e8f2","bold 14px 'Cascadia Code',monospace"));
+  txt(c,"MINIMUM Z = 23 @ (2, 3) ⭐",640,200,GR,"bold 17px 'Cascadia Code',monospace");}
+ const msgs=[
+  "STEP 1: Har constraint ka LINE draw karo (inequality ko = bana ke). x+2y=8: intercepts (8,0) aur (0,4). 3x+2y=12: intercepts (4,0) aur (0,6).",
+  "STEP 2: (0,0) test → 0 ≥ 8 FALSE - toh origin ke OPPOSITE side shade. Dono ≥ constraints ka common area = feasible region (KHULA, upar-ki-taraf unbounded!). x ≥ 0, y ≥ 0 matlab first quadrant only.",
+  "STEP 3: Corners nikalo: (8,0) = L1 ka x-intercept; (2,3) = dono lines ka INTERSECTION (solve: x+2y=8, 3x+2y=12 → 2x=4 → x=2, y=3); (0,6) = L2 ka y-intercept (jo L1 bhi satisfy kare).",
+  "STEP 4: Har corner pe Z nikalo (table!) → MINIMUM Z = 23 @ (2,3). Min exist karta hai kyunki test half-plane 4x+5y < 23 region se overlap nahi karta. (MAX poochha hota toh: EXIST NAHI - unbounded!)"];
+ document.getElementById("r3").innerHTML="<span class='hl'>Minimize Z = 4x + 5y</span>  s.t.  x + 2y ≥ 8,  3x + 2y ≥ 12,  x, y ≥ 0<br>"+msgs[step-1];
+ document.getElementById("stepLbl").textContent="Step "+step+" / 4";
+}
+document.getElementById("stPrev").onclick=()=>{step=Math.max(1,step-1);draw();};
+document.getElementById("stNext").onclick=()=>{step=Math.min(4,step+1);draw();};
+return function(){step=1;draw();};
+})();
+// ============ SCENE 5: Quiz ============
+inits[4]=(()=>{
+const QS=[
+ {q:"Bounded feasible region ka maximum/minimum KAHAN milta hai?",o:["Corner points pe HAMESHA","Region ke center pe","Kahin bhi mil sakta hai","Sirf origin pe"],a:0,w:"Corner Point Theorem: bounded region ka optimal value HAMESHA kisi corner pe. Isliye sirf corners pe Z nikalna kaafi hai - poora region check karne ki zaroorat nahi!"},
+ {q:"x + 2y ≤ 8 ko graph karne ke liye (0,0) test kiya. Konsa side shade hoga?",o:["Origin ke OPPOSITE side","Origin wali side (kyunki 0 ≤ 8 TRUE)","Dono sides","Koi shading nahi hoti"],a:1,w:"(0,0) daalo: 0 + 0 ≤ 8 → TRUE. Jis side test point satisfy kare, WAHIN feasible side. ≤ type me usually origin side shade hota hai!"},
+ {q:"Feasible region UNBOUNDED (khula) ho toh maximum ke baare me kya sahi hai?",o:["Hamesha exist karta hai","Kabhi exist nahi karta","Extra check (half-plane overlap test) ke BINA nahi keh sakte","Sirf minimum exist karta hai"],a:2,w:"Unbounded region me max/min EXIST kar SAKTA hai (direction pe depend) - par sirf tab bolo jab test half-plane region se overlap chhod de. Overlap hota raha → max/min exist NAHI. Ye extra check syllabus ka hissa hai!"},
+ {q:"Corners (0,0), (4,0), (2,2), (0,10/3) pe Z = 3x + 4y ka MAXIMUM kya hai?",o:["16","14","40/3","12"],a:1,w:"Z values: 0, 12, 3(2)+4(2)=14, 4(10/3)=40/3 ≈ 13.33. Max = 14 @ (2,2). 40/3 < 14 - dhyaan se compare karo!"},
+ {q:"New NCERT syllabus me LPP chapter se kya DELETED hua?",o:["Corner point method","LPP problems ka FORMULATION (word problem se model banana)","Feasible region","x, y ≥ 0 conditions"],a:1,w:"Formulation DELETED - ab word problems se model banana nahi aayega, ready-made problems solve karne hain. Fixed 5-marker question aata hai - graph + corners + table!"}];
+let qi=0,score=0,lock=false;
+const box=document.getElementById("quizBox");
+function render(){lock=false;
+ if(qi>=QS.length){box.innerHTML="<div class='readout' style='margin-top:0'>Quiz khatam! Score: <span class='hl'>"+score+"/"+QS.length+"</span> - "+(score===5?"PERFECT! LPP PAKKA! ✅":score>=3?"Achha! Recap se weak spot pakka karo 💪":"Formula recap zaroor dekho! 📚")+"</div><div class='btnrow'><button id='qRe'>↺ Phir Se</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};return;}
+ const Q=QS[qi];
+ box.innerHTML="<div style='color:#8fa0c8;font-size:13px;margin-bottom:8px'>Q"+(qi+1)+" / "+QS.length+"</div><div style='font-size:17px;color:#e8e8f2;margin-bottom:14px'>"+Q.q+"</div><div class='btnrow' id='quizBtns' style='flex-direction:column;align-items:stretch'></div><div class='readout' id='qFb' style='display:none'></div>";
+ const bb=document.getElementById("quizBtns");
+ Q.o.forEach((opt,i)=>{const b=document.createElement("button");b.style.textAlign="left";b.textContent=opt;b.onclick=()=>ans(i);bb.appendChild(b);});}
+function ans(i){if(lock)return;lock=true;const Q=QS[qi];
+ [...document.getElementById("quizBtns").children].forEach((x,j)=>{if(j===Q.a){x.style.borderColor=GR;x.style.color=GR;}else if(j===i){x.style.borderColor=RD;x.style.color=RD;}});
+ if(i===Q.a)score++;
+ const fb=document.getElementById("qFb");fb.style.display="block";
+ fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+ const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);}
+return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
