@@ -181,11 +181,11 @@ function draw(t){
  txt(c,"v(t)",49,oy+18,GR,"12px 'Cascadia Code',monospace","center");
  const glow=Math.min(1,(Vr/230)*(Vr/230));
  c.save();c.globalAlpha=0.25+0.75*glow;
- c.fillStyle=YL;c.beginPath();c.arc(45,55,14,0,7);c.fill();
- c.globalAlpha=0.18*glow;c.beginPath();c.arc(45,55,30,0,7);c.fill();
+ c.fillStyle=YL;c.beginPath();c.arc(55,55,14,0,7);c.fill();
+ c.globalAlpha=0.18*glow;c.beginPath();c.arc(55,55,30,0,7);c.fill();
  c.restore();
- c.fillStyle="#8fa0c8";c.fillRect(39,70,12,8);
- txt(c,"bulb heat ∝ V_rms²",45,98,"#8fa0c8","11px 'Cascadia Code',monospace","center");
+ c.fillStyle="#8fa0c8";c.fillRect(49,70,12,8);
+ txt(c,"heat ∝ V_rms²",60,98,"#8fa0c8","11px 'Cascadia Code',monospace","center");
  txt(c,"one period T = "+T.toFixed(3)+" s",485,318,DM,"12px 'Cascadia Code',monospace","center");
  document.getElementById("r0").innerHTML="V_rms = V₀/√2 = <span class='hl'>"+Vr.toFixed(1)+" V</span> | half-cycle avg = 2V₀/π = <span class='hl'>"+Vh.toFixed(1)+" V</span> | T = 1/f = <span class='hl'>"+T.toFixed(3)+" s</span> | ω = 2πf = <span class='hl'>"+w.toFixed(1)+" rad/s</span>";
 }
@@ -282,8 +282,8 @@ function draw(t){
  if(Math.abs(net)>2){arrow2(c,ox,oy,ox+Rx,oy-net,YL,3);}
  arrow2(c,ox,oy,ox+Rx,oy-net,RD,4);
  const phD=p.phi*180/Math.PI;
- txt(c,"Z = "+p.Z.toFixed(1)+" Ω",(2*ox+Rx)/2-12,oy-net/2-8,RD,"bold 13px 'Cascadia Code',monospace","right");
- txt(c,"φ = "+phD.toFixed(1)+"° "+(phD>0.5?"(I lags V)":phD<-0.5?"(I leads V)":"(pure R!)"),ox+Rx+10,oy-net/2+4,YL,"13px 'Cascadia Code',monospace");
+ txt(c,"Z = "+p.Z.toFixed(1)+" Ω",35,65,RD,"bold 13px 'Cascadia Code',monospace");
+ txt(c,"φ = "+phD.toFixed(1)+"° "+(phD>0.5?"(I lags V)":phD<-0.5?"(I leads V)":"(pure R!)"),35,85,YL,"13px 'Cascadia Code',monospace");
  const gx=485,gw=415,gy=292,gh=235;
  const Imax=V/p.R*1.12,ys=gh/Imax;
  c.strokeStyle="#2d2d52";c.lineWidth=2;
@@ -302,8 +302,10 @@ function draw(t){
  c.stroke();
  const dx=gx+(p.f-20)/180*gw,dy=gy-p.I*ys;
  c.fillStyle=YL;c.beginPath();c.arc(dx,dy,6,0,7);c.fill();
- txt(c,"I = "+p.I.toFixed(2)+" A",dx,dy-14,YL,"bold 13px 'Cascadia Code',monospace","center");
- if(Math.abs(p.f-F0)<1.5){txt(c,"RESONANCE! Z = R min, I MAX",gx+gw/2,75,RD,"bold 18px 'Cascadia Code',monospace","center");}
+ const nearRes=Math.abs(p.f-F0)<1.5;
+ const lx=Math.max(560,Math.min(855,dx));
+ txt(c,"I = "+p.I.toFixed(2)+" A",lx,nearRes?dy+24:dy-14,YL,"bold 13px 'Cascadia Code',monospace","center");
+ if(nearRes){txt(c,"RESONANCE! Z = R min, I MAX",gx+gw/2,75,RD,"bold 18px 'Cascadia Code',monospace","center");}
  document.getElementById("r2").innerHTML="X_L = ωL = <span class='hl'>"+p.XL.toFixed(1)+" Ω</span> | X_C = 1/(ωC) = <span class='hl'>"+p.XC.toFixed(1)+" Ω</span> | Z = √[R²+(X_L−X_C)²] = <span class='hl'>"+p.Z.toFixed(1)+" Ω</span> | tanφ = "+((p.XL-p.XC)/p.R).toFixed(2)+" → φ = <span class='hl'>"+phD.toFixed(1)+"°</span> | I_rms = 230/Z = <span class='hl'>"+p.I.toFixed(2)+" A</span>"+(Math.abs(p.f-F0)<1.5?" | <span class='hl'>RESONANCE - X_L = X_C!</span>":"");
 }
 anims[2]=t=>draw(t);
