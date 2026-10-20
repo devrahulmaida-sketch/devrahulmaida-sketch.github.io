@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave Optics - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 10 - Wave Optics</div>
+<h1>Wave Optics Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - Huygens refraction lab, superposition lab, YDSE fringe lab, diffraction lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Huygens Principle - Wavefronts aur Refraction ⭐⭐</h2>
+<p class="why">Wavefront = same phase ke points ka surface, rays uske PERPENDICULAR. Huygens: har wavefront point secondary wavelets ka source, unka envelope next wavefront! Isi geometry se reflection (i = r) AUR refraction (n₁ sin i = n₂ sin r) dono milte hain. Medium change → speed v = c/n → wavelength badalti hai (λ₂ = λ₁/n₂), par FREQUENCY same rehti hai. Dekho wavefronts boundary pe kaise MUD jaate hain!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>incidence angle i</label><input type="range" id="hI" min="0" max="80" step="5" value="45"><span class="v" id="vlhI">45°</span></div>
+<div class="slrow"><label>refractive index n₂ (n₁ = 1)</label><input type="range" id="hN" min="1" max="2" step="0.05" value="1.5"><span class="v" id="vlhN">1.50</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Superposition - Bright ya Dark? ⭐⭐</h2>
+<p class="why">Do waves milte hain to displacements ADD hote hain. Path difference Δ = mλ → same phase → BRIGHT (constructive); Δ = (m+½)λ → opposite phase → DARK (destructive). Phase difference = 2πΔ/λ. PAR stable pattern sirf COHERENT sources se - same frequency + STABLE phase difference. Do independent bulbs KABHI stable fringes nahi dete (phase random!). Aur haan - energy gayab nahi hoti, bright fringes me REDISTRIBUTE hoti hai.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="slrow"><label>path difference Δ (× λ)</label><input type="range" id="pD" min="0" max="1.5" step="0.125" value="0.5"><span class="v" id="vlpD">0.500λ</span></div>
+<div class="btnrow" style="margin-top:8px"><button id="cohB">Sources: COHERENT ✓</button></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Young Ka Double Slit - β = λD/d ⭐⭐</h2>
+<p class="why">Ek hi source se do slits → COHERENT sources phase-locked! Screen pe equally spaced fringes, fringe width β = λD/d. Bright y = mβ pe, dark y = (m+½)β pe, CENTRAL fringe hamesha BRIGHT. λ ya D badhao → fringes WIDER; slit separation d badhao → NARROWER. (CBSE: derivation nahi aati, final formula yaad rakho!) Color bhi λ ke saath badalta hai - sliders ghumao!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>wavelength λ (nm)</label><input type="range" id="yL" min="400" max="700" step="10" value="600"><span class="v" id="vlyL">600 nm</span></div>
+<div class="slrow"><label>slit separation d (mm)</label><input type="range" id="yd" min="0.1" max="1" step="0.05" value="0.5"><span class="v" id="vlyd">0.50 mm</span></div>
+<div class="slrow"><label>screen distance D (m)</label><input type="range" id="yD" min="0.5" max="2" step="0.1" value="1"><span class="v" id="vlyD">1.0 m</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Single Slit Diffraction ⭐⭐</h2>
+<p class="why">Slit ke ANDAR ke alag-alag points aaps me interfere karte hain - isliye light seedhi nahi jaati, PHAIL jaati hai! First minimum a sinθ = ±λ pe. CENTRAL maximum sabse CHAUDA (width ≈ 2Dλ/a, screen pe) aur sabse bright; side maxima ~half width aur bahut weak. TRAP: slit jitni NARROW (a chhota), spread utna ZYADA - intuition se bilkul ulta! Clear diffraction tab jab slit width λ ke aaspaas ho.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="slrow"><label>slit width a (mm)</label><input type="range" id="dA" min="0.02" max="0.2" step="0.01" value="0.1"><span class="v" id="vldA">0.10 mm</span></div>
+<div class="slrow"><label>wavelength λ (nm)</label><input type="range" id="dL" min="400" max="700" step="10" value="600"><span class="v" id="vldL">600 nm</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Wave Optics Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: β = λD/d (d ↑ → β ↓!), bright Δ = mλ aur dark Δ = (m+½)λ, independent bulbs se stable fringes NAHI, first minimum a sinθ = λ, narrower slit = WIDER spread, aur refraction me frequency SAME rehti hai!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Wavefront + Huygens ⭐</h3><p>Wavefront = same phase points ka surface; rays hamesha ⊥ wavefronts | Huygens: har point secondary wavelet deta hai, envelope = next wavefront | Geometry se i = r aur n₁ sin i = n₂ sin r | Medium me v = c/n, λₙ = λ/n, frequency SAME</p></div>
+<div class="rcard"><h3>Superposition + Coherence ⭐⭐</h3><p>Bright: Δ = mλ | Dark: Δ = (m+½)λ | Phase difference = 2πΔ/λ | Coherent = same frequency + STABLE phase diff | Independent bulbs → koi stable fringes NAHI | Energy redistribute hoti hai, gayab nahi hoti</p></div>
+<div class="rcard"><h3>YDSE ⭐⭐</h3><p>Fringe width β = λD/d | Bright y = mβ, dark y = (m+½)β | Central fringe hamesha BRIGHT | λ↑ ya D↑ → wider fringes; d↑ → narrower | Dono slits EK hi source se - tabhi phase locked</p></div>
+<div class="rcard"><h3>Diffraction ⭐⭐</h3><p>Single slit first minima: a sinθ = ±λ | Central width ≈ 2λ/a (angular), ≈ 2Dλ/a (screen) | Central max ~2× chauda + brightest | a chhota → spread ZYADA | λ ~ a ho tab clear dikhta hai</p></div>
+<div class="rcard"><h3>YDSE vs Diffraction ⭐</h3><p>YDSE: do coherent sources, equally spaced fringes β = λD/d | Single slit: aperture ke hi parts interfere, central band ~2× side bands | Ray optics jab λ ≪ feature size; wave optics jab phase aur spread matter kare</p></div>
+<div class="rcard"><h3>Traps ⭐</h3><p>β ∝ 1/d hai, d ke proportional NAHI | Central fringe BRIGHT hoti hai | Dark ke liye (m+½)λ, mλ nahi | Do alag bulbs se fringes nahi banti | Narrower slit = WIDER spread | Refraction me frequency SAME, λ badalta hai</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 10 Wave Optics Visual Walkthrough</div>
+</div>
+<script>
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+inits[0]=(()=>{
+const c=ctx("cv0");
+const sI=document.getElementById("hI"),sN=document.getElementById("hN");
+const BY=165;
+function draw(t){
+ const iDeg=parseFloat(sI.value),n2=parseFloat(sN.value);
+ const i=iDeg*Math.PI/180,sinr=Math.sin(i)/n2,r=Math.asin(sinr);
+ document.getElementById("vlhI").textContent=sI.value+"°";
+ document.getElementById("vlhN").textContent=n2.toFixed(2);
+ c.clearRect(0,0,920,330);
+ c.fillStyle="#0a1626";c.fillRect(30,15,860,150);
+ c.fillStyle="#150c2b";c.fillRect(30,165,860,150);
+ c.strokeStyle=DM;c.lineWidth=2;c.beginPath();c.moveTo(30,BY);c.lineTo(890,BY);c.stroke();
+ c.setLineDash([6,6]);c.strokeStyle="#3d4470";c.lineWidth=1.5;c.beginPath();c.moveTo(460,20);c.lineTo(460,310);c.stroke();c.setLineDash([]);
+ txt(c,"Medium 1: n1 = 1.00 (air)",44,36,CY,"13px 'Cascadia Code',monospace");
+ txt(c,"Medium 2: n2 = "+n2.toFixed(2),44,308,MG,"13px 'Cascadia Code',monospace");
+ const d1=[Math.sin(i),Math.cos(i)],d2=[sinr,Math.cos(r)];
+ const w1=[Math.cos(i),-Math.sin(i)],w2v=[Math.cos(r),-Math.sin(r)];
+ const L1=d1[0]>1e-9?Math.min((BY-20)/d1[1],(460-30)/d1[0]):(BY-20)/d1[1];
+ const start=[460-d1[0]*L1,BY-d1[1]*L1];
+ for(let k=-1;k<=1;k++){
+  const s=[start[0]+k*64*w1[0],start[1]+k*64*w1[1]];
+  const Lr=(BY-s[1])/d1[1];if(Lr<4)continue;
+  const h=[s[0]+d1[0]*Lr,BY];
+  arrow2(c,s[0],s[1],h[0],h[1],CY,k===0?3:1.5);
+  const L2=d2[0]>1e-9?Math.min((315-BY)/d2[1],(890-h[0])/d2[0]):(315-BY)/d2[1];
+  if(L2>4)arrow2(c,h[0],h[1],h[0]+d2[0]*L2,h[1]+d2[1]*L2,MG,k===0?3:1.5);
+  if(Math.sin(i)>0.02){const L3=Math.min(120,(BY-20)/Math.cos(i),(890-h[0])/Math.sin(i));
+   c.globalAlpha=0.45;arrow2(c,h[0],h[1],h[0]+Math.sin(i)*L3,h[1]-Math.cos(i)*L3,DM,1.5);c.globalAlpha=1;}
+ }
+ const s1=32,off=(t*2.5)%s1;
+ c.globalAlpha=0.55;c.strokeStyle=CY;c.lineWidth=1.5;
+ for(let d=off+6;d<L1-12;d+=s1){const px=start[0]+d1[0]*d,py=start[1]+d1[1]*d;
+  c.beginPath();c.moveTo(px-w1[0]*58,py-w1[1]*58);c.lineTo(px+w1[0]*58,py+w1[1]*58);c.stroke();}
+ const s2=s1/n2;
+ c.strokeStyle=MG;
+ for(let d=off+6;d<146;d+=s2){const px=460+d2[0]*d,py=BY+d2[1]*d;
+  c.beginPath();c.moveTo(px-w2v[0]*58,py-w2v[1]*58);c.lineTo(px+w2v[0]*58,py+w2v[1]*58);c.stroke();}
+ c.globalAlpha=1;
+ if(iDeg>0){
+  c.strokeStyle=YL;c.lineWidth=1.5;
+  c.beginPath();c.arc(460,BY,44,-Math.PI/2,-Math.PI/2+i);c.stroke();
+  txt(c,"i",452-iDeg*0.5,124,YL,"bold 13px 'Cascadia Code',monospace","center");
+  c.beginPath();c.arc(460,BY,44,Math.PI/2-r,Math.PI/2);c.stroke();
+  txt(c,"r",462+r*180/Math.PI*0.4,216,YL,"bold 13px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"wavefronts ⊥ rays - dekho medium 2 me PAAS PAAS (chhota λ2) aur MUDE hue!",460,22,"#aab4d8","12px 'Cascadia Code',monospace","center");
+ const rDeg=r*180/Math.PI,lam2=(600/n2).toFixed(0),v2=(3/n2).toFixed(2);
+ document.getElementById("r0").innerHTML="Snell: n₁ sin i = n₂ sin r → r = <span class='hl'>"+rDeg.toFixed(1)+"°</span> | λ₂ = λ₁/n₂ = <span class='hl'>"+lam2+" nm</span> | v₂ = c/n₂ = <span class='hl'>"+v2+" ×10⁸ m/s</span> | frequency <span class='hl'>SAME</span> rehti hai!"+(n2>1?" | n₂ > n₁ → normal ki TARAF mudta hai":"");
+}
+[sI,sN].forEach(s=>s.addEventListener("input",()=>draw(0)));
+anims[0]=draw;
+return function(){draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1");
+const sD=document.getElementById("pD"),cohBtn=document.getElementById("cohB");
+let coh=true,jit=0;
+function draw(t){
+ const dl=parseFloat(sD.value);
+ const phi=2*Math.PI*dl;
+ if(!coh&&t%3===0)jit=Math.random()*2*Math.PI;
+ const ph=coh?phi:jit;
+ document.getElementById("vlpD").textContent=dl.toFixed(3)+"λ";
+ c.clearRect(0,0,920,330);
+ txt(c,"wave 1 (S1 se)",44,24,CY,"13px 'Cascadia Code',monospace");
+ txt(c,"wave 2 (S2 se, Δ = "+dl.toFixed(3)+"λ ka shift)",44,44,MG,"13px 'Cascadia Code',monospace");
+ txt(c,"RESULT: wave1 + wave2 (superposition)",44,158,YL,"13px 'Cascadia Code',monospace");
+ const y1=95,y2=240,sp=40,phx=2*Math.PI/140;
+ c.strokeStyle="#2d2d52";c.lineWidth=1;
+ c.beginPath();c.moveTo(40,y1);c.lineTo(900,y1);c.stroke();
+ c.beginPath();c.moveTo(40,y2);c.lineTo(900,y2);c.stroke();
+ c.lineWidth=2;
+ c.strokeStyle=CY;c.beginPath();
+ for(let x=40;x<=900;x+=3){const y=y1-Math.sin((x-40)*phx+t*0.12)*sp;x===40?c.moveTo(x,y):c.lineTo(x,y);}c.stroke();
+ c.strokeStyle=MG;c.beginPath();
+ for(let x=40;x<=900;x+=3){const y=y1-Math.sin((x-40)*phx-ph+t*0.12)*sp;x===40?c.moveTo(x,y):c.lineTo(x,y);}c.stroke();
+ c.strokeStyle=YL;c.lineWidth=2.5;c.beginPath();
+ for(let x=40;x<=900;x+=3){const s=Math.sin((x-40)*phx+t*0.12)+Math.sin((x-40)*phx-ph+t*0.12);
+  const y=y2-s*sp;x===40?c.moveTo(x,y):c.lineTo(x,y);}c.stroke();
+ const I=coh?Math.cos(phi/2)*Math.cos(phi/2):0.5;
+ const fb=Math.abs(dl%1)<0.001?1:Math.abs((dl%1)-0.5)<0.001?-1:0;
+ const verdict=coh?(fb===1?"BRIGHT (constructive)":fb===-1?"DARK (destructive)":"beech ka (partial)"):"KOI STABLE PATTERN NAHI";
+ txt(c,"intensity ∝ amplitude²",700,158,DM,"12px 'Cascadia Code',monospace");
+ document.getElementById("r1").innerHTML=coh?
+  "Δ = <span class='hl'>"+dl.toFixed(3)+"λ</span> → phase = 2πΔ/λ = <span class='hl'>"+(phi/Math.PI).toFixed(2)+"π rad</span> | relative intensity = <span class='hl'>"+(I*100).toFixed(0)+"%</span> (I_max = 4I₀) → <span class='hl'>"+verdict+"</span>":
+  "INCOHERENT: phase difference har ~10⁻⁸ s me RANDOM badalta hai → average intensity = <span class='hl'>2I₀ uniform</span> everywhere → <span class='hl'>koi fringes NAHI!</span> Isliye YDSE me EK hi source se do slits banate hain.";
+}
+cohBtn.onclick=()=>{coh=!coh;cohBtn.textContent=coh?"Sources: COHERENT ✓":"Sources: INCOHERENT (2 bulbs) ✗";draw(0);};
+sD.addEventListener("input",()=>{if(!coh){coh=true;cohBtn.textContent="Sources: COHERENT ✓";}draw(0);});
+anims[1]=draw;
+return function(){draw(0);};
+})();
+function wvRGB(l){
+ let r=0,g=0,b=0;
+ if(l<440){r=(440-l)/60;b=1;}
+ else if(l<490){g=(l-440)/50;b=1;}
+ else if(l<510){g=1;b=(510-l)/20;}
+ else if(l<580){r=(l-510)/70;g=1;}
+ else if(l<645){r=1;g=(645-l)/65;}
+ else{r=1;}
+ return [Math.round(r*255),Math.round(g*255),Math.round(b*255)];
+}
+inits[2]=(()=>{
+const c=ctx("cv2");
+const sL=document.getElementById("yL"),sd=document.getElementById("yd"),sD=document.getElementById("yD");
+function draw(t){
+ const lam=parseFloat(sL.value),dmm=parseFloat(sd.value),D=parseFloat(sD.value);
+ document.getElementById("vlyL").textContent=lam+" nm";
+ document.getElementById("vlyd").textContent=dmm.toFixed(2)+" mm";
+ document.getElementById("vlyD").textContent=D.toFixed(1)+" m";
+ const lamM=lam*1e-9,dM=dmm*1e-3;
+ const beta=lamM*D/dM,betaMM=beta*1000;
+ c.clearRect(0,0,920,330);
+ // schematic
+ const sx=120;
+ c.fillStyle=CY;c.beginPath();c.arc(sx,80,6,0,7);c.fill();
+ txt(c,"S",sx-4,62,CY,"bold 13px 'Cascadia Code',monospace");
+ txt(c,"(single source)",sx-45,105,DM,"11px 'Cascadia Code',monospace");
+ const bx=280;
+ c.strokeStyle=DM;c.lineWidth=3;
+ c.beginPath();c.moveTo(bx,40);c.lineTo(bx,70);c.stroke();
+ c.beginPath();c.moveTo(bx,90);c.lineTo(bx,120);c.stroke();
+ txt(c,"S1",bx+10,68,MG,"12px 'Cascadia Code',monospace");
+ txt(c,"S2",bx+10,100,MG,"12px 'Cascadia Code',monospace");
+ txt(c,"d = "+dmm.toFixed(2)+" mm",bx-30,135,DM,"12px 'Cascadia Code',monospace");
+ c.globalAlpha=0.5;c.strokeStyle=CY;c.lineWidth=1;
+ c.beginPath();c.moveTo(sx+6,80);c.lineTo(bx,75);c.stroke();
+ c.beginPath();c.moveTo(sx+6,80);c.lineTo(bx,105);c.stroke();
+ c.strokeStyle=MG;
+ c.beginPath();c.moveTo(bx,75);c.lineTo(470,55);c.stroke();
+ c.beginPath();c.moveTo(bx,105);c.lineTo(470,105);c.stroke();
+ c.globalAlpha=1;
+ c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.moveTo(470,40);c.lineTo(470,125);c.stroke();
+ txt(c,"screen",436,137,YL,"12px 'Cascadia Code',monospace");
+ txt(c,"D = "+D.toFixed(1)+" m",330,152,DM,"12px 'Cascadia Code',monospace");
+ txt(c,"dono slits EK hi source se → phase LOCKED (coherent!)",560,60,"#aab4d8","12px 'Cascadia Code',monospace");
+ txt(c,"β = λD/d = "+betaMM.toFixed(2)+" mm",560,80,YL,"bold 13px 'Cascadia Code',monospace");
+ // fringe screen
+ const win=0.025,fs=beta/6;
+ const [rr,gg,bb]=wvRGB(lam);
+ for(let px=40;px<900;px++){
+  const y=(px-470)/430*win;
+  const I=Math.cos(Math.PI*dM*y/(lamM*D));const I2=I*I;
+  c.fillStyle="rgba("+rr+","+gg+","+bb+","+I2.toFixed(3)+")";
+  c.fillRect(px,172,1,108);
+ }
+ c.strokeStyle="#3d4470";c.lineWidth=1;c.strokeRect(40,172,860,108);
+ c.strokeStyle=YL;c.lineWidth=1.5;c.beginPath();c.moveTo(470,172);c.lineTo(470,280);c.stroke();
+ txt(c,"central BRIGHT (m=0)",470,168,YL,"11px 'Cascadia Code',monospace","center");
+ if(fs<210){
+  c.strokeStyle="#ffffff66";c.setLineDash([4,4]);
+  c.beginPath();c.moveTo(470+fs,172);c.lineTo(470+fs,280);c.stroke();
+  c.beginPath();c.moveTo(470+fs*2,172);c.lineTo(470+fs*2,280);c.stroke();
+  c.setLineDash([]);
+  c.strokeStyle=GR;c.lineWidth=2;
+  c.beginPath();c.moveTo(470,296);c.lineTo(470+fs,296);c.stroke();
+  c.beginPath();c.moveTo(470,290);c.lineTo(470,302);c.stroke();
+  c.beginPath();c.moveTo(470+fs,290);c.lineTo(470+fs,302);c.stroke();
+  txt(c,"β = "+betaMM.toFixed(2)+" mm",470+fs/2,314,GR,"bold 12px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"(screen view ~±2.5 cm, fringes stretched for visibility)",470,327,DM,"11px 'Cascadia Code',monospace","center");
+ document.getElementById("r2").innerHTML="β = λD/d = ("+lam+"×10⁻⁹ × "+D.toFixed(1)+") / ("+dmm.toFixed(2)+"×10⁻³) = <span class='hl'>"+betaMM.toFixed(2)+" mm</span> | bright y = mβ: y₁ = <span class='hl'>"+betaMM.toFixed(2)+" mm</span>, y₂ = "+(2*betaMM).toFixed(2)+" mm | dark y = (m+½)β: pehli dark <span class='hl'>"+(betaMM/2).toFixed(2)+" mm</span> pe";
+}
+[sL,sd,sD].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3");
+const sA=document.getElementById("dA"),sL=document.getElementById("dL");
+function draw(t){
+ const amm=parseFloat(sA.value),lam=parseFloat(sL.value);
+ document.getElementById("vldA").textContent=amm.toFixed(2)+" mm";
+ document.getElementById("vldL").textContent=lam+" nm";
+ const aM=amm*1e-3,lamM=lam*1e-9,D=1;
+ const ratio=lamM/aM;
+ const th1=Math.asin(Math.min(ratio,1));
+ const y1=D*Math.tan(th1),wCentral=2*y1*1000;
+ c.clearRect(0,0,920,330);
+ // slit diagram
+ c.strokeStyle=DM;c.lineWidth=3;
+ c.beginPath();c.moveTo(120,40);c.lineTo(120,72);c.stroke();
+ c.beginPath();c.moveTo(120,88);c.lineTo(120,120);c.stroke();
+ txt(c,"slit",86,50,DM,"12px 'Cascadia Code',monospace");
+ txt(c,"width a",72,132,DM,"12px 'Cascadia Code',monospace");
+ c.strokeStyle=CY;c.lineWidth=1;
+ for(let k=0;k<5;k++){c.globalAlpha=0.35;c.beginPath();c.moveTo(30,80);c.lineTo(120,64+k*8);c.stroke();}
+ c.globalAlpha=1;
+ c.strokeStyle=MG;
+ c.beginPath();c.moveTo(120,80);c.lineTo(420,80);c.stroke();
+ c.beginPath();c.moveTo(120,80);c.lineTo(420,80-Math.tan(th1)*300);c.stroke();
+ c.beginPath();c.moveTo(120,80);c.lineTo(420,80+Math.tan(th1)*300);c.stroke();
+ txt(c,"θ₁",432-Math.tan(th1)*300*0.5,60,YL,"bold 12px 'Cascadia Code',monospace");
+ c.strokeStyle=YL;c.lineWidth=2;c.beginPath();c.moveTo(420,25);c.lineTo(420,135);c.stroke();
+ txt(c,"screen",392,148,YL,"12px 'Cascadia Code',monospace");
+ txt(c,"light slit ke ANDAR se interfere → PHAIL jaati hai",520,50,"#aab4d8","12px 'Cascadia Code',monospace");
+ txt(c,"(slit width exaggerated; D = 1 m)",520,68,DM,"11px 'Cascadia Code',monospace");
+ // intensity pattern
+ const win=0.045;
+ const [rr,gg,bb]=wvRGB(lam);
+ for(let px=40;px<900;px++){
+  const y=(px-470)/430*win;
+  const al=Math.PI*aM*y/(lamM*Math.sqrt(D*D+y*y));
+  const s=Math.abs(al)<1e-9?1:Math.sin(al)/al;
+  const I=Math.pow(s,4);
+  c.fillStyle="rgba("+rr+","+gg+","+bb+","+I.toFixed(3)+")";
+  c.fillRect(px,172,1,108);
+ }
+ c.strokeStyle="#3d4470";c.lineWidth=1;c.strokeRect(40,172,860,108);
+ c.strokeStyle=YL;c.lineWidth=1.5;c.beginPath();c.moveTo(470,172);c.lineTo(470,280);c.stroke();
+ const y1px=y1/win*430;
+ if(y1px<425){
+  c.strokeStyle="#ffffff66";c.setLineDash([4,4]);
+  c.beginPath();c.moveTo(470-y1px,172);c.lineTo(470-y1px,280);c.stroke();
+  c.beginPath();c.moveTo(470+y1px,172);c.lineTo(470+y1px,280);c.stroke();
+  c.setLineDash([]);
+  if(2*y1px>60){
+   c.strokeStyle=GR;c.lineWidth=2;
+   c.beginPath();c.moveTo(470-y1px,296);c.lineTo(470+y1px,296);c.stroke();
+   c.beginPath();c.moveTo(470-y1px,290);c.lineTo(470-y1px,302);c.stroke();
+   c.beginPath();c.moveTo(470+y1px,290);c.lineTo(470+y1px,302);c.stroke();
+   txt(c,"central width = 2Dλ/a = "+wCentral.toFixed(1)+" mm",470,314,GR,"bold 12px 'Cascadia Code',monospace","center");
+  }else{
+   txt(c,"central width = 2Dλ/a = "+wCentral.toFixed(1)+" mm (bahut narrow!)",470,314,GR,"bold 12px 'Cascadia Code',monospace","center");
+  }
+ }
+ txt(c,"(screen view ~±4.5 cm; D = 1 m fixed)",470,327,DM,"11px 'Cascadia Code',monospace","center");
+ document.getElementById("r3").innerHTML="first minimum: a sinθ = λ → sinθ₁ = λ/a = <span class='hl'>"+ratio.toExponential(2)+"</span> → θ₁ = <span class='hl'>"+(th1*180/Math.PI).toFixed(2)+"°</span> | central width ≈ 2Dλ/a = <span class='hl'>"+wCentral.toFixed(1)+" mm</span> | side maxima ~half width, bahut weak"+(amm<=0.04?" | a chhota → spread ZYADA dekho!":"");
+}
+[sA,sL].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[4]=(()=>{
+const QS=[
+ {q:"YDSE me fringe width β ka formula kya hai?",o:["β = λd/D","β = λD/d","β = dD/λ","β = λ/(Dd)"],a:1,w:"β = λD/d - λ aur D numerator me (badhao to fringes WIDER), d denominator me (badhao to NARROWER)."},
+ {q:"Slit separation d ko DOUBLE kar dene se fringes ka kya hoga?",o:["β double ho jaayega","β same rahega","β HALF ho jaayega - fringes paas paas","β 4 guna"],a:2,w:"β ∝ 1/d - d DOUBLE → β HALF! Sabse common trap: log ulta sochte hain."},
+ {q:"Do independent bulbs se stable interference fringes kyun NAHI banti?",o:["Unka phase difference STABLE nahi rehta (coherence zero)","Bulbs bahut dim hote hain","Fringe width zero ho jaati hai","Screen bahut door hoti hai"],a:0,w:"Stable fringes ke liye COHERENT sources chahiye - same frequency + constant phase difference. Independent bulbs ka phase har ~10⁻⁸ s me random badalta hai → pattern wash out. Isliye YDSE me EK source + do slits!"},
+ {q:"Single slit diffraction me FIRST minimum kab milta hai?",o:["a sinθ = λ/2 pe","a sinθ = λ pe","a sinθ = 2λ pe","a sinθ = 3λ/2 pe"],a:1,w:"First minima: a sinθ = ±λ. Central maximum isi wajah se ~2λ/a angular width ka - side bands se DOUBLE chauda."},
+ {q:"Light ek medium se doosre me jaaye to kya SAME rehta hai?",o:["Frequency badalti hai, wavelength same","Speed aur wavelength dono same","Frequency aur wavelength dono badalte hain","Frequency SAME, speed aur wavelength BADALTE hain"],a:3,w:"Frequency source set karta hai - boundary pe CHANGE nahi hoti! v = c/n aur λₙ = λ/n dono badalte hain. Yahi wajah hai ki wavefronts MUDTE hain (Snell's law)."}
+];
+let qi=0,score=0;
+const box=document.getElementById("quizBox");
+function render(){
+ if(qi>=QS.length){
+  const msg=score===5?"PERFECT! WAVE OPTICS PAKKA! 🏆":score>=3?"Badhiya! "+score+"/5 - recap scene se weak topics revise kar":"Arre "+score+"/5 - scenes dobara dekh, phir try kar!";
+  box.innerHTML="<div style='text-align:center;padding:30px'><div style='font-size:42px;font-weight:700;color:"+(score>=3?GR:RD)+"'>"+score+"/5</div><p style='margin:14px 0;font-size:17px'>"+msg+"</p><button id='qRe'>↺ Phir Se Try Kar</button></div>";
+  document.getElementById("qRe").onclick=()=>{qi=0;score=0;render();};
+  return;
+ }
+ const Q=QS[qi];
+ box.innerHTML="<div style='margin-bottom:6px;color:#5b6488;font-size:13px'>Sawaal "+(qi+1)+"/5 - score: "+score+"</div><h3 style='margin-bottom:12px'>"+Q.q+"</h3>"+Q.o.map((o,i)=>"<button class='qopt' data-i='"+i+"' style='display:block;width:100%;text-align:left;margin:7px 0;padding:11px 14px'>"+o+"</button>").join("")+"<div id='qFb' style='display:none;margin-top:10px'></div>";
+ box.querySelectorAll(".qopt").forEach(b=>b.onclick=()=>{
+  const i=parseInt(b.dataset.i),Q=QS[qi];
+  box.querySelectorAll(".qopt").forEach(x=>{x.disabled=true;if(parseInt(x.dataset.i)===Q.a)x.style.borderColor=GR;});
+  if(i!==Q.a)b.style.borderColor=RD;
+  if(i===Q.a)score++;
+  const fb=document.getElementById("qFb");fb.style.display="block";
+  fb.innerHTML=(i===Q.a?"<span style='color:"+GR+"'>Sahi! ✓</span> ":"<span style='color:"+RD+"'>Galat ✗</span> ")+Q.w;
+  const nb=document.createElement("button");nb.textContent=qi<QS.length-1?"Agla →":"Score dekho →";nb.style.marginTop="10px";nb.onclick=()=>{qi++;render();};fb.appendChild(nb);});
+ }
+ return function(){qi=0;score=0;render();};
+})();
+inits[5]=function(){};
+go(0);
+</script>
+</body>
+</html>
