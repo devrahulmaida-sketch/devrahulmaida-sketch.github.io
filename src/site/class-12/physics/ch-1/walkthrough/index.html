@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electric Charges and Fields - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 1 - Electric Charges and Fields</div>
+<h1>Electric Charges Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - Coulomb force lab, electric field lab, dipole lab, Gauss law lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Coulomb's Law - Charges Ke Beech Ka Force ⭐</h2>
+<p class="why">Do point charges ke beech force F = kq₁q₂/r², k = 9×10⁹ N·m²/C². LIKE charges REPEL (door dhakka), UNLIKE charges ATTRACT. INVERSE SQUARE: distance DOUBLE → force 1/4! Charge bhi quantized hai (q = ±ne) aur conserved - na banta hai, na destroy hota hai, sirf transfer. Medium me force F_air/K se ghat jaata hai (K = dielectric constant).</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>charge q₁ (µC)</label><input type="range" id="cQ1" min="-5" max="5" step="1" value="2"><span class="v" id="vlcQ1">+2 µC</span></div>
+<div class="slrow"><label>charge q₂ (µC)</label><input type="range" id="cQ2" min="-5" max="5" step="1" value="3"><span class="v" id="vlcQ2">+3 µC</span></div>
+<div class="slrow"><label>distance r (m)</label><input type="range" id="cR" min="0.1" max="1" step="0.05" value="0.5"><span class="v" id="vlcR">0.50 m</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Electric Field - Charge Ka Influence Zone ⭐</h2>
+<p class="why">Electric field E = F/q₀ - kisi point pe +1 C test charge pe lagne wala force. Point charge ka field E = kQ/r², +Q se radially OUTWARD, −Q me INWARD. Field lines ke RULES: (1) + se shuru, − pe khatam; (2) KABHI intersect nahi karti (ek point pe field ki do direction ho hi nahi sakti!); (3) jitni dense, utna strong field; (4) conductor surface pe perpendicular. Slider ghumao - Q aur distance dono ka effect dekho!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="slrow"><label>source charge Q (µC)</label><input type="range" id="eQ" min="-10" max="10" step="1" value="5"><span class="v" id="vleQ">+5 µC</span></div>
+<div class="slrow"><label>probe distance r (m)</label><input type="range" id="eR" min="0.2" max="2" step="0.1" value="1"><span class="v" id="vleR">1.0 m</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Electric Dipole - Do Charges Ki Jodi ⭐</h2>
+<p class="why">Dipole = −q aur +q chhoti distance 2a pe; dipole moment p = q×2a (direction − se + ki taraf). FAR FIELD me: AXIAL line pe E = 2kp/r³, EQUATORIAL pe E = kp/r³ (direction p ke OPPOSITE) - axial EXACTLY DOUBLE, dono 1/r³ se girti hain (point charge 1/r² se zyada tez!). Uniform field E me dipole pe torque τ = pE sinθ: θ=0 pe ZERO (stable), θ=90° pe MAX. Potential energy U = −pE cosθ: θ=0 pe minimum (−pE), θ=180° pe max.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>probe distance r (× a)</label><input type="range" id="dR" min="2" max="20" step="1" value="10"><span class="v" id="vldR">10a</span></div>
+<div class="slrow"><label>uniform field me dipole angle θ</label><input type="range" id="dT" min="0" max="180" step="15" value="60"><span class="v" id="vldT">60°</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Gauss's Law - Symmetry Ka Jaadu ⭐⭐</h2>
+<p class="why">Flux Φ = EA cosθ = kitni field lines surface se guzri. GAUSS'S LAW: kisi bhi CLOSED surface se total flux = q_andar/ε₀ - surface ki SHAPE matter nahi karti, sirf andar ka charge! Teen star results: INFINITE LINE charge → E = λ/(2πε₀r) (1/r se girta); INFINITE SHEET → E = σ/(2ε₀) - distance se INDEPENDENT!; SPHERICAL SHELL → bahar E = kQ/r² (saara charge center jaisa), ANDAR E = 0 (shell theorem!). Ye 4 results 90% Gauss questions solve kar dete hain.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="gL">Infinite Line</button><button id="gP">Infinite Sheet</button><button id="gS">Spherical Shell</button></div>
+<div class="slrow"><label>probe distance r (m)</label><input type="range" id="gR" min="0.2" max="3" step="0.1" value="1"><span class="v" id="vlgR">1.0 m</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Charges Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: q = ±ne (fractional NAHI!), r double → force 1/4, field lines KABHI intersect nahi karti, dipole axial = 2 × equatorial (far field), sheet ka E constant σ/2ε₀, shell ke ANDAR E = 0!</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Charge Properties ⭐</h3><p>Like repel, unlike attract | Quantization: q = ±ne, e = 1.6×10⁻¹⁹ C | Conservation: total charge fixed, sirf transfer | Additivity: algebraic sum | Conductors: free electrons; insulators: charge chipka rehta hai</p></div>
+<div class="rcard"><h3>Coulomb's Law ⭐</h3><p>F = kq₁q₂/r², k = 1/(4πε₀) = 9×10⁹ | Line joining charges ke along; same sign repel | r double → F = 1/4 | Medium me F_medium = F_air/K | Sirf point charges ke liye exact</p></div>
+<div class="rcard"><h3>Superposition ⭐</h3><p>Net force = har charge ke force ka VECTOR sum | Pair ka force baaki charges se affect NAHI hota | Components todke add karo | Symmetry me components cancel - pehle dekh lo! | Sirf magnitude add karna = classic GALTI</p></div>
+<div class="rcard"><h3>Field + Lines ⭐</h3><p>E = F/q₀; point charge E = kQ/r² | +Q se outward, −Q me inward | Lines + se −, KABHI intersect nahi | Dense = strong | Conductor surface pe perpendicular | Uniform field: parallel equally spaced</p></div>
+<div class="rcard"><h3>Dipole ⭐</h3><p>p = q×2a (− se +) | Axial: E = 2kp/r³ | Equatorial: E = kp/r³, p ke OPPOSITE - axial DOUBLE | τ = pE sinθ (θ=90 max) | U = −pE cosθ (θ=0 stable, −pE)</p></div>
+<div class="rcard"><h3>Gauss's Law ⭐⭐</h3><p>Φ = EA cosθ; closed surface flux = q_andar/ε₀ | Line: E = λ/(2πε₀r) ∝ 1/r | Sheet: E = σ/(2ε₀) CONSTANT | Shell bahar: kQ/r²; ANDAR: ZERO | Shape matter nahi, sirf q_andar</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 1 Electric Charges and Fields Visual Walkthrough</div>
+</div>
+<script>
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+inits[0]=(()=>{
+const c=ctx("cv0");
+const s1=document.getElementById("cQ1"),s2=document.getElementById("cQ2"),sR=document.getElementById("cR");
+function draw(t){
+ const q1=parseFloat(s1.value),q2=parseFloat(s2.value),r=parseFloat(sR.value);
+ document.getElementById("vlcQ1").textContent=(q1>0?"+":"")+s1.value+" µC";
+ document.getElementById("vlcQ2").textContent=(q2>0?"+":"")+s2.value+" µC";
+ document.getElementById("vlcR").textContent=r.toFixed(2)+" m";
+ const F=9e-3*Math.abs(q1*q2)/(r*r);
+ const att=(q1*q2)<0;
+ c.clearRect(0,0,920,330);
+ const sc=400,midx=460,cy=165;
+ const x1=midx-r*sc/2,x2=midx+r*sc/2;
+ c.setLineDash([4,6]);c.strokeStyle="#3d4470";c.lineWidth=1.5;
+ c.beginPath();c.moveTo(x1,cy+52);c.lineTo(x2,cy+52);c.stroke();c.setLineDash([]);
+ txt(c,"r = "+r.toFixed(2)+" m",midx,cy+72,DM,"13px 'Cascadia Code',monospace","center");
+ txt(c,"q₁",x1,cy-52,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"q₂",x2,cy-52,MG,"bold 13px 'Cascadia Code',monospace","center");
+ [[x1,q1,CY],[x2,q2,MG]].forEach(([x,q,col])=>{
+  c.fillStyle=q===0?"#2a2a44":(q>0?col:"#f472b6");
+  c.beginPath();c.arc(x,cy,24,0,7);c.fill();
+  txt(c,q===0?"0":(q>0?"+":"−"),x,cy+6,"#05050c","bold 22px 'Cascadia Code',monospace","center");
+ });
+ if(F>0){
+  const al=Math.max(26,Math.min(110,F*420));
+  const d1=att?1:-1,d2=att?-1:1;
+  arrow2(c,x1+d1*30,cy,x1+d1*(30+al),cy,att?YL:GR,4);
+  arrow2(c,x2+d2*30,cy,x2+d2*(30+al),cy,att?YL:GR,4);
+  txt(c,"F",x1+d1*(30+al)-14,cy-12,att?YL:GR,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"F",x2+d2*(30+al)+14,cy-12,att?YL:GR,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,att?"ATTRACT (opposite signs)":"REPEL (same signs)",midx,cy-90,att?YL:GR,"bold 15px 'Cascadia Code',monospace","center");
+ }else{
+  txt(c,"koi charge ZERO - force nahi!",midx,cy-90,DM,"bold 15px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"INVERSE SQUARE: r ko DOUBLE karo → force 1/4!",midx,26,"#aab4d8","12px 'Cascadia Code',monospace","center");
+ txt(c,"F = kq₁q₂/r²,  k = 9×10⁹",60,26,DM,"12px 'Cascadia Code',monospace");
+ const F2=9e-3*Math.abs(q1*q2)/((2*r)*(2*r));
+ const Fstr=F>=1?F.toFixed(2)+" N":(F*1000).toFixed(1)+" mN";
+ document.getElementById("r0").innerHTML="F = kq₁q₂/r² = (9×10⁹ × "+s1.value+"µ × "+s2.value+"µ)/(" +r.toFixed(2)+")² = <span class='hl'>"+Fstr+"</span> | direction: <span class='hl'>"+(F===0?"koi force nahi (q=0)":att?"ATTRACT":"REPEL")+"</span> | r DOUBLE ("+(2*r).toFixed(2)+" m) pe force sirf <span class='hl'>"+(F2>=1?F2.toFixed(2)+" N":(F2*1000).toFixed(1)+" mN")+"</span> (1/4!)"+(q1!==0&&q2!==0?"":" | charge hamesha ±ne ka INTEGER multiple hota hai");
+}
+[s1,s2,sR].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1");
+const sQ=document.getElementById("eQ"),sR=document.getElementById("eR");
+function draw(t){
+ const Q=parseFloat(sQ.value),r=parseFloat(sR.value);
+ document.getElementById("vleQ").textContent=(Q>0?"+":"")+sQ.value+" µC";
+ document.getElementById("vleR").textContent=r.toFixed(1)+" m";
+ const E=9e3*Math.abs(Q)/(r*r);
+ c.clearRect(0,0,920,330);
+ const cx=330,cy=165;
+ const n=16;
+ for(let i=0;i<n;i++){
+  const a=i*Math.PI*2/n;
+  const dx=Math.cos(a),dy=Math.sin(a);
+  const alpha=0.25+0.75*Math.abs(Q)/10;
+  c.globalAlpha=Q===0?0.15:alpha;
+  const col=Q<0?MG:CY;
+  if(Q===0){
+   c.strokeStyle="#3d4470";c.lineWidth=1;
+   c.beginPath();c.moveTo(cx+dx*34,cy+dy*34);c.lineTo(cx+dx*120,cy+dy*120);c.stroke();
+  }else if(Q>0){
+   arrow2(c,cx+dx*34,cy+dy*34,cx+dx*120,cy+dy*120,col,2);
+  }else{
+   arrow2(c,cx+dx*120,cy+dy*120,cx+dx*34,cy+dy*34,col,2);
+  }
+ }
+ c.globalAlpha=1;
+ c.fillStyle=Q===0?"#2a2a44":(Q>0?CY:"#f472b6");
+ c.beginPath();c.arc(cx,cy,28,0,7);c.fill();
+ txt(c,Q===0?"0":(Q>0?"+":"−"),cx,cy+7,"#05050c","bold 26px 'Cascadia Code',monospace","center");
+ txt(c,"Q",cx,cy-42,CY,"bold 13px 'Cascadia Code',monospace","center");
+ const px=cx+r*130,py=cy;
+ if(px<900){
+  c.setLineDash([4,6]);c.strokeStyle="#3d4470";c.lineWidth=1.5;
+  c.beginPath();c.moveTo(cx+28,cy+44);c.lineTo(px,cy+44);c.stroke();c.setLineDash([]);
+  txt(c,"r = "+r.toFixed(1)+" m",(cx+28+px)/2,cy+62,DM,"12px 'Cascadia Code',monospace","center");
+  c.fillStyle=YL;c.beginPath();c.arc(px,py,9,0,7);c.fill();
+  txt(c,"q₀ (+)",px,py+26,YL,"11px 'Cascadia Code',monospace","center");
+  if(E>0){
+   const dir=Q>=0?1:-1;
+   const el=Math.max(24,Math.min(90,E/2500));
+   arrow2(c,px+dir*12,py,px+dir*(12+el),py,YL,4);
+   txt(c,"E",px+dir*(12+el)+10,py-12,YL,"bold 14px 'Cascadia Code',monospace","center");
+  }
+ }
+ txt(c,"FIELD LINE RULES",700,54,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"+ se shuru, − pe khatam",700,84,DM,"12px 'Cascadia Code',monospace","center");
+ txt(c,"KABHI intersect nahi karti",700,110,DM,"12px 'Cascadia Code',monospace","center");
+ txt(c,"dense lines = strong field",700,136,DM,"12px 'Cascadia Code',monospace","center");
+ txt(c,"conductor pe perpendicular",700,162,DM,"12px 'Cascadia Code',monospace","center");
+ txt(c,"E = kQ/r²  (1/r² se girta)",700,208,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"r double → E = 1/4",700,232,DM,"12px 'Cascadia Code',monospace","center");
+ let Estr;
+ if(E===0)Estr="0 (Q=0 pe field nahi)";
+ else if(E>=1e5)Estr=(E/1e5).toFixed(2)+"×10⁵ N/C";
+ else if(E>=1e3)Estr=(E/1e3).toFixed(1)+"×10³ N/C";
+ else Estr=E.toFixed(0)+" N/C";
+ document.getElementById("r1").innerHTML="E = kQ/r² = (9×10⁹ × "+sQ.value+"µ)/("+r.toFixed(1)+")² = <span class='hl'>"+Estr+"</span> | direction: <span class='hl'>"+(Q===0?"koi field nahi":Q>0?"radially OUTWARD (+ se door)":"radially INWARD (− ki taraf)")+"</span> | test charge q₀ pe force F = q₀E | field SOURCE pe depend karta hai, test charge pe nahi!";
+}
+[sQ,sR].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2");
+const sR=document.getElementById("dR"),sT=document.getElementById("dT");
+function draw(t){
+ const r=parseFloat(sR.value),th=parseFloat(sT.value);
+ document.getElementById("vldR").textContent=sR.value+"a";
+ document.getElementById("vldT").textContent=sT.value+"°";
+ c.clearRect(0,0,920,330);
+ txt(c,"DIPOLE FIELD (far field r >> a)",230,26,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"UNIFORM E ME TORQUE + ENERGY",740,26,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ const dcx=210,dcy=175,hs=30;
+ c.setLineDash([3,5]);c.strokeStyle="#3d4470";c.lineWidth=1;
+ c.beginPath();c.moveTo(dcx,dcy-110);c.lineTo(dcx,dcy+110);c.stroke();
+ c.beginPath();c.moveTo(dcx-90,dcy);c.lineTo(dcx+420,dcy);c.stroke();c.setLineDash([]);
+ txt(c,"equatorial line",dcx+4,dcy-96,DM,"10px 'Cascadia Code',monospace");
+ txt(c,"axial line",dcx+330,dcy-10,DM,"10px 'Cascadia Code',monospace","center");
+ const qm=[dcx-hs,dcy],qp=[dcx+hs,dcy];
+ arrow2(c,qm[0]-6,qm[1],qp[0]+6,qp[1],GR,3);
+ txt(c,"p",(dcx+6)/2+dcx/2,dcy+16,GR,"bold 12px 'Cascadia Code',monospace","center");
+ c.fillStyle="#f472b6";c.beginPath();c.arc(qm[0],qm[1],16,0,7);c.fill();
+ txt(c,"−",qm[0],qm[1]+6,"#05050c","bold 18px 'Cascadia Code',monospace","center");
+ c.fillStyle=CY;c.beginPath();c.arc(qp[0],qp[1],16,0,7);c.fill();
+ txt(c,"+",qp[0],qp[1]+6,"#05050c","bold 18px 'Cascadia Code',monospace","center");
+ txt(c,"2a",dcx,dcy+30,DM,"11px 'Cascadia Code',monospace","center");
+ const axx=dcx+r*16;
+ if(axx<640){
+  c.fillStyle=YL;c.beginPath();c.arc(axx,dcy,7,0,7);c.fill();
+  const Ea=2/(r*r*r);
+  const al=Math.max(14,Math.min(60,Ea*220));
+  arrow2(c,axx+9,dcy,axx+9+al,dcy,YL,3);
+  txt(c,"E_axial → (p ki direction)",axx,dcy+24,YL,"10px 'Cascadia Code',monospace","center");
+  txt(c,"r",axx-14,dcy-14,DM,"10px 'Cascadia Code',monospace","center");
+ }
+ const eqy=dcy-r*7;
+ if(eqy>40){
+  c.fillStyle=YL;c.beginPath();c.arc(dcx,eqy,7,0,7);c.fill();
+  const Ee=1/(r*r*r);
+  const el=Math.max(14,Math.min(60,Ee*220));
+  arrow2(c,dcx+9,eqy,dcx+9+el,eqy,MG,3);
+  txt(c,"E_eq ← (p ke OPPOSITE)",dcx+150,eqy+4,MG,"10px 'Cascadia Code',monospace","center");
+ }
+ const Eax=2/(r*r*r),Eeq=1/(r*r*r);
+ for(let yy=64;yy<=290;yy+=56){arrow2(c,652,yy,886,yy,"#3d55c8",2.5);}
+ txt(c,"E (uniform) →",880,46,CY,"12px 'Cascadia Code',monospace","center");
+ const tx=760,ty=175,pl=62;
+ const rad=th*Math.PI/180;
+ const hx=tx+pl*Math.cos(rad),hy=ty-pl*Math.sin(rad);
+ const tlx=tx-pl*Math.cos(rad),tly=ty+pl*Math.sin(rad);
+ arrow2(c,tlx,tly,hx,hy,GR,3.5);
+ c.fillStyle="#f472b6";c.beginPath();c.arc(tlx,tly,13,0,7);c.fill();
+ txt(c,"−",tlx,tly+5,"#05050c","bold 15px 'Cascadia Code',monospace","center");
+ c.fillStyle=CY;c.beginPath();c.arc(hx,hy,13,0,7);c.fill();
+ txt(c,"+",hx,hy+5,"#05050c","bold 15px 'Cascadia Code',monospace","center");
+ c.setLineDash([4,6]);c.strokeStyle=DM;c.lineWidth=1;
+ c.beginPath();c.moveTo(tx,ty);c.lineTo(tx+pl+24,ty);c.stroke();c.setLineDash([]);
+ if(th>0){
+  c.strokeStyle=YL;c.lineWidth=2;
+  c.beginPath();c.arc(tx,ty,34,-rad,0);c.stroke();
+  txt(c,"θ="+th+"°",tx+52,ty-24,YL,"bold 12px 'Cascadia Code',monospace");
+ }
+ const tau=Math.sin(rad),U=-Math.cos(rad);
+ txt(c,"τ = pE sinθ = "+tau.toFixed(2)+" pE"+(th===0?" (ZERO - stable!)":th===90?" (MAX!)":th===180?" (zero - UNSTABLE)":""),tx,ty+110,tau>0.9?YL:"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"U = −pE cosθ = "+U.toFixed(2)+" pE"+(th===0?" (minimum - stable)":th===180?" (maximum)":""),tx,ty+134,DM,"12px 'Cascadia Code',monospace","center");
+ document.getElementById("r2").innerHTML="r = "+sR.value+"a pe: E_axial = 2kp/r³ = <span class='hl'>"+Eax.toFixed(4)+" × (kp/a³)</span> | E_equatorial = kp/r³ = <span class='hl'>"+Eeq.toFixed(4)+" × (kp/a³)</span> | axial/equatorial = <span class='hl'>EXACTLY 2</span> | dono 1/r³ (point charge ke 1/r² se TEZ girti hai) | θ="+th+"° pe τ = <span class='hl'>"+tau.toFixed(2)+" pE</span>, U = <span class='hl'>"+U.toFixed(2)+" pE</span>";
+}
+[sR,sT].forEach(s=>s.addEventListener("input",()=>draw(0)));
+return function(){draw(0);};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3");
+const sR=document.getElementById("gR");
+const btns={L:document.getElementById("gL"),P:document.getElementById("gP"),S:document.getElementById("gS")};
+let mode="L";
+const EP=8.854e-12;
+function Eval(m,r){
+ if(m==="L")return 1e-6/(2*Math.PI*EP*r);
+ if(m==="P")return 1e-6/(2*EP);
+ if(r<1)return 0;
+ return 9e9*1e-6/(r*r);
+}
+function Emax(m){return m==="S"?9e3:Eval(m,0.2);}
+function fmtE(E){
+ if(E>=1e4)return (E/1e4).toFixed(2)+"×10⁴ N/C";
+ if(E>=1e3)return (E/1e3).toFixed(2)+"×10³ N/C";
+ return E.toFixed(0)+" N/C";
+}
+function draw(t){
+ const r=parseFloat(sR.value);
+ document.getElementById("vlgR").textContent=r.toFixed(1)+" m";
+ c.clearRect(0,0,920,330);
+ for(const k in btns){btns[k].style.background=k===mode?"#1d2a55":"#12122a";btns[k].style.color=k===mode?CY:"#aab4d8";}
+ const cx=190,cy=90;
+ const sc=80;
+ const px=cx+r*sc;
+ if(mode==="L"){
+  c.strokeStyle=MG;c.lineWidth=4;
+  c.beginPath();c.moveTo(cx,28);c.lineTo(cx,152);c.stroke();
+  for(let yy=34;yy<150;yy+=18){txt(c,"+",cx,yy+4,MG,"10px 'Cascadia Code',monospace","center");}
+  txt(c,"λ = 1 µC/m",cx,168,MG,"11px 'Cascadia Code',monospace","center");
+ }else if(mode==="P"){
+  c.strokeStyle=MG;c.lineWidth=5;
+  c.beginPath();c.moveTo(cx,28);c.lineTo(cx,152);c.stroke();
+  c.lineWidth=1;c.strokeStyle="#5a2a66";
+  for(let yy=32;yy<150;yy+=10){c.beginPath();c.moveTo(cx-8,yy+8);c.lineTo(cx+8,yy);c.stroke();}
+  txt(c,"σ = 1 µC/m²",cx,168,MG,"11px 'Cascadia Code',monospace","center");
+ }else{
+  c.strokeStyle=CY;c.lineWidth=3;
+  c.beginPath();c.arc(cx,cy,sc,0,7);c.stroke();
+  c.fillStyle="rgba(34,211,238,0.08)";
+  c.beginPath();c.arc(cx,cy,sc,0,7);c.fill();
+  txt(c,"shell Q = 1 µC, R = 1 m",cx,168,CY,"11px 'Cascadia Code',monospace","center");
+ }
+ c.setLineDash([3,5]);c.strokeStyle="#3d4470";c.lineWidth=1;
+ c.beginPath();c.moveTo(cx,cy+10);c.lineTo(px,cy+10);c.stroke();c.setLineDash([]);
+ txt(c,"r",(cx+px)/2,cy+26,DM,"10px 'Cascadia Code',monospace","center");
+ c.fillStyle=YL;c.beginPath();c.arc(px,cy,7,0,7);c.fill();
+ const E=Eval(mode,r);
+ if(E>0){
+  const el=mode==="P"?56:Math.max(14,Math.min(66,E/Emax(mode)*66));
+  arrow2(c,px+9,cy,px+9+el,cy,YL,3.5);
+  txt(c,"E",px+14+el,cy-12,YL,"bold 12px 'Cascadia Code',monospace","center");
+ }else{
+  txt(c,"E = 0 andar!",px,cy-16,GR,"bold 12px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"Gaussian surface (imaginary!)",cx,cy+46,DM,"10px 'Cascadia Code',monospace","center");
+ const gx0=520,gx1=896,gy0=300,gy1=190;
+ c.strokeStyle="#3d4470";c.lineWidth=1.5;
+ c.beginPath();c.moveTo(gx0,gy0);c.lineTo(gx1,gy0);c.stroke();
+ c.beginPath();c.moveTo(gx0,gy0);c.lineTo(gx0,gy1);c.stroke();
+ txt(c,"r (m) →",(gx0+gx1)/2,gy0+20,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"E ↑",gx0-26,gy1+4,DM,"11px 'Cascadia Code',monospace","center");
+ for(let rr=1;rr<=3;rr++){
+  const gx=gx0+(rr-0.2)/2.8*(gx1-gx0);
+  c.beginPath();c.moveTo(gx,gy0);c.lineTo(gx,gy0-5);c.stroke();
+  txt(c,""+rr,gx,gy0+14,DM,"10px 'Cascadia Code',monospace","center");
+ }
+ c.strokeStyle=mode==="P"?MG:CY;c.lineWidth=2.5;c.beginPath();
+ let started=false;
+ for(let rr=0.2;rr<=3.001;rr+=0.02){
+  const gx=gx0+(rr-0.2)/2.8*(gx1-gx0);
+  const gy=gy0-Eval(mode,rr)/Emax(mode)*(gy0-gy1);
+  if(!started){c.moveTo(gx,gy);started=true;}else c.lineTo(gx,gy);
+ }
+ c.stroke();
+ if(mode==="S"){
+  txt(c,"R=1m: ANDAR E=0, bahar 1/r²",gx0+100,gy1+8,CY,"10px 'Cascadia Code',monospace");
+ }else if(mode==="P"){
+  txt(c,"CONSTANT - distance pe depend NAHI!",gx0+110,gy1+8,MG,"10px 'Cascadia Code',monospace");
+ }else{
+  txt(c,"E ∝ 1/r",gx0+70,gy1+8,CY,"10px 'Cascadia Code',monospace");
+ }
+ const mgx=gx0+(r-0.2)/2.8*(gx1-gx0);
+ const mgy=gy0-E/Emax(mode)*(gy0-gy1);
+ c.fillStyle=YL;c.beginPath();c.arc(mgx,mgy,6,0,7);c.fill();
+ let formula;
+ if(mode==="L")formula="E = λ/(2πε₀r) = "+fmtE(E)+" (∝ 1/r)";
+ else if(mode==="P")formula="E = σ/(2ε₀) = "+fmtE(E)+" (CONSTANT!)";
+ else formula=r<1?"r < R: E = 0 (shell ke andar field ZERO!)":"E = kQ/r² = "+fmtE(E)+" (charge center pe jaisa)";
+ document.getElementById("r3").innerHTML="Φ = q_andar/ε₀ se: <span class='hl'>"+formula+"</span> | Gaussian surface ka SHAPE matter nahi karta - sirf ANDAR ka charge!"+(mode==="S"?" | Earth ka gravity bhi aise hi - shell theorem!":"");
+}
+Object.keys(btns).forEach(k=>btns[k].addEventListener("click",()=>{mode=k;draw(0);}));
+sR.addEventListener("input",()=>draw(0));
+return function(){mode="L";draw(0);};
+})();
+inits[4]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"In me se kaun sa charge ek object pe POSSIBLE nahi hai? (e = 1.6×10⁻¹⁹ C)",opts:["+3.2×10⁻¹⁹ C  (n = 2)","−8.0×10⁻¹⁹ C  (n = 5)","+2.4×10⁻¹⁹ C","−1.6×10⁻¹⁹ C  (n = 1)"],a:2,why:"Quantization: q = ±ne, n INTEGER hona chahiye. 2.4×10⁻¹⁹ C = 1.5e - AADHA electron nahi hota! (Quarks ke ±e/3 hote hain par free kabhi nahi milte.)"},
+{q:"Do charges ko 2 m se 4 m door kar diya. Unke beech ka force kya hua?",opts:["Aadha ho gaya","1/4 reh gaya","Double ho gaya","Bilkul same raha"],a:1,why:"Inverse square: F ∝ 1/r². Distance DOUBLE → force F₀/4. Distance TRIPLE → F₀/9. Coulomb questions me pehle yahi check karo!"},
+{q:"Electric field lines ek dusre ko kabhi intersect kyun nahi karti?",opts:["Kyunki wo hamesha parallel hoti hain","Intersection pe field ki DO direction ho jaati - impossible","Kyunki charges repel karte hain","Sirf drawing convention hai, koi physics reason nahi"],a:1,why:"Kisi bhi point pe electric field ki EK hi direction hoti hai. Intersection = do tangents = do directions = contradiction! Isliye KABHI nahi kat-ti."},
+{q:"Dipole ke FAR field (r >> a) me, axial line ka E equatorial line ke E se kitna guna hota hai?",opts:["Aadha","Barabar","2 guna","4 guna"],a:2,why:"Axial: E = 2kp/r³ | Equatorial: E = kp/r³ - far field me axial EXACTLY DOUBLE. Aur dono 1/r³ se girti hain - point charge ke 1/r² se tez!"},
+{q:"Infinite charged sheet ka electric field, distance r badhaane pe kya karta hai?",opts:["1/r se girta hai","1/r² se girta hai","CONSTANT rehta hai (σ/2ε₀)","Exponentially girta hai"],a:2,why:"Gauss's law se E = σ/(2ε₀) - formula me r hai hi NAHI! Sheet se chahe 1 cm door ho ya 1 km, field same. Isliye parallel plate capacitor ka field uniform hota hai."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Electric Charges ka boss ho tum! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+go(0);
+</script></body></html>
