@@ -384,12 +384,12 @@ function draw(){
   for(let k=0;k<i;k++){
    c.fillStyle=k%2?MG:CY;c.beginPath();c.arc(px0+150+k*55,py0,12,0,7);c.fill();
   }
-  txt(c,i+" particles (dissociation!)" ,px0+150+(i-1)*27.5,py0+36,GR,"bold 12px 'Cascadia Code',monospace","center");
+  txt(c,i+" particles (dissociation!)" ,px0+165+(i-1)*27.5,py0+36,GR,"bold 12px 'Cascadia Code',monospace","center");
  }else{
   // dimer: two circles joined
   c.fillStyle=CY;c.beginPath();c.arc(px0+140,py0,12,0,7);c.fill();
   c.fillStyle=MG;c.beginPath();c.arc(px0+164,py0,12,0,7);c.fill();
-  txt(c,"2 JUD gaye → i = 0.5 (association!)",px0+155,py0+36,GR,"bold 12px 'Cascadia Code',monospace","center");
+  txt(c,"2 JUD gaye → i = 0.5 (association!)",px0+200,py0+36,GR,"bold 12px 'Cascadia Code',monospace","center");
  }
  // formulas box
  const fx=440,fy=170,fw=430,fh=120;
