@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuclei - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 13 - Nuclei</div>
+<h1>Nuclei Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - nucleus size lab, nuclear force lab, mass defect lab, binding energy curve lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Nucleus Ki Rachna aur Size ⭐</h2>
+<p class="why">Nuclide: Z protons + N neutrons, A = Z + N. Same Z, alag N = ISOTOPES. Size: R ≈ R₀·A^(1/3), R₀ ≈ 1.2 fm (1 fm = 10⁻¹⁵ m). A badhne pe density lagbhag CONSTANT. Nucleus ~10⁻¹⁵ m vs atom ~10⁻¹⁰ m - par mass ka almost sab nucleus me! A 8× → radius sirf 2×.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>mass number A</label><input type="range" id="nA" min="4" max="216" step="4" value="64"><span class="v" id="vlnA">64</span></div>
+<div class="slrow"><label>protons Z</label><input type="range" id="nZ" min="1" max="92" step="1" value="28"><span class="v" id="vlnZ">28</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Nuclear Force - Short Range, Strong ⭐</h2>
+<p class="why">Nuclear force: STRONG attraction, short-range (~kuch fm) - nearby nucleons ko bind karta, proton repulsion ke bawajood. Charge independence: p-p, n-n, p-n pairs pe lagbhag SAME. Saturation: har nucleon mainly nearby neighbours se interact. Ye Coulomb force nahi - strong interaction ka residual effect hai. (Graph SCHEMATIC hai.)</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="fPP">p - p pair</button><button id="fNN">n - n pair</button><button id="fPN">p - n pair</button></div>
+<div class="slrow"><label>separation r (fm)</label><input type="range" id="fR" min="1" max="8" step="0.5" value="2"><span class="v" id="vlfR">2.0 fm</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Mass Defect aur Binding Energy ⭐⭐</h2>
+<p class="why">Mass defect: free nucleons ka mass − bound nucleus ka mass = Δm &gt; 0. Binding energy B = Δm·c² (E = mc²), 1 u·c² ≈ 931.5 MeV. Atomic masses se: Δm = Z·m_H + N·m_n − M_atom (electron masses cancel). B/A (per nucleon) stability compare karta hai. Atomic aur nuclear mass mix mat karo!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="bHe">He-4</button><button id="bC">C-12</button><button id="bFe">Fe-56</button><button id="bU">U-238</button></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Binding Energy Curve - Fission aur Fusion ⭐⭐</h2>
+<p class="why">B/A vs A: light nuclei se tez rise, Fe/Ni ke paas PEAK ~8.7-8.8 MeV, heavy me slow decline. FISSION: heavy nucleus ko medium pieces me todo → B/A higher → energy (U-235: ~200 MeV per event, chain reaction). FUSION: light nuclei jodo → B/A higher → energy (stars; Coulomb barrier ke liye bahut high temperature). Dono me products zyada tightly bound!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="cFis">Fission: U-235 → 2 medium</button><button id="cFus">Fusion: D + D → He-4</button></div>
+<div class="slrow"><label>mass number A</label><input type="range" id="cA" min="2" max="238" step="2" value="56"><span class="v" id="vlcA">56</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Nuclei Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: R = R₀A^(1/3), nuclear force short-range aur charge-independent, B = Δm·931.5 MeV, B/A peak Fe/Ni, fission/fusion = higher B/A products.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Nucleus ⭐</h3><p>A = Z + N | Same Z, alag N = isotopes | R ≈ R₀A^(1/3), R₀ ≈ 1.2 fm | Density lagbhag constant | A 8× → R 2× | Nucleus ~10⁻¹⁵ m, atom ~10⁻¹⁰ m</p></div>
+<div class="rcard"><h3>Nuclear Force ⭐</h3><p>Strong attraction, short-range (~kuch fm) | Charge independent: p-p, n-n, p-n similar | Saturation: nearby neighbours | Coulomb nahi - strong interaction ka residual effect</p></div>
+<div class="rcard"><h3>Mass Defect ⭐⭐</h3><p>Δm = Z·m_H + N·m_n − M_atom (&gt;0) | B = Δm·c² | 1 u·c² ≈ 931.5 MeV | B/A = stability ka measure | Atomic aur nuclear mass mix mat karo</p></div>
+<div class="rcard"><h3>B/A Curve ⭐</h3><p>Light: tez rise | Fe/Ni PEAK ~8.7-8.8 MeV/nucleon | Heavy: slow decline | Peak ke paas = sabse stable</p></div>
+<div class="rcard"><h3>Fission ⭐</h3><p>Heavy (U-235) + neutron → split, neutrons + ~200 MeV | Products ka B/A higher | Chain reaction possible</p></div>
+<div class="rcard"><h3>Fusion + Q ⭐</h3><p>Light nuclei (H isotopes) combine | Bahut high temperature (Coulomb barrier) | Stars ki energy | Q = (m_initial − m_final)c² &gt; 0 | Charge + nucleon number conserve</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 13 Nuclei Visual Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+inits[0]=(()=>{
+const c=ctx("cv0");
+const sA=document.getElementById("nA"),sZ=document.getElementById("nZ");
+function draw(){
+ const A=parseInt(sA.value);let Z=parseInt(sZ.value);if(Z>A){Z=A;sZ.value=A;}
+ const N=A-Z;
+ document.getElementById("vlnA").textContent=A;document.getElementById("vlnZ").textContent=Z;
+ const R=1.2*Math.cbrt(A),Rp=R*17;
+ c.clearRect(0,0,920,330);
+ txt(c,"NUCLEUS: Z protons (magenta) + N neutrons (cyan)",300,24,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ const cx=300,cy=178;
+ c.strokeStyle="#3d4470";c.setLineDash([4,5]);c.lineWidth=1;c.beginPath();c.arc(cx,cy,Rp,0,7);c.stroke();c.setLineDash([]);
+ const ga=2.399963;
+ for(let i=0;i<A;i++){
+  const rr=Rp*0.93*Math.sqrt((i+0.5)/A),th=i*ga;
+  const isP=Math.floor((i+1)*Z/A)>Math.floor(i*Z/A);
+  c.fillStyle=isP?MG:CY;c.globalAlpha=0.9;c.beginPath();c.arc(cx+rr*Math.cos(th),cy+rr*Math.sin(th),4.2,0,7);c.fill();
+ }
+ c.globalAlpha=1;
+ txt(c,"R = "+fmt(R,2)+" fm",cx,cy+Rp+18,YL,"bold 12px 'Cascadia Code',monospace","center");
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.strokeRect(570,50,330,240);
+ txt(c,"R = R₀ A^(1/3), R₀ = 1.2 fm",735,76,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"A = "+A+" (Z="+Z+", N="+N+")",735,108,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+ txt(c,"R = "+fmt(R,2)+" fm = "+fmt(R*1e-15*1e15,2)+"e-15 m",735,134,YL,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"A 8× → R 2×",735,168,MG,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"density ≈ constant",735,194,"#e8e8f2","12px 'Cascadia Code',monospace","center");
+ txt(c,"nucleus ~1e-15 m",735,232,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"atom ~1e-10 m (1e5 ×)",735,250,DM,"11px 'Cascadia Code',monospace","center");
+ document.getElementById("r0").innerHTML="A = Z + N = "+Z+" + "+N+" = <span class='hl'>"+A+"</span> | R = 1.2 × "+A+"^(1/3) = <span class='hl'>"+fmt(R,2)+" fm</span> | isotopes: same Z="+Z+", alag N (A badlo) | A 8 guna → R 2 guna (A^(1/3)) | nucleus ka size ~10⁻¹⁵ m, atom ~10⁻¹⁰ m";
+}
+[sA,sZ].forEach(s=>s.addEventListener("input",draw));
+return function(){draw();};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1");
+const sR=document.getElementById("fR");
+const bs={pp:document.getElementById("fPP"),nn:document.getElementById("fNN"),pn:document.getElementById("fPN")};
+let mode="pp";
+const Nf=r=>60*Math.exp(-(r-0.8)/0.6),Cf=r=>12/(r*r);
+function draw(){
+ const r=parseFloat(sR.value);
+ document.getElementById("vlfR").textContent=r.toFixed(1)+" fm";
+ for(const k in bs)bs[k].style.borderColor=(k===mode?CY:"");
+ c.clearRect(0,0,920,330);
+ const x0=80,x1=600,zy=90;
+ const X=v=>x0+(v-0.5)/7.5*(x1-x0),Y=v=>zy-v*3;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.moveTo(x0,30);c.lineTo(x0,300);c.stroke();
+ c.beginPath();c.moveTo(x0,zy);c.lineTo(x1,zy);c.stroke();
+ txt(c,"repulsive ↑",x0+6,42,DM,"11px 'Cascadia Code',monospace");
+ txt(c,"attractive ↓",x0+6,292,DM,"11px 'Cascadia Code',monospace");
+ txt(c,"separation r (fm) →",x1,zy-8,DM,"11px 'Cascadia Code',monospace","right");
+ for(let v=1;v<=8;v++)txt(c,""+v,X(v),zy+14,DM,"10px 'Cascadia Code',monospace","center");
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+ for(let v=1;v<=8.01;v+=0.1){const y=Y(-Nf(v));if(v<1.05)c.moveTo(X(v),y);else c.lineTo(X(v),y);}
+ c.stroke();
+ txt(c,"nuclear (attractive)",X(1.35),Y(-Nf(1.35))-14,CY,"bold 11px 'Cascadia Code',monospace","left");
+ if(mode==="pp"){
+  c.strokeStyle=MG;c.lineWidth=3;c.beginPath();
+  for(let v=1;v<=8.01;v+=0.1){const y=Y(Math.min(Cf(v),19));if(v<1.05)c.moveTo(X(v),y);else c.lineTo(X(v),y);}
+  c.stroke();
+  txt(c,"Coulomb (p-p repulsion)",X(4.3),Y(Cf(4.3))-26,MG,"bold 11px 'Cascadia Code',monospace","left");
+ }else{
+  txt(c,"koi Coulomb nahi ("+(mode==="nn"?"n-n":"p-n")+") - sirf nuclear force",X(4.2),Y(0)-46,"#aab4d8","11px 'Cascadia Code',monospace","left");
+ }
+ c.strokeStyle=YL;c.setLineDash([3,4]);c.lineWidth=1;c.beginPath();c.moveTo(X(r),30);c.lineTo(X(r),300);c.stroke();c.setLineDash([]);
+ c.fillStyle=YL;c.beginPath();c.arc(X(r),Y(-Nf(r)),6,0,7);c.fill();
+ const n=Nf(r),cc=mode==="pp"?Cf(r):0;
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.strokeRect(650,50,250,240);
+ txt(c,mode==="pp"?"p - p":mode==="nn"?"n - n":"p - n",775,76,YL,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"r = "+r.toFixed(1)+" fm",775,104,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+ txt(c,"nuclear: "+fmt(n,2)+" u",775,138,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"Coulomb: "+fmt(cc,2)+" u",775,164,MG,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,n>cc?"NUCLEAR jeetta":"COULOMB jeetta",775,206,n>cc?GR:RD,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"(schematic units)",775,264,DM,"11px 'Cascadia Code',monospace","center");
+ document.getElementById("r1").innerHTML=(mode==="pp"?"p-p":mode==="nn"?"n-n":"p-n")+" pair, r = "+r.toFixed(1)+" fm: nuclear ≈ <span class='hl'>"+fmt(n,2)+"</span>"+(mode==="pp"?", Coulomb repulsion ≈ <span class='hl'>"+fmt(cc,2)+"</span> → "+(n>cc?"nuclear force jeetta, nucleons BANDHE":"Coulomb jeetta, nuclear force negligible"):" (Coulomb nahi)")+" | r ~ kuch fm ke baad nuclear force lagbhag ZERO (short-range) | p-p, n-n, p-n pe nuclear force lagbhag SAME (charge independence) | schematic graph";
+}
+sR.addEventListener("input",draw);
+for(const k in bs)bs[k].onclick=()=>{mode=k;draw();};
+return function(){draw();};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2");
+const mH=1.007825,mN=1.008665;
+const NU={He:{n:"He-4",Z:2,A:4,M:4.002603},C:{n:"C-12",Z:6,A:12,M:12.0},Fe:{n:"Fe-56",Z:26,A:56,M:55.934936},U:{n:"U-238",Z:92,A:238,M:238.050788}};
+const bt={He:document.getElementById("bHe"),C:document.getElementById("bC"),Fe:document.getElementById("bFe"),U:document.getElementById("bU")};
+let sel="He";
+function draw(){
+ const d=NU[sel],Nn=d.A-d.Z;
+ const free=d.Z*mH+Nn*mN,dm=free-d.M,B=dm*931.5,BA=B/d.A;
+ for(const k in bt)bt[k].style.borderColor=(k===sel?CY:"");
+ c.clearRect(0,0,920,330);
+ txt(c,d.n+": free nucleons vs bound nucleus (gap zoomed)",300,24,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ const base=290,hF=210,gap=Math.max(14,BA*16);
+ c.fillStyle="#1d2a44";c.fillRect(110,base-hF,130,hF);c.strokeStyle=CY;c.lineWidth=2;c.strokeRect(110,base-hF,130,hF);
+ txt(c,"free nucleons",175,base-hF/2-6,CY,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"Z·m_H + N·m_n",175,base-hF/2+12,"#e8e8f2","11px 'Cascadia Code',monospace","center");
+ c.fillStyle="#2a1d44";c.fillRect(330,base-hF+gap,130,hF-gap);c.strokeStyle=MG;c.strokeRect(330,base-hF+gap,130,hF-gap);
+ txt(c,"bound nucleus",395,base-hF+gap+(hF-gap)/2-6,MG,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"M_atom",395,base-hF+gap+(hF-gap)/2+12,"#e8e8f2","11px 'Cascadia Code',monospace","center");
+ c.fillStyle=YL;c.globalAlpha=0.35;c.fillRect(330,base-hF,130,gap);c.globalAlpha=1;
+ c.strokeStyle=YL;c.setLineDash([4,4]);c.lineWidth=1.5;c.strokeRect(330,base-hF,130,gap);c.setLineDash([]);
+ txt(c,"Δm",395,base-hF+gap/2+4,YL,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"energy chhodi: B = Δm c²",395,base+22,YL,"11px 'Cascadia Code',monospace","center");
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.strokeRect(540,40,360,260);
+ txt(c,"Δm = Z m_H + N m_n − M",720,66,CY,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"free = "+fmt(free,4)+" u",720,98,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+ txt(c,"M = "+fmt(d.M,4)+" u",720,122,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+ txt(c,"Δm = "+fmt(dm,4)+" u",720,156,YL,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"B = "+fmt(B,1)+" MeV",720,188,GR,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"B/A = "+fmt(BA,2)+" MeV",720,220,MG,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"(1 u c² = 931.5 MeV)",720,270,DM,"11px 'Cascadia Code',monospace","center");
+ document.getElementById("r2").innerHTML=d.n+": Δm = "+d.Z+"×1.007825 + "+Nn+"×1.008665 − "+fmt(d.M,4)+" = <span class='hl'>"+fmt(dm,4)+" u</span> → B = Δm×931.5 = <span class='hl'>"+fmt(B,1)+" MeV</span> → B/A = <span class='hl'>"+fmt(BA,2)+" MeV/nucleon</span> | Fe-56 ka B/A sabse zyada = sabse stable | atomic masses use karo (electrons cancel)";
+}
+for(const k in bt)bt[k].onclick=()=>{sel=k;draw();};
+return function(){draw();};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3");
+const sA=document.getElementById("cA"),bFis=document.getElementById("cFis"),bFus=document.getElementById("cFus");
+const P=[[2,1.11],[4,7.07],[12,7.68],[16,7.98],[56,8.79],[120,8.51],[238,7.57]];
+function BA(a){if(a<=P[0][0])return P[0][1];for(let i=1;i<P.length;i++){if(a<=P[i][0]){const t=(a-P[i-1][0])/(P[i][0]-P[i-1][0]);return P[i-1][1]+t*(P[i][1]-P[i-1][1]);}}return P[P.length-1][1];}
+let ex=0;
+const x0=80,x1=600,y0=290;
+const X=a=>x0+a/240*(x1-x0),Y=b=>y0-b/10*250;
+function draw(){
+ const A=parseInt(sA.value);
+ document.getElementById("vlcA").textContent=A;
+ bFis.style.borderColor=ex===1?CY:"";bFus.style.borderColor=ex===2?CY:"";
+ c.clearRect(0,0,920,330);
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.moveTo(x0,30);c.lineTo(x0,y0);c.lineTo(x1,y0);c.stroke();
+ txt(c,"B/A (MeV)",x0+6,40,DM,"11px 'Cascadia Code',monospace");
+ txt(c,"mass number A",x1,y0+30,DM,"11px 'Cascadia Code',monospace","right");
+ for(let b=2;b<=8;b+=2){c.strokeStyle="#1a1a33";c.lineWidth=1;c.beginPath();c.moveTo(x0,Y(b));c.lineTo(x1,Y(b));c.stroke();txt(c,""+b,x0-8,Y(b)+4,DM,"10px 'Cascadia Code',monospace","right");}
+ for(let a=0;a<=240;a+=60)txt(c,""+a,X(a),y0+14,DM,"10px 'Cascadia Code',monospace","center");
+ c.strokeStyle=MG;c.lineWidth=3;c.beginPath();
+ for(let a=2;a<=238;a+=2){const x=X(a),y=Y(BA(a));if(a===2)c.moveTo(x,y);else c.lineTo(x,y);}
+ c.stroke();
+ const lab=[[4,"He-4",14,-10,"left"],[56,"Fe-56 PEAK",0,-14,"center"],[238,"U-238",0,18,"center"]];
+ lab.forEach(l=>{c.fillStyle=YL;c.beginPath();c.arc(X(l[0]),Y(BA(l[0])),4,0,7);c.fill();txt(c,l[1],X(l[0])+l[2],Y(BA(l[0]))+l[3],YL,"bold 10px 'Cascadia Code',monospace",l[4]);});
+ let msg="",q="";
+ if(ex===1){
+  const a1=X(235),b1=Y(7.59),a2=X(117),b2=Y(BA(117));
+  arrow2(c,a1-6,b1-4,a2+6,b2+8,GR,3);
+  txt(c,"fission: 235 → 2×~117",X(160),Y(8.1)-34,GR,"bold 11px 'Cascadia Code',monospace","center");
+  q="235×(8.5−7.6) ≈ 200 MeV";
+ }else if(ex===2){
+  const a1=X(2),b1=Y(1.11),a2=X(4),b2=Y(7.07);
+  arrow2(c,a1+4,b1-4,a2+2,b2+10,GR,3);
+  txt(c,"fusion: D+D → He-4",X(30),Y(3.4),GR,"bold 11px 'Cascadia Code',monospace","left");
+  q="4×7.07 − 2×2×1.11 ≈ 24 MeV";
+ }
+ const bA=BA(A);
+ c.fillStyle=CY;c.beginPath();c.arc(X(A),Y(bA),7,0,7);c.fill();
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.strokeRect(640,40,260,260);
+ txt(c,"A = "+A,770,70,CY,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"B/A = "+fmt(bA,2),770,100,YL,"bold 14px 'Cascadia Code',monospace","center");
+ const side=A<50?"FUSION se energy":A>62?"FISSION se energy":"PEAK - sabse stable";
+ txt(c,side,770,140,GR,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,A<50?"(jodo → B/A ↑)":A>62?"(todo → B/A ↑)":"(dono me B/A ghatega)",770,162,"#e8e8f2","11px 'Cascadia Code',monospace","center");
+ if(q){txt(c,"Q ≈",770,208,MG,"bold 13px 'Cascadia Code',monospace","center");txt(c,q,770,230,MG,"bold 11px 'Cascadia Code',monospace","center");}
+ document.getElementById("r3").innerHTML="A = "+A+": B/A ≈ <span class='hl'>"+fmt(bA,2)+" MeV</span> ("+(A<50?"light side - FUSION products zyada bound":A>62?"heavy side - FISSION products zyada bound":"Fe/Ni peak, sabse tightly bound")+")"+(q?" | Q ≈ <span class='hl'>"+q+"</span>"+(ex===1?" (notes: ~200 MeV per fission)":""):"")+" | curve schematic (standard B/A values) | energy isliye milti hai ki products ka B/A higher hai";
+}
+sA.addEventListener("input",draw);
+bFis.onclick=()=>{ex=1;sA.value=236;draw();};bFus.onclick=()=>{ex=2;sA.value=2;draw();};
+return function(){draw();};
+})();
+inits[4]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Nucleus ka mass number A, 8 guna ho jaaye. Radius kitna hoga?",opts:["8 guna","4 guna","2 guna","Same"],a:2,why:"R = R₀A^(1/3). A 8× → R = 8^(1/3) = 2×. Isliye density lagbhag constant rehti hai (volume ∝ A)."},
+{q:"Nuclear force ke baare me sahi kya hai?",opts:["Short-range strong attraction, p-p, n-n, p-n pe lagbhag same","Long-range, sirf protons ke beech","Coulomb force jaisi 1/r² se girti hai","Sirf neutron-neutron ke beech"],a:0,why:"Nuclear force: strong, short-range (~kuch fm), charge-independent (p-p, n-n, p-n lagbhag same) aur saturating. Coulomb force nahi, strong interaction ka residual effect."},
+{q:"Mass defect Δm = 0.03 u hai. Binding energy kitni?",opts:["0.03 MeV","~28 MeV","~931 MeV","~0.3 MeV"],a:1,why:"B = Δm × 931.5 MeV/u = 0.03 × 931.5 ≈ 28 MeV (He-4 ka real Δm 0.0304 u → 28.3 MeV)."},
+{q:"B/A ka peak (sabse stable) kahan hota hai?",opts:["H ke paas","He-4 ke paas","U-238 ke paas","Fe/Ni region (A ~56), ~8.7-8.8 MeV"],a:3,why:"B/A light se tez badhta, Fe/Ni ke paas peak ~8.7-8.8 MeV, phir heavy me slow decline. Peak = sabse tightly bound."},
+{q:"Fission aur fusion dono energy kyun dete hain?",opts:["Products ka mass zyada hota hai","Products ka B/A higher (zyada tightly bound) hota hai","Neutrons bante hain","Coulomb force badhta hai"],a:1,why:"Heavy ko todne ya light ko jodne se products B/A curve pe peak ke zyada paas aate hain → zyada tightly bound → mass kam → Q = Δm c² energy release."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Nuclei pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+go(0);
+</script></body></html>
