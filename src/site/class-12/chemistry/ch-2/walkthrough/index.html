@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrochemistry - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Chemistry - Chapter 2 - Electrochemistry</div>
+<h1>Electrochemistry Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - Daniell cell lab, electrochemical series, Nernst lab, conductance lab, Faraday lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Daniell Cell - Chemical Energy se Current ⭐</h2>
+<p class="why">Galvanic cell me spontaneous redox reaction khud electricity banati hai. Zn rod ZnSO4 me ANODE (oxidation: Zn → Zn2+ + 2e-), Cu rod CuSO4 me CATHODE (reduction: Cu2+ + 2e- → Cu). Electrons external circuit se Zn → Cu flow karte hain. Salt bridge ions migrate karke charge balance rakhta hai - solutions mix nahi hote. Cell notation: Zn | Zn2+ || Cu2+ | Cu.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="cOn">Circuit ON (cell chaloo)</button><button id="cOff">Circuit OFF (khol do)</button></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Electrochemical Series - Kaun Anode, Kaun Cathode? ⭐</h2>
+<p class="why">Har electrode ka standard reduction potential (E°) SHE (standard hydrogen electrode, E° = 0 V assigned) ke against measure hota hai. Zyada NEGATIVE E° = strong reducing agent (electron deta hai, anode banega); zyada POSITIVE E° = strong oxidizing agent (electron leta hai, cathode banega). E°cell = E°cathode − E°anode. Positive EMF = spontaneous = cell kaam karegi. Koi 2 electrodes chuno:</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="eZn">Zn2+/Zn (-0.76 V)</button><button id="eFe">Fe2+/Fe (-0.44 V)</button><button id="eH">H+/H2 - SHE (0 V)</button><button id="eCu">Cu2+/Cu (+0.34 V)</button><button id="eAg">Ag+/Ag (+0.80 V)</button></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Nernst Equation - Concentration Ka Asar ⭐⭐</h2>
+<p class="why">Standard conditions (1 M) pe E° milta hai; concentration badalte hi EMF badalta hai. 298 K pe: E_cell = E°_cell − (0.059/n)·log Q. Reactant ([Cu2+]) zyada → Q chhota → E ZYADA. Battery discharge hoti hai → reactant ghatta → Q badha → EMF girti. Equilibrium pe E = 0 aur Q = K, isliye E° = (0.059/n)·log K. Slider se log Q badlo (Daniell cell, n = 2):</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>log Q</label><input type="range" id="nQ" min="-3" max="3" step="0.1" value="0"><span class="v" id="vlnQ">0</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Conductance - Dilution Ka Ulta Khel ⭐</h2>
+<p class="why">κ (conductivity) = solution abhi kitna current le ja raha (per cm); Λm (molar conductivity) = κ×1000/C = PER-MOLE kitna current. Dilution pe κ GHATTI hai (ions per cm3 kam) lekin Λm BADHTI hai (interference kam / dissociation zyada). Strong electrolyte: Λm dheere badhti, extrapolate se Λ°m milti. Weak electrolyte: Λm tez badhti (α badhta) - Λ°m Kohlrausch se nikaalte hain. Slider = concentration:</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="kS">Strong (KCl)</button><button id="kW">Weak (CH3COOH)</button></div>
+<div class="slrow"><label>concentration C (mol/L)</label><input type="range" id="kC" min="-4" max="0" step="0.1" value="-1"><span class="v" id="vlkC">0.1</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Electrolysis aur Faraday's Laws - Charge se Mass ⭐⭐</h2>
+<p class="why">Electrolytic cell me current laga ke NON-spontaneous reaction karvate hain. Faraday's 1st law: deposited mass ∝ charge, m = Z·I·t. Trick: moles of e- = (I×t)/96487, phir stoichiometry (n-factor) se mass. Faraday's 2nd law: same charge pe masses equivalent weights ke proportional. Metal chuno, current aur time badlo, cathode pe jama hua mass dekho:</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="fAg">Ag (n=1, M=108)</button><button id="fCu">Cu (n=2, M=63.5)</button><button id="fAl">Al (n=3, M=27)</button></div>
+<div class="slrow"><label>current I (A)</label><input type="range" id="fI" min="0.5" max="5" step="0.5" value="1"><span class="v" id="vlfI">1</span></div>
+<div class="slrow"><label>time t (min)</label><input type="range" id="fT" min="1" max="60" step="1" value="30"><span class="v" id="vlfT">30</span></div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Rapid Quiz - Electrochemistry Pakki? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: Daniell me Zn anode (oxidation), E°cell = E°cathode − E°anode, Nernst slope 0.059/n, dilution pe κ ghat-ti Λm badhti, 1 mol Mn+ ke liye n×96487 C.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc6">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Cells & Notation ⭐</h3><p>Galvanic: chemical → electrical (spontaneous) | Electrolytic: electrical → chemical (current lagao) | Daniell: Zn anode (oxidation), Cu cathode (reduction), e- external circuit me Zn → Cu | Salt bridge: charge balance, mixing nahi | Zn | Zn2+ || Cu2+ | Cu</p></div>
+<div class="rcard"><h3>E° & Series ⭐</h3><p>SHE reference = 0 V (Pt, H2 1 bar, H+ 1 M) | E°cell = E°cathode − E°anode | Positive EMF = spontaneous | Negative E° = strong reducing agent (anode) | Positive E° = strong oxidizing agent (cathode)</p></div>
+<div class="rcard"><h3>Nernst ⭐⭐</h3><p>E = E° − (0.059/n)·log Q (298 K) | Reactant zyada → Q chhota → E zyada | Discharge → EMF girti | Equilibrium pe E = 0, Q = K: E° = (0.059/n)·log K | 0.059/n har numerical me!</p></div>
+<div class="rcard"><h3>ΔG-E-K Triangle ⭐</h3><p>ΔG = −nF·E_cell | ΔG° = −nF·E° | log K = n·E°/0.059 (298 K) | E° positive → ΔG° negative → K bada → spontaneous | F = 96487 C/mol | Ek pata → teeno pata!</p></div>
+<div class="rcard"><h3>Conductance ⭐</h3><p>κ = 1/ρ (S/cm) | Λm = κ×1000/C (S·cm2/mol) | Dilution: κ GHATTI, Λm BADHTI | Strong: dheere, extrapolate → Λ°m | Weak: tez, α = Λm/Λ°m, Ka = C·α²/(1−α) | Kohlrausch: Λ°m = ν+·λ°+ + ν−·λ°− (CH3COONa + HCl − NaCl trick)</p></div>
+<div class="rcard"><h3>Faraday + Batteries ⭐⭐</h3><p>m = Z·I·t | mol e- = Q/96487 | 1 mol Mn+ ko n×96487 C | Same Q → masses ∝ equivalent weights | Lead battery rechargeable, fuel cell H2+O2 (~70%) | Corrosion: Fe + O2 + H2O → Fe2O3·xH2O | Galvanization = Zn sacrificial anode</p></div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Chemistry Ch 2 Electrochemistry Visual Walkthrough</div>
+</div></div>
+<script>
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=7;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}inits[0]=(()=>{
+const c=ctx("cv0"),R=document.getElementById("r0");
+const bOn=document.getElementById("cOn"),bOff=document.getElementById("cOff");
+let on=true;
+function mark(){bOn.style.borderColor=on?"#22d3ee":"#2d2d52";bOn.style.color=on?"#22d3ee":"#8fa0c8";
+ bOff.style.borderColor=!on?"#22d3ee":"#2d2d52";bOff.style.color=!on?"#22d3ee":"#8fa0c8";}
+function beaker(x1,x2,liqCol,liqLabel){
+ c.strokeStyle="#8fa0c8";c.lineWidth=2.5;
+ c.beginPath();c.moveTo(x1,130);c.lineTo(x1,295);c.lineTo(x2,295);c.lineTo(x2,130);c.stroke();
+ c.fillStyle=liqCol;c.globalAlpha=0.18;c.fillRect(x1+3,175,x2-x1-6,117);c.globalAlpha=1;
+ c.strokeStyle=liqCol;c.globalAlpha=0.6;c.lineWidth=1.5;
+ c.beginPath();c.moveTo(x1+3,175);c.lineTo(x2-3,175);c.stroke();c.globalAlpha=1;
+ txt(c,liqLabel,(x1+x2)/2,315,liqCol,"12px 'Cascadia Code',monospace","center");
+}
+function rod(cx,col,label){
+ c.fillStyle=col;c.fillRect(cx-12,95,24,170);
+ c.strokeStyle="#e8e8f2";c.lineWidth=1.5;c.strokeRect(cx-12,95,24,170);
+ txt(c,label,cx,86,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+}
+function draw(t){
+ c.clearRect(0,0,920,330);
+ beaker(100,300,CY,"ZnSO4(aq)");
+ beaker(620,820,"#60a5fa","CuSO4(aq)");
+ rod(200,"#9aa3b8","Zn");
+ rod(720,"#d29a5b","Cu");
+ txt(c,"anode (-)",140,125,YL,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"oxidation",140,140,YL,"11px 'Cascadia Code',monospace","center");
+ txt(c,"cathode (+)",800,125,GR,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"reduction",800,140,GR,"11px 'Cascadia Code',monospace","center");
+ // salt bridge (inverted U)
+ c.strokeStyle="rgba(232,232,242,0.35)";c.lineWidth=15;c.lineCap="round";
+ c.beginPath();c.moveTo(270,230);c.lineTo(270,145);c.quadraticCurveTo(270,125,290,125);
+ c.lineTo(630,125);c.quadraticCurveTo(650,125,650,145);c.lineTo(650,230);c.stroke();
+ txt(c,"salt bridge (KCl)",460,108,DM,"11px 'Cascadia Code',monospace","center");
+ // wire + voltmeter
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
+ c.beginPath();c.moveTo(200,95);c.lineTo(200,55);c.lineTo(444,55);c.stroke();
+ c.beginPath();c.moveTo(496,55);c.lineTo(720,55);c.lineTo(720,95);c.stroke();
+ txt(c,"e- flow (external circuit)",320,44,CY,"11px 'Cascadia Code',monospace","center");
+ if(on){
+  for(let i=0;i<8;i++){
+   const p=((t*2.2+i*70)%540);const x=200+p;
+   if(x>446&&x<494)continue;
+   c.fillStyle=CY;c.beginPath();c.arc(x,55,4,0,7);c.fill();
+   txt(c,"-",x,58,"#07070f","bold 9px 'Cascadia Code',monospace","center");
+  }
+  for(let i=0;i<5;i++){
+   const x=290+((t*1.3+i*72)%340);
+   c.fillStyle=MG;c.beginPath();c.arc(x,125,4,0,7);c.fill();
+   txt(c,"+",x,128,"#07070f","bold 9px 'Cascadia Code',monospace","center");
+   const x2=650-((t*1.3+i*72)%340);
+   c.fillStyle=YL;c.beginPath();c.arc(x2,125,4,0,7);c.fill();
+   txt(c,"-",x2,128,"#07070f","bold 9px 'Cascadia Code',monospace","center");
+  }
+ }
+ c.fillStyle="#0d0d1a";c.strokeStyle=YL;c.lineWidth=2.5;
+ c.beginPath();c.arc(470,55,24,0,7);c.fill();c.stroke();
+ txt(c,"V",470,60,YL,"bold 16px 'Cascadia Code',monospace","center");
+ txt(c,on?"1.10 V":"--",470,28,YL,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"K+ → cathode side, Cl- → anode side (charge balance)",460,255,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"Zn rod ghul-ti hai (Zn2+ badhte)",200,255,CY,"10px 'Cascadia Code',monospace","center");
+ txt(c,"Cu deposit hota hai",720,255,"#60a5fa","10px 'Cascadia Code',monospace","center");
+ if(on){
+  R.innerHTML="<b style='color:#facc15'>Anode:</b> Zn → Zn2+ + 2e- (oxidation) &nbsp;|&nbsp; <b style='color:#34d399'>Cathode:</b> Cu2+ + 2e- → Cu (reduction) &nbsp;|&nbsp; E°cell = 0.34 − (−0.76) = <b style='color:#22d3ee'>+1.10 V</b> &nbsp;|&nbsp; Zn | Zn2+ || Cu2+ | Cu";
+ } else {
+  R.innerHTML="<b style='color:#f87171'>Circuit khula</b> - electrons flow nahi kar sakte, cell ruka. External wire + salt bridge dono zaroori (charge balance ke bina reaction seconds me rukti hai).";
+ }
+}
+bOn.onclick=()=>{on=true;mark();draw(0);};
+bOff.onclick=()=>{on=false;mark();draw(0);};
+anims[0]=t=>{if(on)draw(t);};
+return function(){mark();draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1"),R=document.getElementById("r1");
+const M=[
+ {id:"eZn",n:"Zn",e:-0.76},
+ {id:"eFe",n:"Fe",e:-0.44},
+ {id:"eH",n:"H2",e:0},
+ {id:"eCu",n:"Cu",e:0.34},
+ {id:"eAg",n:"Ag",e:0.80}
+];
+let sel=["Zn","Cu"];
+const X=v=>60+(v+1)/2*820;
+function mark(){
+ M.forEach(m=>{const b=document.getElementById(m.id);const on=sel.includes(m.n);
+  b.style.borderColor=on?"#22d3ee":"#2d2d52";b.style.color=on?"#22d3ee":"#8fa0c8";});
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Standard reduction potentials E° (SHE = 0 reference)",460,30,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ // axis
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.moveTo(60,190);c.lineTo(880,190);c.stroke();
+ for(let v=-1;v<=1.001;v+=0.5){
+  const x=X(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(x,182);c.lineTo(x,198);c.stroke();
+  txt(c,(v>0?"+":"")+v.toFixed(1),x,215,DM,"10px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"E° (V) →",870,240,DM,"10px 'Cascadia Code',monospace","center");
+ M.forEach((m,i)=>{
+  const x=X(m.e);const above=i%2===0;
+  const isSel=sel.includes(m.n);
+  const isAnode=isSel&&sel.length===2&&m.e===Math.min(...sel.map(n=>M.find(k=>k.n===n).e));
+  const isCathode=isSel&&sel.length===2&&!isAnode;
+  const col=isAnode?RD:isCathode?GR:"#8fa0c8";
+  c.strokeStyle=col;c.lineWidth=isSel?3:1.5;
+  c.beginPath();c.moveTo(x,170);c.lineTo(x,210);c.stroke();
+  c.fillStyle=col;c.beginPath();c.arc(x,190,isSel?7:4,0,7);c.fill();
+  txt(c,m.n,x,above?158:232,col,(isSel?"bold 14px":"12px")+" 'Cascadia Code',monospace","center");
+  txt(c,(m.e>0?"+":"")+m.e.toFixed(2),x,above?144:246,DM,"10px 'Cascadia Code',monospace","center");
+  if(isAnode)txt(c,"ANODE (oxidation)",x,above?120:258,RD,"bold 10px 'Cascadia Code',monospace","center");
+  if(isCathode)txt(c,"CATHODE (reduction)",x,above?120:258,GR,"bold 10px 'Cascadia Code',monospace","center");
+ });
+ if(sel.length===2){
+  const a=M.find(k=>k.n===sel[0]),b=M.find(k=>k.n===sel[1]);
+  const anode=a.e<b.e?a:b,cathode=a.e<b.e?b:a;
+  const emf=cathode.e-anode.e;
+  arrow2(c,X(anode.e),95,X(cathode.e),95,CY,3);
+  txt(c,"e- external circuit me: anode → cathode",460,80,CY,"11px 'Cascadia Code',monospace","center");
+  txt(c,"E°cell = E°cathode - E°anode = ("+(cathode.e>=0?"+":"")+cathode.e.toFixed(2)+") - ("+(anode.e>=0?"+":"")+anode.e.toFixed(2)+") = +"+emf.toFixed(2)+" V",460,60,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"negative E° = strong reducing agent (electron DETA) | positive E° = strong oxidizing agent (electron LETA)",460,315,DM,"11px 'Cascadia Code',monospace","center");
+  R.innerHTML="<b style='color:#22d3ee'>"+anode.n+" | "+anode.n+"2+ || "+(cathode.n==="H2"?"H+ | H2 (SHE)":cathode.n+"2+ | "+cathode.n)+"</b> &nbsp;|&nbsp; E°cell = <b style='color:#facc15'>+"+emf.toFixed(2)+" V</b> &nbsp;|&nbsp; positive EMF → <b style='color:#34d399'>spontaneous</b>, cell kaam karegi | ΔG° = −nFE° < 0";
+ } else {
+  txt(c,"koi 2 electrodes chuno - cell ka EMF niklega",460,60,DM,"12px 'Cascadia Code',monospace","center");
+  R.innerHTML="2 electrodes select karo. Kam E° wala <b style='color:#f87171'>anode</b> (oxidation), zyada E° wala <b style='color:#34d399'>cathode</b> (reduction) banega.";
+ }
+}
+M.forEach(m=>{
+ document.getElementById(m.id).onclick=()=>{
+  if(sel.includes(m.n)){if(sel.length>1)sel=sel.filter(x=>x!==m.n);}
+  else{sel.push(m.n);if(sel.length>2)sel.shift();}
+  mark();draw();
+ };
+});
+return function(){mark();draw();};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2"),sQ=document.getElementById("nQ"),vQ=document.getElementById("vlnQ"),R=document.getElementById("r2");
+const E0=1.10,n=2;
+const Eof=lq=>E0-(0.059/n)*lq;
+const X=lq=>90+(lq+3)/6*790;
+const Y=e=>295-(e-0.95)/0.30*250;
+function draw(){
+ c.clearRect(0,0,920,330);
+ const lq=parseFloat(sQ.value);
+ // axes
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(90,40);c.lineTo(90,295);c.lineTo(880,295);c.stroke();
+ for(let v=-3;v<=3;v++){
+  const x=X(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(x,290);c.lineTo(x,300);c.stroke();
+  txt(c,""+v,x,315,DM,"10px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"log Q →",860,295,DM,"11px 'Cascadia Code',monospace","center");
+ [1.0,1.1,1.2].forEach(e=>{
+  const y=Y(e);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();
+  txt(c,e.toFixed(1),78,y+4,DM,"10px 'Cascadia Code',monospace","right");
+ });
+ txt(c,"E_cell (V)",40,30,CY,"11px 'Cascadia Code',monospace","left");
+ // E0 dashed line
+ c.strokeStyle=DM;c.setLineDash([5,5]);c.lineWidth=1;
+ c.beginPath();c.moveTo(90,Y(E0));c.lineTo(880,Y(E0));c.stroke();c.setLineDash([]);
+ txt(c,"E° = 1.10 V (Q = 1, standard)",700,Y(E0)-8,DM,"10px 'Cascadia Code',monospace","center");
+ // Nernst line
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+ let first=true;
+ for(let px=0;px<=100;px++){
+  const q=-3+px/100*6;const e=Eof(q);
+  const x=X(q),y=Y(e);
+  if(first){c.moveTo(x,y);first=false;}else c.lineTo(x,y);
+ }
+ c.stroke();
+ txt(c,"E = E° - (0.059/n)·log Q",300,30,CY,"bold 12px 'Cascadia Code',monospace","center");
+ // marker
+ const e=Eof(lq);
+ c.fillStyle=YL;c.beginPath();c.arc(X(lq),Y(e),7,0,7);c.fill();
+ c.strokeStyle=YL;c.setLineDash([3,3]);c.lineWidth=1;
+ c.beginPath();c.moveTo(X(lq),Y(e));c.lineTo(X(lq),295);c.stroke();c.setLineDash([]);
+ txt(c,"E = "+e.toFixed(3)+" V",X(lq),Y(e)-14,YL,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"E = 0 at log Q = nE°/0.059 ≈ 37 → K ≈ 10^37 (bahut bada!)",460,270,DM,"10px 'Cascadia Code',monospace","center");
+ const Q=Math.pow(10,lq);
+ const note=lq<-0.05?"Q chhota (reactant zyada) → E BADHA - fresh battery feel":lq>0.05?"Q bada (product zyada) → E GIRA - discharge hui battery":"Q = 1, standard conditions - E = E°";
+ R.innerHTML="log Q = <b style='color:#facc15'>"+lq.toFixed(1)+"</b> &nbsp;|&nbsp; Q ≈ <b>"+(Q<0.01?Q.toExponential(1):Q<10?Q.toFixed(2):Math.round(Q))+"</b> &nbsp;|&nbsp; E_cell = 1.10 − 0.0295×("+lq.toFixed(1)+") = <b style='color:#22d3ee'>"+e.toFixed(3)+" V</b> &nbsp;|&nbsp; "+note;
+}
+sQ.addEventListener("input",()=>{vQ.textContent=sQ.value;draw();});
+return function(){vQ.textContent=sQ.value;draw();};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3"),R=document.getElementById("r3");
+const bS=document.getElementById("kS"),bW=document.getElementById("kW");
+const sC=document.getElementById("kC"),vC=document.getElementById("vlkC");
+let mode=0; // 0 strong, 1 weak
+const L0s=150,As=60,L0w=390,Ka=1.8e-5;
+const lamStrong=rc=>L0s-As*rc;
+const lamWeak=rc=>{const cc=rc*rc;const al=Math.min(1,Math.sqrt(Ka/cc));return L0w*al;};
+const X=rc=>90+rc*790;
+const Y=l=>295-l/400*250;
+function mark(){[[bS,0],[bW,1]].forEach(([b,i])=>{
+ b.style.borderColor=i===mode?"#22d3ee":"#2d2d52";b.style.color=i===mode?"#22d3ee":"#8fa0c8";});}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const lgC=parseFloat(sC.value);
+ const C=Math.pow(10,lgC),rc=Math.sqrt(C);
+ // axes
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(90,40);c.lineTo(90,295);c.lineTo(880,295);c.stroke();
+ [0,0.25,0.5,0.75,1].forEach(v=>{
+  const x=X(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(x,290);c.lineTo(x,300);c.stroke();
+  txt(c,v.toFixed(2),x,315,DM,"10px 'Cascadia Code',monospace","center");
+ });
+ txt(c,"√C →",865,295,DM,"11px 'Cascadia Code',monospace","center");
+ [100,200,300,400].forEach(l=>{
+  const y=Y(l);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();
+  txt(c,""+l,78,y+4,DM,"10px 'Cascadia Code',monospace","right");
+ });
+ txt(c,"Λm (S·cm2/mol)",40,30,CY,"11px 'Cascadia Code',monospace","left");
+ const lam=mode===0?lamStrong:lamWeak;
+ const col=mode===0?CY:MG;
+ // curve
+ c.strokeStyle=col;c.lineWidth=3;c.beginPath();
+ let first=true;
+ for(let px=0;px<=200;px++){
+  const r=0.008+px/200*0.992;
+  const x=X(r),y=Y(Math.min(400,lam(r)));
+  if(first){c.moveTo(x,y);first=false;}else c.lineTo(x,y);
+ }
+ c.stroke();
+ if(mode===0){
+  c.strokeStyle=DM;c.setLineDash([5,5]);c.lineWidth=1;
+  c.beginPath();c.moveTo(90,Y(L0s));c.lineTo(X(1),Y(L0s));c.stroke();c.setLineDash([]);
+  txt(c,"Λ°m = 150 (extrapolate karke milti)",400,Y(L0s)-8,DM,"10px 'Cascadia Code',monospace","center");
+  txt(c,"Strong (KCl): Λm = Λ°m - A·√C - dheere dheere badhti",460,30,CY,"bold 12px 'Cascadia Code',monospace","center");
+ } else {
+  txt(c,"Weak (CH3COOH): dilute pe α tez badhta → Λm STEEP rise",460,30,MG,"bold 12px 'Cascadia Code',monospace","center");
+  txt(c,"Λ°m directly NAHI milti - Kohlrausch law se nikaalo!",460,50,YL,"bold 11px 'Cascadia Code',monospace","center");
+ }
+ // marker
+ const lm=lam(rc);
+ c.fillStyle=YL;c.beginPath();c.arc(X(rc),Y(Math.min(400,lm)),7,0,7);c.fill();
+ if(mode===0){
+  c.strokeStyle=YL;c.setLineDash([3,3]);c.lineWidth=1;
+  c.beginPath();c.moveTo(X(rc),Y(lm));c.lineTo(90,Y(L0s));c.stroke();c.setLineDash([]);
+ }
+ txt(c,"Λm ≈ "+lm.toFixed(1),Math.min(800,X(rc)+14),Y(Math.min(400,lm))-6,YL,"bold 12px 'Cascadia Code',monospace","left");
+ txt(c,"dilution (√C → 0): κ GHATTI hai, Λm BADHTI hai - ulta behavior = exam favourite!",460,270,DM,"11px 'Cascadia Code',monospace","center");
+ const extra=mode===1?" &nbsp;|&nbsp; α = Λm/Λ°m ≈ <b>"+(lm/L0w).toFixed(3)+"</b>":"";
+ R.innerHTML="C = <b style='color:#facc15'>"+(C<0.01?C.toExponential(1):C.toFixed(3))+" mol/L</b> &nbsp;|&nbsp; Λm ≈ <b style='color:#22d3ee'>"+lm.toFixed(1)+" S·cm2/mol</b>"+extra+" &nbsp;|&nbsp; Paani milao → κ neeche (ions/cm3 kam), Λm upar";
+}
+bS.onclick=()=>{mode=0;mark();draw();};
+bW.onclick=()=>{mode=1;mark();draw();};
+sC.addEventListener("input",()=>{vC.textContent=Math.pow(10,parseFloat(sC.value)).toPrecision(1);draw();});
+return function(){vC.textContent=Math.pow(10,parseFloat(sC.value)).toPrecision(1);mark();draw();};
+})();
+inits[4]=(()=>{
+const c=ctx("cv4"),R=document.getElementById("r4");
+const sI=document.getElementById("fI"),vI=document.getElementById("vlfI");
+const sT=document.getElementById("fT"),vT=document.getElementById("vlfT");
+const MET={Ag:{n:1,M:108,rxn:"Ag+ + e- → Ag"},Cu:{n:2,M:63.5,rxn:"Cu2+ + 2e- → Cu"},Al:{n:3,M:27,rxn:"Al3+ + 3e- → Al"}};
+let met="Ag";
+function mark(){["Ag","Cu","Al"].forEach(k=>{const b=document.getElementById("f"+k);const on=k===met;
+ b.style.borderColor=on?"#22d3ee":"#2d2d52";b.style.color=on?"#22d3ee":"#8fa0c8";});}
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const I=parseFloat(sI.value),tm=parseFloat(sT.value);
+ const m=MET[met];
+ const Q=I*tm*60;
+ const mole=Q/96487;
+ const mass=m.M/m.n*mole;
+ // beaker
+ c.strokeStyle="#8fa0c8";c.lineWidth=2.5;
+ c.beginPath();c.moveTo(90,120);c.lineTo(90,295);c.lineTo(350,295);c.lineTo(350,120);c.stroke();
+ c.fillStyle=CY;c.globalAlpha=0.15;c.fillRect(93,165,354,127);c.globalAlpha=1;
+ txt(c,met+"-salt solution",220,315,CY,"11px 'Cascadia Code',monospace","center");
+ // battery + wires
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
+ c.beginPath();c.moveTo(150,110);c.lineTo(150,70);c.lineTo(290,70);c.lineTo(290,110);c.stroke();
+ c.strokeStyle=RD;c.lineWidth=4;c.beginPath();c.moveTo(210,62);c.lineTo(210,78);c.stroke();
+ c.strokeStyle=GR;c.lineWidth=2;c.beginPath();c.moveTo(225,58);c.lineTo(225,82);c.stroke();
+ txt(c,"-",205,52,RD,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"+",238,52,GR,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"battery (current LAGA rahe)",220,35,"#e8e8f2","11px 'Cascadia Code',monospace","center");
+ // electrodes: anode left (+ attracts anions), cathode right (- attracts cations)
+ c.fillStyle="#9aa3b8";c.fillRect(142,110,16,150);
+ c.strokeStyle="#e8e8f2";c.lineWidth=1.5;c.strokeRect(142,110,16,150);
+ txt(c,"anode (+)",150,300,YL,"bold 10px 'Cascadia Code',monospace","center");
+ c.fillStyle="#9aa3b8";c.fillRect(282,110,16,150);
+ c.strokeStyle="#e8e8f2";c.lineWidth=1.5;c.strokeRect(282,110,16,150);
+ txt(c,"cathode (-)",290,300,GR,"bold 10px 'Cascadia Code',monospace","center");
+ // deposit on cathode
+ const dep=Math.min(26,mass*3);
+ if(dep>0.5){
+  c.fillStyle=YL;c.globalAlpha=0.75;
+  c.fillRect(282-dep/2,110+150-Math.min(150,dep*12),16+dep,Math.min(150,dep*12));
+  c.globalAlpha=1;
+ }
+ // animated ions to cathode
+ for(let i=0;i<6;i++){
+  const x=170+((t*1.6+i*52)%104);
+  c.fillStyle=CY;c.beginPath();c.arc(x,200+(i*17)%60,4,0,7);c.fill();
+  txt(c,"+",x,203+(i*17)%60,"#07070f","bold 9px 'Cascadia Code',monospace","center");
+ }
+ txt(c,met+" ions → cathode",215,185,CY,"10px 'Cascadia Code',monospace","center");
+ // numbers right
+ const x0=430;
+ txt(c,"Faraday's 1st law: m = Z·I·t",x0,60,"#e8e8f2","bold 13px 'Cascadia Code',monospace","left");
+ txt(c,"Q = I × t = "+I+" × "+(tm*60)+" s = "+Math.round(Q)+" C",x0,95,CY,"12px 'Cascadia Code',monospace","left");
+ txt(c,"mol e- = Q/96487 = "+mole.toFixed(4)+" mol",x0,120,CY,"12px 'Cascadia Code',monospace","left");
+ txt(c,m.rxn+"  (n = "+m.n+")",x0,150,MG,"12px 'Cascadia Code',monospace","left");
+ txt(c,"mol "+met+" = mol e-/n = "+(mole/m.n).toFixed(4),x0,175,MG,"12px 'Cascadia Code',monospace","left");
+ txt(c,"mass = "+m.M+" × "+(mole/m.n).toFixed(4)+" = "+mass.toFixed(3)+" g",x0,205,YL,"bold 14px 'Cascadia Code',monospace","left");
+ txt(c,"Faraday's 2nd law: same Q pe masses ∝ equivalent weight (M/n)",x0,245,DM,"11px 'Cascadia Code',monospace","left");
+ txt(c,"1 mol e- = 96487 C (Faraday constant)",x0,270,DM,"11px 'Cascadia Code',monospace","left");
+ R.innerHTML="I = <b>"+I+" A</b>, t = <b>"+tm+" min</b> &nbsp;|&nbsp; <b style='color:#e879f9'>"+m.rxn+"</b> &nbsp;|&nbsp; Q = <b style='color:#22d3ee'>"+Math.round(Q)+" C</b> &nbsp;|&nbsp; deposited: <b style='color:#facc15'>"+mass.toFixed(3)+" g "+met+"</b>";
+}
+["Ag","Cu","Al"].forEach(k=>{document.getElementById("f"+k).onclick=()=>{met=k;mark();draw(0);};});
+sI.addEventListener("input",()=>{vI.textContent=sI.value;draw(0);});
+sT.addEventListener("input",()=>{vT.textContent=sT.value;draw(0);});
+anims[4]=t=>draw(t);
+return function(){vI.textContent=sI.value;vT.textContent=sT.value;mark();draw(0);};
+})();
+inits[5]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Daniell cell me anode kaun hai aur wahan kya hota hai?",opts:["Cu rod - reduction hota","Zn rod - oxidation hota (Zn → Zn2+ + 2e-)","Pt rod - inert electrode","Salt bridge - ions mix karta hai"],a:1,why:"Daniell cell: Zn ANODE pe oxidation (Zn → Zn2+ + 2e-), Cu CATHODE pe reduction (Cu2+ + 2e- → Cu). Electrons external circuit me Zn → Cu. A-O: Anode = Oxidation!"},
+{q:"E°cell = E°cathode − E°anode. E°cell POSITIVE ka matlab?",opts:["Reaction non-spontaneous hai","ΔG° positive hai","Reaction spontaneous hai - cell kaam karegi","Cell equilibrium pe hai"],a:2,why:"E° positive → ΔG° = −nFE° NEGATIVE → reaction spontaneous, Galvanic cell current degi. Negative EMF ka matlab ulta reaction chalana padega (electrolysis)."},
+{q:"298 K pe Nernst equation: E = E° − (x/n)·log Q. x ki value?",opts:["0.059 V","96487 C","8.314 J","0.59 V"],a:0,why:"2.303RT/F = 0.059 V at 298 K. Toh E = E° − (0.059/n)·log Q. Ye constant har Nernst numerical me aata hai!"},
+{q:"Solution dilute karne pe κ (conductivity) aur Λm (molar conductivity) pe kya asar?",opts:["Dono badhti hain","κ badhti, Λm ghatti","κ ghatti, Λm badhti","Dono ghatti hain"],a:2,why:"Dilution pe ions per cm3 kam → κ GHATTI. Lekin per-mole availability/dissociation badhta → Λm BADHTI. Ye ulta behavior exam favourite hai!"},
+{q:"1 mol Cu2+ ko Cu metal deposit karne ke liye kitna charge chahiye?",opts:["96487 C","2 × 96487 C","96487 / 2 C","0.059 C"],a:1,why:"Cu2+ + 2e- → Cu: n-factor = 2. 1 mol ion ke liye n mol electrons = 2 × 96487 C. Faraday 1st law: m = ZIt, mol e- = Q/96487."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Electrochemistry pakki! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+
+go(0);
+</script></body></html>
