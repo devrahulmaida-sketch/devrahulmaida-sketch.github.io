@@ -228,7 +228,9 @@ let g="CO2";
 const btns={CO2:"gCO2",O2:"gO2",N2:"gN2",He:"gHe"};
 function mark(){Object.keys(btns).forEach(k=>document.getElementById(btns[k]).classList.toggle("sel",k===g));}
 Object.keys(btns).forEach(k=>document.getElementById(btns[k]).onclick=()=>{g=k;mark();draw();});
-const X=p=>90+p/10*560, Y=x=>295-x*1050; // x scaled: 0.22 max -> y 64
+const X=p=>90+p/10*560;
+const Y0=x=>295-(Math.log10(x)+5.2)/2.9*245;
+const Y=x=>Math.max(40,Math.min(292,Y0(x))); // log scale 1e-5.2 .. 1e-2.3
 function draw(){
  c.clearRect(0,0,920,330);
  // axes (left plot region x 90-650)
@@ -236,36 +238,37 @@ function draw(){
  c.beginPath();c.moveTo(90,40);c.lineTo(90,295);c.lineTo(650,295);c.stroke();
  [0,2,4,6,8,10].forEach(v=>{const x=X(v);c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(x,290);c.lineTo(x,300);c.stroke();txt(c,""+v,x,315,DM,"10px 'Cascadia Code',monospace","center");});
  txt(c,"p (bar) →",636,280,DM,"11px 'Cascadia Code',monospace","center");
- [0.05,0.1,0.15,0.2].forEach(v=>{const y=Y(v);c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();txt(c,v.toFixed(2),78,y+4,DM,"10px 'Cascadia Code',monospace","right");});
- txt(c,"x",45,30,CY,"11px 'Cascadia Code',monospace","left");
- txt(c,"x = p / K_H  (gas ka mole fraction solution me)",370,30,"#e8e8f2","bold 12px 'Cascadia Code',monospace","center");
- // lines for all gases (faint), selected bold
+ [[1e-5,"1e-5"],[1e-4,"1e-4"],[1e-3,"1e-3"]].forEach(v=>{const y=Y(v[0]);c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();txt(c,v[1],78,y+4,DM,"10px 'Cascadia Code',monospace","right");});
+ txt(c,"x (log)",40,30,CY,"11px 'Cascadia Code',monospace","left");
+ txt(c,"x = p / K_H  (gas ka mole fraction solution me)",360,30,"#e8e8f2","bold 12px 'Cascadia Code',monospace","center");
+ // lines for all gases (faint), selected bold; label at right end of each line
  Object.keys(gases).forEach(k=>{
-  const KH=gases[k].KH,xMax=10/(KH*1000);
-  c.strokeStyle=gases[k].col;c.globalAlpha=k===g?1:0.25;c.lineWidth=k===g?3:1.5;
-  c.beginPath();c.moveTo(X(0),Y(0));c.lineTo(X(10),Y(Math.min(0.22,xMax)));c.stroke();c.globalAlpha=1;
-  const lx=X(10)-4,ly=Y(Math.min(0.22,xMax))+(k==="He"?14:(k==="N2"?6:(k==="O2"?-4:-12)));
-  if(k!==g)txt(c,k,lx-6,ly,gases[k].col,"11px 'Cascadia Code',monospace","right");
+  const KH=gases[k].KH;
+  c.strokeStyle=gases[k].col;c.globalAlpha=k===g?1:0.35;c.lineWidth=k===g?3:1.5;
+  c.beginPath();
+  for(let pi=1;pi<=20;pi++){const p=pi/2;const xx=p/(KH*1000);pi===1?c.moveTo(X(p),Y(xx)):c.lineTo(X(p),Y(xx));}
+  c.stroke();c.globalAlpha=1;
+  if(k!==g){const xe=10/(KH*1000);txt(c,k,X(10)+8,Y(xe),gases[k].col,"11px 'Cascadia Code',monospace","left");}
  });
  // marker at slider p
  const KH=gases[g].KH,p=parseFloat(pH.value),x=p/(KH*1000);
- c.fillStyle=gases[g].col;c.beginPath();c.arc(X(p),Y(Math.min(0.22,x)),7,0,7);c.fill();
- txt(c,g+": x = "+x.toExponential(2),Math.min(X(p)+16,470),Math.max(Y(Math.min(0.22,x))-12,48),gases[g].col,"bold 12px 'Cascadia Code',monospace","left");
+ c.fillStyle=gases[g].col;c.beginPath();c.arc(X(p),Y(x),7,0,7);c.fill();
+ const mlx=X(p)>480?X(p)-12:X(p)+14,mla=X(p)>480?"right":"left";
+ let mly=Y(x)-12;if(mly<50)mly=Y(x)+26;
+ txt(c,g+": x = "+x.toExponential(2),mlx,mly,gases[g].col,"bold 12px 'Cascadia Code',monospace",mla);
  // soda bottle visual right
  const bx=740,bw=110,by=70,bh=200;
  c.strokeStyle=DM;c.lineWidth=2.5;c.strokeRect(bx,by,bw,bh);
  c.fillStyle="rgba(34,211,238,0.15)";c.fillRect(bx+2,by+40,bw-4,bh-42);
- // cap pressure indicator
  const capY=by-30;
  c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.moveTo(bx+10,capY);c.lineTo(bx+bw-10,capY);c.stroke();
  txt(c,"p = "+p.toFixed(1)+" bar",bx+bw/2,capY-8,YL,"bold 12px 'Cascadia Code',monospace","center");
- // bubbles ∝ dissolved amount
- const nb=Math.round(Math.min(0.22,x)/0.22*26);
+ // bubbles scale with this gas's own max (p=10 -> 26 bubbles)
+ const xMax=10/(KH*1000),nb=Math.round(x/xMax*26);
  c.fillStyle=gases[g].col;
  for(let i=0;i<nb;i++){const px=bx+14+(i%5)*21+((i*31)%7),py=by+55+Math.floor(i/5)*36+((i*47)%11);if(py<by+bh-12){c.beginPath();c.arc(px,py,4,0,7);c.fill();}}
  txt(c,"bubbles = kitni gas ghuli",bx+bw/2,by+bh+22,DM,"11px 'Cascadia Code',monospace","center");
- txt(c,"K_H bada → line FLAT → kam solubility (He sabse kam!)",460,320,MG,"12px 'Cascadia Code',monospace","center");
- R.innerHTML="gas = <b style='color:"+gases[g].col+"'>"+g+"</b> &nbsp;|&nbsp; K_H = <b>"+KH+" kbar</b> &nbsp;|&nbsp; p = <b style='color:#facc15'>"+p.toFixed(1)+" bar</b> &nbsp;|&nbsp; x = p/K_H = <b style='color:#facc15'>"+x.toExponential(2)+"</b> &nbsp;|&nbsp; CO2 soda me isliye zyada ghulta - K_H chhota! Divers: He ka K_H sabse bada → blood me kam ghulta → bends safe";
+ R.innerHTML="gas = <b style='color:"+gases[g].col+"'>"+g+"</b> &nbsp;|&nbsp; K_H = <b>"+KH+" kbar</b> &nbsp;|&nbsp; p = <b style='color:#facc15'>"+p.toFixed(1)+" bar</b> &nbsp;|&nbsp; x = p/K_H = <b style='color:#facc15'>"+x.toExponential(2)+"</b> &nbsp;|&nbsp; K_H BADA → line NEECHE → solubility KAM (He sabse kam - divers isliye He mix karte, bends se bachne). CO2 ka K_H chhota → soda me zyada ghulta!";
 }
 pH.addEventListener("input",()=>{document.getElementById("vlpH").textContent=pH.value;draw();});
 mark();draw();
@@ -313,16 +316,14 @@ function draw(){
  // labels - edge aware
  txt(c,"p1 (component 1)",150,Y(p1(0.12))-12,CY,"12px 'Cascadia Code',monospace","left");
  txt(c,"p2 (component 2)",640,Y(p2(0.7))+24,MG,"12px 'Cascadia Code',monospace","left");
- const ty=mode===1?Y(p1(0.45)+p2(0.45))-14:Y(p1(0.5)+p2(0.5))+30;
- txt(c,"p_total",X(0.5)+16,ty,YL,"bold 13px 'Cascadia Code',monospace","left");
  // marker at slider
  const x1=parseFloat(xR.value),pt=p1(x1)+p2(x1);
  c.fillStyle=YL;c.beginPath();c.arc(X(x1),Y(pt),7,0,7);c.fill();
  c.strokeStyle=YL;c.setLineDash([3,3]);c.lineWidth=1;c.beginPath();c.moveTo(X(x1),Y(pt));c.lineTo(X(x1),295);c.stroke();c.setLineDash([]);
  const lx=X(x1)>620?X(x1)-16:X(x1)+16,la=X(x1)>620?"right":"left";
- let ly=Y(pt)-16;if(ly<52)ly=Y(pt)+30;
+ let ly=mode===1?Y(pt)-16:mode===2?Y(pt)+34:(Y(pt)>190?Y(pt)-16:Y(pt)+34);if(ly<56)ly=Y(pt)+34;
  txt(c,"p_total = "+pt.toFixed(1)+" mmHg",lx,ly,YL,"bold 12px 'Cascadia Code',monospace",la);
- txt(c,mode===0?"benzene+toluene type: A-B ≈ A-A ≈ B-B - koi surprise nahi":mode===1?"ethanol+water: H-bonds TOOTE → bhaago mode → VP upar, BP kam":"chloroform+acetone: NAYA H-bond bana → pakdo mode → VP neeche, BP zyada",480,320,MG,"12px 'Cascadia Code',monospace","center");
+ txt(c,mode===0?"benzene+toluene type: A-B ≈ A-A ≈ B-B - koi surprise nahi":mode===1?"ethanol+water: H-bonds TOOTE → bhaago mode → VP upar, BP kam":"chloroform+acetone: NAYA H-bond bana → pakdo mode → VP neeche, BP zyada",480,52,MG,"12px 'Cascadia Code',monospace","center");
  R.innerHTML="x1 = <b style='color:#facc15'>"+x1.toFixed(2)+"</b> &nbsp;|&nbsp; p1 = <b style='color:#22d3ee'>"+p1(x1).toFixed(1)+"</b> mmHg &nbsp;|&nbsp; p2 = <b style='color:#e879f9'>"+p2(x1).toFixed(1)+"</b> mmHg &nbsp;|&nbsp; p_total = <b style='color:#facc15'>"+pt.toFixed(1)+" mmHg</b> &nbsp;|&nbsp; ideal Raoult p_total = <b>"+(p1o*x1+p2o*(1-x1)).toFixed(1)+"</b> &nbsp;|&nbsp; "+(mode===0?"IDEAL - Raoult exactly follow":mode===1?"POSITIVE deviation - actual UPAR":"<b>NEGATIVE deviation - actual NEECHE</b>");
 }
 xR.addEventListener("input",()=>{document.getElementById("vlxR").textContent=xR.value;draw();});
@@ -356,16 +357,16 @@ function draw(){
  txt(c,"°C",tx+tw/2,26,CY,"12px 'Cascadia Code',monospace","center");
  // pure water markers (dashed)
  c.strokeStyle=DM;c.lineWidth=1.5;c.setLineDash([5,4]);
- c.beginPath();c.moveTo(tx-30,TY(0));c.lineTo(tx+tw+150,TY(0));c.stroke();
- c.beginPath();c.moveTo(tx-30,TY(100));c.lineTo(tx+tw+150,TY(100));c.stroke();
+ c.beginPath();c.moveTo(tx-6,TY(0));c.lineTo(tx+tw+150,TY(0));c.stroke();
+ c.beginPath();c.moveTo(tx-6,TY(100));c.lineTo(tx+tw+150,TY(100));c.stroke();
  c.setLineDash([]);
  txt(c,"pure water FP = 0",tx+tw+10,TY(0)-6,DM,"11px 'Cascadia Code',monospace","left");
  txt(c,"pure water BP = 100",tx+tw+10,TY(100)+14,DM,"11px 'Cascadia Code',monospace","left");
  // solution markers (solid)
  c.strokeStyle=CY;c.lineWidth=3;
- c.beginPath();c.moveTo(tx-30,TY(FP));c.lineTo(tx+tw+150,TY(FP));c.stroke();
+ c.beginPath();c.moveTo(tx-6,TY(FP));c.lineTo(tx+tw+150,TY(FP));c.stroke();
  c.strokeStyle=RD;c.lineWidth=3;
- c.beginPath();c.moveTo(tx-30,TY(BP));c.lineTo(tx+tw+150,TY(BP));c.stroke();
+ c.beginPath();c.moveTo(tx-6,TY(BP));c.lineTo(tx+tw+150,TY(BP));c.stroke();
  txt(c,"solution FP = "+FP.toFixed(2)+" (ΔT_f = "+dTf.toFixed(2)+")",tx+tw+10,Math.min(TY(FP)-6,TY(0)-20),CY,"bold 12px 'Cascadia Code',monospace","left");
  txt(c,"solution BP = "+BP.toFixed(2)+" (ΔT_b = "+dTb.toFixed(2)+")",tx+tw+10,Math.max(TY(BP)+16,TY(100)+30),RD,"bold 12px 'Cascadia Code',monospace","left");
  // arrows showing shifts
@@ -416,7 +417,7 @@ const RT=0.0821*298; // 24.46 L·atm/mol
 // tank: left half dilute, right half concentrated, SPM in middle
 // water dots animated crossing left->right
 let dots=[];
-for(let i=0;i<26;i++)dots.push({x:60+Math.random()*330,y:80+Math.random()*200,vx:0.4+Math.random()*0.8});
+for(let i=0;i<26;i++)dots.push({x:60+Math.random()*330,y:86+Math.random()*176,vx:0.4+Math.random()*0.8});
 function draw(t){
  c.clearRect(0,0,920,330);
  const C=parseFloat(cO.value),pi=RT*C; // i=1 glucose
@@ -446,9 +447,9 @@ function draw(t){
  arrow2(c,tx+60,ty+th-24,tx+tw-60,ty+th-24,GR,3);
  txt(c,"net solvent flow: dilute → concentrated",tx+tw/2,ty+th-34,GR,"11px 'Cascadia Code',monospace","center");
  // pi gauge
- txt(c,"π = i·C·R·T",tx+tw/2,ty+30,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
- txt(c,"= 1 × "+C.toFixed(2)+" × 0.0821 × 298",tx+tw/2,ty+52,"#e8e8f2","12px 'Cascadia Code',monospace","center");
- txt(c,"= "+pi.toFixed(1)+" atm",tx+tw/2,ty+74,YL,"bold 16px 'Cascadia Code',monospace","center");
+ txt(c,"π = i·C·R·T",tx+tw/4,ty+30,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"= 1 × "+C.toFixed(2)+" × 0.0821 × 298",tx+tw/4,ty+52,"#e8e8f2","12px 'Cascadia Code',monospace","center");
+ txt(c,"= "+pi.toFixed(1)+" atm",tx+tw/4,ty+74,YL,"bold 16px 'Cascadia Code',monospace","center");
  // RO note
  txt(c,"RO: π se ZYADA pressure → solvent ULTA (desalination!)",tx+tw/2,ty+th+40,DM,"11px 'Cascadia Code',monospace","center");
  // RBC right side
