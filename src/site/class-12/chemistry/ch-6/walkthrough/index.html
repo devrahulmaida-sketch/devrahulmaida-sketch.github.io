@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haloalkanes and Haloarenes - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Chemistry - Chapter 6 - Haloalkanes and Haloarenes</div>
+<h1>Haloalkanes and Haloarenes Ka Visual Walkthrough</h1>
+<p class="sub">6 interactive scenes - classification game (1/2/3 degree), banao machine (Darzens, Finkelstein, Swarts), BP lab (RI&gt;RBr&gt;RCl&gt;RF), SN1 vs SN2 arena, KOH elimination + Saytzeff + metals, haloarene lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Kaunsa Class? - 1° 2° 3°, Allylic ya Vinylic ⭐⭐</h2>
+<p class="why">Haloalkane: alkane ka H halogen se replace (R-X). Haloarene: benzene ring pe halogen (Ar-X). Haloalkanes ka type: C-X wale carbon ke C-NEIGHBOURS se - 1° (1 neighbour), 2° (2), 3° (3). Allylic (X, C=C ke adjacent C pe) / benzylic (ring ke adjacent C pe) = REACTIVE. Vinylic (X double-bond C pe) / aryl (ring pe) = LAZY (resonance se C-X strong). Molecule dekho, class batao!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="eb sel" data-e="0">chloroethane</button>
+<button class="eb" data-e="1">2-chloropropane</button>
+<button class="eb" data-e="2">tert-butyl chloride</button>
+<button class="eb" data-e="3">allyl chloride</button>
+<button class="eb" data-e="4">vinyl chloride</button>
+<button class="eb" data-e="5">chlorobenzene</button>
+</div>
+<div class="btnrow">
+<button class="gb" data-g="d1">1° haloalkane</button>
+<button class="gb" data-g="d2">2° haloalkane</button>
+<button class="gb" data-g="d3">3° haloalkane</button>
+<button class="gb" data-g="al">allylic / benzylic</button>
+<button class="gb" data-g="vi">vinylic / aryl</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Banao Machine - Alcohol Se / Finkelstein / Swarts ⭐⭐</h2>
+<p class="why">Alcohol se: R-OH + HX (HCl ke saath anhydrous ZnCl2 = LUCAS reagent), PCl5, ya SOCl2 (DARZENS - best, kyunki side products SO2 + HCl GAS banke nikal jate). FINKELSTEIN: R-Cl/Br + NaI (dry acetone) → R-I + NaCl/NaBr PPT (acetone me insoluble, reaction aage dhakka). SWARTS: R-Cl/Br + AgF/SbF3 → R-F (fluoride banana mushkil, isliye special method).</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="tb sel" data-t="0">Alcohol se</button>
+<button class="tb" data-t="1">Finkelstein (I)</button>
+<button class="tb" data-t="2">Swarts (F)</button>
+</div>
+<div class="btnrow" id="rowR">
+<button class="rb sel" data-r="0">HCl + ZnCl2 (Lucas)</button>
+<button class="rb" data-r="1">PCl5</button>
+<button class="rb" data-r="2">SOCl2 (Darzens)</button>
+</div>
+<div class="btnrow" id="rowK" style="display:none">
+<button class="kb sel" data-k="0">C2H5-Cl</button>
+<button class="kb" data-k="1">C2H5-Br</button>
+</div>
+<div class="btnrow" id="rowX" style="display:none">
+<button class="xb sel" data-x="0">AgF</button>
+<button class="xb" data-x="1">SbF3</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. BP Lab - Bada Halogen, Bada BP ⭐⭐</h2>
+<p class="why">C-X bond polar (halogen δ-, carbon δ+) phir bhi pani me INSOLUBLE (pani ke saath H-bond nahi bana paate). Same alkyl group pe BP: RI &gt; RBr &gt; RCl &gt; RF (size/mass badhne pe van der Waals badhte). Isomers me branching badhne pe BP GHATTA (surface area kam). Symmetry zyada = MP zyada (para &gt; ortho, crystal packing achhi).</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>C4H9Cl branching</label><input type="range" id="bS" min="0" max="3" step="1" value="0"><span class="v" id="bV">n</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. SN1 vs SN2 Arena - Order ULTA Hai! ⭐⭐</h2>
+<p class="why">Nucleophile (Nu-, electron-rich) halogen ko replace karta. SN2: EK step - backside attack, rate = k[R-X][Nu-] (2nd order), 1° FAST (kam steric), INVERSION of configuration (Walden). SN1: DO step - pehle slow ionization se CARBOCATION (RDS), phir Nu attack; rate = k[R-X] (1st order), 3° FAST (carbocation stable), RACEMIZATION. Solvent: SN2 polar APROTIC, SN1 polar PROTIC.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="ob sel" data-o="0">SN2 (bimolecular)</button>
+<button class="ob" data-o="1">SN1 (unimolecular)</button>
+</div>
+<div class="btnrow">
+<button class="db sel" data-d="0">1° halide</button>
+<button class="db" data-d="1">2° halide</button>
+<button class="db" data-d="2">3° halide</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. KOH Ka Double Role + Saytzeff + Metals ⭐⭐</h2>
+<p class="why">AQUEOUS KOH → SUBSTITUTION (alcohol banta). ALCOHOLIC KOH → ELIMINATION (HX nikalta, alkene banta - beta-elimination). SAYTZEFF rule: major product woh alkene jisme double bond pe ZYADA alkyl groups (zyada substituted = zyada stable). Metals: WURTZ (2R-X + 2Na, dry ether → R-R, chain DOUBLE), GRIGNARD (R-X + Mg, dry ether → R-MgX, moisture NAHI!).</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="tb4 sel" data-t="0">aq vs alc KOH</button>
+<button class="tb4" data-t="1">Saytzeff rule</button>
+<button class="tb4" data-t="2">Metals (Na / Mg)</button>
+</div>
+<div class="btnrow" id="rowK4">
+<button class="kb4 sel" data-k="0">aqueous KOH</button>
+<button class="kb4" data-k="1">alcoholic KOH</button>
+</div>
+<div class="btnrow" id="rowM4" style="display:none">
+<button class="mb4 sel" data-m="0">Wurtz (Na)</button>
+<button class="mb4" data-m="1">Grignard (Mg)</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Haloarene Lazy Kyun? + Polyhalogens ⭐⭐</h2>
+<p class="why">Chlorobenzene nucleophilic substitution me REACTIVE NAHI: (1) RESONANCE - halogen ka lone pair ring se conjugate, C-X ko partial double-bond character, (2) sp2 carbon zyada electronegative = C-X chhota/strong, (3) electron-rich ring nucleophile ko REPEL karta. Sirf harsh conditions: DOW (NaOH, 623 K / 300 atm) → phenol. Electrophilic substitution: halogen DEACTIVATING lekin o/p-DIRECTING. Polyhalogens: DDT aur Freons (CFCs) = environment villains!</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="tb5 sel" data-t="0">Nu substitution (lazy)</button>
+<button class="tb5" data-t="1">Electrophilic (o/p)</button>
+<button class="tb5" data-t="2">Polyhalogens</button>
+</div>
+<div class="btnrow" id="rowD5">
+<button class="dw5 sel" data-w="0">+ NaOH normal</button>
+<button class="dw5" data-w="1">Dow: 623 K / 300 atm</button>
+</div>
+<div class="btnrow" id="rowN5" style="display:none">
+<button class="nb5 sel" data-n="0">Nitration (HNO3)</button>
+<button class="nb5" data-n="1">Halogenation (Cl2)</button>
+</div>
+<div class="btnrow" id="rowP5" style="display:none">
+<button class="pb5 sel" data-p="0">CHCl3</button>
+<button class="pb5" data-p="1">CHI3</button>
+<button class="pb5" data-p="2">CCl4</button>
+<button class="pb5" data-p="3">DDT</button>
+<button class="pb5" data-p="4">Freons (CFC)</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Rapid Quiz - Haloalkanes Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: SN2 me 1° fast / SN1 me 3° fast, Finkelstein = NaI, alc KOH + Saytzeff = zyada substituted alkene, haloarene lazy (resonance + sp2), BP order RI &gt; RBr &gt; RCl &gt; RF.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc7">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Classification ⭐⭐</h3><p>Haloalkane R-X, haloarene Ar-X | mono (CH3Cl), di (CH2Cl2), tri (CHCl3), poly (CCl4) | 1°/2°/3° = C-X wale C ke C-NEIGHBOURS (1/2/3) | Allylic/benzylic = REACTIVE | Vinylic/aryl = LAZY (resonance se C-X strong) | IUPAC: halo prefix (2-chlorobutane)</p></div>
+<div class="rcard"><h3>Preparation ⭐⭐</h3><p>Alcohol + HCl needs anhydr. ZnCl2 (LUCAS) | PCl5, PCl3 bhi | SOCl2 = DARZENS = BEST (SO2+HCl gas nikal jate) | FINKELSTEIN: R-Cl/Br + NaI (dry acetone) → R-I (NaCl ppt aage dhakka) | SWARTS: AgF/SbF3 → R-F | Free-radical halogenation = mixture (limited use)</p></div>
+<div class="rcard"><h3>Physical Properties ⭐⭐</h3><p>BP: RI &gt; RBr &gt; RCl &gt; RF (bada halogen = zyada van der Waals) | Branching badhe = BP GHATTA | Symmetry zyada = MP zyada (para &gt; ortho) | Pani me INSOLUBLE (no H-bond) | Bromo/iodo-alkanes pani se HEAVY | C-X polar: halogen δ-, carbon δ+</p></div>
+<div class="rcard"><h3>SN1 vs SN2 ⭐⭐</h3><p>SN2: 1 step BACKSIDE attack | rate = k[RX][Nu] (2nd order) | 1° FAST | INVERSION (Walden) | polar APROTIC solvent | SN1: 2 step, CARBOCATION pehle (RDS) | rate = k[RX] (1st order) | 3° FAST | RACEMIZATION | polar PROTIC | Order ULTA! | Leaving group: RI&gt;RBr&gt;RCl&gt;RF | Ambident: KCN→R-CN, AgCN→R-NC</p></div>
+<div class="rcard"><h3>Elimination + Metals ⭐⭐</h3><p>ALCOHOLIC KOH = ELIMINATION → alkene | AQUEOUS KOH = SUBSTITUTION → alcohol | SAYTZEFF: zyada substituted alkene = MAJOR | Bulky base / 3° halide = elimination favour | WURTZ: 2R-X + 2Na (dry ether) → R-R (chain double) | GRIGNARD: R-X + Mg (dry ether) → R-MgX (moisture NAHI)</p></div>
+<div class="rcard"><h3>Haloarenes + Polyhalogen ⭐⭐</h3><p>Haloarene Nu-substitution me LAZY (resonance C-X partial double + sp2 strong + ring Nu ko repel) | DOW: +NaOH 623 K/300 atm → phenol | -NO2 o/p pe = substitution aasaan | Electrophilic: deactivating par o/p-DIRECTING | Wurtz-Fittig → alkylbenzene | CHCl3 liver toxic | CHI3 yellow antiseptic | DDT bio-magnification (banned) | Freons/CFC = ozone hole (Montreal)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Chemistry Chapter 6 (Haloalkanes and Haloarenes) - Interactive Walkthrough</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+inits[0]=(()=>{
+ const c=ctx("cv0"),R=document.getElementById("r0");
+ const MOLS=[
+  {f:"CH3 - CH2 - Cl",n:"chloroethane",cls:"d1",nb:1,why:"C-Cl wala C sirf 1 carbon se juda = 1° haloalkane. IUPAC: chloro + ethane = chloroethane."},
+  {f:"CH3 - CH(Cl) - CH3",n:"2-chloropropane",cls:"d2",nb:2,why:"C-Cl wala C 2 carbons se juda = 2° haloalkane. Cl ko lowest number = 2-chloropropane."},
+  {f:"(CH3)3C - Cl",n:"2-chloro-2-methylpropane",cls:"d3",nb:3,why:"3 carbons se juda = 3° (tert-butyl chloride). 3° ka carbocation sabse stable = SN1 me SABSE fast!"},
+  {f:"CH2=CH - CH2 - Cl",n:"allyl chloride",cls:"al",nb:-1,why:"Cl, C=C ke ADJACENT carbon pe = ALLYLIC. Reactive! (allylic carbocation resonance-stable)"},
+  {f:"CH2=CH - Cl",n:"vinyl chloride",cls:"vi",nb:-1,why:"Cl SEEDHA double-bond carbon pe = VINYLIC. Lazy - resonance se C-Cl strong (partial double bond)."},
+  {f:"C6H5 - Cl   (Cl ring pe)",n:"chlorobenzene",cls:"vi",nb:-1,why:"Halogen benzene ring pe = ARYL halide. Vinylic jaisa LAZY - resonance + sp2 C-Cl strong."}];
+ const OPTS=[["d1","1° haloalkane"],["d2","2° haloalkane"],["d3","3° haloalkane"],["al","allylic / benzylic"],["vi","vinylic / aryl"]];
+ let mi=0,guess=null;
+ function draw(){
+  c.clearRect(0,0,920,330);
+  const m=MOLS[mi];
+  txt(c,"Molecule:",60,44,DM,"13px 'Cascadia Code',monospace");
+  txt(c,m.f,60,105,CY,"bold 29px 'Cascadia Code',monospace");
+  txt(c,m.n,60,142,"#e8e8f2","18px 'Cascadia Code',monospace");
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,168);c.lineTo(900,168);c.stroke();
+  if(guess===null){
+   txt(c,"Class batao neeche buttons se: 1° / 2° / 3°, allylic/benzylic ya vinylic/aryl?",60,205,YL,"15px 'Cascadia Code',monospace");
+   txt(c,"Hint: 1°/2°/3° = C-X wale carbon ke C-neighbours (1/2/3) gino",60,238,DM,"13px 'Cascadia Code',monospace");
+   txt(c,"allylic = C=C ke bagal wale C pe X | vinylic/aryl = X seedha sp2 carbon pe",60,262,DM,"13px 'Cascadia Code',monospace");
+  }else{
+   const ok=guess===m.cls;
+   txt(c,ok?"CORRECT!":"GALAT - dekho kyun:",60,208,ok?GR:RD,"bold 23px 'Cascadia Code',monospace");
+   const label=OPTS.filter(o=>o[0]===m.cls)[0][1];
+   txt(c,"Answer: "+label,60,244,MG,"bold 17px 'Cascadia Code',monospace");
+   if(m.nb>=0)txt(c,"C-X carbon ke C-neighbours: "+m.nb,60,274,CY,"15px 'Cascadia Code',monospace");
+   wrap(c,m.why,60,300,"#c9d4ff","14px 'Cascadia Code',monospace",84,17);
+  }
+  R.innerHTML="Molecule <span class='hl'>"+(mi+1)+" / 6</span> - class yaad rakho: <span class='cy'>reactivity (SN1/SN2, allylic vs vinylic) ISI se decide hoti hai!</span>";
+ }
+ document.querySelectorAll("#sc0 .eb").forEach(b=>b.onclick=()=>{
+  mi=parseInt(b.dataset.e);guess=null;
+  document.querySelectorAll("#sc0 .eb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc0 .gb").forEach(b=>b.onclick=()=>{
+  guess=b.dataset.g;
+  document.querySelectorAll("#sc0 .gb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[1]=(()=>{
+ const c=ctx("cv1"),R=document.getElementById("r1");
+ let tab=0,ri=0,ki=0,xi=0;
+ const ALC=[
+  {r:"HCl + ZnCl2",eq:"C2H5-OH  +  HCl   --(anhydr. ZnCl2)-->   C2H5-Cl  +  H2O",
+   note:"LUCAS reagent! ZnCl2 = Lewis acid catalyst. Turbidity time: 3° instant, 2° ~5 min, 1° RT nahi - 1°/2°/3° alcohol ka TEST bhi!",badge:"",col:CY},
+  {r:"PCl5",eq:"C2H5-OH  +  PCl5   ---->   C2H5-Cl  +  POCl3  +  HCl",
+   note:"POCl3 + HCl side products. Kaam ho jata par Darzens jitna clean nahi.",badge:"",col:CY},
+  {r:"SOCl2",eq:"C2H5-OH  +  SOCl2   ---->   C2H5-Cl  +  SO2^  +  HCl^",
+   note:"DARZENS = BEST method! Dono side products GAS (SO2, HCl) banke UD jate - pure haloalkane bachta, purify karna aasaan.",badge:"BEST METHOD",col:MG}];
+ const FINK=[
+  {r:"C2H5-Cl",eq:"C2H5-Cl  +  NaI   --(dry acetone)-->   C2H5-I  +  NaCl  (ppt)",
+   ppt:"NaCl"},
+  {r:"C2H5-Br",eq:"C2H5-Br  +  NaI   --(dry acetone)-->   C2H5-I  +  NaBr  (ppt)",
+   ppt:"NaBr"}];
+ const SW=[
+  {r:"AgF",eq:"C2H5-Cl  +  AgF   ---->   C2H5-F  +  AgCl",
+   note:"Fluoride banana mushkil = SPECIAL method. Heavy-metal fluorides (AgF / SbF3 / CoF2 / Hg2F2) se F exchange."},
+  {r:"SbF3",eq:"3 C2H5-Cl  +  SbF3   ---->   3 C2H5-F  +  SbCl3",
+   note:"Fluoride banana mushkil = SPECIAL method. Heavy-metal fluorides (AgF / SbF3 / CoF2 / Hg2F2) se F exchange."}];
+ function flask(x,y,col,ppt){
+  c.strokeStyle="#3d3d6e";c.lineWidth=3;
+  c.beginPath();c.moveTo(x-14,y-64);c.lineTo(x-14,y-30);c.lineTo(x-46,y+42);
+  c.quadraticCurveTo(x-52,y+62,x-30,y+62);c.lineTo(x+30,y+62);
+  c.quadraticCurveTo(x+52,y+62,x+46,y+42);c.lineTo(x+14,y-30);c.lineTo(x+14,y-64);c.stroke();
+  c.fillStyle=col;c.globalAlpha=0.35;
+  c.beginPath();c.moveTo(x-37,y+22);c.quadraticCurveTo(x,y+8,x+37,y+22);
+  c.lineTo(x+46,y+42);c.quadraticCurveTo(x+52,y+62,x+30,y+62);c.lineTo(x-30,y+62);
+  c.quadraticCurveTo(x-52,y+62,x-46,y+42);c.closePath();c.fill();c.globalAlpha=1;
+  if(ppt){c.fillStyle=YL;for(let i=0;i<10;i++){const px=x-24+(i%5)*12,py=y+46+Math.floor(i/5)*9;c.beginPath();c.arc(px,py,2.6,0,7);c.fill();}
+   txt(c,ppt+" ppt",x+58,y+56,YL,"12px 'Cascadia Code',monospace");}
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(330,16);c.lineTo(330,314);c.stroke();
+  if(tab===0){
+   const a=ALC[ri];
+   txt(c,"Alcohol se haloalkane (ethanol lo):",40,40,MG,"bold 16px 'Cascadia Code',monospace");
+   flask(140,170,a.col,false);
+   txt(c,"R-OH",96,240,DM,"13px 'Cascadia Code',monospace");
+   txt(c,"+ "+a.r,208,240,CY,"13px 'Cascadia Code',monospace");
+   wrap(c,a.eq,370,64,CY,"15px 'Cascadia Code',monospace",50,21);
+   if(a.badge){c.fillStyle="#3a0e2a";c.fillRect(370,100,150,26);c.strokeStyle=MG;c.strokeRect(370,100,150,26);
+    txt(c,a.badge,382,119,MG,"bold 13px 'Cascadia Code',monospace");}
+   wrap(c,a.note,370,150,"#c9d4ff","13.5px 'Cascadia Code',monospace",52,19);
+   R.innerHTML="Reagent: <span class='cy'>"+a.r+"</span> | <span class='hl'>SOCl2 (Darzens) = BEST</span> - side products gas banke nikal jate, clean product!";
+  }else if(tab===1){
+   const f=FINK[ki];
+   txt(c,"FINKELSTEIN reaction - iodide banao:",40,40,MG,"bold 16px 'Cascadia Code',monospace");
+   flask(140,170,GR,f.ppt);
+   txt(c,"acetone",96,240,DM,"13px 'Cascadia Code',monospace");
+   wrap(c,f.eq,370,64,CY,"15px 'Cascadia Code',monospace",50,21);
+   wrap(c,"NaCl/NaBr DRY ACETONE me insoluble = PRECIPITATE ban jata. Solution se hatne se equilibrium AAGE shift (Le Chatelier) - R-I ka yield badh jata!",370,120,"#c9d4ff","13.5px 'Cascadia Code',monospace",52,19);
+   txt(c,"Iodide banana ho -> NaI + acetone = Finkelstein",370,220,YL,"13.5px 'Cascadia Code',monospace");
+   R.innerHTML="Finkelstein: <span class='cy'>R-Cl/Br + NaI (dry acetone) -> R-I + NaCl/NaBr ppt</span> | halogen EXCHANGE reaction";
+  }else{
+   const s=SW[xi];
+   txt(c,"SWARTS reaction - fluoride banao:",40,40,MG,"bold 16px 'Cascadia Code',monospace");
+   flask(140,170,MG,null);
+   wrap(c,s.eq,370,64,CY,"15px 'Cascadia Code',monospace",50,21);
+   wrap(c,s.note,370,120,"#c9d4ff","13.5px 'Cascadia Code',monospace",52,19);
+   txt(c,"Fluoride chahiye -> AgF / SbF3 = Swarts",370,220,YL,"13.5px 'Cascadia Code',monospace");
+   R.innerHTML="Swarts: <span class='cy'>R-Cl/Br + AgF/SbF3 -> R-F</span> | F ka exchange special heavy-metal fluoride se hi hota";
+  }
+ }
+ function rows(){
+  document.getElementById("rowR").style.display=tab===0?"flex":"none";
+  document.getElementById("rowK").style.display=tab===1?"flex":"none";
+  document.getElementById("rowX").style.display=tab===2?"flex":"none";
+ }
+ document.querySelectorAll("#sc1 .tb").forEach(b=>b.onclick=()=>{
+  tab=parseInt(b.dataset.t);
+  document.querySelectorAll("#sc1 .tb").forEach(x=>x.classList.toggle("sel",x===b));
+  rows();draw();});
+ document.querySelectorAll("#sc1 .rb").forEach(b=>b.onclick=()=>{
+  ri=parseInt(b.dataset.r);
+  document.querySelectorAll("#sc1 .rb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc1 .kb").forEach(b=>b.onclick=()=>{
+  ki=parseInt(b.dataset.k);
+  document.querySelectorAll("#sc1 .kb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc1 .xb").forEach(b=>b.onclick=()=>{
+  xi=parseInt(b.dataset.x);
+  document.querySelectorAll("#sc1 .xb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return function(){rows();draw();};
+})();
+inits[2]=(()=>{
+ const c=ctx("cv2"),R=document.getElementById("r2"),S=document.getElementById("bS"),V=document.getElementById("bV");
+ const HX=[["C2H5-F",-37.7,"#5b6488"],["C2H5-Cl",12.3,CY],["C2H5-Br",38.4,YL],["C2H5-I",72.3,MG]];
+ const ISO=[
+  {n:"1-chlorobutane",t:"n (no branching)",bp:78},
+  {n:"1-chloro-2-methylpropane",t:"iso",bp:69},
+  {n:"2-chlorobutane",t:"sec",bp:68},
+  {n:"2-chloro-2-methylpropane",t:"tert (max branching)",bp:51}];
+ function ybp(v){return 300-(v+50)*2;}
+ function draw(){
+  c.clearRect(0,0,920,330);
+  txt(c,"Same alkyl (C2H5-X): bada halogen = bada BP",60,34,CY,"bold 15px 'Cascadia Code',monospace");
+  txt(c,"van der Waals badhte -> RI > RBr > RCl > RF",60,56,MG,"13px 'Cascadia Code',monospace");
+  txt(c,"0°C",24,ybp(0)+4,DM,"11px 'Cascadia Code',monospace");
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(56,ybp(0));c.lineTo(420,ybp(0));c.stroke();
+  HX.forEach((h,i)=>{
+   const x=70+i*90,yv=ybp(h[1]);
+   c.fillStyle=h[2];c.globalAlpha=0.85;
+   if(h[1]>=0)c.fillRect(x,yv,56,300-yv);else c.fillRect(x,ybp(0),56,yv-ybp(0));
+   c.globalAlpha=1;
+   txt(c,h[1]+"°C",x+28,Math.min(yv,ybp(0))-8,h[2],"bold 13px 'Cascadia Code',monospace","center");
+   txt(c,h[0],x+28,318,"#c9d4ff","12px 'Cascadia Code',monospace","center");
+  });
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(450,16);c.lineTo(450,314);c.stroke();
+  const k=parseInt(S.value),m=ISO[k];
+  V.textContent=m.t;
+  txt(c,"C4H9Cl isomers: branching badhao -> BP ghatta",470,34,CY,"bold 15px 'Cascadia Code',monospace");
+  const bx=560,bw=140,bh=(m.bp/90)*240;
+  c.fillStyle=MG;c.globalAlpha=0.85;c.fillRect(bx,300-bh,bw,bh);c.globalAlpha=1;
+  c.strokeStyle=MG;c.strokeRect(bx,300-bh,bw,bh);
+  txt(c,m.bp+"°C",bx+bw/2,300-bh-10,MG,"bold 17px 'Cascadia Code',monospace","center");
+  wrap(c,m.n,bx-70,318,"#c9d4ff","12.5px 'Cascadia Code',monospace",34,15);
+  txt(c,"branching badhi",815,105,DM,"12px 'Cascadia Code',monospace","center");
+  txt(c,"= surface area kam",815,125,DM,"12px 'Cascadia Code',monospace","center");
+  txt(c,"= BP GHATTA",815,145,MG,"bold 12px 'Cascadia Code',monospace","center");
+  const order=["78","69","68","51"];
+  R.innerHTML="C4H9Cl: <span class='cy'>"+m.n+" ("+m.t+")</span> BP <span class='hl'>"+m.bp+"°C</span> | order: n("+order[0]+") &gt; iso("+order[1]+") &gt; sec("+order[2]+") &gt; tert("+order[3]+") | pani me INSOLUBLE (no H-bond) | symmetry zyada = MP zyada (para &gt; ortho)";
+ }
+ S.oninput=draw;
+ return draw;
+})();
+inits[3]=(()=>{
+ const c=ctx("cv3"),R=document.getElementById("r3");
+ let mode=0,deg=0;
+ const DEG=["1°","2°","3°"];
+ const SN2R=[200,110,45],SN1R=[45,110,200];
+ function bond(x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+ function drawMechSN2(){
+  txt(c,"SN2 - ek step, BACKSIDE attack:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+  const cx=210,cy=185;
+  txt(c,"Nu-",60,cy+5,GR,"bold 20px 'Cascadia Code',monospace");
+  c.setLineDash([6,5]);arrow2(c,105,cy,168,cy,GR,2.5);c.setLineDash([]);
+  txt(c,"(peeche se)",72,cy+36,DM,"11px 'Cascadia Code',monospace");
+  c.fillStyle="#0e2a3a";c.beginPath();c.arc(cx,cy,26,0,7);c.fill();c.strokeStyle=CY;c.lineWidth=2.5;c.stroke();
+  txt(c,"C",cx,cy+7,CY,"bold 22px 'Cascadia Code',monospace","center");
+  bond(cx-16,cy-20,cx-52,cy-58,"#3d3d6e",2.5);txt(c,"R",cx-66,cy-60,"#c9d4ff","15px 'Cascadia Code',monospace");
+  bond(cx-20,cy+4,cx-58,cy+10,"#3d3d6e",2.5);txt(c,"R",cx-74,cy+16,"#c9d4ff","15px 'Cascadia Code',monospace");
+  bond(cx-8,cy+22,cx-28,cy+58,"#3d3d6e",2.5);txt(c,"R",cx-34,cy+76,"#c9d4ff","15px 'Cascadia Code',monospace");
+  bond(cx+24,cy,cx+62,cy,YL,3);txt(c,"X",cx+72,cy+6,YL,"bold 19px 'Cascadia Code',monospace");
+  c.setLineDash([6,5]);arrow2(c,cx+96,cy,cx+150,cy,YL,2.5);c.setLineDash([]);
+  txt(c,"X- nikalta",cx+96,cy+34,DM,"11px 'Cascadia Code',monospace");
+  txt(c,"=> umbrella PALAT = INVERSION (Walden)",60,300,GR,"bold 14px 'Cascadia Code',monospace");
+ }
+ function drawMechSN1(){
+  txt(c,"SN1 - do step, CARBOCATION pehle:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+  txt(c,"Step 1 (SLOW, rate-deciding):",60,74,DM,"12px 'Cascadia Code',monospace");
+  txt(c,"R - X   ---->   R+   +   X-",60,104,"#c9d4ff","bold 16px 'Cascadia Code',monospace");
+  txt(c,"Step 2 (fast): Nu- FLAT carbocation pe",60,140,DM,"12px 'Cascadia Code',monospace");
+  txt(c,"DONO faces se attack karta:",60,162,DM,"12px 'Cascadia Code',monospace");
+  const cx=180,cy=235;
+  c.fillStyle="#2a0e2a";c.beginPath();c.arc(cx,cy,24,0,7);c.fill();c.strokeStyle=MG;c.lineWidth=2.5;c.stroke();
+  txt(c,"C+",cx,cy+7,MG,"bold 20px 'Cascadia Code',monospace","center");
+  bond(cx-15,cy-18,cx-46,cy-50,"#3d3d6e",2.5);txt(c,"R",cx-60,cy-52,"#c9d4ff","14px 'Cascadia Code',monospace");
+  bond(cx-22,cy+4,cx-58,cy+8,"#3d3d6e",2.5);txt(c,"R",cx-74,cy+14,"#c9d4ff","14px 'Cascadia Code',monospace");
+  bond(cx-10,cy+22,cx-28,cy+54,"#3d3d6e",2.5);txt(c,"R",cx-34,cy+72,"#c9d4ff","14px 'Cascadia Code',monospace");
+  txt(c,"(planar, sp2)",cx+44,cy-30,DM,"11px 'Cascadia Code',monospace");
+  arrow2(c,cx+120,cy-52,cx+38,cy-12,GR,2.5);
+  arrow2(c,cx+120,cy+62,cx+38,cy+16,GR,2.5);
+  txt(c,"Nu-",cx+126,cy-48,GR,"bold 15px 'Cascadia Code',monospace");
+  txt(c,"Nu-",cx+126,cy+70,GR,"bold 15px 'Cascadia Code',monospace");
+  txt(c,"=> dono taraf = RACEMIZATION",60,300,GR,"bold 14px 'Cascadia Code',monospace");
+ }
+ function drawBars(){
+  const rates=mode===0?SN2R:SN1R,cols=[GR,YL,MG];
+  txt(c,"Relative rate (kis degree pe fast):",520,42,CY,"bold 15px 'Cascadia Code',monospace");
+  rates.forEach((h,i)=>{
+   const y=76+i*64,x=560,w=h*1.35;
+   c.fillStyle=i===deg?cols[i]:"#23234a";c.fillRect(x,y,w,34);
+   c.strokeStyle=cols[i];c.strokeRect(x,y,w,34);
+   txt(c,DEG[i],x-34,y+23,cols[i],"bold 16px 'Cascadia Code',monospace");
+   if(i===deg)txt(c,"SELECTED",x+w+12,y+23,MG,"bold 12px 'Cascadia Code',monospace");
+  });
+  const fast=mode===0?"1°":"3°";
+  txt(c,mode===0?"rate = k [R-X] [Nu-]  (2nd order)":"rate = k [R-X]  (1st order)",520,288,CY,"bold 14px 'Cascadia Code',monospace");
+  txt(c,(mode===0?"SN2":"SN1")+" me "+fast+" SABSE FAST",520,312,MG,"bold 14px 'Cascadia Code',monospace");
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  if(mode===0)drawMechSN2();else drawMechSN1();
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(480,16);c.lineTo(480,314);c.stroke();
+  drawBars();
+  R.innerHTML=mode===0
+   ?"SN2: <span class='cy'>backside attack, 1 step</span> | order <span class='hl'>1° &gt; 2° &gt; 3°</span> (steric hindrance) | INVERSION | solvent: polar APROTIC (acetone, DMSO)"
+   :"SN1: <span class='cy'>carbocation intermediate, 2 step</span> | order <span class='hl'>3° &gt; 2° &gt; 1°</span> (carbocation stability) | RACEMIZATION | solvent: polar PROTIC (pani, alcohol)";
+ }
+ document.querySelectorAll("#sc3 .ob").forEach(b=>b.onclick=()=>{
+  mode=parseInt(b.dataset.o);
+  document.querySelectorAll("#sc3 .ob").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc3 .db").forEach(b=>b.onclick=()=>{
+  deg=parseInt(b.dataset.d);
+  document.querySelectorAll("#sc3 .db").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[4]=(()=>{
+ const c=ctx("cv4"),R=document.getElementById("r4");
+ let tab=0,k4=0,m4=0;
+ function rows(){
+  document.getElementById("rowK4").style.display=tab===0?"flex":"none";
+  document.getElementById("rowM4").style.display=tab===2?"flex":"none";
+ }
+ function eq(lines,x,y,col){
+  lines.forEach((l,i)=>txt(c,l,x,y+i*26,col||"#c9d4ff","bold 15px 'Cascadia Code',monospace"));
+ }
+ function badge(t,x,y,col,bg){
+  c.fillStyle=bg;c.fillRect(x,y-18,t.length*9.6+18,28);c.strokeStyle=col;c.strokeRect(x,y-18,t.length*9.6+18,28);
+  txt(c,t,x+9,y,col,"bold 14px 'Cascadia Code',monospace");
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,150);c.lineTo(900,150);c.stroke();
+  if(tab===0){
+   if(k4===0){
+    txt(c,"2-bromopropane + AQUEOUS KOH:",60,46,CY,"bold 16px 'Cascadia Code',monospace");
+    eq(["CH3-CH(Br)-CH3  +  KOH(aq)  ---->  CH3-CH(OH)-CH3  +  KBr","","(propan-2-ol BANA - OH ne Br ko replace kiya)"],60,92);
+    badge("SUBSTITUTION",60,196,CY,"#0e2a3a");
+    wrap(c,"AQUEOUS KOH = OH- pani me free = nucleophile ki tarah attack = SUBSTITUTION (alcohol).",60,240,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,19);
+    R.innerHTML="aq KOH -> <span class='cy'>SUBSTITUTION (alcohol)</span> | alc KOH -> <span class='hl'>ELIMINATION (alkene)</span> - solvent hi decide karta!";
+   }else{
+    txt(c,"2-bromopropane + ALCOHOLIC KOH:",60,46,MG,"bold 16px 'Cascadia Code',monospace");
+    eq(["CH3-CH(Br)-CH3  +  KOH(alc)  ---->  CH2=CH-CH3  +  KBr  +  H2O","","(propene BANA - HBr nikal gaya = dehydrohalogenation)"],60,92);
+    badge("ELIMINATION",60,196,MG,"#3a0e2a");
+    wrap(c,"ALCOHOLIC KOH = base ka character strong = beta-H + Br ek saath NIKALTA (beta-elimination) = double bond. Heat pe elimination aur favour.",60,240,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,19);
+    R.innerHTML="alc KOH -> <span class='hl'>ELIMINATION (alkene)</span> | HX ka nikalna = <span class='cy'>dehydrohalogenation</span>";
+   }
+  }else if(tab===1){
+   txt(c,"2-bromobutane + alc KOH - SAYTZEFF rule:",60,42,CY,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"CH3-CH(Br)-CH2-CH3 : beta-H dono taraf - kaunsa alkene MAJOR?",60,68,DM,"12.5px 'Cascadia Code',monospace");
+   txt(c,"but-2-ene",120,132,"#c9d4ff","14px 'Cascadia Code',monospace");
+   c.fillStyle=MG;c.fillRect(110,148,150,120);c.strokeStyle=MG;c.strokeRect(110,148,150,120);
+   txt(c,"MAJOR",185,216,"#07070f","bold 15px 'Cascadia Code',monospace","center");
+   txt(c,"~80%",185,268,MG,"bold 14px 'Cascadia Code',monospace","center");
+   txt(c,"but-1-ene",450,182,"#c9d4ff","14px 'Cascadia Code',monospace");
+   c.fillStyle="#23234a";c.fillRect(440,228,150,40);c.strokeStyle=YL;c.strokeRect(440,228,150,40);
+   txt(c,"minor",515,253,YL,"bold 13px 'Cascadia Code',monospace","center");
+   txt(c,"~20%",515,286,YL,"bold 13px 'Cascadia Code',monospace","center");
+   wrap(c,"SAYTZEFF: double bond pe ZYADA alkyl groups = zyada stable alkene = MAJOR product. but-2-ene (2 alkyl) > but-1-ene (1 alkyl).",640,132,"#c9d4ff","13.5px 'Cascadia Code',monospace",30,19);
+   R.innerHTML="Saytzeff (Zaitsev): <span class='hl'>zyada substituted alkene = MAJOR</span> | beta-elimination me H udhar se niklo jahan double bond pe zyada alkyl aaye";
+  }else{
+   if(m4===0){
+    txt(c,"WURTZ reaction (Na, dry ether):",60,46,CY,"bold 16px 'Cascadia Code',monospace");
+    eq(["2 CH3CH2-Br  +  2 Na   --(dry ether)-->   CH3CH2-CH2CH3  +  2 NaBr","","(BUTANE - chain DOUBLE ho gayi!)"],60,92);
+    badge("CHAIN x2",60,196,CY,"#0e2a3a");
+    wrap(c,"Do SAME haloalkane lo -> symmetrical alkane, carbon chain DOUBLE. Mixed haloalkanes = products ka MIXTURE (isliye sirf same R useful).",60,240,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,19);
+    R.innerHTML="Wurtz: <span class='cy'>2R-X + 2Na (dry ether) -> R-R + 2NaX</span> | haloarene + haloalkane + Na = WURTZ-FITTIG -> alkylbenzene";
+   }else{
+    txt(c,"GRIGNARD reagent (Mg, dry ether):",60,46,MG,"bold 16px 'Cascadia Code',monospace");
+    eq(["CH3CH2-Br  +  Mg   --(dry ether)-->   CH3CH2-MgBr","","(ethylmagnesium bromide = R-MgX)"],60,92);
+    badge("SUPER USEFUL",60,196,MG,"#3a0e2a");
+    wrap(c,"R-MgX se alcohols, acids, alkanes sab bante (organometallic intermediate). MOISTURE NAHI chahiye - pani se turant kharab! DRY ETHER must.",60,240,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,19);
+    R.innerHTML="Grignard: <span class='hl'>R-X + Mg (dry ether) -> R-MgX</span> | C-Mg bond polar: carbon pe δ- = carbon NUCLEOPHILE ki tarah behave karta";
+   }
+  }
+ }
+ document.querySelectorAll("#sc4 .tb4").forEach(b=>b.onclick=()=>{
+  tab=parseInt(b.dataset.t);
+  document.querySelectorAll("#sc4 .tb4").forEach(x=>x.classList.toggle("sel",x===b));
+  rows();draw();});
+ document.querySelectorAll("#sc4 .kb4").forEach(b=>b.onclick=()=>{
+  k4=parseInt(b.dataset.k);
+  document.querySelectorAll("#sc4 .kb4").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc4 .mb4").forEach(b=>b.onclick=()=>{
+  m4=parseInt(b.dataset.m);
+  document.querySelectorAll("#sc4 .mb4").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return function(){rows();draw();};
+})();
+inits[5]=(()=>{
+ const c=ctx("cv5"),R=document.getElementById("r5");
+ let tab=0,w5=0,n5=0,p5=0;
+ const POLY=[
+  {f:"CHCl3",n:"chloroform",use:"pehle ANAESTHETIC tha",harm:"liver TOXIC - ab use limited"},
+  {f:"CHI3",n:"iodoform",use:"ANTISEPTIC",harm:"yellow ppt = iodoform TEST bhi"},
+  {f:"CCl4",n:"carbon tetrachloride",use:"solvent / fire extinguisher",harm:"OZONE-depleting + carcinogenic"},
+  {f:"DDT",n:"p,p'-dichlorodiphenyltrichloroethane",use:"pehla synthetic INSECTICIDE",harm:"non-biodegradable = BIO-MAGNIFICATION (food chain me jama), BANNED"},
+  {f:"Freons",n:"CFCs (CCl2F2 waghera)",use:"refrigerant / aerosol propellant",harm:"OZONE LAYER destroy -> MONTREAL Protocol se phase-out"}];
+ function rows(){
+  document.getElementById("rowD5").style.display=tab===0?"flex":"none";
+  document.getElementById("rowN5").style.display=tab===1?"flex":"none";
+  document.getElementById("rowP5").style.display=tab===2?"flex":"none";
+ }
+ function ring(x,y,r,label){
+  c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();
+  for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3,px=x+r*Math.cos(a),py=y+r*Math.sin(a);
+   i===0?c.moveTo(px,py):c.lineTo(px,py);}
+  c.closePath();c.stroke();
+  c.strokeStyle="#3d3d6e";c.lineWidth=1.5;c.beginPath();c.arc(x,y,r*0.68,0,7);c.stroke();
+  if(label){const a=-Math.PI/2,lx=x+(r+34)*Math.cos(a),ly=y+(r+34)*Math.sin(a);
+   bond2(x,y-r,lx,ly+8);txt(c,label,lx,ly-6,YL,"bold 17px 'Cascadia Code',monospace","center");}
+ }
+ function bond2(x1,y1,x2,y2){c.strokeStyle=YL;c.lineWidth=2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+ function draw(){
+  c.clearRect(0,0,920,330);
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(480,16);c.lineTo(480,314);c.stroke();
+  if(tab===0){
+   txt(c,"Chlorobenzene + NaOH:",60,42,CY,"bold 16px 'Cascadia Code',monospace");
+   ring(180,170,66,"Cl");
+   if(w5===0){
+    txt(c,"normal conditions:",60,268,DM,"13px 'Cascadia Code',monospace");
+    txt(c,"NO REACTION",60,296,RD,"bold 22px 'Cascadia Code',monospace");
+    c.strokeStyle=RD;c.lineWidth=4;
+    c.beginPath();c.moveTo(320,120);c.lineTo(360,160);c.moveTo(360,120);c.lineTo(320,160);c.stroke();
+    txt(c,"LAZY kyun? 3 reasons ->",520,52,MG,"bold 15px 'Cascadia Code',monospace");
+    wrap(c,"1. RESONANCE: halogen ka lone pair ring se conjugate -> C-X ko PARTIAL DOUBLE BOND character (strong, chhota).",520,86,"#c9d4ff","13.5px 'Cascadia Code',monospace",42,19);
+    wrap(c,"2. sp2 CARBON zyada electronegative -> C-X chhota/strong vs sp3 haloalkane.",520,168,"#c9d4ff","13.5px 'Cascadia Code',monospace",42,19);
+    wrap(c,"3. ELECTRON-RICH ring nucleophile (electron-rich) ko REPEL karta.",520,234,"#c9d4ff","13.5px 'Cascadia Code',monospace",42,19);
+    R.innerHTML="Haloarene Nu-substitution me <span class='hl'>LAZY</span> - resonance + sp2 C-X + electron-rich ring. -NO2 group o/p pe ho to substitution AASAAN ho jati!";
+   }else{
+    txt(c,"Dow's process:",60,268,DM,"13px 'Cascadia Code',monospace");
+    txt(c,"PHENOL bana!",60,296,GR,"bold 22px 'Cascadia Code',monospace");
+    arrow2(c,320,140,420,140,GR,3);
+    txt(c,"NaOH, 623 K",300,112,GR,"13px 'Cascadia Code',monospace");
+    txt(c,"300 atm",312,128,GR,"13px 'Cascadia Code',monospace");
+    txt(c,"C6H5-Cl + NaOH --> C6H5-OH (phenol)",520,86,CY,"bold 14.5px 'Cascadia Code',monospace");
+    wrap(c,"HARSH conditions (high temp + pressure) pe hi nucleophilic substitution hoti. Industrial phenol banane ka DOW process.",520,130,"#c9d4ff","13.5px 'Cascadia Code',monospace",42,19);
+    R.innerHTML="Dow: <span class='cy'>chlorobenzene + NaOH (623 K, 300 atm) -> phenol</span> | harsh conditions ki zaroorat hi LAZINESS ka proof";
+   }
+  }else if(tab===1){
+   txt(c,"Electrophilic substitution (ring pe):",60,42,CY,"bold 16px 'Cascadia Code',monospace");
+   ring(180,170,66,"Cl");
+   [[123,137,"o"],[237,137,"o"],[180,236,"p"]].forEach(p=>{
+    c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();c.arc(p[0],p[1],16,0,7);c.stroke();
+    txt(c,p[2],p[0],p[1]+5,MG,"bold 14px 'Cascadia Code',monospace","center");
+   });
+   const prod=n5===0?"o- aur p-NITROCHLOROBENZENE":"o- aur p-DICHLOROBENZENE";
+   txt(c,"+ "+(n5===0?"HNO3 / H2SO4":"Cl2 / FeCl3"),300,60,GR,"14px 'Cascadia Code',monospace");
+   txt(c,"=> "+prod,520,86,MG,"bold 15px 'Cascadia Code',monospace");
+   wrap(c,"Halogen DEACTIVATING hai (reaction slow) LEKIN ortho/para-DIRECTING hai - resonance se o/p positions pe attack stabilize.",520,126,"#c9d4ff","13.5px 'Cascadia Code',monospace",42,19);
+   wrap(c,"Yaad: -OH, -NH2 = ACTIVATING + o/p; -NO2, -COOH = deactivating + META. Halogen = akela EXCEPTION (deactivating par o/p)!",520,208,"#c9d4ff","13.5px 'Cascadia Code',monospace",42,19);
+   R.innerHTML="Halogen: <span class='hl'>deactivating LEKIN o/p-directing</span> (akela exception!) | nitration/halogenation o- + p- products deti hai";
+  }else{
+   const p=POLY[p5];
+   txt(c,"Polyhalogen compounds - use aur nuksaan:",60,42,CY,"bold 16px 'Cascadia Code',monospace");
+   c.fillStyle="#0d0d1c";c.fillRect(60,66,560,240);c.strokeStyle="#2d2d52";c.strokeRect(60,66,560,240);
+   txt(c,p.f,84,116,MG,"bold 30px 'Cascadia Code',monospace");
+   txt(c,p.n,84,150,CY,"16px 'Cascadia Code',monospace");
+   wrap(c,"Use: "+p.use,84,192,"#c9d4ff","14px 'Cascadia Code',monospace",58,20);
+   wrap(c,"Harm: "+p.harm,84,240,RD,"14px 'Cascadia Code',monospace",58,20);
+   wrap(c,"Environment: DDT aur Freons (CFCs) = VILLAINS - bio-magnification + ozone hole. Montreal Protocol (1987) se CFC phase-out.",660,86,"#c9d4ff","13.5px 'Cascadia Code',monospace",27,19);
+   R.innerHTML="<span class='cy'>"+p.f+" ("+p.n+")</span>: use = "+p.use+" | harm = <span class='hl'>"+p.harm+"</span>";
+  }
+ }
+ document.querySelectorAll("#sc5 .tb5").forEach(b=>b.onclick=()=>{
+  tab=parseInt(b.dataset.t);
+  document.querySelectorAll("#sc5 .tb5").forEach(x=>x.classList.toggle("sel",x===b));
+  rows();draw();});
+ document.querySelectorAll("#sc5 .dw5").forEach(b=>b.onclick=()=>{
+  w5=parseInt(b.dataset.w);
+  document.querySelectorAll("#sc5 .dw5").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc5 .nb5").forEach(b=>b.onclick=()=>{
+  n5=parseInt(b.dataset.n);
+  document.querySelectorAll("#sc5 .nb5").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc5 .pb5").forEach(b=>b.onclick=()=>{
+  p5=parseInt(b.dataset.p);
+  document.querySelectorAll("#sc5 .pb5").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return function(){rows();draw();};
+})();
+inits[6]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"SN2 reaction SABSE FAST kiske liye hoti hai?",opts:["3° haloalkane","1° haloalkane","2° haloalkane","chlorobenzene"],a:1,why:"SN2 = backside attack - STERIC HINDRANCE decide karta. 1° me kam bheed = fast. Order: 1° > 2° > 3° (SN1 ka ULTA!)."},
+{q:"Finkelstein reaction ka reagent kaunsa hai?",opts:["NaI / dry acetone","AgF / SbF3","SOCl2","Mg / dry ether"],a:0,why:"Finkelstein = R-Cl/Br + NaI (dry acetone) -> R-I + NaCl/NaBr PPT. NaCl acetone me insoluble = precipitate, reaction aage badhti. Swarts (AgF) fluoride ke liye!"},
+{q:"2-bromobutane + ALCOHOLIC KOH ka MAJOR product?",opts:["but-1-ene","but-2-ene","butan-2-ol","butane"],a:1,why:"alc KOH = ELIMINATION. SAYTZEFF rule: zyada substituted alkene = MAJOR. but-2-ene (double bond pe 2 alkyl) > but-1-ene (1 alkyl). aq KOH deta butan-2-ol!"},
+{q:"Chlorobenzene nucleophilic substitution me LAZY kyun hai?",opts:["C-Cl bond weak hai","resonance se C-Cl ko partial double-bond character milta hai","ring electron-POOR hai","halogen meta-director hai"],a:1,why:"Resonance: Cl ka lone pair ring se conjugate -> C-Cl strong/chhota (partial double). Plus sp2 carbon zyada electronegative + electron-rich ring Nu- ko REPEL karta."},
+{q:"Same alkyl group ke liye BP ka sahi order?",opts:["RF > RCl > RBr > RI","RI > RBr > RCl > RF","RCl > RF > RI > RBr","sabke BP barabar"],a:1,why:"Halogen ka size/mass badhta = van der Waals strong = BP badhta. RI sabse zyada, RF sabse kam. Branching badhne pe BP GHATTA!"}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Haloalkanes pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+go(0);
+</script></body></html>
