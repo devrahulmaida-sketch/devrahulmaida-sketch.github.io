@@ -284,9 +284,9 @@ inits[1]=(()=>{
   flask(140,170,t.col);
   txt(c,"R-X / NO2",82,240,DM,"12px 'Cascadia Code',monospace");
   t.eq.forEach((l,i)=>{if(l)txt(c,l,300,64+i*26,CY,"bold 14px 'Cascadia Code',monospace");});
-  c.fillStyle="#16162e";c.fillRect(300,128,t.badge.length*9.6+18,26);c.strokeStyle=t.col;c.strokeRect(300,128,t.badge.length*9.6+18,26);
-  txt(c,t.badge,309,146,t.col,"bold 13px 'Cascadia Code',monospace");
-  wrap(c,t.note,300,180,"#c9d4ff","13.5px 'Cascadia Code',monospace",62,19);
+  c.fillStyle="#16162e";c.fillRect(300,160,t.badge.length*9.6+18,26);c.strokeStyle=t.col;c.strokeRect(300,160,t.badge.length*9.6+18,26);
+  txt(c,t.badge,309,178,t.col,"bold 13px 'Cascadia Code',monospace");
+  wrap(c,t.note,300,200,"#c9d4ff","13.5px 'Cascadia Code',monospace",62,19);
   c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(270,16);c.lineTo(270,314);c.stroke();
   R.innerHTML="<span class='cy'>"+t.t.replace(/:$/,"")+"</span> | "+t.note;
  }
@@ -426,9 +426,9 @@ inits[4]=(()=>{
   arrow2(c,320,190,420,190,GR,3);
   ring(560,190,66,rx.sub,MG);
   txt(c,"=>  "+rx.prod,640,182,GR,"bold 17px 'Cascadia Code',monospace");
-  txt(c,"+ N2^ (gas nikal gaya!)",640,212,DM,"12.5px 'Cascadia Code',monospace");
+  txt(c,sel===7?"dono N azo linkage me RAHE!":"+ N2^ (gas nikal gaya!)",640,212,DM,"12.5px 'Cascadia Code',monospace");
   wrap(c,rx.note,60,290,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,19);
-  R.innerHTML="<span class='cy'>C6H5N2+Cl- + "+rx.b+" -> "+rx.prod+" + N2</span> | -N2+ = BEST leaving group - synthesis ka magic middleman!";
+  R.innerHTML=sel===7?"<span class='cy'>C6H5N2+Cl- + phenol -> p-hydroxyazobenzene (ORANGE DYE) + H+</span> | COUPLING: dono N azo linkage me RAHE!":"<span class='cy'>C6H5N2+Cl- + "+rx.b+" -> "+rx.prod+" + N2</span> | -N2+ = BEST leaving group - synthesis ka magic middleman!";
  }
  document.querySelectorAll("#sc4 .rb").forEach(b=>b.onclick=()=>{
   sel=parseInt(b.dataset.r);
@@ -463,7 +463,7 @@ inits[5]=(()=>{
   c.clearRect(0,0,920,330);
   if(sel===0){
    txt(c,"Aniline + Br2 water:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
-   ring(190,190,62,[[0,"NH2"],[1,"Br"],[5,"Br"],[3,"Br"]]);
+   ring(190,176,62,[[0,"NH2"],[1,"Br"],[5,"Br"],[3,"Br"]]);
    txt(c,"=> 2,4,6-TRIBROMOANILINE",420,150,GR,"bold 17px 'Cascadia Code',monospace");
    txt(c,"WHITE PPT (aniline ka TEST!)",420,180,YL,"bold 14px 'Cascadia Code',monospace");
    wrap(c,"-NH2 STRONGLY ACTIVATING = Br2 WATER me bhi teeno free positions (2,4,6 = o,o,p) pe Br aa jate, bina catalyst!",420,220,"#c9d4ff","13.5px 'Cascadia Code',monospace",54,19);
@@ -476,19 +476,19 @@ inits[5]=(()=>{
    ring(540,190,62,[[0,"NHCOCH3"]]);
    txt(c,"=> acetanilide",640,182,GR,"bold 16px 'Cascadia Code',monospace");
    txt(c,"(-NH2 KAM reactive)",640,210,DM,"12.5px 'Cascadia Code',monospace");
-   wrap(c,"Acyl group (CH3CO-) N pe lagne se lone pair ki availability GHATTI = ring kam activate. Ab substitution CONTROLLED hoti!",420,240,"#c9d4ff","13.5px 'Cascadia Code',monospace",54,19);
+   wrap(c,"Acyl group (CH3CO-) N pe lagne se lone pair ki availability GHATTI = ring kam activate. Ab substitution CONTROLLED hoti!",420,272,"#c9d4ff","13.5px 'Cascadia Code',monospace",54,19);
    R.innerHTML="ACETYLATION: aniline + CH3COCl -> <span class='hl'>acetanilide</span> | -NH2 protect = activating power kam, controlled substitution possible";
   }else{
    txt(c,"protect -> nitrate -> deprotect:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
-   ring(150,190,58,[[0,"NH2"]]);
-   arrow2(c,240,190,320,190,GR,3);
-   ring(400,190,58,[[0,"NHCOCH3"],[3,"NO2"]]);
-   arrow2(c,490,190,570,190,GR,3);
-   ring(660,190,58,[[0,"NH2"],[3,"NO2"]]);
+   ring(150,170,58,[[0,"NH2"]]);
+   arrow2(c,240,170,320,170,GR,3);
+   ring(400,170,58,[[0,"NHCOCH3"],[3,"NO2"]]);
+   arrow2(c,490,170,570,170,GR,3);
+   ring(660,170,58,[[0,"NH2"],[3,"NO2"]]);
    txt(c,"1. acetylation",218,296,DM,"12px 'Cascadia Code',monospace");
    txt(c,"2. HNO3/H2SO4",368,296,DM,"12px 'Cascadia Code',monospace");
    txt(c,"3. hydrolysis",540,296,DM,"12px 'Cascadia Code',monospace");
-   txt(c,"=> p-nitroaniline (MAJOR)",660,120,GR,"bold 15px 'Cascadia Code',monospace","center");
+   txt(c,"=> p-nitroaniline (MAJOR)",60,70,GR,"bold 15px 'Cascadia Code',monospace");
    R.innerHTML="Protection ka fayda: direct nitration me aniline OXIDIZE/mixture, par <span class='cy'>acetanilide + HNO3 -> p-nitroaniline MAJOR</span>, phir hydrolysis se -NH2 wapas";
   }
  }
