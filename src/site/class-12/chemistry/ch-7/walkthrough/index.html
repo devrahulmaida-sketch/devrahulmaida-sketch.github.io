@@ -437,7 +437,7 @@ inits[3]=(()=>{
     arrow2(c,220,122,330,122,RD,3);
     txt(c,"X",360,140,RD,"bold 30px 'Cascadia Code',monospace");
     txt(c,"NO OXIDATION!",420,140,RD,"bold 24px 'Cascadia Code',monospace");
-    txt(c,"3° carbon pe alpha-H NAHI = normal oxidants kuch nahi kar paate",420,176,YL,"14px 'Cascadia Code',monospace");
+    txt(c,"alpha-H NAHI = oxidation IMPOSSIBLE",420,176,YL,"14px 'Cascadia Code',monospace");
     txt(c,"(sirf bahut drastic conditions pe C-C bond tootta)",420,202,DM,"13px 'Cascadia Code',monospace");
    }
    c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,230);c.lineTo(900,230);c.stroke();
@@ -445,13 +445,13 @@ inits[3]=(()=>{
    txt(c,"Mild (PCC) = aldehyde pe stop | Strong (KMnO4/H+) = acid tak",60,300,DM,"13.5px 'Cascadia Code',monospace");
   }else{
    const cl=[0,2,3][deg];
-   flask(200,190,cl,deg===2?"#3f3f46":"#1e3a5f");
+   flask(200,166,cl,deg===2?"#3f3f46":"#1e3a5f");
    const timing=["1° : room temp pe TURBIDITY NAHI (heat chahiye!)","2° : ~5 MIN me cloudy hota","3° : INSTANT turbidity - turant cloudy!"];
    const tc=[DM,YL,GR];
    txt(c,"Lucas reagent: ZnCl2 + conc HCl",420,90,YL,"bold 16px 'Cascadia Code',monospace");
    txt(c,timing[deg],420,130,tc[deg],"bold 17px 'Cascadia Code',monospace");
    txt(c,"Mechanism: alcohol -> alkyl chloride (insoluble = cloudy)",420,166,"#c9d4ff","13.5px 'Cascadia Code',monospace");
-   txt(c,"SN1 jaisa: 3° carbocation STABLE = instant | 2° slow | 1° bahut slow",420,192,"#c9d4ff","13.5px 'Cascadia Code',monospace");
+   txt(c,"SN1: 3° carbocation stable = FAST | 1° = NAHI",420,192,"#c9d4ff","13.5px 'Cascadia Code',monospace");
    c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,230);c.lineTo(900,230);c.stroke();
    txt(c,"Lucas test = 1°/2°/3° pehchanne ka TIME test:",60,266,YL,"bold 14px 'Cascadia Code',monospace");
    txt(c,"3° INSTANT  |  2° ~5 min  |  1° room temp pe NAHI",60,298,"#c9d4ff","15px 'Cascadia Code',monospace");
@@ -542,6 +542,7 @@ inits[4]=(()=>{
   document.querySelectorAll("#sc4 .nb").forEach(x=>x.classList.remove("sel"));draw();});
  document.querySelectorAll("#sc4 .nb").forEach(b=>b.onclick=()=>{named=+b.dataset.n;
   document.querySelectorAll("#sc4 .nb").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+ document.querySelectorAll("#sc4 .sb").forEach((x,i)=>x.classList.toggle("sel",i===sub));
  draw();
  return draw;
 })();
