@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aldehydes Ketones Carboxylic Acids - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Chemistry - Chapter 8 - Aldehydes, Ketones and Carboxylic Acids</div>
+<h1>Aldehydes, Ketones Aur Carboxylic Acids Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - carbonyl identifier, preparation map, nucleophilic addition mechanism, test lab (Tollens/Fehling/2,4-DNP/iodoform), acidity comparator, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Carbonyl Identifier - Aldehyde, Ketone ya Acid? ⭐</h2>
+<p class="why">Carbonyl C=O polar hai: O par delta-, C par delta+ - isliye nucleophile CARBON pe attack karta (chapter ka main theme). Aldehyde = C=O end pe (ek H zaroori, R-CHO), ketone = beech me (do alkyl, R-CO-R'), carboxylic acid = -COOH. Carbonyl carbon sp2 = trigonal planar (~120 deg).</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="kb sel" data-k="0">CH3CHO (acetaldehyde)</button>
+<button class="kb" data-k="1">CH3COCH3 (acetone)</button>
+<button class="kb" data-k="2">CH3COOH (acetic acid)</button>
+<button class="kb" data-k="3">HCHO (formaldehyde)</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Preparation Map - Naam + Product Yaad Karo ⭐⭐</h2>
+<p class="why">Rosenmund = acyl chloride se ALDEHYDE (Pd/BaSO4 catalyst ko poison karta, over-reduction rukti). Alkyne hydration (HgSO4/H2SO4) = Markovnikov - acetylene se acetaldehyde, baaki se ketones. Friedel-Crafts acylation = aryl ketone. Stephen = nitrile se aldehyde. Har route ka reactant - reagent - product dekho.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="pb sel" data-p="0">Rosenmund</button>
+<button class="pb" data-p="1">Alkyne hydration</button>
+<button class="pb" data-p="2">Stephen</button>
+<button class="pb" data-p="3">Etard</button>
+<button class="pb" data-p="4">Gatterman-Koch</button>
+<button class="pb" data-p="5">Friedel-Crafts acylation</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Nucleophilic Addition - Mechanism Step by Step ⭐⭐</h2>
+<p class="why">Nu- carbonyl carbon (delta+) pe attack karta, pi electrons oxygen pe shift, phir H+ oxygen ko milta. Example: HCN addition = cyanohydrin (C-C bond banta, chain badhti). Reactivity: HCHO &gt; RCHO &gt; R2CO - aldehyde me kam steric + kam electron-donating alkyl (C zyada delta+). Step slider chalao.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>Mechanism step</label><input type="range" id="mS" min="0" max="3" step="1" value="0"><span class="v" id="mV">0</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Test Lab - Kaunsa Test Kya Deta? ⭐⭐</h2>
+<p class="why">Tollens' (ammoniacal AgNO3) = SILVER MIRROR, Fehling's (alkaline Cu2+) = RED-BROWN Cu2O ppt - dono SIRF aldehydes dete. 2,4-DNP = orange-yellow ppt SABHI carbonyls dete. Iodoform (I2/NaOH) = yellow CHI3 ppt sirf CH3-CO- wale (methyl ketones + acetaldehyde eklauta aldehyde). Compound chuno, test dabao.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="xb sel" data-x="0">CH3CHO</button>
+<button class="xb" data-x="1">CH3COCH3</button>
+<button class="xb" data-x="2">CH3CH2CHO</button>
+<button class="xb" data-x="3">HCHO</button>
+</div>
+<div class="btnrow">
+<button class="zb sel" data-z="0">Tollens'</button>
+<button class="zb" data-z="1">Fehling's</button>
+<button class="zb" data-z="2">2,4-DNP</button>
+<button class="zb" data-z="3">Iodoform</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Acidity Comparator - Carboxylic Acid Kyun Strong? ⭐⭐</h2>
+<p class="why">Carboxylate ion (RCOO-) RESONANCE-stabilized (dono equivalent structures, charge equally share) - isliye acid &gt; phenol &gt; water &gt; alcohol. Electron-withdrawing group (-I) acidity BADHATA: FCH2COOH &gt; ClCH2COOH &gt; BrCH2COOH &gt; CH3COOH. NaHCO3 test: sirf carboxylic acid CO2 bubbles deta (phenol nahi).</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="ab sel" data-a="0">acid vs phenol vs alcohol</button>
+<button class="ab" data-a="1">halogen acids (EWG effect)</button>
+</div>
+<div class="btnrow">
+<button class="nb sel" data-n="0">NaHCO3 test: CH3COOH</button>
+<button class="nb" data-n="1">NaHCO3 test: phenol</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Rapid Quiz - Carbonyl Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: Tollens/Fehling sirf aldehyde, iodoform sirf CH3-CO wale, Rosenmund = aldehyde, reactivity HCHO &gt; RCHO &gt; R2CO, acidity me EWG = badhata, NaHCO3 test = CO2 bubbles sirf acid.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc6">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Carbonyl + Naming ⭐</h3><p>C=O polar: O delta-, C delta+ (Nu- carbon pe attack) | Carbonyl C sp2, trigonal planar ~120 deg | Aldehyde = R-CHO (end, ek H) suffix -al | Ketone = R-CO-R' (beech) suffix -one + position | Acid = -COOH suffix -oic acid | Aldehyde ka C hamesha C-1</p></div>
+<div class="rcard"><h3>Preparation ⭐⭐</h3><p>Rosenmund: RCOCl + H2 (Pd/BaSO4 poisoned) = ALDEHYDE | Stephen: RCN + SnCl2/HCl = aldehyde | Alkyne + H2O (HgSO4/H2SO4): acetylene = acetaldehyde, baaki = ketone | Etard: toluene + CrO2Cl2 = benzaldehyde | Friedel-Crafts acylation: benzene + RCOCl (AlCl3) = aryl ketone | 1 deg alcohol + PCC = aldehyde (strong oxidant = acid tak jata)</p></div>
+<div class="rcard"><h3>Physical Properties ⭐</h3><p>Carbonyls POLAR par self H-bond NAHI (O-H nahi) to BP: alcohol &gt; carbonyl &gt; alkane | Chhote aldehydes/ketones pani me soluble (water se H-bond) | CARBOXYLIC ACIDS: H-bond DIMER banate (vapour me bhi) = HIGHEST BP | Chain badhe to solubility ghate</p></div>
+<div class="rcard"><h3>Nucleophilic Addition ⭐⭐</h3><p>Nu- attack carbonyl C, phir H+ O pe | Reactivity: HCHO &gt; RCHO &gt; R2CO (steric + +I) | +HCN = cyanohydrin | +NaHSO3 = bisulphite product (purification) | +RMgX phir H2O = alcohol (HCHO=1 deg, RCHO=2 deg, ketone=3 deg) | +alcohol (dry HCl) = acetal (protection) | +2,4-DNP = ORANGE PPT (carbonyl test)</p></div>
+<div class="rcard"><h3>Tests + Named Reactions ⭐⭐</h3><p>TOLLENS (ammoniacal AgNO3) = silver mirror, FEHLING (alkaline Cu2+) = red Cu2O - SIRF ALDEHYDE | Iodoform (I2/NaOH) = yellow CHI3 - sirf CH3-CO- wale (+CH3CHO) | ALDOL: alpha-H wale + dilute NaOH = beta-hydroxy, heat = enal | CANNIZZARO: alpha-H NAHI wale (HCHO, C6H5CHO) + conc KOH = acid salt + alcohol | Clemmensen (Zn-Hg/HCl) / Wolff-Kishner (NH2NH2/KOH): C=O = CH2</p></div>
+<div class="rcard"><h3>Carboxylic Acids ⭐⭐</h3><p>SABSE acidic: carboxylate resonance (2 equivalent structures) | Order: acid &gt; phenol &gt; water &gt; alcohol | EWG (-I) acidity UP: FCH2 &gt; ClCH2 &gt; BrCH2 &gt; CH3COOH | NaHCO3 = CO2 bubbles (acid test, phenol nahi deta) | Prep: RMgX + CO2 = acid (chain +1), nitrile hydrolysis | HVZ: Br2/red P = alpha-bromo acid | Soda lime = decarboxylation (alkane)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Chemistry Chapter 8 (Aldehydes, Ketones and Carboxylic Acids) - Interactive Walkthrough</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=7;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}inits[0]=(()=>{
+const c=ctx("cv0"),R=document.getElementById("r0");
+const btns=[...document.querySelectorAll(".kb")];
+const CMP=[
+ {f:"CH3CHO",name:"ethanal",cls:"ALDEHYDE",suf:"-al",subs:["CH3","H"],why:"C=O end pe, ek H zaroori. Aldehyde ka carbon C-1 hota hai."},
+ {f:"CH3COCH3",name:"propanone",cls:"KETONE",suf:"-one",subs:["CH3","CH3"],why:"C=O beech me, dono taraf alkyl groups."},
+ {f:"CH3COOH",name:"ethanoic acid",cls:"CARBOXYLIC ACID",suf:"-oic acid",subs:["CH3","OH"],why:"Carbonyl + hydroxyl (OH) ek hi carbon pe = -COOH."},
+ {f:"HCHO",name:"methanal",cls:"ALDEHYDE",suf:"-al",subs:["H","H"],why:"Sabse simple aldehyde - C=O pe DO H. Sabse reactive nucleophilic addition me!"}];
+let k=0;
+btns.forEach(b=>b.onclick=()=>{k=parseInt(b.dataset.k);btns.forEach(x=>x.classList.toggle("sel",x===b));draw();});
+function draw(){
+ c.clearRect(0,0,920,330);
+ const D=CMP[k];
+ const cx=250,cy=175;
+ // C=O double bond up
+ c.strokeStyle="#e8e8f2";c.lineWidth=3;
+ c.beginPath();c.moveTo(cx-7,cy-14);c.lineTo(cx-7,cy-96);c.stroke();
+ c.beginPath();c.moveTo(cx+7,cy-14);c.lineTo(cx+7,cy-96);c.stroke();
+ // O
+ c.fillStyle="#3a1030";c.beginPath();c.arc(cx,cy-116,19,0,7);c.fill();
+ c.strokeStyle=RD;c.lineWidth=2.5;c.beginPath();c.arc(cx,cy-116,19,0,7);c.stroke();
+ txt(c,"O",cx,cy-110,RD,"bold 17px 'Cascadia Code',monospace","center");
+ txt(c,"delta-",cx+52,cy-110,RD,"bold 13px 'Cascadia Code',monospace");
+ // carbonyl C
+ c.fillStyle="#1b2a4a";c.beginPath();c.arc(cx,cy,24,0,7);c.fill();
+ c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();c.arc(cx,cy,24,0,7);c.stroke();
+ txt(c,"C",cx,cy+6,CY,"bold 17px 'Cascadia Code',monospace","center");
+ txt(c,"delta+",cx+46,cy+4,CY,"bold 13px 'Cascadia Code',monospace");
+ // substituents at ~120 deg
+ const ang1=Math.PI*0.5+0.6,ang2=Math.PI*0.5-0.6;
+ const p1=[cx+Math.cos(ang1)*110,cy+Math.sin(ang1)*88];
+ const p2=[cx-Math.cos(ang1)*110,cy+Math.sin(ang1)*88];
+ c.strokeStyle=DM;c.lineWidth=2.5;
+ c.beginPath();c.moveTo(cx,cy);c.lineTo(p1[0],p1[1]);c.stroke();
+ c.beginPath();c.moveTo(cx,cy);c.lineTo(p2[0],p2[1]);c.stroke();
+ [[p1,D.subs[0]],[p2,D.subs[1]]].forEach(q=>{
+  c.fillStyle="#10101f";c.beginPath();c.arc(q[0][0],q[0][1],20,0,7);c.fill();
+  c.strokeStyle=MG;c.lineWidth=2;c.beginPath();c.arc(q[0][0],q[0][1],20,0,7);c.stroke();
+  txt(c,q[1],q[0][0],q[0][1]+5,MG,"bold 12px 'Cascadia Code',monospace","center");
+ });
+ // 120 deg arc
+ c.strokeStyle=YL;c.lineWidth=1.5;c.setLineDash([4,4]);
+ c.beginPath();c.arc(cx,cy,46,ang1,Math.PI-ang1);c.stroke();c.setLineDash([]);
+ txt(c,"~120 deg",cx-8,cy+62,YL,"11px 'Cascadia Code',monospace","center");
+ txt(c,"sp2 trigonal planar",cx,cy+80,YL,"11px 'Cascadia Code',monospace","center");
+ // Nu attack hint arrow
+ arrow2(c,120,286,cx-16,cy+18,GR,2.5);
+ txt(c,"Nu- attack yahan (delta+ C)",96,306,GR,"12px 'Cascadia Code',monospace","center");
+ // class badge
+ c.fillStyle=k===1?"#2a1a3a":"#0e2a3a";c.fillRect(520,40,340,52);
+ c.strokeStyle=k===1?MG:CY;c.lineWidth=2;c.strokeRect(520,40,340,52);
+ txt(c,D.cls,690,73,k===1?MG:CY,"bold 19px 'Cascadia Code',monospace","center");
+ // naming
+ txt(c,"Formula: "+D.f,530,140,"#c9d4ff","15px 'Cascadia Code',monospace");
+ txt(c,"IUPAC: ",530,176,"#c9d4ff","15px 'Cascadia Code',monospace");
+ txt(c,D.name,530,176,YL,"bold 17px 'Cascadia Code',monospace");
+ txt(c,"suffix: "+D.suf,530,210,MG,"bold 14px 'Cascadia Code',monospace");
+ txt(c,D.why,530,246,"#a5b0d0","12.5px 'Cascadia Code',monospace");
+ txt(c,"Nucleophile hamesha delta+ CARBON pe attack karta hai -",530,282,"#a5b0d0","12.5px 'Cascadia Code',monospace");
+ txt(c,"yahi is chapter ka main theme hai!",530,302,GR,"12.5px 'Cascadia Code',monospace");
+ R.innerHTML="Class: <span class='hl'>"+D.cls+"</span> | suffix <span class='cy'>"+D.suf+"</span> | "+D.why+"\nPehchano: end pe C=O + H = aldehyde, beech me C=O = ketone, -COOH = carboxylic acid.";
+}
+return function(){draw();};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1"),R=document.getElementById("r1");
+const btns=[...document.querySelectorAll(".pb")];
+const RXN=[
+ {n:"Rosenmund Reduction",r:"R-COCl (acyl chloride)",re:"H2 / Pd-BaSO4",p:"R-CHO (ALDEHYDE)",note:"BaSO4 Pd ko POISON karta - over-reduction (alcohol) rukti. Aldehyde pe rok = iska kaam!",col:CY},
+ {n:"Alkyne Hydration",r:"RC≡CH (alkyne)",re:"H2O, H2SO4/HgSO4",p:"Ketone (acetylene = acetaldehyde)",note:"Markovnikov hydration - enol banta, phir tautomerize karke carbonyl. Sirf ACETYLENE aldehyde deta!",col:MG},
+ {n:"Stephen Reduction",r:"R-C≡N (nitrile)",re:"SnCl2/HCl, phir H3O+",p:"R-CHO (ALDEHYDE)",note:"Nitrile pehle imine salt, hydrolysis se aldehyde.",col:CY},
+ {n:"Etard Reaction",r:"Toluene (C6H5-CH3)",re:"CrO2Cl2 (CS2), phir H2O",p:"C6H5-CHO (benzaldehyde)",note:"Methyl group ka selective oxidation aldehyde tak - aage nahi jata.",col:GR},
+ {n:"Gatterman-Koch",r:"Benzene",re:"CO + HCl (AlCl3/CuCl)",p:"C6H5-CHO (benzaldehyde)",note:"Benzene pe direct -CHO lagta (formylation).",col:GR},
+ {n:"Friedel-Crafts Acylation",r:"Benzene + R-COCl",re:"AlCl3 (anhydrous)",p:"C6H5-CO-R (ARYL KETONE)",note:"Ketones banane ka main aromatic route - acyl group ring pe.",col:YL}];
+let p=0;
+btns.forEach(b=>b.onclick=()=>{p=parseInt(b.dataset.p);btns.forEach(x=>x.classList.toggle("sel",x===b));draw();});
+function box(x,y,w,h,text,col,fs){
+ c.fillStyle="#10101f";c.strokeStyle=col;c.lineWidth=2;
+ c.beginPath();c.roundRect(x,y,w,h,10);c.fill();c.stroke();
+ txt(c,text,x+w/2,y+h/2+5,col,"bold "+(fs||14)+"px 'Cascadia Code',monospace","center");
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const D=RXN[p];
+ txt(c,D.n,460,42,YL,"bold 18px 'Cascadia Code',monospace","center");
+ // reactant box -> arrow -> product box
+ box(60,110,250,80,D.r,"#8fa0c8");
+ box(610,110,250,80,D.p,D.col);
+ // arrow with reagent
+ arrow2(c,320,150,600,150,D.col,3.5);
+ // reagent label above arrow
+ txt(c,D.re,460,128,YL,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"REAGENT",460,112,DM,"10px 'Cascadia Code',monospace","center");
+ // note
+ txt(c,"NOTE:",460,222,MG,"bold 13px 'Cascadia Code',monospace","center");
+ const words=D.note.split(" ");
+ let line="",yy=248;
+ words.forEach(w=>{if((line+w).length>78){txt(c,line,460,yy,"#c9d4ff","13px 'Cascadia Code',monospace","center");yy+=22;line="";}line+=w+" ";});
+ if(line.trim())txt(c,line,460,yy,"#c9d4ff","13px 'Cascadia Code',monospace","center");
+ R.innerHTML="<span class='hl'>"+D.n+"</span>: "+D.r+" --["+D.re+"]--> <span class='cy'>"+D.p+"</span>\n"+D.note;
+}
+return function(){draw();};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2"),mS=document.getElementById("mS"),mV=document.getElementById("mV"),R=document.getElementById("r2");
+const STEP_TXT=[
+"STEP 1 - Setup: carbonyl C=O polar hai (C delta+, O delta-). CN- (nucleophile, HCN se) door se aata hai. CN- ke paas lone pair + negative charge = electron-rich.",
+"STEP 2 - ATTACK: CN- ka lone pair delta+ CARBON pe attack karta. Saath me C=O ka pi bond TOOT kar electrons oxygen pe shift (curved arrows dekho).",
+"STEP 3 - Intermediate: tetrahedral alkoxide banta - C ab sp3 (4 single bonds), oxygen pe O- (negative). Geometry flat se 3D ho gayi!",
+"STEP 4 - Protonation: O- ko H+ mil jata (HCN/pani se) = CYANOHYDRIN. Naya C-C bond ban gaya - chain ek carbon se BADH gayi!"];
+function carbonyl(x,y,withCN,cnX,cnY,tet){
+ // C
+ c.fillStyle="#1b2a4a";c.beginPath();c.arc(x,y,20,0,7);c.fill();
+ c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();c.arc(x,y,20,0,7);c.stroke();
+ txt(c,"C",x,y+5,CY,"bold 14px 'Cascadia Code',monospace","center");
+ // substituents CH3 + H
+ c.strokeStyle=DM;c.lineWidth=2;
+ c.beginPath();c.moveTo(x-14,y+10);c.lineTo(x-52,y+52);c.stroke();
+ c.beginPath();c.moveTo(x+14,y+10);c.lineTo(x+52,y+52);c.stroke();
+ txt(c,"CH3",x-62,y+66,MG,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"H",x+58,y+66,MG,"bold 12px 'Cascadia Code',monospace","center");
+ if(!tet){
+  // double bond O up
+  c.strokeStyle="#e8e8f2";c.lineWidth=3;
+  c.beginPath();c.moveTo(x-6,y-13);c.lineTo(x-6,y-72);c.stroke();
+  c.beginPath();c.moveTo(x+6,y-13);c.lineTo(x+6,y-72);c.stroke();
+ }else{
+  c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
+  c.beginPath();c.moveTo(x,y-20);c.lineTo(x,y-72);c.stroke();
+ }
+ // O
+ c.fillStyle="#3a1030";c.beginPath();c.arc(x,y-92,16,0,7);c.fill();
+ c.strokeStyle=RD;c.lineWidth=2;c.beginPath();c.arc(x,y-92,16,0,7);c.stroke();
+ txt(c,tet===2?"OH":tet===1?"O-":"O",x,y-87,RD,"bold 13px 'Cascadia Code',monospace","center");
+ if(withCN){
+  c.strokeStyle=GR;c.lineWidth=2.5;
+  c.beginPath();c.moveTo(cnX,cnY);c.lineTo(x+10,y-6);c.stroke();
+  c.fillStyle="#0a2e1a";c.beginPath();c.arc(cnX,cnY,17,0,7);c.fill();
+  c.strokeStyle=GR;c.lineWidth=2;c.beginPath();c.arc(cnX,cnY,17,0,7);c.stroke();
+  txt(c,"CN",cnX,cnY+4,GR,"bold 12px 'Cascadia Code',monospace","center");
+ }
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const st=parseInt(mS.value);mV.textContent=st;
+ const x=210,y=185;
+ if(st===0){carbonyl(x,y,false);txt(c,"delta+",x+34,y+2,CY,"bold 12px 'Cascadia Code',monospace");txt(c,"delta-",x+30,y-88,RD,"bold 12px 'Cascadia Code',monospace");
+  c.fillStyle="#0a2e1a";c.beginPath();c.arc(470,240,17,0,7);c.fill();c.strokeStyle=GR;c.lineWidth=2;c.beginPath();c.arc(470,240,17,0,7);c.stroke();txt(c,"CN-",470,244,GR,"bold 11px 'Cascadia Code',monospace","center");
+  txt(c,"(nucleophile - electron rich)",470,272,GR,"11px 'Cascadia Code',monospace","center");}
+ if(st===1){carbonyl(x,y,false);
+  c.fillStyle="#0a2e1a";c.beginPath();c.arc(400,250,17,0,7);c.fill();c.strokeStyle=GR;c.lineWidth=2;c.beginPath();c.arc(400,250,17,0,7);c.stroke();txt(c,"CN-",400,254,GR,"bold 11px 'Cascadia Code',monospace","center");
+  // curved arrow CN -> C
+  c.strokeStyle=GR;c.lineWidth=2.5;c.beginPath();c.moveTo(386,242);c.quadraticCurveTo(320,240,x+22,y+14);c.stroke();
+  arrow2(c,x+40,y+24,x+22,y+12,GR,2.5);
+  // curved arrow pi -> O
+  c.strokeStyle=RD;c.lineWidth=2.5;c.beginPath();c.moveTo(x+12,y-52);c.quadraticCurveTo(x+52,y-76,x+24,y-96);c.stroke();
+  arrow2(c,x+28,y-88,x+16,y-98,RD,2.5);
+  txt(c,"attack + pi bond shift",330,306,YL,"12px 'Cascadia Code',monospace","center");}
+ if(st===2){carbonyl(x,y,true,300,140,1);
+  txt(c,"tetrahedral (sp3) alkoxide",210,306,YL,"bold 13px 'Cascadia Code',monospace","center");}
+ if(st===3){carbonyl(x,y,true,300,140,2);
+  txt(c,"CYANOHYDRIN",210,306,GR,"bold 15px 'Cascadia Code',monospace","center");
+  txt(c,"naya C-C bond = chain +1 carbon!",420,306,"#a5b0d0","12px 'Cascadia Code',monospace","center");}
+ // reactivity bars right
+ const bx=600;
+ txt(c,"REACTIVITY (Nu addition)",bx+140,52,MG,"bold 13px 'Cascadia Code',monospace","center");
+ const bars=[["HCHO",300,"2 H - zero steric"],["RCHO",200,"1 alkyl"],["R2CO",110,"2 alkyl - steric + +I"]];
+ bars.forEach((b,i)=>{
+  const by=90+i*72;
+  txt(c,b[0],bx-14,by+16,"#c9d4ff","bold 13px 'Cascadia Code',monospace","right");
+  c.fillStyle=i===0?CY:i===1?"#166d8a":"#0d3d52";
+  c.fillRect(bx,by,b[2]*0.75,26);
+  c.strokeStyle="#2d2d52";c.strokeRect(bx,by,b[2]*0.75,26);
+  txt(c,b[2],bx+6,by+44,DM,"10.5px 'Cascadia Code',monospace");
+ });
+ txt(c,"HCHO > RCHO > R2CO",bx+140,312,YL,"bold 14px 'Cascadia Code',monospace","center");
+ R.innerHTML=STEP_TXT[st]+"\nAromatic carbonyls (benzaldehyde) KAM reactive - resonance se C kam delta+.";
+}
+mS.oninput=draw;
+return function(){draw();};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3"),R=document.getElementById("r3");
+const xbs=[...document.querySelectorAll(".xb")],zbs=[...document.querySelectorAll(".zb")];
+const CPD=["CH3CHO (acetaldehyde)","CH3COCH3 (propanone)","CH3CH2CHO (propanal)","HCHO (formaldehyde)"];
+const TESTS=["Tollens'","Fehling's","2,4-DNP","Iodoform"];
+// matrix[test][compound] : Y/N
+const M=[[1,0,1,1],[1,0,1,1],[1,1,1,1],[1,1,0,0]];
+const REAGENT_COL=["#b8c2e0","#1d4ed8","#c9a86a","#d9c56a"];
+const WHY=[
+ ["Aldehyde oxidize hua, Ag+ reduce = SILVER MIRROR. Ketone oxidize nahi hota (C=O pe H nahi).",
+  "Aldehyde oxidize hua, Cu2+ reduce = RED-BROWN Cu2O ppt. Ketone no reaction.",
+  "NH2-Z addition-elimination = ORANGE/YELLOW ppt. SABHI carbonyls dete - ye general carbonyl test hai.",
+  "CH3-CO- group zaroori. Yellow CHI3 ppt. CH3CHO = EKLAUTA aldehyde jo deta (usme CH3-CO hai)."]];
+let xi=0,zi=0;
+xbs.forEach(b=>b.onclick=()=>{xi=parseInt(b.dataset.x);xbs.forEach(x=>x.classList.toggle("sel",x===b));draw(0);});
+zbs.forEach(b=>b.onclick=()=>{zi=parseInt(b.dataset.z);zbs.forEach(x=>x.classList.toggle("sel",x===b));draw(0);});
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const pos=M[zi][xi]===1;
+ const tx=200,ty=56,tw=110,th=230;
+ // tube
+ c.strokeStyle=DM;c.lineWidth=3;
+ c.beginPath();c.moveTo(tx,ty);c.lineTo(tx,ty+th-24);c.quadraticCurveTo(tx,ty+th,tx+tw/2,ty+th);c.quadraticCurveTo(tx+tw,ty+th,tx+tw,ty+th-24);c.lineTo(tx+tw,ty);c.stroke();
+ // liquid
+ const ly=ty+52;
+ c.fillStyle=pos&&zi===0?"rgba(184,194,224,0.10)":"rgba(120,140,200,0.13)";
+ if(zi===1)c.fillStyle="rgba(29,78,216,0.30)";
+ if(zi===3)c.fillStyle="rgba(217,197,106,0.14)";
+ c.fillRect(tx+3,ly,tw-6,ty+th-26-ly+24);
+ c.strokeStyle=REAGENT_COL[zi];c.lineWidth=1.5;
+ c.beginPath();c.moveTo(tx+4,ly);c.lineTo(tx+tw-4,ly);c.stroke();
+ txt(c,TESTS[zi]+" reagent",tx+tw/2,ty-14,REAGENT_COL[zi],"bold 12px 'Cascadia Code',monospace","center");
+ if(pos){
+  if(zi===0){
+   // silver mirror film on walls
+   c.strokeStyle="#e8ecf5";c.lineWidth=4;
+   c.beginPath();c.moveTo(tx+8,ly+10);c.lineTo(tx+8,ty+th-30);c.stroke();
+   c.beginPath();c.moveTo(tx+tw-8,ly+10);c.lineTo(tx+tw-8,ty+th-30);c.stroke();
+   txt(c,"SILVER MIRROR (Ag deposit)",tx+tw/2+180,ly+60,"#e8ecf5","bold 13px 'Cascadia Code',monospace","center");
+   arrow2(c,tx+tw/2+120,ly+56,tx+tw-12,ly+50,"#e8ecf5",2);
+  }else{
+   const col=zi===1?"#b45309":zi===2?"#f59e0b":"#facc15";
+   const lab=zi===1?"RED-BROWN Cu2O ppt":zi===2?"ORANGE-YELLOW ppt":"YELLOW CHI3 ppt";
+   for(let i=0;i<26;i++){
+    const px=tx+12+(i%9)*11+((i*7)%5),py=ty+th-10-Math.floor(i/9)*10;
+    c.fillStyle=col;c.beginPath();c.arc(px,py,3.4,0,7);c.fill();
+   }
+   txt(c,lab,tx+tw/2+180,ly+60,col,"bold 14px 'Cascadia Code',monospace","center");
+   arrow2(c,tx+tw/2+118,ly+56,tx+tw-16,ty+th-24,col,2);
+  }
+ }else{
+  txt(c,"NO REACTION",tx+tw/2,ly+80,RD,"bold 17px 'Cascadia Code',monospace","center");
+  txt(c,"(solution clear)",tx+tw/2,ly+104,DM,"11px 'Cascadia Code',monospace","center");
+ }
+ // verdict panel right
+ txt(c,"Compound: "+CPD[xi],470,96,CY,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"Test: "+TESTS[zi],470,124,MG,"bold 14px 'Cascadia Code',monospace");
+ txt(c,pos?"RESULT: POSITIVE":"RESULT: NEGATIVE",470,160,pos?GR:RD,"bold 17px 'Cascadia Code',monospace");
+ // wrap why
+ const w=WHY[zi][0];const words=w.split(" ");
+ let line="",yy=196;
+ words.forEach(wd=>{if((line+wd).length>52){txt(c,line,470,yy,"#c9d4ff","12.5px 'Cascadia Code',monospace");yy+=21;line="";}line+=wd+" ";});
+ if(line.trim())txt(c,line,470,yy,"#c9d4ff","12.5px 'Cascadia Code',monospace");
+ // matrix strip bottom
+ txt(c,"Quick matrix:",60,316,DM,"11px 'Cascadia Code',monospace");
+ let mx=176;
+ TESTS.forEach((tn,j)=>{txt(c,tn+": "+(M[j][xi]?"YES":"no"),mx,316,M[j][xi]?GR:RD,"bold 11px 'Cascadia Code',monospace");mx+=c.measureText(tn+": YES").width+34;});
+ R.innerHTML="<span class='cy'>"+CPD[xi]+"</span> + <span class='hl'>"+TESTS[zi]+"</span> = "+(pos?"<span style='color:#34d399;font-weight:700'>POSITIVE</span> - "+WHY[zi][0]:"<span style='color:#f87171;font-weight:700'>NEGATIVE</span> - "+WHY[zi][0]);
+}
+return function(){draw(0);};
+})();
+inits[4]=(()=>{
+const c=ctx("cv4"),R=document.getElementById("r4");
+const abs=[...document.querySelectorAll(".ab")],nbs=[...document.querySelectorAll(".nb")];
+const SERIES=[
+ {title:"Acidity order: acid > phenol > water > alcohol",
+  data:[["CH3COOH (carboxylic acid)",4.76],["C6H5OH (phenol)",9.95],["H2O (water)",14.0],["C2H5OH (alcohol)",15.9]],
+  scale:22,base:17,
+  note:"Carboxylate ion RESONANCE-stabilized (2 equivalent structures, charge equally share) - isliye acid sabse strong. Phenoxide ka charge delocalized par structures equivalent NAHI. Alcohol/water ka conjugate base unstable."},
+ {title:"EWG (-I) acidity BADHATA hai",
+  data:[["F-CH2COOH",2.59],["Cl-CH2COOH",2.87],["Br-CH2COOH",2.90],["CH3COOH",4.76]],
+  scale:80,base:6,
+  note:"F sabse electronegative = sabse strong -I = carboxylate sabse stable = sabse acidic. Order: FCH2 > ClCH2 > BrCH2 > CH3COOH. Halogen jitna PAAS (alpha-C) utna zyada effect."}];
+let a=0,nb=0;
+abs.forEach(b=>b.onclick=()=>{a=parseInt(b.dataset.a);abs.forEach(x=>x.classList.toggle("sel",x===b));draw(0);});
+nbs.forEach(b=>b.onclick=()=>{nb=parseInt(b.dataset.n);nbs.forEach(x=>x.classList.toggle("sel",x===b));draw(0);});
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const S=SERIES[a];
+ txt(c,S.title,300,36,YL,"bold 15px 'Cascadia Code',monospace","center");
+ S.data.forEach((d,i)=>{
+  const y=72+i*58;
+  const len=(S.base-d[1])*S.scale;
+  txt(c,d[0],196,y+16,"#c9d4ff","12.5px 'Cascadia Code',monospace","right");
+  c.fillStyle=i===0?CY:"#155a75";
+  c.fillRect(206,y,len,26);
+  c.strokeStyle="#2d2d52";c.strokeRect(206,y,len,26);
+  txt(c,"pKa "+d[1],216+len,y+17,i===0?CY:"#8fa0c8","bold 12px 'Cascadia Code',monospace");
+ });
+ txt(c,"(chhota pKa = STRONGER acid)",300,318,DM,"11px 'Cascadia Code',monospace","center");
+ // NaHCO3 test right
+ const tx=700,ty=80,tw=96,th=190;
+ c.strokeStyle=DM;c.lineWidth=3;
+ c.beginPath();c.moveTo(tx,ty);c.lineTo(tx,ty+th-20);c.quadraticCurveTo(tx,ty+th,tx+tw/2,ty+th);c.quadraticCurveTo(tx+tw,ty+th,tx+tw,ty+th-20);c.lineTo(tx+tw,ty);c.stroke();
+ const ly=ty+44;
+ c.fillStyle="rgba(184,194,224,0.12)";c.fillRect(tx+3,ly,tw-6,ty+th-22-ly+20);
+ c.strokeStyle="#b8c2e0";c.lineWidth=1.5;c.beginPath();c.moveTo(tx+4,ly);c.lineTo(tx+tw-4,ly);c.stroke();
+ txt(c,"NaHCO3",tx+tw/2,ty-12,"#b8c2e0","bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"+ "+(nb===0?"CH3COOH":"phenol"),tx+tw/2,ty+th+20,nb===0?CY:MG,"bold 12px 'Cascadia Code',monospace","center");
+ if(nb===0){
+  // CO2 bubbles rising
+  for(let i=0;i<12;i++){
+   const px=tx+16+(i*29)%(tw-30);
+   const py=ty+th-14-(((t||0)*1.4+i*26)%(th-58));
+   c.strokeStyle="#e8ecf5";c.lineWidth=1.6;
+   c.beginPath();c.arc(px,py,3+(i%3),0,7);c.stroke();
+  }
+  txt(c,"CO2 bubbles! (brisk effervescence)",tx+tw/2+8,314,GR,"bold 12px 'Cascadia Code',monospace","center");
+ }else{
+  txt(c,"koi bubbles NAHI",tx+tw/2+8,314,RD,"bold 12px 'Cascadia Code',monospace","center");
+ }
+ R.innerHTML="<span class='hl'>"+S.title+"</span>\n"+S.note+"\nNaHCO3 test: sirf CARBOXYLIC ACID brisk CO2 deta - phenol/alcohol distinguish karne ka pakka test!";
+}
+return function(){draw(0);};
+})();
+inits[5]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Tollens' test (silver mirror) kaun deta hai?",opts:["Ketone","Aldehyde","Alcohol","Ester"],a:1,why:"Ammoniacal AgNO3 + ALDEHYDE = Ag reduce hokar silver mirror. Aldehyde ka C=O pe H hota hai to wo aasani se oxidize ho jata; ketone ka nahi - isliye ketone test nahi deta. Fehling's (red Cu2O) bhi sirf aldehyde!"},
+{q:"Rosenmund reduction: R-COCl + H2 (Pd/BaSO4) se kya banta hai?",opts:["Alcohol","Alkane","Aldehyde","Carboxylic acid"],a:2,why:"BaSO4 palladium ko POISON karta - reduction aldehyde pe RUK jaati, alcohol tak nahi jaati. Acyl chloride se aldehyde = Rosenmund ka kaam!"},
+{q:"Nucleophilic addition me reactivity ka sahi order?",opts:["R2CO > RCHO > HCHO","HCHO > RCHO > R2CO","RCHO > HCHO > R2CO","Sab equal reactive"],a:1,why:"Alkyl groups (+I) carbonyl C ka delta+ GHATATE + steric hindrance BADHATE. HCHO me zero alkyl = sabse reactive; ketones me 2 alkyl = sabse kam. Isliye HCHO > RCHO > R2CO."},
+{q:"Iodoform test (I2/NaOH = yellow CHI3 ppt) kis group ka test hai?",opts:["CH3-CO- (methyl ketone)","Aromatic ring","-OH group","-COOH group"],a:0,why:"CH3-CO- (methyl ketone) ya CH3-CH(OH)- wale compounds iodoform dete. ALDEHYDES me sirf CH3CHO deta hai (eklauta jisme CH3-CO- hai). Baaki aldehydes nahi dete!"},
+{q:"Inme se SABSE acidic kaun?",opts:["CH3COOH","BrCH2COOH","ClCH2COOH","FCH2COOH"],a:3,why:"Electron-withdrawing group (-I) carboxylate ion ko stabilize karke acidity BADHATA hai. F sabse electronegative = sabse strong -I = FCH2COOH sabse acidic (pKa ~2.59 vs CH3COOH ~4.76). Order: F > Cl > Br > H."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Carbonyl pakke! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+
+go(0);
+</script></body></html>
