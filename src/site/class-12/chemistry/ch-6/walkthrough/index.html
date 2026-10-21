@@ -448,7 +448,7 @@ inits[3]=(()=>{
   arrow2(c,cx+120,cy-52,cx+38,cy-12,GR,2.5);
   arrow2(c,cx+120,cy+62,cx+38,cy+16,GR,2.5);
   txt(c,"Nu-",cx+126,cy-48,GR,"bold 15px 'Cascadia Code',monospace");
-  txt(c,"Nu-",cx+126,cy+70,GR,"bold 15px 'Cascadia Code',monospace");
+  txt(c,"Nu-",cx+150,cy+91,GR,"bold 15px 'Cascadia Code',monospace");
   txt(c,"=> dono taraf = RACEMIZATION",60,300,GR,"bold 14px 'Cascadia Code',monospace");
  }
  function drawBars(){
@@ -500,7 +500,7 @@ inits[4]=(()=>{
  }
  function draw(){
   c.clearRect(0,0,920,330);
-  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,150);c.lineTo(900,150);c.stroke();
+  if(tab!==1){c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,150);c.lineTo(900,150);c.stroke();}
   if(tab===0){
    if(k4===0){
     txt(c,"2-bromopropane + AQUEOUS KOH:",60,46,CY,"bold 16px 'Cascadia Code',monospace");
@@ -521,7 +521,7 @@ inits[4]=(()=>{
    txt(c,"but-2-ene",120,132,"#c9d4ff","14px 'Cascadia Code',monospace");
    c.fillStyle=MG;c.fillRect(110,148,150,120);c.strokeStyle=MG;c.strokeRect(110,148,150,120);
    txt(c,"MAJOR",185,216,"#07070f","bold 15px 'Cascadia Code',monospace","center");
-   txt(c,"~80%",185,268,MG,"bold 14px 'Cascadia Code',monospace","center");
+   txt(c,"~80%",185,290,MG,"bold 14px 'Cascadia Code',monospace","center");
    txt(c,"but-1-ene",450,182,"#c9d4ff","14px 'Cascadia Code',monospace");
    c.fillStyle="#23234a";c.fillRect(440,228,150,40);c.strokeStyle=YL;c.strokeRect(440,228,150,40);
    txt(c,"minor",515,253,YL,"bold 13px 'Cascadia Code',monospace","center");
