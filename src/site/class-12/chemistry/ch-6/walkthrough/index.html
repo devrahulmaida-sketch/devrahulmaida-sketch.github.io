@@ -373,11 +373,11 @@ inits[2]=(()=>{
  const c=ctx("cv2"),R=document.getElementById("r2"),S=document.getElementById("bS"),V=document.getElementById("bV");
  const HX=[["C2H5-F",-37.7,"#5b6488"],["C2H5-Cl",12.3,CY],["C2H5-Br",38.4,YL],["C2H5-I",72.3,MG]];
  const ISO=[
-  {n:"1-chlorobutane",t:"n (no branching)",bp:78},
+  {n:"1-chlorobutane",t:"n",bp:78},
   {n:"1-chloro-2-methylpropane",t:"iso",bp:69},
   {n:"2-chlorobutane",t:"sec",bp:68},
-  {n:"2-chloro-2-methylpropane",t:"tert (max branching)",bp:51}];
- function ybp(v){return 300-(v+50)*2;}
+  {n:"2-chloro-2-methylpropane",t:"tert",bp:51}];
+ function ybp(v){return 300-(v+50)*1.8;}
  function draw(){
   c.clearRect(0,0,920,330);
   txt(c,"Same alkyl (C2H5-X): bada halogen = bada BP",60,34,CY,"bold 15px 'Cascadia Code',monospace");
