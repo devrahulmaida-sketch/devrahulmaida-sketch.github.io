@@ -200,7 +200,7 @@ function draw(){
  c.fillStyle=YL;c.beginPath();c.arc(X(t),Y(r),7,0,7);c.fill();
  c.strokeStyle=YL;c.setLineDash([3,3]);c.lineWidth=1;
  c.beginPath();c.moveTo(X(t),Y(r));c.lineTo(X(t),295);c.stroke();c.setLineDash([]);
- txt(c,"tangent = instantaneous rate",X(t)>500?X(t)-140:X(t)+20,Y(r)-20,YL,"11px 'Cascadia Code',monospace","left");
+ {const txx=X(t)>640?X(t)-16:X(t)+20;let tyy=Y(r)<120?Y(r)+34:Y(r)-20;if(X(t)>640)tyy=Math.min(tyy,Y(r)-44);txt(c,"tangent = instantaneous rate",txx,tyy,YL,"11px 'Cascadia Code',monospace",X(t)>640?"right":"left");}
  const inst=0.02*r;
  const avg=Rof(100)>=1?0:(1-Rof(t))/Math.max(1,t);
  txt(c,"curve flat hoti ja rahi - rate time ke saath GHATTI hai",460,30,"#e8e8f2","bold 12px 'Cascadia Code',monospace","center");
@@ -307,7 +307,7 @@ function draw(){
  const thTxt=mode===0?"t1/2 = [R]0/2k = "+(R0/(2*k)).toFixed(1)+" s ([R]0 badhao to t1/2 BADHTI)":"t1/2 = 0.693/k = "+(0.693/k).toFixed(1)+" s (CONSTANT - [R]0 se farak nahi)";
  txt(c,mode===0?"ZERO order: [R] = [R]0 - kt (STRAIGHT LINE, slope = -k)":"FIRST order: [R] = [R]0·e^(-kt) (exponential decay)",460,30,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
  txt(c,thTxt,460,52,YL,"bold 12px 'Cascadia Code',monospace","center");
- txt(c,mode===0?"har equal time me SAME amount ghatta (0.5 M per 25 s)":"har t1/2 me EXACT AADHA (1 → 0.5 → 0.25 → 0.125)",460,272,MG,"12px 'Cascadia Code',monospace","center");
+ txt(c,mode===0?"har equal time me SAME amount ghatta (0.5 M per 25 s)":"har t1/2 me EXACT AADHA (1 → 0.5 → 0.25 → 0.125)",460,74,MG,"12px 'Cascadia Code',monospace","center");
  R.innerHTML=mode===0?
   "<b style='color:#22d3ee'>[R] = [R]0 − kt</b> &nbsp;|&nbsp; graph: straight line &nbsp;|&nbsp; t1/2 = [R]0/2k = <b style='color:#facc15'>"+(R0/(2*k)).toFixed(1)+" s</b> &nbsp;|&nbsp; half-life initial conc pe DEPEND karti (zero order ka pakka sign)":
   "<b style='color:#22d3ee'>k = (2.303/t)·log([R]0/[R])</b> &nbsp;|&nbsp; t1/2 = 0.693/k = <b style='color:#facc15'>"+(0.693/k).toFixed(1)+" s</b> &nbsp;|&nbsp; half-life CONSTANT - [R]0 se independent (radioactive decay isliye first order!)";
