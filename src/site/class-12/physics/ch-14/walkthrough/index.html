@@ -67,7 +67,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 <div class="scene" id="sc2">
 <h2>3. p-n Junction - Depletion Region aur Barrier ⭐</h2>
-<p class="why">p aur n ko join karo: junction ke paas electrons n→p aur holes p→n diffuse hokar recombine ho jaate hain. Beech ka region mobile carriers se khaali ho jaata hai - DELETION REGION, jisme sirf fixed ionized donors (+, n-side) aur acceptors (−, p-side) rehte hain. Inse built-in electric field aur barrier potential (~0.7 V Si) banta hai. Equilibrium me diffusion aur field-driven drift balance - bina bias ke net current ZERO.</p>
+<p class="why">p aur n ko join karo: junction ke paas electrons n→p aur holes p→n diffuse hokar recombine ho jaate hain. Beech ka region mobile carriers se khaali ho jaata hai - DEPLETION REGION, jisme sirf fixed ionized donors (+, n-side) aur acceptors (−, p-side) rehte hain. Inse built-in electric field aur barrier potential (~0.7 V Si) banta hai. Equilibrium me diffusion aur field-driven drift balance - bina bias ke net current ZERO.</p>
 <div class="panel">
 <canvas id="cv2" width="920" height="330"></canvas>
 <div class="btnrow" style="margin-bottom:10px"><button id="jB">Contact se pehle</button><button id="jA">Equilibrium (junction banne ke baad)</button></div>
@@ -194,7 +194,7 @@ function draw(t){
   arrow2(c,100,gY2,100,gY1,YL,2);arrow2(c,100,gY1,100,gY2,YL,2);
   txt(c,"E_g = "+EG[mat]+" eV",112,(gY1+gY2)/2+4,YL,"bold 12px 'Cascadia Code',monospace");
  } else {
-  txt(c,"bands overlap - E_g = 0",100,225,YL,"bold 12px 'Cascadia Code',monospace","center");
+  txt(c,"bands overlap - E_g = 0",460,190,YL,"bold 12px 'Cascadia Code',monospace","center");
  }
  txt(c,NAMES[mat],460,30,"#e8e8f2","bold 15px 'Cascadia Code',monospace","center");
  txt(c,"yellow dots = electrons (conduction band me free)",460,50,DM,"11px 'Cascadia Code',monospace","center");
@@ -247,7 +247,7 @@ function draw(t){
  if(mode===1)txt(c,"P = pentavalent donor (extra electron deta hai)",430,48,YL,"11px 'Cascadia Code',monospace");
  if(mode===2)txt(c,"B = trivalent acceptor (hole banata hai)",430,48,GR,"11px 'Cascadia Code',monospace");
  const nm=mode===0?"Intrinsic (pure Si)":mode===1?"n-type":"p-type";
- const maj=mode===2?"holes":"electrons";
+ const maj=mode===0?"koi nahi (barabar)":mode===2?"holes":"electrons";
  R.innerHTML="<b style='color:#22d3ee'>"+nm+"</b> &nbsp;|&nbsp; n_e = <b>"+ne+"</b>, n_h = <b>"+nh+"</b>"+
   (mode===0?" (barabar!)":"")+" &nbsp;|&nbsp; majority: <b>"+maj+"</b> &nbsp;|&nbsp; material NET NEUTRAL hai!";
 }
@@ -316,7 +316,7 @@ const bSi=document.getElementById("vSi"),bGe=document.getElementById("vGe");
 let knee=0.7,mat="Si";
 function mark(){[[bSi,0.7,"Si"],[bGe,0.3,"Ge"]].forEach(([b,k])=>{
  const on=Math.abs(knee-k)<0.01;b.style.borderColor=on?"#22d3ee":"#2d2d52";b.style.color=on?"#22d3ee":"#8fa0c8";});}
-const X=v=>120+(v+5)/6*700;   // -5..1 -> 120..820
+const X=v=>60+(v+5)/6*820;   // -5..1 -> 60..880
 const Y=i=>250-i;             // i in px above/below baseline 250
 function modelI(V){
  if(V<=-4.8)return -90;                 // breakdown
@@ -330,12 +330,12 @@ function draw(){
  // axes
  c.strokeStyle="#2d2d52";c.lineWidth=2;
  c.beginPath();c.moveTo(40,250);c.lineTo(880,250);c.stroke();
- c.beginPath();c.moveTo(120,20);c.lineTo(120,300);c.stroke();
+ const x0=X(0);c.beginPath();c.moveTo(x0,20);c.lineTo(x0,300);c.stroke();
  txt(c,"I",100,30,"#8fa0c8","bold 13px 'Cascadia Code',monospace","center");
  txt(c,"V →",860,240,"#8fa0c8","12px 'Cascadia Code',monospace");
- txt(c,"0",112,265,"#8fa0c8","10px 'Cascadia Code',monospace","center");
- txt(c,"-5 V",120,265,"#8fa0c8","10px 'Cascadia Code',monospace","center");
- txt(c,"+1 V",820,265,"#8fa0c8","10px 'Cascadia Code',monospace","center");
+ txt(c,"0",x0-12,265,"#8fa0c8","10px 'Cascadia Code',monospace","center");
+ txt(c,"-5 V",60,265,"#8fa0c8","10px 'Cascadia Code',monospace","center");
+ txt(c,"+1 V",880,265,"#8fa0c8","10px 'Cascadia Code',monospace","center");
  // knee tick
  c.strokeStyle=YL;c.setLineDash([3,4]);c.lineWidth=1;
  c.beginPath();c.moveTo(X(knee),40);c.lineTo(X(knee),250);c.stroke();c.setLineDash([]);
@@ -354,25 +354,25 @@ function draw(){
  txt(c,"reverse leakage (tiny)",300,285,DM,"10px 'Cascadia Code',monospace","left");
  txt(c,"forward: knee ke baad tez rise",620,80,DM,"11px 'Cascadia Code',monospace","left");
  // marker
- const mI=modelI(V),mx=X(V),my=Y(Math.max(-92,Math.min(160,mI)));
+ const mI=modelI(V),mx=X(V),my=Math.min(305,Math.max(15,Y(Math.max(-92,Math.min(160,mI)))));
  c.fillStyle=YL;c.beginPath();c.arc(mx,my,6,0,7);c.fill();
  c.strokeStyle="#07070f";c.lineWidth=2;c.beginPath();c.arc(mx,my,6,0,7);c.stroke();
  // bias circuit mini
  const fwd=V>=0;
- txt(c,fwd?"FORWARD bias (p → +)":"REVERSE bias (p → −)",700,140,fwd?GR:RD,"bold 12px 'Cascadia Code',monospace","left");
+ txt(c,fwd?"FORWARD bias (p → +)":"REVERSE bias (p → −)",240,135,fwd?GR:RD,"bold 12px 'Cascadia Code',monospace","left");
  // battery + diode sketch
  c.strokeStyle="#8fa0c8";c.lineWidth=2;
- c.beginPath();c.moveTo(640,190);c.lineTo(640,230);c.moveTo(760,190);c.lineTo(760,230);c.stroke();
- c.beginPath();c.moveTo(640,210);c.lineTo(700,210);c.moveTo(760,210);c.lineTo(830,210);c.stroke();
+ c.beginPath();c.moveTo(240,190);c.lineTo(240,230);c.moveTo(380,190);c.lineTo(380,230);c.stroke();
+ c.beginPath();c.moveTo(240,210);c.lineTo(300,210);c.moveTo(342,210);c.lineTo(380,210);c.stroke();
  // diode triangle pointing right at 700-760
  c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
- c.beginPath();c.moveTo(700,192);c.lineTo(700,228);c.lineTo(742,210);c.closePath();c.stroke();
- c.beginPath();c.moveTo(742,192);c.lineTo(742,228);c.stroke();
- txt(c,"p",694,246,DM,"10px 'Cascadia Code',monospace","center");
- txt(c,"n",748,246,DM,"10px 'Cascadia Code',monospace","center");
+ c.beginPath();c.moveTo(300,192);c.lineTo(300,228);c.lineTo(342,210);c.closePath();c.stroke();
+ c.beginPath();c.moveTo(342,192);c.lineTo(342,228);c.stroke();
+ txt(c,"p",294,246,DM,"10px 'Cascadia Code',monospace","center");
+ txt(c,"n",348,246,DM,"10px 'Cascadia Code',monospace","center");
  // battery terminals near wire ends
- txt(c,V>=0?"+":"−",636,246,fwd?GR:RD,"bold 13px 'Cascadia Code',monospace","center");
- txt(c,V>=0?"−":"+",834,246,fwd?RD:GR,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,V>=0?"+":"−",232,246,fwd?GR:RD,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,V>=0?"−":"+",388,246,fwd?RD:GR,"bold 13px 'Cascadia Code',monospace","center");
  const showI=mI<0?(V<=-4.8?"bada reverse (breakdown!)":"≈ −0.01 mA (tiny leakage)"):(mI<2&&V>=knee-0.05?"≈ 0 (knee ke neeche)":"≈ "+fmt(Math.max(0,mI*0.4),1)+" mA (schematic)");
  R.innerHTML=mat+" diode &nbsp;|&nbsp; V = <b style='color:#facc15'>"+fmt(V,1)+" V</b> &nbsp;|&nbsp; I "+showI+" &nbsp;|&nbsp; "+(V>=0?"depletion shrink - barrier kam":"depletion WIDEN - barrier bada");
 }
