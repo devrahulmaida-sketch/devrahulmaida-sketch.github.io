@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coordination Compounds - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Chemistry - Chapter 5 - Coordination Compounds</div>
+<h1>Coordination Compounds Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - Werner sphere lab, ligand + oxidation number, IUPAC naam builder, isomerism studio, CFT d-splitting lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Werner Ka Sphere Lab - Do Valencies ⭐</h2>
+<p class="why">Werner (1893): metal ke paas DO valencies. Primary = ionizable (counter ions, sphere ke BAHAR - AgNO3 test dete hain). Secondary = non-ionizable (ligands sphere ke ANDAR, fixed direction = CN). Slider se Cl ko sphere ke andar/bahar karo aur dekho AgCl ppt kaise badalta hai.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>Cl andar sphere</label><input type="range" id="kS" min="0" max="3" step="1" value="1"><span class="v" id="kV">1</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Ligand Lab - Denticity, CN aur Oxidation Number ⭐⭐</h2>
+<p class="why">Ligand = electron pair donor (Lewis base). Denticity = kitne donor atoms (NH3 = 1, en = 2, EDTA = 6). Bidentate+ jo RING banaye = chelate (extra stable). CN = donor atoms ki TOTAL ginti. Metal ka oxidation number = sphere ke charge ka hisab-kitab.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="lb sel" data-l="0">NH3 (neutral, 1 donor)</button>
+<button class="lb" data-l="1">Cl- (-1, 1 donor)</button>
+<button class="lb" data-l="2">CN- (-1, 1 donor)</button>
+<button class="lb" data-l="3">en (neutral, 2 donors)</button>
+<button class="lb" data-l="4">oxalate C2O4&#xB2;&#x207B; (-2, 2 donors)</button>
+</div>
+<div class="slrow"><label>Ligand ginti</label><input type="range" id="nL" min="1" max="6" step="1" value="6"><span class="v" id="nLV">6</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. IUPAC Naam Builder - Step by Step ⭐⭐</h2>
+<p class="why">Cation pehle, phir complex. Complex ke andar: ligands ALPHABETICAL (prefix ke saath), phir metal + (oxidation state Roman me). Anionic ligand = -o (chlorido, cyano); neutral exceptions: H2O = aqua, NH3 = ammine, CO = carbonyl. Anion complex ho to metal + -ate (ferrate). Step slider se naam ka hissa-hissa dekho.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="cb sel" data-c="0">[Co(NH3)6]Cl3</button>
+<button class="cb" data-c="1">K4[Fe(CN)6]</button>
+<button class="cb" data-c="2">[CoCl2(NH3)4]+</button>
+<button class="cb" data-c="3">[Ni(CO)4]</button>
+<button class="cb" data-c="4">[Pt(NH3)2Cl2]</button>
+</div>
+<div class="slrow"><label>Step</label><input type="range" id="stS" min="0" max="4" step="1" value="0"><span class="v" id="stV">0</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>3b. Isomerism Studio - Cis, Trans aur Mirror ⭐⭐</h2>
+<p class="why">Same formula, alag arrangement. GEOMETRICAL (cis = same side / trans = opposite): square planar [MA2B2] aur octahedral [MA4B2] me. Cisplatin (cis-[Pt(NH3)2Cl2]) = cancer drug! OPTICAL: chiral mirror images, chelate [M(AA)3] jaise [Co(en)3]3+ (d aur l forms).</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="gb sel" data-g="0">Square planar [Pt(NH3)2Cl2]</button>
+<button class="gb" data-g="1">Octahedral [Co(NH3)4Cl2]+</button>
+<button class="gb" data-g="2">Optical: [Co(en)3]3+ mirror</button>
+</div>
+<div class="btnrow" id="ctRow">
+<button class="tb sel" data-t="0">cis (same side)</button>
+<button class="tb" data-t="1">trans (opposite)</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>4. CFT d-Splitting Lab - Colour + Magnetism ⭐⭐</h2>
+<p class="why">Octahedral field me d-orbitals TOOT jaate: t2g (3, neeche) + eg (2, upar), gap = &#x394;o. Weak ligand (F-, H2O) = chhota gap, electrons pair NAHI (high spin). Strong (CN-, CO) = bada gap, t2g me PAIR (low spin). Colour = d-d transition se absorb hua complementary colour. d0/d10 = colourless.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="slrow"><label>Ligand (spectrochemical)</label><input type="range" id="lgS" min="0" max="3" step="1" value="1"><span class="v" id="lgV">H2O</span></div>
+<div class="slrow"><label>d-electrons</label><input type="range" id="dS" min="0" max="10" step="1" value="6"><span class="v" id="dV">d6</span></div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>5. Rapid Quiz - Coordination Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: sphere ke bahar wale ionizable (AgNO3 test), CN = donor atoms, oxidation number = charge hisab, ligands alphabetical + metal-ate for anions, strong field = pairing + colour.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc6">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Werner's Theory ⭐</h3><p>Primary valency = IONIZABLE = oxidation state, counter ions sphere ke bahar satisfy karte (AgNO3 test dete) | Secondary = NON-IONIZABLE = coordination number, ligands andar, space me FIXED direction | [Co(NH3)6]Cl3 + AgNO3 = 3 mol AgCl (teeno Cl bahar) | [CoCl2(NH3)4]Cl = sirf 1 mol AgCl</p></div>
+<div class="rcard"><h3>Ligand + CN ⭐⭐</h3><p>Ligand = e- pair donor (Lewis base), metal = acceptor (Lewis acid) | Denticity: unidentate (NH3, Cl-), bidentate (en, C2O4&#xB2;-), hexadentate (EDTA) | Bidentate+ ring = CHELATE = zyada stable | CN = donor atoms ki ginti: [Co(en)3]3+ me 3x2 = 6 | CN 4 = SP/tetra, CN 6 = octahedral</p></div>
+<div class="rcard"><h3>Oxidation Number ⭐⭐</h3><p>Hisab: complex charge = metal ox + (ligand charges ka sum) | [Fe(CN)6]4-: Fe + 6(-1) = -4 to Fe = +2 | [Cu(NH3)4]SO4: SO4&#xB2;- hai to complex +2, NH3 neutral, Cu = +2 | [CoCl2(NH3)4]+: Co + 2(-1) = +1 to Co = +3</p></div>
+<div class="rcard"><h3>IUPAC Naming ⭐⭐</h3><p>Cation PEHLE, anion baad me | Complex me: ligands ALPHABETICAL (di/tri ya bis/tris), phir metal + (Roman ox state) | Anionic ligand = -o: chlorido, cyano, hydroxo, sulphato | Exceptions: H2O = aqua, NH3 = ammine, CO = carbonyl | Anion complex = metal + -ate: K4[Fe(CN)6] = potassium hexacyanidoferrate(II)</p></div>
+<div class="rcard"><h3>Isomerism ⭐⭐</h3><p>STRUCTURAL: ionization ([Co(NH3)5SO4]Br vs [Co(NH3)5Br]SO4), linkage (NO2 N-se vs ONO O-se), coordination, hydrate | STEREO: geometrical cis/trans - square planar [MA2B2] + octahedral [MA4B2]; optical - chiral [M(AA)3] jaise [Co(en)3]3+ (d/l) | Cisplatin = CIS-[Pt(NH3)2Cl2] = cancer drug</p></div>
+<div class="rcard"><h3>CFT ⭐⭐</h3><p>Octahedral: d split = t2g (3 neeche) + eg (2 upar), gap &#x394;o | Series: I- &lt; Br- &lt; Cl- &lt; F- &lt; H2O &lt; NH3 &lt; en &lt; NO2- &lt; CN- &lt; CO | Weak = high spin (no pairing), Strong = low spin (pair) | Colour = d-d transition (complementary dikhta); d0/d10 colourless | Applications: chlorophyll (Mg), haemoglobin (Fe), B12 (Co), cisplatin (Pt)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Chemistry Chapter 5 (Coordination Compounds) - Interactive Walkthrough</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=7;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}inits[0]=(()=>{
+const c=ctx("cv0"),kS=document.getElementById("kS"),kV=document.getElementById("kV"),R=document.getElementById("r0");
+const cx=210,cy=165,RS=95;
+function sub(n){return String(n).split("").map(d=>String.fromCharCode(8320+parseInt(d))).join("");}
+function ligPos(i){
+ // octahedral feel: 4 in plane + 2 offset (front/back)
+ const base=[[RS,0],[0,-RS],[-RS,0],[0,RS]];
+ if(i<4)return base[i];
+ return i===4?[RS*0.42,-RS*0.42]:[-RS*0.42,RS*0.42];
+}
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const k=parseInt(kS.value);
+ kV.textContent=k;
+ // sphere (dashed)
+ c.setLineDash([7,7]);c.strokeStyle="rgba(232,121,249,0.55)";c.lineWidth=2;
+ c.beginPath();c.arc(cx,cy,RS+26,0,7);c.stroke();c.setLineDash([]);
+ txt(c,"coordination sphere [ ] = andar fixed, NON-ionizable",cx,cy-RS-38,MG,"12px 'Cascadia Code',monospace","center");
+ // metal
+ c.fillStyle="#1b2a4a";c.beginPath();c.arc(cx,cy,26,0,7);c.fill();
+ c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();c.arc(cx,cy,26,0,7);c.stroke();
+ txt(c,"Co",cx,cy-2,CY,"bold 16px 'Cascadia Code',monospace","center");
+ txt(c,"+3",cx,cy+14,"#9fb3e8","11px 'Cascadia Code',monospace","center");
+ // ligands
+ for(let i=0;i<6;i++){
+  const p=ligPos(i),lx=cx+p[0],ly=cy+p[1];
+  const isCl=i<k;
+  const bob=Math.sin((t||0)/9+i)*2;
+  c.strokeStyle=DM;c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(lx,ly+bob);c.stroke();
+  c.fillStyle=isCl?"#3a1030":"#0e2a3a";
+  c.beginPath();c.arc(lx,ly+bob,15,0,7);c.fill();
+  c.strokeStyle=isCl?MG:CY;c.lineWidth=2;c.beginPath();c.arc(lx,ly+bob,15,0,7);c.stroke();
+  txt(c,isCl?"Cl":"NH"+sub(3),lx,ly+bob+4,isCl?MG:CY,"bold 11px 'Cascadia Code',monospace","center");
+ }
+ // counter ions outside (3-k)
+ const out=3-k;
+ for(let i=0;i<out;i++){
+  const ang=2.2+i*1.1,rr=RS+62;
+  const ox=cx+Math.cos(ang)*rr,oy=cy+Math.sin(ang)*rr+Math.sin((t||0)/7+i*2)*3;
+  c.fillStyle="#0a2e1a";c.beginPath();c.arc(ox,oy,12,0,7);c.fill();
+  c.strokeStyle=GR;c.lineWidth=2;c.beginPath();c.arc(ox,oy,12,0,7);c.stroke();
+  txt(c,"Cl-",ox,oy+4,GR,"bold 10px 'Cascadia Code',monospace","center");
+ }
+ txt(c,out>0?"bahar = "+out+" Cl- IONIZABLE (AgNO3 test dega)":"koi counter Cl- nahi - NEUTRAL complex, 0 ppt",cx,cy+RS+52,out>0?GR:YL,"12px 'Cascadia Code',monospace","center");
+ // AgNO3 test panel right
+ const bx=470,by=46,bw=400,bh=238;
+ c.strokeStyle=DM;c.lineWidth=2.5;
+ c.beginPath();c.moveTo(bx,by);c.lineTo(bx,by+bh);c.lineTo(bx+bw,by+bh);c.lineTo(bx+bw,by);c.stroke();
+ c.fillStyle="rgba(34,211,238,0.10)";c.fillRect(bx+2,by+40,bw-4,bh-42);
+ c.strokeStyle=CY;c.lineWidth=1.5;c.beginPath();c.moveTo(bx+3,by+40);c.lineTo(bx+bw-3,by+40);c.stroke();
+ txt(c,"AgNO"+sub(3)+" test (solution)",bx+bw/2,by-12,CY,"13px 'Cascadia Code',monospace","center");
+ // AgCl ppt dots at bottom
+ const nDots=out*14;
+ for(let i=0;i<nDots;i++){
+  const px=bx+18+(i%14)*27,py=by+bh-12-Math.floor(i/14)*13;
+  c.fillStyle="#e8e8f2";c.beginPath();c.arc(px,py,4,0,7);c.fill();
+ }
+ txt(c,out>0?out+" mol AgCl (safed ppt) per mol complex":"0 mol AgCl - sphere intact!",bx+bw/2,by+bh+22,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ // formula string
+ const fml="[CoCl"+(k>1?sub(k):k===1?"":"")+"(NH"+sub(3)+")"+sub(6-k)+"]"+(out>0?"Cl"+(out>1?sub(out):""):"");
+ txt(c,fml,210,304,CY,"bold 17px 'Cascadia Code',monospace","center");
+ R.innerHTML="Formula: <span class='cy'>"+fml+"</span>\nPrimary valency (ionizable Cl bahar) = <span class='hl'>"+out+"</span>  |  Secondary valency (CN, andar) = <span class='hl'>6</span> (4 NH3-type spots bhi ligand hain!)\nWerner ka funda: sphere ke ANDAR ka maal fixed + test nahi deta; BAHAR ka ionize hota hai - AgNO3 se ppt.";
+}
+kS.oninput=()=>draw(0);
+return function(){draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1"),nL=document.getElementById("nL"),nLV=document.getElementById("nLV"),R=document.getElementById("r1");
+const btns=[...document.querySelectorAll(".lb")];
+const LIGS=[
+ {name:"NH3",q:0,dent:1,label:"ammonia (unidentate)",col:CY},
+ {name:"Cl-",q:-1,dent:1,label:"chlorido (unidentate)",col:MG},
+ {name:"CN-",q:-1,dent:1,label:"cyanido (unidentate, STRONG)",col:YL},
+ {name:"en",q:0,dent:2,label:"ethylenediamine (bidentate, chelate!)",col:GR},
+ {name:"C2O4 2-",q:-2,dent:2,label:"oxalato (bidentate, chelate!)",col:RD}
+];
+let li=0;
+btns.forEach(b=>b.onclick=()=>{li=parseInt(b.dataset.l);btns.forEach(x=>x.classList.toggle("sel",x===b));
+ nL.max=LIGS[li].dent===2?3:6;if(parseInt(nL.value)>parseInt(nL.max))nL.value=nL.max;draw(0);});
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const L=LIGS[li];let n=parseInt(nL.value);
+ if(L.dent===2&&n>3){n=3;nL.value=3;}
+ nLV.textContent=n;
+ const CN=n*L.dent;
+ const cx=210,cy=170;
+ // metal
+ c.fillStyle="#1b2a4a";c.beginPath();c.arc(cx,cy,28,0,7);c.fill();
+ c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();c.arc(cx,cy,28,0,7);c.stroke();
+ txt(c,"Co",cx,cy-2,CY,"bold 16px 'Cascadia Code',monospace","center");
+ txt(c,"+3",cx,cy+14,"#9fb3e8","11px 'Cascadia Code',monospace","center");
+ // ligands around
+ const RR=86;
+ for(let i=0;i<n;i++){
+  const ang=-Math.PI/2+i*2*Math.PI/n;
+  const lx=cx+Math.cos(ang)*RR,ly=cy+Math.sin(ang)*RR;
+  if(L.dent===1){
+   c.strokeStyle=DM;c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(lx,ly);c.stroke();
+   c.fillStyle="#10101f";c.beginPath();c.arc(lx,ly,16,0,7);c.fill();
+   c.strokeStyle=L.col;c.lineWidth=2;c.beginPath();c.arc(lx,ly,16,0,7);c.stroke();
+   txt(c,L.name,lx,ly+4,L.col,"bold 10px 'Cascadia Code',monospace","center");
+   // donor dot near metal
+   const dx=cx+Math.cos(ang)*40,dy=cy+Math.sin(ang)*40;
+   c.fillStyle=L.col;c.beginPath();c.arc(dx,dy,3.5,0,7);c.fill();
+  }else{
+   // bidentate: glyph at angle, TWO donor dots near metal at +-0.22 rad, ring arc between
+   c.strokeStyle=DM;c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(lx,ly);c.stroke();
+   c.fillStyle="#10101f";c.beginPath();c.arc(lx,ly,17,0,7);c.fill();
+   c.strokeStyle=L.col;c.lineWidth=2;c.beginPath();c.arc(lx,ly,17,0,7);c.stroke();
+   txt(c,L.name,lx,ly+3,L.col,"bold 9px 'Cascadia Code',monospace","center");
+   const a1=ang-0.24,a2=ang+0.24;
+   const d1x=cx+Math.cos(a1)*44,d1y=cy+Math.sin(a1)*44,d2x=cx+Math.cos(a2)*44,d2y=cy+Math.sin(a2)*44;
+   c.fillStyle=L.col;c.beginPath();c.arc(d1x,d1y,3.5,0,7);c.fill();c.beginPath();c.arc(d2x,d2y,3.5,0,7);c.fill();
+   // chelate ring arc from d1 to d2 via ligand
+   c.strokeStyle=L.col;c.lineWidth=1.5;c.setLineDash([3,3]);
+   c.beginPath();c.moveTo(d1x,d1y);c.quadraticCurveTo(lx*1.03-cx*0.03,ly*1.03-cy*0.03,d2x,d2y);c.stroke();c.setLineDash([]);
+  }
+ }
+ txt(c,"donor dots = donation sites",cx,302,DM,"11px 'Cascadia Code',monospace","center");
+ // CN badge
+ c.fillStyle="#0e2a3a";c.fillRect(430,34,180,54);
+ c.strokeStyle=CY;c.lineWidth=2;c.strokeRect(430,34,180,54);
+ txt(c,"CN = "+CN,520,68,CY,"bold 22px 'Cascadia Code',monospace","center");
+ // hisab panel right
+ const hx=640;
+ txt(c,"OXIDATION NUMBER HISAB",hx,52,MG,"bold 13px 'Cascadia Code',monospace");
+ const lq=n*L.q;
+ const sph=3+lq;
+ txt(c,"metal Co = +3",hx,86,"#c9d4ff","13px 'Cascadia Code',monospace");
+ txt(c,"ligands: "+n+" x ("+(L.q>=0?"+":"")+L.q+") = "+(lq>=0?"+":"")+lq,hx,110,"#c9d4ff","13px 'Cascadia Code',monospace");
+ txt(c,"sphere charge = +3 "+(lq>=0?"+":"-")+" "+Math.abs(lq)+" = "+(sph>=0?"+":"")+sph,hx,134,YL,"bold 13px 'Cascadia Code',monospace");
+ const need=Math.abs(sph);
+ txt(c,sph===0?"sphere NEUTRAL - koi counter ion nahi":"balance: "+need+" counter ion"+(need>1?"s":"")+" ("+(sph>0?"-1":"+1")+" each)",hx,158,GR,"13px 'Cascadia Code',monospace");
+ txt(c,"Complex: [Co("+L.name+")"+(n>1?n:"")+"]"+(sph>0?" "+sph+"+":sph<0?" "+Math.abs(sph)+"-":""),hx,190,CY,"bold 13px 'Cascadia Code',monospace");
+ if(L.dent===2)txt(c,"CHELATE: 1 ligand, 2 pakad = ring = extra stable!",hx,222,GR,"12px 'Cascadia Code',monospace");
+ txt(c,"Denticity = "+L.dent+" donor"+(L.dent>1?"s":"")+" per ligand",hx,L.dent===2?246:222,"#a5b0d0","12px 'Cascadia Code',monospace");
+ R.innerHTML="Ligand: <span class='cy'>"+L.label+"</span> | ginti n = <span class='hl'>"+n+"</span> | CN = n x denticity = <span class='hl'>"+CN+"</span>\nOxidation number ka seedha hisab: sphere charge = metal + (ligand charges). Counter ions sirf balance ke liye!";
+}
+nL.oninput=()=>draw(0);
+return function(){draw(0);};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2"),stS=document.getElementById("stS"),stV=document.getElementById("stV"),R=document.getElementById("r2");
+const btns=[...document.querySelectorAll(".cb")];
+const CMP=[
+ {f:"[Co(NH3)6]Cl3",cnt:"Cl3 bahar",lig:"NH3 x6",met:"Co",
+  split:"Complex CATION hai - pehle complex ka naam, phir chloride.",
+  ligPart:"hexaammine",ligWhy:"NH3 = ammine (exception!), 6 = hexa",
+  metPart:"cobalt",metWhy:"cation complex to metal ka NORMAL naam",
+  ox:"(III)",oxWhy:"sphere charge +3 (Cl3 bahar = -3), NH3 neutral to Co = +3",
+  full:"hexaamminecobalt(III) chloride"},
+ {f:"K4[Fe(CN)6]",cnt:"K+ x4 bahar",lig:"CN- x6",met:"Fe",
+  split:"Complex ANION hai (K+ bahar) - pehle potassium, phir complex.",
+  ligPart:"hexacyanido",ligWhy:"CN- = cyano (anionic to -o = cyanido), 6 = hexa",
+  metPart:"ferrate",metWhy:"ANION complex to metal + -ate (Fe = ferrate)",
+  ox:"(II)",oxWhy:"sphere -4 (K4 = +4), CN- x6 = -6, to Fe = +2",
+  full:"potassium hexacyanidoferrate(II)"},
+ {f:"[CoCl2(NH3)4]+",cnt:"koi counter nahi (ion +1)",lig:"Cl- x2 + NH3 x4",met:"Co",
+  split:"Complex CATION (+1 charge).",
+  ligPart:"tetraamminedichlorido",ligWhy:"ALPHABETICAL: ammine pehle, chlorido baad (prefix count nahi hota!)",
+  metPart:"cobalt",metWhy:"cation complex to normal naam",
+  ox:"(III)",oxWhy:"sphere +1, Cl- x2 = -2, to Co = +3",
+  full:"tetraamminedichloridocobalt(III) ion"},
+ {f:"[Ni(CO)4]",cnt:"neutral complex",lig:"CO x4",met:"Ni",
+  split:"NEUTRAL complex - koi counter ion hi nahi.",
+  ligPart:"tetracarbonyl",ligWhy:"CO = carbonyl (exception!), 4 = tetra",
+  metPart:"nickel",metWhy:"neutral complex to normal naam",
+  ox:"(0)",oxWhy:"CO neutral + sphere neutral to Ni = 0 (zero bhi likhte hain!)",
+  full:"tetracarbonylnickel(0)"},
+ {f:"[Pt(NH3)2Cl2]",cnt:"neutral complex",lig:"NH3 x2 + Cl- x2",met:"Pt",
+  split:"NEUTRAL complex.",
+  ligPart:"diamminedichlorido",ligWhy:"alphabetical: ammine pehle, chlorido baad",
+  metPart:"platinum",metWhy:"neutral to normal naam",
+  ox:"(II)",oxWhy:"sphere 0, Cl- x2 = -2, to Pt = +2. Yeh hai CISPLATIN ka compound!",
+  full:"diamminedichloridoplatinum(II)"}
+];
+let ci=0;
+btns.forEach(b=>b.onclick=()=>{ci=parseInt(b.dataset.c);btns.forEach(x=>x.classList.toggle("sel",x===b));draw();});
+stS.oninput=draw;
+function seg(text,x,y,col,font){txt(c,text,x,y,col,font||"bold 19px 'Cascadia Code',monospace");return x+c.measureText(text).width;}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const st=parseInt(stS.value);stV.textContent=st;
+ const D=CMP[ci];
+ // formula segments (approx split for coloring)
+ c.font="bold 24px 'Cascadia Code',monospace";
+ let x=460-c.measureText(D.f).width/2;
+ // color: counter GR, brackets+metal+ligands split roughly
+ const parts=D.f.match(/^([^\[]*)\[(.*?)\]([^\]]*)$/);
+ let segs=[];
+ if(parts){
+  if(parts[1])segs.push([parts[1],GR]);
+  segs.push(["[","#8fa0c8"]);
+  // metal = first letters after [
+  const inner=parts[2];
+  const m=inner.match(/^([A-Z][a-z]?)(.*)$/);
+  segs.push([m[1],MG]);
+  segs.push([m[2],CY]);
+  segs.push(["]","#8fa0c8"]);
+  if(parts[3])segs.push([parts[3],GR]);
+ }else segs=[[D.f,CY]];
+ segs.forEach(s=>{x=seg(s[0],x,84,s[1]);});
+ txt(c,"green = counter ions | magenta = metal | cyan = ligands",460,116,DM,"12px 'Cascadia Code',monospace","center");
+ let y=152;
+ if(st>=1){txt(c,"STEP 1 - cation/anion pehchan:",60,y,YL,"bold 13px 'Cascadia Code',monospace");txt(c,D.split,330,y,"#c9d4ff","13px 'Cascadia Code',monospace");y+=30;}
+ if(st>=2){txt(c,"STEP 2 - ligands (alphabetical):",60,y,CY,"bold 13px 'Cascadia Code',monospace");txt(c,D.ligWhy,330,y,"#c9d4ff","13px 'Cascadia Code',monospace");y+=30;}
+ if(st>=3){txt(c,"STEP 3 - metal (-ate agar anion):",60,y,MG,"bold 13px 'Cascadia Code',monospace");txt(c,D.metWhy,330,y,"#c9d4ff","13px 'Cascadia Code',monospace");y+=30;}
+ if(st>=4){txt(c,"STEP 4 - oxidation state:",60,y,GR,"bold 13px 'Cascadia Code',monospace");txt(c,D.oxWhy,330,y,"#c9d4ff","13px 'Cascadia Code',monospace");y+=30;}
+ // name build
+ c.font="bold 21px 'Cascadia Code',monospace";
+ let nx=460;
+ const nameParts=[];
+ if(ci===0){if(st>=2)nameParts.push([D.ligPart,CY]);if(st>=3)nameParts.push([D.metPart,MG]);if(st>=4)nameParts.push([D.ox+" chloride",GR]);}
+ else if(ci===1){if(st>=1)nameParts.push(["potassium ",GR]);if(st>=2)nameParts.push([D.ligPart,CY]);if(st>=3)nameParts.push([D.metPart,MG]);if(st>=4)nameParts.push([D.ox,GR]);}
+ else{if(st>=2)nameParts.push([D.ligPart,CY]);if(st>=3)nameParts.push([D.metPart,MG]);if(st>=4)nameParts.push([D.ox+(ci===2?" ion":""),GR]);}
+ const tot=nameParts.reduce((a,p)=>a+c.measureText(p[0]).width,0);
+ nx=460-tot/2;
+ if(st===0){txt(c,"(step slider badhao - naam hissa-hissa banega)",460,300,DM,"13px 'Cascadia Code',monospace","center");}
+ else{nameParts.forEach(p=>{nx=seg(p[0],nx,300,p[1]);});}
+ R.innerHTML=st>=4?"<span class='cy'>FULL NAME: "+D.full+"</span>":st===0?"Formula dekho, phir step slider se naam build karo.":"Step "+st+" samjho, phir aage badhao.";
+}
+return function(){draw();};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3"),R=document.getElementById("r3"),ctRow=document.getElementById("ctRow");
+const gbs=[...document.querySelectorAll(".gb")],tbs=[...document.querySelectorAll(".tb")];
+let g=0,t=0;
+function lig(c2,x,y,name,col){c2.fillStyle="#10101f";c2.beginPath();c2.arc(x,y,15,0,7);c2.fill();c2.strokeStyle=col;c2.lineWidth=2;c2.beginPath();c2.arc(x,y,15,0,7);c2.stroke();txt(c2,name,x,y+4,col,"bold 10px 'Cascadia Code',monospace","center");}
+function metal(x,y,m){c.fillStyle="#1b2a4a";c.beginPath();c.arc(x,y,22,0,7);c.fill();c.strokeStyle=CY;c.lineWidth=2;c.beginPath();c.arc(x,y,22,0,7);c.stroke();txt(c,m,x,y+5,CY,"bold 13px 'Cascadia Code',monospace","center");}
+function drawSP(){
+ const cx=460,cy=170,R2=88;
+ const pos=[[0,-R2],[R2,0],[0,R2],[-R2,0]]; // up,right,down,left
+ const cl=t===0?[0,1]:[0,2];
+ pos.forEach((p,i)=>{
+  const lx=cx+p[0],ly=cy+p[1];
+  c.strokeStyle=DM;c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(lx,ly);c.stroke();
+  lig(c,lx,ly,cl.includes(i)?"Cl":"NH3",cl.includes(i)?MG:CY);
+ });
+ metal(cx,cy,"Pt");
+ txt(c,t===0?"CIS: dono Cl ADJACENT (90 deg) - yeh hai CISPLATIN (cancer drug)":"TRANS: dono Cl OPPOSITE (180 deg)",460,306,t===0?MG:CY,"bold 13px 'Cascadia Code',monospace","center");
+}
+function drawOct(){
+ const cx=460,cy=170;
+ const pos=[[0,-92],[92,0],[0,92],[-92,0],[58,-46],[-58,46]]; // axial up/down + equatorial-ish
+ const cl=t===0?[0,1]:[0,2]; // cis: up+right adjacent; trans: up+down opposite
+ pos.forEach((p,i)=>{
+  const lx=cx+p[0],ly=cy+p[1];
+  c.strokeStyle=DM;c.lineWidth=2;c.beginPath();c.moveTo(cx,cy);c.lineTo(lx,ly);c.stroke();
+  lig(c,lx,ly,cl.includes(i)?"Cl":"NH3",cl.includes(i)?MG:CY);
+ });
+ metal(cx,cy,"Co");
+ txt(c,t===0?"CIS: Cl ADJACENT (90 deg) - [CoCl2(NH3)4]+":"TRANS: Cl OPPOSITE (180 deg)",460,306,t===0?MG:CY,"bold 13px 'Cascadia Code',monospace","center");
+}
+function propeller(cx,cy,mirror,lab){
+ metal(cx,cy,"Co");
+ for(let i=0;i<3;i++){
+  const a=-Math.PI/2+i*2*Math.PI/3;
+  const dir=mirror?-1:1;
+  c.strokeStyle=GR;c.lineWidth=3;
+  c.beginPath();c.arc(cx,cy,62,a+0.35*dir,a+(Math.PI/2.2)*dir,dir<0);c.stroke();
+  const ex=cx+Math.cos(a+(Math.PI/2.2)*dir)*62,ey=cy+Math.sin(a+(Math.PI/2.2)*dir)*62;
+  c.fillStyle=GR;c.beginPath();c.arc(ex,ey,4,0,7);c.fill();
+  const sx=cx+Math.cos(a+0.35*dir)*62,sy=cy+Math.sin(a+0.35*dir)*62;
+  c.fillStyle=GR;c.beginPath();c.arc(sx,sy,4,0,7);c.fill();
+ }
+ txt(c,"3 x en (chelate rings)",cx,cy+88,GR,"11px 'Cascadia Code',monospace","center");
+ txt(c,lab,cx,cy+108,YL,"bold 15px 'Cascadia Code',monospace","center");
+}
+function drawOpt(){
+ // mirror line
+ c.setLineDash([8,6]);c.strokeStyle=DM;c.lineWidth=2;c.beginPath();c.moveTo(460,40);c.lineTo(460,300);c.stroke();c.setLineDash([]);
+ txt(c,"MIRROR",460,30,DM,"11px 'Cascadia Code',monospace","center");
+ propeller(250,165,false,"d form");
+ propeller(670,165,true,"l form");
+ txt(c,"[Co(en)3]3+ - NON-SUPERIMPOSABLE mirror images = OPTICAL isomers (plane-polarized light rotate karte)",460,318,"#c9d4ff","12px 'Cascadia Code',monospace","center");
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ ctRow.style.display=g===2?"none":"flex";
+ if(g===0)drawSP();else if(g===1)drawOct();else drawOpt();
+ if(g===0)R.innerHTML="Square planar [MA2B2]: <span class='hl'>"+(t===0?"cis":"trans")+"</span> form. Cisplatin (cis) cancer chemotherapy me use hota - trans nahi! Dono ka formula SAME [Pt(NH3)2Cl2], par geometry alag to compound alag.";
+ else if(g===1)R.innerHTML="Octahedral [MA4B2]: <span class='hl'>"+(t===0?"cis (Cl 90 deg)":"trans (Cl 180 deg)")+"</span>. CN 6 me bhi geometrical isomerism hoti hai.";
+ else R.innerHTML="Optical isomerism: <span class='hl'>chiral</span> complexes - mirror images jo overlap nahi hote. Condition: chelate rings [M(AA)3] jaise [Co(en)3]3+. d aur l forms plane-polarized light ko OPPOSITE rotate karte hain.";
+}
+gbs.forEach(b=>b.onclick=()=>{g=parseInt(b.dataset.g);gbs.forEach(x=>x.classList.toggle("sel",x===b));draw();});
+tbs.forEach(b=>b.onclick=()=>{t=parseInt(b.dataset.t);tbs.forEach(x=>x.classList.toggle("sel",x===b));draw();});
+return function(){draw();};
+})();
+inits[4]=(()=>{
+const c=ctx("cv4"),lgS=document.getElementById("lgS"),lgV=document.getElementById("lgV"),dS=document.getElementById("dS"),dV=document.getElementById("dV"),R=document.getElementById("r4");
+const LIG=[{n:"F-",wn:13000,strong:false},{n:"H2O",wn:17000,strong:false},{n:"CN-",wn:26000,strong:true},{n:"CO",wn:32000,strong:true}];
+function compColor(lam){
+ if(lam>750||lam<380)return["visible ke bahar","#5b6488"];
+ if(lam<435)return["yellow-green","#9acd32"];
+ if(lam<480)return["yellow","#ffd400"];
+ if(lam<500)return["orange","#ff8c00"];
+ if(lam<560)return["red-violet (purple)","#b03090"];
+ if(lam<580)return["violet","#8a2be2"];
+ if(lam<595)return["blue","#3060f0"];
+ if(lam<650)return["green-blue","#00a0a0"];
+ return["blue-green","#00b060"];
+}
+function fillOrbs(n,strong){
+ const t=[0,0,0],e=[0,0];let rem=n;
+ function a1(arr){for(let i=0;i<arr.length;i++)if(arr[i]<1&&rem>0){arr[i]++;rem--;return true;}return false;}
+ function a2(arr){for(let i=0;i<arr.length;i++)if(arr[i]<2&&rem>0){arr[i]++;rem--;return true;}return false;}
+ let guard=0;
+ while(rem>0&&guard++<20){
+  if(!strong){if(a1(t))continue;if(a1(e))continue;if(a2(t))continue;if(a2(e))continue;break;}
+  else{if(a1(t))continue;if(a2(t))continue;if(a1(e))continue;if(a2(e))continue;break;}
+ }
+ return[t,e];
+}
+function drawBox(x,yc,cnt){
+ c.strokeStyle="#8fa0c8";c.lineWidth=1.5;c.strokeRect(x,yc-16,52,32);
+ if(cnt>=1){const ux=x+18;c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();c.moveTo(ux,yc+8);c.lineTo(ux,yc-8);c.stroke();c.beginPath();c.moveTo(ux-4,yc-4);c.lineTo(ux,yc-10);c.lineTo(ux+4,yc-4);c.stroke();}
+ if(cnt>=2){const ux=x+34;c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();c.moveTo(ux,yc-8);c.lineTo(ux,yc+8);c.stroke();c.beginPath();c.moveTo(ux-4,yc+4);c.lineTo(ux,yc+10);c.lineTo(ux+4,yc+4);c.stroke();}
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const li=parseInt(lgS.value),dn=parseInt(dS.value);
+ const L=LIG[li];lgV.textContent=L.n;dV.textContent="d"+dn;
+ const gapPx=52+li*32;
+ const yB=165,yeg=yB-gapPx/2,yt2g=yB+gapPx/2;
+ // energy axis
+ arrow2(c,50,290,50,46,"#8fa0c8",2);txt(c,"energy",34,40,"#8fa0c8","11px 'Cascadia Code',monospace","center");
+ // unsplit d (barycenter)
+ c.strokeStyle=DM;c.lineWidth=1.5;c.setLineDash([5,4]);
+ c.beginPath();c.moveTo(90,yB);c.lineTo(430,yB);c.stroke();c.setLineDash([]);
+ txt(c,"d (unsplit)",100,yB+18,DM,"11px 'Cascadia Code',monospace","center");
+ for(let i=0;i<5;i++){c.strokeStyle=DM;c.lineWidth=1.5;c.strokeRect(96+i*14,yB-8,10,16);}
+ // eg boxes (2)
+ const exs=[246,318];
+ exs.forEach(x=>drawBox(x,yeg,0));
+ txt(c,"eg (2 orbitals)",200,yeg+4,MG,"bold 12px 'Cascadia Code',monospace","right");
+ // t2g boxes (3)
+ const txs=[174,246,318];
+ txs.forEach(x=>drawBox(x,yt2g,0));
+ txt(c,"t2g (3 orbitals)",160,yt2g+4,CY,"bold 12px 'Cascadia Code',monospace","right");
+ // gap arrow
+ arrow2(c,420,yt2g,420,yeg,YL,2.5);
+ txt(c,"\u0394o",432,(yeg+yt2g)/2+4,YL,"bold 15px 'Cascadia Code',monospace");
+ // electrons
+ const T=fillOrbs(dn,L.strong),t=T[0],e=T[1];
+ t.forEach((cnt,i)=>{const x=txs[i];c.strokeStyle="#8fa0c8";c.strokeRect(x,yt2g-16,52,32);drawBox(x,yt2g,cnt);});
+ e.forEach((cnt,i)=>{const x=exs[i];drawBox(x,yeg,cnt);});
+ const tSum=t.reduce((a,b)=>a+b,0),eSum=e.reduce((a,b)=>a+b,0);
+ const unpaired=t.filter(v=>v===1).length+e.filter(v=>v===1).length;
+ // right panel
+ const px=560;
+ txt(c,"Ligand: "+L.n+" ("+(L.strong?"STRONG field":"WEAK field")+")",px,70,L.strong?MG:CY,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"\u0394o ~ "+L.wn+" cm-1 (illustrative)",px,98,YL,"13px 'Cascadia Code',monospace");
+ const lam=1e7/L.wn;
+ txt(c,"absorb: \u03bb = "+fmt(lam,0)+" nm",px,124,"#c9d4ff","13px 'Cascadia Code',monospace");
+ let colTxt,hex;
+ if(dn===0||dn===10){colTxt="d"+dn+" - d-d transition NAHI = colourless";hex="#5b6488";}
+ else{const cc=compColor(lam);colTxt="dikhta: "+cc[0]+" (complementary)";hex=cc[1];}
+ c.fillStyle=hex;c.fillRect(px,140,120,34);
+ c.strokeStyle="#8fa0c8";c.lineWidth=1.5;c.strokeRect(px,140,120,34);
+ txt(c,colTxt,px,196,"#e8e8f2","13px 'Cascadia Code',monospace");
+ txt(c,"config: t2g^"+tSum+" eg^"+eSum,px,226,CY,"bold 14px 'Cascadia Code',monospace");
+ txt(c,"unpaired e-: "+unpaired+(dn>=4&&dn<=7?" ("+(L.strong?"LOW spin":"HIGH spin")+")":""),px,252,MG,"bold 14px 'Cascadia Code',monospace");
+ if(dn>=4&&dn<=7)txt(c,L.strong?"\u0394o bada - PAIRING in t2g pehle":"\u0394o chhota - Hund: pehle sab singly",px,278,"#a5b0d0","12px 'Cascadia Code',monospace");
+ else txt(c,"d"+dn+" - weak/strong se config SAME",px,278,"#a5b0d0","12px 'Cascadia Code',monospace");
+ R.innerHTML="Spectrochemical series: F- &lt; H2O &lt; NH3 &lt; en &lt; CN- &lt; CO | <span class='hl'>"+L.n+"</span> = "+(L.strong?"strong field - bada \u0394o, electrons PAIR (low spin)":"weak field - chhota \u0394o, electrons pair NAHI (high spin)")+"\nColour ka funda: electron t2g se eg jump karke \u03bb absorb karta - jo bacha woh complementary colour DIKHTA hai. d0/d10 me transition possible hi nahi = colourless (jaise Zn2+, Sc3+).";
+}
+lgS.oninput=draw;dS.oninput=draw;
+return function(){draw();};
+})();
+inits[5]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"[Co(NH3)6]Cl3 ka 1 mol + excess AgNO3 - kitne mol AgCl ka safed ppt?",opts:["1 mol","2 mol","3 mol","6 mol"],a:2,why:"Teeno Cl- sphere ke BAHAR (ionizable) hain - teeno turant AgCl dete. NH3 andar non-ionizable, wo kuch nahi deti. Primary valency = 3, secondary (CN) = 6. Werner ka seedha proof!"},
+{q:"[Fe(CN)6]4- me Fe ka oxidation number?",opts:["+4","+2","+3","-4"],a:1,why:"Hisab: Fe + 6 x (-1) = -4, to Fe = -4 + 6 = +2. Ligand charges jodo, sphere ke charge ke barabar karo - bas!"},
+{q:"[Co(en)3]3+ me Co ka coordination number kitna hai?",opts:["3","4","6","2"],a:2,why:"en BIDENTATE hai (2 donor atoms per ligand). CN = 3 ligands x 2 donors = 6. Galti mat karna - ligand ginti (3) nahi, DONOR atoms ginte hain!"},
+{q:"K4[Fe(CN)6] ka sahi IUPAC naam?",opts:["potassium hexacyanidoferrate(II)","potassium hexacyanidoiron(II)","hexacyanidopotassiumferrate(II)","potassium hexacyanoferrate(IV)"],a:0,why:"Complex ANION hai (K+ bahar) to metal + -ate = ferrate. CN- = cyanido, 6 = hexa. Fe = +2 (sphere -4, CN- x6 = -6). Naam: potassium hexacyanidoferrate(II)."},
+{q:"Octahedral complex me d6 metal + STRONG field ligand (CN-) - kya hoga?",opts:["High spin, 4 unpaired e-","Low spin, 0 unpaired e-","High spin, 2 unpaired e-","Complex colourless ho jayega"],a:1,why:"CN- STRONG field = bada delta-o = electrons t2g me PAIR ho jaate: t2g6 eg0 - ZERO unpaired (diamagnetic). Weak field (F-) hota to high spin t2g4 eg2 = 4 unpaired. Spin decide karta hai ligand ki strength!"}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Coordination pakke! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
