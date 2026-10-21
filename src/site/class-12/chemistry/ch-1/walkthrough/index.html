@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solutions - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Chemistry - Chapter 1 - Solutions</div>
+<h1>Solutions Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - concentration lab, Henry's law, Raoult deviations, colligative + van't Hoff, osmosis lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Concentration Units - Kitna Solute, Kitna Solvent ⭐</h2>
+<p class="why">Solution = homogeneous mixture (solute + solvent, particles <1 nm - Tyndall nahi). Concentration batane ke 4 tareeke: mass % (w/w), mole fraction (x), MOLARITY (M = moles/volume L - temperature se BADALTI, kyunki volume expand hota hai!), MOLALITY (m = moles/solvent kg - temperature-proof, isliye colligative me yahi). Slider se solute moles aur paani badlo; temperature toggle karo - dekho M girti hai lekin m SAME rehti!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="t25">25°C</button><button id="t60">60°C (volume expand!)</button></div>
+<div class="slrow"><label>solute moles</label><input type="range" id="nS" min="0.2" max="3" step="0.1" value="1"><span class="v" id="vlnS">1</span></div>
+<div class="slrow"><label>paani (g)</label><input type="range" id="mW" min="200" max="2000" step="50" value="1000"><span class="v" id="vlmW">1000</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Henry's Law - Pressure Badhao, Gas Ghulo ⭐</h2>
+<p class="why">Constant temperature pe gas ki solubility uske partial pressure ke DIRECTLY proportional: p = K_H·x (x = solution me gas ka mole fraction). K_H jitna BADA, solubility utni KAM. Soda bottle high pressure pe seal hoti hai - kholte hi p girta, CO2 nikalta (fizz!). Scuba divers ko bends N2 bubbles se hota hai - isliye He mix (He ka K_H bahut bada = kam soluble). Law tab FAIL jab gas solvent se react kare (NH3, HCl paani me). Gas chuno, pressure slider ghumao:</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="gCO2">CO2 (K_H = 1.67 kbar)</button><button id="gO2">O2 (K_H = 34.9 kbar)</button><button id="gN2">N2 (K_H = 76.5 kbar)</button><button id="gHe">He (K_H = 145 kbar)</button></div>
+<div class="slrow"><label>pressure p (bar)</label><input type="range" id="pH" min="1" max="10" step="0.5" value="4"><span class="v" id="vlpH">4</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Raoult's Law - Ideal vs Non-Ideal ⭐⭐</h2>
+<p class="why">Volatile liquid-liquid solution me har component ka partial VP = pure VP × mole fraction: p1 = p1°·x1, p2 = p2°·x2, total = p1 + p2 (schematic: p1° = 100, p2° = 50 mmHg). IDEAL (benzene+toluene): A-B ≈ A-A ≈ B-B, ΔH=0, ΔV=0 - straight lines. POSITIVE deviation (ethanol+water): A-B kamzor, molecules bhaagte, VP Raoult se UPAR, ΔH>0 - minimum-boiling azeotrope. NEGATIVE deviation (chloroform+acetone, H-bonding): A-B strong, VP NEECHE, ΔH<0 - maximum-boiling azeotrope. Toggle karo, x1 slider se composition badlo:</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="rI">Ideal (benzene+toluene)</button><button id="rP">Positive dev. (ethanol+water)</button><button id="rN">Negative dev. (chloroform+acetone)</button></div>
+<div class="slrow"><label>x1 (component 1 ka mole fraction)</label><input type="range" id="xR" min="0" max="1" step="0.05" value="0.5"><span class="v" id="vlxR">0.5</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Colligative BP/FP + van't Hoff Factor ⭐⭐</h2>
+<p class="why">Colligative properties sirf particles ki GINTI pe depend karti (nature pe NAHI). Solute daalo: BP BADHTA (ΔT_b = i·K_b·m, K_b water = 0.52) aur FP GHATTA (ΔT_f = i·K_f·m, K_f water = 1.86 - isliye barf pe namak!). van't Hoff factor i = asli headcount multiplier: dissociation pe i>1 (NaCl → 2, CaCl2 → 3), association pe i<1 (acetic acid benzene me dimer, i≈0.5), non-electrolyte (glucose) i=1. Abnormal molar mass: tootta hai to M2 KAM aata, judta hai to ZYADA. Solute chuno, molality badlo, thermometer dekho:</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="sG">Glucose (i = 1)</button><button id="sN">NaCl (i = 2)</button><button id="sC">CaCl2 (i = 3)</button><button id="sA">Acetic acid dimer (i = 0.5)</button></div>
+<div class="slrow"><label>molality m (mol/kg)</label><input type="range" id="mC" min="0.2" max="2" step="0.1" value="1"><span class="v" id="vlmC">1</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Osmosis - Paani Ka Bheed-Balancing ⭐</h2>
+<p class="why">Osmosis: solvent semipermeable membrane (SPM) se dilute → concentrated side behta hai. Osmotic pressure π = i·C·R·T (C = molarity, T Kelvin, R = 0.0821) - SABSE accurate colligative (room temp pe measure, biological molecules ke liye best). RO (reverse osmosis): π se ZYADA pressure lagao → solvent ulta, sea water desalination + ghar ke RO purifier! Blood cell dekho: 0.9% NaCl = ISOTONIC (π same, cell safe), hypertonic me SIKUDTA, hypotonic me PHAT-ta hai. Toggle karo, C slider badlo:</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="cIso">Isotonic (0.9% NaCl)</button><button id="cHypo">Hypotonic (bahar dilute)</button><button id="cHyper">Hypertonic (bahar concentrated)</button></div>
+<div class="slrow"><label>concentration C (mol/L)</label><input type="range" id="cO" min="0.1" max="1.5" step="0.05" value="0.3"><span class="v" id="vlcO">0.3</span></div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Rapid Quiz - Solutions Pakke? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: molarity temperature se badalti (molality nahi), Henry's law p = K_H·x (soda fizz, scuba bends), positive deviation = bhaago / negative = pakdo, ΔT_f = i·K_f·m, 0.9% NaCl = isotonic.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc6">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Concentration Units ⭐</h3><p>Mass % = (w_solute/w_solution)×100 | Mole fraction x = n/(n_total), sum = 1 | Molarity M = n/V(L) - TEMPERATURE se badalti! | Molality m = n/solvent(kg) - temp-proof, colligative me yahi | Dilute water: m ≈ M×(1000/d)</p></div>
+<div class="rcard"><h3>Henry's Law ⭐</h3><p>p = K_H · x | K_H BADA → solubility KAM | Soda bottle high p seal → kholte hi fizz | Scuba bends = N2 bubbles (He kam soluble isliye mix) | FAIL jab gas react kare (NH3, HCl) | Cold water me O2 zyada (fish!)</p></div>
+<div class="rcard"><h3>Raoult + Deviations ⭐⭐</h3><p>p1 = p1°·x1, p2 = p2°·x2, p_total = p1+p2 | Ideal: A-B ≈ A-A, ΔH=ΔV=0 (benzene+toluene) | Positive dev: A-B kamzor, VP UPAR, ΔH>0 (ethanol+water) | Negative dev: A-B strong, VP NEECHE, ΔH<0 (chloroform+acetone H-bond)</p></div>
+<div class="rcard"><h3>Azeotropes ⭐</h3><p>Constant BP pe ubale + vapour same composition → distillation se alag NAHI | Minimum-boiling = positive dev wale (ethanol-water 95.4% - pure ethanol nahi milta!) | Maximum-boiling = negative dev wale (HCl-water 20.2%, HNO3-water 68%)</p></div>
+<div class="rcard"><h3>Colligative Properties ⭐⭐</h3><p>Sirf GINTI pe depend | (Δp/p°) = i·x2 (VP lowering) | ΔT_b = i·K_b·m (K_b = 0.52) | ΔT_f = i·K_f·m (K_f = 1.86) | π = i·C·R·T (sabse accurate) | M2 = i·K_f·w2·1000/(ΔT_f·w1) se molar mass</p></div>
+<div class="rcard"><h3>van't Hoff Factor ⭐⭐</h3><p>i = observed/calculated colligative = normal M/abnormal M | Dissociation i>1: NaCl→2, CaCl2→3, K4[Fe(CN)6]→5 | Association i<1: acetic acid dimer →0.5 | Non-electrolyte (glucose) i=1 | α(diss) = (i−1)/(n−1), α(assoc) = (1−i)/(1−1/n)</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Chemistry Chapter 1 (Solutions) - Interactive Walkthrough</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=7;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}inits[0]=(()=>{
+const c=ctx("cv0"),nS=document.getElementById("nS"),mW=document.getElementById("mW"),R=document.getElementById("r0");
+const b25=document.getElementById("t25"),b60=document.getElementById("t60");
+let T=25;
+const MM=180; // glucose molar mass g/mol
+function mark(){b25.classList.toggle("sel",T===25);b60.classList.toggle("sel",T===60);}
+b25.onclick=()=>{T=25;mark();draw();};
+b60.onclick=()=>{T=60;mark();draw();};
+function draw(){
+ c.clearRect(0,0,920,330);
+ const n=parseFloat(nS.value),mw=parseFloat(mW.value);
+ const d=T===25?0.997:0.983; // water density g/mL
+ const soluteMass=n*MM;
+ const masspc=soluteMass/(soluteMass+mw)*100;
+ const nw=mw/18;
+ const xs=n/(n+nw);
+ const V=(mw/d)/1000; // L, solution volume ~ paani ka volume
+ const M=n/V;
+ const m=n/(mw/1000);
+ // beaker
+ const bx=70,by=50,bw=190,bh=240;
+ c.strokeStyle=DM;c.lineWidth=2.5;
+ c.beginPath();c.moveTo(bx,by);c.lineTo(bx,by+bh);c.lineTo(bx+bw,by+bh);c.lineTo(bx+bw,by);c.stroke();
+ // liquid level ∝ volume (normalize: 2000g at 25C = full-ish)
+ const frac=Math.min(0.95,(mw/d)/2050);
+ const lh=bh*frac,ly=by+bh-lh;
+ c.fillStyle="rgba(34,211,238,0.18)";c.fillRect(bx+2,ly,bw-4,lh-2);
+ c.strokeStyle=CY;c.lineWidth=2;c.beginPath();c.moveTo(bx+3,ly);c.lineTo(bx+bw-3,ly);c.stroke();
+ // solute dots ∝ moles (max 3 -> 30 dots)
+ const nd=Math.round(n/3*30);
+ c.fillStyle=MG;
+ for(let i=0;i<nd;i++){
+  const px=bx+18+(i%6)*30+((i*37)%11),py=ly+16+Math.floor(i/6)*38+((i*53)%9);
+  if(py<by+bh-10){c.beginPath();c.arc(px,py,5,0,7);c.fill();}
+ }
+ txt(c,"glucose + paani",bx+bw/2,by+bh+18,CY,"12px 'Cascadia Code',monospace","center");
+ txt(c,"V = "+V.toFixed(3)+" L ("+T+"°C, d = "+d+")",bx+bw/2,by-12,YL,"12px 'Cascadia Code',monospace","center");
+ if(T===60)txt(c,"volume EXPAND hua!",bx+bw/2,ly-12,RD,"bold 12px 'Cascadia Code',monospace","center");
+ // unit cards right side
+ const cards=[
+  ["mass % (w/w)",masspc.toFixed(1)+" %","temp-proof",GR],
+  ["mole fraction x(solute)",xs.toFixed(4),"temp-proof",GR],
+  ["MOLARITY M",M.toFixed(3)+" mol/L",T===60?"GHATI! (V badha)":"temp se badalti",T===60?RD:YL],
+  ["MOLALITY m",m.toFixed(3)+" mol/kg","temp-proof",GR]
+ ];
+ cards.forEach((k,i)=>{
+  const cx=330+(i%2)*290,cy=60+Math.floor(i/2)*120;
+  c.strokeStyle="#2d2d52";c.lineWidth=2;c.strokeRect(cx,cy,270,100);
+  c.fillStyle="#0d0d1c";c.fillRect(cx+1,cy+1,268,98);
+  txt(c,k[0],cx+135,cy+26,CY,"13px 'Cascadia Code',monospace","center");
+  txt(c,k[1],cx+135,cy+58,"#e8e8f2","bold 20px 'Cascadia Code',monospace","center");
+  txt(c,k[2],cx+135,cy+84,k[3],"12px 'Cascadia Code',monospace","center");
+ });
+ txt(c,"60°C pe dekho: sirf MOLARITY badli - baaki teeno SAME!",615,320,MG,"bold 12px 'Cascadia Code',monospace","center");
+ R.innerHTML="n(solute) = <b style='color:#e879f9'>"+n.toFixed(1)+" mol</b> &nbsp;|&nbsp; paani = <b style='color:#22d3ee'>"+mw.toFixed(0)+" g</b> &nbsp;|&nbsp; M = n/V = <b style='color:#facc15'>"+M.toFixed(3)+" M</b> &nbsp;|&nbsp; m = n/kg = <b style='color:#facc15'>"+m.toFixed(3)+" m</b> &nbsp;|&nbsp; x = <b>"+xs.toFixed(4)+"</b> &nbsp;|&nbsp; T = "+T+"°C: <b style='color:"+((T===60)?"#f87171'>M ghat gayi - volume expand!":"#34d399'>25°C baseline")+"</b>";
+}
+nS.addEventListener("input",()=>{document.getElementById("vlnS").textContent=nS.value;draw();});
+mW.addEventListener("input",()=>{document.getElementById("vlmW").textContent=mW.value;draw();});
+mark();draw();
+})();
+inits[1]=(()=>{
+const c=ctx("cv1"),pH=document.getElementById("pH"),R=document.getElementById("r1");
+const gases={CO2:{KH:1.67,col:CY},O2:{KH:34.9,col:GR},N2:{KH:76.5,col:YL},He:{KH:145,col:MG}}; // kbar
+let g="CO2";
+const btns={CO2:"gCO2",O2:"gO2",N2:"gN2",He:"gHe"};
+function mark(){Object.keys(btns).forEach(k=>document.getElementById(btns[k]).classList.toggle("sel",k===g));}
+Object.keys(btns).forEach(k=>document.getElementById(btns[k]).onclick=()=>{g=k;mark();draw();});
+const X=p=>90+p/10*560, Y=x=>295-x*1050; // x scaled: 0.22 max -> y 64
+function draw(){
+ c.clearRect(0,0,920,330);
+ // axes (left plot region x 90-650)
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(90,40);c.lineTo(90,295);c.lineTo(650,295);c.stroke();
+ [0,2,4,6,8,10].forEach(v=>{const x=X(v);c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(x,290);c.lineTo(x,300);c.stroke();txt(c,""+v,x,315,DM,"10px 'Cascadia Code',monospace","center");});
+ txt(c,"p (bar) →",636,280,DM,"11px 'Cascadia Code',monospace","center");
+ [0.05,0.1,0.15,0.2].forEach(v=>{const y=Y(v);c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();txt(c,v.toFixed(2),78,y+4,DM,"10px 'Cascadia Code',monospace","right");});
+ txt(c,"x",45,30,CY,"11px 'Cascadia Code',monospace","left");
+ txt(c,"x = p / K_H  (gas ka mole fraction solution me)",370,30,"#e8e8f2","bold 12px 'Cascadia Code',monospace","center");
+ // lines for all gases (faint), selected bold
+ Object.keys(gases).forEach(k=>{
+  const KH=gases[k].KH,xMax=10/(KH*1000);
+  c.strokeStyle=gases[k].col;c.globalAlpha=k===g?1:0.25;c.lineWidth=k===g?3:1.5;
+  c.beginPath();c.moveTo(X(0),Y(0));c.lineTo(X(10),Y(Math.min(0.22,xMax)));c.stroke();c.globalAlpha=1;
+  const lx=X(10)-4,ly=Y(Math.min(0.22,xMax))+(k==="He"?14:(k==="N2"?6:(k==="O2"?-4:-12)));
+  if(k!==g)txt(c,k,lx-6,ly,gases[k].col,"11px 'Cascadia Code',monospace","right");
+ });
+ // marker at slider p
+ const KH=gases[g].KH,p=parseFloat(pH.value),x=p/(KH*1000);
+ c.fillStyle=gases[g].col;c.beginPath();c.arc(X(p),Y(Math.min(0.22,x)),7,0,7);c.fill();
+ txt(c,g+": x = "+x.toExponential(2),Math.min(X(p)+16,470),Math.max(Y(Math.min(0.22,x))-12,48),gases[g].col,"bold 12px 'Cascadia Code',monospace","left");
+ // soda bottle visual right
+ const bx=740,bw=110,by=70,bh=200;
+ c.strokeStyle=DM;c.lineWidth=2.5;c.strokeRect(bx,by,bw,bh);
+ c.fillStyle="rgba(34,211,238,0.15)";c.fillRect(bx+2,by+40,bw-4,bh-42);
+ // cap pressure indicator
+ const capY=by-30;
+ c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.moveTo(bx+10,capY);c.lineTo(bx+bw-10,capY);c.stroke();
+ txt(c,"p = "+p.toFixed(1)+" bar",bx+bw/2,capY-8,YL,"bold 12px 'Cascadia Code',monospace","center");
+ // bubbles ∝ dissolved amount
+ const nb=Math.round(Math.min(0.22,x)/0.22*26);
+ c.fillStyle=gases[g].col;
+ for(let i=0;i<nb;i++){const px=bx+14+(i%5)*21+((i*31)%7),py=by+55+Math.floor(i/5)*36+((i*47)%11);if(py<by+bh-12){c.beginPath();c.arc(px,py,4,0,7);c.fill();}}
+ txt(c,"bubbles = kitni gas ghuli",bx+bw/2,by+bh+22,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"K_H bada → line FLAT → kam solubility (He sabse kam!)",460,320,MG,"12px 'Cascadia Code',monospace","center");
+ R.innerHTML="gas = <b style='color:"+gases[g].col+"'>"+g+"</b> &nbsp;|&nbsp; K_H = <b>"+KH+" kbar</b> &nbsp;|&nbsp; p = <b style='color:#facc15'>"+p.toFixed(1)+" bar</b> &nbsp;|&nbsp; x = p/K_H = <b style='color:#facc15'>"+x.toExponential(2)+"</b> &nbsp;|&nbsp; CO2 soda me isliye zyada ghulta - K_H chhota! Divers: He ka K_H sabse bada → blood me kam ghulta → bends safe";
+}
+pH.addEventListener("input",()=>{document.getElementById("vlpH").textContent=pH.value;draw();});
+mark();draw();
+})();
+inits[2]=(()=>{
+const c=ctx("cv2"),xR=document.getElementById("xR"),R=document.getElementById("r2");
+const bI=document.getElementById("rI"),bP=document.getElementById("rP"),bN=document.getElementById("rN");
+let mode=0; // 0 ideal, 1 positive, 2 negative
+function mark(){bI.classList.toggle("sel",mode===0);bP.classList.toggle("sel",mode===1);bN.classList.toggle("sel",mode===2);}
+bI.onclick=()=>{mode=0;mark();draw();};
+bP.onclick=()=>{mode=1;mark();draw();};
+bN.onclick=()=>{mode=2;mark();draw();};
+const p1o=100,p2o=50; // schematic pure VPs mmHg
+const a=mode=>mode===1?0.9:mode===2?-0.8:0;
+function p1(x){return p1o*x*Math.exp(a(mode)*Math.pow(1-x,2));}
+function p2(x){return p2o*(1-x)*Math.exp(a(mode)*x*x);}
+const X=x=>90+x*790, Y=p=>295-p/170*250;
+function draw(){
+ c.clearRect(0,0,920,330);
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(90,40);c.lineTo(90,295);c.lineTo(880,295);c.stroke();
+ [0,0.25,0.5,0.75,1].forEach(v=>{const x=X(v);c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(x,290);c.lineTo(x,300);c.stroke();txt(c,v.toFixed(2),x,315,DM,"10px 'Cascadia Code',monospace","center");});
+ txt(c,"x1 →",865,280,DM,"11px 'Cascadia Code',monospace","center");
+ [25,50,75,100,125,150].forEach(v=>{const y=Y(v);c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();txt(c,""+v,78,y+4,DM,"10px 'Cascadia Code',monospace","right");});
+ txt(c,"VP (mmHg)",40,30,CY,"11px 'Cascadia Code',monospace","left");
+ txt(c,mode===0?"IDEAL: p1 = p1°·x1, p2 = p2°·x2 - straight lines (ΔH=0, ΔV=0)":mode===1?"POSITIVE deviation: A-B kamzor → VP Raoult se UPAR (ΔH>0) - minimum-boiling azeotrope!":"NEGATIVE deviation: A-B strong (H-bond) → VP Raoult se NEECHE (ΔH<0) - maximum-boiling azeotrope!",480,30,"#e8e8f2","bold 12px 'Cascadia Code',monospace","center");
+ // dashed ideal total (reference when non-ideal)
+ if(mode!==0){
+  c.strokeStyle=DM;c.lineWidth=1.5;c.setLineDash([5,5]);c.beginPath();
+  for(let px=0;px<=100;px++){const x=px/100,pt=p1o*x+p2o*(1-x);px===0?c.moveTo(X(x),Y(pt)):c.lineTo(X(x),Y(pt));}
+  c.stroke();c.setLineDash([]);
+  txt(c,"ideal (dashed)",mode===1?300:640,mode===1?Y(85)-8:Y(35)+18,DM,"11px 'Cascadia Code',monospace","center");
+ }
+ // p1, p2, total curves
+ c.lineWidth=2.5;
+ c.strokeStyle=CY;c.beginPath();
+ for(let px=0;px<=100;px++){const x=px/100;px===0?c.moveTo(X(x),Y(p1(x))):c.lineTo(X(x),Y(p1(x)));}
+ c.stroke();
+ c.strokeStyle=MG;c.beginPath();
+ for(let px=0;px<=100;px++){const x=px/100;px===0?c.moveTo(X(x),Y(p2(x))):c.lineTo(X(x),Y(p2(x)));}
+ c.stroke();
+ c.strokeStyle=YL;c.lineWidth=3.5;c.beginPath();
+ for(let px=0;px<=100;px++){const x=px/100;px===0?c.moveTo(X(x),Y(p1(x)+p2(x))):c.lineTo(X(x),Y(p1(x)+p2(x)));}
+ c.stroke();
+ // labels - edge aware
+ txt(c,"p1 (component 1)",150,Y(p1(0.12))-12,CY,"12px 'Cascadia Code',monospace","left");
+ txt(c,"p2 (component 2)",640,Y(p2(0.7))+24,MG,"12px 'Cascadia Code',monospace","left");
+ const ty=mode===1?Y(p1(0.45)+p2(0.45))-14:Y(p1(0.5)+p2(0.5))+30;
+ txt(c,"p_total",X(0.5)+16,ty,YL,"bold 13px 'Cascadia Code',monospace","left");
+ // marker at slider
+ const x1=parseFloat(xR.value),pt=p1(x1)+p2(x1);
+ c.fillStyle=YL;c.beginPath();c.arc(X(x1),Y(pt),7,0,7);c.fill();
+ c.strokeStyle=YL;c.setLineDash([3,3]);c.lineWidth=1;c.beginPath();c.moveTo(X(x1),Y(pt));c.lineTo(X(x1),295);c.stroke();c.setLineDash([]);
+ const lx=X(x1)>620?X(x1)-16:X(x1)+16,la=X(x1)>620?"right":"left";
+ let ly=Y(pt)-16;if(ly<52)ly=Y(pt)+30;
+ txt(c,"p_total = "+pt.toFixed(1)+" mmHg",lx,ly,YL,"bold 12px 'Cascadia Code',monospace",la);
+ txt(c,mode===0?"benzene+toluene type: A-B ≈ A-A ≈ B-B - koi surprise nahi":mode===1?"ethanol+water: H-bonds TOOTE → bhaago mode → VP upar, BP kam":"chloroform+acetone: NAYA H-bond bana → pakdo mode → VP neeche, BP zyada",480,320,MG,"12px 'Cascadia Code',monospace","center");
+ R.innerHTML="x1 = <b style='color:#facc15'>"+x1.toFixed(2)+"</b> &nbsp;|&nbsp; p1 = <b style='color:#22d3ee'>"+p1(x1).toFixed(1)+"</b> mmHg &nbsp;|&nbsp; p2 = <b style='color:#e879f9'>"+p2(x1).toFixed(1)+"</b> mmHg &nbsp;|&nbsp; p_total = <b style='color:#facc15'>"+pt.toFixed(1)+" mmHg</b> &nbsp;|&nbsp; ideal Raoult p_total = <b>"+(p1o*x1+p2o*(1-x1)).toFixed(1)+"</b> &nbsp;|&nbsp; "+(mode===0?"IDEAL - Raoult exactly follow":mode===1?"POSITIVE deviation - actual UPAR":"<b>NEGATIVE deviation - actual NEECHE</b>");
+}
+xR.addEventListener("input",()=>{document.getElementById("vlxR").textContent=xR.value;draw();});
+mark();draw();
+})();
+inits[3]=(()=>{
+const c=ctx("cv3"),mC=document.getElementById("mC"),R=document.getElementById("r3");
+const sols={G:{i:1,n:"Glucose"},N:{i:2,n:"NaCl"},C:{i:3,n:"CaCl2"},A:{i:0.5,n:"CH3COOH dimer"}};
+let s="G";
+const btns={G:"sG",N:"sN",C:"sC",A:"sA"};
+function mark(){Object.keys(btns).forEach(k=>document.getElementById(btns[k]).classList.toggle("sel",k===s));}
+Object.keys(btns).forEach(k=>document.getElementById(btns[k]).onclick=()=>{s=k;mark();draw();});
+const Kb=0.52,Kf=1.86;
+const TY=T=>295-(T+10)/130*260; // T range -10..120
+function draw(){
+ c.clearRect(0,0,920,330);
+ const i=sols[s].i,m=parseFloat(mC.value);
+ const dTb=i*Kb*m,dTf=i*Kf*m;
+ const BP=100+dTb,FP=0-dTf;
+ // thermometer
+ const tx=120,tw=44;
+ c.strokeStyle=DM;c.lineWidth=2.5;c.strokeRect(tx,40,tw,260);
+ // liquid fill from bottom to BP marker
+ c.fillStyle="rgba(244,114,182,0.25)";
+ c.fillRect(tx+2,TY(BP),tw-4,300-TY(BP));
+ // scale ticks
+ [-10,0,25,50,75,100,120].forEach(T=>{
+  const y=TY(T);c.strokeStyle=DM;c.lineWidth=1;c.beginPath();c.moveTo(tx-8,y);c.lineTo(tx,y);c.stroke();
+  txt(c,""+T,tx-14,y+4,DM,"10px 'Cascadia Code',monospace","right");
+ });
+ txt(c,"°C",tx+tw/2,26,CY,"12px 'Cascadia Code',monospace","center");
+ // pure water markers (dashed)
+ c.strokeStyle=DM;c.lineWidth=1.5;c.setLineDash([5,4]);
+ c.beginPath();c.moveTo(tx-30,TY(0));c.lineTo(tx+tw+150,TY(0));c.stroke();
+ c.beginPath();c.moveTo(tx-30,TY(100));c.lineTo(tx+tw+150,TY(100));c.stroke();
+ c.setLineDash([]);
+ txt(c,"pure water FP = 0",tx+tw+10,TY(0)-6,DM,"11px 'Cascadia Code',monospace","left");
+ txt(c,"pure water BP = 100",tx+tw+10,TY(100)+14,DM,"11px 'Cascadia Code',monospace","left");
+ // solution markers (solid)
+ c.strokeStyle=CY;c.lineWidth=3;
+ c.beginPath();c.moveTo(tx-30,TY(FP));c.lineTo(tx+tw+150,TY(FP));c.stroke();
+ c.strokeStyle=RD;c.lineWidth=3;
+ c.beginPath();c.moveTo(tx-30,TY(BP));c.lineTo(tx+tw+150,TY(BP));c.stroke();
+ txt(c,"solution FP = "+FP.toFixed(2)+" (ΔT_f = "+dTf.toFixed(2)+")",tx+tw+10,Math.min(TY(FP)-6,TY(0)-20),CY,"bold 12px 'Cascadia Code',monospace","left");
+ txt(c,"solution BP = "+BP.toFixed(2)+" (ΔT_b = "+dTb.toFixed(2)+")",tx+tw+10,Math.max(TY(BP)+16,TY(100)+30),RD,"bold 12px 'Cascadia Code',monospace","left");
+ // arrows showing shifts
+ arrow2(c,tx+tw+40,TY(0),tx+tw+40,TY(FP),CY,2);
+ arrow2(c,tx+tw+120,TY(100),tx+tw+120,TY(BP),RD,2);
+ // particle visual: 1 formula unit -> i particles
+ const px0=460,py0=90;
+ txt(c,"1 solute unit daalo → particles kitne?",px0+190,py0-40,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+ // LHS: one square
+ c.strokeStyle=YL;c.lineWidth=2;c.strokeRect(px0,py0-14,28,28);
+ txt(c,"solute",px0+14,py0+36,YL,"11px 'Cascadia Code',monospace","center");
+ arrow2(c,px0+45,py0,px0+105,py0,"#e8e8f2",2.5);
+ // RHS: i particles (draw 1,2,3 or two-half for 0.5)
+ if(i>=1){
+  for(let k=0;k<i;k++){
+   c.fillStyle=k%2?MG:CY;c.beginPath();c.arc(px0+150+k*55,py0,12,0,7);c.fill();
+  }
+  txt(c,i+" particles (dissociation!)" ,px0+150+(i-1)*27.5,py0+36,GR,"bold 12px 'Cascadia Code',monospace","center");
+ }else{
+  // dimer: two circles joined
+  c.fillStyle=CY;c.beginPath();c.arc(px0+140,py0,12,0,7);c.fill();
+  c.fillStyle=MG;c.beginPath();c.arc(px0+164,py0,12,0,7);c.fill();
+  txt(c,"2 JUD gaye → i = 0.5 (association!)",px0+155,py0+36,GR,"bold 12px 'Cascadia Code',monospace","center");
+ }
+ // formulas box
+ const fx=440,fy=170,fw=430,fh=120;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.strokeRect(fx,fy,fw,fh);
+ c.fillStyle="#0d0d1c";c.fillRect(fx+1,fy+1,fw-2,fh-2);
+ txt(c,"ΔT_b = i·K_b·m = "+i+"×0.52×"+m.toFixed(1)+" = "+dTb.toFixed(3)+" K",fx+16,fy+28,RD,"bold 13px 'Cascadia Code',monospace","left");
+ txt(c,"ΔT_f = i·K_f·m = "+i+"×1.86×"+m.toFixed(1)+" = "+dTf.toFixed(3)+" K",fx+16,fy+56,CY,"bold 13px 'Cascadia Code',monospace","left");
+ txt(c,"i = "+i+" ("+sols[s].n+")",fx+16,fy+84,YL,"bold 13px 'Cascadia Code',monospace","left");
+ txt(c,i>1?"tootta → count zyada → molar mass KAM aata":i<1?"judta → count kam → molar mass ZYADA aata":"i=1 → molar mass SAHI aata (non-electrolyte)",fx+16,fy+108,MG,"12px 'Cascadia Code',monospace","left");
+ txt(c,"barf pe namak = FP neeche; namak wala paani der se ubalta = BP upar",460,320,MG,"12px 'Cascadia Code',monospace","center");
+ R.innerHTML="solute = <b style='color:#facc15'>"+sols[s].n+" (i = "+i+")</b> &nbsp;|&nbsp; m = <b>"+m.toFixed(1)+" mol/kg</b> &nbsp;|&nbsp; ΔT_b = <b style='color:#f87171'>"+dTb.toFixed(3)+" K</b> → BP = <b>"+BP.toFixed(2)+"°C</b> &nbsp;|&nbsp; ΔT_f = <b style='color:#22d3ee'>"+dTf.toFixed(3)+" K</b> → FP = <b>"+FP.toFixed(2)+"°C</b> &nbsp;|&nbsp; M2 = i·K_f·w2·1000/(ΔT_f·w1) se molar mass nikalte!";
+}
+mC.addEventListener("input",()=>{document.getElementById("vlmC").textContent=mC.value;draw();});
+mark();draw();
+})();
+inits[4]=(()=>{
+const c=ctx("cv4"),cO=document.getElementById("cO"),R=document.getElementById("r4");
+const bIso=document.getElementById("cIso"),bHypo=document.getElementById("cHypo"),bHyper=document.getElementById("cHyper");
+let mode=0; // 0 iso, 1 hypo, 2 hyper
+function mark(){bIso.classList.toggle("sel",mode===0);bHypo.classList.toggle("sel",mode===1);bHyper.classList.toggle("sel",mode===2);}
+bIso.onclick=()=>{mode=0;mark();draw(0);};
+bHypo.onclick=()=>{mode=1;mark();draw(0);};
+bHyper.onclick=()=>{mode=2;mark();draw(0);};
+const RT=0.0821*298; // 24.46 L·atm/mol
+// tank: left half dilute, right half concentrated, SPM in middle
+// water dots animated crossing left->right
+let dots=[];
+for(let i=0;i<26;i++)dots.push({x:60+Math.random()*330,y:80+Math.random()*200,vx:0.4+Math.random()*0.8});
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const C=parseFloat(cO.value),pi=RT*C; // i=1 glucose
+ // tank
+ const tx=50,ty=70,tw=380,th=210;
+ c.strokeStyle=DM;c.lineWidth=2.5;c.strokeRect(tx,ty,tw,th);
+ // SPM membrane (dashed vertical center)
+ const mx=tx+tw/2;
+ c.strokeStyle=YL;c.lineWidth=3;c.setLineDash([8,6]);c.beginPath();c.moveTo(mx,ty);c.lineTo(mx,ty+th);c.stroke();c.setLineDash([]);
+ txt(c,"SPM (sirf solvent paar)",mx,ty-10,YL,"11px 'Cascadia Code',monospace","center");
+ txt(c,"DILUTE side",tx+tw/4,ty+th+18,CY,"12px 'Cascadia Code',monospace","center");
+ txt(c,"CONCENTRATED (C = "+C.toFixed(2)+" M)",mx+tw/4,ty+th+18,MG,"12px 'Cascadia Code',monospace","center");
+ // solute dots on right only (∝ C)
+ const nsd=Math.round(C/1.5*24);
+ c.fillStyle=MG;
+ for(let i=0;i<nsd;i++){const px=mx+14+(i%6)*30+((i*41)%9),py=ty+30+Math.floor(i/6)*42+((i*29)%13);if(py<ty+th-10){c.beginPath();c.arc(px,py,5,0,7);c.fill();}}
+ // water dots both sides, animated drift left->right
+ c.fillStyle=CY;
+ dots.forEach(d=>{
+  d.x+=d.vx*0.5;
+  if(d.x>tx+tw-10){d.x=tx+10;}
+  // membrane crossing: slow near middle
+  if(Math.abs(d.x-mx)<3&&d.vx>0.6){/* pass */}
+  c.beginPath();c.arc(d.x,d.y,3.5,0,7);c.fill();
+ });
+ // net flow arrow left->right
+ arrow2(c,tx+60,ty+th-24,tx+tw-60,ty+th-24,GR,3);
+ txt(c,"net solvent flow: dilute → concentrated",tx+tw/2,ty+th-34,GR,"11px 'Cascadia Code',monospace","center");
+ // pi gauge
+ txt(c,"π = i·C·R·T",tx+tw/2,ty+30,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
+ txt(c,"= 1 × "+C.toFixed(2)+" × 0.0821 × 298",tx+tw/2,ty+52,"#e8e8f2","12px 'Cascadia Code',monospace","center");
+ txt(c,"= "+pi.toFixed(1)+" atm",tx+tw/2,ty+74,YL,"bold 16px 'Cascadia Code',monospace","center");
+ // RO note
+ txt(c,"RO: π se ZYADA pressure → solvent ULTA (desalination!)",tx+tw/2,ty+th+40,DM,"11px 'Cascadia Code',monospace","center");
+ // RBC right side
+ const cx=650,cy=170;
+ txt(c,"Red Blood Cell",cx,52,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+ if(mode===0){
+  c.strokeStyle=GR;c.lineWidth=4;c.beginPath();c.ellipse(cx,cy,62,40,0,0,7);c.stroke();
+  c.strokeStyle=GR;c.lineWidth=2;c.beginPath();c.ellipse(cx,cy,30,18,0,0,7);c.stroke();
+  txt(c,"ISOTONIC (0.9% NaCl)",cx,cy+72,GR,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"π same → net flow ZERO → cell safe",cx,cy+94,"#e8e8f2","12px 'Cascadia Code',monospace","center");
+ }else if(mode===1){
+  c.strokeStyle=RD;c.lineWidth=4;c.beginPath();c.ellipse(cx,cy,86,58,0,0,7);c.stroke();
+  c.strokeStyle=RD;c.lineWidth=1.5;
+  for(let k=0;k<6;k++){const an=k*1.05;c.beginPath();c.moveTo(cx+86*Math.cos(an),cy+58*Math.sin(an));c.lineTo(cx+100*Math.cos(an),cy+68*Math.sin(an));c.stroke();}
+  txt(c,"HYPOTONIC bahar (dilute)",cx,cy+98,RD,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"paani ANDAR ghusta → cell PHOOLTA/PHAT-ta (hemolysis)",cx,cy+120,"#e8e8f2","12px 'Cascadia Code',monospace","center");
+ }else{
+  c.strokeStyle=YL;c.lineWidth=3.5;
+  c.beginPath();
+  for(let k=0;k<=24;k++){const an=k/24*2*Math.PI;const rr=40+((k%2)?8:0);const px=cx+rr*0.9*Math.cos(an),py=cy+rr*0.6*Math.sin(an);k===0?c.moveTo(px,py):c.lineTo(px,py);}
+  c.closePath();c.stroke();
+  txt(c,"HYPERTONIC bahar (concentrated)",cx,cy+80,YL,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"paani BAHAR nikalta → cell SIKUDTA (crenation)",cx,cy+102,"#e8e8f2","12px 'Cascadia Code',monospace","center");
+ }
+ R.innerHTML="C = <b style='color:#facc15'>"+C.toFixed(2)+" mol/L</b> &nbsp;|&nbsp; π = i·C·R·T = <b style='color:#facc15'>"+pi.toFixed(1)+" atm</b> (i=1, T=298K) &nbsp;|&nbsp; "+(mode===0?"<b style='color:#34d399'>ISOTONIC - π barabar, cell happy</b>":mode===1?"<b style='color:#f87171'>HYPOTONIC - cell phat-ta hai</b>":"<b style='color:#facc15'>HYPERTONIC - cell sikudta hai</b>")+" &nbsp;|&nbsp; π sabse ACCURATE colligative - room temp pe measure!";
+}
+cO.addEventListener("input",()=>{document.getElementById("vlcO").textContent=cO.value;draw(0);});
+anims[4]=t=>draw(t);
+mark();draw(0);
+})();
+inits[5]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Temperature badhane pe kaunsi concentration unit CHANGE ho jaati hai?",opts:["Molality","Molarity","Mole fraction","Mass %"],a:1,why:"Molarity = moles/VOLUME - aur volume temperature se expand hota hai, isliye M ghat-ti hai. Molality (mass basis), mole fraction aur mass % teeno temperature-proof hain. Isliye colligative properties me molality use hoti hai!"},
+{q:"Soda bottle kholte hi fizz (bubbles) kyu aata hai?",opts:["CO2 paani se react kar jaata hai","Bottle ka temperature badh jaata hai","CO2 hawa se halka ho jaata hai","Cap kholte hi pressure girta hai → CO2 ki solubility kam (Henry's law)"],a:3,why:"Henry's law: p = K_H·x - pressure jitna zyada, gas utni ghuli. Bottle high pressure pe seal hoti hai; kholte hi p girta hai, CO2 ki solubility kam → extra gas bubbles banke nikalta hai. Scuba bends bhi yahi (N2 bubbles)!"},
+{q:"Ethanol + water POSITIVE deviation kyu dikhata hai Raoult's law se?",opts:["A-B interactions kamzor - molecules aasani se bhaagte, VP zyada","A-B interactions bahut strong - VP kam","Dono components ideal hain","Ethanol non-volatile hai"],a:0,why:"Positive deviation = A-B attraction KAMZOR (ethanol-water me H-bonds tootte) → molecules aasani se vapour me bhaagte → VP Raoult se UPAR, ΔH_mix > 0. Yaad rakho: positive = bhaago, negative = pakdo!"},
+{q:"1 molal NaCl solution (i ≈ 2) ka freezing point depression, 1 molal glucose se kitna?",opts:["Same 1.86 K","Half 0.93 K","Double 3.72 K - van't Hoff factor i = 2 se","Zero"],a:2,why:"ΔT_f = i·K_f·m. Glucose (i=1): 1×1.86×1 = 1.86 K. NaCl dissociate hota → Na+ + Cl- (i≈2): 2×1.86×1 = 3.72 K. Colligative properties particles ki GINTI pe depend karti hain - NaCl ke double particles!"},
+{q:"Blood cells 0.9% NaCl (normal saline) me na sikudte na phatte - kyu?",opts:["Saline hypertonic hai","Saline hypotonic hai","NaCl cells ko nutrition deta hai","Isotonic hai - osmotic pressure same"],a:3,why:"0.9% NaCl = ISOTONIC with blood - same osmotic pressure π, to net solvent flow zero. Hypertonic me cell ka paani bahar → sikudta (crenation), hypotonic me paani andar → phat-ta hai (hemolysis)."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Solutions pakke! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+
+go(0);
+</script></body></html>
