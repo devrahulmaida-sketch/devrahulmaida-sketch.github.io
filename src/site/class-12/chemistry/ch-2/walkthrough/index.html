@@ -174,7 +174,7 @@ function beaker(x1,x2,liqCol,liqLabel){
 function rod(cx,col,label){
  c.fillStyle=col;c.fillRect(cx-12,95,24,170);
  c.strokeStyle="#e8e8f2";c.lineWidth=1.5;c.strokeRect(cx-12,95,24,170);
- txt(c,label,cx,86,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+ txt(c,label,cx,112,"#07070f","bold 13px 'Cascadia Code',monospace","center");
 }
 function draw(t){
  c.clearRect(0,0,920,330);
@@ -216,9 +216,9 @@ function draw(t){
  c.beginPath();c.arc(470,55,24,0,7);c.fill();c.stroke();
  txt(c,"V",470,60,YL,"bold 16px 'Cascadia Code',monospace","center");
  txt(c,on?"1.10 V":"--",470,28,YL,"bold 13px 'Cascadia Code',monospace","center");
- txt(c,"K+ → cathode side, Cl- → anode side (charge balance)",460,255,DM,"11px 'Cascadia Code',monospace","center");
- txt(c,"Zn rod ghul-ti hai (Zn2+ badhte)",200,255,CY,"10px 'Cascadia Code',monospace","center");
- txt(c,"Cu deposit hota hai",720,255,"#60a5fa","10px 'Cascadia Code',monospace","center");
+ txt(c,"K+ → cathode side, Cl- → anode side (charge balance)",460,272,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"Zn rod ghul-ti hai (Zn2+ badhte)",200,250,CY,"10px 'Cascadia Code',monospace","center");
+ txt(c,"Cu deposit hota hai",720,250,"#60a5fa","10px 'Cascadia Code',monospace","center");
  if(on){
   R.innerHTML="<b style='color:#facc15'>Anode:</b> Zn → Zn2+ + 2e- (oxidation) &nbsp;|&nbsp; <b style='color:#34d399'>Cathode:</b> Cu2+ + 2e- → Cu (reduction) &nbsp;|&nbsp; E°cell = 0.34 − (−0.76) = <b style='color:#22d3ee'>+1.10 V</b> &nbsp;|&nbsp; Zn | Zn2+ || Cu2+ | Cu";
  } else {
