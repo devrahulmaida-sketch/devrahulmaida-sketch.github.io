@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semiconductor Electronics - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 14 - Semiconductor Electronics</div>
+<h1>Semiconductors Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - energy bands lab, doping lab, p-n junction lab, diode I-V lab, rectifier lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Energy Bands - Conductor, Semiconductor, Insulator ⭐</h2>
+<p class="why">Electrons ke available states bands me aate hain: valence band (bound electrons) aur conduction band (free ho sakte hain). Beech ka forbidden region = band gap E_g. Conductor: bands overlap ya partially filled. Insulator: bahut bada gap. Semiconductor: modest gap (Si ≈ 1.1 eV room temperature pe). Semiconductor ko garam karo to aur zyada electrons gap cross karke conduction band me aate hain - conductivity BADHTI hai (metal ke opposite!).</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="mC">Conductor</button><button id="mS">Semiconductor (Si)</button><button id="mI">Insulator</button></div>
+<div class="slrow"><label>temperature (K)</label><input type="range" id="bT" min="0" max="500" step="50" value="300"><span class="v" id="vlbT">300</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Intrinsic aur Doping - n-type, p-type ⭐</h2>
+<p class="why">Pure Si/Ge (intrinsic) me thermal energy se electron-hole pairs bante hain: n_e = n_h. Hole positive carrier ki tarah behave karta hai. Pentavalent donor (P/As) milao → n-type: electrons majority, holes minority. Trivalent acceptor (B/Al) milao → p-type: holes majority, electrons minority. Yaad rakho: doped material NET NEUTRAL rehta hai - n-type ka matlab negatively charged block NAHI hai!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="dI">Intrinsic (pure Si)</button><button id="dN">n-type (P/As donor)</button><button id="dP">p-type (B/Al acceptor)</button></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. p-n Junction - Depletion Region aur Barrier ⭐</h2>
+<p class="why">p aur n ko join karo: junction ke paas electrons n→p aur holes p→n diffuse hokar recombine ho jaate hain. Beech ka region mobile carriers se khaali ho jaata hai - DELETION REGION, jisme sirf fixed ionized donors (+, n-side) aur acceptors (−, p-side) rehte hain. Inse built-in electric field aur barrier potential (~0.7 V Si) banta hai. Equilibrium me diffusion aur field-driven drift balance - bina bias ke net current ZERO.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="jB">Contact se pehle</button><button id="jA">Equilibrium (junction banne ke baad)</button></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Diode I-V - Forward aur Reverse Bias ⭐⭐</h2>
+<p class="why">Forward bias: p ko battery ke +, n ko − → barrier aur depletion shrink, knee (~0.7 V Si, ~0.3 V Ge) ke baad current tezi se badhta hai. Reverse bias: p ko −, n ko + → depletion widen, sirf tiny minority-carrier leakage, bahut bade reverse voltage pe breakdown. Diode current mostly EK direction me jaane deta hai - I-V bilkul non-linear. Yaad: forward = p plus, reverse = p minus.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="vSi">Si (knee ≈ 0.7 V)</button><button id="vGe">Ge (knee ≈ 0.3 V)</button></div>
+<div class="slrow"><label>bias voltage V</label><input type="range" id="vV" min="-5" max="1" step="0.1" value="0.8"><span class="v" id="vlvV">0.8</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rectifier - AC se Pulsating DC ⭐</h2>
+<p class="why">Diode AC ka sirf ek direction pass karta hai, isliye output pulsating DC banta hai (perfect flat DC nahi - uske liye filter alag chahiye). Half-wave: ek diode sirf ek half-cycle conduct karta hai, dusra block - output ripple frequency input jaisi (f). Full-wave: multiple-diode/centre-tap arrangement dono half-cycles ko same polarity deta hai - ripple frequency 2f, output zyada smooth.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="rH">Half-wave (1 diode)</button><button id="rF">Full-wave (centre-tap)</button></div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Rapid Quiz - Semiconductors Pakke? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: Si gap 1.1 eV, n-type electrons majority (neutral!), depletion = fixed ions + barrier, knee 0.7 V Si, full-wave ripple 2f.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc6">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Energy Bands ⭐</h3><p>Conductor: bands overlap | Insulator: bahut bada gap | Semiconductor: modest gap, Si ≈ 1.1 eV | Heat karo → carriers badhe, conductivity UP (metal ke opposite)</p></div>
+<div class="rcard"><h3>Intrinsic vs Doped ⭐</h3><p>Intrinsic: pure Si/Ge, n_e = n_h | n-type: pentavalent donor (P/As), electrons majority | p-type: trivalent acceptor (B/Al), holes majority | Doped material NET NEUTRAL rehta hai</p></div>
+<div class="rcard"><h3>p-n Junction ⭐</h3><p>Electrons n→p, holes p→n diffuse → recombine | Depletion region: mobile carriers gayab, sirf fixed ions | Built-in field + barrier ≈ 0.7 V (Si) | Equilibrium: diffusion = drift, net current zero</p></div>
+<div class="rcard"><h3>Forward Bias ⭐⭐</h3><p>p ko +, n ko − | Barrier/depletion SHRINK | Knee: ~0.7 V Si, ~0.3 V Ge | Knee ke baad current rapidly badhta hai | Forward = p PLUS</p></div>
+<div class="rcard"><h3>Reverse Bias ⭐⭐</h3><p>p ko −, n ko + | Depletion WIDEN | Tiny minority-carrier leakage | Bahut bada reverse V → breakdown | I-V non-linear, current ek direction | Reverse = p MINUS</p></div>
+<div class="rcard"><h3>Rectifier ⭐</h3><p>Diode AC ka ek direction pass → pulsating DC | Half-wave: ek half-cycle, ripple = f | Full-wave: dono half-cycles same polarity, ripple = 2f | Flat DC ke liye filter alag chahiye</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 14 Semiconductor Electronics Visual Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=7;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}inits[0]=(()=>{
+const c=ctx("cv0"),sT=document.getElementById("bT"),vT=document.getElementById("vlbT"),R=document.getElementById("r0");
+const bC=document.getElementById("mC"),bS=document.getElementById("mS"),bI=document.getElementById("mI");
+let mat=1;
+function mark(){[[bC,0],[bS,1],[bI,2]].forEach(([b,i])=>{
+ b.style.borderColor=i===mat?"#22d3ee":"#2d2d52";b.style.color=i===mat?"#22d3ee":"#8fa0c8";});}
+const EG=[0,1.1,5];
+const NAMES=["Conductor","Semiconductor (Si)","Insulator"];
+function band(y1,y2,col,alpha,label,dots,t){
+ c.fillStyle=col;c.globalAlpha=alpha;c.fillRect(120,y1,680,y2-y1);c.globalAlpha=1;
+ c.strokeStyle=col;c.lineWidth=1.5;c.strokeRect(120,y1,680,y2-y1);
+ txt(c,label,812,(y1+y2)/2+4,col,"12px 'Cascadia Code',monospace");
+ for(let i=0;i<dots;i++){
+  const x=140+ (i*67)%640, y=y1+12+(i*29)%(y2-y1-20);
+  const j=Math.sin(t*0.1+i*2.3)*3;
+  c.fillStyle=YL;c.beginPath();c.arc(x+j,y,4,0,7);c.fill();
+  txt(c,"-",x+j,y+3.5,"#07070f","bold 9px 'Cascadia Code',monospace","center");
+ }
+}
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const T=parseInt(sT.value);
+ let cbY1,vbY1,vbY2=270;
+ if(mat===0){cbY1=200;vbY1=240;}        // overlap
+ else if(mat===1){cbY1=140;vbY1=220;}   // gap 80
+ else {cbY1=60;vbY1=230;}               // gap 170
+ const nCB=mat===0?10:mat===1?Math.round(8*Math.pow(T/500,2)):0;
+ const nVB=mat===2?10:6;
+ band(cbY1,cbY1+50,CY,0.28,"conduction band",nCB,t);
+ band(vbY1,vbY2,MG,0.28,"valence band",nVB,t);
+ if(mat>0){
+  const gY1=cbY1+50,gY2=vbY1;
+  c.strokeStyle=DM;c.setLineDash([4,4]);c.lineWidth=1;
+  c.beginPath();c.moveTo(120,gY1);c.lineTo(800,gY1);c.moveTo(120,gY2);c.lineTo(800,gY2);c.stroke();
+  c.setLineDash([]);
+  arrow2(c,100,gY2,100,gY1,YL,2);arrow2(c,100,gY1,100,gY2,YL,2);
+  txt(c,"E_g = "+EG[mat]+" eV",112,(gY1+gY2)/2+4,YL,"bold 12px 'Cascadia Code',monospace");
+ } else {
+  txt(c,"bands overlap - E_g = 0",100,225,YL,"bold 12px 'Cascadia Code',monospace","center");
+ }
+ txt(c,NAMES[mat],460,30,"#e8e8f2","bold 15px 'Cascadia Code',monospace","center");
+ txt(c,"yellow dots = electrons (conduction band me free)",460,50,DM,"11px 'Cascadia Code',monospace","center");
+ if(mat===1)txt(c,"T badhao → zyada electrons gap cross karte hain ↑",460,315,DM,"11px 'Cascadia Code',monospace","center");
+ const note=mat===0?"electrons hamesha available - achha conductor":mat===1?"T = "+T+" K: "+nCB+" free electrons (schematic) - garam karo, conductivity badhti hai":"gap bahut bada - room temp pe koi electron cross nahi karta";
+ R.innerHTML="<b style='color:#22d3ee'>"+NAMES[mat]+"</b> &nbsp;|&nbsp; E_g = <b style='color:#facc15'>"+EG[mat]+" eV</b> &nbsp;|&nbsp; "+note;
+}
+sT.addEventListener("input",()=>{vT.textContent=sT.value;});
+bC.onclick=()=>{mat=0;mark();draw(0);};bS.onclick=()=>{mat=1;mark();draw(0);};bI.onclick=()=>{mat=2;mark();draw(0);};
+anims[0]=t=>draw(t);
+return function(){vT.textContent=sT.value;mark();draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1"),R=document.getElementById("r1");
+const bI=document.getElementById("dI"),bN=document.getElementById("dN"),bP=document.getElementById("dP");
+let mode=0;
+function mark(){[[bI,0],[bN,1],[bP,2]].forEach(([b,i])=>{
+ b.style.borderColor=i===mode?"#22d3ee":"#2d2d52";b.style.color=i===mode?"#22d3ee":"#8fa0c8";});}
+function atom(x,y,tag,col){
+ c.strokeStyle="#5b6488";c.lineWidth=1.5;c.beginPath();c.arc(x,y,11,0,7);c.stroke();
+ txt(c,tag,x,y+4,col||"#8fa0c8","bold 10px 'Cascadia Code',monospace","center");
+}
+function draw(t){
+ c.clearRect(0,0,920,330);
+ // lattice 8x3
+ for(let r=0;r<3;r++)for(let i=0;i<8;i++){
+  const x=140+i*90,y=80+r*60;
+  let tag="Si",col=null;
+  if(mode===1&&r===1&&(i===2||i===5)){tag="P";col=YL;}
+  if(mode===2&&r===1&&(i===2||i===5)){tag="B";col=GR;}
+  atom(x,y,tag,col);
+ }
+ let ne,nh,extra;
+ if(mode===0){ne=6;nh=6;}
+ else if(mode===1){ne=14;nh=3;}
+ else {ne=3;nh=14;}
+ for(let i=0;i<ne;i++){
+  const x=100+(i*61)%800,y=255+((i%2))*30;
+  const j=Math.sin(t*0.12+i*1.7)*4;
+  c.fillStyle=CY;c.beginPath();c.arc(x+j,y,4.5,0,7);c.fill();
+ }
+ for(let i=0;i<nh;i++){
+  const x=130+(i*57)%760,y=270+((i%2))*30;
+  const j=Math.cos(t*0.12+i*2.1)*4;
+  c.strokeStyle=MG;c.lineWidth=2;c.beginPath();c.arc(x+j,y,4.5,0,7);c.stroke();
+  txt(c,"+",x+j,y+3.5,MG,"bold 9px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"cyan filled = free electrons (n_e)",100,30,CY,"12px 'Cascadia Code',monospace");
+ txt(c,"magenta + = holes (n_h)",100,48,MG,"12px 'Cascadia Code',monospace");
+ if(mode===1)txt(c,"P = pentavalent donor (extra electron deta hai)",430,48,YL,"11px 'Cascadia Code',monospace");
+ if(mode===2)txt(c,"B = trivalent acceptor (hole banata hai)",430,48,GR,"11px 'Cascadia Code',monospace");
+ const nm=mode===0?"Intrinsic (pure Si)":mode===1?"n-type":"p-type";
+ const maj=mode===2?"holes":"electrons";
+ R.innerHTML="<b style='color:#22d3ee'>"+nm+"</b> &nbsp;|&nbsp; n_e = <b>"+ne+"</b>, n_h = <b>"+nh+"</b>"+
+  (mode===0?" (barabar!)":"")+" &nbsp;|&nbsp; majority: <b>"+maj+"</b> &nbsp;|&nbsp; material NET NEUTRAL hai!";
+}
+bI.onclick=()=>{mode=0;mark();draw(0);};bN.onclick=()=>{mode=1;mark();draw(0);};bP.onclick=()=>{mode=2;mark();draw(0);};
+anims[1]=t=>draw(t);
+return function(){mark();draw(0);};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2"),R=document.getElementById("r2");
+const bB=document.getElementById("jB"),bA=document.getElementById("jA");
+let after=false;
+function mark(){bB.style.borderColor=!after?"#22d3ee":"#2d2d52";bB.style.color=!after?"#22d3ee":"#8fa0c8";
+ bA.style.borderColor=after?"#22d3ee":"#2d2d52";bA.style.color=after?"#22d3ee":"#8fa0c8";}
+const JX=460,DW=90; // junction x, depletion half-width
+function side(x1,x2,isP){
+ c.fillStyle=isP?"#e879f9":"#22d3ee";c.globalAlpha=0.12;c.fillRect(x1,70,x2-x1,200);c.globalAlpha=1;
+ c.strokeStyle=isP?MG:CY;c.lineWidth=1.5;c.strokeRect(x1,70,x2-x1,200);
+ txt(c,isP?"p-side (acceptors, holes)":"n-side (donors, electrons)",(x1+x2)/2,58,isP?MG:CY,"bold 12px 'Cascadia Code',monospace","center");
+}
+function carriers(t,dep){
+ // holes on p-side, electrons on n-side (dep=true: depletion zone excluded)
+ for(let i=0;i<10;i++){
+  const xh=90+(i*37)%(dep?250:330),yh=95+(i*53)%160;
+  c.strokeStyle=MG;c.lineWidth=2;c.beginPath();c.arc(xh,yh,4.5,0,7);c.stroke();
+  const xe=(dep?580:500)+(i*41)%(dep?250:330),ye=95+(i*47)%160;
+  c.fillStyle=CY;c.beginPath();c.arc(xe,ye,4.5,0,7);c.fill();
+ }
+}
+function draw(t){
+ c.clearRect(0,0,920,330);
+ side(60,JX,true);side(JX,860,false);
+ if(!after){
+  carriers(t,false);
+  c.strokeStyle="#e8e8f2";c.setLineDash([6,6]);c.lineWidth=2;
+  c.beginPath();c.moveTo(JX,70);c.lineTo(JX,270);c.stroke();c.setLineDash([]);
+  txt(c,"junction",JX,290,"#e8e8f2","11px 'Cascadia Code',monospace","center");
+  txt(c,"abhi contact nahi - dono sides me mobile carriers ghoom rahe",460,315,DM,"11px 'Cascadia Code',monospace","center");
+  R.innerHTML="p-side: holes majority | n-side: electrons majority | <b>contact banao</b> → diffusion shuru hoga";
+  return;
+ }
+ // depletion region
+ c.fillStyle="#facc15";c.globalAlpha=0.15;c.fillRect(JX-DW,70,2*DW,200);c.globalAlpha=1;
+ c.strokeStyle=YL;c.lineWidth=1.5;c.setLineDash([4,4]);c.strokeRect(JX-DW,70,2*DW,200);c.setLineDash([]);
+ // fixed ions: + on n-side of depletion, - on p-side
+ for(let k=0;k<4;k++){
+  txt(c,"+",JX+30+(k%2)*40,105+Math.floor(k/2)*60,YL,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"−",JX-30-(k%2)*40,105+Math.floor(k/2)*60,YL,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"+",JX+30+(k%2)*40,185+Math.floor(k/2)*40,YL,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"−",JX-30-(k%2)*40,185+Math.floor(k/2)*40,YL,"bold 13px 'Cascadia Code',monospace","center");
+ }
+ carriers(t,true);
+ // built-in field arrow (n -> p, i.e. right to left)
+ arrow2(c,JX+DW-14,240,JX-DW+14,240,RD,2.5);
+ txt(c,"built-in field",JX,258,RD,"11px 'Cascadia Code',monospace","center");
+ txt(c,"depletion region (mobile carriers gayab)",JX,290,YL,"bold 11px 'Cascadia Code',monospace","center");
+ txt(c,"barrier ≈ 0.7 V (Si) - cross karne ke liye forward bias chahiye",460,315,DM,"11px 'Cascadia Code',monospace","center");
+ R.innerHTML="Depletion width ~ <b style='color:#facc15'>0.5-1 µm</b> (schematic) &nbsp;|&nbsp; barrier potential ≈ <b style='color:#facc15'>0.7 V (Si)</b> &nbsp;|&nbsp; diffusion = drift balance → <b>net current ZERO</b>";
+}
+bB.onclick=()=>{after=false;mark();draw(0);};bA.onclick=()=>{after=true;mark();draw(0);};
+anims[2]=t=>draw(t);
+return function(){mark();draw(0);};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3"),sV=document.getElementById("vV"),vV=document.getElementById("vlvV"),R=document.getElementById("r3");
+const bSi=document.getElementById("vSi"),bGe=document.getElementById("vGe");
+let knee=0.7,mat="Si";
+function mark(){[[bSi,0.7,"Si"],[bGe,0.3,"Ge"]].forEach(([b,k])=>{
+ const on=Math.abs(knee-k)<0.01;b.style.borderColor=on?"#22d3ee":"#2d2d52";b.style.color=on?"#22d3ee":"#8fa0c8";});}
+const X=v=>120+(v+5)/6*700;   // -5..1 -> 120..820
+const Y=i=>250-i;             // i in px above/below baseline 250
+function modelI(V){
+ if(V<=-4.8)return -90;                 // breakdown
+ if(V<0)return -2;                      // leakage
+ if(V<knee)return 1.5;
+ return Math.min(150,2+Math.pow((V-knee)/(1-knee),1.6)*150);
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const V=parseFloat(sV.value);
+ // axes
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(40,250);c.lineTo(880,250);c.stroke();
+ c.beginPath();c.moveTo(120,20);c.lineTo(120,300);c.stroke();
+ txt(c,"I",100,30,"#8fa0c8","bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"V →",860,240,"#8fa0c8","12px 'Cascadia Code',monospace");
+ txt(c,"0",112,265,"#8fa0c8","10px 'Cascadia Code',monospace","center");
+ txt(c,"-5 V",120,265,"#8fa0c8","10px 'Cascadia Code',monospace","center");
+ txt(c,"+1 V",820,265,"#8fa0c8","10px 'Cascadia Code',monospace","center");
+ // knee tick
+ c.strokeStyle=YL;c.setLineDash([3,4]);c.lineWidth=1;
+ c.beginPath();c.moveTo(X(knee),40);c.lineTo(X(knee),250);c.stroke();c.setLineDash([]);
+ txt(c,"knee "+knee+" V",X(knee),36,YL,"10px 'Cascadia Code',monospace","center");
+ // curve
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+ let started=false;
+ for(let v=-5;v<=1.001;v+=0.02){
+  const px=X(v),py=Y(modelI(v));
+  if(py>310)continue;
+  started?c.lineTo(px,py):(c.moveTo(px,py),started=true);
+ }
+ c.stroke();
+ // breakdown label
+ txt(c,"breakdown",X(-4.9)+6,180,RD,"10px 'Cascadia Code',monospace","left");
+ txt(c,"reverse leakage (tiny)",300,285,DM,"10px 'Cascadia Code',monospace","left");
+ txt(c,"forward: knee ke baad tez rise",620,80,DM,"11px 'Cascadia Code',monospace","left");
+ // marker
+ const mI=modelI(V),mx=X(V),my=Y(Math.max(-92,Math.min(160,mI)));
+ c.fillStyle=YL;c.beginPath();c.arc(mx,my,6,0,7);c.fill();
+ c.strokeStyle="#07070f";c.lineWidth=2;c.beginPath();c.arc(mx,my,6,0,7);c.stroke();
+ // bias circuit mini
+ const fwd=V>=0;
+ txt(c,fwd?"FORWARD bias (p → +)":"REVERSE bias (p → −)",700,140,fwd?GR:RD,"bold 12px 'Cascadia Code',monospace","left");
+ // battery + diode sketch
+ c.strokeStyle="#8fa0c8";c.lineWidth=2;
+ c.beginPath();c.moveTo(640,190);c.lineTo(640,230);c.moveTo(760,190);c.lineTo(760,230);c.stroke();
+ c.beginPath();c.moveTo(640,210);c.lineTo(700,210);c.moveTo(760,210);c.lineTo(830,210);c.stroke();
+ // diode triangle pointing right at 700-760
+ c.strokeStyle="#e8e8f2";c.lineWidth=2.5;
+ c.beginPath();c.moveTo(700,192);c.lineTo(700,228);c.lineTo(742,210);c.closePath();c.stroke();
+ c.beginPath();c.moveTo(742,192);c.lineTo(742,228);c.stroke();
+ txt(c,"p",694,246,DM,"10px 'Cascadia Code',monospace","center");
+ txt(c,"n",748,246,DM,"10px 'Cascadia Code',monospace","center");
+ // battery terminals near wire ends
+ txt(c,V>=0?"+":"−",636,246,fwd?GR:RD,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,V>=0?"−":"+",834,246,fwd?RD:GR,"bold 13px 'Cascadia Code',monospace","center");
+ const showI=mI<0?(V<=-4.8?"bada reverse (breakdown!)":"≈ −0.01 mA (tiny leakage)"):(mI<2&&V>=knee-0.05?"≈ 0 (knee ke neeche)":"≈ "+fmt(Math.max(0,mI*0.4),1)+" mA (schematic)");
+ R.innerHTML=mat+" diode &nbsp;|&nbsp; V = <b style='color:#facc15'>"+fmt(V,1)+" V</b> &nbsp;|&nbsp; I "+showI+" &nbsp;|&nbsp; "+(V>=0?"depletion shrink - barrier kam":"depletion WIDEN - barrier bada");
+}
+sV.addEventListener("input",()=>{vV.textContent=fmt(parseFloat(sV.value),1);draw();});
+bSi.onclick=()=>{knee=0.7;mat="Si";mark();draw();};
+bGe.onclick=()=>{knee=0.3;mat="Ge";mark();draw();};
+anims[3]=null;
+return function(){vV.textContent=fmt(parseFloat(sV.value),1);mark();draw();};
+})();
+inits[4]=(()=>{
+const c=ctx("cv4"),R=document.getElementById("r4");
+const bH=document.getElementById("rH"),bF=document.getElementById("rF");
+let full=false;
+function mark(){bH.style.borderColor=!full?"#22d3ee":"#2d2d52";bH.style.color=!full?"#22d3ee":"#8fa0c8";
+ bF.style.borderColor=full?"#22d3ee":"#2d2d52";bF.style.color=full?"#22d3ee":"#8fa0c8";}
+function wave(x1,x2,y0,A,fn,col,t){
+ c.strokeStyle=col;c.lineWidth=2.5;c.beginPath();
+ for(let x=x1;x<=x2;x+=2){const y=y0-A*fn((x-x1)/(x2-x1)*4*Math.PI);x===x1?c.moveTo(x,y):c.lineTo(x,y);}
+ c.stroke();
+}
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const sin=Math.sin;
+ // input
+ txt(c,"INPUT: AC supply",230,40,CY,"bold 12px 'Cascadia Code',monospace","center");
+ c.strokeStyle="#2d2d52";c.lineWidth=1;
+ c.beginPath();c.moveTo(60,120);c.lineTo(400,120);c.moveTo(520,120);c.lineTo(880,120);c.stroke();
+ wave(60,400,120,70,sin,CY,t);
+ txt(c,"V_in ~ sin(ωt)",230,215,DM,"10px 'Cascadia Code',monospace","center");
+ // arrow
+ arrow2(c,430,120,490,120,DM,2);
+ txt(c,"diode",460,105,DM,"10px 'Cascadia Code',monospace","center");
+ // output
+ txt(c,full?"OUTPUT: full-wave (dono halves UP)":"OUTPUT: half-wave (ek half BLOCKED)",700,40,MG,"bold 12px 'Cascadia Code',monospace","center");
+ wave(520,880,120,70,x=>full?Math.abs(sin(x)):Math.max(0,sin(x)),MG,t);
+ if(!full){
+  // blocked halves markers
+  for(let k=0;k<2;k++){
+   const xm=520+(k*2+1)*Math.PI/(4*Math.PI)*360;
+   txt(c,"✕",xm,110,RD,"bold 13px 'Cascadia Code',monospace","center");
+  }
+  txt(c,"negative half BLOCK - output zero",700,215,DM,"10px 'Cascadia Code',monospace","center");
+ } else {
+  txt(c,"negative half FLIP ho gaya - sab upar",700,215,DM,"10px 'Cascadia Code',monospace","center");
+ }
+ // moving cursor
+ const ph=(t*0.05)%(4*Math.PI);
+ const cx1=60+ph/(4*Math.PI)*340,cx2=520+ph/(4*Math.PI)*360;
+ c.strokeStyle=YL;c.setLineDash([3,3]);c.lineWidth=1;
+ c.beginPath();c.moveTo(cx1,60);c.lineTo(cx1,190);c.stroke();
+ c.beginPath();c.moveTo(cx2,60);c.lineTo(cx2,190);c.stroke();c.setLineDash([]);
+ c.fillStyle=YL;
+ c.beginPath();c.arc(cx1,120-70*sin(ph),4.5,0,7);c.fill();
+ const ov=full?Math.abs(sin(ph)):Math.max(0,sin(ph));
+ c.beginPath();c.arc(cx2,120-70*ov,4.5,0,7);c.fill();
+ // ripple note
+ txt(c,full?"ripple frequency = 2f":"ripple frequency = f",700,290,YL,"bold 11px 'Cascadia Code',monospace","center");
+ txt(c,"pulsating DC hai, flat nahi - smooth ke liye filter alag",460,315,DM,"11px 'Cascadia Code',monospace","center");
+ R.innerHTML=full?"<b style='color:#e879f9'>Full-wave</b>: dono half-cycles same polarity | ripple = <b>2f</b> | zyada smooth":"<b style='color:#e879f9'>Half-wave</b>: sirf positive half pass, negative BLOCK | ripple = <b>f</b> | aadha AC waste";
+}
+bH.onclick=()=>{full=false;mark();draw(0);};bF.onclick=()=>{full=true;mark();draw(0);};
+anims[4]=t=>draw(t);
+return function(){mark();draw(0);};
+})();
+inits[5]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"n-type semiconductor me majority carriers kaun, aur material ka net charge?",opts:["Holes; material positive","Electrons; material NET NEUTRAL","Electrons; material negative","Protons; material neutral"],a:1,why:"Pentavalent donor (P/As) extra electrons deta hai - electrons majority, holes minority. Lekin doped material overall NEUTRAL rehta hai, n-type ka matlab charged block NAHI!"},
+{q:"p-n junction pe depletion region kyun banta hai?",opts:["Battery ions ko kheench leti hai","Junction garam hokar carriers uda deta hai","Electrons n→p, holes p→n diffuse hokar recombine, sirf fixed ions rehte","Impurity atoms beech me jama ho jaate hain"],a:2,why:"Diffusion + recombination se junction ke paas mobile carriers khatam - bache sirf fixed ionized donors/acceptors, jinse built-in field aur barrier (~0.7 V Si) banta hai."},
+{q:"Si diode ka forward knee voltage approximately?",opts:["0.7 V","0.3 V","1.1 V","7 V"],a:0,why:"Si knee ≈ 0.7 V, Ge ≈ 0.3 V (room temperature rough guides). Knee ke baad forward current rapidly badhta hai."},
+{q:"Reverse bias me kya hota hai?",opts:["Depletion shrink, current tez","Diode turant jal jaata hai","Barrier gayab, full current","Depletion widen, tiny leakage - bada V pe breakdown"],a:3,why:"p ko −, n ko +: depletion region WIDEN hota hai, sirf minority-carrier leakage rehti hai. Bahut bade reverse voltage pe breakdown. Forward = p plus, reverse = p minus!"},
+{q:"Full-wave rectifier ka output ripple frequency kya hota hai (input f)?",opts:["f/2","2f","f","4f"],a:1,why:"Full-wave dono half-cycles ko SAME polarity deta hai - ek input cycle me 2 pulses, isliye ripple = 2f. Half-wave me negative half block, ripple = f."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Atoms pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+
+go(0);
+</script></body></html>
