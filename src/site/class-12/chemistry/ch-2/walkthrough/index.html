@@ -216,9 +216,9 @@ function draw(t){
  c.beginPath();c.arc(470,55,24,0,7);c.fill();c.stroke();
  txt(c,"V",470,60,YL,"bold 16px 'Cascadia Code',monospace","center");
  txt(c,on?"1.10 V":"--",470,28,YL,"bold 13px 'Cascadia Code',monospace","center");
- txt(c,"K+ → cathode side, Cl- → anode side (charge balance)",460,272,DM,"11px 'Cascadia Code',monospace","center");
- txt(c,"Zn rod ghul-ti hai (Zn2+ badhte)",200,250,CY,"10px 'Cascadia Code',monospace","center");
- txt(c,"Cu deposit hota hai",720,250,"#60a5fa","10px 'Cascadia Code',monospace","center");
+ txt(c,"K+ → cathode side, Cl- → anode side (charge balance)",460,250,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"Zn rod ghul-ti hai (Zn2+ badhte)",200,272,CY,"10px 'Cascadia Code',monospace","center");
+ txt(c,"Cu deposit hota hai",720,272,"#60a5fa","10px 'Cascadia Code',monospace","center");
  if(on){
   R.innerHTML="<b style='color:#facc15'>Anode:</b> Zn → Zn2+ + 2e- (oxidation) &nbsp;|&nbsp; <b style='color:#34d399'>Cathode:</b> Cu2+ + 2e- → Cu (reduction) &nbsp;|&nbsp; E°cell = 0.34 − (−0.76) = <b style='color:#22d3ee'>+1.10 V</b> &nbsp;|&nbsp; Zn | Zn2+ || Cu2+ | Cu";
  } else {
@@ -233,11 +233,11 @@ return function(){mark();draw(0);};
 inits[1]=(()=>{
 const c=ctx("cv1"),R=document.getElementById("r1");
 const M=[
- {id:"eZn",n:"Zn",e:-0.76},
- {id:"eFe",n:"Fe",e:-0.44},
- {id:"eH",n:"H2",e:0},
- {id:"eCu",n:"Cu",e:0.34},
- {id:"eAg",n:"Ag",e:0.80}
+ {id:"eZn",n:"Zn",e:-0.76,ion:"Zn2+"},
+ {id:"eFe",n:"Fe",e:-0.44,ion:"Fe2+"},
+ {id:"eH",n:"H2",e:0,ion:"H+"},
+ {id:"eCu",n:"Cu",e:0.34,ion:"Cu2+"},
+ {id:"eAg",n:"Ag",e:0.80,ion:"Ag+"}
 ];
 let sel=["Zn","Cu"];
 const X=v=>60+(v+1)/2*820;
@@ -278,7 +278,7 @@ function draw(){
   txt(c,"e- external circuit me: anode → cathode",460,80,CY,"11px 'Cascadia Code',monospace","center");
   txt(c,"E°cell = E°cathode - E°anode = ("+(cathode.e>=0?"+":"")+cathode.e.toFixed(2)+") - ("+(anode.e>=0?"+":"")+anode.e.toFixed(2)+") = +"+emf.toFixed(2)+" V",460,60,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
   txt(c,"negative E° = strong reducing agent (electron DETA) | positive E° = strong oxidizing agent (electron LETA)",460,315,DM,"11px 'Cascadia Code',monospace","center");
-  R.innerHTML="<b style='color:#22d3ee'>"+anode.n+" | "+anode.n+"2+ || "+(cathode.n==="H2"?"H+ | H2 (SHE)":cathode.n+"2+ | "+cathode.n)+"</b> &nbsp;|&nbsp; E°cell = <b style='color:#facc15'>+"+emf.toFixed(2)+" V</b> &nbsp;|&nbsp; positive EMF → <b style='color:#34d399'>spontaneous</b>, cell kaam karegi | ΔG° = −nFE° < 0";
+  R.innerHTML="<b style='color:#22d3ee'>"+anode.n+" | "+anode.ion+" || "+(cathode.n==="H2"?"H+ | H2 (SHE)":cathode.ion+" | "+cathode.n)+"</b> &nbsp;|&nbsp; E°cell = <b style='color:#facc15'>+"+emf.toFixed(2)+" V</b> &nbsp;|&nbsp; positive EMF → <b style='color:#34d399'>spontaneous</b>, cell kaam karegi | ΔG° = −nFE° < 0";
  } else {
   txt(c,"koi 2 electrodes chuno - cell ka EMF niklega",460,60,DM,"12px 'Cascadia Code',monospace","center");
   R.innerHTML="2 electrodes select karo. Kam E° wala <b style='color:#f87171'>anode</b> (oxidation), zyada E° wala <b style='color:#34d399'>cathode</b> (reduction) banega.";
@@ -336,7 +336,9 @@ function draw(){
  c.fillStyle=YL;c.beginPath();c.arc(X(lq),Y(e),7,0,7);c.fill();
  c.strokeStyle=YL;c.setLineDash([3,3]);c.lineWidth=1;
  c.beginPath();c.moveTo(X(lq),Y(e));c.lineTo(X(lq),295);c.stroke();c.setLineDash([]);
- txt(c,"E = "+e.toFixed(3)+" V",X(lq),Y(e)-14,YL,"bold 12px 'Cascadia Code',monospace","center");
+ const labX=lq>1.5?X(lq)-10:lq<-1.5?X(lq)+10:X(lq);
+ const labA=lq>1.5?"right":lq<-1.5?"left":"center";
+ txt(c,"E = "+e.toFixed(3)+" V",labX,Y(e)-14,YL,"bold 12px 'Cascadia Code',monospace",labA);
  txt(c,"E = 0 at log Q = nE°/0.059 ≈ 37 → K ≈ 10^37 (bahut bada!)",460,270,DM,"10px 'Cascadia Code',monospace","center");
  const Q=Math.pow(10,lq);
  const note=lq<-0.05?"Q chhota (reactant zyada) → E BADHA - fresh battery feel":lq>0.05?"Q bada (product zyada) → E GIRA - discharge hui battery":"Q = 1, standard conditions - E = E°";
@@ -444,10 +446,10 @@ function draw(t){
  // electrodes: anode left (+ attracts anions), cathode right (- attracts cations)
  c.fillStyle="#9aa3b8";c.fillRect(142,110,16,150);
  c.strokeStyle="#e8e8f2";c.lineWidth=1.5;c.strokeRect(142,110,16,150);
- txt(c,"anode (+)",150,300,YL,"bold 10px 'Cascadia Code',monospace","center");
+ txt(c,"anode (+)",150,278,YL,"bold 10px 'Cascadia Code',monospace","center");
  c.fillStyle="#9aa3b8";c.fillRect(282,110,16,150);
  c.strokeStyle="#e8e8f2";c.lineWidth=1.5;c.strokeRect(282,110,16,150);
- txt(c,"cathode (-)",290,300,GR,"bold 10px 'Cascadia Code',monospace","center");
+ txt(c,"cathode (-)",290,278,GR,"bold 10px 'Cascadia Code',monospace","center");
  // deposit on cathode
  const dep=Math.min(26,mass*3);
  if(dep>0.5){
