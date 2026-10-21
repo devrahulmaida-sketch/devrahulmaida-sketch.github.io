@@ -214,14 +214,14 @@ function draw(t){
  }
  // counter ions outside (3-k)
  const out=3-k;
+ const spots=[[64,82],[38,165],[64,248]];
  for(let i=0;i<out;i++){
-  const ang=2.2+i*1.1,rr=RS+62;
-  const ox=cx+Math.cos(ang)*rr,oy=cy+Math.sin(ang)*rr+Math.sin((t||0)/7+i*2)*3;
+  const ox=spots[i][0],oy=spots[i][1]+Math.sin((t||0)/7+i*2)*3;
   c.fillStyle="#0a2e1a";c.beginPath();c.arc(ox,oy,12,0,7);c.fill();
   c.strokeStyle=GR;c.lineWidth=2;c.beginPath();c.arc(ox,oy,12,0,7);c.stroke();
   txt(c,"Cl-",ox,oy+4,GR,"bold 10px 'Cascadia Code',monospace","center");
  }
- txt(c,out>0?"bahar = "+out+" Cl- IONIZABLE (AgNO3 test dega)":"koi counter Cl- nahi - NEUTRAL complex, 0 ppt",cx,cy+RS+52,out>0?GR:YL,"12px 'Cascadia Code',monospace","center");
+ txt(c,out>0?"bahar = "+out+" Cl- IONIZABLE (AgNO3 test dega)":"koi counter Cl- nahi - NEUTRAL complex, 0 ppt",cx,300,out>0?GR:YL,"12px 'Cascadia Code',monospace","center");
  // AgNO3 test panel right
  const bx=470,by=46,bw=400,bh=238;
  c.strokeStyle=DM;c.lineWidth=2.5;
@@ -238,7 +238,7 @@ function draw(t){
  txt(c,out>0?out+" mol AgCl (safed ppt) per mol complex":"0 mol AgCl - sphere intact!",bx+bw/2,by+bh+22,"#e8e8f2","bold 14px 'Cascadia Code',monospace","center");
  // formula string
  const fml="[CoCl"+(k>1?sub(k):k===1?"":"")+"(NH"+sub(3)+")"+sub(6-k)+"]"+(out>0?"Cl"+(out>1?sub(out):""):"");
- txt(c,fml,210,304,CY,"bold 17px 'Cascadia Code',monospace","center");
+ txt(c,fml,210,321,CY,"bold 17px 'Cascadia Code',monospace","center");
  R.innerHTML="Formula: <span class='cy'>"+fml+"</span>\nPrimary valency (ionizable Cl bahar) = <span class='hl'>"+out+"</span>  |  Secondary valency (CN, andar) = <span class='hl'>6</span> (4 NH3-type spots bhi ligand hain!)\nWerner ka funda: sphere ke ANDAR ka maal fixed + test nahi deta; BAHAR ka ionize hota hai - AgNO3 se ppt.";
 }
 kS.oninput=()=>draw(0);
@@ -312,7 +312,7 @@ function draw(t){
  const need=Math.abs(sph);
  txt(c,sph===0?"sphere NEUTRAL - koi counter ion nahi":"balance: "+need+" counter ion"+(need>1?"s":"")+" ("+(sph>0?"-1":"+1")+" each)",hx,158,GR,"13px 'Cascadia Code',monospace");
  txt(c,"Complex: [Co("+L.name+")"+(n>1?n:"")+"]"+(sph>0?" "+sph+"+":sph<0?" "+Math.abs(sph)+"-":""),hx,190,CY,"bold 13px 'Cascadia Code',monospace");
- if(L.dent===2)txt(c,"CHELATE: 1 ligand, 2 pakad = ring = extra stable!",hx,222,GR,"12px 'Cascadia Code',monospace");
+ if(L.dent===2)txt(c,"CHELATE = ring = EXTRA stable!",hx,222,GR,"12px 'Cascadia Code',monospace");
  txt(c,"Denticity = "+L.dent+" donor"+(L.dent>1?"s":"")+" per ligand",hx,L.dent===2?246:222,"#a5b0d0","12px 'Cascadia Code',monospace");
  R.innerHTML="Ligand: <span class='cy'>"+L.label+"</span> | ginti n = <span class='hl'>"+n+"</span> | CN = n x denticity = <span class='hl'>"+CN+"</span>\nOxidation number ka seedha hisab: sphere charge = metal + (ligand charges). Counter ions sirf balance ke liye!";
 }
@@ -507,7 +507,7 @@ function draw(){
  // unsplit d (barycenter)
  c.strokeStyle=DM;c.lineWidth=1.5;c.setLineDash([5,4]);
  c.beginPath();c.moveTo(90,yB);c.lineTo(430,yB);c.stroke();c.setLineDash([]);
- txt(c,"d (unsplit)",100,yB+18,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"d (unsplit)",131,yB+26,DM,"11px 'Cascadia Code',monospace","center");
  for(let i=0;i<5;i++){c.strokeStyle=DM;c.lineWidth=1.5;c.strokeRect(96+i*14,yB-8,10,16);}
  // eg boxes (2)
  const exs=[246,318];
@@ -531,7 +531,7 @@ function draw(){
  txt(c,"Ligand: "+L.n+" ("+(L.strong?"STRONG field":"WEAK field")+")",px,70,L.strong?MG:CY,"bold 14px 'Cascadia Code',monospace");
  txt(c,"\u0394o ~ "+L.wn+" cm-1 (illustrative)",px,98,YL,"13px 'Cascadia Code',monospace");
  const lam=1e7/L.wn;
- txt(c,"absorb: \u03bb = "+fmt(lam,0)+" nm",px,124,"#c9d4ff","13px 'Cascadia Code',monospace");
+ txt(c,"absorb: \u03bb = "+Math.round(lam)+" nm",px,124,"#c9d4ff","13px 'Cascadia Code',monospace");
  let colTxt,hex;
  if(dn===0||dn===10){colTxt="d"+dn+" - d-d transition NAHI = colourless";hex="#5b6488";}
  else{const cc=compColor(lam);colTxt="dikhta: "+cc[0]+" (complementary)";hex=cc[1];}
