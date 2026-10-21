@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alcohols, Phenols and Ethers - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Chemistry - Chapter 7 - Alcohols, Phenols and Ethers</div>
+<h1>Alcohols, Phenols and Ethers Ka Visual Walkthrough</h1>
+<p class="sub">5 interactive scenes - classification game (1/2/3 degree, phenol, ether), banao machine (Markovnikov, Grignard, Williamson), H-bonding BP lab, oxidation + Lucas test, phenol acidity + named reactions, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Kaunsa Class? - 1° 2° 3°, Phenol ya Ether ⭐⭐</h2>
+<p class="why">Alcohol: OH sp3 carbon pe (R-OH). Phenol: OH SEEDHA benzene ring pe. Ether: oxygen do alkyl/aryl groups ke beech (R-O-R'). Alcohols ka type: OH wale carbon ke C-neighbours se - 1° (1 neighbour), 2° (2), 3° (3). Reactivity aur oxidation products ISI se decide hote! Molecule dekho, class batao.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="eb sel" data-e="0">ethanol</button>
+<button class="eb" data-e="1">propan-2-ol</button>
+<button class="eb" data-e="2">tert-butanol</button>
+<button class="eb" data-e="3">phenol</button>
+<button class="eb" data-e="4">methoxyethane</button>
+<button class="eb" data-e="5">ethoxyethane</button>
+</div>
+<div class="btnrow">
+<button class="gb" data-g="1deg">1° alcohol</button>
+<button class="gb" data-g="2deg">2° alcohol</button>
+<button class="gb" data-g="3deg">3° alcohol</button>
+<button class="gb" data-g="phenol">phenol</button>
+<button class="gb" data-g="ether">ether</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Banao Machine - Alkene / Grignard / Williamson ⭐⭐</h2>
+<p class="why">Alkene se: acid hydration (H2O/H+) = MARKOVNIKOV (OH zyada substituted C pe); hydroboration-oxidation (BH3, phir H2O2/OH-) = ANTI-MARKOVNIKOV. Grignard RMgX: HCHO → 1°, doosra aldehyde → 2°, ketone → 3° alcohol. Williamson (ether): R-ONa + R'-X = SN2 - chhota/1° halide lo, 3° halide pe ELIMINATION ho jata.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="tb sel" data-t="0">Alkene se</button>
+<button class="tb" data-t="1">Grignard se</button>
+<button class="tb" data-t="2">Williamson (ether)</button>
+</div>
+<div class="btnrow" id="rowR">
+<button class="rb sel" data-r="0">H2O / H+ (Markovnikov)</button>
+<button class="rb" data-r="1">BH3, phir H2O2/OH- (anti-Mark)</button>
+</div>
+<div class="btnrow" id="rowK" style="display:none">
+<button class="kb sel" data-k="0">HCHO</button>
+<button class="kb" data-k="1">CH3CHO</button>
+<button class="kb" data-k="2">(CH3)2CO</button>
+</div>
+<div class="btnrow" id="rowX" style="display:none">
+<button class="xb sel" data-x="0">CH3Cl</button>
+<button class="xb" data-x="1">C2H5Br</button>
+<button class="xb" data-x="2">(CH3)3CCl</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. H-Bonding - Boiling Point Ka Boss ⭐⭐</h2>
+<p class="why">Alcohol ka BP comparable alkane/ether se BAHUT zyada - intermolecular HYDROGEN BONDING (molecules hath pakad ke baithe, alag karne zyada energy). Ethers: khud O-H donor nahi = BP kam. Solubility: chhote alcohols (C1-C3) pani me fully miscible (pani se H-bond); chain badhne pe solubility ghatti (hydrophobic part badhta). Branching badhne pe bhi BP ghatta.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>n-alcohol carbon count</label><input type="range" id="aS" min="0" max="4" step="1" value="0"><span class="v" id="aV">C1</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Oxidation + Lucas Test - 1° 2° 3° Pehchano ⭐⭐</h2>
+<p class="why">Oxidation: 1° → aldehyde → carboxylic ACID (PCC aldehyde pe rokta, KMnO4/H+ acid tak), 2° → KETONE, 3° → NAHI (alpha-H nahi, sirf drastic pe C-C tootta). Lucas test (ZnCl2 + HCl): 3° = INSTANT turbidity, 2° = ~5 min, 1° = room temp pe NAHI. Degree pehchanne ke 2 hatiyar!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="ob sel" data-o="0">Oxidation</button>
+<button class="ob" data-o="1">Lucas test</button>
+</div>
+<div class="btnrow">
+<button class="db sel" data-d="0">1° alcohol</button>
+<button class="db" data-d="1">2° alcohol</button>
+<button class="db" data-d="2">3° alcohol</button>
+</div>
+<div class="btnrow" id="rowP">
+<button class="pb sel" data-p="0">PCC (mild)</button>
+<button class="pb" data-p="1">KMnO4 / H+ (strong)</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Phenol Power - Acidity aur Named Reactions ⭐⭐</h2>
+<p class="why">Phenol alcohol se ZYADA acidic - phenoxide ion RESONANCE-stabilized (charge ring me delocalize). Lekin carboxylic se KAM: NaHCO3 se CO2 NAHI (distinguish test!). Br2 water → 2,4,6-tribromophenol WHITE PPT (phenol ka test). -OH = activating, o/p-directing. Named: Reimer-Tiemann (CHCl3+NaOH) → salicylaldehyde; Kolbe (CO2) → salicylic acid (aspirin ka start).</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="sb sel" data-s="0">ethanol</button>
+<button class="sb" data-s="1">phenol</button>
+<button class="sb" data-s="2">acetic acid</button>
+</div>
+<div class="btnrow">
+<button class="qb sel" data-q="0">+ Na metal</button>
+<button class="qb" data-q="1">+ NaOH</button>
+<button class="qb" data-q="2">+ NaHCO3</button>
+<button class="qb" data-q="3">+ Br2 water</button>
+</div>
+<div class="btnrow">
+<button class="nb" data-n="0">Reimer-Tiemann</button>
+<button class="nb" data-n="1">Kolbe reaction</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Rapid Quiz - Alcohols Phenols Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: Grignard HCHO→1° aldehyde→2° ketone→3°, hydroboration = anti-Markovnikov, Lucas 3° instant, phenol NaHCO3 se CO2 NAHI, Br2 water = white ppt, Williamson me chhota halide.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc6">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Classification ⭐⭐</h3><p>Alcohol: OH sp3 C pe | Phenol: OH seedha ring pe | Ether: R-O-R' | 1°/2°/3° = OH wale C ke C-neighbours (1/2/3) | Monohydric (ethanol), dihydric (glycol), trihydric (glycerol) | Naming: alkane+ol (propan-2-ol), ether = alkoxy+alkane (methoxyethane)</p></div>
+<div class="rcard"><h3>Preparation ⭐⭐</h3><p>Hydration H2O/H+ = MARKOVNIKOV (propan-2-ol) | Hydroboration-oxidation (BH3, H2O2/OH-) = ANTI-MARK (propan-1-ol) | Grignard RMgX: HCHO→1°, aldehyde→2°, ketone→3° | Phenol: CUMENE process (phenol + acetone dono), Dow (chlorobenzene + NaOH, 623 K 300 atm)</p></div>
+<div class="rcard"><h3>Physical Properties ⭐⭐</h3><p>Alcohol BP &gt;&gt; alkane/ether = H-BONDING | Branching badhe = BP ghatta | C1-C3 alcohols pani me FULLY miscible | Chain badhe = solubility ghatti | Ether BP kam (no O-H donor) par solubility ~comparable alcohol jitni (O acceptor) | Phenol BP zyada, partially soluble</p></div>
+<div class="rcard"><h3>Alcohol Reactions ⭐⭐</h3><p>Esterification: alcohol + acid (conc H2SO4) → ester + H2O | Dehydration → alkene (SAYTZEFF, ease 3°&gt;2°&gt;1°); 443 K alkene, 413 K ether | Oxidation: 1°→aldehyde(PCC)→acid(KMnO4), 2°→ketone, 3°→NAHI | LUCAS (ZnCl2+HCl): 3° instant, 2° ~5 min, 1° RT nahi</p></div>
+<div class="rcard"><h3>Phenol ⭐⭐</h3><p>Acidity: phenol &gt; water &gt; alcohol (phenoxide RESONANCE stable) | NaOH se react, NaHCO3 se CO2 NAHI (carboxylic se kamzor - distinguish) | Br2 water → 2,4,6-TRIBROMOPHENOL white ppt (TEST) | -OH o/p-directing | Reimer-Tiemann → salicylaldehyde (o-CHO) | Kolbe → salicylic acid (o-COOH)</p></div>
+<div class="rcard"><h3>Ethers ⭐⭐</h3><p>WILLIAMSON: R-ONa + R'-X → R-O-R' (SN2 - chhota/1° halide lo; 3° halide = ELIMINATION) | HX cleavage: CHHOTE alkyl group ko halogen milta | Excess HX = dono alkyl halides | Anisole me -OCH3 activating, o/p-directing | Ethers inert = Grignard ka DRY ETHER solvent</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Chemistry Chapter 7 (Alcohols, Phenols and Ethers) - Interactive Walkthrough</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=7;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}inits[0]=(()=>{
+ const c=ctx("cv0"),R=document.getElementById("r0");
+ const MOLS=[
+  {f:"CH3 - CH2 - OH",n:"ethanol",cls:"1deg",ohc:1,why:"OH wala C sirf 1 carbon se juda = 1° alcohol. IUPAC: ethane + ol = ethanol."},
+  {f:"CH3 - CH(OH) - CH3",n:"propan-2-ol",cls:"2deg",ohc:2,why:"OH wala C 2 carbons se juda = 2° alcohol. IUPAC: propan-2-ol."},
+  {f:"(CH3)3C - OH",n:"2-methylpropan-2-ol",cls:"3deg",ohc:3,why:"OH wala C 3 carbons se juda = 3° (tert-butanol). 3° ka oxidation NAHI hota!"},
+  {f:"C6H5 - OH   (OH ring pe)",n:"phenol",cls:"phenol",ohc:-1,why:"OH SEEDHA benzene ring (sp2 C) pe = phenol. Isliye alcohol se zyada ACIDIC."},
+  {f:"CH3 - O - C2H5",n:"methoxyethane",cls:"ether",ohc:-1,why:"O do DIFFERENT alkyl groups ke beech = unsymmetrical (mixed) ether."},
+  {f:"C2H5 - O - C2H5",n:"ethoxyethane",cls:"ether",ohc:-1,why:"Dono taraf SAME group = symmetrical (simple) ether, common: diethyl ether."}];
+ const OPTS=[["1deg","1° alcohol"],["2deg","2° alcohol"],["3deg","3° alcohol"],["phenol","phenol"],["ether","ether"]];
+ let mi=0,guess=null;
+ function draw(){
+  c.clearRect(0,0,920,330);
+  const m=MOLS[mi];
+  txt(c,"Molecule:",60,44,DM,"13px 'Cascadia Code',monospace");
+  txt(c,m.f,60,105,CY,"bold 29px 'Cascadia Code',monospace");
+  txt(c,m.n,60,142,"#e8e8f2","18px 'Cascadia Code',monospace");
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,168);c.lineTo(900,168);c.stroke();
+  if(guess===null){
+   txt(c,"Class batao neeche buttons se: 1° / 2° / 3° alcohol, phenol ya ether?",60,205,YL,"15px 'Cascadia Code',monospace");
+   txt(c,"Hint: alcohol me OH sp3 carbon pe | phenol me OH ring pe | ether me O do groups ke beech",60,238,DM,"13px 'Cascadia Code',monospace");
+   txt(c,"1°/2°/3° = OH wale C ke carbon-neighbours ki ginti (1/2/3)",60,262,DM,"13px 'Cascadia Code',monospace");
+  }else{
+   const ok=guess===m.cls;
+   txt(c,ok?"CORRECT!":"GALAT - dekho kyun:",60,208,ok?GR:RD,"bold 23px 'Cascadia Code',monospace");
+   const label=OPTS.filter(o=>o[0]===m.cls)[0][1];
+   txt(c,"Answer: "+label,60,244,MG,"bold 17px 'Cascadia Code',monospace");
+   if(m.ohc>=0)txt(c,"OH-carbon ke C-neighbours: "+m.ohc,60,274,CY,"15px 'Cascadia Code',monospace");
+   txt(c,m.why.length>92?m.why.slice(0,m.why.lastIndexOf(" ",92)):m.why,60,304,"#c9d4ff","14px 'Cascadia Code',monospace");
+   if(m.why.length>92)txt(c,m.why.slice(m.why.lastIndexOf(" ",92)+1),60,324,"#c9d4ff","14px 'Cascadia Code',monospace");
+  }
+  R.innerHTML="Class rule: <span class=hl>1°/2°/3°</span> = OH wale carbon ke carbon-neighbours. <span class=hl>Phenol</span> = OH seedha benzene ring pe (zyada acidic). <span class=hl>Ether</span> = O do alkyl/aryl groups ke beech (R-O-R'). OH ki ginti se: monohydric (ethanol), dihydric (ethylene glycol), trihydric (glycerol).";
+ }
+ document.querySelectorAll("#sc0 .eb").forEach(b=>b.onclick=()=>{mi=+b.dataset.e;guess=null;
+  document.querySelectorAll("#sc0 .eb").forEach(x=>x.classList.toggle("sel",x===b));
+  document.querySelectorAll("#sc0 .gb").forEach(x=>x.classList.remove("sel"));draw();});
+ document.querySelectorAll("#sc0 .gb").forEach(b=>b.onclick=()=>{guess=b.dataset.g;
+  document.querySelectorAll("#sc0 .gb").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+ draw();
+ return draw;
+})();
+inits[1]=(()=>{
+ const c=ctx("cv1"),R=document.getElementById("r1");
+ let mode=0,route=0,carbonyl=0,halide=0;
+ const CARB=[
+  {n:"HCHO",p:"CH3 - CH2 - OH",pn:"ethanol",cls:"1° alcohol",why:"HCHO + CH3MgBr (phir H3O+) = 1° alcohol. Grignard EK carbon extra jodta!"},
+  {n:"CH3CHO",p:"CH3 - CH(OH) - CH3",pn:"propan-2-ol",cls:"2° alcohol",why:"HCHO ke ALAG koi bhi aldehyde + RMgX = 2° alcohol."},
+  {n:"(CH3)2CO",p:"(CH3)2C(OH) - CH3",pn:"2-methylpropan-2-ol",cls:"3° alcohol",why:"KETONE + RMgX = 3° alcohol. Grignard se 1°/2°/3° SAB ban sakte!"}];
+ const HAL=[
+  {n:"CH3Cl",ok:true,p:"C2H5 - O - CH3",pn:"methoxyethane",why:"CH3Cl chhota 1° halide = SN2 FAST = ether banta!"},
+  {n:"C2H5Br",ok:true,p:"C2H5 - O - C2H5",pn:"ethoxyethane",why:"1° halide = SN2 = symmetrical ether (diethyl ether)."},
+  {n:"(CH3)3CCl",ok:false,p:"ELIMINATION - ether NAHI!",pn:"",why:"3° halide BULKY = SN2 blocked = E2 elimination (alkene). Williamson me HAMESHA chhota/1° halide lo."}];
+ function draw(){
+  c.clearRect(0,0,920,330);
+  if(mode===0){
+   txt(c,"Propene:",60,50,DM,"13px 'Cascadia Code',monospace");
+   txt(c,"CH2 = CH - CH3",60,86,CY,"bold 26px 'Cascadia Code',monospace");
+   arrow2(c,400,78,500,78,MG,3);
+   if(route===0){
+    txt(c,"H2O / H+  (Markovnikov)",520,58,YL,"14px 'Cascadia Code',monospace");
+    txt(c,"CH3 - CH(OH) - CH3",520,96,"#e8e8f2","bold 21px 'Cascadia Code',monospace");
+    txt(c,"propan-2-ol (2°)",520,128,GR,"15px 'Cascadia Code',monospace");
+    txt(c,"OH ZYADA substituted C pe",520,152,GR,"13px 'Cascadia Code',monospace");
+   }else{
+    txt(c,"BH3, phir H2O2/OH- (anti-Mark)",520,58,YL,"14px 'Cascadia Code',monospace");
+    txt(c,"CH3 - CH2 - CH2 - OH",520,96,"#e8e8f2","bold 21px 'Cascadia Code',monospace");
+    txt(c,"propan-1-ol (1°)",520,128,GR,"15px 'Cascadia Code',monospace");
+    txt(c,"OH KAM substituted C pe",520,152,GR,"13px 'Cascadia Code',monospace");
+   }
+   c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,185);c.lineTo(900,185);c.stroke();
+   txt(c,"Markovnikov hydration: H us C pe jahan H pehle se zyada; OH ZYADA substituted C pe.",60,225,"#c9d4ff","14px 'Cascadia Code',monospace");
+   txt(c,"Hydroboration-oxidation: OH KAM substituted C pe (anti-Markovnikov) - dono COMPLEMENTARY!",60,255,"#c9d4ff","14px 'Cascadia Code',monospace");
+   txt(c,"Exam favourite: propene se propan-1-ol kaise? -> hydroboration-oxidation!",60,290,YL,"14px 'Cascadia Code',monospace");
+  }else if(mode===1){
+   const k=CARB[carbonyl];
+   txt(c,"Carbonyl:",60,50,DM,"13px 'Cascadia Code',monospace");
+   txt(c,k.n,60,86,CY,"bold 26px 'Cascadia Code',monospace");
+   txt(c,"+  CH3MgBr  (phir H3O+)",60,122,MG,"16px 'Cascadia Code',monospace");
+   arrow2(c,400,90,500,90,MG,3);
+   txt(c,k.p,520,86,"#e8e8f2","bold 21px 'Cascadia Code',monospace");
+   txt(c,k.pn,520,118,"#e8e8f2","14px 'Cascadia Code',monospace");
+   c.fillStyle=k.cls[0]==="1"?CY:k.cls[0]==="2"?YL:MG;
+   c.fillRect(520,140,150,34);c.fillStyle="#07070f";
+   txt(c,k.cls,545,163,"#07070f","bold 15px 'Cascadia Code',monospace");
+   c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,195);c.lineTo(900,195);c.stroke();
+   txt(c,"Grignard master rule:",60,235,YL,"bold 15px 'Cascadia Code',monospace");
+   txt(c,"HCHO -> 1° alcohol  |  doosra aldehyde -> 2°  |  KETONE -> 3°",60,265,"#c9d4ff","14px 'Cascadia Code',monospace");
+   txt(c,k.why,60,300,GR,"13.5px 'Cascadia Code',monospace");
+  }else{
+   const x=HAL[halide];
+   txt(c,"C2H5 - ONa",60,86,CY,"bold 24px 'Cascadia Code',monospace");
+   txt(c,"sodium ethoxide",60,112,DM,"13px 'Cascadia Code',monospace");
+   txt(c,"+  "+x.n,60,152,MG,"bold 20px 'Cascadia Code',monospace");
+   arrow2(c,360,105,460,105,MG,3);
+   if(x.ok){
+    txt(c,x.p,490,90,"#e8e8f2","bold 21px 'Cascadia Code',monospace");
+    txt(c,x.pn+"  +  NaX",490,122,GR,"14px 'Cascadia Code',monospace");
+    txt(c,"SN2 - alkoxide O ne halide C pe attack",490,152,GR,"13px 'Cascadia Code',monospace");
+   }else{
+    txt(c,x.p,490,96,RD,"bold 20px 'Cascadia Code',monospace");
+    txt(c,"(CH3)2C=CH2 + C2H5OH",490,128,RD,"15px 'Cascadia Code',monospace");
+   }
+   c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,185);c.lineTo(900,185);c.stroke();
+   txt(c,"Williamson synthesis: R-ONa + R'-X -> R-O-R' + NaX   (SN2)",60,222,YL,"bold 14px 'Cascadia Code',monospace");
+   txt(c,"Unsymmetrical ether? CHHOTA/1° halide lo - bada/3° halide pe elimination ho jata.",60,252,"#c9d4ff","14px 'Cascadia Code',monospace");
+   const w=x.why.length>92?x.why.slice(0,x.why.lastIndexOf(" ",92)):x.why;
+   txt(c,w,60,290,x.ok?GR:RD,"13.5px 'Cascadia Code',monospace");
+   if(x.why.length>92)txt(c,x.why.slice(x.why.lastIndexOf(" ",92)+1),60,312,x.ok?GR:RD,"13.5px 'Cascadia Code',monospace");
+  }
+  const rr=["Alkene se alcohol: H2O/H+ = Markovnikov (OH zyada substituted C) | BH3, H2O2/OH- = anti-Markovnikov. Dono complementary - exam favourite!",
+   "Grignard RMgX + carbonyl (phir H3O+): <span class=hl>HCHO -> 1°</span>, <span class=hl>aldehyde -> 2°</span>, <span class=hl>ketone -> 3°</span> alcohol. Teeno classes ek hi reagent se!",
+   "Williamson: R-ONa + R'-X = <span class=hl>SN2</span>. Chhota/1° halide chuno. 3° halide = elimination = ether NAHI. Phenol se bhi: sodium phenoxide + R-X."];
+  R.innerHTML=rr[mode];
+ }
+ function showRows(){
+  document.getElementById("rowR").style.display=mode===0?"flex":"none";
+  document.getElementById("rowK").style.display=mode===1?"flex":"none";
+  document.getElementById("rowX").style.display=mode===2?"flex":"none";
+ }
+ document.querySelectorAll("#sc1 .tb").forEach(b=>b.onclick=()=>{mode=+b.dataset.t;
+  document.querySelectorAll("#sc1 .tb").forEach(x=>x.classList.toggle("sel",x===b));showRows();draw();});
+ document.querySelectorAll("#sc1 .rb").forEach(b=>b.onclick=()=>{route=+b.dataset.r;
+  document.querySelectorAll("#sc1 .rb").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+ document.querySelectorAll("#sc1 .kb").forEach(b=>b.onclick=()=>{carbonyl=+b.dataset.k;
+  document.querySelectorAll("#sc1 .kb").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+ document.querySelectorAll("#sc1 .xb").forEach(b=>b.onclick=()=>{halide=+b.dataset.x;
+  document.querySelectorAll("#sc1 .xb").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+ showRows();draw();
+ return draw;
+})();
+inits[2]=(()=>{
+ const c=ctx("cv2"),R=document.getElementById("r2");
+ const BARS=[{n:"propane",f:"C3H8",bp:-42,col:DM,note:"no H-bond - bahut kam BP"},
+  {n:"dimethyl ether",f:"CH3-O-CH3",bp:-24,col:YL,note:"O hai par O-H NAHI = BP kam"},
+  {n:"ethanol",f:"C2H5-OH",bp:78,col:CY,note:"H-BONDING = BP rocket!"}];
+ const ALC=[{n:"methanol",bp:65,sol:"fully miscible"},
+  {n:"ethanol",bp:78,sol:"fully miscible"},
+  {n:"propan-1-ol",bp:97,sol:"fully miscible"},
+  {n:"butan-1-ol",bp:118,sol:"partial (~8 g/100 mL)"},
+  {n:"pentan-1-ol",bp:138,sol:"low (~2 g/100 mL)"}];
+ const S=document.getElementById("aS"),V=document.getElementById("aV");
+ let ai=0;
+ function bar(x,w,v,col,label){
+  const h=(v+60)*1.45,y=280-h;
+  c.fillStyle=col;c.globalAlpha=.8;c.fillRect(x,y,w,h);c.globalAlpha=1;
+  c.strokeStyle=col;c.lineWidth=2;c.strokeRect(x,y,w,h);
+  txt(c,(v>0?"+":"")+v+"°C",x+w/2,y-8,col,"bold 14px 'Cascadia Code',monospace","center");
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  txt(c,"Same molar mass (~46-60) - phir bhi BP ka farak:",40,32,DM,"13px 'Cascadia Code',monospace");
+  c.strokeStyle="#2d2d52";c.lineWidth=1.5;c.beginPath();c.moveTo(40,280);c.lineTo(430,280);c.stroke();
+  txt(c,"0°C",46,272,DM,"11px 'Cascadia Code',monospace");
+  c.strokeStyle="#1a1a33";c.beginPath();c.moveTo(80,280-60*1.45);c.lineTo(430,280-60*1.45);c.stroke();
+  BARS.forEach((b,i)=>{const x=90+i*115;
+   bar(x,64,b.bp,b.col);
+   txt(c,b.n,x+32,300,"#c9d4ff","11.5px 'Cascadia Code',monospace","center");
+   txt(c,b.f,x+32,315,DM,"10.5px 'Cascadia Code',monospace","center");});
+  txt(c,BARS[2].note,40,52,CY,"13px 'Cascadia Code',monospace");
+  // right panel: n-alcohol BP curve
+  txt(c,"n-alcohols: chain badhao -> BP badhta, solubility GHATTI",470,32,DM,"13px 'Cascadia Code',monospace");
+  c.strokeStyle="#2d2d52";c.lineWidth=1.5;c.beginPath();c.moveTo(470,280);c.lineTo(900,280);c.stroke();
+  const X=i=>505+i*82, Y=v=>280-(v-30)*1.55;
+  c.strokeStyle=CY;c.lineWidth=2;c.beginPath();
+  ALC.forEach((a,i)=>{const x=X(i),y=Y(a.bp);if(i===0)c.moveTo(x,y);else c.lineTo(x,y);});c.stroke();
+  ALC.forEach((a,i)=>{const x=X(i),y=Y(a.bp);
+   c.fillStyle=i===ai?MG:CY;c.beginPath();c.arc(x,y,i===ai?7:4,0,7);c.fill();
+   txt(c,"C"+(i+1),x,300,i===ai?MG:DM,"12px 'Cascadia Code',monospace","center");});
+  const a=ALC[ai];
+  txt(c,"~"+a.bp+"°C",X(ai),Y(a.bp)-14,MG,"bold 14px 'Cascadia Code',monospace","center");
+  txt(c,a.n,X(ai),316,MG,"12px 'Cascadia Code',monospace","center");
+  txt(c,"pani me: "+a.sol,470,52,ai<=2?GR:YL,"13px 'Cascadia Code',monospace");
+  R.innerHTML="BP order (similar mass): <span class=hl>alcohol &gt;&gt; ether &gt; alkane</span> - H-bonding ka khel (ethanol 78°C vs dimethyl ether -24°C!). n-alcohols me C badhao: BP ~20°C/C badhta par <span class=hl>solubility ghatti</span> (hydrophobic chain). C1-C3 fully miscible. Branching badhe = BP ghatta. Phenol: BP zyada, pani me partially soluble.";
+ }
+ S.oninput=()=>{ai=+S.value;V.textContent="C"+(ai+1);draw();};
+ draw();
+ return draw;
+})();
+inits[3]=(()=>{
+ const c=ctx("cv3"),R=document.getElementById("r3");
+ let mode=0,deg=0,ox=0;
+ const SUBS=["R - CH2 - OH   (1°)","R2 - CH - OH   (2°)","R3 - C - OH   (3°)"];
+ function flask(x,y,cloud,col){
+  c.strokeStyle="#7dd3fc";c.lineWidth=2.5;
+  c.beginPath();c.moveTo(x-38,y-70);c.lineTo(x-38,y+34);c.quadraticCurveTo(x-38,y+56,x-16,y+56);
+  c.lineTo(x+16,y+56);c.quadraticCurveTo(x+38,y+56,x+38,y+34);c.lineTo(x+38,y-70);c.stroke();
+  c.fillStyle=col||"#1e3a5f";c.globalAlpha=0.55;
+  c.fillRect(x-33,y-10,66,60);
+  c.globalAlpha=1;
+  if(cloud>0){c.fillStyle="#e8e8f2";
+   for(let i=0;i<cloud*9;i++){const px=x-28+(i*17)%56,py=y+4+((i*23)%42);
+    c.globalAlpha=0.25+0.1*(i%3);c.beginPath();c.arc(px,py,4+(i%3)*2,0,7);c.fill();}
+   c.globalAlpha=1;}
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  txt(c,SUBS[deg],60,44,CY,"bold 20px 'Cascadia Code',monospace");
+  if(mode===0){
+   const strong=ox===1;
+   txt(c,"Oxidant: "+(strong?"KMnO4 / H+ (strong)":"PCC (mild)"),60,74,YL,"14px 'Cascadia Code',monospace");
+   if(deg===0){
+    txt(c,"1° alcohol",90,130,DM,"14px 'Cascadia Code',monospace");
+    arrow2(c,220,122,330,122,MG,3);
+    txt(c,"R - CHO",380,112,GR,"bold 22px 'Cascadia Code',monospace");
+    txt(c,"ALDEHYDE",380,140,GR,"14px 'Cascadia Code',monospace");
+    if(strong){
+     arrow2(c,520,122,630,122,MG,3);
+     txt(c,"R - COOH",680,112,GR,"bold 22px 'Cascadia Code',monospace");
+     txt(c,"CARBOXYLIC ACID",680,140,GR,"14px 'Cascadia Code',monospace");
+     txt(c,"strong oxidant = acid TAK le jata, rukta nahi!",380,180,YL,"14px 'Cascadia Code',monospace");
+    }else{
+     txt(c,"PCC mild hai - ALDEHYDE pe rok deta!",380,180,YL,"14px 'Cascadia Code',monospace");
+    }
+   }else if(deg===1){
+    txt(c,"2° alcohol",90,130,DM,"14px 'Cascadia Code',monospace");
+    arrow2(c,220,122,330,122,MG,3);
+    txt(c,"R2 - C = O",380,112,GR,"bold 22px 'Cascadia Code',monospace");
+    txt(c,"KETONE",380,140,GR,"14px 'Cascadia Code',monospace");
+    txt(c,"PCC ho ya KMnO4 - 2° hamesha KETONE tak hi jata",380,180,YL,"14px 'Cascadia Code',monospace");
+   }else{
+    txt(c,"3° alcohol",90,130,DM,"14px 'Cascadia Code',monospace");
+    arrow2(c,220,122,330,122,RD,3);
+    txt(c,"X",360,140,RD,"bold 30px 'Cascadia Code',monospace");
+    txt(c,"NO OXIDATION!",420,140,RD,"bold 24px 'Cascadia Code',monospace");
+    txt(c,"3° carbon pe alpha-H NAHI = normal oxidants kuch nahi kar paate",420,176,YL,"14px 'Cascadia Code',monospace");
+    txt(c,"(sirf bahut drastic conditions pe C-C bond tootta)",420,202,DM,"13px 'Cascadia Code',monospace");
+   }
+   c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,230);c.lineTo(900,230);c.stroke();
+   txt(c,"Rule: 1° -> aldehyde -> acid  |  2° -> ketone  |  3° -> NAHI (no alpha-H)",60,268,"#c9d4ff","15px 'Cascadia Code',monospace");
+   txt(c,"Mild (PCC) = aldehyde pe stop | Strong (KMnO4/H+) = acid tak",60,300,DM,"13.5px 'Cascadia Code',monospace");
+  }else{
+   const cl=[0,2,3][deg];
+   flask(200,190,cl,deg===2?"#3f3f46":"#1e3a5f");
+   const timing=["1° : room temp pe TURBIDITY NAHI (heat chahiye!)","2° : ~5 MIN me cloudy hota","3° : INSTANT turbidity - turant cloudy!"];
+   const tc=[DM,YL,GR];
+   txt(c,"Lucas reagent: ZnCl2 + conc HCl",420,90,YL,"bold 16px 'Cascadia Code',monospace");
+   txt(c,timing[deg],420,130,tc[deg],"bold 17px 'Cascadia Code',monospace");
+   txt(c,"Mechanism: alcohol -> alkyl chloride (insoluble = cloudy)",420,166,"#c9d4ff","13.5px 'Cascadia Code',monospace");
+   txt(c,"SN1 jaisa: 3° carbocation STABLE = instant | 2° slow | 1° bahut slow",420,192,"#c9d4ff","13.5px 'Cascadia Code',monospace");
+   c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,230);c.lineTo(900,230);c.stroke();
+   txt(c,"Lucas test = 1°/2°/3° pehchanne ka TIME test:",60,266,YL,"bold 14px 'Cascadia Code',monospace");
+   txt(c,"3° INSTANT  |  2° ~5 min  |  1° room temp pe NAHI",60,298,"#c9d4ff","15px 'Cascadia Code',monospace");
+  }
+  const rr=["Oxidation: <span class=hl>1° -> aldehyde -> carboxylic acid</span> (PCC aldehyde pe rokta, KMnO4/H+ acid tak), <span class=hl>2° -> ketone</span>, <span class=hl>3° -> NAHI</span> (alpha-H nahi). Dehydration bhi yaad rakho: 3°>2°>1° ease, Saytzeff alkene.",
+   "Lucas test (ZnCl2 + conc HCl): turbidity ka TIME dekho - <span class=hl>3° instant</span>, <span class=hl>2° ~5 min</span>, <span class=hl>1° RT pe nahi</span>. Carbocation stability ka kaam!"];
+  R.innerHTML=rr[mode];
+ }
+ document.querySelectorAll("#sc3 .ob").forEach(b=>b.onclick=()=>{mode=+b.dataset.o;
+  document.querySelectorAll("#sc3 .ob").forEach(x=>x.classList.toggle("sel",x===b));
+  document.getElementById("rowP").style.display=mode===0?"flex":"none";draw();});
+ document.querySelectorAll("#sc3 .db").forEach(b=>b.onclick=()=>{deg=+b.dataset.d;
+  document.querySelectorAll("#sc3 .db").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+ document.querySelectorAll("#sc3 .pb").forEach(b=>b.onclick=()=>{ox=+b.dataset.p;
+  document.querySelectorAll("#sc3 .pb").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+ document.getElementById("rowP").style.display="flex";
+ draw();
+ return draw;
+})();
+inits[4]=(()=>{
+ const c=ctx("cv4"),R=document.getElementById("r4");
+ let sub=1,test=0,named=-1;
+ const SUBN=["ethanol","phenol","acetic acid"];
+ const TESTN=["Na metal","NaOH","NaHCO3","Br2 water"];
+ const RES=[
+  [["H2 bubbles (dheere)","2R-OH + 2Na -> 2R-ONa + H2 | alcohol weakly acidic",GR],
+   ["NO reaction","alcohol itna acidic NAHI ki NaOH se react kare",RD],
+   ["NO reaction","NaHCO3 se to bilkul nahi",RD],
+   ["NO reaction","Br2 water alcohol se nahi react karta",RD]],
+  [["H2 bubbles (FAST)","phenol + Na -> sodium phenoxide + H2 | alcohol se zyada acidic",GR],
+   ["SALT banta - dissolve","phenol + NaOH -> sodium phenoxide + H2O (alcohol NAHI karta!)",GR],
+   ["CO2 NAHI!","phenol carboxylic se KAMZOR acid = NaHCO3 se CO2 nahi (DISTINGUISH TEST)",RD],
+   ["WHITE PPT!","2,4,6-tribromophenol - phenol ka confirmatory TEST",MG]],
+  [["H2 bubbles (VIGOROUS)","carboxylic acid + Na = fastest H2",GR],
+   ["salt + water","acetic acid + NaOH -> sodium acetate",GR],
+   ["CO2 bubbles! (brisk)","carboxylic acid + NaHCO3 = CO2 - phenol se DISTINGUISH",GR],
+   ["NO reaction","Br2 water acetic acid se nahi react karta",RD]]];
+ const NAMED=[
+  {t:"Reimer-Tiemann",r:"phenol + CHCl3 + NaOH, phir H3O+",p:"SALICYLALDEHYDE (ortho -CHO phenol)"},
+  {t:"Kolbe reaction",r:"sodium phenoxide + CO2 (heat, pressure), phir H+",p:"SALICYLIC ACID (aspirin ka starting!)"}];
+ function flask(x,y,col,bub,ppt){
+  c.strokeStyle="#7dd3fc";c.lineWidth=2.5;
+  c.beginPath();c.moveTo(x-38,y-70);c.lineTo(x-38,y+34);c.quadraticCurveTo(x-38,y+56,x-16,y+56);
+  c.lineTo(x+16,y+56);c.quadraticCurveTo(x+38,y+56,x+38,y+34);c.lineTo(x+38,y-70);c.stroke();
+  c.fillStyle=col;c.globalAlpha=0.55;c.fillRect(x-33,y-10,66,60);c.globalAlpha=1;
+  if(bub){c.strokeStyle="#e8e8f2";c.lineWidth=1.5;
+   for(let i=0;i<7;i++){const px=x-22+(i*13)%46,py=y+38-((i*19)%44);
+    c.beginPath();c.arc(px,py,3,0,7);c.stroke();}}
+  if(ppt){c.fillStyle="#e8e8f2";
+   for(let i=0;i<16;i++){const px=x-26+(i*11)%52,py=y+34+((i*7)%18);
+    c.beginPath();c.arc(px,py,2.5,0,7);c.fill();}}
+  txt(c,"flask",x,y+78,DM,"11px 'Cascadia Code',monospace","center");
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  txt(c,"Substrate: "+SUBN[sub],60,40,CY,"bold 18px 'Cascadia Code',monospace");
+  if(named>=0){
+   const n=NAMED[named];
+   flask(180,180,"#3b2f5f",false,false);
+   txt(c,"phenol",180,186,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+   arrow2(c,300,172,400,172,MG,3);
+   txt(c,n.t,440,120,YL,"bold 20px 'Cascadia Code',monospace");
+   txt(c,n.r,440,152,"#c9d4ff","13.5px 'Cascadia Code',monospace");
+   txt(c,n.p,440,196,GR,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"-OH = activating, ortho/para DIRECTING (ring electron-rich)",440,232,DM,"13px 'Cascadia Code',monospace");
+   txt(c,"Dono named reactions EXAM favourites - naam + product rat lo!",440,262,YL,"13px 'Cascadia Code',monospace");
+  }else{
+   const r=RES[sub][test];
+   const col=sub===1&&test===3?"#e8e8f2":"#1e3a5f";
+   flask(180,180,col,test===0||(sub===2&&test===2),sub===1&&test===3);
+   arrow2(c,300,172,400,172,MG,3);
+   txt(c,"+ "+TESTN[test],330,150,MG,"14px 'Cascadia Code',monospace");
+   txt(c,r[0],440,150,r[2],"bold 20px 'Cascadia Code',monospace");
+   const w=r[1].length>48?r[1].slice(0,r[1].lastIndexOf(" ",48)):r[1];
+   txt(c,w,440,186,"#c9d4ff","13.5px 'Cascadia Code',monospace");
+   if(r[1].length>48)txt(c,r[1].slice(r[1].lastIndexOf(" ",48)+1),440,208,"#c9d4ff","13.5px 'Cascadia Code',monospace");
+  }
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,268);c.lineTo(900,268);c.stroke();
+  txt(c,"Acidity order: carboxylic acid > PHENOL > water > alcohol",60,296,YL,"bold 14px 'Cascadia Code',monospace");
+  txt(c,"Phenoxide ion RESONANCE-stabilized (charge ring me) - alkoxide nahi. Isliye phenol zyada acidic.",60,320,"#c9d4ff","13px 'Cascadia Code',monospace");
+  R.innerHTML="Phenol = <span class=hl>NaOH se react</span> (alcohol nahi karta) par <span class=hl>NaHCO3 se CO2 NAHI</span> (carboxylic karta - distinguish!). <span class=hl>Br2 water -> 2,4,6-tribromophenol WHITE PPT</span> = phenol ka test. Reimer-Tiemann = ortho -CHO (salicylaldehyde), Kolbe = ortho -COOH (salicylic acid).";
+ }
+ document.querySelectorAll("#sc4 .sb").forEach(b=>b.onclick=()=>{sub=+b.dataset.s;named=-1;
+  document.querySelectorAll("#sc4 .sb").forEach(x=>x.classList.toggle("sel",x===b));
+  document.querySelectorAll("#sc4 .nb").forEach(x=>x.classList.remove("sel"));draw();});
+ document.querySelectorAll("#sc4 .qb").forEach(b=>b.onclick=()=>{test=+b.dataset.q;named=-1;
+  document.querySelectorAll("#sc4 .qb").forEach(x=>x.classList.toggle("sel",x===b));
+  document.querySelectorAll("#sc4 .nb").forEach(x=>x.classList.remove("sel"));draw();});
+ document.querySelectorAll("#sc4 .nb").forEach(b=>b.onclick=()=>{named=+b.dataset.n;
+  document.querySelectorAll("#sc4 .nb").forEach(x=>x.classList.toggle("sel",x===b));draw();});
+ draw();
+ return draw;
+})();
+inits[5]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"RMgX + KETONE (phir hydrolysis) se kya banta hai?",opts:["1° alcohol","2° alcohol","3° alcohol","phenol"],a:2,why:"Grignard master rule: HCHO -> 1°, doosra ALDEHYDE -> 2°, KETONE -> 3° alcohol. Ketone ke C pe pehle se 2 R groups + Grignard ka R = 3° !"},
+{q:"Propene + (1) BH3 (2) H2O2/OH- se kya banta hai?",opts:["propan-2-ol (Markovnikov)","propan-1-ol (anti-Markovnikov)","propanal","propane"],a:1,why:"Hydroboration-oxidation = ANTI-MARKOVNIKOV - OH KAM substituted C pe = propan-1-ol. Acid hydration (H2O/H+) deta propan-2-ol. Dono complementary!"},
+{q:"Lucas test me INSTANT (turant) turbidity kaun deta hai?",opts:["1° alcohol","2° alcohol","3° alcohol","phenol"],a:2,why:"Lucas = ZnCl2 + conc HCl, turbidity ka TIME: 3° INSTANT (stable carbocation), 2° ~5 min, 1° room temp pe NAHI. Time hi answer hai!"},
+{q:"Phenol ko carboxylic acid se kaise distinguish karoge?",opts:["NaHCO3 se CO2 deta hai","NaHCO3 se CO2 NAHI deta","Na se H2 nahi deta","Pani me fully miscible hai"],a:1,why:"Phenol carboxylic se KAMZOR acid hai - NaHCO3 (weak base) se CO2 NAHI nikalta. Carboxylic acids CO2 dete (brisk effervescence). Yehi distinguish test!"},
+{q:"Phenol + Br2 water ka product?",opts:["sirf o-bromophenol","sirf p-bromophenol","2,4,6-tribromophenol (white ppt)","reaction nahi hoti"],a:2,why:"-OH strongly activating + o/p-directing = Br2 WATER me teeno positions (2,4,6) pe Br = WHITE PRECIPITATE. Phenol ka confirmatory test!"}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Alcohols-phenols pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+
+go(0);
+</script></body></html>
