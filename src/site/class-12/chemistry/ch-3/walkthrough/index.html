@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemical Kinetics - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Chemistry - Chapter 3 - Chemical Kinetics</div>
+<h1>Chemical Kinetics Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - rate lab, order lab, integrated rate laws, Arrhenius lab, collision lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Rate of Reaction - Average vs Instantaneous ⭐</h2>
+<p class="why">Kinetics = reaction kitni TEZ chalti hai. Rate = concentration change ÷ time (mol L-1 s-1). Average rate = poore interval ka; instantaneous rate = ek instant pe graph ki TANGENT slope, r_inst = -d[R]/dt. Curve dekho: reactant ghat-ta hai, product badhta hai - aur time ke saath rate bhi ghat-ti hai. Slider se time point badlo, tangent dekho. Stoichiometry yaad rakho: aA + bB → cC + dD me rate = -(1/a)d[A]/dt = +(1/c)d[C]/dt - coefficient se divide karna mat bhoolo!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>time point t (s)</label><input type="range" id="rT" min="0" max="100" step="1" value="20"><span class="v" id="vlrT">20</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Rate Law aur Order - Experiment Ka Result ⭐⭐</h2>
+<p class="why">Rate law EXPERIMENT se aata hai: Rate = k·[A]^x·[B]^y. Overall order = x + y (coefficients se NAHI aata - fractional ya 0 bhi ho sakta). k sirf temperature pe depend karta hai; k ki UNIT order se nikalti: order 0 → mol L-1 s-1, order 1 → s-1, order 2 → L mol-1 s-1. Molecularity alag cheez: elementary step me takrane wale molecules ki ginti (hamesha integer 1/2/3). Order chuno, [A] badlo, rate ka curve dekho:</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="o0">Zero order (x=0)</button><button id="o1">First order (x=1)</button><button id="o2">Second order (x=2)</button></div>
+<div class="slrow"><label>[A] (mol/L)</label><input type="range" id="oA" min="0.1" max="2" step="0.1" value="1"><span class="v" id="vloA">1</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Integrated Rate Laws - Zero vs First Order ⭐⭐</h2>
+<p class="why">ZERO order: rate = k (concentration pe depend NAHI), [R] = [R]0 − kt → straight line graph, t1/2 = [R]0/2k (half-life [R]0 pe DEPEND karti). FIRST order: rate = k[R], k = (2.303/t)·log([R]0/[R]) → exponential decay, t1/2 = 0.693/k (CONSTANT - radioactive decay isliye first order!). Toggle karo aur half-life ka behavior dekho:</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="z0">Zero order: [R] = [R]0 − kt</button><button id="f1">First order: ln[R] = ln[R]0 − kt</button></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Arrhenius Equation - Temperature ka Power ⭐⭐</h2>
+<p class="why">k = A·e^(−Ea/RT). T badhao → k EXPONENTIALLY badhta (har 10°C pe rate ~double, temperature coefficient ≈ 2-3). Ea = activation energy - reaction ka energy barrier. Catalyst Ea GHATA deta (alternate path) → k badh jata, lekin equilibrium shift NAHI karta. Do-temperature formula: log(k2/k1) = (Ea/2.303R)·[(1/T1) − (1/T2)] - Ea numericals ka favourite. Slider = temperature, toggle = catalyst:</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="aN">No catalyst (Ea = 50 kJ/mol)</button><button id="aC">Catalyst ON (Ea = 25 kJ/mol)</button></div>
+<div class="slrow"><label>temperature T (K)</label><input type="range" id="aT" min="250" max="450" step="5" value="300"><span class="v" id="vlaT">300</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Collision Theory - Har Takraana Kaafi Nahi ⭐</h2>
+<p class="why">Reaction tabhi jab molecules takrate hain - lekin EFFECTIVE collision ke liye DO shartein: (1) proper orientation, (2) energy ≥ Ea. Rate = Z (collision frequency) × e^(−Ea/RT) (E≥Ea wala fraction) × P (orientation factor). T badhane pe zyada molecules Ea paar karte (Maxwell-Boltzmann shift) → effective collisions badhti. Catalyst neeche Ea ghatata → fraction badhta. Box me molecules dekho - green flash = effective collision:</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="cT1">Thanda (low T)</button><button id="cT2">Garam (high T)</button></div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Rapid Quiz - Kinetics Pakki? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: stoichiometric rate me coefficient se divide, order experimental + fractional possible, first order t1/2 = 0.693/k constant, har 10°C pe rate ~double, catalyst Ea ghatata hai (equilibrium shift nahi).</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc6">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Rate ⭐</h3><p>Rate = −Δ[reactant]/Δt = +Δ[product]/Δt (mol L-1 s-1) | Average = interval ka | Instantaneous = tangent slope −d[R]/dt | aA + bB → cC + dD: rate = −(1/a)d[A]/dt = +(1/c)d[C]/dt | Coefficient se divide mat bhoolo!</p></div>
+<div class="rcard"><h3>Rate Law & Order ⭐⭐</h3><p>Rate = k·[A]^x·[B]^y (EXPERIMENTAL) | Order = x+y (fractional/0 possible) | k sirf T pe depend | k units: order 0 → mol L-1 s-1, 1 → s-1, 2 → L mol-1 s-1 | Molecularity: elementary step ke molecules (integer 1/2/3 only) | Complex reaction = slowest step decide karta</p></div>
+<div class="rcard"><h3>Zero Order ⭐</h3><p>Rate = k (conc independent) | [R] = [R]0 − kt (straight line, slope −k) | t1/2 = [R]0/2k ([R]0 pe DEPEND) | Examples: NH3 on Pt, photochemical</p></div>
+<div class="rcard"><h3>First Order ⭐⭐</h3><p>Rate = k[R] | k = (2.303/t)·log([R]0/[R]) | log[R]0/[R] vs t → straight line | t1/2 = 0.693/k (CONSTANT!) | Radioactive decay, N2O5, H2O2 | Pseudo first order: ek reactant excess (ester hydrolysis)</p></div>
+<div class="rcard"><h3>Arrhenius ⭐⭐</h3><p>k = A·e^(−Ea/RT) | log k = log A − Ea/2.303RT | log(k2/k1) = (Ea/2.303R)·[(1/T1) − (1/T2)] | 10°C rise → rate ~double (coeff 2-3) | Ea = energy barrier (activated complex peak pe)</p></div>
+<div class="rcard"><h3>Collision & Catalyst ⭐</h3><p>Effective collision = proper orientation + E ≥ Ea | Rate = Z × e^(−Ea/RT) × P | T badhao → E≥Ea fraction badhta | Catalyst: lower Ea ka alternate path, khud consume nahi, EQUILIBRIUM SHIFT NAHI - sirf jaldi pahunchata</p></div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Chemistry Ch 3 Chemical Kinetics Visual Walkthrough</div>
+</div></div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=7;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}inits[0]=(()=>{
+const c=ctx("cv0"),sT=document.getElementById("rT"),vT=document.getElementById("vlrT"),R=document.getElementById("r0");
+// model: first-order-ish decay [R]=1*exp(-0.02 t), [P]=1-[R]; tangent at t: slope=-0.02*[R]
+const Rof=t=>Math.exp(-0.02*t);
+const X=t=>90+t/100*790;
+const Y=v=>295-v/1.05*250;
+function draw(){
+ c.clearRect(0,0,920,330);
+ const t=parseFloat(sT.value);
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(90,40);c.lineTo(90,295);c.lineTo(880,295);c.stroke();
+ [0,25,50,75,100].forEach(v=>{
+  const x=X(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(x,290);c.lineTo(x,300);c.stroke();
+  txt(c,""+v,x,315,DM,"10px 'Cascadia Code',monospace","center");
+ });
+ txt(c,"t (s) →",865,280,DM,"11px 'Cascadia Code',monospace","center");
+ [0.25,0.5,0.75,1].forEach(v=>{
+  const y=Y(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();
+  txt(c,v.toFixed(2),78,y+4,DM,"10px 'Cascadia Code',monospace","right");
+ });
+ txt(c,"conc (mol/L)",40,30,CY,"11px 'Cascadia Code',monospace","left");
+ // curves
+ c.lineWidth=3;
+ c.strokeStyle=CY;c.beginPath();
+ for(let px=0;px<=100;px++){const tt=px;const x=X(tt),y=Y(Rof(tt));px===0?c.moveTo(x,y):c.lineTo(x,y);}
+ c.stroke();
+ c.strokeStyle=MG;c.beginPath();
+ for(let px=0;px<=100;px++){const tt=px;const x=X(tt),y=Y(1-Rof(tt));px===0?c.moveTo(x,y):c.lineTo(x,y);}
+ c.stroke();
+ txt(c,"[R] reactant",700,Y(Rof(85))-10,CY,"12px 'Cascadia Code',monospace","center");
+ txt(c,"[P] product",700,Y(1-Rof(85))+20,MG,"12px 'Cascadia Code',monospace","center");
+ // tangent at t
+ const r=Rof(t),slope=-0.02*r; // d[R]/dt per second
+ const x1=Math.max(90,X(t)-130),x2=Math.min(880,X(t)+130);
+ const pxPerSec=790/100, pxPerUnit=250/1.05;
+ const yAtX=x=>Y(r)+(x-X(t))*((-slope)*pxPerUnit/pxPerSec);
+ c.strokeStyle=YL;c.lineWidth=2;c.setLineDash([6,4]);c.beginPath();
+ c.moveTo(x1,yAtX(x1));c.lineTo(x2,yAtX(x2));c.stroke();c.setLineDash([]);
+ c.fillStyle=YL;c.beginPath();c.arc(X(t),Y(r),7,0,7);c.fill();
+ c.strokeStyle=YL;c.setLineDash([3,3]);c.lineWidth=1;
+ c.beginPath();c.moveTo(X(t),Y(r));c.lineTo(X(t),295);c.stroke();c.setLineDash([]);
+ txt(c,"tangent = instantaneous rate",X(t)>500?X(t)-140:X(t)+20,Y(r)-20,YL,"11px 'Cascadia Code',monospace","left");
+ const inst=0.02*r;
+ const avg=Rof(100)>=1?0:(1-Rof(t))/Math.max(1,t);
+ txt(c,"curve flat hoti ja rahi - rate time ke saath GHATTI hai",460,30,"#e8e8f2","bold 12px 'Cascadia Code',monospace","center");
+ R.innerHTML="t = <b style='color:#facc15'>"+t+" s</b> &nbsp;|&nbsp; [R] = <b style='color:#22d3ee'>"+r.toFixed(3)+" M</b> &nbsp;|&nbsp; r_inst = |slope| = <b style='color:#facc15'>"+inst.toExponential(2)+" M/s</b>"+(t>0?" &nbsp;|&nbsp; r_avg(0→t) = <b>"+((1-r)/t).toExponential(2)+" M/s</b>":"")+" &nbsp;|&nbsp; r_inst ka matlab: is instant ki tangent slope";
+}
+sT.addEventListener("input",()=>{vT.textContent=sT.value;draw();});
+return function(){vT.textContent=sT.value;draw();};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1"),R=document.getElementById("r1");
+const b0=document.getElementById("o0"),b1=document.getElementById("o1"),b2=document.getElementById("o2");
+const sA=document.getElementById("oA"),vA=document.getElementById("vloA");
+let ord=1;
+const k=0.5; // schematic
+const UNIT=["mol L-1 s-1","s-1","L mol-1 s-1"];
+const SHP=["flat - rate concentration pe depend NAHI","straight line - rate ∝ [A]","parabola - rate ∝ [A]^2"];
+const X=a=>90+a/2*790;
+const Y=r=>295-r/2.2*250;
+function mark(){[[b0,0],[b1,1],[b2,2]].forEach(([b,i])=>{
+ b.style.borderColor=i===ord?"#22d3ee":"#2d2d52";b.style.color=i===ord?"#22d3ee":"#8fa0c8";});}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const A=parseFloat(sA.value);
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(90,40);c.lineTo(90,295);c.lineTo(880,295);c.stroke();
+ [0,0.5,1,1.5,2].forEach(v=>{
+  const x=X(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(x,290);c.lineTo(x,300);c.stroke();
+  txt(c,v.toFixed(1),x,315,DM,"10px 'Cascadia Code',monospace","center");
+ });
+ txt(c,"[A] (mol/L) →",830,280,DM,"11px 'Cascadia Code',monospace","center");
+ [0.5,1,1.5,2].forEach(v=>{
+  const y=Y(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();
+  txt(c,v.toFixed(1),78,y+4,DM,"10px 'Cascadia Code',monospace","right");
+ });
+ txt(c,"rate",40,30,CY,"11px 'Cascadia Code',monospace","left");
+ // curve rate = k*A^ord
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+ for(let px=0;px<=100;px++){
+  const a=px/100*2;
+  const r=k*Math.pow(a,ord);
+  const x=X(a),y=Y(Math.min(2.2,r));
+  px===0?c.moveTo(x,y):c.lineTo(x,y);
+ }
+ c.stroke();
+ const r=k*Math.pow(A,ord);
+ c.fillStyle=YL;c.beginPath();c.arc(X(A),Y(r),7,0,7);c.fill();
+ txt(c,"rate = "+r.toFixed(2),Math.min(790,X(A)+16),Y(r)-8,YL,"bold 12px 'Cascadia Code',monospace","left");
+ txt(c,"Rate = k·[A]^"+ord+" (k = "+k+" schematic)",460,30,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+ txt(c,SHP[ord],460,270,MG,"12px 'Cascadia Code',monospace","center");
+ txt(c,"k ki unit: "+UNIT[ord],460,52,YL,"bold 12px 'Cascadia Code',monospace","center");
+ R.innerHTML="Order = <b style='color:#facc15'>"+ord+"</b> &nbsp;|&nbsp; [A] = <b>"+A.toFixed(1)+" M</b> &nbsp;|&nbsp; rate = "+k+"×"+A.toFixed(1)+"^"+ord+" = <b style='color:#22d3ee'>"+r.toFixed(3)+" M/s</b> &nbsp;|&nbsp; k unit: <b>"+UNIT[ord]+"</b> &nbsp;|&nbsp; Order EXPERIMENTAL hai - coefficients se nahi aata!";
+}
+b0.onclick=()=>{ord=0;mark();draw();};
+b1.onclick=()=>{ord=1;mark();draw();};
+b2.onclick=()=>{ord=2;mark();draw();};
+sA.addEventListener("input",()=>{vA.textContent=sA.value;draw();});
+return function(){vA.textContent=sA.value;mark();draw();};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2"),R=document.getElementById("r2");
+const bZ=document.getElementById("z0"),bF=document.getElementById("f1");
+let mode=1; // 0 zero, 1 first
+const R0=1,k=0.02,TMAX=140;
+const Rof=t=>mode===0?Math.max(0,R0-k*t):R0*Math.exp(-k*t);
+const X=t=>90+t/TMAX*790;
+const Y=v=>295-v/1.05*250;
+function mark(){[[bZ,0],[bF,1]].forEach(([b,i])=>{
+ b.style.borderColor=i===mode?"#22d3ee":"#2d2d52";b.style.color=i===mode?"#22d3ee":"#8fa0c8";});}
+function draw(){
+ c.clearRect(0,0,920,330);
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(90,40);c.lineTo(90,295);c.lineTo(880,295);c.stroke();
+ [0,35,70,105,140].forEach(v=>{
+  const x=X(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(x,290);c.lineTo(x,300);c.stroke();
+  txt(c,""+v,x,315,DM,"10px 'Cascadia Code',monospace","center");
+ });
+ txt(c,"t →",865,280,DM,"11px 'Cascadia Code',monospace","center");
+ [0.25,0.5,0.75,1].forEach(v=>{
+  const y=Y(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();
+  txt(c,v.toFixed(2),78,y+4,DM,"10px 'Cascadia Code',monospace","right");
+ });
+ txt(c,"[R]",45,30,CY,"11px 'Cascadia Code',monospace","left");
+ // curve
+ c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+ for(let px=0;px<=140;px++){const x=X(px),y=Y(Rof(px));px===0?c.moveTo(x,y):c.lineTo(x,y);}
+ c.stroke();
+ // half-life markers
+ const th=mode===0?R0/(2*k):0.693/k;
+ c.setLineDash([5,5]);
+ for(let h=1;h<=(mode===0?1:3);h++){
+  const tt=th*h, frac=Math.pow(0.5,h);
+  if(tt>TMAX)break;
+  if(mode===0&&frac<=0)break;
+  const x=X(tt),y=Y(R0*frac);
+  c.strokeStyle=YL;c.lineWidth=1;
+  c.beginPath();c.moveTo(x,295);c.lineTo(x,y);c.lineTo(90,y);c.stroke();
+  txt(c,"t1/2",x+4,Math.min(290,y-6),YL,"10px 'Cascadia Code',monospace","left");
+ }
+ c.setLineDash([]);
+ const thTxt=mode===0?"t1/2 = [R]0/2k = "+(R0/(2*k)).toFixed(1)+" s ([R]0 badhao to t1/2 BADHTI)":"t1/2 = 0.693/k = "+(0.693/k).toFixed(1)+" s (CONSTANT - [R]0 se farak nahi)";
+ txt(c,mode===0?"ZERO order: [R] = [R]0 - kt (STRAIGHT LINE, slope = -k)":"FIRST order: [R] = [R]0·e^(-kt) (exponential decay)",460,30,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+ txt(c,thTxt,460,52,YL,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,mode===0?"har equal time me SAME amount ghatta (0.5 M per 25 s)":"har t1/2 me EXACT AADHA (1 → 0.5 → 0.25 → 0.125)",460,272,MG,"12px 'Cascadia Code',monospace","center");
+ R.innerHTML=mode===0?
+  "<b style='color:#22d3ee'>[R] = [R]0 − kt</b> &nbsp;|&nbsp; graph: straight line &nbsp;|&nbsp; t1/2 = [R]0/2k = <b style='color:#facc15'>"+(R0/(2*k)).toFixed(1)+" s</b> &nbsp;|&nbsp; half-life initial conc pe DEPEND karti (zero order ka pakka sign)":
+  "<b style='color:#22d3ee'>k = (2.303/t)·log([R]0/[R])</b> &nbsp;|&nbsp; t1/2 = 0.693/k = <b style='color:#facc15'>"+(0.693/k).toFixed(1)+" s</b> &nbsp;|&nbsp; half-life CONSTANT - [R]0 se independent (radioactive decay isliye first order!)";
+}
+bZ.onclick=()=>{mode=0;mark();draw();};
+bF.onclick=()=>{mode=1;mark();draw();};
+return function(){mark();draw();};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3"),R=document.getElementById("r3");
+const bN=document.getElementById("aN"),bC=document.getElementById("aC");
+const sT=document.getElementById("aT"),vT=document.getElementById("vlaT");
+let cat=false;
+const A=1e7; // pre-exponential, schematic
+const Rg=8.314;
+const Ea=()=>cat?25000:50000;
+const kof=T=>A*Math.exp(-Ea()/(Rg*T));
+const X=T=>90+(T-250)/200*790;
+const Y=l=>295-(l+4)/7*250; // log10 k scale: -4..+3 -> 295..45
+function mark(){[[bN,false],[bC,true]].forEach(([b,v])=>{
+ b.style.borderColor=v===cat?"#22d3ee":"#2d2d52";b.style.color=v===cat?"#22d3ee":"#8fa0c8";});}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const T=parseFloat(sT.value);
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(90,40);c.lineTo(90,295);c.lineTo(880,295);c.stroke();
+ [250,300,350,400,450].forEach(v=>{
+  const x=X(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(x,290);c.lineTo(x,300);c.stroke();
+  txt(c,""+v,x,315,DM,"10px 'Cascadia Code',monospace","center");
+ });
+ txt(c,"T (K) →",860,280,DM,"11px 'Cascadia Code',monospace","center");
+ [[-4,"1e-4"],[-2,"1e-2"],[0,"1e0"],[2,"1e2"]].forEach(([v,lab])=>{
+  const y=Y(v);c.strokeStyle=DM;c.lineWidth=1;
+  c.beginPath();c.moveTo(84,y);c.lineTo(96,y);c.stroke();
+  txt(c,lab,78,y+4,DM,"10px 'Cascadia Code',monospace","right");
+ });
+ txt(c,"k (log scale)",40,30,CY,"11px 'Cascadia Code',monospace","left");
+ // curve log10 k vs T
+ c.strokeStyle=cat?GR:CY;c.lineWidth=3;c.beginPath();
+ for(let px=0;px<=100;px++){
+  const tt=250+px*2;
+  const l=Math.log10(kof(tt));
+  const x=X(tt),y=Y(Math.max(-4,Math.min(3,l)));
+  px===0?c.moveTo(x,y):c.lineTo(x,y);
+ }
+ c.stroke();
+ // reference k at 300K no-catalyst for ratio
+ const k300=A*Math.exp(-50000/(Rg*300));
+ const k=kof(T);
+ const l=Math.log10(k);
+ c.fillStyle=YL;c.beginPath();c.arc(X(T),Y(Math.max(-4,Math.min(3,l))),7,0,7);c.fill();
+ txt(c,"k ≈ "+k.toExponential(1),Math.min(790,X(T)+16),Y(Math.max(-4,Math.min(3,l)))-8,YL,"bold 12px 'Cascadia Code',monospace","left");
+ txt(c,"k = A·e^(-Ea/RT),  Ea = "+(cat?25:50)+" kJ/mol"+(cat?" (CATALYST - deewar aadhi!)":""),460,30,"#e8e8f2","bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"curve EXPONENTIAL hai - thoda T badhao, k bahut badhta (10°C pe ~2x)",460,272,MG,"11px 'Cascadia Code',monospace","center");
+ const ratio=k/k300;
+ R.innerHTML="T = <b style='color:#facc15'>"+T+" K</b> &nbsp;|&nbsp; Ea = <b>"+(cat?25:50)+" kJ/mol</b> &nbsp;|&nbsp; k ≈ <b style='color:#22d3ee'>"+k.toExponential(2)+"</b> &nbsp;|&nbsp; vs 300 K no-catalyst: <b style='color:#34d399'>"+(ratio>=100?ratio.toExponential(1):ratio.toFixed(1))+"×</b> &nbsp;|&nbsp; log(k2/k1) = (Ea/2.303R)·[(1/T1) − (1/T2)]";
+}
+bN.onclick=()=>{cat=false;mark();draw();};
+bC.onclick=()=>{cat=true;mark();draw();};
+sT.addEventListener("input",()=>{vT.textContent=sT.value;draw();});
+return function(){vT.textContent=sT.value;mark();draw();};
+})();
+inits[4]=(()=>{
+const c=ctx("cv4"),R=document.getElementById("r4");
+const bT1=document.getElementById("cT1"),bT2=document.getElementById("cT2");
+let hot=false;
+const BOX={x1:120,y1:60,x2:620,y2:290};
+const mol=[];
+for(let i=0;i<26;i++){
+ mol.push({x:BOX.x1+30+(i*67)%460,y:BOX.y1+30+(i*43)%200,ang:i*0.7,ph:i});
+}
+let flashes=[];
+let eff=0,tot=0;
+function mark(){[[bT1,false],[bT2,true]].forEach(([b,v])=>{
+ b.style.borderColor=v===hot?"#22d3ee":"#2d2d52";b.style.color=v===hot?"#22d3ee":"#8fa0c8";});}
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const spd=hot?2.4:0.9;
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.strokeRect(BOX.x1,BOX.y1,BOX.x2-BOX.x1,BOX.y2-BOX.y1);
+ // collision check (cheap grid pairs)
+ if(t%9===0){
+  for(let i=0;i<mol.length;i++)for(let j=i+1;j<mol.length;j++){
+   const a=mol[i],b=mol[j];
+   if(Math.hypot(a.x-b.x,a.y-b.y)<16){
+    tot++;
+    const p=hot?0.5:0.12; // fraction with E>=Ea and orientation
+    if(Math.random()<p){eff++;flashes.push({x:(a.x+b.x)/2,y:(a.y+b.y)/2,t:t});}
+   }
+  }
+ }
+ mol.forEach((m,i)=>{
+  const v=spd;
+  m.x+=Math.cos(m.ang)*v;m.y+=Math.sin(m.ang)*v;
+  if(m.x<BOX.x1+8||m.x>BOX.x2-8){m.ang=Math.PI-m.ang;m.x=Math.max(BOX.x1+8,Math.min(BOX.x2-8,m.x));}
+  if(m.y<BOX.y1+8||m.y>BOX.y2-8){m.ang=-m.ang;m.y=Math.max(BOX.y1+8,Math.min(BOX.y2-8,m.y));}
+  c.fillStyle=hot?RD:CY;c.beginPath();c.arc(m.x,m.y,7,0,7);c.fill();
+ });
+ flashes=flashes.filter(f=>t-f.t<6);
+ flashes.forEach(f=>{
+  c.strokeStyle=GR;c.lineWidth=3;c.beginPath();c.arc(f.x,f.y,14-(t-f.t)*2,0,7);c.stroke();
+ });
+ txt(c,"reaction box",BOX.x1+8,BOX.y2+22,DM,"10px 'Cascadia Code',monospace","left");
+ // right panel
+ const x0=660;
+ txt(c,hot?"GARAM (high T)":"THANDA (low T)",x0,80,hot?RD:CY,"bold 14px 'Cascadia Code',monospace","left");
+ txt(c,"effective collisions:",x0,120,"#e8e8f2","12px 'Cascadia Code',monospace","left");
+ txt(c,""+eff,x0,150,GR,"bold 30px 'Cascadia Code',monospace","left");
+ txt(c,"Effective ke liye DO shartein:",x0,195,YL,"11px 'Cascadia Code',monospace","left");
+ txt(c,"1. proper orientation",x0,215,DM,"11px 'Cascadia Code',monospace","left");
+ txt(c,"2. energy >= Ea",x0,235,DM,"11px 'Cascadia Code',monospace","left");
+ txt(c,"Rate = Z x e^(-Ea/RT) x P",x0,265,MG,"11px 'Cascadia Code',monospace","left");
+ txt(c,hot?"T badha → E≥Ea fraction bahut badha!":"thanda → kam molecules Ea paar karte",x0,295,hot?GR:DM,"10px 'Cascadia Code',monospace","left");
+ R.innerHTML=(hot?"<b style='color:#f87171'>High T</b>":"Thanda (low T)")+" &nbsp;|&nbsp; effective collisions (green flash) = <b style='color:#34d399'>"+eff+"</b> &nbsp;|&nbsp; T badhao → zyada molecules Ea paar → rate badhti | Catalyst Ea ghatata hai, equilibrium SHIFT nahi";
+}
+bT1.onclick=()=>{hot=false;eff=0;tot=0;mark();draw(0);};
+bT2.onclick=()=>{hot=true;eff=0;tot=0;mark();draw(0);};
+anims[4]=t=>draw(t);
+return function(){mark();draw(0);};
+})();
+inits[5]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"N2 + 3H2 → 2NH3 ke liye rate ka SAHI relation?",opts:["rate = -d[N2]/dt = -(1/3)d[H2]/dt = +(1/2)d[NH3]/dt","rate = -d[N2]/dt = -3d[H2]/dt = +2d[NH3]/dt","rate = -3d[N2]/dt = -d[H2]/dt = +d[NH3]/dt","Teeno species ki rate hamesha barabar hoti hai"],a:0,why:"Stoichiometric coefficients se DIVIDE karna padta hai: rate = -(1/a)d[A]/dt = +(1/c)d[C]/dt. Isliye -(1/3) H2 ke saath aur +(1/2) NH3 ke saath. Ye numerical me sabse common galti hai!"},
+{q:"Order aur molecularity me farak?",opts:["Dono experimental hain, fractional possible","Order experimental hai (fractional/0 possible), molecularity theoretical hai (hamesha integer 1/2/3)","Dono hamesha whole numbers hain","Molecularity fractional ho sakti hai, order nahi"],a:1,why:"Order rate law ke powers ka sum hai - EXPERIMENT se aata, fractional ya zero bhi ho sakta. Molecularity elementary step me takrane wale molecules ki ginti - theoretical, hamesha integer. Complex reaction ka rate = slowest step decide karta hai."},
+{q:"First order reaction ki half-life?",opts:["t1/2 = [R]0/2k - [R]0 pe depend karti hai","t1/2 = 2.303/k","t1/2 = 0.693/k - CONSTANT, [R]0 se independent","t1/2 = k/0.693"],a:2,why:"First order: t1/2 = 0.693/k - initial concentration se BILKUL independent. Radioactive decay ka half-life hamesha constant hota hai kyunki woh first order hai. Zero order me t1/2 = [R]0/2k - woh DEPEND karti hai!"},
+{q:"Temperature 10°C badhane pe reaction rate generally?",opts:["Aadhi ho jaati hai","~Double (2-3 guna) ho jaati hai","10 guna ho jaati hai","Same rehti hai"],a:1,why:"Temperature coefficient ≈ 2-3: har 10°C rise pe rate roughly DOUBLE. Arrhenius k = A·e^(-Ea/RT) se - T badhne pe E≥Ea wala fraction exponentially badhta hai."},
+{q:"Catalyst kya karta hai?",opts:["Equilibrium ko products ki taraf shift karta hai","Reaction me khud consume ho jaata hai","Ea badha deta hai","Ea GHATA deta hai - equilibrium jaldi pahunchta, shift NAHI karta"],a:3,why:"Catalyst lower activation energy ka alternate path deta hai (khud consume nahi hota). Equilibrium CONSTANT nahi badalta - sirf equilibrium tak JALDI pahunchate hain. Positive catalyst speed up, negative/inhibitor slow down."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Kinetics pakki! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+
+go(0);
+</script></body></html>
