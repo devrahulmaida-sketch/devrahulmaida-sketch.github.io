@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Biomolecules - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Chemistry - Chapter 10 - Biomolecules</div>
+<h1>Biomolecules Ka Visual Walkthrough</h1>
+<p class="sub">7 interactive scenes - sugar sort game (reducing vs non-reducing), glucose proof bench (5 reactions), alpha/beta anomer lab, glycosidic junction (sucrose/maltose/lactose/starch/cellulose), amino acid + peptide bond maker, protein structure levels, DNA base pairing + vitamin match, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Kaunsa Sugar? - Reducing Ya Nahi? ⭐⭐</h2>
+<p class="why">Hydrolysis basis: MONOsaccharide (1 unit - glucose, fructose), DI (2 units - sucrose, maltose, lactose), POLY (bahut - starch, cellulose). REDUCING sugar = free carbonyl/anomeric C (Tollens/Fehling POSITIVE): glucose, fructose, maltose, lactose. SUCROSE = NON-reducing (dono anomeric C glycosidic bond me busy). Sugar dekho, class batao!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="eb sel" data-e="0">glucose</button>
+<button class="eb" data-e="1">fructose</button>
+<button class="eb" data-e="2">sucrose</button>
+<button class="eb" data-e="3">maltose</button>
+<button class="eb" data-e="4">lactose</button>
+<button class="eb" data-e="5">starch</button>
+</div>
+<div class="btnrow">
+<button class="gb" data-g="0">mono, reducing</button>
+<button class="gb" data-g="1">di, reducing</button>
+<button class="gb" data-g="2">di, NON-reducing</button>
+<button class="gb" data-g="3">polysaccharide</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Glucose Proof Bench - Open Chain Ke Saboot ⭐⭐</h2>
+<p class="why">Glucose ka open-chain structure 5 reactions se PROVE hota: HI/red P (heat) → n-hexane (straight 6-C chain); Br2 water → gluconic acid (-CHO oxidize, ALDEHYDE proof); HNO3 → saccharic acid (-CHO + -CH2OH dono oxidize); acetic anhydride → pentaacetate (5 -OH); HCN → cyanohydrin (carbonyl present). Reagent chuno, result dekho!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="tb sel" data-t="0">HI / red P</button>
+<button class="tb" data-t="1">Br2 water</button>
+<button class="tb" data-t="2">HNO3</button>
+<button class="tb" data-t="3">(CH3CO)2O</button>
+<button class="tb" data-t="4">HCN</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Anomer Lab - Alpha Ya Beta? ⭐⭐</h2>
+<p class="why">Glucose actually RING me rehta: C1 ka -CHO C5 ke -OH se react karke 6-membered PYRANOSE ring. Naya chiral centre (ANOMERIC carbon C1) → do anomers: alpha-glucose (C1 OH NEECHE) aur beta-glucose (C1 OH UPAR). Open chain ⇌ cyclic equilibrium me, isliye glucose Tollens positive deta. Fructose = ketohexose, 5-membered FURANOSE ring.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="pb sel" data-p="0">alpha-glucose</button>
+<button class="pb" data-p="1">beta-glucose</button>
+<button class="pb" data-p="2">fructose (furanose)</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Glycosidic Junction - Kaunsa Link, Kaunsa Sugar? ⭐⭐</h2>
+<p class="why">Glycosidic linkage: do monosaccharides anomeric C pe -O- bond se jude (condensation, H2O nikalta). SUCROSE = glucose+fructose (C1-C2, dono anomeric busy = NON-reducing, hydrolysis se invert sugar). MALTOSE = 2 glucose (alpha 1→4, reducing). LACTOSE = galactose+glucose (beta 1→4, milk sugar, reducing). STARCH = alpha-glucose polymer (amylose + iodine = BLUE test), CELLULOSE = beta-glucose (humans digest NAHI), GLYCOGEN = animal starch.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="db sel" data-d="0">sucrose</button>
+<button class="db" data-d="1">maltose</button>
+<button class="db" data-d="2">lactose</button>
+<button class="db" data-d="3">starch</button>
+<button class="db" data-d="4">cellulose</button>
+<button class="db" data-d="5">glycogen</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Amino Acid + Peptide Bond Maker ⭐⭐</h2>
+<p class="why">Amino acid = alpha-C pe -NH2 + -COOH + H + side chain (R). ~20 standard; ESSENTIAL body nahi banati (diet se: valine, leucine, lysine). ZWITTERION: -NH2 proton le leta (-NH3+) aur -COOH de deta (-COO-) = same molecule me + aur - charge (dipolar) → high melting, water-soluble, amphoteric. PEPTIDE BOND: ek ka -COOH dusre ke -NH2 se -CO-NH- (amide linkage), H2O nikalta. Polypeptide/protein aise hi banta.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="ab sel" data-a="0">amino acid</button>
+<button class="ab" data-a="1">zwitterion</button>
+<button class="ab" data-a="2">peptide bond</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Protein Structure - 4 Levels + Denaturation ⭐</h2>
+<p class="why">PRIMARY = amino acids ka sequence (peptide bonds). SECONDARY = folding - alpha-helix (spring) ya beta-pleated sheet, H-bonds se. TERTIARY = 3D shape (side chains interact - disulphide bonds). QUATERNARY = multiple chains (haemoglobin). DENATURATION: heat/acid/agitation se 2°/3° TOOT jati (1° intact) → activity khatam, usually irreversible. Example: anda ubalna (egg white coagulate), dahi jamna. Enzymes = protein catalysts, highly specific (lock-and-key).</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></div>
+<div class="btnrow">
+<button class="lb sel" data-l="0">1° primary</button>
+<button class="lb" data-l="1">2° secondary</button>
+<button class="lb" data-l="2">3° tertiary</button>
+<button class="lb" data-l="3">4° quaternary</button>
+<button class="lb" data-l="4">denaturation</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. DNA Base Pairing + Vitamin Match ⭐⭐</h2>
+<p class="why">Nucleotide = pentose sugar + phosphate + nitrogenous base. DNA: deoxyribose + A,T,G,C (double helix, antiparallel strands). RNA: ribose + A,U,G,C (T ki jagah U - KEY difference!). Complementary pairing: A=T (2 H-bonds), G≡C (3 H-bonds). Vitamins: water-soluble B,C (store NAHI, excess urine me); fat-soluble A,D,E,K (store, excess toxic). Deficiency: C→scurvy, D→rickets, A→night blindness, B1→beri-beri, K→bleeding.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="nb sel" data-n="0">A = T pair</button>
+<button class="nb" data-n="1">G ≡ C pair</button>
+<button class="nb" data-n="2">DNA vs RNA</button>
+<button class="nb" data-n="3">vitamins</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Biomolecules Pakka? ⭐</h2>
+<p class="why">5 sawaal - sugar tests, glucose proofs, linkages, proteins, DNA. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Reducing test</b>Reducing sugar = FREE carbonyl/anomeric C → Tollens/Fehling POSITIVE (glucose, fructose, maltose, lactose). SUCROSE = NON-reducing (dono anomeric C busy).</div>
+<div class="rcard"><b>Glucose proofs</b>HI/redP → n-hexane (6-C straight). Br2 water → gluconic acid (CHO hai!). HNO3 → saccharic acid. (CH3CO)2O → pentaacetate (5 OH). HCN → cyanohydrin (C=O).</div>
+<div class="rcard"><b>α vs β glucose</b>α-glucose polymer = STARCH (amylose + iodine = BLUE). β-glucose polymer = CELLULOSE (humans digest NAHI). Glycogen = animal starch.</div>
+<div class="rcard"><b>Amino acid</b>α-C pe NH2+COOH+H+R. Zwitterion = NH3+ aur COO- ek saath (dipolar, amphoteric). Peptide bond = -CO-NH- (amide, H2O nikalta).</div>
+<div class="rcard"><b>Protein + denaturation</b>1° sequence, 2° helix/sheet, 3° 3D fold, 4° multi-chain. Denaturation = 2°/3° tootta, 1° INTACT (anda ubalna). Enzymes = protein catalysts.</div>
+<div class="rcard"><b>DNA + vitamins</b>Nucleotide = sugar+phosphate+base. DNA deoxyribose + T; RNA ribose + U. A=T (2 H-bonds), G≡C (3). Vitamins B,C water-soluble; A,D,E,K fat-soluble.</div>
+</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+inits[0]=(()=>{
+ const c=ctx("cv0"),R=document.getElementById("r0");
+ const MOLS=[
+  {n:"glucose",f:"C6H12O6",a:0,why:"aldohexose - free -CHO (anomeric C free) = Tollens/Fehling POSITIVE"},
+  {n:"fructose",f:"C6H12O6",a:0,why:"ketohexose - C2 pe ketone, par carbonyl FREE = reducing (Tollens +)"},
+  {n:"sucrose",f:"C12H22O11",a:2,why:"glucose+fructose - DONO anomeric C (C1-C2) glycosidic bond me BUSY = NON-reducing"},
+  {n:"maltose",f:"C12H22O11",a:1,why:"2 glucose, alpha(1->4) - ek anomeric C FREE = reducing"},
+  {n:"lactose",f:"C12H22O11",a:1,why:"galactose+glucose, beta(1->4) - milk sugar, free anomeric C = reducing"},
+  {n:"starch",f:"(C6H10O5)n",a:3,why:"alpha-glucose ka POLYMER (amylose+amylopectin) - polysaccharide, energy storage"}];
+ const GL=["mono, reducing","di, reducing","di, NON-reducing","polysaccharide"];
+ let sel=0,guessed=-1;
+ function draw(){
+  c.clearRect(0,0,920,330);
+  const m=MOLS[sel];
+  txt(c,"Sugar:",60,60,DM,"13px 'Cascadia Code',monospace");
+  txt(c,m.n.toUpperCase(),60,120,CY,"bold 34px 'Cascadia Code',monospace");
+  txt(c,m.f,60,160,"#a5b0d0","16px 'Cascadia Code',monospace");
+  c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.moveTo(60,200);c.lineTo(860,200);c.stroke();
+  if(guessed<0){
+   txt(c,"Class batao neeche buttons se: mono/di/poly + reducing?",60,236,YL,"15px 'Cascadia Code',monospace");
+   txt(c,"Hint: reducing = FREE carbonyl / anomeric carbon (Tollens +)",60,266,DM,"13px 'Cascadia Code',monospace");
+  }else{
+   const ok=guessed===m.a;
+   txt(c,ok?"SAHI!":"GALAT - dekho kyun:",60,236,ok?GR:RD,"bold 17px 'Cascadia Code',monospace");
+   txt(c,"Answer: "+GL[m.a],60,264,MG,"bold 14px 'Cascadia Code',monospace");
+   wrap(c,m.why,60,290,"#c9d4ff","13px 'Cascadia Code',monospace",86,18);
+  }
+  R.innerHTML="Sugar "+(sel+1)+" / 6 - yaad rakho: SUCROSE hi wo famous NON-reducing sugar hai (dono anomeric C busy)!";
+ }
+ document.querySelectorAll("#sc0 .eb").forEach(b=>b.onclick=()=>{
+  sel=parseInt(b.dataset.e);guessed=-1;
+  document.querySelectorAll("#sc0 .eb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc0 .gb").forEach(b=>b.onclick=()=>{
+  guessed=parseInt(b.dataset.g);draw();});
+ return draw;
+})();
+inits[1]=(()=>{
+ const c=ctx("cv1"),R=document.getElementById("r1");
+ let tab=0;
+ const TABS=[
+  {t:"HI / red P, heat:",eq:["glucose  --(HI / red P, heat)-->  n-HEXANE","","CH3-(CH2)4-CH3"],
+   note:"Seedhi 6-CARBON chain ka proof - glucose ka skeleton STRAIGHT hai, branch nahi.",badge:"STRAIGHT CHAIN",col:CY},
+  {t:"Br2 water (bromine water):",eq:["glucose-CHO  +  Br2 (water)  -->  GLUCONIC ACID","","-CHO  ->  -COOH (sirf aldehyde oxidize)"],
+   note:"BROMINE WATER sirf ALDEHYDE ko oxidize karta (ketone ko nahi) = -CHO present ka DIRECT proof. Fructose react NAHI karta!",badge:"-CHO PROOF",col:GR},
+  {t:"HNO3 (nitric acid):",eq:["glucose  +  HNO3  -->  SACCHARIC ACID","","-CHO AUR -CH2OH dono -> -COOH"],
+   note:"Strong oxidizer HNO3 CHO ke saath CH2OH ko bhi oxidize kar deta = dono ends pe -COOH (saccharic acid).",badge:"DONO ENDS",col:MG},
+  {t:"Acetic anhydride (CH3CO)2O:",eq:["glucose  +  (CH3CO)2O  -->  glucose PENTAACETATE","","5 x -OH  ->  5 x -OCOCH3"],
+   note:"PENTA-acetate banta = 5 -OH groups present ka proof (5 hydroxyl, 5 acetyl lagte).",badge:"5 -OH PROOF",col:YL},
+  {t:"HCN (hydrogen cyanide):",eq:["glucose  +  HCN  -->  CYANOHYDRIN","","C=O  +  HCN  ->  C(OH)(CN)"],
+   note:"Carbonyl ka addition reaction = C=O group present ka proof (aldehyde/ketone dono dete).",badge:"C=O PROOF",col:RD}];
+ function flask(x,y,col){
+  c.strokeStyle="#3d3d6e";c.lineWidth=3;
+  c.beginPath();c.moveTo(x-14,y-64);c.lineTo(x-14,y-30);c.lineTo(x-46,y+42);
+  c.quadraticCurveTo(x-52,y+62,x-30,y+62);c.lineTo(x+30,y+62);
+  c.quadraticCurveTo(x+52,y+62,x+46,y+42);c.lineTo(x+14,y-30);c.lineTo(x+14,y-64);c.stroke();
+  c.fillStyle=col;c.globalAlpha=0.35;
+  c.beginPath();c.moveTo(x-37,y+22);c.quadraticCurveTo(x,y+8,x+37,y+22);
+  c.lineTo(x+46,y+42);c.quadraticCurveTo(x+52,y+62,x+30,y+62);c.lineTo(x-30,y+62);
+  c.quadraticCurveTo(x-52,y+62,x-46,y+42);c.closePath();c.fill();c.globalAlpha=1;
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  const t=TABS[tab];
+  txt(c,t.t,40,40,MG,"bold 16px 'Cascadia Code',monospace");
+  flask(140,170,t.col);
+  txt(c,"C6H12O6",88,240,DM,"12px 'Cascadia Code',monospace");
+  t.eq.forEach((l,i)=>{if(l)txt(c,l,300,64+i*26,CY,"bold 14px 'Cascadia Code',monospace");});
+  c.fillStyle="#16162e";c.fillRect(300,160,t.badge.length*9.6+18,26);c.strokeStyle=t.col;c.strokeRect(300,160,t.badge.length*9.6+18,26);
+  txt(c,t.badge,309,178,t.col,"bold 13px 'Cascadia Code',monospace");
+  wrap(c,t.note,300,210,"#c9d4ff","13.5px 'Cascadia Code',monospace",62,19);
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(270,16);c.lineTo(270,314);c.stroke();
+  R.innerHTML="<span class='cy'>"+t.t.replace(/:$/,"")+"</span> | "+t.note;
+ }
+ document.querySelectorAll("#sc1 .tb").forEach(b=>b.onclick=()=>{
+  tab=parseInt(b.dataset.t);
+  document.querySelectorAll("#sc1 .tb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[2]=(()=>{
+ const c=ctx("cv2"),R=document.getElementById("r2");
+ let sel=0;
+ function haworth(cx,cy,r,anomeric){
+  // hexagon: O at top-right vertex; C1 rightmost
+  const V=[];
+  for(let i=0;i<6;i++){const a=i*Math.PI/3;V.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}
+  c.strokeStyle="#e8e8f2";c.lineWidth=3;c.beginPath();
+  // V0=C1 (rightmost), V1=C2, V2=C3, V3=C4, V4=C5, V5=O (top-right)
+  for(let i=0;i<6;i++){const p=V[i],q=V[(i+1)%6];c.moveTo(p[0],p[1]);c.lineTo(q[0],q[1]);}
+  c.stroke();
+  // thicken bottom (C2-C3 edge) Haworth style
+  c.lineWidth=6;c.beginPath();c.moveTo(V[1][0],V[1][1]);c.lineTo(V[2][0],V[2][1]);c.stroke();
+  txt(c,"O",V[5][0]-7,V[5][1]+5,YL,"bold 17px 'Cascadia Code',monospace");
+  txt(c,"C1",V[0][0]+10,V[0][1]+4,DM,"12px 'Cascadia Code',monospace");
+  txt(c,"C4",V[3][0]-30,V[3][1]+4,DM,"12px 'Cascadia Code',monospace");
+  // C1 OH: alpha = DOWN, beta = UP ; CH2OH at C5 always UP
+  const c1=V[0];
+  c.strokeStyle=CY;c.lineWidth=3;c.beginPath();
+  if(anomeric==="a"){c.moveTo(c1[0],c1[1]);c.lineTo(c1[0],c1[1]+40);c.stroke();txt(c,"OH",c1[0]-10,c1[1]+58,CY,"bold 15px 'Cascadia Code',monospace");}
+  else{c.moveTo(c1[0],c1[1]);c.lineTo(c1[0],c1[1]-40);c.stroke();txt(c,"OH",c1[0]-10,c1[1]-48,CY,"bold 15px 'Cascadia Code',monospace");}
+  const c5=V[4];
+  c.strokeStyle=GR;c.lineWidth=3;c.beginPath();c.moveTo(c5[0],c5[1]);c.lineTo(c5[0],c5[1]-38);c.stroke();
+  txt(c,"CH2OH",c5[0]-24,c5[1]-46,GR,"bold 14px 'Cascadia Code',monospace");
+ }
+ function furanose(cx,cy,r){
+  const V=[];
+  for(let i=0;i<5;i++){const a=-Math.PI/2+i*2*Math.PI/5;V.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);}
+  c.strokeStyle="#e8e8f2";c.lineWidth=3;c.beginPath();
+  for(let i=0;i<5;i++){const p=V[i],q=V[(i+1)%5];c.moveTo(p[0],p[1]);c.lineTo(q[0],q[1]);}
+  c.stroke();
+  c.lineWidth=6;c.beginPath();c.moveTo(V[2][0],V[2][1]);c.lineTo(V[3][0],V[3][1]);c.stroke();
+  txt(c,"O",V[0][0]-6,V[0][1]+4,YL,"bold 16px 'Cascadia Code',monospace");
+  txt(c,"C2",V[1][0]+10,V[1][1]+4,DM,"12px 'Cascadia Code',monospace");
+  txt(c,"C5",V[4][0]-30,V[4][1]+4,DM,"12px 'Cascadia Code',monospace");
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  if(sel===0){
+   txt(c,"ALPHA-glucose (pyranose ring):",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   haworth(300,205,100,"a");
+   txt(c,"C1 ka OH NEECHE",560,150,CY,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"(CH2OH ke OPPOSITE side)",560,178,DM,"13px 'Cascadia Code',monospace");
+   wrap(c,"C1 = ANOMERIC carbon (naya chiral centre jab C5-OH C1-CHO pe attack karta). alpha me C1-OH neeche.",560,214,"#c9d4ff","13.5px 'Cascadia Code',monospace",36,19);
+   R.innerHTML="ALPHA-glucose: C1 OH <span class='cy'>NEECHE</span> | starch ka building unit alpha hota!";
+  }else if(sel===1){
+   txt(c,"BETA-glucose (pyranose ring):",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   haworth(300,205,100,"b");
+   txt(c,"C1 ka OH UPAR",560,150,CY,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"(CH2OH ke SAME side)",560,178,DM,"13px 'Cascadia Code',monospace");
+   wrap(c,"alpha aur beta ANOMERS hain (sirf C1 pe farak). Open chain ke through ek dusre me badalte - isliye glucose Tollens positive deta.",560,214,"#c9d4ff","13.5px 'Cascadia Code',monospace",36,19);
+   R.innerHTML="BETA-glucose: C1 OH <span class='cy'>UPAR</span> | cellulose ka building unit beta hota - isliye humans digest NAHI kar sakte!";
+  }else{
+   txt(c,"FRUCTOSE (furanose ring):",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   furanose(300,185,105);
+   txt(c,"5-membered ring = FURANOSE",560,150,CY,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"ketone C2 pe (KETOHEXOSE)",560,178,DM,"13px 'Cascadia Code',monospace");
+   wrap(c,"Glucose ka isomer (C6H12O6) par C2 pe ketone. Sabse SWEET natural sugar. Phir bhi REDUCING (carbonyl free).",560,214,"#c9d4ff","13.5px 'Cascadia Code',monospace",36,19);
+   R.innerHTML="FRUCTOSE = ketohexose, <span class='hl'>furanose (5-ring)</span> | glucose = aldohexose, pyranose (6-ring). Dono reducing!";
+  }
+ }
+ document.querySelectorAll("#sc2 .pb").forEach(b=>b.onclick=()=>{
+  sel=parseInt(b.dataset.p);
+  document.querySelectorAll("#sc2 .pb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[3]=(()=>{
+ const c=ctx("cv3"),R=document.getElementById("r3");
+ let sel=0;
+ const SUG=[
+  {n:"SUCROSE",link:"alpha-C1 (glucose) <-> beta-C2 (fructose)",units:["glucose","fructose"],red:false,
+   note:"DONO anomeric carbons link me BUSY = NON-reducing (Tollens NEGATIVE). Hydrolysis (invertase/H+) -> glucose+fructose = INVERT SUGAR (rotation invert). Yehi table sugar hai.",poly:false},
+  {n:"MALTOSE",link:"alpha(1->4) glycosidic",units:["glucose","glucose"],red:true,
+   note:"2 glucose, alpha(1->4). Ek anomeric C FREE = REDUCING. Starch digestion ka product (malt = beer wala).",poly:false},
+  {n:"LACTOSE",link:"beta(1->4) glycosidic",units:["galactose","glucose"],red:true,
+   note:"MILK sugar. Galactose + glucose, beta(1->4). Free anomeric C = REDUCING. Lactose-intolerant log isse digest nahi kar paate.",poly:false},
+  {n:"STARCH",link:"alpha(1->4) + alpha(1->6) branches",units:["a-glu","a-glu","a-glu"],red:false,
+   note:"alpha-GLUCOSE ka polymer - plants ka energy storage. AMYLOSE (linear, iodine ke saath BLUE - starch ka TEST!) + AMYLOPECTIN (branched 1->6).",poly:true},
+  {n:"CELLULOSE",link:"beta(1->4) glycosidic",units:["b-glu","b-glu","b-glu"],red:false,
+   note:"beta-GLUCOSE ka polymer, straight chains - cell wall/cotton (STRUCTURAL). Humans digest NAHI kar sakte (beta-link todne ka enzyme nahi); cows/termites kar sakte (gut bacteria).",poly:true},
+  {n:"GLYCOGEN",link:"alpha(1->4) + zyada branches",units:["a-glu","a-glu","a-glu"],red:false,
+   note:"ANIMALS ka starch - liver + muscles me energy store. Starch se bhi ZYADA branched (quick energy release).",poly:true}];
+ function ring6(cx,cy,r,col,label){
+  c.strokeStyle=col;c.lineWidth=2.5;c.beginPath();
+  for(let i=0;i<6;i++){const a=i*Math.PI/3,px=cx+r*Math.cos(a),py=cy+r*Math.sin(a);
+   i===0?c.moveTo(px,py):c.lineTo(px,py);}
+  c.closePath();c.stroke();
+  txt(c,label,cx,cy+4,col,"bold 13px 'Cascadia Code',monospace","center");
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  const s=SUG[sel];
+  txt(c,s.n+"  -  "+s.link,60,42,MG,"bold 16px 'Cascadia Code',monospace");
+  if(!s.poly){
+   ring6(240,180,72,CY,s.units[0]);
+   ring6(560,180,72,GR,s.units[1]);
+   // glycosidic -O- link between anomeric carbons
+   c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.moveTo(312,180);c.lineTo(368,180);c.stroke();
+   txt(c,"O",385,185,YL,"bold 18px 'Cascadia Code',monospace");
+   c.beginPath();c.moveTo(402,180);c.lineTo(488,180);c.stroke();
+   txt(c,"glycosidic -O- link",312,222,DM,"12px 'Cascadia Code',monospace");
+   txt(c,s.red?"ek anomeric C FREE = REDUCING (Tollens +)":"dono anomeric C BUSY = NON-REDUCING",60,272,s.red?GR:RD,"bold 15px 'Cascadia Code',monospace");
+   wrap(c,s.note,60,300,"#c9d4ff","13px 'Cascadia Code',monospace",92,17);
+  }else{
+   ring6(200,170,64,CY,s.units[0]);
+   ring6(400,170,64,CY,s.units[1]);
+   ring6(600,170,64,CY,s.units[2]);
+   c.strokeStyle=YL;c.lineWidth=3;
+   c.beginPath();c.moveTo(264,170);c.lineTo(336,170);c.stroke();
+   c.beginPath();c.moveTo(464,170);c.lineTo(536,170);c.stroke();
+   txt(c,"-O-",305,155,YL,"bold 14px 'Cascadia Code',monospace");
+   txt(c,"-O-",505,155,YL,"bold 14px 'Cascadia Code',monospace");
+   txt(c,"... n units (POLYMER)",690,174,DM,"14px 'Cascadia Code',monospace");
+   if(sel===3){txt(c,"+ I2 = BLUE (TEST!)",690,220,GR,"bold 14px 'Cascadia Code',monospace");}
+   if(sel===5){c.strokeStyle=YL;c.beginPath();c.moveTo(400,106);c.lineTo(400,80);c.lineTo(436,62);c.stroke();
+    txt(c,"branches zyada",446,66,DM,"12px 'Cascadia Code',monospace");}
+   wrap(c,s.note,60,268,"#c9d4ff","13px 'Cascadia Code',monospace",88,18);
+  }
+  R.innerHTML="<span class='cy'>"+s.n+"</span> | "+s.note;
+ }
+ document.querySelectorAll("#sc3 .db").forEach(b=>b.onclick=()=>{
+  sel=parseInt(b.dataset.d);
+  document.querySelectorAll("#sc3 .db").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[4]=(()=>{
+ const c=ctx("cv4"),R=document.getElementById("r4");
+ let sel=0;
+ function bond(x1,y1,x2,y2){c.strokeStyle="#e8e8f2";c.lineWidth=2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+ function draw(){
+  c.clearRect(0,0,920,330);
+  if(sel===0){
+   txt(c,"AMINO ACID - general structure:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"H",430,110,DM,"bold 18px 'Cascadia Code',monospace");
+   bond(440,120,440,165);
+   txt(c,"NH2",300,196,CY,"bold 19px 'Cascadia Code',monospace");
+   bond(345,190,400,190);
+   txt(c,"C",432,196,YL,"bold 20px 'Cascadia Code',monospace");
+   bond(455,190,510,190);
+   txt(c,"COOH",520,196,GR,"bold 19px 'Cascadia Code',monospace");
+   bond(440,215,440,258);
+   txt(c,"R",430,292,MG,"bold 19px 'Cascadia Code',monospace");
+   txt(c,"(side chain - har amino acid ka alag!)",470,290,DM,"13px 'Cascadia Code',monospace");
+   txt(c,"alpha-C",600,150,DM,"12px 'Cascadia Code',monospace");
+   R.innerHTML="Amino acid = <span class='cy'>alpha-C pe NH2 + COOH + H + R</span> | ~20 standard; ESSENTIAL (valine, leucine, lysine) diet se zaroori - body nahi banati";
+  }else if(sel===1){
+   txt(c,"ZWITTERION - dipolar ion:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"H",430,110,DM,"bold 18px 'Cascadia Code',monospace");
+   bond(440,120,440,165);
+   txt(c,"NH3+",290,196,CY,"bold 19px 'Cascadia Code',monospace");
+   bond(345,190,400,190);
+   txt(c,"C",432,196,YL,"bold 20px 'Cascadia Code',monospace");
+   bond(455,190,510,190);
+   txt(c,"COO-",520,196,RD,"bold 19px 'Cascadia Code',monospace");
+   bond(440,215,440,258);
+   txt(c,"R",430,292,MG,"bold 19px 'Cascadia Code',monospace");
+   wrap(c,"-NH2 ne proton LIYA (-NH3+), -COOH ne proton DIYA (-COO-) = SAME molecule me + AUR - charge! Isliye amino acids high-melting, water-soluble aur AMPHOTERIC (acid + base dono se react).",640,120,"#c9d4ff","13.5px 'Cascadia Code',monospace",30,19);
+   R.innerHTML="ZWITTERION: <span class='cy'>NH3+</span> aur <span class='hl'>COO-</span> ek hi molecule me (dipolar) | isliye amino acid salt jaisa behave karta";
+  }else{
+   txt(c,"PEPTIDE BOND banao (-CO-NH-):",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"H2N-CH(R)-COOH",90,150,CY,"bold 17px 'Cascadia Code',monospace");
+   txt(c,"H2N-CH(R')-COOH",90,210,GR,"bold 17px 'Cascadia Code',monospace");
+   txt(c,"- H2O",300,180,RD,"bold 14px 'Cascadia Code',monospace");
+   arrow2(c,362,180,430,180,GR,3);
+   txt(c,"H2N-CH(R)-",460,170,CY,"bold 16px 'Cascadia Code',monospace");
+   c.fillStyle="#16162e";c.fillRect(585,152,140,30);c.strokeStyle=YL;c.strokeRect(585,152,140,30);
+   txt(c,"CO - NH",615,172,YL,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"-CH(R')-COOH",735,170,GR,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"^ PEPTIDE (amide) BOND",585,206,YL,"bold 13px 'Cascadia Code',monospace");
+   wrap(c,"Ek amino acid ka -COOH + dusre ka -NH2 -> -CO-NH- + H2O (condensation). Bahut saare aise jude = POLYPEPTIDE = protein.",60,290,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,18);
+   R.innerHTML="PEPTIDE BOND = <span class='cy'>-CO-NH-</span> (amide linkage) | H2O nikalta (condensation). Dipeptide -> polypeptide -> PROTEIN";
+  }
+ }
+ document.querySelectorAll("#sc4 .ab").forEach(b=>b.onclick=()=>{
+  sel=parseInt(b.dataset.a);
+  document.querySelectorAll("#sc4 .ab").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[5]=(()=>{
+ const c=ctx("cv5"),R=document.getElementById("r5");
+ let sel=0;
+ function chain(x,y,n,col){
+  for(let i=0;i<n;i++){c.strokeStyle=col;c.lineWidth=2.5;c.beginPath();c.arc(x+i*66,y,22,0,7);c.stroke();
+   if(i<n-1){c.strokeStyle=DM;c.beginPath();c.moveTo(x+i*66+22,y);c.lineTo(x+i*66+44,y);c.stroke();}}
+ }
+ function helix(x,y,len,col){
+  c.strokeStyle=col;c.lineWidth=5;c.beginPath();
+  for(let t=0;t<=len;t+=4){const px=x+t,py=y+26*Math.sin(t/18);t===0?c.moveTo(px,py):c.lineTo(px,py);}
+  c.stroke();
+ }
+ function blob(x,y,r,col){
+  c.strokeStyle=col;c.lineWidth=3;c.beginPath();
+  for(let a=0;a<=64;a++){const th=a/64*2*Math.PI;const rr=r*(1+0.25*Math.sin(3*th+1));
+   const px=x+rr*Math.cos(th),py=y+rr*Math.sin(th);a===0?c.moveTo(px,py):c.lineTo(px,py);}
+  c.closePath();c.stroke();
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  if(sel===0){
+   txt(c,"1° PRIMARY - amino acid SEQUENCE:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   chain(140,150,5,CY);
+   txt(c,"gly",132,155,CY,"12px 'Cascadia Code',monospace");
+   txt(c,"ala",198,155,CY,"12px 'Cascadia Code',monospace");
+   txt(c,"val",264,155,CY,"12px 'Cascadia Code',monospace");
+   txt(c,"lys",330,155,CY,"12px 'Cascadia Code',monospace");
+   txt(c,"leu",396,155,CY,"12px 'Cascadia Code',monospace");
+   txt(c,"...",480,155,DM,"18px 'Cascadia Code',monospace");
+   wrap(c,"Sirf ORDER of amino acids, peptide bonds (-CO-NH-) se jude. Denaturation me bhi 1° INTACT rehti - yehi sabse strong level hai.",60,240,"#c9d4ff","13.5px 'Cascadia Code',monospace",88,19);
+   R.innerHTML="1° PRIMARY = <span class='cy'>amino acid sequence</span> (peptide bonds) | denaturation me bhi ye NAHI tootta";
+  }else if(sel===1){
+   txt(c,"2° SECONDARY - folding (H-bonds se):",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   helix(120,140,300,CY);
+   txt(c,"alpha-HELIX (spring jaisa)",120,210,CY,"bold 14px 'Cascadia Code',monospace");
+   c.strokeStyle=GR;c.lineWidth=5;
+   for(let i=0;i<4;i++){c.beginPath();c.moveTo(560,110+i*26);c.lineTo(760,110+i*26);c.stroke();
+    c.beginPath();c.moveTo(556,110+i*26);c.lineTo(560,110+i*26);c.stroke();}
+   txt(c,"beta-PLEATED SHEET (parallel strands)",520,240,GR,"bold 14px 'Cascadia Code',monospace");
+   wrap(c,"Chain ka local folding - HYDROGEN BONDS se. Do patterns: alpha-helix (curl) ya beta-sheet (folded).",60,290,"#c9d4ff","13.5px 'Cascadia Code',monospace",88,18);
+   R.innerHTML="2° SECONDARY = <span class='cy'>alpha-helix</span> ya <span class='cy'>beta-pleated sheet</span> (H-bonds) | denaturation me YE tootta hai";
+  }else if(sel===2){
+   txt(c,"3° TERTIARY - poora 3D fold:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   blob(330,180,95,CY);
+   txt(c,"S-S",415,128,YL,"bold 13px 'Cascadia Code',monospace");
+   c.strokeStyle=YL;c.lineWidth=2.5;c.beginPath();c.moveTo(392,148);c.lineTo(378,170);c.stroke();
+   txt(c,"disulphide bond",440,150,DM,"12px 'Cascadia Code',monospace");
+   wrap(c,"Side chains (R) interact karke chain poori 3D fold hoti - disulphide bonds (S-S), H-bonds, ionic, hydrophobic. Yehi protein ki FINAL working shape (enzyme ka active site yahin banta).",560,120,"#c9d4ff","13.5px 'Cascadia Code',monospace",38,19);
+   R.innerHTML="3° TERTIARY = <span class='cy'>3D shape</span> (R-groups interact: S-S, H-bonds) | denaturation me YE bhi tootta";
+  }else if(sel===3){
+   txt(c,"4° QUATERNARY - multiple chains:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   blob(300,170,62,CY);blob(420,190,62,GR);blob(340,260,50,MG);blob(480,120,50,YL);
+   txt(c,"4 polypeptide chains ek saath",560,120,DM,"13px 'Cascadia Code',monospace");
+   wrap(c,"2+ polypeptide chains milkar ek protein. EXAMPLE: HAEMOGLOBIN (4 chains - 2 alpha + 2 beta). Har protein me nahi hota (sirf multi-chain walo me).",560,160,"#c9d4ff","13.5px 'Cascadia Code',monospace",38,19);
+   R.innerHTML="4° QUATERNARY = <span class='cy'>multiple polypeptide chains</span> (jaise haemoglobin - 4 chains)";
+  }else{
+   txt(c,"DENATURATION - protein ki tabahi:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   helix(90,150,220,CY);
+   txt(c,"folded (active)",110,220,CY,"bold 13px 'Cascadia Code',monospace");
+   txt(c,"heat / acid / agitation",330,150,RD,"bold 14px 'Cascadia Code',monospace");
+   arrow2(c,340,170,430,170,RD,3);
+   c.strokeStyle=DM;c.lineWidth=3;c.beginPath();
+   for(let t=0;t<=240;t+=6){const px=470+t,py=170+34*Math.sin(t/9)+t/8;t===0?c.moveTo(px,py):c.lineTo(px,py);}
+   c.stroke();
+   txt(c,"unfolded (DEAD)",530,270,RD,"bold 13px 'Cascadia Code',monospace");
+   wrap(c,"2°/3° structure TOOT jati, par 1° (sequence) INTACT = protein apni activity KHO deta. USUALLY IRREVERSIBLE. Examples: anda ubalna (egg white coagulate), dahi jamna (milk curdling).",60,290,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,17);
+   R.innerHTML="DENATURATION: <span class='hl'>2°/3° tootta, 1° INTACT</span> | anda ubalna, dahi jamna. Enzymes bhi proteins - isliye high temp pe kaam band!";
+  }
+ }
+ document.querySelectorAll("#sc5 .lb").forEach(b=>b.onclick=()=>{
+  sel=parseInt(b.dataset.l);
+  document.querySelectorAll("#sc5 .lb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[6]=(()=>{
+ const c=ctx("cv6"),R=document.getElementById("r6");
+ let sel=0;
+ function base(x,y,label,col,w){
+  c.fillStyle="#16162e";c.fillRect(x,y,w||52,34);c.strokeStyle=col;c.strokeRect(x,y,w||52,34);
+  txt(c,label,x+18,y+23,col,"bold 17px 'Cascadia Code',monospace");
+ }
+ function hbonds(x,y,n){
+  c.strokeStyle=YL;c.lineWidth=2.5;c.setLineDash([6,5]);
+  for(let i=0;i<n;i++){const yy=y+i*11;c.beginPath();c.moveTo(x,yy);c.lineTo(x+150,yy);c.stroke();}
+  c.setLineDash([]);
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  if(sel===0){
+   txt(c,"A = T  (ADENINE = THYMINE):",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   base(280,150,"A",CY);hbonds(332,158,2);base(482,150,"T",MG);
+   txt(c,"2 HYDROGEN bonds",300,236,YL,"bold 16px 'Cascadia Code',monospace");
+   wrap(c,"DNA ke do strands ANTIIARALLEL - bases andar pair, sugar-phosphate bahar (backbone). A hamesha T ke saath (2 H-bonds).",60,286,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,18);
+   R.innerHTML="A = T: <span class='cy'>2 hydrogen bonds</span> | complementary base pairing - DNA replication ka secret yahi hai";
+  }else if(sel===1){
+   txt(c,"G ≡ C  (GUANINE ≡ CYTOSINE):",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   base(280,150,"G",GR);hbonds(332,152,3);base(482,150,"C",YL);
+   txt(c,"3 HYDROGEN bonds",300,240,YL,"bold 16px 'Cascadia Code',monospace");
+   wrap(c,"G-C pair ZYADA strong (3 H-bonds vs A-T ke 2). Isliye high G-C content wala DNA zyada stable hota hai.",60,288,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,18);
+   R.innerHTML="G ≡ C: <span class='cy'>3 hydrogen bonds</span> | A=T(2) vs G≡C(3) - exam ka favourite!";
+  }else if(sel===2){
+   txt(c,"DNA vs RNA - key differences:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"DNA",180,100,CY,"bold 18px 'Cascadia Code',monospace");
+   txt(c,"sugar: DEOXYRIBOSE",140,140,"#e8e8f2","14px 'Cascadia Code',monospace");
+   txt(c,"bases: A, T, G, C",140,172,"#e8e8f2","14px 'Cascadia Code',monospace");
+   txt(c,"DOUBLE helix",140,204,"#e8e8f2","14px 'Cascadia Code',monospace");
+   txt(c,"heredity / blueprint",140,236,DM,"13px 'Cascadia Code',monospace");
+   txt(c,"RNA",560,100,MG,"bold 18px 'Cascadia Code',monospace");
+   txt(c,"sugar: RIBOSE",520,140,"#e8e8f2","14px 'Cascadia Code',monospace");
+   txt(c,"bases: A, U, G, C",520,172,"#e8e8f2","14px 'Cascadia Code',monospace");
+   txt(c,"SINGLE strand",520,204,"#e8e8f2","14px 'Cascadia Code',monospace");
+   txt(c,"protein synthesis",520,236,DM,"13px 'Cascadia Code',monospace");
+   c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(460,86);c.lineTo(460,254);c.stroke();
+   txt(c,"KEY: RNA me T ki jagah U (URACIL)!",180,296,YL,"bold 15px 'Cascadia Code',monospace");
+   R.innerHTML="Nucleotide = <span class='cy'>sugar + phosphate + base</span> | DNA: deoxyribose + T; RNA: ribose + U";
+  }else{
+   txt(c,"VITAMINS - soluble kaun kahan?:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"WATER-soluble: B, C",140,100,CY,"bold 16px 'Cascadia Code',monospace");
+   wrap(c,"Store NAHI hote - excess urine me nikal jata. Daily diet me chahiye.",140,130,"#c9d4ff","13.5px 'Cascadia Code',monospace",36,19);
+   txt(c,"FAT-soluble: A, D, E, K",520,100,MG,"bold 16px 'Cascadia Code',monospace");
+   wrap(c,"Fat me STORE ho jate - excess TOXIC ho sakta hai.",520,130,"#c9d4ff","13.5px 'Cascadia Code',monospace",36,19);
+   c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(460,86);c.lineTo(460,196);c.stroke();
+   txt(c,"Deficiency diseases:",60,232,YL,"bold 15px 'Cascadia Code',monospace");
+   txt(c,"C -> scurvy  |  D -> rickets  |  A -> night blindness",60,262,"#e8e8f2","14px 'Cascadia Code',monospace");
+   txt(c,"B1 -> beri-beri  |  K -> bleeding (clot NAHI)",60,292,"#e8e8f2","14px 'Cascadia Code',monospace");
+   R.innerHTML="Vitamins: <span class='cy'>B,C water-soluble</span> (store nahi) | <span class='cy'>A,D,E,K fat-soluble</span> (store, excess toxic) | hormones = chemical messengers (insulin, adrenaline, thyroxine)";
+  }
+ }
+ document.querySelectorAll("#sc6 .nb").forEach(b=>b.onclick=()=>{
+  sel=parseInt(b.dataset.n);
+  document.querySelectorAll("#sc6 .nb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Sucrose NON-reducing kyun hai?",opts:["dono anomeric carbons (C1-C2) glycosidic bond me BUSY","bahut zyada sweet hai isliye","fructose hai isliye","hydrolyze hi nahi hota"],a:0,why:"Sucrose me glucose ka C1 AUR fructose ka C2 dono link me busy = free carbonyl NAHI = Tollens negative. Maltose/lactose me ek anomeric C free = reducing!"},
+{q:"Glucose + Br2 water ka product - aur kya PROVE hota?",opts:["saccharic acid - 5 OH","gluconic acid - ALDEHYDE (-CHO) present","n-hexane - straight chain","sorbitol - alcohol"],a:1,why:"Bromine water sirf -CHO ko oxidize karta -> GLUCONIC acid. Ye ALDEHYDE ka direct proof (fructose/ketone react NAHI karta). HNO3 se saccharic acid (dono ends)."},
+{q:"Starch ka chemical test?",opts:["Tollens - silver mirror","IODINE ke saath BLUE colour","Fehling - red ppt","Hinsberg - insoluble"],a:1,why:"AMYLOSE (starch ka linear part) iodine ke saath BLUE colour deta - starch ka standard test. Starch non-reducing hai (anomeric Cs link me)."},
+{q:"Amino acid ka ZWITTERION kya hai?",opts:["sirf positive charge wala form","sirf negative charge wala form","same molecule me NH3+ AUR COO- dono (dipolar)","neutral, koi charge nahi"],a:2,why:"-NH2 proton le leta (-NH3+) aur -COOH de deta (-COO-) = dipolar ZWITTERION. Isliye amino acids high-melting, water-soluble, AMPHOTERIC."},
+{q:"RNA me thymine (T) ki jagah kaun?",opts:["adenine (A)","URACIL (U)","cytosine (C)","guanine (G)"],a:1,why:"RNA = ribose sugar + bases A,U,G,C (T ki jagah U). DNA = deoxyribose + A,T,G,C. Base pairing: A=T (2 H-bonds), G≡C (3 H-bonds)."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Biomolecules pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+go(0);
+</script></body></html>
