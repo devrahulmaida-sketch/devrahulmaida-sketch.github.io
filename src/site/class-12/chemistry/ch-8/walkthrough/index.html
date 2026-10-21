@@ -189,10 +189,10 @@ function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toF
 const c=ctx("cv0"),R=document.getElementById("r0");
 const btns=[...document.querySelectorAll(".kb")];
 const CMP=[
- {f:"CH3CHO",name:"ethanal",cls:"ALDEHYDE",suf:"-al",subs:["CH3","H"],why:"C=O end pe, ek H zaroori. Aldehyde ka carbon C-1 hota hai."},
+ {f:"CH3CHO",name:"ethanal",cls:"ALDEHYDE",suf:"-al",subs:["CH3","H"],why:"C=O end pe, ek H zaroori (C-1)."},
  {f:"CH3COCH3",name:"propanone",cls:"KETONE",suf:"-one",subs:["CH3","CH3"],why:"C=O beech me, dono taraf alkyl groups."},
  {f:"CH3COOH",name:"ethanoic acid",cls:"CARBOXYLIC ACID",suf:"-oic acid",subs:["CH3","OH"],why:"Carbonyl + hydroxyl (OH) ek hi carbon pe = -COOH."},
- {f:"HCHO",name:"methanal",cls:"ALDEHYDE",suf:"-al",subs:["H","H"],why:"Sabse simple aldehyde - C=O pe DO H. Sabse reactive nucleophilic addition me!"}];
+ {f:"HCHO",name:"methanal",cls:"ALDEHYDE",suf:"-al",subs:["H","H"],why:"C=O pe DO H - sabse reactive addition me!"}];
 let k=0;
 btns.forEach(b=>b.onclick=()=>{k=parseInt(b.dataset.k);btns.forEach(x=>x.classList.toggle("sel",x===b));draw();});
 function draw(){
@@ -228,8 +228,7 @@ function draw(){
  // 120 deg arc
  c.strokeStyle=YL;c.lineWidth=1.5;c.setLineDash([4,4]);
  c.beginPath();c.arc(cx,cy,46,ang1,Math.PI-ang1);c.stroke();c.setLineDash([]);
- txt(c,"~120 deg",cx-8,cy+62,YL,"11px 'Cascadia Code',monospace","center");
- txt(c,"sp2 trigonal planar",cx,cy+80,YL,"11px 'Cascadia Code',monospace","center");
+ txt(c,"sp2 trigonal planar, ~120 deg",66,44,YL,"11px 'Cascadia Code',monospace","left");
  // Nu attack hint arrow
  arrow2(c,120,286,cx-16,cy+18,GR,2.5);
  txt(c,"Nu- attack yahan (delta+ C)",96,306,GR,"12px 'Cascadia Code',monospace","center");
@@ -243,7 +242,7 @@ function draw(){
  txt(c,D.name,530,176,YL,"bold 17px 'Cascadia Code',monospace");
  txt(c,"suffix: "+D.suf,530,210,MG,"bold 14px 'Cascadia Code',monospace");
  txt(c,D.why,530,246,"#a5b0d0","12.5px 'Cascadia Code',monospace");
- txt(c,"Nucleophile hamesha delta+ CARBON pe attack karta hai -",530,282,"#a5b0d0","12.5px 'Cascadia Code',monospace");
+ txt(c,"Nucleophile delta+ CARBON pe attack karta hai -",530,282,"#a5b0d0","12.5px 'Cascadia Code',monospace");
  txt(c,"yahi is chapter ka main theme hai!",530,302,GR,"12.5px 'Cascadia Code',monospace");
  R.innerHTML="Class: <span class='hl'>"+D.cls+"</span> | suffix <span class='cy'>"+D.suf+"</span> | "+D.why+"\nPehchano: end pe C=O + H = aldehyde, beech me C=O = ketone, -COOH = carboxylic acid.";
 }
@@ -272,7 +271,14 @@ function draw(){
  txt(c,D.n,460,42,YL,"bold 18px 'Cascadia Code',monospace","center");
  // reactant box -> arrow -> product box
  box(60,110,250,80,D.r,"#8fa0c8");
- box(610,110,250,80,D.p,D.col);
+ if(D.p.length>22){
+  const idx=D.p.indexOf(" (");
+  const l1=idx>0?D.p.slice(0,idx):D.p.slice(0,22),l2=idx>0?D.p.slice(idx+1):D.p.slice(22);
+  c.fillStyle="#10101f";c.strokeStyle=D.col;c.lineWidth=2;
+  c.beginPath();c.roundRect(610,110,250,80,10);c.fill();c.stroke();
+  txt(c,l1,735,140,D.col,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,l2,735,164,D.col,"bold 12px 'Cascadia Code',monospace","center");
+ }else{box(610,110,250,80,D.p,D.col);}
  // arrow with reagent
  arrow2(c,320,150,600,150,D.col,3.5);
  // reagent label above arrow
@@ -356,8 +362,8 @@ function draw(){
   const by=90+i*72;
   txt(c,b[0],bx-14,by+16,"#c9d4ff","bold 13px 'Cascadia Code',monospace","right");
   c.fillStyle=i===0?CY:i===1?"#166d8a":"#0d3d52";
-  c.fillRect(bx,by,b[2]*0.75,26);
-  c.strokeStyle="#2d2d52";c.strokeRect(bx,by,b[2]*0.75,26);
+  c.fillRect(bx,by,b[1]*0.75,26);
+  c.strokeStyle="#2d2d52";c.strokeRect(bx,by,b[1]*0.75,26);
   txt(c,b[2],bx+6,by+44,DM,"10.5px 'Cascadia Code',monospace");
  });
  txt(c,"HCHO > RCHO > R2CO",bx+140,312,YL,"bold 14px 'Cascadia Code',monospace","center");
@@ -423,10 +429,10 @@ function draw(t){
  // verdict panel right
  txt(c,"Compound: "+CPD[xi],470,96,CY,"bold 14px 'Cascadia Code',monospace");
  txt(c,"Test: "+TESTS[zi],470,124,MG,"bold 14px 'Cascadia Code',monospace");
- txt(c,pos?"RESULT: POSITIVE":"RESULT: NEGATIVE",470,160,pos?GR:RD,"bold 17px 'Cascadia Code',monospace");
+ txt(c,pos?"RESULT: POSITIVE":"RESULT: NEGATIVE",470,196,pos?GR:RD,"bold 17px 'Cascadia Code',monospace");
  // wrap why
  const w=WHY[zi][0];const words=w.split(" ");
- let line="",yy=196;
+ let line="",yy=232;
  words.forEach(wd=>{if((line+wd).length>52){txt(c,line,470,yy,"#c9d4ff","12.5px 'Cascadia Code',monospace");yy+=21;line="";}line+=wd+" ";});
  if(line.trim())txt(c,line,470,yy,"#c9d4ff","12.5px 'Cascadia Code',monospace");
  // matrix strip bottom
