@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atoms - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 12 - Atoms</div>
+<h1>Atoms Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - Rutherford scattering lab, Bohr orbit lab, energy level lab, hydrogen spectrum lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Rutherford Scattering - Nucleus Ki Khoj ⭐</h2>
+<p class="why">Gold foil: zyadatar alpha seedhe nikle, kuch deflect hue, bahut kam wapas aaye. Matlab atom mostly khaali hai aur ek chhota, dense, positive nucleus uska zyada mass rakhta hai. Impact parameter b chhota (nucleus ke paas) → bada deflection; b bada → lagbhag seedha. Limit: classical orbiting electron radiate karke nucleus me gir jaata - stable atom explain nahi hota.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="mR">Rutherford (tiny nucleus)</button><button id="mT">Plum pudding (expected)</button></div>
+<div class="slrow"><label>impact parameter b</label><input type="range" id="rB" min="0.1" max="3" step="0.1" value="1"><span class="v" id="vlrB">1.0 d₀</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Bohr Orbits - Radius aur Speed ⭐</h2>
+<p class="why">Bohr: electron allowed (stationary) orbit me radiate nahi karta, aur angular momentum quantized: mvr = nh/(2π), n = 1, 2, 3... Hydrogen-like (one electron, charge Ze): r_n = a₀n²/Z, a₀ = 0.529 Å, v_n ≈ 2.19×10⁶ (Z/n) m/s. n badhe → orbit bada (n² se), speed kam. n = 1 sabse chhota orbit hai, n = 0 nahi hota. (Orbit drawing to scale; animation speed schematic.)</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="bZ1">H (Z = 1)</button><button id="bZ2">He⁺ (Z = 2)</button></div>
+<div class="slrow"><label>orbit number n</label><input type="range" id="bN" min="1" max="4" step="1" value="2"><span class="v" id="vlbN">n = 2</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Energy Levels aur Photon ⭐⭐</h2>
+<p class="why">E_n = −13.6 Z²/n² eV (minus = bound). Transition n_i → n_f me photon energy = level DIFFERENCE: Eγ = 13.6 Z² (1/n_f² − 1/n_i²) eV, λ = hc/Eγ ≈ 1240/Eγ nm. n_i &gt; n_f emission, n_i &lt; n_f absorption. Ionization: n se n = ∞ (E = 0) tak 13.6Z²/n² eV. Photon energy kisi ek level ki energy nahi hoti!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="eZ1">H (Z = 1)</button><button id="eZ2">He⁺ (Z = 2)</button><button id="eZ3">Li²⁺ (Z = 3)</button></div>
+<div class="slrow"><label>initial level n_i</label><input type="range" id="eI" min="1" max="6" step="1" value="3"><span class="v" id="vleI">3</span></div>
+<div class="slrow"><label>final level n_f</label><input type="range" id="eF" min="1" max="6" step="1" value="2"><span class="v" id="vleF">2</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Hydrogen Line Spectrum - Atom Ka Barcode ⭐</h2>
+<p class="why">Levels discrete hain, isliye sirf selected wavelengths nikalte hain (line spectrum, continuum nahi). Rydberg: 1/λ = R Z² (1/n_f² − 1/n_i²), R ≈ 1.097×10⁷ m⁻¹. Lyman n_f = 1 (UV), Balmer n_f = 2 (visible + near UV), Paschen n_f = 3 (IR). n_i badhne pe lines series limit ke paas bheed me aati hain.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="sLy">Lyman (n_f = 1)</button><button id="sBa">Balmer (n_f = 2)</button><button id="sPa">Paschen (n_f = 3)</button></div>
+<div class="slrow"><label>highest n_i shown</label><input type="range" id="sN" min="3" max="8" step="1" value="6"><span class="v" id="vlsN">6</span></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - Atoms Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: Rutherford = tiny dense nucleus, r_n = 0.529 n²/Z Å, E_n = −13.6 Z²/n² eV, photon = level difference, Lyman UV / Balmer visible / Paschen IR.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Rutherford ⭐</h3><p>Zyadatar alpha seedhe, kuch deflect, bahut kam wapas | Atom mostly khaali, tiny dense positive nucleus | Limit: classical electron radiate karke gir jaata, stability nahi</p></div>
+<div class="rcard"><h3>Bohr Postulates ⭐</h3><p>Stationary orbit: no radiation | mvr = nh/(2π), n = 1, 2, ... | Jump: hf = E_initial − E_final | Absorption ulta | One-electron ions pe bhi (He⁺, Li²⁺)</p></div>
+<div class="rcard"><h3>Radius + Speed ⭐</h3><p>r_n = a₀n²/Z, a₀ = 0.529 Å | v_n ≈ 2.19×10⁶ (Z/n) m/s | n badhe: orbit bada, speed kam | n = 1 smallest, n = 0 nahi | H n=2 radius = 4 × ground</p></div>
+<div class="rcard"><h3>Energy Levels ⭐⭐</h3><p>E_n = −13.6 Z²/n² eV | Minus = bound | Ionization: H n=1 → ∞: 13.6 eV, n=2: 3.4 eV | He⁺ ground: 54.4 eV</p></div>
+<div class="rcard"><h3>Photon ⭐⭐</h3><p>Eγ = 13.6 Z² (1/n_f² − 1/n_i²) eV | λ ≈ 1240/E nm | Level DIFFERENCE lo, single level energy nahi</p></div>
+<div class="rcard"><h3>Spectral Series ⭐</h3><p>1/λ = R Z² (1/n_f² − 1/n_i²), R ≈ 1.097×10⁷ m⁻¹ | Lyman n_f=1 (UV) | Balmer n_f=2 (visible, some near UV) | Paschen n_f=3 (IR) | Spectrum = atom ka barcode</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 12 Atoms Visual Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}
+inits[0]=(()=>{
+const c=ctx("cv0");
+const sB=document.getElementById("rB"),bR=document.getElementById("mR"),bT=document.getElementById("mT");
+let mode="R";const D0=40,NX=330,NY=165;
+function path(b){
+ let x=-310,y=-b*D0,vx=4,vy=0;const pts=[[x,y]];
+ for(let k=0;k<8000;k++){
+  const r2=x*x+y*y,r=Math.sqrt(r2),f=8*D0/r2,dt=0.25;
+  vx+=f*x/r*dt;vy+=f*y/r*dt;x+=vx*dt;y+=vy*dt;
+  if(k%4===0)pts.push([x,y]);
+  if(k>5&&(x>270||x<-310||y<-155||y>155))break;
+ }
+ return {pts:pts,th:Math.atan2(Math.abs(vy),vx)*180/Math.PI};
+}
+let P=null,B=1;
+function draw(t){
+ B=parseFloat(sB.value);document.getElementById("vlrB").textContent=fmt(B,1)+" d₀";
+ bR.classList.toggle("sel",mode==="R");bT.classList.toggle("sel",mode==="T");
+ const th=2*Math.atan(1/(2*B))*180/Math.PI;
+ if(!P||P.b!==B){P=path(B);P.b=B;}
+ c.clearRect(0,0,920,330);
+ txt(c,mode==="R"?"RUTHERFORD: alpha beam vs tiny nucleus (not to scale)":"THOMSON PLUM PUDDING: diffuse positive atom (expected)",300,22,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ if(mode==="R"){
+  c.fillStyle="rgba(232,121,249,0.18)";c.beginPath();c.arc(NX,NY,16,0,7);c.fill();
+  c.fillStyle=MG;c.beginPath();c.arc(NX,NY,6,0,7);c.fill();
+  txt(c,"nucleus (+Ze)",NX,NY+34,MG,"11px 'Cascadia Code',monospace","center");
+ }else{
+  const g=c.createRadialGradient(NX,NY,5,NX,NY,150);g.addColorStop(0,"rgba(232,121,249,0.28)");g.addColorStop(1,"rgba(232,121,249,0.05)");
+  c.fillStyle=g;c.beginPath();c.arc(NX,NY,150,0,7);c.fill();
+  c.fillStyle=CY;for(let i=0;i<14;i++){const a=i*2.4,r=40+(i*37)%100;c.beginPath();c.arc(NX+r*Math.cos(a),NY+r*Math.sin(a)*0.9,3,0,7);c.fill();}
+  txt(c,"+ve blob, electrons inside",NX,NY+168-4,DM,"11px 'Cascadia Code',monospace","center");
+ }
+ c.strokeStyle="#3d4470";c.setLineDash([3,4]);c.lineWidth=1;c.beginPath();c.moveTo(NX,NY);c.lineTo(NX,NY-B*D0);c.stroke();c.setLineDash([]);
+ txt(c,"b",NX+7,NY-B*D0/2+4,"#aab4d8","12px 'Cascadia Code',monospace");
+ let pts;
+ if(mode==="R")pts=P.pts.map(p=>[NX+p[0],NY+p[1]]);
+ else{pts=[];for(let x=-310;x<=270;x+=10)pts.push([NX+x,NY-B*D0]);}
+ c.strokeStyle=CY;c.lineWidth=2;c.beginPath();pts.forEach((p,i)=>{if(i===0)c.moveTo(p[0],p[1]);else c.lineTo(p[0],p[1]);});c.stroke();
+ const idx=Math.floor((t||0)*1.2)%(pts.length+12);
+ if(idx<pts.length){c.fillStyle=YL;c.beginPath();c.arc(pts[idx][0],pts[idx][1],5,0,7);c.fill();}
+ txt(c,"alpha →",24,NY-B*D0-10<30?30:NY-B*D0-10,CY,"11px 'Cascadia Code',monospace");
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.strokeRect(640,40,265,260);
+ txt(c,"tan(θ/2) = d₀ / 2b",772,66,CY,"bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"b = "+fmt(B,1)+" d₀",772,96,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+ let cls,col;
+ if(mode==="T"){txt(c,"θ ≈ 0° (almost straight)",772,126,YL,"bold 13px 'Cascadia Code',monospace","center");cls="Plum pudding: sab alpha lagbhag seedhe";col=DM;}
+ else{
+  txt(c,"θ = "+fmt(th,1)+"°",772,126,YL,"bold 15px 'Cascadia Code',monospace","center");
+  const rm=0.5*(1+Math.sqrt(1+4*B*B));
+  txt(c,"r_min = "+fmt(rm,2)+" d₀",772,152,"#e8e8f2","12px 'Cascadia Code',monospace","center");
+  if(th>90){cls="BACKSCATTER (bahut rare!)";col=RD;}else if(th>=10){cls="bada deflection";col=MG;}else{cls="chhota deflection (zyadatar)";col=GR;}
+ }
+ txt(c,cls,772,196,col,"bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"d₀ = closest approach (head-on)",772,262,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"θ formula: Rutherford",772,280,DM,"11px 'Cascadia Code',monospace","center");
+ document.getElementById("r0").innerHTML=mode==="R"?"b = <span class='hl'>"+fmt(B,1)+" d₀</span> → θ = 2·atan(d₀/2b) = <span class='hl'>"+fmt(th,1)+"°</span> | chhota b → bada θ, b → 0 head-on → wapas (180°) | zyadatar alpha b bada → lagbhag seedhe | nucleus tiny + dense = rare backscatter":"Plum pudding me positive charge poore atom me failaa hai → koi alpha bada deflect nahi hota (θ ≈ 0°). Gold foil me bade-angle aur backscatter dikhe → ye model fail, Rutherford ka tiny dense nucleus sahi.";
+}
+sB.addEventListener("input",()=>draw(0));
+bR.onclick=()=>{mode="R";draw(0);};bT.onclick=()=>{mode="T";draw(0);};
+anims[0]=t=>draw(t);
+return function(){draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1");
+const sN=document.getElementById("bN"),b1=document.getElementById("bZ1"),b2=document.getElementById("bZ2");
+let Z=1,ang=0;
+const A0=9,CX=250,CY0=170;
+function draw(){
+ const n=parseInt(sN.value);
+ document.getElementById("vlbN").textContent="n = "+n;
+ b1.classList.toggle("sel",Z===1);b2.classList.toggle("sel",Z===2);
+ c.clearRect(0,0,920,330);
+ txt(c,(Z===1?"H":"He⁺")+" atom: Bohr orbits n = 1..4 (to scale)",CX,22,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ for(let k=1;k<=4;k++){
+  const r=A0*k*k/Z;
+  c.strokeStyle=k===n?CY:"#2d2d52";c.lineWidth=k===n?2:1;c.setLineDash(k===n?[]:[3,4]);
+  c.beginPath();c.arc(CX,CY0,r,0,7);c.stroke();
+ }
+ c.setLineDash([]);
+ c.fillStyle=MG;c.beginPath();c.arc(CX,CY0,2.2,0,7);c.fill();
+ const rn=A0*n*n/Z;
+ c.fillStyle=YL;c.beginPath();c.arc(CX+rn*Math.cos(ang),CY0+rn*Math.sin(ang),3.2,0,7);c.fill();
+ txt(c,"nucleus +"+(Z===1?"e":"2e"),CX,CY0+176-6,MG,"11px 'Cascadia Code',monospace","center");
+ txt(c,"r_n = a₀ n² / Z",540,46,CY,"bold 12px 'Cascadia Code',monospace");
+ for(let k=1;k<=4;k++){
+  const y=76+(k-1)*50,ra=k*k/Z,sel=k===n;
+  txt(c,"n="+k,540,y+4,sel?YL:"#8fa0c8",(sel?"bold ":"")+"12px 'Cascadia Code',monospace");
+  c.fillStyle=sel?CY:"#2a4a63";c.fillRect(590,y-8,ra*9,16);
+  txt(c,fmt(0.529*ra,3)+" Å",590+ra*9+8,y+4,sel?"#e8e8f2":"#8fa0c8","12px 'Cascadia Code',monospace");
+  txt(c,"v = "+fmt(2.19*Z/k,2)+"×10⁶ m/s",590,y+23,sel?MG:DM,"11px 'Cascadia Code',monospace");
+ }
+ txt(c,"scale: 1 a₀ = 0.529 Å",540,300,DM,"11px 'Cascadia Code',monospace");
+ document.getElementById("r1").innerHTML="r = 0.529×"+n+"²/"+Z+" = <span class='hl'>"+fmt(0.529*n*n/Z,3)+" Å</span> | v = 2.19×10⁶×"+Z+"/"+n+" = <span class='hl'>"+fmt(2.19*Z/n,2)+"×10⁶ m/s</span> | L = mvr = "+n+" × h/2π | n=1 sabse chhota orbit, n=0 nahi | n 2× → r 4×, v ½× | Z badhe → orbit chhota";
+}
+sN.addEventListener("input",draw);
+b1.onclick=()=>{Z=1;draw();};b2.onclick=()=>{Z=2;draw();};
+anims[1]=t=>{const n=parseInt(sN.value);ang+=Math.min(0.6,Math.max(0.03,0.3*Z*Z/(n*n*n)));draw();};
+return function(){draw();};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2");
+const sI=document.getElementById("eI"),sF=document.getElementById("eF");
+const zb=[document.getElementById("eZ1"),document.getElementById("eZ2"),document.getElementById("eZ3")];
+let Z=1;
+function ly(n){return 40+250/(n*n);}
+function wl2rgb(w){let r=0,g=0,b=0;
+ if(w>=380&&w<440){r=-(w-440)/60;b=1;}else if(w<490){g=(w-440)/50;b=1;}else if(w<510){g=1;b=-(w-510)/20;}else if(w<580){r=(w-510)/70;g=1;}else if(w<645){r=1;g=-(w-645)/65;}else if(w<=750){r=1;}
+ return "rgb("+Math.round(r*255)+","+Math.round(g*255)+","+Math.round(b*255)+")";}
+function draw(){
+ const ni=parseInt(sI.value),nf=parseInt(sF.value);
+ document.getElementById("vleI").textContent=ni;document.getElementById("vleF").textContent=nf;
+ zb.forEach((b,i)=>b.classList.toggle("sel",Z===i+1));
+ const K=13.6*Z*Z;
+ c.clearRect(0,0,920,330);
+ txt(c,"Energy levels of "+["H","He⁺","Li²⁺"][Z-1]+" (E = −13.6 Z²/n² eV)",40,22,"#aab4d8","bold 12px 'Cascadia Code',monospace");
+ c.strokeStyle="#5b6488";c.setLineDash([5,4]);c.lineWidth=1;c.beginPath();c.moveTo(130,40);c.lineTo(480,40);c.stroke();c.setLineDash([]);
+ txt(c,"n=∞  E = 0",30,44,DM,"11px 'Cascadia Code',monospace");
+ for(let n=1;n<=6;n++){
+  const sel=(n===ni||n===nf);
+  c.strokeStyle=n===ni?MG:n===nf?CY:"#3d4470";c.lineWidth=sel?3:1.5;
+  c.beginPath();c.moveTo(130,ly(n));c.lineTo(480,ly(n));c.stroke();
+  if(n<=3)txt(c,"n="+n+"  "+fmt(-K/(n*n),2),30,ly(n)+4,sel?"#e8e8f2":"#8fa0c8","11px 'Cascadia Code',monospace");
+ }
+ let yi=ly(ni),yf=ly(nf),li=yi,lf=yf;
+ if(Math.abs(li-lf)<14){if(li<lf)li=lf-14;else lf=li-14;}
+ txt(c,"n_i="+ni+"  "+fmt(-K/(ni*ni),2)+" eV",492,li+4,MG,"bold 11px 'Cascadia Code',monospace");
+ txt(c,"n_f="+nf+"  "+fmt(-K/(nf*nf),2)+" eV",492,lf+4+((ni===nf)?14:0),CY,"bold 11px 'Cascadia Code',monospace");
+ const E=K*Math.abs(1/(nf*nf)-1/(ni*ni)),wl=E>0?1239.84/E:0;
+ let info="",col=GR,ty="";
+ if(ni>nf){ty="EMISSION (photon bahar)";col=MG;arrow2(c,300,yi,300,yf,MG,3);}
+ else if(ni<nf){ty="ABSORPTION (photon andar)";col=CY;arrow2(c,300,yi,300,yf,CY,3);}
+ else ty="ni = nf: transition nahi";
+ c.strokeStyle="#2d2d52";c.lineWidth=1;c.strokeRect(660,40,245,250);
+ txt(c,ty,782,66,col,"bold 12px 'Cascadia Code',monospace","center");
+ let reg="-",sw="#222";
+ if(E>0){
+  reg=wl<380?"UV":wl<=750?"visible":"IR";
+  sw=wl<380?"#a78bfa":wl<=750?wl2rgb(wl):"#f87171";
+  txt(c,"Eγ = "+fmt(E,2)+" eV",782,100,YL,"bold 14px 'Cascadia Code',monospace","center");
+  txt(c,"λ = "+fmt(wl,1)+" nm",782,128,"#e8e8f2","13px 'Cascadia Code',monospace","center");
+  c.fillStyle=sw;c.fillRect(722,146,120,22);
+  txt(c,reg,782,190,sw,"bold 13px 'Cascadia Code',monospace","center");
+  const ser=nf===1?"Lyman":nf===2?"Balmer":nf===3?"Paschen":"nf="+nf+" series";
+  if(ni>nf)txt(c,ser+" ("+ni+"→"+nf+")",782,214,DM,"11px 'Cascadia Code',monospace","center");
+ }else txt(c,"koi photon nahi",782,110,DM,"13px 'Cascadia Code',monospace","center");
+ txt(c,"ionize from n_f: "+fmt(K/(nf*nf),2)+" eV",782,262,DM,"11px 'Cascadia Code',monospace","center");
+ document.getElementById("r2").innerHTML=E>0?"Eγ = 13.6×"+Z*Z+"×(1/"+nf+"² − 1/"+ni+"²) = <span class='hl'>"+fmt(E,2)+" eV</span> | λ ≈ 1240/"+fmt(E,2)+" = <span class='hl'>"+fmt(wl,1)+" nm ("+reg+")</span> | "+(ni>nf?"emission: electron neeche gira, photon nikla":"absorption: photon ne electron ko upar uthaya")+" | photon energy = level difference":"n_i = n_f: electron wahin, koi photon nahi. Alag n_i, n_f chuno.";
+}
+[sI,sF].forEach(s=>s.addEventListener("input",draw));
+zb.forEach((b,i)=>b.onclick=()=>{Z=i+1;draw();});
+return function(){draw();};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3");
+const sN=document.getElementById("sN");
+const bt=[document.getElementById("sLy"),document.getElementById("sBa"),document.getElementById("sPa")];
+let nf=2;const R=1.097e7;
+const RNG={1:[88,125],2:[350,700],3:[800,1900]};
+const NAME={1:"Lyman (UV)",2:"Balmer (visible + near UV)",3:"Paschen (IR)"};
+function wl2rgb(w){let r=0,g=0,b=0;
+ if(w>=380&&w<440){r=-(w-440)/60;b=1;}else if(w<490){g=(w-440)/50;b=1;}else if(w<510){g=1;b=-(w-510)/20;}else if(w<580){r=(w-510)/70;g=1;}else if(w<645){r=1;g=-(w-645)/65;}else if(w<=750){r=1;}
+ return "rgb("+Math.round(r*255)+","+Math.round(g*255)+","+Math.round(b*255)+")";}
+function lam(ni){return 1e9/(R*(1/(nf*nf)-1/(ni*ni)));}
+function draw(){
+ let mx=parseInt(sN.value);if(mx<=nf){mx=nf+1;sN.value=mx;}
+ sN.min=nf+1;
+ document.getElementById("vlsN").textContent=mx;
+ bt.forEach((b,i)=>b.classList.toggle("sel",nf===i+1));
+ const lo=RNG[nf][0],hi=RNG[nf][1],X0=60,W=800;
+ const px=l=>X0+(l-lo)/(hi-lo)*W;
+ c.clearRect(0,0,920,330);
+ txt(c,"Hydrogen "+NAME[nf]+" - n_f = "+nf,460,22,"#aab4d8","bold 12px 'Cascadia Code',monospace","center");
+ c.fillStyle="#04040a";c.fillRect(X0,110,W,70);c.strokeStyle="#2d2d52";c.lineWidth=1;c.strokeRect(X0,110,W,70);
+ const lim=1e9/(R/(nf*nf));
+ c.strokeStyle="#5b6488";c.setLineDash([4,4]);c.beginPath();c.moveTo(px(lim),104);c.lineTo(px(lim),186);c.stroke();c.setLineDash([]);
+ txt(c,"limit "+fmt(lim,1)+" nm",px(lim)+(nf===1?-4:6),200,DM,"11px 'Cascadia Code',monospace",nf===1?"right":"left");
+ for(let ni=nf+1;ni<=mx;ni++){
+  const l=lam(ni),x=px(l);
+  const col=nf===2?(l<380?"#a78bfa":wl2rgb(l)):nf===1?"#a78bfa":"#f87171";
+  c.strokeStyle=col;c.lineWidth=3;c.beginPath();c.moveTo(x,112);c.lineTo(x,178);c.stroke();
+  const k=ni-nf-1;
+  txt(c,ni+"→"+nf,x,98-(k%3)*13,col,"11px 'Cascadia Code',monospace","center");
+ }
+ c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(X0,222);c.lineTo(X0+W,222);c.stroke();
+ for(let i=0;i<=4;i++){const l=lo+(hi-lo)*i/4,x=px(l);c.beginPath();c.moveTo(x,222);c.lineTo(x,228);c.stroke();txt(c,Math.round(l)+" nm",x,244,DM,"11px 'Cascadia Code',monospace","center");}
+ txt(c,"1/λ = R (1/"+nf+"² − 1/n_i²),  R = 1.097×10⁷ m⁻¹",460,290,CY,"bold 12px 'Cascadia Code',monospace","center");
+ let s="";
+ for(let ni=nf+1;ni<=Math.min(mx,nf+4);ni++)s+=ni+"→"+nf+": "+fmt(lam(ni),1)+" nm | ";
+ const reg=nf===1?"UV (invisible)":nf===2?"visible (+ near UV)":"IR (invisible)";
+ document.getElementById("r3").innerHTML="<span class='hl'>"+NAME[nf]+"</span> | "+s+"series limit ("+"n_i → ∞) = <span class='hl'>"+fmt(lim,1)+" nm</span> | region: "+reg+" | lines discrete = atom ka barcode, n_i badhne pe lines paas-paas";
+}
+sN.addEventListener("input",draw);
+bt.forEach((b,i)=>b.onclick=()=>{nf=i+1;draw();});
+return function(){draw();};
+})();
+inits[4]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Gold foil me zyadatar alpha seedhe gaye aur bahut kam wapas aaye. Kya nikla?",opts:["Atom me positive charge poore atom me barabar failaa hai","Atom mostly khaali hai, chhota dense positive nucleus","Electrons nucleus se bhaari hain","Nucleus atom jitna bada hai"],a:1,why:"Rare backscatter = tiny but dense positive nucleus; zyadatar volume khaali hai. Plum pudding me bada deflection nahi hota."},
+{q:"He⁺ (Z = 2) me n = 2 orbit ka radius? (a₀ = 0.529 Å)",opts:["0.529 Å","2.116 Å","0.265 Å","1.058 Å"],a:3,why:"r_n = a₀n²/Z = 0.529 × 4 / 2 = 1.058 Å. Z badhe to orbit chhota."},
+{q:"H atom me n = 3 → n = 2 transition ka photon energy?",opts:["1.89 eV","12.1 eV","10.2 eV","3.4 eV"],a:0,why:"Eγ = 13.6 (1/2² − 1/3²) = 13.6 × 0.1389 ≈ 1.89 eV (Balmer Hα, ~656 nm, visible)."},
+{q:"He⁺ ko ground state se ionize karne ke liye energy?",opts:["13.6 eV","27.2 eV","54.4 eV","6.8 eV"],a:2,why:"Ionization = 13.6 Z²/n² = 13.6 × 4 / 1 = 54.4 eV."},
+{q:"Hydrogen ki kaun si series mainly visible range me aati hai?",opts:["Lyman","Balmer","Paschen","Sab series"],a:1,why:"Balmer (n_f = 2) mainly visible hai (~656 nm Hα se ~365 nm limit). Lyman UV, Paschen IR."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Atoms pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+go(0);
+</script></body></html>
