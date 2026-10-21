@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electromagnetic Waves - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Physics - Chapter 8 - Electromagnetic Waves</div>
+<h1>Electromagnetic Waves Ka Visual Walkthrough</h1>
+<p class="sub">5 animated scenes - displacement current lab, EM wave travel lab, transverse nature 3D lab, spectrum lab, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene" id="sc0">
+<h2>1. Displacement Current - Maxwell Ka Fix ⭐</h2>
+<p class="why">Charging capacitor ke plates ke beech charge flow nahi hota, phir bhi gap ke aas-paas magnetic field milta hai. Maxwell ka fix: changing electric field ek "displacement current" ki tarah act karta hai, I_d = ε₀ dΦ_E/dt. Capacitor me I_d lead ke conduction current ke barabar hota hai. Ampere-Maxwell law: ∮B·dl = μ₀(I_c + ε₀ dΦ_E/dt).</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="slrow"><label>peak current I₀ (A)</label><input type="range" id="dI" min="0.2" max="2" step="0.2" value="1"><span class="v" id="vldI">1.0</span></div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. EM Wave Ka Safar - E aur B Saath Saath ⭐</h2>
+<p class="why">Changing E magnetic field banata hai, changing B electric field - dono ek-doosre ko sustain karke aage badhte hain, medium ki zaroorat nahi. E aur B same phase me hote hain (saath peak, saath zero). Vacuum me speed c = 1/√(μ₀ε₀) ≈ 3×10⁸ m/s, aur E₀/B₀ = c. Frequency badhao to wavelength ghat-ti hai (c = fλ).</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="wEB">E + B dono</button><button id="wE">sirf E dekho</button></div>
+<div class="slrow"><label>frequency f (relative)</label><input type="range" id="wF" min="1" max="8" step="1" value="2"><span class="v" id="vlwF">2</span></div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Transverse Nature - 3D View ⭐</h2>
+<p class="why">E ⟂ B ⟂ propagation - teeno ek-doosre ke perpendicular. Propagation ki direction E×B se milti hai. Neeche E (z-axis) aur B (y-axis) ek x-direction me travel kar rahi wave ke liye snapshot hai. View ghuma ke dekho: har x pe E aur B hamesha perpendicular rehte hain. (Snapshot schematic; vectors same phase.)</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="slrow"><label>view angle θ</label><input type="range" id="vTh" min="0" max="90" step="5" value="35"><span class="v" id="vlvTh">35°</span></div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. EM Spectrum - Ek Hi Family ⭐⭐</h2>
+<p class="why">Radio se gamma tak sab EM waves hain - vacuum me sabki speed c, bas frequency aur wavelength alag. Order: radio → microwave → infrared → visible → ultraviolet → X-ray → gamma; is direction me frequency aur photon energy badhti hain, wavelength ghat-ti hai. Visible sirf ~400-700 nm: red badi λ, violet chhoti λ. Band pe click karke details dekho.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow" style="margin-bottom:10px"><button id="b0">Radio</button><button id="b1">Microwave</button><button id="b2">Infrared</button><button id="b3">Visible</button><button id="b4">Ultraviolet</button><button id="b5">X-ray</button><button id="b6">Gamma</button></div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Rapid Quiz - EM Waves Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: I_d = ε₀ dΦ_E/dt, c = 1/√(μ₀ε₀), E ⟂ B ⟂ propagation, E₀/B₀ = c, spectrum radio se gamma.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc5">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Displacement Current ⭐</h3><p>Capacitor gap me charge flow nahi, phir bhi changing E | I_d = ε₀ dΦ_E/dt | Charging me I_d = lead ka conduction current | Literal charge flow nahi hai gap me</p></div>
+<div class="rcard"><h3>Ampere-Maxwell Law ⭐</h3><p>∮B·dl = μ₀(I_c + ε₀ dΦ_E/dt) | Changing E field bhi magnetic field banata hai | Maxwell ne Ampere law ko complete kiya</p></div>
+<div class="rcard"><h3>EM Wave Ka Janam ⭐</h3><p>Changing E → B, changing B → E, ek-doosre ko sustain | Accelerated charges radiate karte hain; stationary/static nahi | Medium zaroori nahi - vacuum me bhi travel</p></div>
+<div class="rcard"><h3>Speed aur Relations ⭐⭐</h3><p>c = 1/√(μ₀ε₀) ≈ 3×10⁸ m/s | c = fλ (medium me v = fλ) | E₀/B₀ = c | Vacuum me SAB EM waves same speed</p></div>
+<div class="rcard"><h3>Transverse Nature ⭐</h3><p>E ⟂ B ⟂ propagation | Direction of travel = E×B | E aur B same phase: saath peak, saath zero | Sound longitudinal hai, light transverse</p></div>
+<div class="rcard"><h3>Spectrum ⭐⭐</h3><p>radio → microwave → infrared → visible (400-700 nm) → UV → X-ray → gamma | Is side f aur energy badhti, λ ghat-ti | Uses: radio/microwave = communication, radar, heating; IR = remote, thermal imaging; UV = sterilization; X-ray = medical imaging; gamma = radiotherapy</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">← Peeche</button><button id="next">Aage →</button></div>
+<div class="foot">Learn With Rahul - Class 12 Physics Ch 8 Electromagnetic Waves Visual Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=6;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}inits[0]=(()=>{
+const c=ctx("cv0"),sI=document.getElementById("dI"),vI=document.getElementById("vldI"),R=document.getElementById("r0");
+const dotsL=[40,120,200,280,360],dotsR=[510,590,670,750,830];
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const ph=t*0.08,I0=parseFloat(sI.value);
+ const q=Math.sin(ph),I=I0*Math.cos(ph);
+ c.strokeStyle="#8fa0c8";c.lineWidth=2;
+ c.beginPath();c.moveTo(40,160);c.lineTo(420,160);c.moveTo(500,160);c.lineTo(880,160);c.stroke();
+ c.strokeStyle="#e8e8f2";c.lineWidth=4;
+ c.beginPath();c.moveTo(420,70);c.lineTo(420,250);c.moveTo(500,70);c.lineTo(500,250);c.stroke();
+ txt(c,"lead wire: conduction current I",60,40,DM,"12px 'Cascadia Code',monospace");
+ txt(c,"plate",420,264,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"plate",500,264,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"capacitor gap - koi charge cross nahi karta",460,296,DM,"11px 'Cascadia Code',monospace","center");
+ txt(c,"I_d = ε₀ dΦE/dt = I (displacement current)",460,318,YL,"bold 12px 'Cascadia Code',monospace","center");
+ const sp=2.4*Math.cos(ph)*I0;
+ c.fillStyle=CY;
+ for(let i=0;i<dotsL.length;i++){dotsL[i]+=sp;if(dotsL[i]>405)dotsL[i]=40;if(dotsL[i]<40)dotsL[i]=405;
+  c.beginPath();c.arc(dotsL[i],160,3.5,0,7);c.fill();}
+ for(let i=0;i<dotsR.length;i++){dotsR[i]+=sp;if(dotsR[i]>880)dotsR[i]=515;if(dotsR[i]<515)dotsR[i]=880;
+  c.beginPath();c.arc(dotsR[i],160,3.5,0,7);c.fill();}
+ if(Math.abs(q)>0.15){
+  const lch=q>0?"+":"-",rch=q>0?"-":"+";
+  for(let k=0;k<3;k++){
+   txt(c,lch,410,105+k*60,CY,"bold 14px 'Cascadia Code',monospace","center");
+   txt(c,rch,510,105+k*60,MG,"bold 14px 'Cascadia Code',monospace","center");
+  }
+ }
+ const aq=Math.abs(q),dir=q>=0?1:-1;
+ if(aq>0.1){for(let k=0;k<4;k++){const y=100+k*40,len=8+50*aq;
+  arrow2(c,dir>0?430:490,y,dir>0?430+len:490-len,y,CY,2.5);}}
+ txt(c,"E field gap me (charge se badhta)",560,96,DM,"11px 'Cascadia Code',monospace");
+ const aI=Math.abs(I)/I0;
+ if(aI>0.05){
+  c.strokeStyle=MG;c.setLineDash([5,5]);
+  [34,60].forEach(r=>{c.globalAlpha=0.9*aI;c.lineWidth=1.5+2.5*aI;c.beginPath();c.arc(460,160,r,0,7);c.stroke();});
+  c.setLineDash([]);c.globalAlpha=1;
+ }
+ txt(c,"B circles - sirf changing E se!",560,132,MG,"11px 'Cascadia Code',monospace");
+ R.innerHTML="I = <b style='color:#22d3ee'>"+fmt(I,1)+" A</b> &nbsp;|&nbsp; I_d = <b style='color:#e879f9'>"+fmt(I,1)+" A</b> (barabar!) &nbsp;|&nbsp; "+
+  (Math.abs(q)>0.9?"plates full charge - I ≈ 0, B gayab":Math.abs(I)>0.9*I0?"I max - E sabse tez badal raha, B max":"charging/discharging chal raha");
+}
+sI.addEventListener("input",()=>{vI.textContent=fmt(parseFloat(sI.value),1);});
+anims[0]=t=>draw(t);
+return function(){vI.textContent=fmt(parseFloat(sI.value),1);draw(0);};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1"),sF=document.getElementById("wF"),vF=document.getElementById("vlwF"),R=document.getElementById("r1");
+const bEB=document.getElementById("wEB"),bE=document.getElementById("wE");
+let showB=true;
+function mark(){bEB.style.borderColor=showB?"#22d3ee":"#2d2d52";bEB.style.color=showB?"#22d3ee":"#8fa0c8";
+ bE.style.borderColor=!showB?"#22d3ee":"#2d2d52";bE.style.color=!showB?"#22d3ee":"#8fa0c8";}
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const f=parseInt(sF.value),lam=400/f,k=2*Math.PI/lam,w=t*0.1,A=60,y0=140;
+ // propagation arrow
+ arrow2(c,380,24,560,24,DM,2);
+ txt(c,"direction of propagation (E×B)",575,28,DM,"11px 'Cascadia Code',monospace");
+ // E baseline
+ c.strokeStyle="#2d2d52";c.lineWidth=1;
+ c.beginPath();c.moveTo(60,y0);c.lineTo(880,y0);c.stroke();
+ // E curve
+ c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();
+ for(let x=60;x<=880;x+=3){const y=y0-A*Math.sin(k*(x-60)-w);x===60?c.moveTo(x,y):c.lineTo(x,y);}
+ c.stroke();
+ // E arrows
+ for(let x=80;x<=880;x+=55){const y=y0-A*Math.sin(k*(x-60)-w);
+  if(Math.abs(y-y0)>8)arrow2(c,x,y0,c,x,y,CY,2);}
+ txt(c,"E (vertical)",24,40,CY,"bold 12px 'Cascadia Code',monospace");
+ if(showB){
+  const y1=255,A1=35;
+  c.strokeStyle="#2d2d52";c.lineWidth=1;
+  c.beginPath();c.moveTo(60,y1);c.lineTo(880,y1);c.stroke();
+  c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();
+  for(let x=60;x<=880;x+=3){const y=y1-A1*Math.sin(k*(x-60)-w);x===60?c.moveTo(x,y):c.lineTo(x,y);}
+  c.stroke();
+  for(let x=80;x<=880;x+=55){const y=y1-A1*Math.sin(k*(x-60)-w);
+   if(Math.abs(y-y1)>6)arrow2(c,x,y1,c,x,y,MG,2);}
+  txt(c,"B (perpendicular plane, magnitude)",24,320,MG,"bold 12px 'Cascadia Code',monospace");
+  // same-phase marker at first E peak
+  let xp=-1;for(let x=60;x<=880;x++){if(Math.sin(k*(x-60)-w)>0.9999){xp=x;break;}}
+  if(xp>0){
+   c.strokeStyle=YL;c.setLineDash([4,4]);c.globalAlpha=0.6;c.lineWidth=1.5;
+   c.beginPath();c.moveTo(xp,y0-A-14);c.lineTo(xp,y1+A1+10);c.stroke();
+   c.setLineDash([]);c.globalAlpha=1;
+   txt(c,"saath peak - SAME phase",xp+8,70,YL,"11px 'Cascadia Code',monospace");
+  }
+ }
+ R.innerHTML="f = <b style='color:#22d3ee'>"+f+"</b> (relative) &nbsp;|&nbsp; λ ∝ 1/f - f double karo, λ half &nbsp;|&nbsp; c = fλ = <b>3×10⁸ m/s</b> har f pe &nbsp;|&nbsp; E₀/B₀ = c";
+}
+sF.addEventListener("input",()=>{vF.textContent=sF.value;});
+bEB.onclick=()=>{showB=true;mark();};bE.onclick=()=>{showB=false;mark();};
+anims[1]=t=>draw(t);
+return function(){vF.textContent=sF.value;mark();draw(0);};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2"),sT=document.getElementById("vTh"),vT=document.getElementById("vlvTh"),R=document.getElementById("r2");
+function draw(t){
+ c.clearRect(0,0,920,330);
+ const th=parseInt(sT.value)*Math.PI/180,ox=120,oy=180,u=30;
+ drawAxes(c,ox,oy,u,th,3.2);
+ const eT=[],bT=[];
+ for(let i=0;i<=14;i++){
+  const x3=i*0.42,s=Math.sin(i*0.75-t*0.15);
+  const base=proj(rot3([x3,0,0],th),ox,oy,u);
+  const te=proj(rot3([x3,0,1.5*s],th),ox,oy,u);
+  const tb=proj(rot3([x3,1.5*s,0],th),ox,oy,u);
+  eT.push(te);bT.push(tb);
+  if(Math.abs(s)>0.12){
+   arrow3(c,base,te,CY,2);
+   arrow3(c,base,tb,MG,2);
+  }
+  c.fillStyle="#8fa0c8";c.beginPath();c.arc(base[0],base[1],2,0,7);c.fill();
+ }
+ c.strokeStyle=CY;c.globalAlpha=0.45;c.lineWidth=1.5;c.beginPath();
+ eT.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));c.stroke();
+ c.strokeStyle=MG;c.beginPath();
+ bT.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));c.stroke();
+ c.globalAlpha=1;
+ txt(c,"cyan = E (z-axis)",620,282,CY,"12px 'Cascadia Code',monospace");
+ txt(c,"magenta = B (y-axis)",620,300,MG,"12px 'Cascadia Code',monospace");
+ txt(c,"travel = E×B (+x)",620,318,YL,"12px 'Cascadia Code',monospace");
+ R.innerHTML="θ = <b style='color:#22d3ee'>"+sT.value+"°</b> &nbsp;|&nbsp; E ⟂ B ⟂ propagation - har x pe 90° &nbsp;|&nbsp; direction of travel = E×B &nbsp;|&nbsp; E aur B same phase";
+}
+sT.addEventListener("input",()=>{vT.textContent=sT.value+"°";});
+anims[2]=t=>draw(t);
+return function(){vT.textContent=sT.value+"°";draw(0);};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3"),R=document.getElementById("r3");
+const B=[
+ {n:"Radio",lo:-1,hi:4,col:"#22d3ee",lam:"0.1 m - 10 km",use:"communication - broadcast, TV, mobile"},
+ {n:"Microwave",lo:-3,hi:-1,col:"#34d399",lam:"1 mm - 10 cm",use:"communication, radar, heating (oven)"},
+ {n:"Infrared",lo:-6.15,hi:-3,col:"#facc15",lam:"700 nm - 1 mm",use:"remote controls, thermal imaging"},
+ {n:"Visible",lo:-6.4,hi:-6.15,col:"#e8e8f2",lam:"400 - 700 nm",use:"vision - aankhein isi band ko dekhti hain"},
+ {n:"Ultraviolet",lo:-8,hi:-6.4,col:"#e879f9",lam:"10 - 400 nm",use:"sterilization (zyada exposure se bacho)"},
+ {n:"X-ray",lo:-11,hi:-8,col:"#f87171",lam:"0.01 - 10 nm",use:"medical imaging - bones, baggage scan"},
+ {n:"Gamma",lo:-13,hi:-11,col:"#a78bfa",lam:"< 0.01 nm",use:"radiotherapy (controlled use), cancer treatment"}
+];
+let sel=0;
+const LO=-13.5,HI=4.5;
+const X=l=>40+(l-LO)/(HI-LO)*840;
+function sup(x){const m={"0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","-":"⁻"};
+ return String(x).split("").map(ch=>m[ch]||ch).join("");}
+function fsi(x){const e=Math.floor(Math.log10(x)),m=x/Math.pow(10,e);
+ return (Math.round(m*10)/10)+"×10"+sup(e);}
+function mark(){
+ for(let i=0;i<7;i++){const b=document.getElementById("b"+i);
+  b.style.borderColor=i===sel?"#facc15":"#2d2d52";b.style.color=i===sel?"#facc15":"#8fa0c8";}
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ // band rects
+ B.forEach((b,i)=>{
+  const x1=X(b.lo),x2=X(b.hi);
+  c.fillStyle=b.col;c.globalAlpha=i===sel?0.95:0.45;
+  c.fillRect(x1,90,x2-x1,60);
+  c.globalAlpha=1;
+  if(i===sel){c.strokeStyle="#facc15";c.lineWidth=3;c.strokeRect(x1,90,x2-x1,60);
+   const cx=Math.min(860,Math.max(60,(x1+x2)/2));
+   txt(c,b.n,cx,78,"#facc15","bold 13px 'Cascadia Code',monospace","center");
+   c.fillStyle="#facc15";c.beginPath();c.moveTo((x1+x2)/2-7,158);c.lineTo((x1+x2)/2+7,158);c.lineTo((x1+x2)/2,150);c.closePath();c.fill();}
+  if(x2-x1>70)txt(c,b.n,(x1+x2)/2,126,"#07070f","bold 11px 'Cascadia Code',monospace","center");
+ });
+ // axis with decade ticks
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(40,172);c.lineTo(880,172);c.stroke();
+ c.strokeStyle="#5b6488";c.lineWidth=1;
+ for(let l=-13;l<=4;l++){const x=X(l);c.beginPath();c.moveTo(x,172);c.lineTo(x,178);c.stroke();}
+ for(let l=-12;l<=3;l+=3)txt(c,"10"+sup(l),X(l),192,"#8fa0c8","10px 'Cascadia Code',monospace","center");
+ txt(c,"wavelength λ (m), log scale →",880,192,"#8fa0c8","10px 'Cascadia Code',monospace","right");
+ // visible zoom strip
+ const zx=l=>120+(700-l)/300*680;
+ const grad=["#8b5cf6","#3b82f6","#22d3ee","#34d399","#facc15","#f97316","#ef4444"];
+ for(let i=0;i<7;i++){const l1=400+i*(300/7),l2=400+(i+1)*(300/7);
+  c.fillStyle=grad[i];c.fillRect(zx(l2),212,zx(l1)-zx(l2)+1,26);}
+ c.strokeStyle="#5b6488";c.lineWidth=1;c.strokeRect(zx(700),212,680,26);
+ txt(c,"visible zoom",60,229,"#e8e8f2","11px 'Cascadia Code',monospace","left");
+ txt(c,"violet 400 nm",120,255,"#a78bfa","10px 'Cascadia Code',monospace","left");
+ txt(c,"red 700 nm",800,255,"#f87171","10px 'Cascadia Code',monospace","right");
+ txt(c,"red ki λ badi, violet ki chhoti - aage jao to UV, X, gamma aur chhoti",460,272,"#5b6488","11px 'Cascadia Code',monospace","center");
+ // selected info
+ const b=B[sel],flo=3e8/Math.pow(10,b.hi),fhi=3e8/Math.pow(10,b.lo);
+ const elo=1240/(Math.pow(10,b.hi)*1e9),ehi=1240/(Math.pow(10,b.lo)*1e9);
+ txt(c,b.n+": λ = "+b.lam,60,300,b.col,"bold 12px 'Cascadia Code',monospace");
+ txt(c,"f ≈ "+fsi(flo)+" - "+fsi(fhi)+" Hz",60,318,"#8fa0c8","11px 'Cascadia Code',monospace");
+ txt(c,"photon E ≈ "+fsi(elo)+" - "+fsi(ehi)+" eV",520,318,"#8fa0c8","11px 'Cascadia Code',monospace");
+ R.innerHTML="<b style='color:"+b.col+"'>"+b.n+"</b> &nbsp;|&nbsp; λ: "+b.lam+" &nbsp;|&nbsp; uses: <b>"+b.use+"</b> &nbsp;|&nbsp; speed vacuum me: c (sab same!)";
+}
+for(let i=0;i<7;i++)document.getElementById("b"+i).onclick=()=>{sel=i;mark();draw();};
+anims[3]=null;
+return function(){mark();draw();};
+})();
+inits[4]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Charging capacitor ke plates ke beech koi charge flow nahi hota, phir bhi gap ke aas-paas magnetic field milta hai. Kyun?",opts:["Air me se electrons jump kar jaate hain","Changing electric field displacement current ki tarah act karta hai","Plates me se charge leak hota hai","Ye sirf galvanometer ka error hai"],a:1,why:"Maxwell ka fix: I_d = ε₀ dΦ_E/dt. Changing E field bhi B banata hai - Ampere-Maxwell law me I_c + I_d dono aate hain."},
+{q:"EM wave me E, B aur propagation direction ka relation kya hai?",opts:["E aur B dono propagation ke parallel hain","E aur B 90° out of phase hote hain","E ⟂ B, aur dono propagation ke perpendicular","B propagation direction me hota hai"],a:2,why:"Transverse wave: E ⟂ B ⟂ propagation, aur travel ki direction E×B se milti hai. E, B same phase me hote hain."},
+{q:"Vacuum me EM wave ki speed ka formula?",opts:["1/√(μ₀ε₀)","√(μ₀ε₀)","μ₀ × ε₀","Medium pe depend - vacuum me zero"],a:0,why:"c = 1/√(μ₀ε₀) ≈ 3×10⁸ m/s. Light bhi EM wave hai, isliye light ki speed yahi hai."},
+{q:"Spectrum me sabse CHHOTI wavelength kis band ki hai?",opts:["Radio waves","Microwaves","Visible light","Gamma rays"],a:3,why:"radio → microwave → IR → visible → UV → X-ray → gamma: is direction me λ ghat-ti hai, f aur photon energy badhti hai."},
+{q:"Frequency badha di jaye (vacuum me) to kya hoga?",opts:["Wavelength badh jayegi","Wavelength ghat-ti hai aur photon energy badhti hai","Speed c badh jayegi","Kuch nahi badalta"],a:1,why:"c = fλ constant hai - f badhe to λ ghat-ti hai, aur photon energy E = hf badhti hai. Speed vacuum me hamesha c."}
+];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! EM Waves pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+
+go(0);
+</script></body></html>
