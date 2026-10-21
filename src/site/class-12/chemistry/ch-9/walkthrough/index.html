@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amines - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Chemistry - Chapter 9 - Amines</div>
+<h1>Amines Ka Visual Walkthrough</h1>
+<p class="sub">6 interactive scenes - classification game (N pe groups gino), banao machine (Hoffmann, Gabriel, nitro reduction), basic strength lab (pKb), 1/2/3-degree test bench, diazonium magic + aniline bench, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Kaunsa Class? - N Pe Groups Gino! ⭐⭐</h2>
+<p class="why">Amines = NH3 ke derivatives (H alkyl/aryl se replace). 1°/2°/3° = NITROGEN pe kitne alkyl/aryl groups jude - 1° (ek, R-NH2), 2° (do, R2NH), 3° (teen, R3N). DHYAN: yeh alcohol wala carbon-logic NAHI hai - yahan N pe gino, carbon pe nahi! Simple (same groups) vs mixed (alag). Molecule dekho, class batao.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="eb sel" data-e="0">methanamine</button>
+<button class="eb" data-e="1">N-methylmethanamine</button>
+<button class="eb" data-e="2">N,N-dimethylmethanamine</button>
+<button class="eb" data-e="3">ethanamine</button>
+<button class="eb" data-e="4">aniline</button>
+<button class="eb" data-e="5">N-methylethanamine</button>
+</div>
+<div class="btnrow">
+<button class="gb" data-g="d1">1° amine</button>
+<button class="gb" data-g="d2">2° amine</button>
+<button class="gb" data-g="d3">3° amine</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Banao Machine - Nitro / Ammonolysis / Hoffmann / Gabriel ⭐⭐</h2>
+<p class="why">Nitro reduction: R-NO2 + Sn/HCl (ya H2/Ni) → R-NH2. Ammonolysis: R-X + NH3 → lekin MIXTURE (1°+2°+3°+quaternary, excess NH3 se 1° favour). HOFFMANN BROMAMIDE: amide + Br2/KOH → 1° amine, CHAIN EK C SE GHATTI. GABRIEL PHTHALIMIDE → PURE 1° amine (no mixture, par aromatic NAHI ban sakta).</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="tb sel" data-t="0">Nitro reduction</button>
+<button class="tb" data-t="1">Ammonolysis</button>
+<button class="tb" data-t="2">Hoffmann bromamide</button>
+<button class="tb" data-t="3">Gabriel phthalimide</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Basic Strength Lab - pKb Ka Khel ⭐⭐</h2>
+<p class="why">N ka lone pair H+ accept karta = base. pKb KAM = base ZYADA (ulta!). Gas phase: 3° &gt; 2° &gt; 1° &gt; NH3 (pure +I effect). AQUEOUS me solvation bhi: methylamines 2° &gt; 1° &gt; 3° &gt; NH3; ethyl: 2° &gt; 3° &gt; 1°. Aniline SABSE KAM (lone pair ring ke saath resonance me busy). Electron-donating group basicity badhata, -NO2 ghatata.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="pb sel" data-p="0">aqueous (pani me)</button>
+<button class="pb" data-p="1">gas phase</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Test Bench - 1° 2° 3° Pehchano ⭐⭐</h2>
+<p class="why">CARBYLAMINE: CHCl3 + alc KOH (heat) → isocyanide ki GANDI SMELL - SIRF 1° amine deta (aliphatic + aromatic dono). HINSBERG (C6H5SO2Cl): 1° → product KOH me SOLUBLE, 2° → insoluble, 3° → reaction NAHI. HNO2 (NaNO2+HCl): 1° aliphatic → N2 BUBBLES, 1° aromatic (273-278K) → diazonium, 2° → yellow OILY nitrosamine, 3° → kuch nahi.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="db sel" data-d="0">1° amine</button>
+<button class="db" data-d="1">2° amine</button>
+<button class="db" data-d="2">3° amine</button>
+</div>
+<div class="btnrow">
+<button class="qb sel" data-q="0">Carbylamine</button>
+<button class="qb" data-q="1">Hinsberg</button>
+<button class="qb" data-q="2">HNO2 (nitrous acid)</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Diazonium Magic - N2+ Ki Jagah Kuch Bhi ⭐⭐</h2>
+<p class="why">Aniline + NaNO2 + 2HCl (273-278 K, COLD) → benzenediazonium chloride. -N2+ = BEST leaving group (N2 gas nikal jata) - uski jagah Cl/Br/CN/I/F/OH/H kuch bhi! SANDMEYER: CuCl→Cl, CuBr→Br, CuCN→CN. KI→I, HBF4+heat→F (Balz-Schiemann), H3PO2→H (benzene), H2O warm→OH (phenol). COUPLING: + phenol (alkaline, cold) → p-hydroxyazobenzene (ORANGE DYE).</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="rb sel" data-r="0">CuCl (Sandmeyer)</button>
+<button class="rb" data-r="1">CuBr (Sandmeyer)</button>
+<button class="rb" data-r="2">CuCN (Sandmeyer)</button>
+<button class="rb" data-r="3">KI</button>
+<button class="rb" data-r="4">HBF4 + heat</button>
+</div>
+<div class="btnrow">
+<button class="rb2 sel" data-r="0">H3PO2</button>
+<button class="rb2" data-r="1">H2O (warm)</button>
+<button class="rb2" data-r="2">phenol, cold (coupling)</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Aniline Bench - Br2 Water aur Protection ⭐⭐</h2>
+<p class="why">-NH2 = STRONGLY ACTIVATING, o/p-directing. Aniline + Br2 water → 2,4,6-TRIBROMOANILINE (WHITE PPT) - teeno positions ek saath! CONTROLLED substitution chahiye to pehle ACETYLATION (CH3COCl → acetanilide, -NH2 kam reactive = PROTECT), phir substitution (nitration → p-nitroaniline major), phir hydrolysis se -NH2 wapas.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="ab sel" data-a="0">Br2 water</button>
+<button class="ab" data-a="1">CH3COCl (acetylation)</button>
+<button class="ab" data-a="2">protect → HNO3 → hydrolysis</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Rapid Quiz - Amines Pakka? ⭐⭐</h2>
+<p class="why">5 sawaal. Yaad rakho: N pe groups gino, Hoffmann = ek C kam, Gabriel = pure 1°, aqueous methylamines 2°&gt;1°&gt;3°, carbylamine sirf 1°, Sandmeyer CuCN → cyanobenzene.</p>
+<div class="panel"><div id="quizBox"></div></div>
+</div>
+<div class="scene" id="sc7">
+<h2>Formula Recap - Screenshot Le Lo! ⭐</h2>
+<div class="recap-grid">
+<div class="rcard"><h3>Classification ⭐⭐</h3><p>1°/2°/3° = NITROGEN pe alkyl/aryl groups (carbon pe NAHI) | 1°: R-NH2 | 2°: R2NH | 3°: R3N | Simple (same groups) vs mixed | IUPAC: alkane+amine (ethanamine), 2°/3° me N-substituent (N-methylethanamine) | Aromatic = aniline (C6H5NH2)</p></div>
+<div class="rcard"><h3>Preparation ⭐⭐</h3><p>Nitro: R-NO2 + Sn/HCl ya H2/Ni → R-NH2 | Ammonolysis: R-X + NH3 → MIXTURE (1°+2°+3°+quaternary; excess NH3 = 1° favour) | Nitrile R-CN + LiAlH4 → R-CH2-NH2 (chain +1 C) | HOFFMANN BROMAMIDE: RCONH2 + Br2/KOH → R-NH2 (EK C KAM) | GABRIEL PHTHALIMIDE = PURE 1° (aromatic NAHI)</p></div>
+<div class="rcard"><h3>Basic Strength ⭐⭐</h3><p>N lone pair H+ accept = base | pKb KAM = base ZYADA | Aliphatic &gt; aromatic (aniline lone pair resonance me busy) | GAS: 3° &gt; 2° &gt; 1° &gt; NH3 (+I effect) | AQUEOUS methyl: 2° &gt; 1° &gt; 3° &gt; NH3 (inductive+solvation+steric) | EDG basicity badhata, -NO2 ghatata</p></div>
+<div class="rcard"><h3>Distinguish Tests ⭐⭐</h3><p>CARBYLAMINE (CHCl3+alc KOH): sirf 1° amine → isocyanide GANDI SMELL | HINSBERG (C6H5SO2Cl): 1° → KOH-soluble, 2° → insoluble, 3° → no reaction | HNO2: 1° aliphatic → N2 BUBBLES (alcohol), 1° aromatic (cold) → DIAZONIUM, 2° → yellow OILY nitrosamine, 3° → kuch nahi</p></div>
+<div class="rcard"><h3>Diazonium Salts ⭐⭐</h3><p>Aniline + NaNO2+2HCl (273-278 K) → C6H5N2+Cl- | -N2+ = BEST leaving group | SANDMEYER: CuCl→C6H5Cl, CuBr→C6H5Br, CuCN→C6H5CN | KI→iodobenzene | HBF4+heat→fluorobenzene (Balz-Schiemann) | H3PO2→benzene | H2O warm→phenol | COUPLING + phenol → p-hydroxyazobenzene (orange AZO DYE)</p></div>
+<div class="rcard"><h3>Aniline Reactions ⭐⭐</h3><p>-NH2 = strongly ACTIVATING, o/p-directing | Br2 water → 2,4,6-TRIBROMOANILINE (WHITE PPT) | ACETYLATION (CH3COCl) → acetanilide = -NH2 PROTECT (kam activating) | phir nitration → p-nitroaniline MAJOR | phir hydrolysis → -NH2 wapas | Controlled substitution = protect → react → deprotect</p></div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Chemistry Chapter 9 (Amines) - Interactive Walkthrough</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+inits[0]=(()=>{
+ const c=ctx("cv0"),R=document.getElementById("r0");
+ const MOLS=[
+  {f:"CH3 - NH2",n:"methanamine",cls:"d1",nb:1,why:"N pe sirf 1 alkyl group = 1° amine. IUPAC: methane + amine = methanamine."},
+  {f:"(CH3)2NH",n:"N-methylmethanamine",cls:"d2",nb:2,why:"N pe 2 methyl groups = 2° (dimethylamine). SIMPLE (dono groups same)."},
+  {f:"(CH3)3N",n:"N,N-dimethylmethanamine",cls:"d3",nb:3,why:"N pe 3 methyl groups = 3° (trimethylamine). N pe H NAHI bacha!"},
+  {f:"CH3 - CH2 - NH2",n:"ethanamine",cls:"d1",nb:1,why:"N pe 1 group = 1°. Carbon chain badi ho ya chhoti - N PE hi ginti!"},
+  {f:"C6H5 - NH2   (NH2 ring pe)",n:"aniline",cls:"d1",nb:1,why:"N pe 1 group (phenyl) = 1° AROMATIC amine = aniline. Lone pair resonance karta - KAM basic!"},
+  {f:"C2H5 - NH - CH3",n:"N-methylethanamine",cls:"d2",nb:2,why:"N pe 2 DIFFERENT groups (ethyl + methyl) = 2° MIXED amine."}];
+ const OPTS=[["d1","1° amine"],["d2","2° amine"],["d3","3° amine"]];
+ let mi=0,guess=null;
+ function draw(){
+  c.clearRect(0,0,920,330);
+  const m=MOLS[mi];
+  txt(c,"Molecule:",60,44,DM,"13px 'Cascadia Code',monospace");
+  txt(c,m.f,60,105,CY,"bold 29px 'Cascadia Code',monospace");
+  txt(c,m.n,60,142,"#e8e8f2","18px 'Cascadia Code',monospace");
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(40,168);c.lineTo(900,168);c.stroke();
+  if(guess===null){
+   txt(c,"Class batao neeche buttons se: 1° / 2° / 3° amine?",60,205,YL,"15px 'Cascadia Code',monospace");
+   txt(c,"Hint: NITROGEN pe kitne alkyl/aryl groups jude - WOH gino (carbon wala logic nahi!)",60,238,DM,"13px 'Cascadia Code',monospace");
+   txt(c,"1° = 1 group (R-NH2) | 2° = 2 groups (R2NH) | 3° = 3 groups (R3N)",60,262,DM,"13px 'Cascadia Code',monospace");
+  }else{
+   const ok=guess===m.cls;
+   txt(c,ok?"CORRECT!":"GALAT - dekho kyun:",60,208,ok?GR:RD,"bold 23px 'Cascadia Code',monospace");
+   const label=OPTS.filter(o=>o[0]===m.cls)[0][1];
+   txt(c,"Answer: "+label,60,244,MG,"bold 17px 'Cascadia Code',monospace");
+   txt(c,"N pe C-groups: "+m.nb,60,274,CY,"15px 'Cascadia Code',monospace");
+   wrap(c,m.why,60,300,"#c9d4ff","14px 'Cascadia Code',monospace",84,17);
+  }
+  R.innerHTML="Molecule <span class='hl'>"+(mi+1)+" / 6</span> - yaad rakho: amine classification me <span class='cy'>NITROGEN pe groups gino</span> (alcohol jaisa carbon-logic NAHI)!";
+ }
+ document.querySelectorAll("#sc0 .eb").forEach(b=>b.onclick=()=>{
+  mi=parseInt(b.dataset.e);guess=null;
+  document.querySelectorAll("#sc0 .eb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc0 .gb").forEach(b=>b.onclick=()=>{
+  guess=b.dataset.g;
+  document.querySelectorAll("#sc0 .gb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[1]=(()=>{
+ const c=ctx("cv1"),R=document.getElementById("r1");
+ let tab=0;
+ const TABS=[
+  {t:"NITRO REDUCTION - nitro se amine:",eq:["C6H5-NO2  +  6[H]   --(Sn + HCl)-->   C6H5-NH2  +  2 H2O","","(nitrobenzene -> ANILINE)"],
+   note:"Reducing agents: Sn/HCl, Fe/HCl, ya H2 (Ni/Pt). Lab + industrial dono me common. Aliphatic R-NO2 bhi R-NH2 deta.",badge:"COMMON",col:CY},
+  {t:"AMMONOLYSIS - R-X + NH3:",eq:["C2H5-Br + NH3 --> C2H5-NH2 -> (C2H5)2NH","-> (C2H5)3N -> (C2H5)4N+ Br-  (quaternary!)","","(product bhi nucleophile = reaction rukti NAHI!)"],
+   note:"MIXTURE banta: 1° + 2° + 3° + QUATERNARY salt! Pure 1° chahiye to NH3 EXCESS me lo. Aryl halides se aasani se NAHI (C-X strong).",badge:"MIXTURE!",col:RD},
+  {t:"HOFFMANN BROMAMIDE degradation:",eq:["CH3-CONH2 + Br2 + 4KOH ----> CH3-NH2","+ K2CO3 + 2KBr + 2H2O","","(ethanamide -> methanamine = EK CARBON KAM!)"],
+   note:"AMIDE + Br2/KOH → 1° amine, CHAIN EK C SE GHATTI (migration reaction - R group C se N pe shift). RCONH2 → RNH2. Naam pakka!",badge:"-1 CARBON",col:MG},
+  {t:"GABRIEL PHTHALIMIDE synthesis:",eq:["phthalimide + KOH -> potassium phthalimide","--(+R-X)--> N-alkylphthalimide","","--(hydrolysis)--> PURE 1° AMINE"],
+   note:"PURE 1° amine milta - 2°/3° ka mixture NAHI. Lekin AROMATIC amines (aniline) NAHI ban sakte - aryl halide SN2 nahi deta!",badge:"PURE 1°",col:GR}];
+ function flask(x,y,col){
+  c.strokeStyle="#3d3d6e";c.lineWidth=3;
+  c.beginPath();c.moveTo(x-14,y-64);c.lineTo(x-14,y-30);c.lineTo(x-46,y+42);
+  c.quadraticCurveTo(x-52,y+62,x-30,y+62);c.lineTo(x+30,y+62);
+  c.quadraticCurveTo(x+52,y+62,x+46,y+42);c.lineTo(x+14,y-30);c.lineTo(x+14,y-64);c.stroke();
+  c.fillStyle=col;c.globalAlpha=0.35;
+  c.beginPath();c.moveTo(x-37,y+22);c.quadraticCurveTo(x,y+8,x+37,y+22);
+  c.lineTo(x+46,y+42);c.quadraticCurveTo(x+52,y+62,x+30,y+62);c.lineTo(x-30,y+62);
+  c.quadraticCurveTo(x-52,y+62,x-46,y+42);c.closePath();c.fill();c.globalAlpha=1;
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  const t=TABS[tab];
+  txt(c,t.t,40,40,MG,"bold 16px 'Cascadia Code',monospace");
+  flask(140,170,t.col);
+  txt(c,"R-X / NO2",82,240,DM,"12px 'Cascadia Code',monospace");
+  t.eq.forEach((l,i)=>{if(l)txt(c,l,300,64+i*26,CY,"bold 14px 'Cascadia Code',monospace");});
+  c.fillStyle="#16162e";c.fillRect(300,128,t.badge.length*9.6+18,26);c.strokeStyle=t.col;c.strokeRect(300,128,t.badge.length*9.6+18,26);
+  txt(c,t.badge,309,146,t.col,"bold 13px 'Cascadia Code',monospace");
+  wrap(c,t.note,300,180,"#c9d4ff","13.5px 'Cascadia Code',monospace",62,19);
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(270,16);c.lineTo(270,314);c.stroke();
+  R.innerHTML="<span class='cy'>"+t.t.replace(/:$/,"")+"</span> | "+t.note;
+ }
+ document.querySelectorAll("#sc1 .tb").forEach(b=>b.onclick=()=>{
+  tab=parseInt(b.dataset.t);
+  document.querySelectorAll("#sc1 .tb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[2]=(()=>{
+ const c=ctx("cv2"),R=document.getElementById("r2");
+ let mode=0;
+ const AQ=[["(CH3)2NH",3.27,"2°"],["CH3NH2",3.36,"1°"],["(CH3)3N",4.22,"3°"],["NH3",4.75,""],["C6H5NH2",9.38,"aniline"]];
+ const GAS=[["(CH3)3N","3°",1],["(CH3)2NH","2°",2],["CH3NH2","1°",3],["NH3","",4]];
+ function draw(){
+  c.clearRect(0,0,920,330);
+  if(mode===0){
+   txt(c,"AQUEOUS me pKb (KAM pKb = ZYADA basic):",60,40,CY,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"basic strength ~ bar height (10 - pKb) | label = actual pKb",60,62,DM,"12px 'Cascadia Code',monospace");
+   AQ.forEach((a,i)=>{
+    const x=64+i*120,h=(10-a[1])*22,y=292-h;
+    c.fillStyle=i===0?MG:i===4?"#23234a":CY;c.globalAlpha=0.85;c.fillRect(x,y,74,h);c.globalAlpha=1;
+    c.strokeStyle=i===4?DM:(i===0?MG:CY);c.strokeRect(x,y,74,h);
+    txt(c,"pKb "+a[1],x+37,y-8,i===0?MG:"#c9d4ff","bold 13px 'Cascadia Code',monospace","center");
+    txt(c,a[0],x+37,312,"#c9d4ff","12.5px 'Cascadia Code',monospace","center");
+    if(a[2])txt(c,a[2],x+37,326,DM,"11px 'Cascadia Code',monospace","center");
+   });
+   txt(c,"order: 2° > 1° > 3° > NH3",640,120,MG,"bold 14px 'Cascadia Code',monospace");
+   txt(c,">> aniline (weakest)",640,142,MG,"bold 14px 'Cascadia Code',monospace");
+   txt(c,"inductive (+I) + SOLVATION",640,172,DM,"12.5px 'Cascadia Code',monospace");
+   txt(c,"+ STERIC ka net result",640,192,DM,"12.5px 'Cascadia Code',monospace");
+   txt(c,"aniline: lone pair ring ke saath",640,222,RD,"12.5px 'Cascadia Code',monospace");
+   txt(c,"RESONANCE me busy = weakest",640,242,RD,"12.5px 'Cascadia Code',monospace");
+   R.innerHTML="Aqueous: <span class='hl'>(CH3)2NH &gt; CH3NH2 &gt; (CH3)3N &gt; NH3</span> | aniline pKb 9.38 = <span class='cy'>bahut kam basic</span> (resonance)";
+  }else{
+   txt(c,"GAS PHASE me order (sirf +I inductive effect):",60,40,CY,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"solvent NAHI = solvation ka role NAHI",60,62,DM,"12px 'Cascadia Code',monospace");
+   GAS.forEach((a,i)=>{
+    const x=110+i*150,h=(5-a[2])*52,y=292-h;
+    c.fillStyle=i===0?MG:CY;c.globalAlpha=0.85;c.fillRect(x,y,90,h);c.globalAlpha=1;
+    c.strokeStyle=i===0?MG:CY;c.strokeRect(x,y,90,h);
+    txt(c,"#"+a[2],x+45,y-8,i===0?MG:"#c9d4ff","bold 14px 'Cascadia Code',monospace","center");
+    txt(c,a[0],x+45,312,"#c9d4ff","12.5px 'Cascadia Code',monospace","center");
+    if(a[1])txt(c,a[1],x+45,326,DM,"11px 'Cascadia Code',monospace","center");
+   });
+   txt(c,"order: 3° > 2° > 1° > NH3",610,120,MG,"bold 14px 'Cascadia Code',monospace");
+   txt(c,"zyada alkyl = zyada +I",610,146,DM,"12.5px 'Cascadia Code',monospace");
+   txt(c,"= lone pair zyada available",610,166,DM,"12.5px 'Cascadia Code',monospace");
+   R.innerHTML="Gas phase: <span class='hl'>3° &gt; 2° &gt; 1° &gt; NH3</span> - sirf inductive. <span class='cy'>Aqueous ka order alag kyunki solvation bhi count hoti!</span>";
+  }
+ }
+ document.querySelectorAll("#sc2 .pb").forEach(b=>b.onclick=()=>{
+  mode=parseInt(b.dataset.p);
+  document.querySelectorAll("#sc2 .pb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[3]=(()=>{
+ const c=ctx("cv3"),R=document.getElementById("r3");
+ let deg=0,test=0;
+ const DEG=["1° amine (CH3NH2)","2° amine ((CH3)2NH)","3° amine ((CH3)3N)"];
+ const RES=[
+  [ // 1°
+   {r:"ISOCYANIDE banta - BAHUT GANDI SMELL!",ok:1,note:"R-NH2 + CHCl3 + 3KOH(alc) --> R-NC + 3KCl + 3H2O. SIRF 1° amine ka test - 2°/3° NAHI dete!"},
+   {r:"PPT banta jo KOH me SOLUBLE hai",ok:1,note:"R-NH2 + C6H5SO2Cl --> R-NH-SO2C6H5 (sulphonamide). N pe H abhi bhi ACIDIC = KOH me ghul jata."},
+   {r:"N2 gas ke BUBBLES (alcohol banta)",ok:1,note:"R-NH2 + HNO2 --> R-OH + N2^ + H2O. Aromatic 1° (aniline) COLD (273-278K) me diazonium salt deta!"}],
+  [ // 2°
+   {r:"reaction NAHI",ok:0,note:"Carbylamine SIRF 1° amines dete. 2° amine me N pe sirf 1 H - isocyanide nahi ban sakta."},
+   {r:"PPT banta jo KOH me INSOLUBLE",ok:1,note:"R2NH + C6H5SO2Cl --> R2N-SO2C6H5. N pe H NAHI bacha = acidic H nahi = KOH me nahi ghulta."},
+   {r:"YELLOW OILY nitrosamine",ok:1,note:"R2NH + HNO2 --> R2N-N=O (N-nitrosamine) - yellow oily layer. Carcinogenic hote hain!"}],
+  [ // 3°
+   {r:"reaction NAHI",ok:0,note:"3° amine me N pe H hi NAHI - carbylamine impossible."},
+   {r:"reaction NAHI",ok:0,note:"3° amine me N pe H NAHI - Hinsberg se sulphonamide nahi ban sakta. Kuch visible NAHI hota."},
+   {r:"kuch clear NAHI (sirf salt)",ok:0,note:"3° amine + HNO2 --> sirf ammonium salt (R3NH+ NO2-), koi visible change NAHI."}]];
+ const TN=["CARBYLAMINE test","HINSBERG test","HNO2 (nitrous acid)"];
+ function flask(x,y,col,extra){
+  c.strokeStyle="#3d3d6e";c.lineWidth=3;
+  c.beginPath();c.moveTo(x-14,y-64);c.lineTo(x-14,y-30);c.lineTo(x-46,y+42);
+  c.quadraticCurveTo(x-52,y+62,x-30,y+62);c.lineTo(x+30,y+62);
+  c.quadraticCurveTo(x+52,y+62,x+46,y+42);c.lineTo(x+14,y-30);c.lineTo(x+14,y-64);c.stroke();
+  c.fillStyle=col;c.globalAlpha=0.35;
+  c.beginPath();c.moveTo(x-37,y+22);c.quadraticCurveTo(x,y+8,x+37,y+22);
+  c.lineTo(x+46,y+42);c.quadraticCurveTo(x+52,y+62,x+30,y+62);c.lineTo(x-30,y+62);
+  c.quadraticCurveTo(x-52,y+62,x-46,y+42);c.closePath();c.fill();c.globalAlpha=1;
+  if(extra==="bubbles"){c.fillStyle=YL;for(let i=0;i<8;i++){c.beginPath();c.arc(x-26+(i%4)*17,y-2-Math.floor(i/4)*16,3,0,7);c.fill();}}
+  if(extra==="oily"){c.fillStyle=YL;c.globalAlpha=0.6;c.fillRect(x-34,y+16,68,10);c.globalAlpha=1;}
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  const res=RES[deg][test];
+  txt(c,TN[test]+"  +  "+DEG[deg]+":",60,42,MG,"bold 15px 'Cascadia Code',monospace");
+  const extra=test===2&&deg===0?"bubbles":(test===2&&deg===1?"oily":null);
+  flask(150,180,res.ok?GR:"#23234a",extra);
+  txt(c,"RESULT:",340,90,DM,"13px 'Cascadia Code',monospace");
+  wrap(c,res.r,340,120,res.ok?GR:RD,"bold 16px 'Cascadia Code',monospace",34,22);
+  wrap(c,res.note,340,190,"#c9d4ff","13.5px 'Cascadia Code',monospace",56,19);
+  c.strokeStyle="#2d2d52";c.beginPath();c.moveTo(310,16);c.lineTo(310,314);c.stroke();
+  txt(c,res.ok?"TEST POSITIVE":"NO CLEAR RESULT",60,296,res.ok?GR:DM,"bold 16px 'Cascadia Code',monospace");
+  R.innerHTML="<span class='cy'>"+TN[test]+"</span> + <span class='hl'>"+DEG[deg]+"</span>: "+res.r;
+ }
+ document.querySelectorAll("#sc3 .db").forEach(b=>b.onclick=()=>{
+  deg=parseInt(b.dataset.d);
+  document.querySelectorAll("#sc3 .db").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ document.querySelectorAll("#sc3 .qb").forEach(b=>b.onclick=()=>{
+  test=parseInt(b.dataset.q);
+  document.querySelectorAll("#sc3 .qb").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[4]=(()=>{
+ const c=ctx("cv4"),R=document.getElementById("r4");
+ let sel=0;
+ const RXNS=[
+  {b:"CuCl",prod:"chlorobenzene",sub:"Cl",note:"SANDMEYER: CuCl/HCl. -N2+ ki jagah -Cl."},
+  {b:"CuBr",prod:"bromobenzene",sub:"Br",note:"SANDMEYER: CuBr/HBr. -N2+ ki jagah -Br."},
+  {b:"CuCN",prod:"cyanobenzene",sub:"CN",note:"SANDMEYER: CuCN/KCN. -N2+ ki jagah -CN (nitrile = aage COOH/CH2NH2 banao)."},
+  {b:"KI",prod:"iodobenzene",sub:"I",note:"Sirf KI milao (copper ki zaroorat NAHI). -N2+ ki jagah -I."},
+  {b:"HBF4",prod:"fluorobenzene",sub:"F",note:"BALZ-SCHIEMANN: HBF4 se diazonium fluoroborate, phir HEAT. -N2+ ki jagah -F."},
+  {b:"H3PO2",prod:"benzene",sub:"H",note:"H3PO2 (hypophosphorous acid) se -N2+ ki jagah -H = NH2 group HATA diya (deamination)."},
+  {b:"H2O",prod:"phenol",sub:"OH",note:"H2O, WARM pe = phenol. Isliye diazotisation COLD me karte - warm pe phenol ban jata!"},
+  {b:"phenol",prod:"p-hydroxyazobenzene",sub:"-N=N-",note:"COUPLING: phenol (alkaline, cold) se Ar-N=N-Ar' = AZO compound, ORANGE DYE!"}];
+ function ring(x,y,r,label,col){
+  c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();
+  for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3,px=x+r*Math.cos(a),py=y+r*Math.sin(a);
+   i===0?c.moveTo(px,py):c.lineTo(px,py);}
+  c.closePath();c.stroke();
+  c.strokeStyle="#3d3d6e";c.lineWidth=1.5;c.beginPath();c.arc(x,y,r*0.68,0,7);c.stroke();
+  c.strokeStyle=col||YL;c.lineWidth=2.5;c.beginPath();c.moveTo(x,y-r);c.lineTo(x,y-r-30);c.stroke();
+  txt(c,label,x,y-r-40,col||YL,"bold 17px 'Cascadia Code',monospace","center");
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  const rx=RXNS[sel];
+  txt(c,"Benzenediazonium chloride  +  "+rx.b+":",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+  ring(180,190,66,"N2+",CY);
+  arrow2(c,320,190,420,190,GR,3);
+  ring(560,190,66,rx.sub,MG);
+  txt(c,"=>  "+rx.prod,640,182,GR,"bold 17px 'Cascadia Code',monospace");
+  txt(c,"+ N2^ (gas nikal gaya!)",640,212,DM,"12.5px 'Cascadia Code',monospace");
+  wrap(c,rx.note,60,290,"#c9d4ff","13.5px 'Cascadia Code',monospace",92,19);
+  R.innerHTML="<span class='cy'>C6H5N2+Cl- + "+rx.b+" -> "+rx.prod+" + N2</span> | -N2+ = BEST leaving group - synthesis ka magic middleman!";
+ }
+ document.querySelectorAll("#sc4 .rb").forEach(b=>b.onclick=()=>{
+  sel=parseInt(b.dataset.r);
+  document.querySelectorAll("#sc4 .rb").forEach(x=>x.classList.toggle("sel",x===b));
+  document.querySelectorAll("#sc4 .rb2").forEach(x=>x.classList.remove("sel"));
+  draw();});
+ document.querySelectorAll("#sc4 .rb2").forEach(b=>b.onclick=()=>{
+  sel=5+parseInt(b.dataset.r);
+  document.querySelectorAll("#sc4 .rb2").forEach(x=>x.classList.toggle("sel",x===b));
+  document.querySelectorAll("#sc4 .rb").forEach(x=>x.classList.remove("sel"));
+  draw();});
+ return draw;
+})();
+inits[5]=(()=>{
+ const c=ctx("cv5"),R=document.getElementById("r5");
+ let sel=0;
+ function ring(x,y,r,subs){
+  c.strokeStyle=CY;c.lineWidth=2.5;c.beginPath();
+  for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3,px=x+r*Math.cos(a),py=y+r*Math.sin(a);
+   i===0?c.moveTo(px,py):c.lineTo(px,py);}
+  c.closePath();c.stroke();
+  c.strokeStyle="#3d3d6e";c.lineWidth=1.5;c.beginPath();c.arc(x,y,r*0.68,0,7);c.stroke();
+  subs.forEach(sb=>{
+   const a=-Math.PI/2+sb[0]*Math.PI/3;
+   const vx=x+r*Math.cos(a),vy=y+r*Math.sin(a);
+   const lx=x+(r+30)*Math.cos(a),ly=y+(r+30)*Math.sin(a);
+   c.strokeStyle=YL;c.lineWidth=2.5;c.beginPath();c.moveTo(vx,vy);c.lineTo(lx,ly);c.stroke();
+   txt(c,sb[1],lx,ly+5,YL,"bold 15px 'Cascadia Code',monospace","center");
+  });
+ }
+ function draw(){
+  c.clearRect(0,0,920,330);
+  if(sel===0){
+   txt(c,"Aniline + Br2 water:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   ring(190,190,62,[[0,"NH2"],[1,"Br"],[5,"Br"],[3,"Br"]]);
+   txt(c,"=> 2,4,6-TRIBROMOANILINE",420,150,GR,"bold 17px 'Cascadia Code',monospace");
+   txt(c,"WHITE PPT (aniline ka TEST!)",420,180,YL,"bold 14px 'Cascadia Code',monospace");
+   wrap(c,"-NH2 STRONGLY ACTIVATING = Br2 WATER me bhi teeno free positions (2,4,6 = o,o,p) pe Br aa jate, bina catalyst!",420,220,"#c9d4ff","13.5px 'Cascadia Code',monospace",54,19);
+   R.innerHTML="Aniline + Br2 water -> <span class='hl'>2,4,6-tribromoaniline WHITE PPT</span> | phenol jaisa hi test - -NH2 bhi strongly activating + o/p-directing";
+  }else if(sel===1){
+   txt(c,"Acetylation = -NH2 ko PROTECT karo:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   ring(170,190,62,[[0,"NH2"]]);
+   txt(c,"+ CH3COCl",80,296,GR,"14px 'Cascadia Code',monospace");
+   arrow2(c,280,190,380,190,GR,3);
+   ring(540,190,62,[[0,"NHCOCH3"]]);
+   txt(c,"=> acetanilide",640,182,GR,"bold 16px 'Cascadia Code',monospace");
+   txt(c,"(-NH2 KAM reactive)",640,210,DM,"12.5px 'Cascadia Code',monospace");
+   wrap(c,"Acyl group (CH3CO-) N pe lagne se lone pair ki availability GHATTI = ring kam activate. Ab substitution CONTROLLED hoti!",420,240,"#c9d4ff","13.5px 'Cascadia Code',monospace",54,19);
+   R.innerHTML="ACETYLATION: aniline + CH3COCl -> <span class='hl'>acetanilide</span> | -NH2 protect = activating power kam, controlled substitution possible";
+  }else{
+   txt(c,"protect -> nitrate -> deprotect:",60,42,MG,"bold 16px 'Cascadia Code',monospace");
+   ring(150,190,58,[[0,"NH2"]]);
+   arrow2(c,240,190,320,190,GR,3);
+   ring(400,190,58,[[0,"NHCOCH3"],[3,"NO2"]]);
+   arrow2(c,490,190,570,190,GR,3);
+   ring(660,190,58,[[0,"NH2"],[3,"NO2"]]);
+   txt(c,"1. acetylation",218,296,DM,"12px 'Cascadia Code',monospace");
+   txt(c,"2. HNO3/H2SO4",368,296,DM,"12px 'Cascadia Code',monospace");
+   txt(c,"3. hydrolysis",540,296,DM,"12px 'Cascadia Code',monospace");
+   txt(c,"=> p-nitroaniline (MAJOR)",660,120,GR,"bold 15px 'Cascadia Code',monospace","center");
+   R.innerHTML="Protection ka fayda: direct nitration me aniline OXIDIZE/mixture, par <span class='cy'>acetanilide + HNO3 -> p-nitroaniline MAJOR</span>, phir hydrolysis se -NH2 wapas";
+  }
+ }
+ document.querySelectorAll("#sc5 .ab").forEach(b=>b.onclick=()=>{
+  sel=parseInt(b.dataset.a);
+  document.querySelectorAll("#sc5 .ab").forEach(x=>x.classList.toggle("sel",x===b));
+  draw();});
+ return draw;
+})();
+inits[6]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Gabriel phthalimide synthesis se kya milta hai?",opts:["1°+2°+3° ka mixture","PURE 1° amine","aromatic amine (aniline)","3° amine"],a:1,why:"Gabriel = PURE 1° amine (N-alkylphthalimide ki hydrolysis, mixture NAHI). Lekin aniline jaise AROMATIC amines isse NAHI ban sakte - aryl halide SN2 nahi deta."},
+{q:"Hoffmann bromamide degradation (RCONH2 + Br2/KOH) me kya hota hai?",opts:["chain ek C se BADHTI hai","chain ek C se GHATTI hai","chain same rehti hai","3° amine banta hai"],a:1,why:"Amide se 1° amine banta aur CHAIN EK CARBON SE GHATTI: RCONH2 -> RNH2 (migration reaction). Yaad rakho: Hoffmann = ek C KAM!"},
+{q:"AQUEOUS solution me methylamines ka basic strength order?",opts:["3° > 2° > 1° > NH3","1° > 2° > 3° > NH3","2° > 1° > 3° > NH3","sab equal"],a:2,why:"Gas phase me 3°>2°>1° (sirf +I), lekin PANI me solvation bhi count = (CH3)2NH > CH3NH2 > (CH3)3N > NH3. Inductive + solvation + steric ka net."},
+{q:"Carbylamine test (CHCl3 + alc KOH) POSITIVE kaun deta hai?",opts:["sirf 1° amine","sirf 2° amine","1° aur 2° dono","teeno 1°/2°/3°"],a:0,why:"SIRF 1° amines (aliphatic + aromatic dono) isocyanide dete - BAHUT gandi smell. 2°/3° me N pe required H nahi = test negative."},
+{q:"Benzenediazonium chloride + CuCN/KCN (Sandmeyer) ka product?",opts:["chlorobenzene","cyanobenzene","phenol","iodobenzene"],a:1,why:"Sandmeyer: CuCl->Cl, CuBr->Br, CuCN->CN. -N2+ ki jagah -CN = CYANOBENZENE (benzonitrile). Nitrile se aage acid/amine banao!"}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Amines pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+go(0);
+</script></body></html>
