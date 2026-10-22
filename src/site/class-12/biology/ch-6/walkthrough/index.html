@@ -378,7 +378,7 @@ function draw(){
   txt(c,"Fossils - rock layers me likhi history",460,36,YL,"bold 14px 'Cascadia Code',monospace","center");
   const lay=[["#141c30","naya layer - COMPLEX forms"],["#1c2742","beech ka layer"],["#26345a","purana layer - SIMPLE forms"]];
   lay.forEach((L,i)=>{c.fillStyle=L[0];c.fillRect(100,80+i*70,480,66);c.strokeStyle="#2d2d52";c.lineWidth=2;c.strokeRect(100,80+i*70,480,66);
-   txt(c,L[1],620,116+i*70,"#c9d4ff","12.5px 'Cascadia Code',monospace");});
+   txt(c,L[1],634,116+i*70,"#c9d4ff","12.5px 'Cascadia Code',monospace");});
   c.strokeStyle=GR;c.lineWidth=3;c.beginPath();c.arc(200,250,22,0,7);c.stroke();txt(c,"shell",200,254,GR,"11px 'Cascadia Code',monospace","center");
   c.strokeStyle=CY;c.beginPath();c.moveTo(160,180);c.lineTo(230,180);c.lineTo(245,170);c.moveTo(230,180);c.lineTo(245,190);c.stroke();txt(c,"fish bone",200,164,CY,"11px 'Cascadia Code',monospace","center");
   c.strokeStyle=MG;c.beginPath();c.moveTo(160,113);c.lineTo(200,113);c.lineTo(214,104);c.moveTo(200,113);c.lineTo(214,122);c.moveTo(226,113);c.lineTo(240,113);c.stroke();txt(c,"complex fossil",205,96,MG,"11px 'Cascadia Code',monospace","center");
@@ -560,7 +560,7 @@ function draw(){
  c.strokeStyle="#e8e8f2";c.lineWidth=1.5;c.strokeRect(bx,by,bw,bh);
  txt(c,"p\u00b2="+fmt(p2,2),bx+w1/2,by+32,"#0a0a16","bold 13px 'Cascadia Code',monospace","center");
  txt(c,"2pq="+fmt(pq2,2),bx+w1+w2/2,by+32,"#0a0a16","bold 13px 'Cascadia Code',monospace","center");
- txt(c,"q\u00b2="+fmt(q2,2),bx+w1+w2+w3/2,by+(w3<90?-8:32),"#0a0a16","bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"q\u00b2="+fmt(q2,2),bx+w1+w2+w3/2,by+(w3<90?-8:32),(w3<90?MG:"#0a0a16"),"bold 12px 'Cascadia Code',monospace","center");
  txt(c,"homozygous DOMINANT",bx+w1/2,by+76,CY,"11.5px 'Cascadia Code',monospace","center");
  txt(c,"heterozygous",bx+w1+w2/2,by+76,YL,"11.5px 'Cascadia Code',monospace","center");
  txt(c,"homozygous RECESSIVE",bx+w1+w2+w3/2,by+76,MG,"11.5px 'Cascadia Code',monospace","center");
