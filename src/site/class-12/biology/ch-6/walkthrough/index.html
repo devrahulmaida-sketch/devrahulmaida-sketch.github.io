@@ -236,7 +236,7 @@ function draw(){
   txt(c,"Special creation - sab kuch as-it-is banaya",460,36,YL,"bold 14px 'Cascadia Code',monospace","center");
   c.fillStyle=YL;c.beginPath();c.arc(300,150,26,0,7);c.fill();rays(300,150,80,YL,10);
   const sp=[[160,260],[300,268],[440,260]];
-  sp.forEach((p,i)=>{c.strokeStyle=CY;c.lineWidth=3;c.beginPath();c.ellipse(p[0],p[1],46-i*8,20,0,0,7);c.stroke();txt(c,"species "+(i+1),p[0],p[1]+4,CY,"11px 'Cascadia Code',monospace","center");});
+  sp.forEach((p,i)=>{c.strokeStyle=CY;c.lineWidth=3;c.beginPath();c.ellipse(p[0],p[1],50,20,0,0,7);c.stroke();txt(c,"species "+(i+1),p[0],p[1]+4,CY,"11px 'Cascadia Code',monospace","center");});
   txt(c,"har species alag banayi gayi",600,120,"#c9d4ff","13px 'Cascadia Code',monospace");
   txt(c,"kabhi change NAHI hoti",600,150,"#c9d4ff","13px 'Cascadia Code',monospace");
   txt(c,"scientific evidence NAHI",600,180,RD,"bold 13px 'Cascadia Code',monospace");
@@ -279,12 +279,12 @@ function draw(){
   arrow2(c,280,232,280,268,MG,3);
   const mol=[[250,290],[280,284],[310,292],[265,300],[295,300]];
   mol.forEach(p=>{c.fillStyle=MG;c.beginPath();c.arc(p[0],p[1],6,0,7);c.fill();});
-  txt(c,"complex organic molecules",460,296,MG,"13px 'Cascadia Code',monospace");
+  txt(c,"complex organic molecules",560,290,MG,"13px 'Cascadia Code',monospace");
   txt(c,"energy: lightning + UV radiation",520,120,"#c9d4ff","13px 'Cascadia Code',monospace");
   txt(c,"simple -> complex organic",520,150,"#c9d4ff","13px 'Cascadia Code',monospace");
   txt(c,"Miller-Urey ne PROVE kiya",520,180,GR,"bold 13px 'Cascadia Code',monospace");
   txt(c,"(agla scene dekho!)",520,206,"#8fa0c8","12px 'Cascadia Code',monospace");
-  txt(c,"chemical evolution = life ki chemical origin",460,312,"#5b6488","13px 'Cascadia Code',monospace","center");
+  txt(c,"chemical evolution = life ki chemical origin",460,326,"#5b6488","13px 'Cascadia Code',monospace","center");
  }
  R.innerHTML=INFO[sel];
 }
@@ -303,7 +303,7 @@ function flask(){
  c.strokeStyle="#5b6488";c.lineWidth=3;
  c.beginPath();c.moveTo(355,210);c.lineTo(600,210);c.lineTo(600,250);c.stroke();
  c.strokeStyle=CY;c.lineWidth=4;c.beginPath();c.arc(660,272,42,0,7);c.stroke();
- txt(c,"trap",660,330,CY,"12px 'Cascadia Code',monospace","center");
+ txt(c,"trap",712,282,CY,"12px 'Cascadia Code',monospace");
 }
 function bolt(x1,y1,x2,y2){
  c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.moveTo(x1,y1);
@@ -318,11 +318,11 @@ function draw(){
   txt(c,"NH3",300,180,MG,"bold 14px 'Cascadia Code',monospace","center");
   txt(c,"H2",250,215,CY,"bold 14px 'Cascadia Code',monospace","center");
   txt(c,"H2O vapour",290,248,"#7dd3fc","bold 13px 'Cascadia Code',monospace","center");
-  txt(c,"gases + water vapour = reducing atmosphere",520,120,"#c9d4ff","13px 'Cascadia Code',monospace");
-  txt(c,"FREE OXYGEN bilkul NAHI thi",520,150,RD,"bold 13px 'Cascadia Code',monospace");
-  txt(c,"1953: Stanley Miller (Urey ke student)",520,180,"#c9d4ff","13px 'Cascadia Code',monospace");
-  txt(c,"primitive Earth ka MINI MODEL",520,210,"#8fa0c8","13px 'Cascadia Code',monospace");
-  txt(c,"water heat -> vapour -> gases ke saath circulate",460,318,"#5b6488","12.5px 'Cascadia Code',monospace","center");
+  txt(c,"gases + water vapour = reducing atmosphere",520,86,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"FREE OXYGEN bilkul NAHI thi",520,114,RD,"bold 13px 'Cascadia Code',monospace");
+  txt(c,"1953: Stanley Miller (Urey ke student)",520,142,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"primitive Earth ka MINI MODEL",520,170,"#8fa0c8","13px 'Cascadia Code',monospace");
+  txt(c,"water heat -> vapour -> gases ke saath circulate",460,326,"#5b6488","12.5px 'Cascadia Code',monospace","center");
   R.innerHTML="<span class=hl>Setup:</span> flask me CH4 (methane), NH3 (ammonia), H2 (hydrogen) aur water vapour - primitive Earth ka reducing atmosphere. Free oxygen NAHI! Water ko heat karke vapour banaya jo gases ke saath circulate hota raha.";
  }else if(st===1){
   txt(c,"STEP 2: electric discharge = lightning ka kaam",460,36,YL,"bold 14px 'Cascadia Code',monospace","center");
@@ -332,11 +332,11 @@ function draw(){
   c.beginPath();c.moveTo(290,110);c.lineTo(290,150);c.stroke();
   bolt(250,152,270,190);bolt(290,152,268,185);bolt(258,155,285,192);
   txt(c,"SPARK!",330,140,YL,"bold 16px 'Cascadia Code',monospace","center");
-  txt(c,"electrodes se continuous sparks",520,120,"#c9d4ff","13px 'Cascadia Code',monospace");
-  txt(c,"= primitive Earth ki LIGHTNING",520,150,"#c9d4ff","13px 'Cascadia Code',monospace");
-  txt(c,"energy se inorganic gases REACT",520,180,GR,"bold 13px 'Cascadia Code',monospace");
-  txt(c,"simple organic molecules bante gaye",520,210,"#c9d4ff","13px 'Cascadia Code',monospace");
-  txt(c,"1 hafta tak experiment chala",460,318,"#5b6488","12.5px 'Cascadia Code',monospace","center");
+  txt(c,"electrodes se continuous sparks",520,86,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"= primitive Earth ki LIGHTNING",520,114,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"energy se inorganic gases REACT",520,142,GR,"bold 13px 'Cascadia Code',monospace");
+  txt(c,"simple organic molecules bante gaye",520,170,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"1 hafta tak experiment chala",460,326,"#5b6488","12.5px 'Cascadia Code',monospace","center");
   R.innerHTML="<span class=hl>Spark ON:</span> electrodes se electric discharge = lightning ka simulation. Is energy se CH4, NH3, H2 aur water vapour REACT karke simple organic compounds banane lage. UV radiation bhi primitive Earth pe energy source tha.";
  }else{
   txt(c,"STEP 3: 1 week baad - AMINO ACIDS mil gaye!",460,36,YL,"bold 14px 'Cascadia Code',monospace","center");
@@ -344,12 +344,12 @@ function draw(){
   const drops=[[420,212],[480,212],[540,212],[600,230]];
   drops.forEach(p=>{c.fillStyle=GR;c.beginPath();c.arc(p[0],p[1],5,0,7);c.fill();});
   c.fillStyle=MG;c.globalAlpha=0.7;c.beginPath();c.arc(660,272,34,0.6,Math.PI-0.6);c.lineTo(660,272);c.fill();c.globalAlpha=1;
-  txt(c,"amino acids!",660,272,"#0a0a16","bold 12px 'Cascadia Code',monospace","center");
-  txt(c,"trap me collect: AMINO ACIDS",520,120,GR,"bold 14px 'Cascadia Code',monospace");
-  txt(c,"= life ke BUILDING BLOCKS!",520,150,GR,"bold 13px 'Cascadia Code',monospace");
-  txt(c,"non-living chemicals se organic molecules",520,185,"#c9d4ff","13px 'Cascadia Code',monospace");
-  txt(c,"naturally ban sakte hain - PROVED!",520,212,"#c9d4ff","13px 'Cascadia Code',monospace");
-  txt(c,"chemical evolution ka LAB PROOF (Oparin-Haldane sahi!)",460,318,"#5b6488","12.5px 'Cascadia Code',monospace","center");
+  txt(c,"amino acids!",712,262,GR,"bold 12px 'Cascadia Code',monospace");
+  txt(c,"trap me collect: AMINO ACIDS",520,86,GR,"bold 14px 'Cascadia Code',monospace");
+  txt(c,"= life ke BUILDING BLOCKS!",520,114,GR,"bold 13px 'Cascadia Code',monospace");
+  txt(c,"non-living chemicals se organic molecules",520,142,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"naturally ban sakte hain - PROVED!",520,170,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"chemical evolution ka LAB PROOF (Oparin-Haldane sahi!)",460,326,"#5b6488","12.5px 'Cascadia Code',monospace","center");
   R.innerHTML="<span class=hl>Result:</span> 1 week baad trap me AMINO ACIDS aur doosre organic molecules mile! Matlab life ke building blocks non-living chemicals se naturally ban sakte hain - Oparin-Haldane ki chemical evolution theory ka experimental proof. Baad me first self-replicating molecules (shayad RNA world) → first cells ~4 billion years ago.";
  }
 }
@@ -383,7 +383,7 @@ function draw(){
   c.strokeStyle=CY;c.beginPath();c.moveTo(160,180);c.lineTo(230,180);c.lineTo(245,170);c.moveTo(230,180);c.lineTo(245,190);c.stroke();txt(c,"fish bone",200,164,CY,"11px 'Cascadia Code',monospace","center");
   c.strokeStyle=MG;c.beginPath();c.moveTo(160,113);c.lineTo(200,113);c.lineTo(214,104);c.moveTo(200,113);c.lineTo(214,122);c.moveTo(226,113);c.lineTo(240,113);c.stroke();txt(c,"complex fossil",205,96,MG,"11px 'Cascadia Code',monospace","center");
   arrow2(c,620,240,620,100,YL,3);
-  txt(c,"time",648,175,YL,"12px 'Cascadia Code',monospace");
+  txt(c,"time",610,175,YL,"12px 'Cascadia Code',monospace","right");
   txt(c,"horse: Eohippus -> Equus (size UP, toes DOWN)",460,312,"#5b6488","13px 'Cascadia Code',monospace","center");
  }else if(sel===1){
   txt(c,"Homologous - SAME blueprint, ALAG kaam",460,36,YL,"bold 14px 'Cascadia Code',monospace","center");
@@ -417,13 +417,13 @@ function draw(){
   c.beginPath();c.moveTo(300,160);c.lineTo(255,195);c.moveTo(300,160);c.lineTo(345,195);c.stroke();
   c.beginPath();c.moveTo(300,230);c.lineTo(272,290);c.moveTo(300,230);c.lineTo(328,290);c.stroke();
   c.strokeStyle=RD;c.lineWidth=3;c.beginPath();c.arc(312,218,10,0,7);c.stroke();
-  c.strokeStyle=RD;c.setLineDash([4,3]);c.beginPath();c.moveTo(322,214);c.lineTo(520,150);c.stroke();c.setLineDash([]);
-  c.strokeStyle=RD;c.lineWidth=3;c.beginPath();c.arc(590,145,55,0,7);c.stroke();
-  c.strokeStyle=RD;c.lineWidth=2;c.beginPath();c.moveTo(575,150);c.quadraticCurveTo(590,160,605,145);c.stroke();
-  txt(c,"appendix (zoom)",590,224,RD,"12px 'Cascadia Code',monospace","center");
-  txt(c,"appendix - digestion ka leftover",600,90,"#c9d4ff","12.5px 'Cascadia Code',monospace");
-  txt(c,"wisdom teeth - ab zaroorat nahi",620,120,"#c9d4ff","12.5px 'Cascadia Code',monospace");
-  txt(c,"nictitating membrane (third eyelid)",620,150,"#c9d4ff","12.5px 'Cascadia Code',monospace");
+  c.strokeStyle=RD;c.setLineDash([4,3]);c.beginPath();c.moveTo(322,214);c.lineTo(420,150);c.stroke();c.setLineDash([]);
+  c.strokeStyle=RD;c.lineWidth=3;c.beginPath();c.arc(470,145,50,0,7);c.stroke();
+  c.strokeStyle=RD;c.lineWidth=2;c.beginPath();c.moveTo(455,150);c.quadraticCurveTo(470,160,485,145);c.stroke();
+  txt(c,"appendix (zoom)",470,214,RD,"12px 'Cascadia Code',monospace","center");
+  txt(c,"appendix - digestion ka leftover",560,90,"#c9d4ff","12.5px 'Cascadia Code',monospace");
+  txt(c,"wisdom teeth - ab zaroorat nahi",560,120,"#c9d4ff","12.5px 'Cascadia Code',monospace");
+  txt(c,"nictitating membrane (third eyelid)",560,150,"#c9d4ff","12.5px 'Cascadia Code',monospace");
   txt(c,"ancestors ke useful organs ke nishaan body me hi hain!",460,312,"#5b6488","13px 'Cascadia Code',monospace","center");
  }else{
   txt(c,"Embryology - sab embryos early SIMILAR",460,36,YL,"bold 14px 'Cascadia Code',monospace","center");
@@ -491,8 +491,8 @@ document.querySelectorAll("#sc4 .cb").forEach((b,i)=>b.onclick=()=>{mode=i;ran=f
 document.getElementById("mothRun").onclick=()=>{ran=true;draw();};
 const MOTHS=[[90,90,0],[150,120,0],[220,85,0],[290,110,0],[350,90,0],[410,125,0],[470,95,0],[120,180,0],[260,190,0],[400,185,0],
  [180,150,1],[320,160,1],[440,150,1],[230,230,1]];
-const EATEN_CLEAN=[2,5,7,10,11,12,13];
-const EATEN_POLL=[0,1,2,3,4,5,6,8];
+const EATEN_CLEAN=[2,5,10,11,12,13];
+const EATEN_POLL=[0,1,2,3,4,5,6,7,8];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,mode===0?"CLEAN bark - light moths camouflaged":"POLLUTED bark - dark moths camouflaged",460,36,YL,"bold 14px 'Cascadia Code',monospace","center");
@@ -505,13 +505,13 @@ function draw(){
  MOTHS.forEach((m,i)=>{
   const dead=ran&&eaten.includes(i);
   if(!dead){
-   c.fillStyle=m[1]?"#2a2a33":"#d9d9d9";
-   c.beginPath();c.ellipse(m[0],m[2],12,7,0.3,0,7);c.fill();
-   c.strokeStyle=m[1]?"#3d3d4a":"#b8b8b8";c.lineWidth=1.5;c.stroke();
-   if(m[1])ds++;else ls++;
+   c.fillStyle=m[2]?"#2a2a33":"#d9d9d9";
+   c.beginPath();c.ellipse(m[0],m[1],12,7,0.3,0,7);c.fill();
+   c.strokeStyle=m[2]?"#3d3d4a":"#b8b8b8";c.lineWidth=1.5;c.stroke();
+   if(m[2])ds++;else ls++;
   }else{
    c.strokeStyle=RD;c.lineWidth=3;
-   c.beginPath();c.moveTo(m[0]-9,m[2]-9);c.lineTo(m[0]+9,m[2]+9);c.moveTo(m[0]+9,m[2]-9);c.lineTo(m[0]-9,m[2]+9);c.stroke();
+   c.beginPath();c.moveTo(m[0]-9,m[1]-9);c.lineTo(m[0]+9,m[1]+9);c.moveTo(m[0]+9,m[1]-9);c.lineTo(m[0]-9,m[1]+9);c.stroke();
   }
  });
  c.strokeStyle="#e8e8f2";c.lineWidth=3;
@@ -558,9 +558,9 @@ function draw(){
  c.fillStyle=YL;c.fillRect(bx+w1,by,w2,bh);
  c.fillStyle=MG;c.fillRect(bx+w1+w2,by,w3,bh);
  c.strokeStyle="#e8e8f2";c.lineWidth=1.5;c.strokeRect(bx,by,bw,bh);
- txt(c,"p2="+fmt(p2,2),bx+w1/2,by+32,"#0a0a16","bold 13px 'Cascadia Code',monospace","center");
+ txt(c,"p\u00b2="+fmt(p2,2),bx+w1/2,by+32,"#0a0a16","bold 13px 'Cascadia Code',monospace","center");
  txt(c,"2pq="+fmt(pq2,2),bx+w1+w2/2,by+32,"#0a0a16","bold 13px 'Cascadia Code',monospace","center");
- txt(c,"q2="+fmt(q2,2),bx+w1+w2+w3/2,by+32,"#0a0a16","bold 12px 'Cascadia Code',monospace","center");
+ txt(c,"q\u00b2="+fmt(q2,2),bx+w1+w2+w3/2,by+(w3<90?-8:32),"#0a0a16","bold 12px 'Cascadia Code',monospace","center");
  txt(c,"homozygous DOMINANT",bx+w1/2,by+76,CY,"11.5px 'Cascadia Code',monospace","center");
  txt(c,"heterozygous",bx+w1+w2/2,by+76,YL,"11.5px 'Cascadia Code',monospace","center");
  txt(c,"homozygous RECESSIVE",bx+w1+w2+w3/2,by+76,MG,"11.5px 'Cascadia Code',monospace","center");
@@ -583,7 +583,7 @@ const ST=[
  {n:"Homo habilis",t:"~2 mya",cc:700,feat:"pehle TOOL makers - handy man, shayad bolte nahi the",icon:"tool"},
  {n:"Homo erectus",t:"~1.5 mya",cc:900,feat:"FIRE use kiya, Asia/Europe tak gaye - Java man, Peking man",icon:"fire"},
  {n:"Neanderthal",t:"~100-40k years",cc:1400,feat:"brain 1400cc (insaano se BADA!), dead ko bury karte the",icon:"grave"},
- {n:"Homo sapiens",t:"~300k years - aaj",cc:0,feat:"Africa origin -> sab jagah spread. Cave art (Bhimbetka!), agriculture ~10k years",icon:"art"}];
+ {n:"Homo sapiens",t:"~300k years - aaj",cc:0,feat:"Africa origin -> sab jagah. Cave art (Bhimbetka!), agriculture ~10k yrs",icon:"art"}];
 function figure(x,y,ape){
  c.strokeStyle=CY;c.lineWidth=3;
  c.beginPath();c.arc(x,y-52,13,0,7);c.stroke();
@@ -613,8 +613,8 @@ function draw(){
  if(s.icon==="tool"){c.fillStyle="#8fa0c8";c.beginPath();c.moveTo(205,180);c.lineTo(222,172);c.lineTo(220,190);c.closePath();c.fill();txt(c,"tool",236,180,"#8fa0c8","11px 'Cascadia Code',monospace");}
  if(s.icon==="fire"){c.fillStyle="#fb923c";c.beginPath();c.moveTo(230,200);c.quadraticCurveTo(220,178,232,166);c.quadraticCurveTo(244,178,236,200);c.closePath();c.fill();txt(c,"fire",252,196,"#fb923c","11px 'Cascadia Code',monospace");}
  if(s.icon==="grave"){c.strokeStyle="#8fa0c8";c.lineWidth=2.5;c.beginPath();c.ellipse(240,206,26,10,0,Math.PI,0);c.stroke();c.beginPath();c.moveTo(240,186);c.lineTo(240,172);c.moveTo(233,178);c.lineTo(247,178);c.stroke();txt(c,"burial",272,190,"#8fa0c8","11px 'Cascadia Code',monospace");}
- if(s.icon==="art"){c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();c.arc(240,180,12,0,5);c.stroke();txt(c,"cave art",260,184,MG,"11px 'Cascadia Code',monospace");}
- if(s.icon==="walk"){c.strokeStyle=GR;c.lineWidth=3;c.beginPath();c.moveTo(166,224);c.lineTo(152,254);c.moveTo(194,224);c.lineTo(208,254);c.stroke();txt(c,"bipedal",120,258,GR,"11px 'Cascadia Code',monospace");}
+ if(s.icon==="art"){c.strokeStyle=MG;c.lineWidth=2.5;c.beginPath();c.arc(240,150,12,0,5);c.stroke();txt(c,"cave art",260,154,MG,"11px 'Cascadia Code',monospace");}
+ if(s.icon==="walk"){txt(c,"bipedal",212,170,GR,"bold 12px 'Cascadia Code',monospace");c.strokeStyle=GR;c.lineWidth=2;c.beginPath();c.moveTo(206,176);c.lineTo(196,196);c.stroke();}
  if(s.cc>0){
   txt(c,"brain size",560,110,"#8fa0c8","12px 'Cascadia Code',monospace");
   c.strokeStyle="#2d2d52";c.lineWidth=2;c.strokeRect(420,124,340,26);
