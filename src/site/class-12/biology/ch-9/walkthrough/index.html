@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Biotechnology: Principles and Processes - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Biology - Chapter 4 - Principles of Inheritance and Variation</div>
+<h1>Principles of Inheritance Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - Mendel ke 7 characters, monohybrid + test cross stepper, dihybrid 9:3:3:1 grid, incomplete dominance vs codominance, ABO blood group picker, sex determination systems, genetic disorders, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="wrap">
+<div class="crumb">Class 12 Biology - Chapter 9 - Biotechnology: Principles and Processes</div>
+<h1>Biotechnology Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - biotech ke 2 pillars, restriction enzyme cut, ligase join, vector toolkit, DNA delivery methods, PCR + gel electrophoresis, bioreactor, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Biotech Ke 2 Pillars - Gene Edit + Scale Up ⭐</h2>
+<p class="why">Biotechnology = living cells/enzymes se useful product ya process. Iske DO core pillars hain: GENETIC ENGINEERING (DNA cut, join, host me transfer) aur BIOPROCESS ENGINEERING (contamination-free large-scale growth). Applications: insulin, vaccines, diagnostics, crops, industrial enzymes. Pillar chuno, detail dekho!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="pb sel" data-p="0">genetic engineering</button>
+<button class="pb" data-p="1">bioprocess engineering</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Restriction Enzymes - Molecular Scissors ✂️</h2>
+<p class="why">Restriction endonucleases specific PALINDROMIC DNA sequence pe dono strands cut karte hain. EcoRI: 5'-GAATTC-3'. Staggered cut se STICKY ends (complementary overhangs); kuch enzymes BLUNT ends banate hain. Steps dekho!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="rb sel" data-r="0">step 1: palindrome</button>
+<button class="rb" data-r="1">step 2: EcoRI cut (sticky)</button>
+<button class="rb" data-r="2">blunt cut comparison</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. DNA Ligase - Fragments Jodo 🔗</h2>
+<p class="why">DNA ligase sugar-phosphate backbone me covalent PHOSPHODIESTER bonds banata hai - RECOMBINANT DNA ready! Sticky ends pehle hydrogen-bond se align hote hain, phir ligase seal karta hai. Bacteria apni DNA METHYLATE karke protect karte hain; foreign phage DNA cut hota hai.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="lb sel" data-l="0">step 1: fragments alag</button>
+<button class="lb" data-l="1">step 2: sticky ends align</button>
+<button class="lb" data-l="2">step 3: ligase seal</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Vector Toolkit - pBR322 Map 🧬</h2>
+<p class="why">Plasmid vector self-replicating circular DNA hai jo gene ko host bacteria tak le jaata hai. Usse chahiye: ORI (origin of replication), SELECTABLE MARKER (antibiotic resistance), CLONING SITE (unique restriction site). Part chuno - blue-white screening bhi dekho!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="vb sel" data-v="0">ori</button>
+<button class="vb" data-v="1">selectable marker</button>
+<button class="vb" data-v="2">cloning site</button>
+<button class="vb" data-v="3">blue-white screening</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. DNA Ko Cell Me Kaise Daalein? 🚪</h2>
+<p class="why">Recombinant DNA bana liya - ab host cell ke andar kaise? 5 tareeke: competent cells (CaCl2 + heat shock), electroporation (electric pulse se pores), microinjection (animal cells), gene gun (gold/tungsten particles, plants), Agrobacterium (Ti plasmid, plants). Yaad rakho: ENTRY alag, SELECTION alag, EXPRESSION alag!</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="db2 sel" data-d="0">competent cells</button>
+<button class="db2" data-d="1">electroporation</button>
+<button class="db2" data-d="2">microinjection</button>
+<button class="db2" data-d="3">gene gun</button>
+<button class="db2" data-d="4">Agrobacterium</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. PCR + Gel Electrophoresis - Amplify Karo, Check Karo 🧪</h2>
+<p class="why">PCR target DNA ko amplify karta hai: DENATURATION (~95°C) → primer ANNEALING → EXTENSION (~72°C, Taq polymerase - Thermus aquaticus se heat-stable). Har cycle DNA DOUBLE! Phir gel pe check: negative DNA ANODE ki taraf, CHHOTE fragments door. Mode chuno!</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="tb sel" data-t="0">PCR mode</button>
+<button class="tb" data-t="1">gel mode</button>
+<button class="pb2" id="pcrStep">PCR: agla step ▶</button>
+<button class="gb" id="gelRun">gel: RUN ▶</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Bioreactor + Downstream - Industry Scale 🏭</h2>
+<p class="why">Bioreactor bada vessel hai jo pH, temperature, oxygen, nutrients aur mixing CONTROL rakhta hai. Stirred-tank me IMPELLER mix karta hai, SPARGER air/oxygen deta hai. Product banne ke baad DOWNSTREAM PROCESSING: separate, purify, formulate, quality test. Part chuno!</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="bb sel" data-b="0">stirred tank</button>
+<button class="bb" data-b="1">impeller + sparger</button>
+<button class="bb" data-b="2">downstream processing</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Biotech Pakka? ⭐</h2>
+<p class="why">5 sawaal - EcoRI, sticky ends, blue-white screening, PCR order, gel migration. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>2 pillars</b>Genetic engineering: DNA targeted cut, join, new host me transfer + express. Bioprocess engineering: sterile, contamination-free, controlled large-scale growth. Applications: insulin, vaccines, diagnostics, crops, industrial enzymes.</div>
+<div class="rcard"><b>Restriction + ligase</b>EcoRI cuts 5'-GAATTC-3' (palindrome). Staggered cut → sticky ends (complementary overhangs); blunt = no overhang. Ligase = phosphodiester bonds → recombinant DNA. Bacteria apni DNA methylate karte (defence); phage DNA cut hota hai.</div>
+<div class="rcard"><b>Vector toolkit</b>pBR322: ori (copy number) + selectable marker (antibiotic resistance) + cloning site (unique restriction site). Insertional inactivation: insert marker disrupt kare to recombinant pehchan. Blue-white: WHITE colony = insert (lacZ disrupt), BLUE = empty vector. Ti plasmid (disarmed) → plants.</div>
+<div class="rcard"><b>DNA delivery</b>Competent cells: CaCl2 + brief heat shock. Electroporation: electric pulse → temporary pores. Microinjection: needle → animal cell nucleus. Gene gun: DNA-coated gold/tungsten → plant cells. Agrobacterium: Ti plasmid natural transfer. Entry + selection + expression = 3 alag checks!</div>
+<div class="rcard"><b>PCR + gel</b>PCR order: Denaturation (~95°C) → Annealing (primers) → Extension (~72°C). Taq polymerase = heat-stable, Thermus aquaticus se. Copies = 2^n cycles. Gel: DNA negative → ANODE move; CHHOTE fragments DOOR. Band elute karke DNA recover. Negative controls zaroori (contamination = false positive).</div>
+<div class="rcard"><b>Bioreactor + downstream</b>Stirred-tank bioreactor: pH, temp, oxygen, nutrients, mixing controlled. Impeller = mixing, sparger = air/O2. Downstream: separate → purify → formulate → quality/safety test. Scale-up tricky: oxygen transfer + contamination control. Injectable protein = purity critical.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Biology Chapter 9 (Biotechnology: Principles and Processes) - Interactive Walkthrough</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+inits[0]=(()=>{
+const c=ctx("cv0");let sel=0;
+const P=[
+ {n:"GENETIC ENGINEERING",col:CY,lines:["DNA ko targeted CUT karo,","JOIN karo, new HOST me","transfer karke desired","gene EXPRESS karao."],r:"<span class=hl>Genetic engineering:</span> DNA ka targeted cut, join aur new host me transfer - desired gene express karna. Yahi recombinant DNA technology ka core hai. <span class=hl>Examples:</span> insulin gene bacteria me, Bt crops."},
+ {n:"BIOPROCESS ENGINEERING",col:MG,lines:["Desired microbe ko","STERILE, contamination-","free controlled environment","me LARGE SCALE grow karo."],r:"<span class=hl>Bioprocess engineering:</span> contamination-free controlled conditions me desired microbe ki large-scale growth. Sterile techniques MUST - ek contaminant pure batch kharab kar deta hai. <span class=hl>Product + safety testing</span> dono important."}];
+const APPS=["insulin","vaccines","diagnostics","crops","enzymes"];
+const R=document.getElementById("r0");
+document.querySelectorAll("#sc0 .pb").forEach((b,i)=>b.onclick=()=>{sel=i;document.querySelectorAll("#sc0 .pb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"BIOTECHNOLOGY = living cells + enzymes se useful products",460,34,YL,"bold 15px 'Cascadia Code',monospace","center");
+ P.forEach((p,i)=>{
+  const x=60+i*420;
+  c.fillStyle="#0d0d1c";c.strokeStyle=i===sel?p.col:"#23233f";c.lineWidth=i===sel?3:1.5;
+  c.beginPath();c.roundRect(x,58,380,140,14);c.fill();c.stroke();
+  if(i===sel){c.save();c.shadowColor=p.col;c.shadowBlur=16;c.stroke();c.restore();}
+  txt(c,p.n,x+190,90,p.col,"bold 15px 'Cascadia Code',monospace","center");
+  p.lines.forEach((ln,k)=>txt(c,ln,x+190,118+k*20,"#b8c2e0","12.5px 'Cascadia Code',monospace","center"));
+ });
+ APPS.forEach((a,k)=>{
+  const x=60+k*176;
+  c.fillStyle="#0e2a3a";c.strokeStyle="#164e63";c.lineWidth=1;
+  c.beginPath();c.roundRect(x,222,150,30,15);c.fill();c.stroke();
+  txt(c,a,x+75,241,CY,"12px 'Cascadia Code',monospace","center");
+ });
+ txt(c,"Gene EDIT karna aur product SCALE karna - dono ALAG kaam hain!",460,296,"#5b6488","13px 'Cascadia Code',monospace","center");
+ R.innerHTML=P[sel].r;
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let st=0;
+const R=document.getElementById("r1");
+document.querySelectorAll("#sc1 .rb").forEach((b,i)=>b.onclick=()=>{st=i;document.querySelectorAll("#sc1 .rb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+function strand(x,y,seq,col,cutAfter){
+ for(let i=0;i<seq.length;i++){
+  const px=x+i*38;
+  if(cutAfter!==undefined&&i===cutAfter){c.strokeStyle=RD;c.lineWidth=2;c.setLineDash([4,3]);c.beginPath();c.moveTo(px+20,y-26);c.lineTo(px+20,y+10);c.stroke();c.setLineDash([]);}
+  c.fillStyle="#16162e";c.strokeStyle=col;c.lineWidth=1.5;
+  c.beginPath();c.roundRect(px,y-20,30,26,5);c.fill();c.stroke();
+  txt(c,seq[i],px+15,y-2,col,"bold 15px 'Cascadia Code',monospace","center");
+ }
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ if(st===0){
+  txt(c,"EcoRI recognition site - PALINDROME:",460,40,YL,"bold 14px 'Cascadia Code',monospace","center");
+  txt(c,"5'-",120,118,"#8fa0c8","13px 'Cascadia Code',monospace");
+  strand(170,120,"GAATTC",CY);
+  txt(c,"-3'",410,118,"#8fa0c8","13px 'Cascadia Code',monospace");
+  for(let i=0;i<6;i++){c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.moveTo(185+i*38,126);c.lineTo(185+i*38,164);c.stroke();}
+  txt(c,"3'-",120,192,"#8fa0c8","13px 'Cascadia Code',monospace");
+  strand(170,194,"CTTAAG",MG);
+  txt(c,"-5'",410,192,"#8fa0c8","13px 'Cascadia Code',monospace");
+  txt(c,"palindrome = dono strands 5'->3' me SAME sequence padhti hain",460,252,"#c9d4ff","13px 'Cascadia Code',monospace","center");
+  txt(c,"EcoRI top strand G|AATTC pe cut karta hai (G ke baad)",460,282,GR,"13px 'Cascadia Code',monospace","center");
+  R.innerHTML="<span class=hl>Restriction endonucleases:</span> specific palindromic sequences pe cut. EcoRI = 5'-GAATTC-3'. Yeh enzymes bacteria ka DEFENCE system hain - foreign phage DNA ko kaat dete hain!";
+ }else if(st===1){
+  txt(c,"EcoRI STAGGERED cut -> STICKY ends:",460,40,YL,"bold 14px 'Cascadia Code',monospace","center");
+  strand(120,110,"G",CY);strand(158,184,"CTTAA",MG);
+  txt(c,"fragment 1",180,240,"#8fa0c8","12px 'Cascadia Code',monospace","center");
+  strand(560,110,"AATTC",CY);strand(598,184,"G",MG);
+  txt(c,"fragment 2",680,240,"#8fa0c8","12px 'Cascadia Code',monospace","center");
+  txt(c,"AATT overhang",380,140,GR,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"sticky (cohesive) ends: complementary overhangs - matching fragments HYDROGEN-BOND se pair!",460,286,"#c9d4ff","12.5px 'Cascadia Code',monospace","center");
+  R.innerHTML="<span class=hl>Sticky ends:</span> staggered cut se complementary single-strand overhangs (AATT). Koi bhi EcoRI-cut fragment inke saath pair ho sakta hai - yahi gene insertion ka moka hai!";
+ }else{
+  txt(c,"BLUNT cut (e.g. SmaI) - koi overhang NAHI:",460,40,YL,"bold 14px 'Cascadia Code',monospace","center");
+  strand(150,120,"CCC",CY,2);strand(150,194,"GGG",MG,2);
+  txt(c,"|",324,140,RD,"bold 18px 'Cascadia Code',monospace","center");
+  txt(c,"|",324,214,RD,"bold 18px 'Cascadia Code',monospace","center");
+  txt(c,"dono strands SAME jagah cut",460,120,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"-> blunt ends: join ho sakte hain",460,150,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"par pairing help NAHI milti",460,180,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"sticky ends zyada useful - alignment automatic!",460,286,GR,"13px 'Cascadia Code',monospace","center");
+  R.innerHTML="<span class=hl>Blunt ends:</span> straight cut, koi overhang nahi. Join possible hai par efficient nahi. <span class=hl>Host defence:</span> bacteria apni DNA ko METHYLATE karke apne hi restriction enzymes se bachate hain!";
+ }
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let st=0;
+const R=document.getElementById("r2");
+document.querySelectorAll("#sc2 .lb").forEach((b,i)=>b.onclick=()=>{st=i;document.querySelectorAll("#sc2 .lb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+function frag(x,y,col,label){
+ c.strokeStyle=col;c.lineWidth=4;c.beginPath();c.moveTo(x,y-14);c.lineTo(x+180,y-14);c.stroke();
+ c.beginPath();c.moveTo(x,y+14);c.lineTo(x+180,y+14);c.stroke();
+ c.fillStyle=col;c.fillRect(x+180,y-14,26,28);
+ txt(c,label,x+90,y+52,col,"12px 'Cascadia Code',monospace","center");
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ if(st===0){
+  txt(c,"2 EcoRI-cut fragments - matching sticky ends:",460,40,YL,"bold 14px 'Cascadia Code',monospace","center");
+  frag(140,150,CY,"vector (plasmid khula)");
+  frag(600,150,MG,"insert (desired gene)");
+  arrow2(c,540,150,360,150,GR,3);
+  txt(c,"milao!",460,130,GR,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"dono EcoRI se cut = AATT overhangs COMPLEMENTARY",460,286,"#c9d4ff","13px 'Cascadia Code',monospace","center");
+  R.innerHTML="<span class=hl>Same enzyme = matching ends:</span> vector aur insert dono ko EcoRI se kaato - dono ke AATT sticky ends ek dusre se pair ho sakte hain.";
+ }else if(st===1){
+  txt(c,"Sticky ends HYDROGEN-BOND se align:",460,40,YL,"bold 14px 'Cascadia Code',monospace","center");
+  c.strokeStyle=CY;c.lineWidth=4;c.beginPath();c.moveTo(160,136);c.lineTo(440,136);c.stroke();
+  c.beginPath();c.moveTo(160,164);c.lineTo(440,164);c.stroke();
+  c.strokeStyle=MG;c.beginPath();c.moveTo(480,136);c.lineTo(760,136);c.stroke();
+  c.beginPath();c.moveTo(480,164);c.lineTo(760,164);c.stroke();
+  c.strokeStyle=GR;c.lineWidth=2;c.setLineDash([3,3]);
+  for(let i=0;i<4;i++){c.beginPath();c.moveTo(448+i*8,140);c.lineTo(448+i*8,160);c.stroke();}
+  c.setLineDash([]);
+  txt(c,"H-bonds (weak, temporary)",460,196,GR,"12px 'Cascadia Code',monospace","center");
+  txt(c,"AATT",460,120,GR,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"abhi backbone me GAP hai - permanent NAHI!",460,286,RD,"13px 'Cascadia Code',monospace","center");
+  R.innerHTML="<span class=hl>Alignment:</span> complementary overhangs hydrogen bonds se temporarily judte hain. Par sugar-phosphate backbone abhi bhi toota hua hai - yahan LIGASE chahiye!";
+ }else{
+  txt(c,"DNA LIGASE seals -> RECOMBINANT DNA:",460,40,YL,"bold 14px 'Cascadia Code',monospace","center");
+  c.strokeStyle=CY;c.lineWidth=4;c.beginPath();c.moveTo(160,136);c.lineTo(440,136);c.stroke();
+  c.beginPath();c.moveTo(160,164);c.lineTo(440,164);c.stroke();
+  c.strokeStyle=MG;c.beginPath();c.moveTo(440,136);c.lineTo(760,136);c.stroke();
+  c.beginPath();c.moveTo(440,164);c.lineTo(760,164);c.stroke();
+  c.fillStyle=YL;c.beginPath();c.arc(440,136,9,0,7);c.fill();
+  c.beginPath();c.arc(440,164,9,0,7);c.fill();
+  txt(c,"ligase ne PHOSPHODIESTER bonds banaye",460,196,YL,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"covalent seal = PERMANENT recombinant DNA!",460,286,GR,"13px 'Cascadia Code',monospace","center");
+  R.innerHTML="<span class=hl>DNA ligase:</span> sugar-phosphate backbone me covalent PHOSPHODIESTER bonds jodta hai = recombinant DNA complete! <span class=hl>Yaad rakho:</span> restriction enzyme CUTS, ligase JOINS. Bacteria methylation se apni DNA bachate hain, phage DNA cut hota hai.";
+ }
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let sel=0;
+const R=document.getElementById("r3");
+document.querySelectorAll("#sc3 .vb").forEach((b,i)=>b.onclick=()=>{sel=i;document.querySelectorAll("#sc3 .vb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+const INFO=[
+ "<span class=hl>ori (origin of replication):</span> yahan se plasmid ki replication shuru hoti hai - COPY NUMBER control karta hai. Bina ori ke plasmid bacteria me multiply nahi hoga!",
+ "<span class=hl>Selectable marker:</span> antibiotic-resistance gene (jaise ampR, tetR pBR322 me). Sirf TRANSFORMED cells antibiotic plate pe survive karte hain - baaki mar jaate. Selection easy!",
+ "<span class=hl>Cloning site:</span> UNIQUE restriction site jahan insert lagate hain. Insert marker ke ANDAR lage to INSERTIONAL INACTIVATION - marker disrupt, recombinant pehchano!",
+ "<span class=hl>Blue-white screening (pUC):</span> lacZ gene me insert = lacZ DISRUPT = WHITE colony. Empty vector = lacZ works = BLUE colony. White = recombinant (usually - proper controls chahiye)!"];
+function plasmid(cx,cy,r){
+ c.strokeStyle="#3d3d6e";c.lineWidth=10;c.beginPath();c.arc(cx,cy,r,0,7);c.stroke();
+}
+function arc(cx,cy,r,a0,a1,col,label,lx,ly){
+ c.strokeStyle=col;c.lineWidth=12;c.beginPath();c.arc(cx,cy,r,a0,a1);c.stroke();
+ txt(c,label,lx,ly,col,"bold 13px 'Cascadia Code',monospace","center");
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ if(sel<3){
+  txt(c,"pBR322 plasmid vector - 3 zaroori parts:",460,36,YL,"bold 14px 'Cascadia Code',monospace","center");
+  plasmid(380,180,105);
+  txt(c,"pBR322",380,184,"#8fa0c8","14px 'Cascadia Code',monospace","center");
+  const parts=[
+   ()=>{arc(380,180,105,-Math.PI/2-0.5,-Math.PI/2+0.5,CY,"ori",380,36+18);txt(c,"origin of replication",640,120,CY,"13px 'Cascadia Code',monospace");txt(c,"copy number control",640,142,"#8fa0c8","12px 'Cascadia Code',monospace");},
+   ()=>{arc(380,180,105,0.3,1.5,GR,"ampR",520,246);txt(c,"selectable marker",640,180,GR,"13px 'Cascadia Code',monospace");txt(c,"antibiotic resistance",640,202,"#8fa0c8","12px 'Cascadia Code',monospace");},
+   ()=>{arc(380,180,105,Math.PI-0.5,Math.PI+0.5,MG,"cloning site",232,246);txt(c,"cloning site",120,120,MG,"13px 'Cascadia Code',monospace");txt(c,"unique restriction site",120,142,"#8fa0c8","12px 'Cascadia Code',monospace");}];
+  parts[sel]();
+  txt(c,"vector = ori + marker + cloning site - teeno MUST!",460,308,"#5b6488","13px 'Cascadia Code',monospace","center");
+ }else{
+  txt(c,"Blue-white screening (pUC vector, lacZ):",460,36,YL,"bold 14px 'Cascadia Code',monospace","center");
+  plasmid(210,170,80);
+  txt(c,"lacZ me",210,150,"#8fa0c8","12px 'Cascadia Code',monospace","center");
+  txt(c,"INSERT laga",210,170,"#8fa0c8","12px 'Cascadia Code',monospace","center");
+  txt(c,"-> lacZ OFF",210,190,"#8fa0c8","12px 'Cascadia Code',monospace","center");
+  c.fillStyle="#1e2a4a";c.strokeStyle="#3d3d6e";c.lineWidth=3;
+  c.beginPath();c.arc(640,180,120,0,7);c.fill();c.stroke();
+  txt(c,"agar plate",640,318,"#8fa0c8","12px 'Cascadia Code',monospace","center");
+  const cols=[[600,140,1],[680,150,0],[640,200,1],[590,210,0],[700,220,1],[660,110,1],[610,250,0],[690,190,0]];
+  cols.forEach(k=>{c.fillStyle=k[2]?"#e8e8f2":"#3b82f6";c.beginPath();c.arc(k[0],k[1],11,0,7);c.fill();});
+  txt(c,"WHITE = insert (recombinant)",460,60,"#e8e8f2","bold 12.5px 'Cascadia Code',monospace");
+  txt(c,"BLUE = empty vector",460,80,"#3b82f6","bold 12.5px 'Cascadia Code',monospace");
+ }
+ R.innerHTML=INFO[sel]+(sel===2?" <span class=hl>Ti plasmid:</span> Agrobacterium ka natural vector - DISARMED version plants me gene deliver karta hai.":"");
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let sel=0;
+const R=document.getElementById("r4");
+document.querySelectorAll("#sc4 .db2").forEach((b,i)=>b.onclick=()=>{sel=i;document.querySelectorAll("#sc4 .db2").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+const T=["COMPETENT CELLS","ELECTROPORATION","MICROINJECTION","GENE GUN","AGROBACTERIUM"];
+const INFO=[
+ "<span class=hl>Competent cells:</span> CaCl2 treatment se bacterial membrane PERMEABLE; phir brief HEAT SHOCK (ice pe, phir sudden garam) se DNA andar. Classic bacterial transformation!",
+ "<span class=hl>Electroporation:</span> short ELECTRIC PULSE se membrane me temporary PORES khulti hain - DNA andar ghus jaata hai. Bacteria, yeast, plant, animal - sab pe kaam!",
+ "<span class=hl>Microinjection:</span> bahut PATLI needle se DNA directly ANIMAL CELL ke nucleus me inject. Precise par ek-ek cell - slow, skilled kaam.",
+ "<span class=hl>Gene gun (biolistics):</span> DNA-coated GOLD/TUNGSTEN microparticles ko high velocity se PLANT CELLS me fire karte hain. Plant cell wall cross karne ke liye perfect!",
+ "<span class=hl>Agrobacterium tumefaciens:</span> NATURE ka genetic engineer! Ti plasmid naturally plant cells me DNA transfer karta hai - DISARMED Ti se desired gene plant genome me."];
+function cell(cx,cy,r,col){
+ c.fillStyle="#0d0d1c";c.strokeStyle=col;c.lineWidth=2.5;
+ c.beginPath();c.arc(cx,cy,r,0,7);c.fill();c.stroke();
+ c.strokeStyle="#2d2d52";c.lineWidth=2;c.beginPath();c.arc(cx,cy,r*0.45,0,7);c.stroke();
+ txt(c,"cell",cx,cy+r+24,"#8fa0c8","12px 'Cascadia Code',monospace","center");
+}
+function dna(x,y,col){c.fillStyle=col;c.beginPath();c.arc(x,y,6,0,7);c.fill();}
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,T[sel],460,40,YL,"bold 15px 'Cascadia Code',monospace","center");
+ if(sel===0){
+  cell(300,170,75,CY);
+  dna(180,110,MG);dna(160,180,MG);dna(190,240,MG);
+  txt(c,"CaCl2",520,140,CY,"bold 14px 'Cascadia Code',monospace");
+  arrow2(c,520,152,400,160,CY,3);
+  txt(c,"phir HEAT SHOCK",520,200,MG,"bold 14px 'Cascadia Code',monospace");
+  txt(c,"-> membrane permeable",520,222,"#8fa0c8","12px 'Cascadia Code',monospace");
+  txt(c,"DNA uptake!",300,170,GR,"bold 12px 'Cascadia Code',monospace","center");
+ }else if(sel===1){
+  cell(300,170,75,CY);
+  c.strokeStyle=YL;c.lineWidth=3;
+  [[540,100],[560,160],[545,220]].forEach(p=>{
+   c.beginPath();c.moveTo(p[0],p[1]);c.lineTo(p[0]-14,p[1]+18);c.lineTo(p[0]-2,p[1]+18);c.lineTo(p[0]-16,p[1]+38);c.stroke();});
+  txt(c,"electric pulse",620,90,YL,"bold 13px 'Cascadia Code',monospace");
+  txt(c,"-> temporary PORES",620,112,"#8fa0c8","12px 'Cascadia Code',monospace");
+  c.fillStyle=RD;[0.4,1.2,2.0,5.5].forEach(a=>{c.beginPath();c.arc(300+75*Math.cos(a),170+75*Math.sin(a),4,0,7);c.fill();});
+  dna(210,120,MG);dna(200,220,MG);
+ }else if(sel===2){
+  cell(300,170,80,CY);
+  c.strokeStyle=MG;c.lineWidth=3;c.beginPath();c.moveTo(700,60);c.lineTo(310,150);c.stroke();
+  txt(c,"tiny needle",700,50,MG,"bold 13px 'Cascadia Code',monospace","center");
+  c.fillStyle=MG;c.beginPath();c.arc(300,170,10,0,7);c.fill();
+  txt(c,"nucleus",300,170,"#0d0d1c","bold 10px 'Cascadia Code',monospace","center");
+  txt(c,"DNA directly nucleus me",620,180,"#c9d4ff","13px 'Cascadia Code',monospace");
+  txt(c,"ANIMAL cells (IVF, transgenic)",620,204,"#8fa0c8","12px 'Cascadia Code',monospace");
+ }else if(sel===3){
+  c.fillStyle="#16162e";c.strokeStyle=YL;c.lineWidth=2;
+  c.beginPath();c.roundRect(120,120,120,50,8);c.fill();c.stroke();
+  txt(c,"GENE GUN",180,150,YL,"bold 13px 'Cascadia Code',monospace","center");
+  for(let i=0;i<6;i++){c.fillStyle=YL;c.beginPath();c.arc(280+i*40,145+(i%2?8:-8),4,0,7);c.fill();}
+  c.fillStyle="#0d2a1a";c.strokeStyle=GR;c.lineWidth=2.5;
+  c.beginPath();c.roundRect(560,90,180,160,14);c.fill();c.stroke();
+  txt(c,"plant cell",650,178,GR,"13px 'Cascadia Code',monospace","center");
+  txt(c,"(cell wall!)",650,198,"#8fa0c8","11px 'Cascadia Code',monospace","center");
+  txt(c,"gold/tungsten + DNA",400,120,YL,"12px 'Cascadia Code',monospace","center");
+  txt(c,"high velocity fire!",400,260,"#c9d4ff","13px 'Cascadia Code',monospace","center");
+ }else{
+  c.fillStyle="#16162e";c.strokeStyle=GR;c.lineWidth=2;
+  c.beginPath();c.ellipse(220,170,70,40,0.3,0,7);c.fill();c.stroke();
+  txt(c,"Agro-",220,160,GR,"bold 12px 'Cascadia Code',monospace","center");
+  txt(c,"bacterium",220,178,GR,"bold 12px 'Cascadia Code',monospace","center");
+  c.strokeStyle=MG;c.lineWidth=3;c.beginPath();c.arc(220,120,16,0,7);c.stroke();
+  txt(c,"Ti plasmid",320,110,MG,"bold 12px 'Cascadia Code',monospace","center");
+  c.fillStyle="#0d2a1a";c.strokeStyle=GR;c.lineWidth=2.5;
+  c.beginPath();c.roundRect(560,90,180,160,14);c.fill();c.stroke();
+  txt(c,"plant cell",650,178,GR,"13px 'Cascadia Code',monospace","center");
+  arrow2(c,300,140,550,150,MG,3);
+  txt(c,"natural gene transfer!",460,290,"#c9d4ff","13px 'Cascadia Code',monospace","center");
+ }
+ txt(c,"ENTRY + SELECTION + EXPRESSION = 3 alag checks!",460,318,"#5b6488","12.5px 'Cascadia Code',monospace","center");
+ R.innerHTML=INFO[sel];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let mode=0,step=0,cycles=0,ran=false;
+const R=document.getElementById("r5");
+const STEPS=[
+ {n:"1. DENATURATION",t:"~95 C",col:RD,d:"Heat se DNA ke 2 strands SEPARATE (H-bonds tootte). Template ready!"},
+ {n:"2. ANNEALING",t:"~50-60 C",col:YL,d:"Primers template se JUDTE hain (temperature primers pe depend)."},
+ {n:"3. EXTENSION",t:"~72 C",col:GR,d:"Taq polymerase primers se naya strand BANATA hai. Cycle complete -> DNA DOUBLE!"}];
+document.querySelectorAll("#sc5 .tb").forEach((b,i)=>b.onclick=()=>{mode=i;document.querySelectorAll("#sc5 .tb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+document.getElementById("pcrStep").onclick=()=>{step++;if(step>2){step=0;cycles++;}draw();};
+document.getElementById("gelRun").onclick=()=>{ran=true;draw();};
+function tube(){
+ c.fillStyle="#0d0d1c";c.strokeStyle=CY;c.lineWidth=2.5;
+ c.beginPath();c.moveTo(140,80);c.lineTo(260,80);c.lineTo(230,260);c.quadraticCurveTo(200,290,170,260);c.closePath();c.fill();c.stroke();
+ txt(c,"PCR tube",200,310,"#8fa0c8","12px 'Cascadia Code',monospace","center");
+}
+function strands(){
+ if(step===0){
+  c.strokeStyle=CY;c.lineWidth=3;c.beginPath();c.moveTo(165,110);c.lineTo(195,240);c.stroke();
+  c.beginPath();c.moveTo(235,110);c.lineTo(205,240);c.stroke();
+  txt(c,"strands APART",200,100,RD,"11px 'Cascadia Code',monospace","center");
+ }else if(step===1){
+  c.strokeStyle=CY;c.lineWidth=3;c.beginPath();c.moveTo(165,110);c.lineTo(195,240);c.stroke();
+  c.beginPath();c.moveTo(235,110);c.lineTo(205,240);c.stroke();
+  c.fillStyle=YL;c.fillRect(182,150,16,8);c.fillRect(206,180,16,8);
+  txt(c,"primers jude",200,100,YL,"11px 'Cascadia Code',monospace","center");
+ }else{
+  c.strokeStyle=CY;c.lineWidth=3;
+  c.beginPath();c.moveTo(165,110);c.lineTo(195,240);c.stroke();
+  c.beginPath();c.moveTo(235,110);c.lineTo(205,240);c.stroke();
+  c.strokeStyle=GR;c.beginPath();c.moveTo(183,150);c.lineTo(193,240);c.stroke();
+  c.beginPath();c.beginPath();c.moveTo(220,180);c.lineTo(208,240);c.stroke();
+  txt(c,"new strands!",200,100,GR,"11px 'Cascadia Code',monospace","center");
+ }
+}
+function pcr(){
+ const s=STEPS[step];
+ txt(c,"PCR -",340,70,YL,"bold 15px 'Cascadia Code',monospace");
+ txt(c,s.n,430,70,s.col,"bold 15px 'Cascadia Code',monospace");
+ tube();strands();
+ txt(c,"temp:",480,130,"#8fa0c8","13px 'Cascadia Code',monospace");
+ txt(c,s.t,540,130,s.col,"bold 22px 'Cascadia Code',monospace");
+ txt(c,"cycles done:",480,180,"#8fa0c8","13px 'Cascadia Code',monospace");
+ txt(c,""+cycles,600,180,CY,"bold 18px 'Cascadia Code',monospace");
+ txt(c,"copies = 2^n:",480,226,"#8fa0c8","13px 'Cascadia Code',monospace");
+ txt(c,""+Math.pow(2,cycles),600,226,MG,"bold 18px 'Cascadia Code',monospace");
+ txt(c,"Taq polymerase = heat-stable (Thermus aquaticus)",460,286,"#c9d4ff","12.5px 'Cascadia Code',monospace","center");
+ R.innerHTML="<span class=hl>"+s.n+" ("+s.t+"):</span> "+s.d+" <span class=hl>Progress:</span> "+cycles+" cycles -> 2^"+cycles+" = "+Math.pow(2,cycles)+" copies.";
+}
+function gel(){
+ c.fillStyle="#0d0d1c";c.strokeStyle="#3d3d6e";c.lineWidth=2.5;
+ c.beginPath();c.roundRect(140,60,520,240,10);c.fill();c.stroke();
+ txt(c,"- wells (cathode)",150,52,MG,"bold 12px 'Cascadia Code',monospace");
+ txt(c,"+ ANODE",150,318,GR,"bold 12px 'Cascadia Code',monospace");
+ const lanes=[240,400,560];
+ lanes.forEach(x=>{c.fillStyle="#1a1a33";c.fillRect(x-22,66,44,14);});
+ txt(c,"ladder",240,110,"#8fa0c8","11px 'Cascadia Code',monospace","center");
+ txt(c,"sample A",400,110,"#8fa0c8","11px 'Cascadia Code',monospace","center");
+ txt(c,"sample B",560,110,"#8fa0c8","11px 'Cascadia Code',monospace","center");
+ if(ran){
+  const bands=[[240,[130,165,200,235],CY],[400,[150,245],MG],[560,[262],GR]];
+  bands.forEach(b=>{b[1].forEach(y=>{c.fillStyle=b[2];c.fillRect(b[0]-22,y,44,10);});});
+  txt(c,"chhota fragment SABSE DOOR!",460,318,GR,"bold 12.5px 'Cascadia Code',monospace");
+  txt(c,"DNA negative ->",700,120,"#c9d4ff","12.5px 'Cascadia Code',monospace");
+  txt(c,"ANODE (+) ki taraf",700,140,"#c9d4ff","12.5px 'Cascadia Code',monospace");
+  txt(c,"band elute karke",700,170,"#8fa0c8","12px 'Cascadia Code',monospace");
+  txt(c,"DNA recover karo",700,188,"#8fa0c8","12px 'Cascadia Code',monospace");
+  R.innerHTML="<span class=hl>Gel run ho gaya:</span> negatively charged DNA ANODE ki taraf bhaga. CHHOTE fragments DOOR (niche), bade upar. Ladder se size estimate; band cut karke ELUTION se DNA recover!";
+ }else{
+  txt(c,"samples wells me loaded...",400,200,"#8fa0c8","13px 'Cascadia Code',monospace","center");
+  txt(c,"RUN dabao!",700,120,YL,"bold 13px 'Cascadia Code',monospace");
+  R.innerHTML="<span class=hl>Gel electrophoresis:</span> agarose gel me samples wells me load. DNA ka charge NEGATIVE - current on karo to ANODE (+) ki taraf move. RUN dabao!";
+ }
+}
+function draw(){c.clearRect(0,0,920,330);if(mode===0)pcr();else gel();}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let sel=0;
+const R=document.getElementById("r6");
+document.querySelectorAll("#sc6 .bb").forEach((b,i)=>b.onclick=()=>{sel=i;document.querySelectorAll("#sc6 .bb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+const INFO=[
+ "<span class=hl>Stirred-tank bioreactor:</span> bada vessel jahan pH, TEMPERATURE, OXYGEN, nutrients aur mixing sab CONTROLLED. Desired microbe/product yahan large scale banta hai.",
+ "<span class=hl>Impeller:</span> rotating blades se MIXING - nutrients aur cells evenly milte. <span class=hl>Sparger:</span> neeche se air/oxygen bubbles - AEROBIC cultures ke liye O2 must!",
+ "<span class=hl>Downstream processing:</span> product banne ke baad - cells/medium se SEPARATE, PURIFY, FORMULATE, phir QUALITY/SAFETY test. Injectable protein me PURITY critical. Scale-up me oxygen transfer + contamination control plan karo!"];
+function tank(dim){
+ c.fillStyle="#0d0d1c";c.strokeStyle=dim?"#23233f":CY;c.lineWidth=3;
+ c.beginPath();c.roundRect(300,60,240,230,20);c.fill();c.stroke();
+ c.fillStyle="#0e2030";c.fillRect(306,120,228,164);
+ c.strokeStyle="#23233f";c.lineWidth=1.5;c.strokeRect(306,120,228,164);
+}
+function impeller(hi){
+ c.strokeStyle=hi?MG:"#3d3d6e";c.lineWidth=hi?5:3;
+ c.beginPath();c.moveTo(420,60);c.lineTo(420,220);c.stroke();
+ c.lineWidth=hi?7:4;
+ [130,175,220].forEach(y=>{c.beginPath();c.moveTo(385,y);c.lineTo(455,y);c.stroke();});
+ txt(c,"impeller",300,50,hi?MG:"#5b6488","bold 12px 'Cascadia Code',monospace","center");
+}
+function sparger(hi){
+ c.strokeStyle=hi?GR:"#3d3d6e";c.lineWidth=hi?5:3;
+ c.beginPath();c.moveTo(470,284);c.lineTo(540,284);c.stroke();
+ if(hi){c.fillStyle=GR;[480,500,520].forEach((x,i)=>{c.beginPath();c.arc(x,268-i*18,4-i,0,7);c.fill();});}
+ txt(c,"sparger (air/O2)",610,290,hi?GR:"#5b6488","bold 12px 'Cascadia Code',monospace","center");
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ if(sel===2){
+  tank(true);
+  txt(c,"product ready...",420,180,"#5b6488","12px 'Cascadia Code',monospace","center");
+  const steps=["1. SEPARATE","2. PURIFY","3. FORMULATE","4. TEST"];
+  steps.forEach((s,i)=>{
+   const y=70+i*62;
+   c.fillStyle="#0d0d1c";c.strokeStyle=MG;c.lineWidth=2;
+   c.beginPath();c.roundRect(600,y,260,44,10);c.fill();c.stroke();
+   txt(c,s,730,y+28,MG,"bold 13px 'Cascadia Code',monospace","center");
+  });
+  txt(c,"DOWNSTREAM",730,50,MG,"bold 13px 'Cascadia Code',monospace","center");
+  txt(c,"purity = critical (injectables)!",460,318,"#c9d4ff","12.5px 'Cascadia Code',monospace","center");
+ }else{
+  tank(false);
+  impeller(sel===1);
+  sparger(sel===1);
+  txt(c,"STIRRED-TANK BIOREACTOR",420,36,YL,"bold 14px 'Cascadia Code',monospace","center");
+  const ctrl=["pH","temp","O2","nutrients","mixing"];
+  ctrl.forEach((k,i)=>{
+   c.fillStyle="#0e2a3a";c.strokeStyle="#164e63";c.lineWidth=1;
+   c.beginPath();c.roundRect(60,80+i*44,130,32,16);c.fill();c.stroke();
+   txt(c,k,125,101+i*44,CY,"12px 'Cascadia Code',monospace","center");
+  });
+  txt(c,"sab CONTROLLED",125,318,"#8fa0c8","11.5px 'Cascadia Code',monospace","center");
+ }
+ R.innerHTML=INFO[sel];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"EcoRI kis sequence ko recognize karke cut karta hai?",opts:["5'-GAATTC-3'","5'-GGATCC-3'","5'-AAGCTT-3'","5'-CCCGGG-3'"],a:0,why:"EcoRI = 5'-GAATTC-3' - PALINDROMIC sequence (dono strands 5'->3' same). Ratlo - board favourite!"},
+{q:"Sticky (cohesive) ends KAISE bante hain?",opts:["blunt cut se","staggered cut se complementary overhangs","ligase ke seal karne se","heat shock se"],a:1,why:"STAGGERED cut se single-strand overhangs bante hain (jaise AATT) - ye complementary ends H-bond se pair hote hain. Blunt ends me overhang NAHI."},
+{q:"Blue-white screening me WHITE colony ka matlab?",opts:["empty vector hai","contamination ho gayi","insert aa gaya - lacZ disrupt","antibiotic kaam nahi kiya"],a:2,why:"pUC vector me insert lacZ gene ko DISRUPT karta hai -> WHITE colony. BLUE = lacZ works = empty vector. (Proper controls zaroori!)"},
+{q:"PCR cycle ka SAHI order kya hai?",opts:["annealing -> denaturation -> extension","denaturation -> annealing -> extension","extension -> denaturation -> annealing","denaturation -> extension -> annealing"],a:1,why:"D-A-E: pehle ~95C pe strands kholo (denature), phir primers jodo (anneal), phir ~72C pe Taq se naya strand (extension). Har cycle DNA DOUBLE!"},
+{q:"Gel electrophoresis me SABSE DOOR kaun travel karta hai?",opts:["sabse BADA fragment","sabse CHHOTA fragment","circular plasmid","sab barabar"],a:1,why:"DNA NEGATIVE charge se ANODE (+) ki taraf move karta hai, aur CHHOTE fragments gel matrix me FAST = sabse door. Ladder se size compare karte hain!"}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Biotech pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+
+</script></body></html>
