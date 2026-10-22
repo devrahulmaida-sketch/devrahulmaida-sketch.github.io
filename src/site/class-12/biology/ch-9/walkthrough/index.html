@@ -284,9 +284,7 @@ function draw(){
   R.innerHTML="<span class=hl>Sticky ends:</span> staggered cut se complementary single-strand overhangs (AATT). Koi bhi EcoRI-cut fragment inke saath pair ho sakta hai - yahi gene insertion ka moka hai!";
  }else{
   txt(c,"BLUNT cut (e.g. SmaI) - koi overhang NAHI:",460,40,YL,"bold 14px 'Cascadia Code',monospace","center");
-  strand(150,120,"CCC",CY,2);strand(150,194,"GGG",MG,2);
-  txt(c,"|",324,140,RD,"bold 18px 'Cascadia Code',monospace","center");
-  txt(c,"|",324,214,RD,"bold 18px 'Cascadia Code',monospace","center");
+  strand(150,120,"CCCGGG",CY,2);strand(150,194,"GGGCCC",MG,2);
   txt(c,"dono strands SAME jagah cut",460,120,"#c9d4ff","13px 'Cascadia Code',monospace");
   txt(c,"-> blunt ends: join ho sakte hain",460,150,"#c9d4ff","13px 'Cascadia Code',monospace");
   txt(c,"par pairing help NAHI milti",460,180,"#c9d4ff","13px 'Cascadia Code',monospace");
@@ -300,10 +298,10 @@ inits[2]=(()=>{
 const c=ctx("cv2");let st=0;
 const R=document.getElementById("r2");
 document.querySelectorAll("#sc2 .lb").forEach((b,i)=>b.onclick=()=>{st=i;document.querySelectorAll("#sc2 .lb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
-function frag(x,y,col,label){
+function frag(x,y,col,label,capLeft){
  c.strokeStyle=col;c.lineWidth=4;c.beginPath();c.moveTo(x,y-14);c.lineTo(x+180,y-14);c.stroke();
  c.beginPath();c.moveTo(x,y+14);c.lineTo(x+180,y+14);c.stroke();
- c.fillStyle=col;c.fillRect(x+180,y-14,26,28);
+ c.fillStyle=col;if(capLeft)c.fillRect(x-26,y-14,26,28);else c.fillRect(x+180,y-14,26,28);
  txt(c,label,x+90,y+52,col,"12px 'Cascadia Code',monospace","center");
 }
 function draw(){
@@ -311,7 +309,7 @@ function draw(){
  if(st===0){
   txt(c,"2 EcoRI-cut fragments - matching sticky ends:",460,40,YL,"bold 14px 'Cascadia Code',monospace","center");
   frag(140,150,CY,"vector (plasmid khula)");
-  frag(600,150,MG,"insert (desired gene)");
+  frag(600,150,MG,"insert (desired gene)",true);
   arrow2(c,540,150,360,150,GR,3);
   txt(c,"milao!",460,130,GR,"bold 13px 'Cascadia Code',monospace","center");
   txt(c,"dono EcoRI se cut = AATT overhangs COMPLEMENTARY",460,286,"#c9d4ff","13px 'Cascadia Code',monospace","center");
@@ -383,8 +381,8 @@ function draw(){
   txt(c,"agar plate",640,318,"#8fa0c8","12px 'Cascadia Code',monospace","center");
   const cols=[[600,140,1],[680,150,0],[640,200,1],[590,210,0],[700,220,1],[660,110,1],[610,250,0],[690,190,0]];
   cols.forEach(k=>{c.fillStyle=k[2]?"#e8e8f2":"#3b82f6";c.beginPath();c.arc(k[0],k[1],11,0,7);c.fill();});
-  txt(c,"WHITE = insert (recombinant)",460,60,"#e8e8f2","bold 12.5px 'Cascadia Code',monospace");
-  txt(c,"BLUE = empty vector",460,80,"#3b82f6","bold 12.5px 'Cascadia Code',monospace");
+  txt(c,"WHITE = insert (recombinant)",60,60,"#e8e8f2","bold 12.5px 'Cascadia Code',monospace");
+  txt(c,"BLUE = empty vector",60,80,"#3b82f6","bold 12.5px 'Cascadia Code',monospace");
  }
  R.innerHTML=INFO[sel]+(sel===2?" <span class=hl>Ti plasmid:</span> Agrobacterium ka natural vector - DISARMED version plants me gene deliver karta hai.":"");
 }
