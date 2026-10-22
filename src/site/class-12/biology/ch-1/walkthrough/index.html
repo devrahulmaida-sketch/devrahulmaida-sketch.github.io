@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Sexual Reproduction in Flowering Plants - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Biology - Chapter 1 - Sexual Reproduction in Flowering Plants</div>
+<h1>Sexual Reproduction in Flowering Plants Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - flower ka map, pollen grain, embryo sac (7 cells, 8 nuclei), pollination types, pollen tube + double fertilization, embryo development, seed-fruit-apomixis, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Flower Ka Map - Stamen aur Pistil 🌸</h2>
+<p class="why">Flower me male part STAMEN (filament + anther) aur female part PISTIL (stigma + style + ovary). Neeche button se part chuno aur dekho kaunsa kya banata hai.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="ob sel" data-o="0">stamen (male)</button>
+<button class="ob" data-o="1">pistil (female)</button>
+<button class="ob" data-o="2">bisexual vs unisexual</button>
+<button class="ob" data-o="3">pre-fertilization</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Microsporogenesis - Pollen Grain Kaise Bana? 🌼</h2>
+<p class="why">Anther ke pollen sac me MMC meiosis se 4 microspores (tetrad) banata hai. Pollen grain ki do walls: exine (sporopollenin) aur intine.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="mb sel" data-o="0">MMC -> tetrad</button>
+<button class="mb" data-o="1">pollen grain structure</button>
+<button class="mb" data-o="2">viability + allergy</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Megasporogenesis - Embryo Sac Ka Banna 🥚</h2>
+<p class="why">Ovule ke nucellus me MMC meiosis se 4 megaspores, 3 degenerate. 1 functional megaspore 3 baar mitosis karke 8 nuclei, 7 cells ka embryo sac banata hai. Stage by stage dekho.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="eb sel" data-o="0">1. MMC</button>
+<button class="eb" data-o="1">2. meiosis</button>
+<button class="eb" data-o="2">3. functional</button>
+<button class="eb" data-o="3">4. 2 nuclei</button>
+<button class="eb" data-o="4">5. 4 nuclei</button>
+<button class="eb" data-o="5">6. 8 nuclei, 7 cells</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Pollination - Pollen Ka Safar 🐝</h2>
+<p class="why">Autogamy, geitonogamy, xenogamy, cleistogamy aur pollination agents. Geitonogamy ka trick: functionally cross, genetically self!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="fb sel" data-o="0">autogamy</button>
+<button class="fb" data-o="1">geitonogamy</button>
+<button class="fb" data-o="2">xenogamy</button>
+<button class="fb" data-o="3">cleistogamy</button>
+<button class="fb" data-o="4">agents + outbreeding</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Pollen Tube aur Double Fertilization ⭐⭐</h2>
+<p class="why">Pollen stigma pe germinate hota hai, tube style se micropyle tak jaata hai, 2 male gametes deta hai. Ek egg se (zygote 2n), doosra polar nuclei se (PEN 3n) - triple fusion!</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="cb sel" data-o="0">1. germinate</button>
+<button class="cb" data-o="1">2. style</button>
+<button class="cb" data-o="2">3. micropyle</button>
+<button class="cb" data-o="3">4. 2 male gametes</button>
+<button class="cb" data-o="4">5. double fertilization</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Endosperm aur Embryo Development 🌱</h2>
+<p class="why">PEN se endosperm (3n) banta hai jo embryo ko khana deta hai. Zygote -> proembryo -> globular -> heart-shaped -> mature embryo. Stage chuno.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="hb sel" data-o="0">zygote</button>
+<button class="hb" data-o="1">proembryo</button>
+<button class="hb" data-o="2">globular</button>
+<button class="hb" data-o="3">heart-shaped</button>
+<button class="hb" data-o="4">mature embryo</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Post-Fertilization - Seed, Fruit aur Apomixis 🍎</h2>
+<p class="why">Ovule -> seed, ovary -> fruit. Apomixis (seed bina fertilization) vs parthenocarpy (fruit bina fertilization) - confusion mat karna!</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="ub sel" data-o="0">transformation map</button>
+<button class="ub" data-o="1">dicot vs monocot seed</button>
+<button class="ub" data-o="2">true vs false fruit</button>
+<button class="ub" data-o="3">apomixis / parthenocarpy</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Reproduction Pakka? ⭐</h2>
+<p class="why">5 sawaal - pollen exine, embryo sac, geitonogamy, false fruit, parthenocarpy. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Flower + pollen</b>Stamen = filament + anther (pollen factory). Pistil = stigma + style + ovary (ovules). MMC (2n) meiosis -> microspore tetrad (4 x n). Pollen: exine (sporopollenin, hardest) + intine (cellulose + pectin); vegetative + generative cell. Parthenium pollen = allergy.</div>
+<div class="rcard"><b>Embryo sac</b>Ovule nucellus me MMC meiosis -> 4 megaspores, 3 degenerate, 1 functional. 3 mitosis -> 8 nuclei -> 7 cells: 3 antipodals + 2 synergids (filiform apparatus) + 1 egg + central cell (2 polar nuclei). 7-celled, 8-nucleate.</div>
+<div class="rcard"><b>Pollination</b>Autogamy (same flower), geitonogamy (same plant: functionally cross, genetically self), xenogamy (alag plants). Cleistogamous: flower khulta nahi (Commelina, Viola). Agents: wind, water, insects, birds, bats. Outbreeding: dichogamy, herkogamy, self-incompatibility, unisexual.</div>
+<div class="rcard"><b>Double fertilization</b>Pollen tube: stigma -> style -> micropyle -> synergid. 2 male gametes: male 1 + egg = zygote (2n, syngamy); male 2 + 2 polar nuclei = PEN (3n, triple fusion). Angiosperm special.</div>
+<div class="rcard"><b>Embryo + endosperm</b>PEN -> endosperm (nuclear, cellular, helobial). Embryo: zygote -> proembryo -> globular -> heart-shaped -> mature (axis + cotyledons + plumule + radicle). Albuminous (maize, wheat) vs ex-albuminous (pea, bean).</div>
+<div class="rcard"><b>Seed, fruit, apomixis</b>Ovule -> seed, ovary -> fruit, ovary wall -> pericarp, integuments -> seed coat, nucellus -> perisperm. False fruit: apple, strawberry (thalamus). Apomixis = seed w/o fertilization (clone). Parthenocarpy = fruit w/o fertilization. Polyembryony: citrus, onion.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Biology Chapter 1 (Sexual Reproduction in Flowering Plants) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const R=document.getElementById("r0");
+sel("sc0","ob",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Stamen (male part):</span> filament + anther. Anther ke POLLEN SACS me microspores bante hain jo pollen grains ban jaate hain. Anther = pollen factory!",
+"<span class=hl>Pistil / carpel (female part):</span> stigma + style + ovary. Ovary ke andar OVULES (1 ya zyada) - har ovule me embryo sac banta hai. Ovary = future fruit, ovule = future seed.",
+"<span class=hl>Bisexual</span> flower (hibiscus) me stamen + pistil dono. <span class=hl>Unisexual</span> (papaya, maize) me sirf ek. Complete flower = sepals + petals + stamens + pistil, chaaron.",
+"<span class=hl>Pre-fertilization events:</span> gametogenesis (gamete banna) + gamete transfer (pollination). Dono ke BAAD hi fertilization possible. Yeh mapping pure chapter me kaam aayegi!"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Flower ka map - parts aur unka kaam",460,28,YL,F(14,1),"center");
+ const hs=s===0,hp=s===1,hb=s===2;
+ line(c,230,290,230,262,GR,5);
+ ell(c,175,250,48,15,-0.6,MG,null,3);ell(c,285,250,48,15,0.6,MG,null,3);
+ const sc=hs||hb||s===3?YL:CY, pc=hp||hb||s===3?YL:CY;
+ line(c,206,232,172,118,sc,3);ell(c,170,106,10,14,0,sc,"#3b3510",3);
+ line(c,254,232,290,118,sc,3);ell(c,292,106,10,14,0,sc,"#3b3510",3);
+ line(c,230,215,230,104,pc,3);circ(c,230,96,9,pc,"#3b3510",3);
+ ell(c,230,238,22,26,0,pc,null,3);circ(c,230,232,5,MG,MG);circ(c,230,246,5,MG,MG);
+ txt(c,"anther",150,92,sc,F(12),"right");txt(c,"filament",160,170,sc,F(12),"right");
+ txt(c,"stigma",230,68,pc,F(12),"center");txt(c,"anther",314,92,sc,F(12));
+ const L=[
+ [["STAMEN = male","anther + filament"],[YL,"pollen sacs -> microspores -> pollen"],["#c9d4ff","anther = pollen FACTORY"]],
+ [["PISTIL = female","stigma + style + ovary"],[YL,"ovary -> ovules (1 ya zyada)"],["#c9d4ff","ovary = FRUIT, ovule = SEED"]],
+ [["BISEXUAL: hibiscus","stamen + pistil dono"],[YL,"UNISEXUAL: papaya, maize"],["#c9d4ff","complete = 4 whorls (S,P,St,Pi)"]],
+ [["gametogenesis (gamete banna)","-> pollination (transfer)"],[YL,"-> FERTILIZATION"],["#c9d4ff","pehle dono events, phir fertilization"]]];
+ const l=L[s];
+ txt(c,l[0][0],440,110,CY,F(15,1));txt(c,l[0][1],440,140,CY,F(15,1));
+ txt(c,l[1][1],440,185,YL,F(13,1));txt(c,l[2][1],440,225,"#c9d4ff",F(13));
+ txt(c,"anther=pollen factory | ovary=future fruit | ovule=future seed",460,318,DM,F(12),"center");
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const R=document.getElementById("r1");
+sel("sc1","mb",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Microsporogenesis:</span> pollen sac me microspore mother cell (MMC, 2n) MEIOSIS karke 4 haploid (n) microspores banata hai - microspore TETRAD. Phir har microspore = ek pollen grain.",
+"<span class=hl>Pollen grain:</span> do walls - EXINE (bahar, sporopollenin, sabse hard biological material, germ pores) aur INTINE (andar, cellulose + pectin). Andar: bada vegetative cell + chhota generative cell (2 male gametes banata hai).",
+"<span class=hl>Viability</span> species pe depend: wheat/rice ~30 min, rosaceae/leguminosae months. Pollen banks me liquid nitrogen (-196°C). Allergy: Parthenium (carrot grass) = asthma ka famous cause."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ if(s===0){
+  txt(c,"Microsporogenesis - 1 MMC se 4 microspores",460,28,YL,F(14,1),"center");
+  circ(c,150,160,52,MG,"#2a1030",4);txt(c,"MMC",150,158,MG,F(15,1),"center");txt(c,"(2n)",150,178,"#c9d4ff",F(13),"center");
+  txt(c,"pollen sac me",150,244,"#8fa0c8",F(12),"center");
+  arrow2(c,215,160,300,160,CY,3);txt(c,"MEIOSIS",258,148,CY,F(12,1),"center");
+  [[370,125],[430,125],[370,185],[430,185]].forEach(p=>{circ(c,p[0],p[1],27,CY,"#0e2a3a",3);txt(c,"n",p[0],p[1]+5,CY,F(14,1),"center");});
+  txt(c,"microspore TETRAD (4 x n)",400,250,CY,F(12.5),"center");
+  txt(c,"har microspore -> 1 pollen grain",640,130,"#c9d4ff",F(13));
+  txt(c,"4 haploid cells ek saath",640,160,"#c9d4ff",F(13));
+  txt(c,"meiosis = 2n -> n",640,190,GR,F(13,1));
+ }else if(s===1){
+  txt(c,"Pollen grain ki structure",460,28,YL,F(14,1),"center");
+  circ(c,200,175,105,MG,null,9);circ(c,200,175,95,CY,null,3);
+  circ(c,185,185,50,"#7dd3fc","#10203a",2);txt(c,"vegetative",185,182,"#7dd3fc",F(11),"center");txt(c,"nucleus",185,196,"#7dd3fc",F(11),"center");
+  ell(c,236,140,26,14,0.3,MG,"#3a1442",2);txt(c,"gen.",236,144,MG,F(11),"center");
+  [[200,70],[111,175],[289,175]].forEach(p=>circ(c,p[0],p[1],5,YL,YL));
+  txt(c,"EXINE (bahar): sporopollenin",360,90,MG,F(14,1));
+  txt(c,"sabse hard biological material - acid/enzyme se nahi ghulta",360,112,"#c9d4ff",F(12));
+  txt(c,"INTINE (andar): cellulose + pectin",360,152,CY,F(14,1));
+  txt(c,"bada VEGETATIVE cell = food store",360,200,"#7dd3fc",F(13,1));
+  txt(c,"chhota GENERATIVE cell = 2 male gametes banata hai",360,226,MG,F(13,1));
+  txt(c,"yellow dots = germ pores",360,268,YL,F(12));
+ }else{
+  txt(c,"Pollen viability - kitni der zinda?",460,28,YL,F(14,1),"center");
+  txt(c,"wheat, rice",200,86,"#c9d4ff",F(13),"right");c.fillStyle=RD;c.fillRect(220,70,10,22);txt(c,"~30 minutes",244,86,RD,F(13,1));
+  txt(c,"rosaceae, leguminosae",200,136,"#c9d4ff",F(13),"right");c.fillStyle=GR;c.fillRect(220,120,420,22);txt(c,"months",652,136,GR,F(13,1));
+  c.strokeStyle=CY;c.lineWidth=2.5;c.strokeRect(220,168,300,40);txt(c,"POLLEN BANK: liquid N2 (-196°C)",370,194,CY,F(13,1),"center");
+  txt(c,"long storage - breeding ke liye",540,194,"#c9d4ff",F(12));
+  txt(c,"Parthenium (carrot grass) pollen -> bronchial allergy / asthma",460,262,MG,F(13,1),"center");
+  txt(c,"exine itna tough - pollen fossils me lakhon saal bachta hai",460,306,DM,F(12),"center");
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const R=document.getElementById("r2");
+sel("sc2","eb",i=>{s=i;draw();});
+const TITLE=["1. MMC nucellus me","2. Megasporogenesis - meiosis","3. 1 functional megaspore","4. Mitosis 1 - 2 nuclei","5. Mitosis 2 - 4 nuclei","6. Mitosis 3 - 8 nuclei = 7 cells"];
+const INFO=[
+"<span class=hl>Ovule ke nucellus</span> me ek megaspore mother cell (MMC, 2n). Ovule parts: funicle (stalk), hilum, micropyle (pollen tube ka entry), chalaza, nucellus, integuments (baad me seed coat).",
+"<span class=hl>Megasporogenesis:</span> MMC meiosis karke 4 haploid megaspores banata hai - 3 DEGENERATE (marte hain), sirf 1 functional bachta hai (chalazal end).",
+"<span class=hl>1 functional megaspore (n)</span> hi embryo sac banega. Ab free nuclear MITOSIS shuru - 3 baar.",
+"<span class=hl>Mitosis 1:</span> nucleus 2 me - ek micropylar end, ek chalazal end pe chala jaata hai.",
+"<span class=hl>Mitosis 2:</span> 4 nuclei - 2 micropylar side, 2 chalazal side.",
+"<span class=hl>Mitosis 3:</span> 8 nuclei -> 7 cells ka embryo sac. Micropylar end: egg + 2 synergids (filiform apparatus = pollen tube ka GPS). Chalazal end: 3 antipodals. Center: central cell (2 polar nuclei). Formula: 7-celled, 8-nucleate!"];
+function ovule(){
+ ell(c,250,182,100,116,0,"#2d2d52",null,3);
+ c.strokeStyle="#3d3d6e";c.lineWidth=3;c.beginPath();c.ellipse(250,182,110,126,0,-Math.PI/2+0.16,3*Math.PI/2-0.16);c.stroke();
+ txt(c,"micropyle",272,50,"#8fa0c8",F(11));txt(c,"chalaza",250,318,"#8fa0c8",F(11),"center");
+ txt(c,"integuments",132,182,"#5b6488",F(11),"right");
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,TITLE[s],460,26,YL,F(14,1),"center");
+ ovule();
+ if(s===0){circ(c,250,182,26,MG,"#2a1030",3);txt(c,"MMC",250,180,MG,F(12,1),"center");txt(c,"2n",250,196,"#c9d4ff",F(11),"center");
+  txt(c,"MMC (2n) = megaspore mother cell",430,150,MG,F(14,1));txt(c,"nucellus ke andar",430,180,"#c9d4ff",F(13));}
+ else if(s===1){
+  [[250,110,0],[250,150,0],[250,190,0],[250,234,1]].forEach(p=>{circ(c,p[0],p[1],17,p[2]?CY:"#4b3040",p[2]?"#0e2a3a":"#1a0f18",3);txt(c,"n",p[0],p[1]+5,p[2]?CY:"#7a5060",F(12,1),"center");if(!p[2]){line(c,p[0]-10,p[1]-10,p[0]+10,p[1]+10,RD,2);}});
+  txt(c,"3 degenerate (mar jaate)",430,150,RD,F(14,1));txt(c,"1 functional megaspore (n)",430,234,CY,F(14,1));txt(c,"= chalazal end wala",430,256,"#c9d4ff",F(13));}
+ else if(s===2){ell(c,250,200,36,54,0,CY,"#0e2a3a",3);circ(c,250,200,10,CY,"#0e2a3a",2);txt(c,"n",250,205,CY,F(12,1),"center");
+  txt(c,"functional megaspore (n)",430,170,CY,F(14,1));txt(c,"ab 3 baar MITOSIS",430,200,"#c9d4ff",F(13));}
+ else if(s===3){ell(c,250,182,44,86,0,CY,"#0a1c2a",3);circ(c,250,120,11,MG,"#2a1030",2);circ(c,250,244,11,MG,"#2a1030",2);
+  txt(c,"2 nuclei: opposite poles",430,170,CY,F(14,1));txt(c,"micropylar end + chalazal end",430,200,"#c9d4ff",F(13));}
+ else if(s===4){ell(c,250,182,56,96,0,CY,"#0a1c2a",3);[[232,112],[268,112],[232,252],[268,252]].forEach(p=>circ(c,p[0],p[1],10,MG,"#2a1030",2));
+  txt(c,"4 nuclei: 2 + 2",430,170,CY,F(14,1));txt(c,"2 micropylar + 2 chalazal",430,200,"#c9d4ff",F(13));}
+ else{ell(c,250,182,62,102,0,CY,"#0a1c2a",3);
+  ell(c,226,104,13,17,0,YL,"#3b3510",2);ell(c,274,104,13,17,0,YL,"#3b3510",2);circ(c,250,134,15,GR,"#0e2f22",2.5);
+  ell(c,250,188,50,26,0,MG,"#2a1030",2.5);circ(c,236,188,6,MG,MG);circ(c,264,188,6,MG,MG);
+  [[222,248],[250,258],[278,248]].forEach(p=>circ(c,p[0],p[1],11,"#7dd3fc","#10203a",2));
+  txt(c,"2 synergids (filiform apparatus)",430,86,YL,F(13,1));
+  txt(c,"1 EGG cell",430,128,GR,F(13,1));
+  txt(c,"central cell (2 polar nuclei)",430,190,MG,F(13,1));
+  txt(c,"3 antipodals (chalazal end)",430,256,"#7dd3fc",F(13,1));
+  txt(c,"7 cells, 8 nuclei",430,300,"#c9d4ff",F(13,1));}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const R=document.getElementById("r3");
+sel("sc3","fb",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Autogamy (self-pollination):</span> same flower ke anther se stigma pe - wheat, rice. Bina agent ke.",
+"<span class=hl>Geitonogamy:</span> same PLANT ke doosre flower pe. Genetically SELF (same plant), par ecologically CROSS (agent chahiye)! Trick question!",
+"<span class=hl>Xenogamy (cross-pollination):</span> do ALAG plants ke beech - genetic VARIATION lata hai. Sirf yahi genetically truly cross.",
+"<span class=hl>Cleistogamous flowers:</span> kabhi khulte hi nahi, anther aur stigma andar hi - sirf self-pollination, seed set GUARANTEED (Commelina, Viola).",
+"<span class=hl>Agents:</span> wind (anemophily, maize), water (hydrophily, Vallisneria, Zostera), insects (entomophily), birds, bats. <span class=hl>Outbreeding devices:</span> dichogamy, herkogamy, self-incompatibility, unisexual flowers."];
+function flower(x,y,col){for(let k=0;k<5;k++){const a=k*1.2566;ell(c,x+Math.cos(a)*22,y+Math.sin(a)*22,16,9,a,col,null,2.5);}circ(c,x,y,8,YL,"#3b3510",2);}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const T=["Autogamy - same flower","Geitonogamy - same plant, doosra flower","Xenogamy - alag plants","Cleistogamy - flower khulta hi nahi","Pollination agents + outbreeding devices"];
+ txt(c,T[s],460,28,YL,F(14,1),"center");
+ if(s===0){flower(250,150,MG);line(c,250,180,250,300,GR,4);arrow2(c,264,142,252,146,CY,3);
+  ell(c,250,150,46,46,0,CY,null,1.5);
+  txt(c,"anther -> same stigma",220,250,CY,F(12),"right");
+  txt(c,"wheat, rice",480,130,GR,F(15,1));txt(c,"bina agent ke bhi ho jaata hai",480,160,"#c9d4ff",F(13));txt(c,"genetic variation: kam",480,190,RD,F(13,1));}
+ else if(s===1){line(c,250,300,250,150,GR,5);line(c,250,210,170,130,GR,4);line(c,250,180,330,110,GR,4);flower(170,110,MG);flower(330,90,MG);
+  arrow2(c,200,110,298,92,CY,3);txt(c,"SAME plant",250,318,GR,F(12),"center");
+  txt(c,"functionally CROSS",480,130,YL,F(15,1));txt(c,"genetically SELF",480,160,RD,F(15,1));txt(c,"agent (wind/insect) chahiye",480,200,"#c9d4ff",F(13));}
+ else if(s===2){line(c,160,300,160,150,GR,5);line(c,420,300,420,150,"#34d3a0",5);flower(160,120,MG);flower(420,120,CY);
+  arrow2(c,196,118,382,118,YL,3);txt(c,"plant A",160,318,GR,F(12),"center");txt(c,"plant B",420,318,GR,F(12),"center");
+  txt(c,"genetic VARIATION",600,120,GR,F(15,1));txt(c,"truly cross-pollination",600,150,"#c9d4ff",F(13));txt(c,"evolution ke liye best",600,180,"#c9d4ff",F(13));}
+ else if(s===3){ell(c,250,150,36,58,0,MG,"#2a1030",3);line(c,250,92,250,208,"#4b3070",2);txt(c,"closed bud",205,150,MG,F(12),"right");line(c,250,208,250,300,GR,4);
+  circ(c,250,150,10,YL,"#3b3510",2);txt(c,"anther + stigma andar",205,176,CY,F(12),"right");
+  txt(c,"Commelina, Viola",480,130,GR,F(15,1));txt(c,"kabhi khulte hi nahi",480,160,"#c9d4ff",F(13));txt(c,"seed set GUARANTEED",480,190,YL,F(13,1));}
+ else{const B=[["WIND","anemophily","maize"],["WATER","hydrophily","Vallisneria"],["INSECTS","entomophily","colorful, scent"],["BIRDS","ornithophily","sunbird"],["BATS","chiropterophily","bat flowers"]];
+  B.forEach((b,i)=>{const x=10+i*180;c.strokeStyle=i%2?CY:MG;c.lineWidth=2.5;c.strokeRect(x,60,168,90);txt(c,b[0],x+84,88,i%2?CY:MG,F(14,1),"center");txt(c,b[1],x+84,112,"#c9d4ff",F(11),"center");txt(c,b[2],x+84,134,YL,F(11),"center");});
+  txt(c,"OUTBREEDING DEVICES (self-pollination rokne ke)",460,190,GR,F(13,1),"center");
+  ["dichogamy","herkogamy","self-incompatibility","unisexual flowers"].forEach((t,i)=>{const x=20+i*225;c.strokeStyle=GR;c.lineWidth=2;c.strokeRect(x,208,205,42);txt(c,t,x+102,234,"#c9d4ff",F(12),"center");});
+  txt(c,"dichogamy = anther/stigma alag time | herkogamy = physical barrier",460,290,DM,F(12),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const R=document.getElementById("r4");
+sel("sc4","cb",i=>{s=i;draw();});
+const TITLE=["1. Pollen stigma pe germinate hota hai","2. Pollen tube style se neeche","3. Micropyle se andar, synergid ke through","4. Tube 2 male gametes chhodta hai","5. DOUBLE fertilization!"];
+const INFO=[
+"<span class=hl>Pollen landing:</span> compatible pollen stigma pe gir ke germinate karta hai - pollen tube nikalna shuru.",
+"<span class=hl>Pollen tube</span> stigma -> style se hota hua ovule ki taraf badhta hai.",
+"<span class=hl>Entry:</span> tube MICROPYLE se ovule me ghusta hai aur synergids ke through embryo sac me pahunchta hai (synergids ka filiform apparatus = guide).",
+"<span class=hl>2 male gametes</span> embryo sac me release hote hain - ek egg ke paas, ek central cell ke paas.",
+"<span class=hl>Double fertilization:</span> male 1 + egg = ZYGOTE (2n) - syngamy. Male 2 + 2 polar nuclei = PEN (3n) - TRIPLE FUSION. Angiosperms ka special: 2 fusions ek saath! PEN -> endosperm (3n)."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,TITLE[s],460,26,YL,F(14,1),"center");
+ ell(c,230,62,34,11,0,"#3d3d6e","#13132a",2.5);txt(c,"stigma",276,66,"#8fa0c8",F(11));
+ line(c,214,70,214,150,"#3d3d6e",2.5);line(c,246,70,246,150,"#3d3d6e",2.5);txt(c,"style",262,118,"#8fa0c8",F(11));
+ ell(c,230,226,78,86,0,"#3d3d6e",null,3);txt(c,"ovary",146,236,"#8fa0c8",F(11),"right");
+ ell(c,230,232,44,62,0,"#3d3d6e",null,2.5);
+ ell(c,230,236,26,46,0,CY,null,2.5);
+ txt(c,"micropyle",156,176,"#8fa0c8",F(11),"right");line(c,160,174,222,184,"#3d3d6e",1.5);
+ const done=s<4;
+ if(done){ell(c,222,200,7,10,0,YL,"#3b3510",1.5);ell(c,238,200,7,10,0,YL,"#3b3510",1.5);circ(c,230,214,8,GR,"#0e2f22",2);ell(c,230,238,17,9,0,MG,"#2a1030",2);circ(c,224,238,3,MG,MG);circ(c,236,238,3,MG,MG);[[220,264],[230,268],[240,264]].forEach(p=>circ(c,p[0],p[1],4,"#7dd3fc","#10203a",1.5));}
+ if(s===0){circ(c,230,48,7,MG,"#2a1030",2.5);line(c,230,50,230,56,MG,2);
+  txt(c,"pollen grain stigma pe",420,110,MG,F(14,1));txt(c,"compatible pollen = germinate",420,142,"#c9d4ff",F(13));}
+ if(s===1){circ(c,230,48,6,MG,"#2a1030",2);line(c,230,56,230,138,MG,4);circ(c,230,142,4,YL,YL);
+  txt(c,"pollen tube badh raha hai",420,110,MG,F(14,1));txt(c,"stigma -> style -> ovule",420,142,"#c9d4ff",F(13));}
+ if(s>=2&&s<=3){line(c,230,56,230,190,MG,4);line(c,230,190,224,204,MG,4);
+  if(s===2){txt(c,"micropyle se entry",420,110,MG,F(14,1));txt(c,"synergid ke through embryo sac me",420,142,"#c9d4ff",F(13));txt(c,"filiform apparatus = GPS",420,172,YL,F(13,1));}
+  else{circ(c,224,212,4,MG,MG);circ(c,238,216,4,MG,MG);arrow2(c,300,214,242,214,MG,2);arrow2(c,300,244,246,238,MG,2);
+   txt(c,"male gamete 1 -> egg",330,208,MG,F(12));txt(c,"male gamete 2 -> central cell",320,262,MG,F(12));txt(c,"2 male gametes release",420,110,MG,F(14,1));}}
+ if(s===4){line(c,230,56,230,190,MG,4);
+  circ(c,230,214,10,YL,"#3b3510",3);ell(c,230,240,17,9,0,YL,"#3b3510",3);
+  txt(c,"male 1 + egg = ZYGOTE (2n)",420,100,YL,F(14,1));txt(c,"syngamy",420,122,"#c9d4ff",F(12));
+  txt(c,"male 2 + 2 polar nuclei = PEN (3n)",420,170,MG,F(14,1));txt(c,"TRIPLE FUSION",420,192,"#c9d4ff",F(12));
+  txt(c,"PEN -> endosperm (3n) - embryo ka khana",420,240,GR,F(13,1));txt(c,"2 fusions ek saath = DOUBLE fertilization",420,276,CY,F(13,1));}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const R=document.getElementById("r5");
+sel("sc5","hb",i=>{s=i;draw();});
+const NM=["zygote (2n)","proembryo","globular","heart-shaped","mature embryo"];
+const INFO=[
+"<span class=hl>Zygote (2n):</span> PEN (3n) pehle divide hoke endosperm banata hai, zygote baad me divide hota hai - taaki embryo ko khana ready mile.",
+"<span class=hl>Proembryo:</span> zygote ka pehla division - embryo + suspensor.",
+"<span class=hl>Globular stage:</span> gol embryo, suspensor se attach.",
+"<span class=hl>Heart-shaped:</span> cotyledons banne shuru (dicot) - do lobes.",
+"<span class=hl>Mature embryo:</span> embryonal axis + cotyledons + plumule (shoot tip) + radicle (root tip). Endosperm: albuminous seeds (maize, wheat) me bacha rehta hai; ex-albuminous (pea, bean) me khatam."];
+function shape(i,x,y,on){
+ const col=on?YL:"#3d3d6e",fl=on?"#3b3510":"#13132a";
+ if(i===0){circ(c,x,y,16,col,fl,3);}
+ else if(i===1){circ(c,x,y-10,16,col,fl,3);circ(c,x,y+16,9,col,fl,2.5);}
+ else if(i===2){circ(c,x,y-6,26,col,fl,3);line(c,x,y+20,x,y+46,col,3);}
+ else if(i===3){c.beginPath();c.moveTo(x,y+26);c.bezierCurveTo(x-42,y-4,x-20,y-38,x,y-14);c.bezierCurveTo(x+20,y-38,x+42,y-4,x,y+26);c.strokeStyle=col;c.lineWidth=3;c.stroke();c.fillStyle=fl;c.fill();line(c,x,y+26,x,y+50,col,3);}
+ else{line(c,x,y-30,x,y+36,col,5);ell(c,x-24,y-18,20,10,-0.4,col,fl,3);ell(c,x+24,y-18,20,10,0.4,col,fl,3);txt(c,"plumule",x+8,y-38,on?YL:"#5b6488",F(10));txt(c,"radicle",x+8,y+54,on?YL:"#5b6488",F(10));}
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Embryo development: zygote -> mature embryo",460,28,YL,F(14,1),"center");
+ for(let i=0;i<5;i++){const x=100+i*180;shape(i,x,110,i===s);txt(c,NM[i],x,196,i===s?YL:"#8fa0c8",F(12,i===s),"center");if(i<4)arrow2(c,x+60,110,x+112,110,"#2d2d52",2);}
+ txt(c,"PEN (3n) -> ENDOSPERM - embryo ko khana",460,236,GR,F(13,1),"center");
+ txt(c,"types: nuclear (coconut water) | cellular | helobial",460,262,CY,F(12.5),"center");
+ txt(c,"albuminous: maize, wheat | ex-albuminous: pea, bean",460,288,"#c9d4ff",F(12.5),"center");
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const R=document.getElementById("r6");
+sel("sc6","ub",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Transformation map:</span> ovule -> SEED, ovary -> FRUIT, ovary wall -> pericarp, integuments -> seed coat (testa + tegmen), nucellus -> perisperm (agar bacha).",
+"<span class=hl>Dicot seed:</span> 2 cotyledons. <span class=hl>Monocot seed:</span> 1 cotyledon (grass me SCUTELLUM). Seed = seed coat + embryo + (kabhi) endosperm.",
+"<span class=hl>True fruit</span> sirf ovary se (mango). <span class=hl>False fruit</span> me ovary ke alawa thalamus bhi (apple, strawberry).",
+"<span class=hl>Apomixis</span> = seed bina fertilization (citrus, mango) - clone jaisa, hybrid seed baar baar nahi kharidna. <span class=hl>Parthenocarpy</span> = FRUIT bina fertilization (banana, grapes). <span class=hl>Polyembryony</span> = 1 seed me 1 se zyada embryo."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ const T=["Post-fertilization transformation map","Seed ki structure - dicot vs monocot","True fruit vs False fruit","Apomixis vs Parthenocarpy vs Polyembryony"];
+ txt(c,T[s],460,26,YL,F(14,1),"center");
+ if(s===0){const P=[["ovule","SEED"],["ovary","FRUIT"],["ovary wall","pericarp"],["integuments","seed coat (testa + tegmen)"],["nucellus","perisperm (agar bacha)"]];
+  P.forEach((p,i)=>{const y=46+i*54;c.strokeStyle=MG;c.lineWidth=2.5;c.strokeRect(100,y,180,38);txt(c,p[0],190,y+25,MG,F(14,1),"center");arrow2(c,292,y+19,382,y+19,YL,3);c.strokeStyle=CY;c.strokeRect(392,y,300,38);txt(c,p[1],406,y+25,CY,F(14,1));});}
+ else if(s===1){
+  ell(c,220,160,100,62,0,CY,"#0a1c2a",3);ell(c,196,160,44,48,0,CY,"#0e2a3a",2);ell(c,244,160,44,48,0,CY,"#0e2a3a",2);line(c,220,120,220,200,YL,3);circ(c,220,104,3,YL,YL);
+  txt(c,"DICOT - 2 cotyledons",220,262,CY,F(14,1),"center");txt(c,"bean, pea",220,284,"#c9d4ff",F(12),"center");
+  ell(c,640,160,90,62,0,MG,"#2a1030",3);ell(c,606,162,22,40,0,YL,"#3b3510",2.5);line(c,626,150,626,120,GR,3);txt(c,"scutellum",606,244,YL,F(11),"center");
+  txt(c,"endosperm",670,168,"#c9d4ff",F(12),"center");
+  txt(c,"MONOCOT - 1 cotyledon",640,262,MG,F(14,1),"center");txt(c,"maize, wheat (scutellum)",640,284,"#c9d4ff",F(12),"center");}
+ else if(s===2){
+  circ(c,220,150,74,CY,"#0a1c2a",4);circ(c,220,158,26,GR,"#0e2f22",3);txt(c,"seed",220,163,GR,F(12,1),"center");txt(c,"pericarp",220,112,CY,F(12),"center");
+  txt(c,"MANGO = TRUE fruit",220,258,CY,F(14,1),"center");txt(c,"sirf ovary se (pericarp = ovary wall)",220,282,"#c9d4ff",F(12),"center");
+  circ(c,640,150,80,YL,"#2a2608",4);circ(c,640,150,38,CY,"#0a1c2a",3);txt(c,"thalamus",640,106,YL,F(12,1),"center");txt(c,"ovary",640,155,CY,F(12,1),"center");
+  txt(c,"APPLE = FALSE fruit",640,258,YL,F(14,1),"center");txt(c,"thalamus bhi fruit me",640,282,"#c9d4ff",F(12),"center");}
+ else{
+  const B=[["APOMIXIS",MG,["no fertilization","-> SEED (clone)","citrus, mango"]],["PARTHENOCARPY",CY,["no fertilization","-> FRUIT, seedless","banana, grapes"]],["POLYEMBRYONY",GR,["1 seed me","1 se zyada embryo","citrus, onion, groundnut"]]];
+  B.forEach((b,i)=>{const x=20+i*300;c.strokeStyle=b[1];c.lineWidth=2.5;c.strokeRect(x,50,280,170);txt(c,b[0],x+140,82,b[1],F(15,1),"center");b[2].forEach((t,k)=>txt(c,t,x+140,122+k*30,"#c9d4ff",F(13,k===1),"center"));});
+  txt(c,"apomixis = SEED bina fertilization | parthenocarpy = FRUIT bina fertilization",460,270,YL,F(12.5,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Pollen grain ki exine kis se bani hoti hai?",opts:["sporopollenin","cellulose + pectin","chitin","lignin"],a:0,why:"Exine = SPOROPOLLENIN - sabse hard biological material, acid/enzyme se nahi ghulta. Intine = cellulose + pectin."},
+{q:"Typical angiosperm embryo sac kaisa hota hai?",opts:["8 cells, 7 nuclei","7 cells, 8 nuclei","7 cells, 7 nuclei","8 cells, 8 nuclei"],a:1,why:"Functional megaspore 3 baar mitosis -> 8 nuclei -> 7-celled, 8-nucleate embryo sac (3 antipodals, 2 synergids, 1 egg, 1 central cell)."},
+{q:"Geitonogamy kya hai?",opts:["functionally self, genetically cross","self, self","functionally cross, genetically self","cross, cross"],a:2,why:"Same PLANT ke doosre flower pe - agent chahiye (functionally cross) par genetically self. Trick question!"},
+{q:"Apple ko false fruit kyun kehte hain?",opts:["seeds nahi hote","ovary ke saath thalamus bhi fruit banata hai","ovary hota hi nahi","endosperm hota hai"],a:1,why:"True fruit sirf ovary se (mango). Apple me THALAMUS bhi involved - false fruit."},
+{q:"Banana jaisa seedless fruit bina fertilization ke banna kya kehlata hai?",opts:["apomixis","polyembryony","cleistogamy","parthenocarpy"],a:3,why:"Parthenocarpy = FRUIT bina fertilization. Apomixis = SEED bina fertilization. Confuse mat karna!"}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Pollination pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
