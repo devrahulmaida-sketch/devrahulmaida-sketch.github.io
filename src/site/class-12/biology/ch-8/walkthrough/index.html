@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Microbes in Human Welfare - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Biology - Chapter 8 - Microbes in Human Welfare</div>
+<h1>Microbes in Human Welfare Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - microbes, household foods, industrial products, sewage, biogas, biofertilizers, biocontrol, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Microbes Har Jagah 🦠</h2>
+<p class="why">Types, LAB aur fermenters.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">microbes</button>
+<button class="b" data-o="1">useful</button>
+<button class="b" data-o="2">LAB</button>
+<button class="b" data-o="3">fermenter</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Household Foods 🧀</h2>
+<p class="why">Curd, bread, idli, cheese.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">curd</button>
+<button class="b" data-o="1">bread/idli</button>
+<button class="b" data-o="2">Swiss</button>
+<button class="b" data-o="3">Roquefort</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Industrial Products 🏭⭐</h2>
+<p class="why">Alcohol, penicillin, acids, enzymes.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">alcohol</button>
+<button class="b" data-o="1">penicillin</button>
+<button class="b" data-o="2">organic acids</button>
+<button class="b" data-o="3">enzymes+drugs</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Sewage Treatment 🚰</h2>
+<p class="why">Primary, secondary, BOD, sludge.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">primary</button>
+<button class="b" data-o="1">secondary</button>
+<button class="b" data-o="2">BOD</button>
+<button class="b" data-o="3">sludge</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Biogas ⛽</h2>
+<p class="why">Methanogens aur digester.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">process</button>
+<button class="b" data-o="1">anaerobic</button>
+<button class="b" data-o="2">in/out</button>
+<button class="b" data-o="3">benefit</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Biofertilizers 🌱</h2>
+<p class="why">Rhizobium, cyanobacteria, mycorrhiza.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">N fixers</button>
+<button class="b" data-o="1">cyanobacteria</button>
+<button class="b" data-o="2">mycorrhiza</button>
+<button class="b" data-o="3">benefit</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Biocontrol 🐞</h2>
+<p class="why">Natural enemies, Bt, NPV.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">idea</button>
+<button class="b" data-o="1">predators</button>
+<button class="b" data-o="2">Bt+Trichoderma</button>
+<button class="b" data-o="3">NPV</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Biotech Pakka? ⭐</h2>
+<p class="why">5 sawaal - Bt, RNAi, insulin, ADA, PCR. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Microbes</b>Bacteria, fungi, protozoa, algae; viruses microscopic. Many useful. LAB: lactose to lactic acid. Fermenters, sterile conditions.</div>
+<div class="rcard"><b>Foods</b>Curd: LAB. Bread: S. cerevisiae CO₂. Idli/dosa fermentation. Swiss cheese holes: Propionibacterium sharmanii CO₂. Roquefort: Penicillium roqueforti.</div>
+<div class="rcard"><b>Industrial</b>Alcohol: yeast. Penicillin: P. notatum (Fleming, Florey, Chain). Citric: A. niger; acetic: Acetobacter; butyric: Clostridium. Streptokinase, cyclosporin A, statins.</div>
+<div class="rcard"><b>Sewage</b>Primary: screening + settling. Secondary: aerobic flocs. BOD high = polluted. Sludge to anaerobic digester (methanogens).</div>
+<div class="rcard"><b>Biogas + biofert</b>Biogas: dung, methanogens, Methanobacterium, no O₂. Rhizobium, Azotobacter, Azospirillum, Anabaena, Nostoc; mycorrhiza (Glomus) for P and water.</div>
+<div class="rcard"><b>Biocontrol</b>Ladybird: aphids. Dragonfly: mosquitoes. Bt: caterpillars. Trichoderma: fungal pathogens. NPV baculovirus: narrow host range.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Biology Chapter 8 (Microbes in Human Welfare) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#3d3d6e",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Microbes:</span> bacteria, fungi, protozoa, microscopic algae; viruses bhi microscopic infectious particles. Soil, air, water, body - sab jagah.",
+"Bahut microbes <span class=hl>useful</span> hain: curd, bread, medicines, sewage treatment, biogas, biofertilizers. Sab germs ko harmful samajhna galat.",
+"<span class=hl>LAB (lactic acid bacteria):</span> milk me lactose -> lactic acid, curd set karte; gut me bhi benefit.",
+"Industrial scale par microbes <span class=hl>fermenters</span> me culture hote hain; sterile conditions contamination rokti hain."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Microbes har jagah",460,26,YL,F(14,1),"center");
+ if(s===0){
+  ["bacteria","fungi","protozoa","microscopic algae"].forEach((t,i)=>box(c,30+i*225,70,205,56,[CY,MG,YL,GR][i],[t],"#0d0d1c",15));
+  box(c,230,170,460,50,"#8b94c4",["viruses: microscopic infectious particles"],"#0d0d1c",14);
+  txt(c,"soil | air | water | body",460,275,"#c9d4ff",F(15),"center");
+ }else if(s===1){
+  ["curd","bread","medicines","sewage treatment","biogas","biofertilizers"].forEach((t,i)=>box(c,30+(i%3)*295,70+Math.floor(i/3)*90,270,60,[CY,MG,YL,GR,RD,CY][i],[t],"#0d0d1c",15));
+  txt(c,"sab germs harmful nahi",460,280,YL,F(15,1),"center");
+ }else if(s===2){
+  chain(c,["milk|lactose","LAB","lactic|acid","curd|sets"],[0,1,2,3],100,GR);
+  txt(c,"gut me bhi benefit",460,210,"#c9d4ff",F(15),"center");
+ }else{
+  box(c,60,70,300,70,CY,["FERMENTER","industrial culture"],"#0a1c2a",16);arrow2(c,370,105,540,105,YL,3);box(c,550,70,300,70,GR,["product"],"#0a2a1a",16);
+  box(c,200,200,520,50,RD,["sterile conditions: contamination roko"],"#2a1010",15);
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Curd:</span> Lactobacillus aur dusre LAB milk proteins coagulate karte; flavour + vitamin B12 availability improve.",
+"<span class=hl>Bread:</span> baker's yeast <i>Saccharomyces cerevisiae</i> dough me CO₂ banata - dough phoolta. <span class=hl>Idli/dosa:</span> batter fermentation se gas + flavour.",
+"<span class=hl>Swiss cheese:</span> large holes = CO₂ from <i>Propionibacterium sharmanii</i>.",
+"<span class=hl>Roquefort:</span> <i>Penicillium roqueforti</i>. Swiss cheese holes = CO₂ from Propionibacterium."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Household foods",460,26,YL,F(14,1),"center");
+ if(s===0){
+  box(c,40,80,260,60,CY,["MILK","proteins"],"#0a1c2a",15);arrow2(c,305,110,435,110,YL,3);box(c,440,80,200,60,MG,["Lactobacillus","(LAB)"],"#2a1030",14);arrow2(c,645,110,705,110,YL,3);box(c,710,80,170,60,GR,["CURD"],"#0a2a1a",16);
+  txt(c,"flavour + vitamin B12 availability",460,220,"#c9d4ff",F(15),"center");
+ }else if(s===1){
+  box(c,60,70,380,60,YL,["BREAD: yeast","S. cerevisiae"],"#2a2608",15);box(c,480,70,380,60,MG,["IDLI / DOSA","batter fermentation"],"#2a1030",15);
+  [[150,200],[230,230],[310,195],[390,235]].forEach(p=>circ(c,p[0],p[1],12,CY,"#0d0d1c",2));txt(c,"CO₂ bubbles - dough phoolta",250,290,CY,F(13,1),"center");
+  txt(c,"gas + flavour",670,230,"#c9d4ff",F(15),"center");
+ }else if(s===2){
+  box(c,230,60,460,170,YL,[],"#2a2608");[[330,110,22],[450,150,30],[560,100,18],[400,200,14],[600,190,24]].forEach(p=>circ(c,p[0],p[1],p[2],"#0d0d1c","#0d0d1c",1));
+  txt(c,"SWISS CHEESE",460,45,YL,F(14,1),"center");txt(c,"large holes = CO₂ (Propionibacterium sharmanii)",460,270,CY,F(14,1),"center");
+ }else{
+  box(c,60,80,380,70,GR,["ROQUEFORT","Penicillium roqueforti"],"#0a2a1a",15);box(c,480,80,380,70,YL,["SWISS holes","CO₂ - Propionibacterium"],"#2a2608",15);
+  txt(c,"cheese = microbe + product mapping",460,230,"#c9d4ff",F(15),"center");
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Alcohol:</span> yeast sugars -> ethanol + CO₂. Wine/beer fermented; whisky, rum, brandy further distilled.",
+"<span class=hl>Penicillin:</span> <i>Penicillium notatum</i>, discovered by Alexander Fleming; Florey + Chain ne clinical use develop kiya.",
+"<span class=hl>Organic acids:</span> <i>Aspergillus niger</i> citric; <i>Acetobacter aceti</i> acetic; <i>Clostridium butylicum</i> butyric.",
+"<span class=hl>Enzymes + drugs:</span> lipases (detergents), pectinases/proteases (juice clarify), streptokinase (clot buster), cyclosporin A (immunosuppressant), statins (cholesterol)."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Industrial products",460,26,YL,F(14,1),"center");
+ if(s===0){
+  box(c,40,70,200,60,YL,["sugars"],"#2a2608",16);arrow2(c,245,100,325,100,YL,3);box(c,330,70,200,60,MG,["YEAST"],"#2a1030",16);arrow2(c,535,100,615,100,YL,3);box(c,620,70,260,60,GR,["ethanol + CO₂"],"#0a2a1a",16);
+  box(c,100,180,330,50,CY,["fermented: wine, beer"],"#0a1c2a",14);box(c,490,180,330,50,RD,["distilled: whisky, rum, brandy"],"#2a1010",13);
+ }else if(s===1){
+  chain(c,["Penicillium|notatum","Alexander|Fleming","Florey +|Chain","clinical|use"],[0,1,2,3],100,CY);
+  txt(c,"first antibiotic",460,210,YL,F(16,1),"center");
+ }else if(s===2){
+  [["Aspergillus niger","citric acid",CY],["Acetobacter aceti","acetic acid",MG],["Clostridium butylicum","butyric acid",YL]].forEach((a,i)=>{box(c,40,60+i*80,380,56,a[2],[a[0]],"#0d0d1c",14);arrow2(c,425,88+i*80,495,88+i*80,a[2],2);box(c,500,60+i*80,380,56,a[2],[a[1]],"#0d0d1c",14);});
+ }else{
+  [["lipases","detergent stains",CY],["pectinases / proteases","juice clarify",MG],["streptokinase","clot buster",RD],["cyclosporin A","immunosuppressant",YL],["statins","cholesterol DOWN",GR]].forEach((a,i)=>{box(c,40,40+i*55,380,44,a[2],[a[0]],"#0d0d1c",13);arrow2(c,425,62+i*55,495,62+i*55,a[2],2);box(c,500,40+i*55,380,44,a[2],[a[1]],"#0d0d1c",13);});
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Primary treatment:</span> physical screening aur settling - large particles remove.",
+"<span class=hl>Secondary:</span> aerobic bacteria organic matter break down. Aeration tank me <span class=hl>flocs</span> (bacterial masses + fungal filaments) bante hain.",
+"<span class=hl>BOD:</span> microbes ko waste break down karne ke liye zaroori oxygen. BOD ghatna = waste load ghatna. High BOD = polluted water.",
+"Settled sludge ka kuch hissa inoculum; baaki <span class=hl>anaerobic digester</span> me methanogens biogas banate hain. Effluent discharge standards zaroori."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Sewage treatment",460,26,YL,F(14,1),"center");
+ if(s===0){
+  chain(c,["raw|sewage","screening","settling","primary|effluent"],[0,1,2,3],100,CY);
+  txt(c,"physical: large particles remove",460,210,"#c9d4ff",F(15),"center");
+ }else if(s===1){
+  box(c,40,70,380,70,CY,["AERATION TANK","aerobic bacteria"],"#0a1c2a",15);
+  [[500,100],[580,130],[660,95],[740,135],[800,100]].forEach(p=>{circ(c,p[0],p[1],20,GR,"#0a2a1a",3);});
+  txt(c,"flocs = bacteria + fungal filaments",620,200,GR,F(14,1),"center");txt(c,"organic matter consume",230,200,"#c9d4ff",F(14),"center");
+ }else if(s===2){
+  line(c,80,290,860,290,"#2d2d52",2);line(c,80,50,80,290,"#2d2d52",2);txt(c,"treatment ->",850,312,DM,F(12),"right");txt(c,"BOD",40,50,DM,F(12));
+  c.strokeStyle=RD;c.lineWidth=3.5;c.beginPath();c.moveTo(100,80);c.bezierCurveTo(350,90,450,250,820,270);c.stroke();
+  txt(c,"high BOD = polluted",250,70,RD,F(14,1),"left");txt(c,"low BOD = cleaner",640,225,GR,F(14,1),"center");
+ }else{
+  box(c,40,70,260,60,YL,["SLUDGE"],"#2a2608",16);arrow2(c,305,90,420,70,GR,3);arrow2(c,305,115,420,170,CY,3);
+  box(c,430,40,420,50,GR,["inoculum (kuch hissa)"],"#0d0d1c",14);box(c,430,140,420,60,CY,["ANAEROBIC DIGESTER","methanogens -> biogas"],"#0a1c2a",14);
+  txt(c,"effluent: discharge standards zaroori",460,270,"#c9d4ff",F(14),"center");
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Biogas:</span> cattle dung / sludge anaerobic digester me methanogens digest karte hain - methane-rich fuel.",
+"<i>Methanobacterium</i> ruminant gut aur gobar me; digester me <span class=hl>oxygen nahi</span> chahiye (anaerobic).",
+"Input: dung + water slurry. Output: <span class=hl>biogas (methane-rich)</span> + digested slurry.",
+"Biogas = renewable fuel; sludge/dung ka useful use, waste load kam."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Biogas",460,26,YL,F(14,1),"center");
+ if(s===0){
+  chain(c,["cattle|dung","anaerobic|digester","methano-|gens","methane-rich|biogas"],[0,1,2,3],100,GR);
+  txt(c,"fuel banta hai",460,210,YL,F(16,1),"center");
+ }else if(s===1){
+  box(c,200,60,520,130,CY,[],"#0a1c2a");txt(c,"DIGESTER (O₂ nahi)",460,95,CY,F(15,1),"center");
+  [[300,150],[390,140],[480,155],[570,140],[650,150]].forEach(p=>circ(c,p[0],p[1],10,MG,"#2a1030",2));
+  txt(c,"Methanobacterium (gobar + ruminant gut)",460,240,MG,F(14,1),"center");
+ }else if(s===2){
+  box(c,40,80,260,70,YL,["dung + water","slurry"],"#2a2608",15);arrow2(c,305,115,360,115,YL,3);box(c,365,80,200,70,CY,["DIGESTER"],"#0a1c2a",15);arrow2(c,570,100,625,70,GR,3);arrow2(c,570,130,625,170,MG,3);
+  box(c,630,40,250,56,GR,["biogas (methane)"],"#0d0d1c",14);box(c,630,150,250,56,MG,["digested slurry"],"#0d0d1c",14);
+ }else{
+  ["renewable fuel","waste load kam","useful slurry"].forEach((t,i)=>box(c,40+i*290,100,260,60,[GR,CY,YL][i],[t],"#0d0d1c",15));
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Rhizobium:</span> legume root nodules me symbiosis se nitrogen fix. <i>Azotobacter</i>/<i>Azospirillum</i> free-living fixers.",
+"<span class=hl>Cyanobacteria</span> <i>Anabaena</i>/<i>Nostoc</i> paddy fields me nitrogen fix.",
+"<span class=hl>Mycorrhiza</span> (Glomus fungal association) phosphate/water uptake improve karti hai.",
+"Biofertilizers nutrient availability badhate hain aur <span class=hl>chemical fertilizer demand</span> ghata sakte hain."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Biofertilizers",460,26,YL,F(14,1),"center");
+ if(s===0){
+  box(c,40,70,380,70,GR,["Rhizobium","legume root nodules (symbiotic)"],"#0a2a1a",14);box(c,480,70,380,70,CY,["Azotobacter / Azospirillum","free-living N fixers"],"#0a1c2a",14);
+  txt(c,"N₂ -> usable nitrogen",460,220,YL,F(16,1),"center");
+ }else if(s===1){
+  box(c,60,80,380,70,GR,["Anabaena / Nostoc","cyanobacteria"],"#0a2a1a",15);arrow2(c,445,115,515,115,YL,3);box(c,520,80,340,70,CY,["paddy field","nitrogen fixed"],"#0a1c2a",15);
+ }else if(s===2){
+  box(c,60,80,300,70,MG,["MYCORRHIZA","Glomus (fungus)"],"#2a1030",15);arrow2(c,365,115,435,115,YL,3);box(c,440,80,200,70,GR,["plant root"],"#0a2a1a",15);
+  box(c,680,60,200,44,CY,["phosphate"],"#0d0d1c",14);box(c,680,120,200,44,CY,["water uptake"],"#0d0d1c",14);arrow2(c,675,82,645,100,YL,2);arrow2(c,675,142,645,125,YL,2);
+ }else{
+  box(c,60,80,380,60,GR,["nutrient availability UP"],"#0a2a1a",16);box(c,480,80,380,60,RD,["chemical fertilizer DOWN"],"#2a1010",16);
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Biocontrol:</span> chemicals ke badle pest ke natural enemies; target-specific control ecosystem pe gentler ho sakta hai.",
+"<span class=hl>Ladybird beetle</span> aphids khata hai; <span class=hl>dragonfly</span> mosquitoes ka predator.",
+"<span class=hl>Bt</span> (<i>Bacillus thuringiensis</i>) spores ke insecticidal proteins caterpillars target karte; <span class=hl>Trichoderma</span> fungal plant pathogens control karta.",
+"<span class=hl>NPV = baculovirus:</span> insect pests ke liye narrow host range, specific biocontrol."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Biocontrol",460,26,YL,F(14,1),"center");
+ if(s===0){
+  box(c,40,80,380,70,RD,["chemicals"],"#2a1010",16);box(c,480,80,380,70,GR,["natural enemies"],"#0a2a1a",16);
+  txt(c,"target-specific, gentler on ecosystem",460,220,"#c9d4ff",F(15),"center");
+ }else if(s===1){
+  [["ladybird beetle","aphids",CY],["dragonfly","mosquitoes",MG]].forEach((a,i)=>{box(c,40,80+i*90,340,56,a[2],[a[0]],"#0d0d1c",15);arrow2(c,385,108+i*90,495,108+i*90,a[2],3);box(c,500,80+i*90,340,56,a[2],[a[1]],"#0d0d1c",15);});
+ }else if(s===2){
+  [["Bt (B. thuringiensis)","caterpillars",CY],["Trichoderma","fungal plant pathogens",MG]].forEach((a,i)=>{box(c,40,80+i*90,340,56,a[2],[a[0]],"#0d0d1c",14);arrow2(c,385,108+i*90,495,108+i*90,a[2],3);box(c,500,80+i*90,340,56,a[2],[a[1]],"#0d0d1c",14);});
+ }else{
+  box(c,60,80,380,70,YL,["NPV","baculovirus"],"#2a2608",16);arrow2(c,445,115,515,115,YL,3);box(c,520,80,340,70,GR,["insect pests","narrow host range"],"#0a2a1a",15);
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Swiss cheese ke bade holes kisse bante hain?",opts:["CO₂ by Propionibacterium","O₂ by yeast","H₂ by LAB","N₂ by Rhizobium"],a:0,why:"Propionibacterium sharmanii ki CO₂ se large holes bante hain."},
+{q:"Citric acid kis organism se banta hai?",opts:["Acetobacter aceti","Aspergillus niger","Clostridium butylicum","Penicillium notatum"],a:1,why:"Aspergillus niger citric acid; Acetobacter acetic; Clostridium butylicum butyric."},
+{q:"BOD high hone ka matlab?",opts:["clean water","polluted water","no microbes","no oxygen needed"],a:1,why:"High BOD = zyada organic waste = polluted water; secondary treatment BOD ghataata hai."},
+{q:"Biogas banane wale microbes?",opts:["Rhizobium","methanogens","Trichoderma","LAB"],a:1,why:"Anaerobic digester me methanogens (Methanobacterium) methane-rich biogas banate hain."},
+{q:"NPV kya hai?",opts:["bacterium","fungus","baculovirus","protozoan"],a:2,why:"NPV = baculovirus, insects ke liye narrow host range biocontrol."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Microbes pakke! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
