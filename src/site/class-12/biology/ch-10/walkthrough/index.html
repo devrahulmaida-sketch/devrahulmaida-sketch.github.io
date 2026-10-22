@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Biotechnology and its Applications - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Biology - Chapter 10 - Biotechnology and its Applications</div>
+<h1>Biotechnology and its Applications Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - Bt cotton, RNAi, insulin, gene therapy, PCR + ELISA, transgenic animals, biopiracy, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. GM Crops Aur Bt Cotton 🌾</h2>
+<p class="why">Bt toxin kaise kaam karta hai, cry genes ke targets aur resistance management.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">GM crop</button>
+<button class="b" data-o="1">Bt mechanism</button>
+<button class="b" data-o="2">cry genes</button>
+<button class="b" data-o="3">resistance</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. RNA Interference - mRNA Silence 🔇</h2>
+<p class="why">dsRNA, nematode aur host-induced gene silencing.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">RNAi basics</button>
+<button class="b" data-o="1">nematode</button>
+<button class="b" data-o="2">Agrobacterium</button>
+<button class="b" data-o="3">HIGS</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Recombinant Insulin 💉⭐</h2>
+<p class="why">Proinsulin A-C-B, mature insulin aur 1983 Eli Lilly E. coli.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">why insulin</button>
+<button class="b" data-o="1">proinsulin</button>
+<button class="b" data-o="2">1983 E. coli</button>
+<button class="b" data-o="3">purify + verify</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Gene Therapy - ADA Deficiency 🧬</h2>
+<p class="why">SCID, lymphocyte therapy aur stem-cell option.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">ADA deficiency</button>
+<button class="b" data-o="1">procedure</button>
+<button class="b" data-o="2">short-lived</button>
+<button class="b" data-o="3">stem cell</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Molecular Diagnosis - PCR + ELISA 🔬</h2>
+<p class="why">PCR amplification graph, RT-PCR aur ELISA.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">PCR doubling</button>
+<button class="b" data-o="1">RNA: RT-PCR</button>
+<button class="b" data-o="2">ELISA</button>
+<button class="b" data-o="3">interpret</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Transgenic Animals 🐄</h2>
+<p class="why">Mice models, uses, Rosie aur welfare.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">definition</button>
+<button class="b" data-o="1">uses</button>
+<button class="b" data-o="2">Rosie</button>
+<button class="b" data-o="3">welfare</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Ethics, Patents, Biopiracy ⚖️</h2>
+<p class="why">Basmati, neem, turmeric aur GEAC.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">biopiracy</button>
+<button class="b" data-o="1">patents</button>
+<button class="b" data-o="2">GEAC</button>
+<button class="b" data-o="3">fair play</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Biotech Pakka? ⭐</h2>
+<p class="why">5 sawaal - Bt, RNAi, insulin, ADA, PCR. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Bt cotton</b>cry genes from Bacillus thuringiensis. Protoxin inactive; alkaline gut activates; pores in midgut. cryIAc/cryIIAb: cotton bollworm; cryIAb: corn borer. Resistance management needed.</div>
+<div class="rcard"><b>RNAi</b>dsRNA silences matching mRNA. Meloidogyne incognita nematode on tobacco. Agrobacterium vector: sense + antisense RNA -> dsRNA. Host-induced gene silencing.</div>
+<div class="rcard"><b>Insulin</b>Proinsulin = A + B + C-peptide; mature = A + B. 1983 Eli Lilly: E. coli made A and B separately, then joined. Purify and verify.</div>
+<div class="rcard"><b>Gene therapy + diagnosis</b>ADA deficiency (SCID): lymphocytes cultured, ADA gene added, reinfused; cells short-lived. PCR amplifies DNA (RT-PCR for RNA). ELISA = antigen-antibody.</div>
+<div class="rcard"><b>Transgenic animals</b>Foreign gene expressed. Mice disease models. Uses: gene function, disease research, drug/vaccine safety, products. Rosie cow: human alpha-lactalbumin in milk.</div>
+<div class="rcard"><b>Ethics</b>Biopiracy = use of resources/knowledge without permission or fair benefit sharing. Basmati, neem, turmeric. GEAC oversees GE organisms in India.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Biology Chapter 10 (Biotechnology and its Applications) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#3d3d6e",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>GM crop:</span> altered DNA se naya trait (jaise pest resistance). Har trait ko environment + food-safety testing chahiye.",
+"<span class=hl>Bt cotton:</span> <i>Bacillus thuringiensis</i> ke <span class=hl>cry genes</span> se insecticidal protein. Protoxin bacterium me inactive; susceptible insect ke <span class=hl>alkaline gut</span> me activate hota hai, midgut cells me <span class=hl>pores</span> banata hai, larva mar sakta hai.",
+"Alag <span class=hl>cry genes</span> ka alag target: <span class=hl>cryIAc, cryIIAb</span> = cotton bollworms; <span class=hl>cryIAb</span> = corn borer.",
+"Bt toxin <span class=hl>plant khud banata</span> hai, har insect ke against universal nahi. <span class=hl>Resistance management</span> zaroori."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"GM crops aur Bt cotton",460,26,YL,F(14,1),"center");
+ if(s===0){
+  box(c,60,80,230,60,CY,["PLANT","altered DNA"],"#0a1c2a",15);arrow2(c,295,110,365,110,YL,3);
+  box(c,370,80,230,60,GR,["NEW TRAIT","e.g. pest resistance"],"#0a2a1a",14);arrow2(c,605,110,675,110,YL,3);
+  box(c,680,80,200,60,MG,["TESTING","env + food safety"],"#2a1030",14);
+  txt(c,"GM crop = transgene wali fasal",460,230,"#c9d4ff",F(14),"center");
+ }else if(s===1){
+  chain(c,["Bt protoxin|inactive","insect eats|plant","alkaline gut|activates","pores in|midgut cells"],[0,1,2,3],60,MG);
+  box(c,250,150,420,60,RD,["LARVA DIES"],"#2a1010",18);
+  txt(c,"bacterium me protoxin inactive",460,250,"#c9d4ff",F(13),"center");
+ }else if(s===2){
+  [["cryIAc + cryIIAb","cotton bollworms",CY],["cryIAb","corn borer",MG]].forEach((a,i)=>{const x=60+i*430;box(c,x,90,370,60,a[2],[a[0]],"#0d0d1c",17);arrow2(c,x+185,155,x+185,200,a[2],3);box(c,x+60,205,250,50,a[2],[a[1]],"#0d0d1c",15);});
+ }else{
+  box(c,60,80,380,60,GR,["PLANT makes Bt toxin"],"#0a2a1a",16);box(c,480,80,380,60,RD,["NOT universal","target insect specific"],"#2a1010",15);
+  box(c,250,200,420,60,YL,["resistance management zaroori"],"#2a2608",16);
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>RNAi:</span> double-stranded RNA (dsRNA) matching mRNA ko silence karta hai - target protein ka synthesis ghatta hai.",
+"<span class=hl>Meloidogyne incognita</span> nematode tobacco roots infect karta hai aur yield reduce karta hai.",
+"<span class=hl>Agrobacterium vector</span> se plant me nematode gene ki <span class=hl>sense + antisense RNA</span> express karayi -> dsRNA bana -> nematode ke matching mRNA silence.",
+"Ye <span class=hl>host-induced gene silencing</span> hai. RNAi DNA ko zaroori nahi badalta - matching mRNA band karta hai. Unintended effects test karne padte hain."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"RNA interference",460,26,YL,F(14,1),"center");
+ if(s===0){
+  line(c,80,110,420,110,MG,5);txt(c,"mRNA",60,115,MG,F(13,1),"right");
+  line(c,150,150,350,150,CY,5);line(c,150,160,350,160,CY,5);txt(c,"dsRNA",130,160,CY,F(13,1),"right");
+  arrow2(c,250,175,250,215,YL,3);
+  box(c,100,220,300,50,RD,["mRNA silenced"],"#2a1010",15);
+  box(c,520,100,330,60,YL,["target protein","synthesis DOWN"],"#2a2608",15);
+ }else if(s===1){
+  box(c,60,80,260,60,GR,["TOBACCO ROOTS"],"#0a2a1a",15);
+  box(c,560,80,300,60,RD,["Meloidogyne incognita","nematode"],"#2a1010",14);
+  arrow2(c,555,110,325,110,RD,3);
+  txt(c,"infection -> yield loss",460,230,"#c9d4ff",F(14),"center");
+ }else if(s===2){
+  chain(c,["Agrobacterium|vector","nematode gene|in plant","sense +|antisense RNA","dsRNA|forms"],[0,1,2,3],60,CY);
+  box(c,250,160,420,60,MG,["nematode mRNA silenced"],"#2a1030",16);
+  txt(c,"parasite plant ka RNA khata hai -> uski mRNA band",460,260,"#c9d4ff",F(13),"center");
+ }else{
+  box(c,60,80,380,60,CY,["HOST-INDUCED","gene silencing"],"#0a1c2a",16);box(c,480,80,380,60,YL,["mRNA band,","DNA badalna zaroori nahi"],"#2a2608",14);
+  box(c,250,200,420,50,RD,["off-target effects test karo"],"#2a1010",14);
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Insulin</span> = pancreas ki beta cells ka hormone. Pehle animal-source insulin se allergy / availability problems the.",
+"Human insulin pehle <span class=hl>proinsulin</span> = A chain + B chain + connecting <span class=hl>C-peptide</span>. Mature insulin me C-peptide REMOVED hota hai.",
+"<span class=hl>1983:</span> Eli Lilly ne <span class=hl>E. coli</span> se A aur B chains alag alag bana ke join ki - recombinant human insulin commercialize hua.",
+"Product <span class=hl>purify + verify</span> karna hota hai: correct structure aur dose clinical safety ke liye critical."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Recombinant insulin",460,26,YL,F(14,1),"center");
+ if(s===0){
+  box(c,80,80,300,60,CY,["PANCREAS","beta cells"],"#0a1c2a",15);arrow2(c,385,110,455,110,YL,3);box(c,460,80,300,60,MG,["INSULIN","diabetes me supply"],"#2a1030",15);
+  box(c,200,200,520,50,RD,["animal insulin: allergy / availability issues"],"#2a1010",14);
+ }else if(s===1){
+  txt(c,"PROINSULIN",460,60,YL,F(14,1),"center");
+  box(c,120,80,250,50,CY,["A chain"],"#0a1c2a",15);box(c,380,80,160,50,"#9aa7d0",["C-peptide"],"#0d0d1c",13);box(c,550,80,250,50,MG,["B chain"],"#2a1030",15);
+  arrow2(c,460,135,460,185,RD,3);txt(c,"C removed",520,165,RD,F(13,1));
+  txt(c,"MATURE INSULIN",460,215,YL,F(14,1),"center");
+  box(c,230,230,200,50,CY,["A chain"],"#0a1c2a",15);box(c,440,230,200,50,MG,["B chain"],"#2a1030",15);
+  txt(c,"A + B joined (disulphide bonds)",460,308,YL,F(12,1),"center");
+ }else if(s===2){
+  box(c,60,80,240,60,CY,["E. coli #1","makes A chain"],"#0a1c2a",14);box(c,60,180,240,60,MG,["E. coli #2","makes B chain"],"#2a1030",14);
+  arrow2(c,305,110,420,160,CY,3);arrow2(c,305,210,420,180,MG,3);
+  box(c,425,140,200,60,YL,["JOIN A + B"],"#2a2608",16);arrow2(c,630,170,690,170,YL,3);
+  box(c,695,140,190,60,GR,["rHuman insulin","1983 Eli Lilly"],"#0a2a1a",13);
+ }else{
+  chain(c,["recombinant|product","purify","verify|structure","dose|safe"],[0,1,2,3],110,GR);
+  txt(c,"correct structure + dose = clinical safety",460,230,"#c9d4ff",F(14),"center");
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Gene therapy:</span> defective gene ko functioning copy se compensate karna. NCERT example: <span class=hl>ADA deficiency</span> (adenosine deaminase) = severe combined immunodeficiency (SCID).",
+"Patient ke <span class=hl>lymphocytes culture</span> me nikalo -> functional ADA gene introduce -> <span class=hl>reinfuse</span>.",
+"Cells <span class=hl>short-lived</span> hain, isliye treatment <span class=hl>repeat</span> karna pad sakta hai.",
+"<span class=hl>Stem-cell gene transfer</span> potentially longer lasting. Real clinical outcome therapy-specific hota hai."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Gene therapy - ADA deficiency",460,26,YL,F(14,1),"center");
+ if(s===0){
+  box(c,60,80,240,60,RD,["ADA gene","DEFECTIVE"],"#2a1010",15);arrow2(c,305,110,365,110,YL,3);
+  box(c,370,80,240,60,MG,["no enzyme ADA","adenosine deaminase"],"#2a1030",13);arrow2(c,615,110,675,110,YL,3);
+  box(c,680,80,200,60,RD,["SCID","weak immunity"],"#2a1010",15);
+  box(c,250,200,420,50,GR,["gene therapy = working copy"],"#0a2a1a",15);
+ }else if(s===1){
+  chain(c,["lymphocytes|from patient","culture|in lab","ADA gene|introduced","reinfuse|to patient"],[0,1,2,3],90,CY);
+  txt(c,"ex vivo gene therapy",460,200,YL,F(16,1),"center");txt(c,"somatic cells ka gene therapy",460,240,"#c9d4ff",F(13),"center");
+ }else if(s===2){
+  line(c,70,290,860,290,"#2d2d52",2);line(c,70,50,70,290,"#2d2d52",2);txt(c,"time ->",850,312,DM,F(12),"right");txt(c,"ADA cells",24,50,DM,F(12));
+  c.strokeStyle=CY;c.lineWidth=3.5;
+  [[100,320],[400,320],[700,860]].forEach(a=>{});
+  for(let k=0;k<3;k++){const x0=100+k*260;c.beginPath();c.moveTo(x0,290);c.lineTo(x0+10,110);c.bezierCurveTo(x0+60,120,x0+120,200,x0+230,288);c.stroke();txt(c,"dose "+(k+1),x0+10,100,YL,F(12,1));}
+  txt(c,"cells short-lived -> repeat treatment",560,60,"#c9d4ff",F(13),"center");
+ }else{
+  box(c,60,80,380,60,YL,["STEM-CELL gene transfer","potentially longer lasting"],"#2a2608",15);box(c,480,80,380,60,CY,["outcome","therapy-specific"],"#0a1c2a",15);
+  box(c,250,200,420,50,MG,["lymphocyte therapy = temporary"],"#2a1030",15);
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>PCR:</span> tiny pathogen DNA ko amplify karta hai - har cycle me copies DOUBLE (2, 4, 8, 16...). Infection early diagnose hota hai.",
+"RNA pathogen ke liye pehle <span class=hl>reverse transcription</span> (RNA -> cDNA), phir PCR.",
+"<span class=hl>ELISA:</span> antigen-antibody binding se pathogen antigen ya antibodies detect karta hai.",
+"Results <span class=hl>confirmatory algorithms</span> ke saath interpret karo. PCR = genetic material, ELISA = antigen / antibody."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Molecular diagnosis - PCR aur ELISA",460,26,YL,F(14,1),"center");
+ if(s===0){
+  line(c,70,290,860,290,"#2d2d52",2);line(c,70,50,70,290,"#2d2d52",2);
+  txt(c,"cycles ->",850,312,DM,F(12),"right");txt(c,"DNA copies",24,50,DM,F(12));
+  c.strokeStyle=MG;c.lineWidth=3.5;c.beginPath();c.moveTo(70,288);for(let k=0;k<=6;k++){const x=70+k*120,y=290-Math.min(230,Math.pow(2,k)*3.6);c.lineTo(x,y);}c.stroke();
+  for(let k=0;k<=6;k++){const x=70+k*120,y=290-Math.min(230,Math.pow(2,k)*3.6);circ(c,x,y,5,YL,YL);txt(c,String(Math.pow(2,k)),x+8,y-8,YL,F(11,1));}
+  txt(c,"2 -> 4 -> 8 -> 16 ... double har cycle",470,70,"#c9d4ff",F(13),"center");
+ }else if(s===1){
+  chain(c,["viral RNA","reverse|transcription","cDNA","PCR|amplify"],[0,1,2,3],90,MG);
+  txt(c,"RNA pathogen = RT-PCR",460,200,YL,F(16,1),"center");txt(c,"early infection diagnose",460,240,"#c9d4ff",F(13),"center");
+ }else if(s===2){
+  chain(c,["antigen|(pathogen)","antibody|binds","enzyme|colour","positive|test"],[0,1,2,3],80,CY);
+  txt(c,"antigen-antibody binding",460,190,YL,F(15,1),"center");
+  txt(c,"ELISA: antigen YA antibodies detect",460,230,"#c9d4ff",F(13),"center");
+ }else{
+  box(c,60,80,380,60,MG,["PCR","pathogen DNA / RNA amplify"],"#2a1030",14);box(c,480,80,380,60,CY,["ELISA","antigen / antibody detect"],"#0a1c2a",14);
+  box(c,250,200,420,50,YL,["confirmatory algorithm se interpret"],"#2a2608",14);
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Transgenic animals:</span> foreign gene introduce + express hota hai. <span class=hl>Mice</span> widely disease models ke liye use hote hain.",
+"<span class=hl>Uses:</span> gene function study, disease mechanism research, vaccine / drug safety testing, biological products ka production.",
+"<span class=hl>Rosie</span> = transgenic cow; milk me <span class=hl>human alpha-lactalbumin</span> (protein-enriched milk - NCERT illustration).",
+"<span class=hl>Animal welfare + biosafety</span> checks zaroori. Research model aur approved therapy alag cheezein hain - lab result human me automatic nahi."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Transgenic animals",460,26,YL,F(14,1),"center");
+ if(s===0){
+  box(c,60,80,230,60,CY,["FOREIGN GENE"],"#0a1c2a",15);arrow2(c,295,110,365,110,YL,3);box(c,370,80,230,60,GR,["ANIMAL","gene expressed"],"#0a2a1a",15);arrow2(c,605,110,675,110,YL,3);box(c,680,80,200,60,MG,["TRANSGENIC","e.g. mice"],"#2a1030",15);
+  txt(c,"mice = disease models",460,230,"#c9d4ff",F(14),"center");
+ }else if(s===1){
+  [["gene function","study",CY],["disease","mechanism",MG],["vaccine / drug","safety testing",YL],["biological","products",GR]].forEach((a,i)=>box(c,30+i*225,110,205,70,a[3],[a[0],a[1]],"#0d0d1c",14));
+  txt(c,"transgenic animal ke 4 uses",460,250,"#c9d4ff",F(14),"center");
+ }else if(s===2){
+  box(c,60,90,240,60,YL,["human alpha-","lactalbumin gene"],"#2a2608",14);arrow2(c,305,120,375,120,YL,3);
+  box(c,380,90,200,60,MG,["ROSIE","transgenic cow"],"#2a1030",15);arrow2(c,585,120,655,120,YL,3);
+  box(c,660,90,220,60,GR,["MILK with","human protein"],"#0a2a1a",14);
+  txt(c,"protein-enriched milk",460,230,"#c9d4ff",F(14),"center");
+ }else{
+  box(c,60,80,380,60,RD,["ANIMAL WELFARE","+ biosafety checks"],"#2a1010",15);box(c,480,80,380,60,CY,["lab model","!= approved therapy"],"#0a1c2a",15);
+  txt(c,"mouse me kaam kiya = human me same, zaroori nahi",460,230,YL,F(14,1),"center");
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=[
+"<span class=hl>Biopiracy:</span> biological resources / traditional knowledge ka use bina proper permission ya fair benefit-sharing ke.",
+"India ke <span class=hl>basmati rice, neem, turmeric</span> patent controversies: prior knowledge aur ownership issues dikhate hain.",
+"<span class=hl>GEAC:</span> India me genetically engineered organisms / products ke environmental release + approval par oversight (regulations time ke saath update ho sakte hain).",
+"Biotech adoption me <span class=hl>biosafety, farmers, biodiversity, consent aur benefit sharing</span> saath dekho. Discovery ki ownership + local knowledge ka fair treatment important."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Ethics, patents aur biopiracy",460,26,YL,F(14,1),"center");
+ if(s===0){
+  box(c,60,80,300,60,GR,["TRADITIONAL","knowledge / resources"],"#0a2a1a",14);arrow2(c,365,110,435,110,RD,3);
+  box(c,440,80,200,60,RD,["USED without","permission"],"#2a1010",14);
+  box(c,670,80,190,60,YL,["no fair","benefit share"],"#2a2608",14);
+  txt(c,"= BIOPIRACY",460,230,RD,F(20,1),"center");
+ }else if(s===1){
+  [["basmati rice",CY],["neem",GR],["turmeric",YL]].forEach((a,i)=>{box(c,40+i*295,90,265,60,a[1],[a[0]],"#0d0d1c",17);});
+  txt(c,"patent controversies - prior knowledge vs ownership",460,230,"#c9d4ff",F(14),"center");
+ }else if(s===2){
+  box(c,300,70,320,60,CY,["GEAC","India"],"#0a1c2a",17);
+  arrow2(c,380,135,200,195,CY,3);arrow2(c,540,135,720,195,CY,3);
+  box(c,60,200,280,50,MG,["environmental release"],"#2a1030",14);box(c,580,200,280,50,GR,["approval of GE products"],"#0a2a1a",14);
+ }else{
+  ["biosafety","farmers","biodiversity","consent","benefit sharing"].forEach((t,i)=>box(c,30+i*178,90,160,50,[RD,GR,CY,MG,YL][i],[t],"#0d0d1c",14));
+  arrow2(c,460,150,460,200,YL,3);box(c,230,205,460,50,YL,["fair treatment + ownership"],"#2a2608",15);
+ }
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Bt protoxin kahan activate hota hai?",opts:["bacterium ke andar","insect ki alkaline gut me","plant ki root me","insect ke blood me"],a:1,why:"Protoxin bacterium me inactive; susceptible insect ke alkaline gut me activate hokar midgut cells me pores banata hai."},
+{q:"RNAi me kya silence hota hai?",opts:["DNA ka replication","matching mRNA","tRNA ka synthesis","ribosome"],a:1,why:"dsRNA matching mRNA ko silence karta hai - target protein ka synthesis ghatta hai."},
+{q:"Mature insulin me kya hota hai?",opts:["A + B + C-peptide","sirf A chain","A + B chains, C-peptide nahi","sirf C-peptide"],a:2,why:"Proinsulin me C-peptide hota hai; mature insulin me A + B chains rehti hain, C-peptide removed."},
+{q:"ADA deficiency me gene therapy ka NCERT example kya karta hai?",opts:["lymphocytes me functional ADA gene dal ke reinfuse","insulin inject","antibiotic deta hai","bone marrow nikalta hai"],a:0,why:"Patient ke lymphocytes culture me ADA gene introduce karke reinfuse; cells short-lived, to repeat treatment."},
+{q:"RNA pathogen ko PCR se detect karne se pehle kya step chahiye?",opts:["transcription inhibition","reverse transcription","translation","ligation"],a:1,why:"RNA -> cDNA reverse transcription, phir PCR (RT-PCR)."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Biotech pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
