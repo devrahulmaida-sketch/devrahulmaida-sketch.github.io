@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Neural Control and Coordination - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 Biology - Chapter 18 - Neural Control and Coordination</div>
+<h1>Neural Control and Coordination Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - neuron, nerve impulse, synapse, brain, reflex arc, eye, ear, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Neural System + Neuron 🧠⭐⭐</h2>
+<p class="why">CNS, PNS, neuron parts, types.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">organisation</button>
+<button class="b" data-o="1">neuron</button>
+<button class="b" data-o="2">types</button>
+<button class="b" data-o="3">axon + glia</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Nerve Impulse ⚡⭐⭐</h2>
+<p class="why">Resting potential, action potential, saltatory conduction.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">resting</button>
+<button class="b" data-o="1">depolarisation</button>
+<button class="b" data-o="2">repolarisation</button>
+<button class="b" data-o="3">saltatory</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Synapse 🔗⭐⭐</h2>
+<p class="why">Electrical vs chemical, neurotransmitter steps.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">electrical</button>
+<button class="b" data-o="1">chemical</button>
+<button class="b" data-o="2">steps</button>
+<button class="b" data-o="3">compare</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Brain 🧠⭐⭐</h2>
+<p class="why">Forebrain, midbrain, hindbrain.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">forebrain</button>
+<button class="b" data-o="1">midbrain</button>
+<button class="b" data-o="2">hindbrain</button>
+<button class="b" data-o="3">function match</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Reflex Arc ⚡⭐⭐</h2>
+<p class="why">Receptor se effector tak.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">receptor → sensory</button>
+<button class="b" data-o="1">→ CNS</button>
+<button class="b" data-o="2">→ motor → effector</button>
+<button class="b" data-o="3">example</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Eye 👁️⭐⭐</h2>
+<p class="why">Layers, retina, image formation.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">3 layers</button>
+<button class="b" data-o="1">retina</button>
+<button class="b" data-o="2">image path</button>
+<button class="b" data-o="3">blind spot + fovea</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Ear 👂⭐⭐</h2>
+<p class="why">Outer, middle, inner ear, hearing, balance.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">3 parts</button>
+<button class="b" data-o="1">ossicles</button>
+<button class="b" data-o="2">hearing path</button>
+<button class="b" data-o="3">balance</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Neural Control Pakka? ⭐</h2>
+<p class="why">5 sawaal - resting potential, saltatory, Ca²⁺, cerebellum, blind spot. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Neuron</b>CNS = brain + cord; PNS somatic + autonomic. Dendrite IN, axon OUT. Multipolar most common. Myelinated = fast (Nodes of Ranvier).</div>
+<div class="rcard"><b>Impulse</b>Resting −70 mV (3 Na⁺ out, 2 K⁺ in). Na⁺ in = depolarisation (+30). K⁺ out = repolarisation. Saltatory in myelinated.</div>
+<div class="rcard"><b>Synapse</b>Electrical: fast, rare. Chemical: Ca²⁺ in → vesicles → neurotransmitter → receptor. One-way.</div>
+<div class="rcard"><b>Brain</b>Forebrain: cerebrum, thalamus, hypothalamus. Midbrain: corpora quadrigemina. Hindbrain: pons, cerebellum (balance), medulla (vital).</div>
+<div class="rcard"><b>Reflex + eye</b>Receptor → sensory → CNS → motor → effector. Rods dim, cones colour. Blind spot: no receptors. Fovea: sharpest.</div>
+<div class="rcard"><b>Ear</b>Outer, middle (malleus, incus, stapes), inner. Cochlea hears. Semicircular canals + utricle/saccule balance.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 Biology Chapter 18 (Neural Control and Coordination) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#3d3d6e",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>CNS</span> = brain + spinal cord. <span class=hl>PNS</span> = nerves: somatic (voluntary) + autonomic (sympathetic + parasympathetic).", "<span class=hl>Dendrite = IN</span> (towards cell body), <span class=hl>axon = OUT</span> (synaptic knobs). Cell body (cyton) me Nissl's granules.", "<span class=hl>Multipolar</span> (most common, cortex), <span class=hl>bipolar</span> (retina), <span class=hl>unipolar</span> (embryo).", "<span class=hl>Myelinated</span> axon: Nodes of Ranvier, FAST. Unmyelinated: slow. Neuroglia support neurons."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Neural system + neuron",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,360,60,200,50,CY,["NEURAL SYSTEM"],"#0a1c2a",15);arrow2(c,430,112,250,158,YL,3);arrow2(c,490,112,670,158,YL,3);box(c,110,160,280,60,GR,["CNS","brain + spinal cord"],"#0a2a1a",14);box(c,530,160,280,60,MG,["PNS","nerves"],"#2a0a2a",14);txt(c,"somatic (voluntary)  |  autonomic (involuntary)",670,255,YL,F(13,1),"center");}
+ else if(s===1){[[-45,-30],[-48,0],[-45,30]].forEach(d=>line(c,190,170,190+d[0]*1.6,170+d[1]*1.6,CY,3));circ(c,200,170,38,CY,"#0a1c2a",3);txt(c,"cell body",200,175,CY,F(12,1),"center");line(c,238,170,780,170,MG,4);[790,800].forEach(x=>circ(c,x,170,0.1,MG,null,1));box(c,780,150,70,40,YL,["knobs"],"#2a2608",12);txt(c,"dendrites (IN)",120,100,CY,F(13,1),"center");txt(c,"axon (OUT)",500,150,MG,F(13,1),"center");txt(c,"Nissl's granules in cyton",230,255,"#e8e8f2",F(13,1),"center");}
+ else if(s===2){box(c,40,80,260,100,CY,["multipolar","1 axon + many","dendrites (cortex)"],"#0a1c2a",14);box(c,330,80,260,100,MG,["bipolar","1 axon + 1 dendrite","(retina)"],"#2a0a2a",14);box(c,620,80,260,100,GR,["unipolar","one process","(embryonic)"],"#0a2a1a",14);txt(c,"multipolar = sabse common",460,225,YL,F(15,1),"center");}
+ else{line(c,60,130,860,130,MG,4);[150,330,510,690].forEach(x=>{c.fillStyle="#7c3aed";c.fillRect(x,118,110,24);});txt(c,"myelin (Schwann)",205,112,"#e8e8f2",F(12,1),"center");txt(c,"Node of Ranvier",295,170,YL,F(12,1),"center");arrow2(c,295,160,295,140,YL,2);txt(c,"myelinated: FAST  |  unmyelinated: slow",460,225,GR,F(15,1),"center");txt(c,"neuroglia: support, protect, nourish",460,262,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Resting:</span> polarised, bahar +ve, andar −ve, <span class=hl>−70 mV</span>. Na-K pump: 3 Na⁺ out, 2 K⁺ in.", "Stimulus → Na⁺ channels open → <span class=hl>Na⁺ IN</span> → <span class=hl>depolarisation</span> (~+30 mV) = action potential.", "<span class=hl>K⁺ OUT</span> → repolarisation (back to −70 mV). Phir refractory period.", "<span class=hl>Saltatory conduction:</span> impulse node se node jump, myelinated axon, bahut FAST."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Nerve impulse",460,26,YL,F(14,1),"center");
+
+ const mem=(top,bot,col)=>{c.fillStyle="#1e1b4b";c.fillRect(60,155,800,24);txt(c,"membrane",460,172,"#8b94c4",F(12,1),"center");for(let x=100;x<=820;x+=60){txt(c,top,x,140,col[0],F(20,1),"center");txt(c,bot,x,210,col[1],F(20,1),"center");}};
+ if(s===0){mem("+","−",[CY,MG]);txt(c,"outside: +   inside: −   RMP = −70 mV",460,260,YL,F(16,1),"center");txt(c,"Na-K pump: 3 Na⁺ out, 2 K⁺ in (ATP)",460,290,GR,F(14,1),"center");}
+ else if(s===1){mem("−","+",[MG,CY]);arrow2(c,300,100,300,150,YL,3);txt(c,"Na⁺ IN",340,85,YL,F(14,1),"left");txt(c,"depolarised: ~ +30 mV = action potential",460,260,YL,F(16,1),"center");}
+ else if(s===2){mem("+","−",[CY,MG]);arrow2(c,300,185,300,115,GR,3);txt(c,"K⁺ OUT",340,100,GR,F(14,1),"left");txt(c,"repolarisation → −70 mV",460,260,GR,F(16,1),"center");txt(c,"refractory period: doosra impulse turant nahi",460,290,"#8b94c4",F(13,1),"center");}
+ else{line(c,60,150,860,150,MG,4);[110,330,550].forEach(x=>{c.fillStyle="#7c3aed";c.fillRect(x,138,150,24);});[[295,515],[515,735]].forEach(p=>{c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.moveTo(p[0],140);c.quadraticCurveTo((p[0]+p[1])/2,60,p[1],140);c.stroke();});txt(c,"nodes of Ranvier",460,205,YL,F(14,1),"center");txt(c,"impulse node se node JUMP - ~50x fast",460,250,GR,F(15,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Electrical:</span> membranes bahut paas, direct current (gap junctions). FAST par rare.", "<span class=hl>Chemical:</span> pre-synaptic neuron + <span class=hl>synaptic cleft</span> + post-synaptic neuron.", "<span class=hl>Ca²⁺ in</span> → vesicles fuse → <span class=hl>neurotransmitter release</span> → receptor bind → naya potential.", "Chemical: slow, versatile, <span class=hl>ONE-WAY</span>. Electrical: fast, bidirectional."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Synapse",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,60,90,300,100,CY,["pre-synaptic","membrane"],"#0a1c2a",15);box(c,560,90,300,100,MG,["post-synaptic","membrane"],"#2a0a2a",15);arrow2(c,363,140,557,140,YL,4);txt(c,"direct current flow (gap junction)",460,215,YL,F(13,1),"center");txt(c,"FAST but RARE in humans",460,255,GR,F(16,1),"center");}
+ else if(s===1){box(c,40,90,260,100,CY,["pre-synaptic","neuron"],"#0a1c2a",15);box(c,350,110,220,60,"#8b94c4",["synaptic cleft"],"#0d0d1c",14);box(c,620,90,260,100,MG,["post-synaptic","neuron"],"#2a0a2a",15);txt(c,"junction = synapse",460,235,YL,F(16,1),"center");}
+ else if(s===2){chain(c,["Ca²⁺ in","vesicles fuse","NT release","receptor bind","new potential"],[0,1,2,3,4],80,YL);txt(c,"NT: acetylcholine, dopamine, GABA, serotonin, glutamate",460,190,CY,F(14,1),"center");txt(c,"excitatory (depolarise) or inhibitory (hyperpolarise)",460,225,GR,F(14,1),"center");}
+ else{box(c,60,90,380,100,CY,["electrical","fast, rare, bidirectional"],"#0a1c2a",15);box(c,480,90,380,100,MG,["chemical","slow, versatile, ONE-WAY"],"#2a0a2a",15);txt(c,"chemical = unidirectional",460,235,YL,F(16,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Forebrain:</span> cerebrum (cortex, corpus callosum), <span class=hl>thalamus</span> (relay), <span class=hl>hypothalamus</span> (temp, hunger, thirst), limbic system.", "<span class=hl>Midbrain:</span> corpora quadrigemina (visual + auditory reflexes), cerebral peduncles.", "<span class=hl>Hindbrain:</span> pons, <span class=hl>cerebellum</span> (balance), <span class=hl>medulla</span> (vital centres).", "Cerebrum = think. Hypothalamus = hunger/temp. Cerebellum = balance. Medulla = heart + breathing."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Brain",460,26,YL,F(14,1),"center");
+
+ const F1=s===0||s===3,M1=s===1||s===3,H1=s===2||s===3;
+ box(c,30,80,380,150,F1?CY:D,["FOREBRAIN","cerebrum | thalamus","hypothalamus | limbic"],"#0d0d1c",15);box(c,430,80,200,150,M1?MG:D,["MIDBRAIN","corpora","quadrigemina"],"#0d0d1c",14);box(c,650,80,240,150,H1?GR:D,["HINDBRAIN","pons | cerebellum","medulla"],"#0d0d1c",14);
+ txt(c,["biggest part: thinking, memory","visual + auditory reflexes","posture, balance, vital centres","think | hunger | balance | heart + breathing"][s],460,285,YL,F(15,1),"center");
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["Reflex = sudden, involuntary, quick. Arc: <span class=hl>receptor → sensory (afferent) neuron</span>.", "Sensory neuron → <span class=hl>CNS</span> (spinal cord, interneuron).", "CNS → <span class=hl>motor (efferent) neuron → effector</span> (muscle / gland).", "Example: <span class=hl>knee-jerk</span>, hot surface se hand hatana. Spinal cord = reflex centre."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Reflex arc",460,26,YL,F(14,1),"center");
+
+ const hi=[[0,1],[0,1,2],[0,1,2,3,4],[0,1,2,3,4]][s];
+ chain(c,["receptor","sensory|neuron","CNS|interneuron","motor|neuron","effector|muscle/gland"],hi,90,MG);
+ txt(c,["stimulus pakadta hai, impulse sensory neuron me","spinal cord = reflex centre","muscle / gland response","knee-jerk, hot surface se hand hatana"][s],460,200,YL,F(16,1),"center");
+ if(s===3)txt(c,"brain ko baad me pata chalta hai",460,240,GR,F(15,1),"center");
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Sclera</span> (outer, cornea in front), <span class=hl>choroid</span> (middle, iris, ciliary body), <span class=hl>retina</span> (inner).", "<span class=hl>Rods:</span> dim light, no colour (rhodopsin). <span class=hl>Cones:</span> bright light + colour (R, G, B).", "light → cornea → pupil → lens → retina (<span class=hl>inverted real image</span>) → optic nerve → brain.", "<span class=hl>Blind spot</span> = optic nerve exit, no photoreceptors. <span class=hl>Fovea</span> (macula lutea) = only cones, sharpest."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Eye",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,90,260,100,CY,["sclera","outer, tough","cornea in front"],"#0a1c2a",14);box(c,330,90,260,100,MG,["choroid","middle, vascular","iris + ciliary body"],"#2a0a2a",14);box(c,620,90,260,100,GR,["retina","inner","photoreceptors"],"#0a2a1a",14);}
+ else if(s===1){box(c,60,90,380,100,YL,["rods","dim light, no colour","rhodopsin"],"#2a2608",15);box(c,480,90,380,100,CY,["cones","bright light + colour","red, green, blue"],"#0a1c2a",15);}
+ else if(s===2){chain(c,["cornea","pupil","lens","retina","optic nerve"],[0,1,2,3,4],80,CY);txt(c,"retina pe inverted real image",460,190,YL,F(16,1),"center");txt(c,"brain (visual cortex) image ko upright process karta hai",460,225,GR,F(14,1),"center");}
+ else{box(c,60,90,380,100,RD,["blind spot","optic nerve exit","NO photoreceptors"],"#2a0f0f",15);box(c,480,90,380,100,GR,["fovea centralis","macula lutea","only cones, sharpest"],"#0a2a1a",15);}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Outer:</span> pinna + canal → eardrum. <span class=hl>Middle:</span> 3 ossicles + Eustachian tube. <span class=hl>Inner:</span> cochlea + vestibular apparatus.", "<span class=hl>Malleus → incus → stapes</span> amplify. Eustachian tube = pressure balance.", "Pinna → canal → eardrum → ossicles → oval window → cochlea → hair cells → <span class=hl>auditory nerve</span>.", "<span class=hl>Cochlea = hearing</span> (Organ of Corti). <span class=hl>Semicircular canals</span> = rotation; utricle/saccule = linear/gravity."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Ear",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,90,260,100,CY,["outer ear","pinna + canal","eardrum"],"#0a1c2a",14);box(c,330,90,260,100,MG,["middle ear","3 ossicles","Eustachian tube"],"#2a0a2a",14);box(c,620,90,260,100,GR,["inner ear","cochlea","vestibular apparatus"],"#0a2a1a",14);}
+ else if(s===1){chain(c,["eardrum","malleus","incus","stapes","oval window"],[0,1,2,3,4],80,MG);txt(c,"ossicles sound ko amplify karte hain",460,190,YL,F(16,1),"center");txt(c,"Eustachian tube: pressure balance (pharynx se)",460,225,GR,F(14,1),"center");}
+ else if(s===2){chain(c,["pinna|canal","eardrum","ossicles","cochlea|fluid waves","hair cells"],[0,1,2,3,4],80,CY);txt(c,"hair cells → auditory nerve → brain",460,190,YL,F(16,1),"center");}
+ else{box(c,60,90,380,100,CY,["cochlea","hearing | Organ of Corti"],"#0a1c2a",15);box(c,480,90,380,100,MG,["vestibular apparatus","semicircular canals: rotation","utricle + saccule: linear"],"#2a0a2a",13);txt(c,"balance = vestibular apparatus",460,235,YL,F(16,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Resting potential lagbhag kitna hota hai?",opts:["+30 mV","-70 mV","0 mV","-30 mV"],a:1,why:"Resting potential ~ -70 mV (bahar +, andar -)."},
+{q:"Saltatory conduction kahan hota hai?",opts:["unmyelinated axon","myelinated axon","dendrite","synapse"],a:1,why:"Myelinated axon me impulse node se node jump karta hai."},
+{q:"Chemical synapse me neurotransmitter release kis ion ke andar aane se hota hai?",opts:["Na⁺","K⁺","Ca²⁺","Cl⁻"],a:2,why:"Ca²⁺ in → vesicles fuse → neurotransmitter release."},
+{q:"Body balance aur coordination kaunsa brain part control karta hai?",opts:["cerebrum","medulla","cerebellum","thalamus"],a:2,why:"Cerebellum = posture + balance + coordination."},
+{q:"Blind spot pe kya hota hai?",opts:["sirf cones","sirf rods","koi photoreceptor nahi","fovea"],a:2,why:"Blind spot = optic nerve exit, photoreceptors nahi."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Neural control pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
