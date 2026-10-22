@@ -334,7 +334,7 @@ inits[2]=(()=>{
    c.beginPath();c.moveTo(330,60);c.quadraticCurveTo(460,165,590,60);c.stroke();
    c.beginPath();c.moveTo(330,270);c.quadraticCurveTo(460,165,590,270);c.stroke();
    txt(c,"centromere",480,170,YL,"bold 13px 'Cascadia Code',monospace");
-   txt(c,"2 sister chromatids",640,300,DM,"12px 'Cascadia Code',monospace");
+   txt(c,"2 sister chromatids",60,42,DM,"12px 'Cascadia Code',monospace");
   }
   txt(c,LEV[sel].t,60,292,YL,"bold 15px 'Cascadia Code',monospace");
   wrap(c,LEV[sel].note,60,312,"#c9d4ff","12.5px 'Cascadia Code',monospace",100,16);
@@ -380,7 +380,7 @@ inits[3]=(()=>{
    c.strokeStyle=MG;c.lineWidth=5;
    c.beginPath();c.moveTo(400,158);c.lineTo(370,154);c.stroke();
    c.beginPath();c.moveTo(400,192);c.lineTo(370,196);c.stroke();
-   txt(c,"RNA primers (primase)",180,90,MG,"12px 'Cascadia Code',monospace");
+   txt(c,"RNA primers (primase)",560,105,MG,"12px 'Cascadia Code',monospace");
   }
   if(sel>=2){
    // leading: continuous new strand along bottom template
@@ -504,7 +504,7 @@ inits[5]=(()=>{
   c.beginPath();c.arc(tx,180,17,0,Math.PI*2);c.stroke();
   c.beginPath();c.moveTo(tx,197);c.lineTo(tx,216);c.stroke();
   txt(c,"tRNA",tx+30,184,MG,"12px 'Cascadia Code',monospace");
-  txt(c,"anti: "+cd.anti,tx-30,214,DM,"11px 'Cascadia Code',monospace");
+  txt(c,"anti: "+cd.anti,tx-105,184,DM,"11px 'Cascadia Code',monospace");
   if(guessed<0){
    txt(c,"Ye codon KIS amino acid ka? neeche se chuno",60,292,YL,"14px 'Cascadia Code',monospace");
   }else{
@@ -539,7 +539,8 @@ inits[6]=(()=>{
    c.fillStyle=GR;c.beginPath();c.arc(296,84,9,0,Math.PI*2);c.fill();
    txt(c,"lactose (inducer) ne pakad liya - INACTIVE!",320,70,GR,"12px 'Cascadia Code',monospace");
    arrow2(c,300,120,340,160,GR,3);
-   txt(c,"transcription ON → β-galactosidase + permease + transacetylase BANE",300,140,GR,"bold 13px 'Cascadia Code',monospace");
+   txt(c,"transcription ON →",355,132,GR,"bold 13px 'Cascadia Code',monospace");
+   txt(c,"β-galactosidase + permease + transacetylase BANE",355,152,GR,"bold 13px 'Cascadia Code',monospace");
   }else{
    // repressor sitting on operator
    c.fillStyle="#3b1d5a";c.strokeStyle=RD;c.lineWidth=2.5;
@@ -547,7 +548,7 @@ inits[6]=(()=>{
    txt(c,"repressor",250,172,RD,"11px 'Cascadia Code',monospace","center");
    c.strokeStyle=RD;c.lineWidth=3;
    c.beginPath();c.moveTo(320,150);c.lineTo(345,120);c.moveTo(320,120);c.lineTo(345,150);c.stroke();
-   txt(c,"operator BLOCK - RNA pol aage nahi",330,130,RD,"bold 12.5px 'Cascadia Code',monospace");
+   txt(c,"operator BLOCK - RNA pol aage nahi",360,135,RD,"bold 12.5px 'Cascadia Code',monospace");
   }
  }
  function draw(){
