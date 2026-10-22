@@ -254,8 +254,7 @@ function draw(){
  txt(c,"RECESSIVE form",560,120,MG,"bold 12px 'Cascadia Code',monospace");
  form(630,180,MG,k.r,"true-breeding: "+k.r.slice(-2,-1)+k.r.slice(-2,-1),true);
  txt(c,"vs",440,185,YL,"bold 18px 'Cascadia Code',monospace");
- wrap(c,"Terms: gene = unit of inheritance | allele = gene ka alternate form | homozygous (TT/tt) vs heterozygous (Tt) | genotype = DNA code, phenotype = dikhne wala trait.",60,288,"#c9d4ff","12.5px 'Cascadia Code',monospace",96,17);
- R.innerHTML="<span class=hl>"+k.n+":</span> <span class=cy>"+k.d+"</span> (dominant) vs <span class=hl>"+k.r+"</span> (recessive). "+k.note;
+  R.innerHTML="<span class=dim>Terms: gene = unit of inheritance | allele = alternate form | homozygous (TT/tt) vs heterozygous (Tt) | genotype = DNA code, phenotype = dikhne wala trait.</span><br><span class=hl>"+k.n+":</span> <span class=cy>"+k.d+"</span> (dominant) vs <span class=hl>"+k.r+"</span> (recessive). "+k.note;
 }
 return function(){sel=0;document.querySelectorAll("#sc0 .cb").forEach((x,j)=>x.classList.toggle("sel",j===0));draw();};
 })();
@@ -298,7 +297,7 @@ function draw(){
   txt(c,"x",435,160,YL,"bold 20px 'Cascadia Code',monospace");
  }else if(step===1){
   txt(c,"Gamete formation - alleles SEPARATE",60,60,"#e8e8f2","bold 15px 'Cascadia Code',monospace");
-  plant(140,150,CY,"TT");plant(140,52,MG,"tt");
+  plant(100,150,CY,"TT");plant(170,52,MG,"tt");
   arrow2(c,220,140,340,140,CY,3);
   c.fillStyle=CY;c.beginPath();c.arc(390,110,20,0,Math.PI*2);c.fill();txt(c,"T",390,116,"#07070f","bold 16px 'Cascadia Code',monospace","center");
   c.fillStyle=CY;c.beginPath();c.arc(390,180,20,0,Math.PI*2);c.fill();txt(c,"T",390,186,"#07070f","bold 16px 'Cascadia Code',monospace","center");
@@ -567,7 +566,7 @@ function draw(){
   card(500,56,360,52,"PKU (phenylketonuria)","ek gene, multiple effects (pleiotropy)",GR);
   card(500,120,360,52,"CYSTIC FIBROSIS","mucus thick - lungs + pancreas",GR);
   card(500,184,360,52,"THALASSEMIA","haemoglobin kam banta - anaemia",GR);
-  wrap(c,"Carrier (Aa) NORMAL dikhta hai - dono carrier parents ke bachche ko 25% chance. Isliye pedigree me generation SKIP karta hai!",60,206,"#c9d4ff","12.5px 'Cascadia Code',monospace",100,17);
+  wrap(c,"Carrier (Aa) NORMAL dikhta hai - dono carrier parents ke bachche ko 25% chance. Isliye pedigree me generation SKIP karta hai!",60,254,"#c9d4ff","12.5px 'Cascadia Code',monospace",100,17);
  }else if(sel===1){
   txt(c,"AUTOSOMAL DOMINANT - 1 copy kaafi",60,32,YL,"bold 14px 'Cascadia Code',monospace");
   c.fillStyle="#16162e";c.fillRect(60,56,360,150);c.strokeStyle=RD;c.lineWidth=2.5;c.strokeRect(60,56,360,150);
