@@ -380,7 +380,7 @@ inits[3]=(()=>{
    c.strokeStyle=MG;c.lineWidth=5;
    c.beginPath();c.moveTo(400,158);c.lineTo(370,154);c.stroke();
    c.beginPath();c.moveTo(400,192);c.lineTo(370,196);c.stroke();
-   txt(c,"RNA primers (primase)",560,105,MG,"12px 'Cascadia Code',monospace");
+   txt(c,"RNA primers (primase)",180,90,MG,"12px 'Cascadia Code',monospace");
   }
   if(sel>=2){
    // leading: continuous new strand along bottom template
@@ -393,7 +393,7 @@ inits[3]=(()=>{
    c.strokeStyle="#fb923c";c.lineWidth=3.5;
    const segs=sel>=4?[[368,146,300,132],[286,130,214,116],[200,112,120,100]]:[[368,146,310,134],[288,130,240,118],[196,110,150,100]];
    segs.forEach(s=>{c.beginPath();c.moveTo(s[0],s[1]);c.lineTo(s[2],s[3]);c.stroke();});
-   txt(c,"LAGGING - Okazaki fragments",100,78,"#fb923c","bold 12px 'Cascadia Code',monospace");
+   txt(c,"LAGGING - Okazaki fragments",100,60,"#fb923c","bold 12px 'Cascadia Code',monospace");
   }
   if(sel>=4){
    txt(c,"LIGASE joints sealed",560,110,GR,"bold 12px 'Cascadia Code',monospace");
