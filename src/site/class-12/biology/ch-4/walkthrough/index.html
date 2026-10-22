@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Principles of Inheritance and Variation - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 12 Biology - Chapter 4 - Principles of Inheritance and Variation</div>
+<h1>Principles of Inheritance Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - Mendel ke 7 characters, monohybrid + test cross stepper, dihybrid 9:3:3:1 grid, incomplete dominance vs codominance, ABO blood group picker, sex determination systems, genetic disorders, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Mendel Ke 7 Characters - Pea Plant Kyun? ⭐</h2>
+<p class="why">Gregor Mendel (1856-1863) ne pea plant (Pisum sativum) chuna: short life cycle, clearly alag traits, self-pollination se true-breeding lines easy, manual cross-pollination possible. 7 characters, 14 true-breeding lines - HAR character ke 2 contrasting forms. Character chuno, dono forms dekho!</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="cb sel" data-c="0">seed shape</button>
+<button class="cb" data-c="1">seed colour</button>
+<button class="cb" data-c="2">flower colour</button>
+<button class="cb" data-c="3">pod shape</button>
+<button class="cb" data-c="4">pod colour</button>
+<button class="cb" data-c="5">flower position</button>
+<button class="cb" data-c="6">stem height</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Monohybrid Cross + Test Cross - 3:1 Ka Raaz ⭐⭐</h2>
+<p class="why">Ek character (height): TT (tall) x tt (dwarf) → F1 sab Tt tall → F1 self → F2: phenotypic 3:1, genotypic 1:2:1. Law of Segregation: gamete banne pe alleles ALAG - har gamete sirf ek allele. Test cross (F1 x tt) → 1:1 - hidden genotype pakadne ka tool! Step chalo!</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="mb sel" data-m="0">P: TT x tt</button>
+<button class="mb" data-m="1">gametes</button>
+<button class="mb" data-m="2">F1: sab Tt</button>
+<button class="mb" data-m="3">F1 self</button>
+<button class="mb" data-m="4">F2: 3:1 / 1:2:1</button>
+<button class="mb" data-m="5">test cross: 1:1</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Dihybrid Cross - 9:3:3:1 Grid ⭐⭐</h2>
+<p class="why">Do characters saath: RRYY (round yellow) x rryy (wrinkled green) → F1 RrYy → F2: 9:3:3:1. Law of Independent Assortment: ek character ke alleles dusre se INDEPENDENTLY sort hote hain. Recombinants (round-green, wrinkled-yellow) = variation ka source! (3:1) x (3:1) = 9:3:3:1. Category chuno, boxes count karo!</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="db sel" data-d="0">round-yellow (9)</button>
+<button class="db" data-d="1">round-green (3)</button>
+<button class="db" data-d="2">wrinkled-yellow (3)</button>
+<button class="db" data-d="3">wrinkled-green (1)</button>
+<button class="db" data-d="4">SAB dikhao</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Incomplete Dominance vs Codominance ⭐⭐</h2>
+<p class="why">Incomplete dominance: snapdragon (dog flower) red RR x white rr → F1 PINK (Rr) - blend! F2: 1 red : 2 pink : 1 white (phenotypic = genotypic). Codominance: ABO blood - IA aur IB DONO full express (AB group) - blend nahi, dono saath! Dono Mendel ke laws ke exceptions nahi, extensions hain. Toggle karo!</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="ib sel" data-i="0">incomplete (snapdragon)</button>
+<button class="ib" data-i="1">codominance (ABO)</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. ABO Blood Group - Multiple Alleles ⭐⭐</h2>
+<p class="why">3 alleles: IA, IB, i (lekin ek insaan ke paas sirf 2). IA = IB codominant; dono i se dominant. IAIA/IAi = A, IBIB/IBi = B, IAIB = AB, ii = O. O-negative ko universal donor aur AB-positive ko universal recipient commonly bola jaata hai (crossmatch zaroori!). Dono alleles chuno, blood group banao!</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<span style="color:#8fa0c8;font-size:13px;align-self:center">Allele 1:</span>
+<button class="ra sel" data-a="0">IA</button>
+<button class="ra" data-a="1">IB</button>
+<button class="ra" data-a="2">i</button>
+</div>
+<div class="btnrow">
+<span style="color:#8fa0c8;font-size:13px;align-self:center">Allele 2:</span>
+<button class="rb sel" data-b="0">IA</button>
+<button class="rb" data-b="1">IB</button>
+<button class="rb" data-b="2">i</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Sex Determination - Kaun Decide Karta Hai? ⭐⭐</h2>
+<p class="why">XX-XY (humans, Drosophila): male XY heterogametic - FATHER decide karta hai (X ya Y sperm; mother hamesha X). ZW-ZZ (birds): female ZW heterogametic - FEMALE decide karti hai! XO (grasshopper): male sirf ek X. Honeybee: fertilized → female (diploid), unfertilized → male (haploid) - haplodiploidy! System chuno!</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="sb sel" data-s="0">humans (XX-XY)</button>
+<button class="sb" data-s="1">birds (ZW-ZZ)</button>
+<button class="sb" data-s="2">grasshopper (XO)</button>
+<button class="sb" data-s="3">honeybee (haplo-diploid)</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Genetic Disorders - Pedigree Se Numbers Tak ⭐⭐</h2>
+<p class="why">Mutation = DNA me sudden change (point ya frameshift). Pedigree analysis se pattern track karte hain. Autosomal recessive: sickle cell (6th codon GAG→GUG, Glu→Val!), PKU, cystic fibrosis, thalassemia. Dominant: Huntington's (50% chance). X-linked recessive: haemophilia, colour blindness (males zyada - sirf ek X!). Chromosomal: Down (trisomy 21 = 47), Klinefelter (XXY), Turner (XO = 45). Category chuno!</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="gb sel" data-g="0">autosomal recessive</button>
+<button class="gb" data-g="1">autosomal dominant</button>
+<button class="gb" data-g="2">X-linked recessive</button>
+<button class="gb" data-g="3">chromosomal</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Inheritance Pakka? ⭐</h2>
+<p class="why">5 sawaal - Mendel ratios, incomplete dominance, blood group, sex determination, disorders. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Mendel basics</b>Pea plant: 7 characters, 14 true-breeding lines. Gene = unit of inheritance; allele = alternate forms. Homozygous (TT/tt) vs heterozygous (Tt). Genotype = DNA code, phenotype = dikhne wala trait. Rediscovery 1900 (de Vries, Correns, von Tschermak).</div>
+<div class="rcard"><b>Ratios rat lo</b>Monohybrid F2: phenotypic 3:1, genotypic 1:2:1. Dihybrid F2: 9:3:3:1 = (3:1)x(3:1). Test cross (x tt): 1:1. Incomplete dominance F2: 1:2:1 (phenotypic = genotypic). Segregation: gamete = ek allele. Independent assortment: genes alag chromosomes pe.</div>
+<div class="rcard"><b>Dominance ke extensions</b>Incomplete dominance: snapdragon F1 PINK (blend), F2 1 red:2 pink:1 white. Codominance: ABO - IAIB = AB (dono full express). Multiple alleles: IA, IB, i. Pleiotropy: ek gene multiple effects (PKU). Polygenic: skin colour, height.</div>
+<div class="rcard"><b>Linkage + sex determination</b>Morgan (Drosophila): linkage = same chromosome saath inherit; recombination = crossing over. Sturtevant: 1% recombination = 1 centiMorgan (gene mapping). Humans: father decide (XY). Birds: female decide (ZW). Honeybee: haplodiploidy.</div>
+<div class="rcard"><b>Disorders table</b>Recessive: sickle cell (GAG→GUG, Glu→Val, codon 6), PKU, cystic fibrosis, thalassemia. Dominant: Huntington's. X-linked: haemophilia, colour blindness. Chromosomal: Down (trisomy 21, 47), Klinefelter (XXY), Turner (XO, 45).</div>
+<div class="rcard"><b>Exam one-liners</b>TT aur Tt dono tall - genotype alag, phenotype same. Carrier maa x normal papa → 50% bete affected (X-linked). Mutation: point (sickle cell) ya frameshift. Pedigree = family tree se pattern. Sutton-Boveri: genes chromosomes pe (chromosomal theory).</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 12 Biology Chapter 4 (Principles of Inheritance and Variation) - Interactive Walkthrough</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+inits[0]=(()=>{
+const c=ctx("cv0");let sel=0;
+const CH=[
+ {n:"seed shape",d:"round (R)",r:"wrinkled (r)",note:"Round dominant. Wrinkled sirf rr me dikhta - F2 me 3 round : 1 wrinkled."},
+ {n:"seed colour",d:"yellow (Y)",r:"green (y)",note:"Yellow dominant. Cotyledons ka colour - F2 me 3 yellow : 1 green."},
+ {n:"flower colour",d:"violet (V)",r:"white (v)",note:"Violet dominant. White recessive - vv me hi dikhta."},
+ {n:"pod shape",d:"inflated (P)",r:"constricted (p)",note:"Inflated (fuli hui) pod dominant. Constricted (sikudi) recessive."},
+ {n:"pod colour",d:"green (G)",r:"yellow (g)",note:"Green pod dominant. Yellow pod recessive."},
+ {n:"flower position",d:"axial (A)",r:"terminal (a)",note:"Axial (stem ke side me) dominant. Terminal (tip pe) recessive."},
+ {n:"stem height",d:"tall (T)",r:"dwarf (t)",note:"Tall dominant - Mendel ka FAVOURITE character. F2: 3 tall : 1 dwarf."}];
+const R=document.getElementById("r0");
+document.querySelectorAll("#sc0 .cb").forEach((b,i)=>b.onclick=()=>{sel=i;document.querySelectorAll("#sc0 .cb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+function form(x,y,col,label,sub,wrinkled){
+ c.fillStyle=col;c.beginPath();c.arc(x,y,46,0,Math.PI*2);c.fill();
+ if(wrinkled){c.strokeStyle="#07070f";c.lineWidth=3;for(let k=-1;k<=1;k++){c.beginPath();c.moveTo(x-30,y+k*14-6);c.quadraticCurveTo(x,y+k*14+8,x+30,y+k*14-6);c.stroke();}}
+ c.strokeStyle=col;c.lineWidth=2;c.stroke();
+ txt(c,label,x-70,y+80,col,"bold 15px 'Cascadia Code',monospace");
+ txt(c,sub,x-70,y+102,"#c9d4ff","12.5px 'Cascadia Code',monospace");
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ const k=CH[sel];
+ txt(c,"Mendel ke 7 characters - HAR ek ke 2 contrasting forms:",60,36,YL,"bold 15px 'Cascadia Code',monospace");
+ txt(c,k.n.toUpperCase(),60,66,"#e8e8f2","bold 17px 'Cascadia Code',monospace");
+ txt(c,"DOMINANT form",180,120,CY,"bold 12px 'Cascadia Code',monospace");
+ form(250,180,CY,k.d,"true-breeding: "+k.d.charAt(0).toUpperCase()+k.d.charAt(0).toUpperCase(),false);
+ txt(c,"RECESSIVE form",560,120,MG,"bold 12px 'Cascadia Code',monospace");
+ form(630,180,MG,k.r,"true-breeding: "+k.r.slice(-2,-1)+k.r.slice(-2,-1),true);
+ txt(c,"vs",440,185,YL,"bold 18px 'Cascadia Code',monospace");
+ wrap(c,"Terms: gene = unit of inheritance | allele = gene ka alternate form | homozygous (TT/tt) vs heterozygous (Tt) | genotype = DNA code, phenotype = dikhne wala trait.",60,288,"#c9d4ff","12.5px 'Cascadia Code',monospace",96,17);
+ R.innerHTML="<span class=hl>"+k.n+":</span> <span class=cy>"+k.d+"</span> (dominant) vs <span class=hl>"+k.r+"</span> (recessive). "+k.note;
+}
+return function(){sel=0;document.querySelectorAll("#sc0 .cb").forEach((x,j)=>x.classList.toggle("sel",j===0));draw();};
+})();
+inits[1]=(()=>{
+const c=ctx("cv1");let step=0;
+const R=document.getElementById("r1");
+document.querySelectorAll("#sc1 .mb").forEach((b,i)=>b.onclick=()=>{step=i;document.querySelectorAll("#sc1 .mb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+function plant(x,h,col,label){
+ c.strokeStyle=col;c.lineWidth=5;c.beginPath();c.moveTo(x,230);c.lineTo(x,230-h);c.stroke();
+ c.fillStyle=col;c.beginPath();c.arc(x,230-h-10,10,0,Math.PI*2);c.fill();
+ txt(c,label,x-34,258,col,"bold 14px 'Cascadia Code',monospace");
+}
+function pun(ox,oy,top,side,cells){
+ txt(c,top[0],ox+78,oy-8,CY,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,top[1],ox+168,oy-8,CY,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,side[0],ox-16,oy+38,MG,"bold 14px 'Cascadia Code',monospace","center");
+ txt(c,side[1],ox-16,oy+98,MG,"bold 14px 'Cascadia Code',monospace","center");
+ for(let i=0;i<2;i++)for(let j=0;j<2;j++){
+  c.fillStyle="#0e1626";c.fillRect(ox+j*90+33,oy+i*60+8,84,52);
+  c.strokeStyle="#2d3a5f";c.lineWidth=2;c.strokeRect(ox+j*90+33,oy+i*60+8,84,52);
+  const cl=cells[i*2+j];
+  txt(c,cl[0],ox+j*90+75,oy+i*60+40,cl[1],"bold 15px 'Cascadia Code',monospace","center");
+ }
+}
+const INFO=[
+ "P generation: true-breeding TALL (TT) x DWARF (tt). Dono pure lines - self-pollination se bani.",
+ "Gamete banne pe alleles ALAG ho jaate hain - Law of SEGREGATION! Har gamete sirf EK allele le jaata hai (meiosis ka result).",
+ "F1: SAB Tt - aur SAB tall! Heterozygous me sirf dominant allele express hota hai (Law of Dominance). Recessive 't' gayab nahi - chhupa hai!",
+ "F1 self-pollination: Tt x Tt. Gametes: T, t aur T, t. Ab Punnett square bharte hain...",
+ "F2: 3 tall : 1 dwarf (PHENOTYPIC 3:1) | 1 TT : 2 Tt : 1 tt (GENOTYPIC 1:2:1). Dwarf wapas aa gaya - allele chhupa tha, gaya nahi!",
+ "TEST cross: F1 (Tt) x recessive parent (tt) → 1 tall : 1 dwarf. Dominant phenotype ka HIDDEN genotype check karne ka tool! (Back cross ka ek type.)"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Step "+(step+1)+"/6",60,34,YL,"bold 13px 'Cascadia Code',monospace");
+ if(step===0){
+  txt(c,"P  (parents - true breeding)",60,60,"#e8e8f2","bold 15px 'Cascadia Code',monospace");
+  plant(260,150,CY,"TT");plant(620,52,MG,"tt");
+  txt(c,"tall",246,288,CY,"13px 'Cascadia Code',monospace");
+  txt(c,"dwarf",606,288,MG,"13px 'Cascadia Code',monospace");
+  txt(c,"x",435,160,YL,"bold 20px 'Cascadia Code',monospace");
+ }else if(step===1){
+  txt(c,"Gamete formation - alleles SEPARATE",60,60,"#e8e8f2","bold 15px 'Cascadia Code',monospace");
+  plant(140,150,CY,"TT");plant(140,52,MG,"tt");
+  arrow2(c,220,140,340,140,CY,3);
+  c.fillStyle=CY;c.beginPath();c.arc(390,110,20,0,Math.PI*2);c.fill();txt(c,"T",390,116,"#07070f","bold 16px 'Cascadia Code',monospace","center");
+  c.fillStyle=CY;c.beginPath();c.arc(390,180,20,0,Math.PI*2);c.fill();txt(c,"T",390,186,"#07070f","bold 16px 'Cascadia Code',monospace","center");
+  c.fillStyle=MG;c.beginPath();c.arc(520,110,20,0,Math.PI*2);c.fill();txt(c,"t",520,116,"#07070f","bold 16px 'Cascadia Code',monospace","center");
+  c.fillStyle=MG;c.beginPath();c.arc(520,180,20,0,Math.PI*2);c.fill();txt(c,"t",520,186,"#07070f","bold 16px 'Cascadia Code',monospace","center");
+  arrow2(c,220,230,340,230,MG,3);
+  wrap(c,"TT se sirf T gametes; tt se sirf t gametes. HAR gamete = 1 allele. Yehi Law of Segregation hai - exam ka pakka sawaal!",580,110,"#c9d4ff","12.5px 'Cascadia Code',monospace",38,17);
+ }else if(step===2){
+  txt(c,"F1 generation - sab tall!",60,60,"#e8e8f2","bold 15px 'Cascadia Code',monospace");
+  for(let i=0;i<4;i++){plant(200+i*170,140,i%2?GR:CY,"Tt");}
+  txt(c,"t (dwarf) chhupa hai - gayab NAHI hua!",300,290,DM,"13px 'Cascadia Code',monospace");
+ }else if(step===3){
+  txt(c,"F1 self-pollination: Tt x Tt",60,60,"#e8e8f2","bold 15px 'Cascadia Code',monospace");
+  plant(150,140,GR,"Tt");plant(720,140,GR,"Tt");
+  txt(c,"gametes:",300,150,DM,"13px 'Cascadia Code',monospace");
+  c.fillStyle=CY;c.beginPath();c.arc(440,120,18,0,Math.PI*2);c.fill();txt(c,"T",440,126,"#07070f","bold 15px 'Cascadia Code',monospace","center");
+  c.fillStyle=MG;c.beginPath();c.arc(440,180,18,0,Math.PI*2);c.fill();txt(c,"t",440,186,"#07070f","bold 15px 'Cascadia Code',monospace","center");
+  c.fillStyle=CY;c.beginPath();c.arc(520,120,18,0,Math.PI*2);c.fill();txt(c,"T",520,126,"#07070f","bold 15px 'Cascadia Code',monospace","center");
+  c.fillStyle=MG;c.beginPath();c.arc(520,180,18,0,Math.PI*2);c.fill();txt(c,"t",520,186,"#07070f","bold 15px 'Cascadia Code',monospace","center");
+  txt(c,"x",476,150,YL,"bold 16px 'Cascadia Code',monospace");
+  wrap(c,"Har parent 2 tarah ke gametes banata: T ya t (50-50%). Ab combinations dekho ->",300,220,"#c9d4ff","12.5px 'Cascadia Code',monospace",60,17);
+ }else if(step===4){
+  txt(c,"F2 - Punnett square",60,60,"#e8e8f2","bold 15px 'Cascadia Code',monospace");
+  pun(300,80,["T","t"],["T","t"],[["TT",CY],["Tt",CY],["Tt",CY],["tt",MG]]);
+  txt(c,"3 TALL (TT, Tt, Tt)",600,120,CY,"bold 14px 'Cascadia Code',monospace");
+  txt(c,"1 DWARF (tt)",600,150,MG,"bold 14px 'Cascadia Code',monospace");
+  txt(c,"phenotypic  3 : 1",600,200,YL,"bold 16px 'Cascadia Code',monospace");
+  txt(c,"genotypic  1 : 2 : 1",600,230,GR,"bold 16px 'Cascadia Code',monospace");
+  txt(c,"TT : Tt : tt",600,258,DM,"12.5px 'Cascadia Code',monospace");
+ }else{
+  txt(c,"TEST cross: Tt x tt",60,60,"#e8e8f2","bold 15px 'Cascadia Code',monospace");
+  pun(300,80,["t","t"],["T","t"],[["Tt",CY],["Tt",CY],["tt",MG],["tt",MG]]);
+  txt(c,"1 TALL (Tt)",600,120,CY,"bold 14px 'Cascadia Code',monospace");
+  txt(c,"1 DWARF (tt)",600,150,MG,"bold 14px 'Cascadia Code',monospace");
+  txt(c,"ratio  1 : 1",600,200,YL,"bold 16px 'Cascadia Code',monospace");
+  wrap(c,"Agar tall plant TT hota to SAB tall aate (TT x tt → sab Tt). 1:1 aaya matlab plant Tt tha!",600,240,"#c9d4ff","12px 'Cascadia Code',monospace",38,16);
+ }
+ R.innerHTML="<span class=cy>Step "+(step+1)+":</span> "+INFO[step];
+}
+return function(){step=0;document.querySelectorAll("#sc1 .mb").forEach((x,j)=>x.classList.toggle("sel",j===0));draw();};
+})();
+inits[2]=(()=>{
+const c=ctx("cv2");let sel=4;
+const R=document.getElementById("r2");
+document.querySelectorAll("#sc2 .db").forEach((b,i)=>b.onclick=()=>{sel=i;document.querySelectorAll("#sc2 .db").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+const GAM=["RY","Ry","rY","ry"];
+const GEN=[["RRYY","RRYy","RrYY","RrYy"],["RRYy","RRyy","RrYy","Rryy"],["RrYY","RrYy","rrYY","rrYy"],["RrYy","Rryy","rrYy","rryy"]];
+const CLS=[[0,0,0,0],[0,1,0,1],[0,0,2,2],[0,1,2,3]];
+const COL=[CY,GR,YL,MG];
+const NAME=["round-yellow","round-green","wrinkled-yellow","wrinkled-green"];
+const CNT=[9,3,3,1];
+const INFO=[
+ "9 ROUND-YELLOW (R_Y_): dono dominant traits - sabse bada group. Genotypes: RRYY, RRYy, RrYY, RrYy (4 alag genotypes, ek hi phenotype!).",
+ "3 ROUND-GREEN (R_yy): RECOMBINANT - parental me nahi tha! Round + green ka naya combo. Variation ka source.",
+ "3 WRINKLED-YELLOW (rrY_): doosra RECOMBINANT combo. Parental: round-yellow + wrinkled-green the, ye dono naye!",
+ "1 WRINKLED-GREEN (rryy): dono recessive - sirf 1/16. Dobara homozygous recessive milna sabse mushkil.",
+ "FULL GRID: 16 boxes. Phenotypes 9:3:3:1 = (3:1) x (3:1). Shape ka 3:1 aur colour ka 3:1 INDEPENDENTLY multiply - yehi Law of Independent Assortment!"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"F2: RrYy x RrYy - 16 combinations",60,34,YL,"bold 14px 'Cascadia Code',monospace");
+ const ox=90,oy=70,bw=86,bh=52;
+ GAM.forEach((g,j)=>txt(c,g,ox+j*bw+bw/2,oy-8,CY,"bold 13px 'Cascadia Code',monospace","center"));
+ GAM.forEach((g,i)=>txt(c,g,ox-14,oy+i*bh+bh/2+4,MG,"bold 13px 'Cascadia Code',monospace","center"));
+ for(let i=0;i<4;i++)for(let j=0;j<4;j++){
+  const k=CLS[i][j];
+  const on=(sel===4||sel===k);
+  c.globalAlpha=on?0.92:0.14;
+  c.fillStyle=COL[k];c.fillRect(ox+j*bw+3,oy+i*bh+3,bw-6,bh-6);
+  c.globalAlpha=1;
+  c.strokeStyle="#2d3a5f";c.lineWidth=1.5;c.strokeRect(ox+j*bw+3,oy+i*bh+3,bw-6,bh-6);
+  if(on)txt(c,GEN[i][j],ox+j*bw+bw/2,oy+i*bh+bh/2+4,"#07070f","bold 12px 'Cascadia Code',monospace","center");
+ }
+ const px=560;
+ txt(c,"PHENOTYPES:",px,80,"#e8e8f2","bold 13px 'Cascadia Code',monospace");
+ for(let k=0;k<4;k++){
+  const on=(sel===4||sel===k);
+  c.globalAlpha=on?1:0.25;
+  c.fillStyle=COL[k];c.fillRect(px,96+k*42,16,16);
+  txt(c,CNT[k]+"  "+NAME[k],px+26,109+k*42,COL[k],"bold 13.5px 'Cascadia Code',monospace");
+  c.globalAlpha=1;
+ }
+ txt(c,"ratio  9 : 3 : 3 : 1",px,288,YL,"bold 17px 'Cascadia Code',monospace");
+ txt(c,"= (3:1) x (3:1)",px,310,DM,"12.5px 'Cascadia Code',monospace");
+ R.innerHTML="<span class=cy>"+(sel===4?"FULL GRID":NAME[sel].toUpperCase())+":</span> "+INFO[sel];
+}
+return function(){sel=4;document.querySelectorAll("#sc2 .db").forEach((x,j)=>x.classList.toggle("sel",j===4));draw();};
+})();
+inits[3]=(()=>{
+const c=ctx("cv3");let sel=0;
+const R=document.getElementById("r3");
+document.querySelectorAll("#sc3 .ib").forEach((b,i)=>b.onclick=()=>{sel=i;document.querySelectorAll("#sc3 .ib").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+const INFO=[
+ "SNAPDRAGON (dog flower): RR (red) x rr (white) → F1 sab Rr = PINK! Na red jeeta, na white - BLEND ho gaya. F2: 1 red : 2 pink : 1 white - phenotypic = genotypic = 1:2:1 (3:1 NAHI!).",
+ "ABO BLOOD: IA aur IB CODOMINANT - IAIB me DONO full express (AB group, A+B antigens saath). Blend nahi - dono apni full strength pe! IA/IB dono i se dominant; ii = O."];
+function flower(x,y,col,edge,label){
+ c.fillStyle=col;c.strokeStyle=edge;c.lineWidth=2;
+ for(let p=0;p<5;p++){const a=p*Math.PI*2/5-Math.PI/2;c.beginPath();c.arc(x+Math.cos(a)*16,y+Math.sin(a)*16,13,0,Math.PI*2);c.fill();c.stroke();}
+ c.fillStyle=edge;c.beginPath();c.arc(x,y,8,0,Math.PI*2);c.fill();
+ txt(c,label,x,y+52,edge,"bold 12.5px 'Cascadia Code',monospace","center");
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ if(sel===0){
+  txt(c,"INCOMPLETE DOMINANCE - snapdragon cross",60,34,YL,"bold 14px 'Cascadia Code',monospace");
+  txt(c,"P:",60,96,DM,"bold 13px 'Cascadia Code',monospace");
+  flower(160,86,RD,RD,"RR (red)");
+  txt(c,"x",250,92,YL,"bold 16px 'Cascadia Code',monospace");
+  flower(330,86,"#e8e8f2","#e8e8f2","rr (white)");
+  txt(c,"F1:",420,96,DM,"bold 13px 'Cascadia Code',monospace");
+  flower(540,86,"#f9a8d4","#f9a8d4","Rr (PINK!)");
+  wrap(c,"F1 me intermediate - na red, na white. Dominance INCOMPLETE!",660,80,"#c9d4ff","12px 'Cascadia Code',monospace",30,16);
+  txt(c,"F2 (Rr x Rr):",60,196,DM,"bold 13px 'Cascadia Code',monospace");
+  flower(200,240,RD,RD,"RR red");
+  flower(360,240,"#f9a8d4","#f9a8d4","Rr pink");
+  flower(520,240,"#f9a8d4","#f9a8d4","Rr pink");
+  flower(680,240,"#e8e8f2","#e8e8f2","rr white");
+  txt(c,"1   :   2   :   1",290,318,YL,"bold 17px 'Cascadia Code',monospace");
+  txt(c,"phenotypic = genotypic!",560,318,GR,"bold 12.5px 'Cascadia Code',monospace");
+ }else{
+  txt(c,"CODOMINANCE - ABO blood group",60,34,YL,"bold 14px 'Cascadia Code',monospace");
+  c.fillStyle="#7f1d1d";c.beginPath();c.arc(180,150,62,0,Math.PI*2);c.fill();c.strokeStyle=RD;c.lineWidth=2.5;c.stroke();
+  c.fillStyle=RD;for(let p=0;p<4;p++){c.beginPath();c.arc(150+ (p%2)*55,130+Math.floor(p/2)*45,8,0,Math.PI*2);c.fill();}
+  txt(c,"IAIA / IAi = A group",98,248,RD,"bold 12.5px 'Cascadia Code',monospace");
+  txt(c,"sirf A antigens",116,268,DM,"12px 'Cascadia Code',monospace");
+  c.fillStyle="#1e3a8a";c.beginPath();c.arc(410,150,62,0,Math.PI*2);c.fill();c.strokeStyle="#60a5fa";c.lineWidth=2.5;c.stroke();
+  c.fillStyle="#60a5fa";for(let p=0;p<4;p++){c.beginPath();c.arc(380+(p%2)*55,130+Math.floor(p/2)*45,8,0,Math.PI*2);c.fill();}
+  txt(c,"IBIB / IBi = B group",328,248,"#60a5fa","bold 12.5px 'Cascadia Code',monospace");
+  txt(c,"sirf B antigens",356,268,DM,"12px 'Cascadia Code',monospace");
+  c.fillStyle="#4a1d6b";c.beginPath();c.arc(660,150,62,0,Math.PI*2);c.fill();c.strokeStyle=MG;c.lineWidth=2.5;c.stroke();
+  c.fillStyle=RD;c.beginPath();c.arc(638,132,8,0,Math.PI*2);c.fill();c.beginPath();c.arc(676,166,8,0,Math.PI*2);c.fill();
+  c.fillStyle="#60a5fa";c.beginPath();c.arc(678,132,8,0,Math.PI*2);c.fill();c.beginPath();c.arc(638,166,8,0,Math.PI*2);c.fill();
+  txt(c,"IAIB = AB group",576,248,MG,"bold 12.5px 'Cascadia Code',monospace");
+  txt(c,"A + B DONO antigens!",564,268,GR,"bold 12px 'Cascadia Code',monospace");
+  wrap(c,"Koi blend NAHI - dono alleles apne antigens banate hain. Ye hai codominance!",60,308,"#c9d4ff","12.5px 'Cascadia Code',monospace",100,17);
+ }
+ R.innerHTML="<span class=cy>"+(sel===0?"INCOMPLETE DOMINANCE":"CODOMINANCE")+":</span> "+INFO[sel];
+}
+return function(){sel=0;document.querySelectorAll("#sc3 .ib").forEach((x,j)=>x.classList.toggle("sel",j===0));draw();};
+})();
+inits[4]=(()=>{
+const c=ctx("cv4");let a=0,b=0;
+const R=document.getElementById("r4");
+const AL=["IA","IB","i"];
+document.querySelectorAll("#sc4 .ra").forEach((x,i)=>x.onclick=()=>{a=i;document.querySelectorAll("#sc4 .ra").forEach((y,j)=>y.classList.toggle("sel",j===i));draw();});
+document.querySelectorAll("#sc4 .rb").forEach((x,i)=>x.onclick=()=>{b=i;document.querySelectorAll("#sc4 .rb").forEach((y,j)=>y.classList.toggle("sel",j===i));draw();});
+function group(x,y){
+ const s=[AL[x],AL[y]];
+ if(s.includes("IA")&&s.includes("IB"))return["AB",MG,"dono codominant - A+B antigens!"];
+ if(s.includes("IA"))return["A",RD,"IA dominant over i - A antigens"];
+ if(s.includes("IB"))return["B","#60a5fa","IB dominant over i - B antigens"];
+ return["O",GR,"ii - koi antigen nahi (recessive pair)"];
+}
+const TABLE=[["IA","IA","A"],["IA","i","A"],["IB","IB","B"],["IB","i","B"],["IA","IB","AB"],["i","i","O"]];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Blood group banao - 2 alleles chuno (3 possible: IA, IB, i)",60,34,YL,"bold 14px 'Cascadia Code',monospace");
+ const g=group(a,b);
+ c.fillStyle="#16162e";c.fillRect(60,70,300,150);c.strokeStyle=g[1];c.lineWidth=3;c.strokeRect(60,70,300,150);
+ txt(c,AL[a]+" + "+AL[b],210,120,DM,"bold 16px 'Cascadia Code',monospace","center");
+ txt(c,g[0]+" group",210,180,g[1],"bold 34px 'Cascadia Code',monospace","center");
+ wrap(c,g[2],60,258,"#c9d4ff","12.5px 'Cascadia Code',monospace",46,17);
+ txt(c,"SAARE 6 genotypes:",440,80,"#e8e8f2","bold 13px 'Cascadia Code',monospace");
+ TABLE.forEach((t,k)=>{
+  const cur=(t[0]===AL[Math.min(a,b)]&&t[1]===AL[Math.max(a,b)])||(t[0]===AL[a]&&t[1]===AL[b])||(t[0]===AL[b]&&t[1]===AL[a]);
+  const y=110+k*32;
+  if(cur){c.fillStyle="#0e2a3a";c.fillRect(436,y-18,330,26);c.strokeStyle=CY;c.lineWidth=1.5;c.strokeRect(436,y-18,330,26);}
+  txt(c,t[0]+t[1],460,y,cur?CY:"#c9d4ff","bold 13.5px 'Cascadia Code',monospace");
+  txt(c,"→  "+t[2]+" group",560,y,cur?CY:DM,"13.5px 'Cascadia Code',monospace");
+ });
+ txt(c,"IA = IB codominant | dono > i dominant",440,318,GR,"12.5px 'Cascadia Code',monospace");
+ const gc=group(a,b);
+ R.innerHTML="<span class=cy>"+AL[a]+AL[b]+":</span> <span class=hl>"+gc[0]+" blood group</span> - "+gc[2]+". O-negative ko universal donor, AB-positive ko universal recipient commonly kaha jaata hai (crossmatching zaroori!).";
+}
+return function(){a=0;b=0;document.querySelectorAll("#sc4 .ra").forEach((y,j)=>y.classList.toggle("sel",j===0));document.querySelectorAll("#sc4 .rb").forEach((y,j)=>y.classList.toggle("sel",j===0));draw();};
+})();
+inits[5]=(()=>{
+const c=ctx("cv5");let sel=0;
+const R=document.getElementById("r5");
+document.querySelectorAll("#sc5 .sb").forEach((b,i)=>b.onclick=()=>{sel=i;document.querySelectorAll("#sc5 .sb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+const INFO=[
+ "HUMANS (XX-XY): female XX (sab eggs X), male XY (50% X-sperm, 50% Y-sperm). X-sperm → beti (XX), Y-sperm → beta (XY). SEX FATHER DECIDE KARTA HAI - mother hamesha X deti hai! Drosophila bhi yahi system.",
+ "BIRDS (ZW-ZZ): ULTA! Male ZZ (sab sperm Z), female ZW (50% Z-egg, 50% W-egg). Z-egg → male (ZZ), W-egg → female (ZW). Yahan FEMALE decide karti hai!",
+ "GRASSHOPPER (XO type): female XX, male sirf ek X (XO - 'O' = no second chromosome). Sperm: X ya kuch nahi. X-sperm → female XX, empty sperm → male XO.",
+ "HONEYBEE (haplodiploidy): FERTILIZED egg (diploid 32) → female (queen/worker); UNFERTILIZED egg (haploid 16) → male (drone) - parthenogenesis se! Male ke paas father hi nahi hota!"];
+function parent(x,y,label,sub,col){
+ c.fillStyle="#16162e";c.strokeStyle=col;c.lineWidth=2.5;
+ c.beginPath();c.arc(x,y,34,0,Math.PI*2);c.fill();c.stroke();
+ txt(c,label,x,y+6,col,"bold 17px 'Cascadia Code',monospace","center");
+ txt(c,sub,x,y+56,DM,"12px 'Cascadia Code',monospace","center");
+}
+function kid(x,y,label,sub,col){
+ c.fillStyle="#0e1626";c.strokeStyle=col;c.lineWidth=2;c.fillRect(x-70,y-24,140,48);c.strokeRect(x-70,y-24,140,48);
+ txt(c,label,x,y-2,col,"bold 14.5px 'Cascadia Code',monospace","center");
+ txt(c,sub,x,y+16,DM,"11.5px 'Cascadia Code',monospace","center");
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ if(sel===0){
+  txt(c,"XX-XY  (humans, Drosophila)",60,34,YL,"bold 14px 'Cascadia Code',monospace");
+  parent(200,100,"XX","female (egg: X)",MG);
+  parent(520,100,"XY","male (sperm: X ya Y)",CY);
+  txt(c,"x",360,106,YL,"bold 18px 'Cascadia Code',monospace");
+  arrow2(c,200,140,150,215,MG,2.5);arrow2(c,520,140,470,215,CY,2.5);arrow2(c,520,140,650,215,CY,2.5);arrow2(c,200,140,320,215,MG,2.5);
+  kid(235,250,"XX = BETI","X-egg + X-sperm",MG);
+  kid(565,250,"XY = BETA","X-egg + Y-sperm",CY);
+  txt(c,"50%          50%",340,306,DM,"13px 'Cascadia Code',monospace");
+  txt(c,"FATHER decides (X ya Y sperm)!",560,306,GR,"bold 13px 'Cascadia Code',monospace");
+ }else if(sel===1){
+  txt(c,"ZW-ZZ  (birds, butterflies)",60,34,YL,"bold 14px 'Cascadia Code',monospace");
+  parent(200,100,"ZW","female (egg: Z ya W)",MG);
+  parent(520,100,"ZZ","male (sperm: Z)",CY);
+  txt(c,"x",360,106,YL,"bold 18px 'Cascadia Code',monospace");
+  arrow2(c,200,140,150,215,MG,2.5);arrow2(c,520,140,470,215,CY,2.5);arrow2(c,520,140,650,215,CY,2.5);arrow2(c,200,140,320,215,MG,2.5);
+  kid(235,250,"ZZ = MALE","Z-egg + Z-sperm",CY);
+  kid(565,250,"ZW = FEMALE","W-egg + Z-sperm",MG);
+  txt(c,"50%          50%",340,306,DM,"13px 'Cascadia Code',monospace");
+  txt(c,"FEMALE decides (Z ya W egg)!",560,306,GR,"bold 13px 'Cascadia Code',monospace");
+ }else if(sel===2){
+  txt(c,"XO type  (grasshopper)",60,34,YL,"bold 14px 'Cascadia Code',monospace");
+  parent(200,100,"XX","female (egg: X)",MG);
+  parent(520,100,"XO","male (sperm: X ya empty)",CY);
+  txt(c,"x",360,106,YL,"bold 18px 'Cascadia Code',monospace");
+  arrow2(c,200,140,150,215,MG,2.5);arrow2(c,520,140,470,215,CY,2.5);arrow2(c,520,140,650,215,CY,2.5);arrow2(c,200,140,320,215,MG,2.5);
+  kid(235,250,"XX = FEMALE","X-egg + X-sperm",MG);
+  kid(565,250,"XO = MALE","X-egg + empty sperm",CY);
+  txt(c,"'O' = no 2nd chromosome",560,306,DM,"13px 'Cascadia Code',monospace");
+ }else{
+  txt(c,"HAPLODIPLOIDY  (honeybee)",60,34,YL,"bold 14px 'Cascadia Code',monospace");
+  c.fillStyle="#16162e";c.strokeStyle=YL;c.lineWidth=2.5;c.beginPath();c.arc(200,110,36,0,Math.PI*2);c.fill();c.stroke();
+  txt(c,"EGG",200,116,YL,"bold 15px 'Cascadia Code',monospace","center");
+  txt(c,"queen ka egg",200,166,DM,"12px 'Cascadia Code',monospace","center");
+  arrow2(c,170,140,120,220,GR,2.5);arrow2(c,240,140,300,220,RD,2.5);
+  kid(120,262,"FERTILIZED","diploid (32) → FEMALE",GR);
+  kid(330,262,"UNFERTILIZED","haploid (16) → MALE",RD);
+  wrap(c,"Male (drone) bina father ke paida hota hai - parthenogenesis! Sperm determine nahi karta - FERTILIZATION decide karti hai.",520,220,"#c9d4ff","12.5px 'Cascadia Code',monospace",46,17);
+ }
+ R.innerHTML="<span class=cy>"+["HUMANS (XX-XY)","BIRDS (ZW-ZZ)","GRASSHOPPER (XO)","HONEYBEE"][sel]+":</span> "+INFO[sel];
+}
+return function(){sel=0;document.querySelectorAll("#sc5 .sb").forEach((x,j)=>x.classList.toggle("sel",j===0));draw();};
+})();
+inits[6]=(()=>{
+const c=ctx("cv6");let sel=0;
+const R=document.getElementById("r6");
+document.querySelectorAll("#sc6 .gb").forEach((b,i)=>b.onclick=()=>{sel=i;document.querySelectorAll("#sc6 .gb").forEach((x,j)=>x.classList.toggle("sel",j===i));draw();});
+const INFO=[
+ "AUTOSOMAL RECESSIVE: dono copies kharab chahiye (carrier ek kharab copy ke saath NORMAL). Sickle cell anaemia: beta-globin ka 6th codon GAG→GUG - glutamic acid ki jagah VALINE (point mutation!) → RBC sickle shape. PKU, cystic fibrosis, thalassemia bhi isi category me.",
+ "AUTOSOMAL DOMINANT: sirf EK kharab copy kaafi! Affected parent (heterozygous) → har bachche ko 50% chance. Huntington's disease - neurodegenerative, late onset isliye generation to generation jaata hai.",
+ "X-LINKED RECESSIVE: gene X chromosome pe. Males (XY) ke paas sirf EK X - ek kharab copy = affected! Females carriers hoti hain. Haemophilia (bleeder's disease - clotting factor nahi banta), colour blindness. Carrier maa x normal papa → 50% BETE affected.",
+ "CHROMOSOMAL: poore chromosome ka number gadbad. DOWN's syndrome = trisomy 21 (21st ka extra copy - total 47). KLINEFELTER's = XXY (male me extra X). TURNER's = XO (female me sirf ek X - total 45). Non-disjunction (meiosis me chromosomes separate nahi hue) se!"];
+function card(x,y,w,h,title,line,col){
+ c.fillStyle="#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2;c.strokeRect(x,y,w,h);
+ txt(c,title,x+14,y+28,col,"bold 14px 'Cascadia Code',monospace");
+ wrap(c,line,x+14,y+50,"#b8c2e0","11.5px 'Cascadia Code',monospace",Math.floor((w-26)/7.6),15);
+}
+function draw(){
+ c.clearRect(0,0,920,330);
+ if(sel===0){
+  txt(c,"AUTOSOMAL RECESSIVE - 2 kharab copies chahiye",60,32,YL,"bold 14px 'Cascadia Code',monospace");
+  c.fillStyle="#16162e";c.fillRect(60,56,400,110);c.strokeStyle=RD;c.lineWidth=2.5;c.strokeRect(60,56,400,110);
+  txt(c,"SICKLE CELL ANAEMIA",78,84,RD,"bold 14.5px 'Cascadia Code',monospace");
+  txt(c,"beta-globin codon 6:",78,108,DM,"12px 'Cascadia Code',monospace");
+  txt(c,"GAG",78,132,GR,"bold 15px 'Cascadia Code',monospace");
+  txt(c,"->",120,132,YL,"bold 15px 'Cascadia Code',monospace");
+  txt(c,"GUG",150,132,RD,"bold 15px 'Cascadia Code',monospace");
+  txt(c,"Glu -> Val (POINT mutation!)",78,156,"#c9d4ff","12px 'Cascadia Code',monospace");
+  card(500,56,360,52,"PKU (phenylketonuria)","ek gene, multiple effects (pleiotropy)",GR);
+  card(500,120,360,52,"CYSTIC FIBROSIS","mucus thick - lungs + pancreas",GR);
+  card(500,184,360,52,"THALASSEMIA","haemoglobin kam banta - anaemia",GR);
+  wrap(c,"Carrier (Aa) NORMAL dikhta hai - dono carrier parents ke bachche ko 25% chance. Isliye pedigree me generation SKIP karta hai!",60,206,"#c9d4ff","12.5px 'Cascadia Code',monospace",100,17);
+ }else if(sel===1){
+  txt(c,"AUTOSOMAL DOMINANT - 1 copy kaafi",60,32,YL,"bold 14px 'Cascadia Code',monospace");
+  c.fillStyle="#16162e";c.fillRect(60,56,360,150);c.strokeStyle=RD;c.lineWidth=2.5;c.strokeRect(60,56,360,150);
+  txt(c,"HUNTINGTON'S DISEASE",78,88,RD,"bold 14.5px 'Cascadia Code',monospace");
+  wrap(c,"Neurodegenerative. Late onset (35-45 yrs) - isliye affected log bachche kar chuke hote hain, gene aage jaata hai.",78,112,"#c9d4ff","12px 'Cascadia Code',monospace",44,16);
+  c.fillStyle="#0e1626";c.fillRect(470,56,390,150);c.strokeStyle=CY;c.lineWidth=2;c.strokeRect(470,56,390,150);
+  txt(c,"Aa (affected) x aa (normal)",488,86,CY,"bold 13px 'Cascadia Code',monospace");
+  txt(c,"gametes: A, a    x    a, a",488,116,DM,"12px 'Cascadia Code',monospace");
+  txt(c,"-> 50% Aa (affected)",488,150,RD,"bold 13.5px 'Cascadia Code',monospace");
+  txt(c,"-> 50% aa (normal)",488,178,GR,"bold 13.5px 'Cascadia Code',monospace");
+  wrap(c,"Dominant disorders generation skip NAHI karte - har generation me dikhte hain!",60,250,"#c9d4ff","12.5px 'Cascadia Code',monospace",100,17);
+ }else if(sel===2){
+  txt(c,"X-LINKED RECESSIVE - males zyada affected",60,32,YL,"bold 14px 'Cascadia Code',monospace");
+  c.fillStyle="#16162e";c.fillRect(60,56,360,110);c.strokeStyle=MG;c.lineWidth=2.5;c.strokeRect(60,56,360,110);
+  txt(c,"HAEMOPHILIA",78,84,MG,"bold 14.5px 'Cascadia Code',monospace");
+  txt(c,"bleeder's disease - clot",78,106,"#c9d4ff","12px 'Cascadia Code',monospace");
+  txt(c,"factor nahi banta",78,124,"#c9d4ff","12px 'Cascadia Code',monospace");
+  txt(c,"COLOUR BLINDNESS",78,152,MG,"bold 14.5px 'Cascadia Code',monospace");
+  c.fillStyle="#0e1626";c.fillRect(470,56,390,150);c.strokeStyle=CY;c.lineWidth=2;c.strokeRect(470,56,390,150);
+  txt(c,"carrier MAA (XcX) x normal PAPA (XY)",488,86,CY,"bold 12px 'Cascadia Code',monospace");
+  txt(c,"beti: XX ya XcX - carriers, NORMAL",488,118,GR,"12px 'Cascadia Code',monospace");
+  txt(c,"beta: 50% XY normal",488,146,GR,"12.5px 'Cascadia Code',monospace");
+  txt(c,"       50% XcY AFFECTED!",488,172,RD,"bold 12.5px 'Cascadia Code',monospace");
+  wrap(c,"Male (XY) ke paas backup X NAHI - ek kharab Xc = affected. Female ko affected hone ke liye DONO Xc chahiye (bahut rare).",60,216,"#c9d4ff","12.5px 'Cascadia Code',monospace",100,17);
+ }else{
+  txt(c,"CHROMOSOMAL - number ka gadbad (non-disjunction)",60,32,YL,"bold 14px 'Cascadia Code',monospace");
+  card(60,56,270,120,"DOWN's SYNDROME","TRISOMY 21 - 21st chromosome ka extra copy. Total 47 (normal 46).",YL);
+  card(360,56,270,120,"KLINEFELTER's","XXY - male me EXTRA X. Total 47. Sterile, feminine traits.",MG);
+  card(660,56,240,120,"TURNER's","XO - female me sirf EK X. Total 45. Sterile, short.",CY);
+  wrap(c,"Wajah: NON-DISJUNCTION - meiosis me chromosomes properly separate nahi hue. Gamete me extra/missing chromosome. Yaad rakho: Down=47 (21+), Klinefelter=47 (XXY), Turner=45 (XO).",60,206,"#c9d4ff","12.5px 'Cascadia Code',monospace",95,17);
+ }
+ R.innerHTML="<span class=cy>"+["AUTOSOMAL RECESSIVE","AUTOSOMAL DOMINANT","X-LINKED RECESSIVE","CHROMOSOMAL"][sel]+":</span> "+INFO[sel];
+}
+return function(){sel=0;document.querySelectorAll("#sc6 .gb").forEach((x,j)=>x.classList.toggle("sel",j===0));draw();};
+})();
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Monohybrid cross ke F2 ka PHENOTYPIC ratio kya hai?",opts:["1:2:1","9:3:3:1","3:1","1:1"],a:2,why:"F2 phenotypic = 3:1 (3 tall : 1 dwarf). 1:2:1 GENOTYPIC hai. 9:3:3:1 dihybrid ka hai. Ratlo - har saal aata hai!"},
+{q:"Snapdragon me red (RR) x white (rr) - F1 kaisa dikhega?",opts:["sab red","sab white","sab pink","1 red : 1 white"],a:2,why:"INCOMPLETE dominance - F1 sab PINK (blend). F2 me 1 red : 2 pink : 1 white. Codominance (ABO) se confuse mat karna - wahan dono full express hote hain!"},
+{q:"AB blood group ka genotype?",opts:["IAIA","IBIB","ii","IAIB"],a:3,why:"IAIB = AB - IA aur IB CODOMINANT, dono antigens bante hain. IAIA/IAi = A, IBIB/IBi = B, ii = O."},
+{q:"Human baby ka sex kaun decide karta hai?",opts:["mother (X egg)","father (X ya Y sperm)","dono barabar","koi nahi - random"],a:1,why:"FATHER! Mother hamesha X egg deti hai; X-sperm → beti, Y-sperm → beta. Birds me ULTA - female (ZW) decide karti hai!"},
+{q:"Down's syndrome kis wajah se hota hai?",opts:["point mutation","X-linked recessive gene","trisomy 21 (47 chromosomes)","XO (45 chromosomes)"],a:2,why:"Trisomy 21 - 21st chromosome ka extra copy (total 47). XO (45) = Turner, XXY = Klinefelter. Non-disjunction se hota hai."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Inheritance pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
