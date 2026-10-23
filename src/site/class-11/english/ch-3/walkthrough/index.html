@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Animal Kingdom - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Hornbill Chapter 3 - Discovering Tut</div>
+<h1>Discovering Tut Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - night scan, Carter, resin, tools, royal family, scan night, themes, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Night in the Valley 🌙⭐⭐</h2>
+<p class="why">5 January 2005, 6 pm: King Tut leaves his tomb.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the wind</button>
+<button class="b" data-o="1">the scene</button>
+<button class="b" data-o="2">the tourists</button>
+<button class="b" data-o="3">the mummy</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Carter and the Tomb 🏺⭐⭐</h2>
+<p class="why">1922: a ransacked but richly complete royal collection.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the discovery</button>
+<button class="b" data-o="1">the treasure</button>
+<button class="b" data-o="2">everyday things</button>
+<button class="b" data-o="3">three coffins</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Stuck in Resin ☀️⭐⭐</h2>
+<p class="why">The sun, the chisel and the damage.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the hard resin</button>
+<button class="b" data-o="1">sun at 149 F</button>
+<button class="b" data-o="2">the removal</button>
+<button class="b" data-o="3">Carter’s defence</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. New Tools, New Questions 🩻⭐⭐</h2>
+<p class="why">From X-ray in 1968 to the CT scan.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">archaeology shifts</button>
+<button class="b" data-o="1">1968 X-ray</button>
+<button class="b" data-o="2">what is CT</button>
+<button class="b" data-o="3">two big questions</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. The Royal Family 👑⭐⭐</h2>
+<p class="why">From Amenhotep III to Tutankhamun.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Amenhotep III</button>
+<button class="b" data-o="1">Akhenaten</button>
+<button class="b" data-o="2">after Akhenaten</button>
+<button class="b" data-o="3">Tutankhamun</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. The Scan Night 🔬⭐⭐</h2>
+<p class="why">Sand in a fan, plastic fans and a sigh of relief.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the mummy inventory</button>
+<button class="b" data-o="1">the scan</button>
+<button class="b" data-o="2">the breakdown</button>
+<button class="b" data-o="3">the relief</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Themes + People 🧠⭐⭐</h2>
+<p class="why">Science, belief and care for the past.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">science vs curse</button>
+<button class="b" data-o="1">respect vs scrutiny</button>
+<button class="b" data-o="2">knowing the past</button>
+<button class="b" data-o="3">as in death, as in life</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Tut Pakka? ⭐</h2>
+<p class="why">5 sawaal - scan date, fan, resin, X-ray, name. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Night</b>5 Jan 2005, 6 pm: Tut’s mummy slides into a CT scanner in the Valley of the Kings; tomb ~26 ft underground.</div>
+<div class="rcard"><b>Carter</b>1922 discovery after years of search; ransacked but surprisingly complete; richest royal collection ever found.</div>
+<div class="rcard"><b>Resin</b>Resins cemented him to a solid gold coffin; sun at 149 F failed; chisel; head removed, joints severed; Carter’s defence: thieves.</div>
+<div class="rcard"><b>Tools</b>1968 X-ray: breast-bone + front ribs missing. CT = hundreds of X-ray slices into a 3D virtual body.</div>
+<div class="rcard"><b>Family</b>Amenhotep III, Akhenaten (Aten, Amarna), Smenkhkare, then Tutankhaten becomes Tutankhamun; ~9 years.</div>
+<div class="rcard"><b>Scan</b>1,700 images, 0.62 mm head slices; sand in cooler fan; plastic fans; under 3 hours; Orion over the tomb.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 3 (Discovering Tut) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["An angry wind stirred up <span class=hl>ghostly dust devils</span> as King Tut was taken from his resting place in the <span class=hl>Valley of the Kings</span>. Dark-bellied clouds had scudded across the desert sky all day and now veiled the stars in casket grey.", "It was <span class=hl>6 pm on 5 January 2005</span>. The world’s most famous mummy glided <span class=hl>head first into a CT scanner</span> brought to probe the medical mysteries of a young ruler who died more than <span class=hl>3,300 years ago</span>.", "All afternoon tourists had descended into the cramped, rock-cut tomb <span class=hl>some 26 feet underground</span>. They gazed at the murals, peered at Tut’s gilded face on the coffin lid, and wondered, with a shiver, whether the <span class=hl>pharaoh’s curse</span> was true.", "Tut was a teenager when he died, the <span class=hl>last heir of a powerful family</span> that ruled Egypt and its empire for centuries. He was laid to rest laden with gold and eventually forgotten; since 1922 the world has speculated about how he died, even murder."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Night in the Valley",460,26,YL,F(14,1),"center");
+ if(s===0){c.fillStyle='rgba(80,80,110,.35)';ell(c,300,120,120,30,0,'#8b94c4','rgba(139,148,196,.4)',2);ell(c,560,100,110,28,0,'#8b94c4','rgba(139,148,196,.4)',2);for(let k=0;k<10;k++){circ(c,40+k*66,30+(k*37%40),2,'#e8e8f2','#e8e8f2',1);}for(let k=0;k<5;k++){const a=__t*2+k;line(c,150+k*140,260,150+k*140+Math.sin(a)*12,215,YL,2);circ(c,150+k*140+Math.sin(a)*12,212,5,YL,YL,1);}txt(c,'angry wind + ghostly dust devils',460,285,MG,F(13,1),'center');txt(c,"a stormy desert night",460,326,MG,F(14,1),"center");}
+ else if(s===1){box(c,90,100,200,100,YL,['VALLEY OF','THE KINGS'],'#2a2608',14);box(c,360,100,200,100,CY,['6 pm','5 Jan 2005'],'#0a1c2a',14);box(c,630,100,200,100,MG,['CT scanner','brought here'],'#2a0a2a',14);arrow2(c,295,150,355,150,GR,3);arrow2(c,565,150,625,150,GR,3);txt(c,'Tut died 3,300+ years ago',460,250,YL,F(13,1),'center');txt(c,"the setting",460,326,CY,F(14,1),"center");}
+ else if(s===2){c.fillStyle='rgba(120,90,40,.5)';c.fillRect(0,170,920,160);c.fillStyle='#07070f';c.fillRect(300,170,320,110);c.strokeStyle=YL;c.lineWidth=2;c.strokeRect(300,170,320,110);for(let k=0;k<4;k++){circ(c,80+k*50,120,10,CY,'rgba(34,211,238,.2)',2);line(c,80+k*50,130,80+k*50,160,CY,2);}txt(c,'tomb: ~26 ft underground',460,225,YL,F(14,1),'center');txt(c,'tourists + murals + gilded face',640,120,GR,F(12,1),'left');txt(c,'is the curse true?',640,148,RD,F(13,1),'left');txt(c,"visitors in a cramped tomb",460,326,YL,F(14,1),"center");}
+ else if(s===3){c.fillStyle='rgba(250,204,21,.15)';c.strokeStyle=YL;c.lineWidth=3;c.beginPath();c.moveTo(230,170);c.quadraticCurveTo(230,90,300,90);c.lineTo(620,90);c.quadraticCurveTo(690,90,690,170);c.quadraticCurveTo(690,240,620,240);c.lineTo(300,240);c.quadraticCurveTo(230,240,230,170);c.fill();c.stroke();circ(c,300,165,36,YL,'rgba(250,204,21,.3)',3);for(let k=0;k<3;k++)line(c,360+k*90,120,360+k*90,220,YL,1);txt(c,'last heir of a royal family',460,285,MG,F(13,1),'center');txt(c,'gold, then forgotten',460,60,GR,F(13,1),'center');txt(c,"a teenage pharaoh",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[0]=()=>{if([0].includes(s))draw();};
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Howard Carter</span>, the British archaeologist, discovered Tut’s tomb in <span class=hl>1922</span> after years of futile searching. Its contents, though hastily ransacked in antiquity, were surprisingly complete.", "They remain the <span class=hl>richest royal collection ever found</span>. Stunning artefacts in gold, their eternal brilliance meant to guarantee <span class=hl>resurrection</span>, caused a sensation and still get the most attention.", "Tut was also buried with <span class=hl>everyday things</span> for the afterlife: board games, a bronze razor, linen undergarments, cases of food and wine.", "After months of recording the funerary treasures, Carter investigated the <span class=hl>three nested coffins</span>. The first held a shroud adorned with garlands of willow, olive, wild celery, lotus petals and cornflowers, the faded evidence of a burial in <span class=hl>March or April</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Carter + the tomb",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,100,100,200,100,CY,['HOWARD CARTER','British archaeologist'],'#0a1c2a',13);arrow2(c,310,150,470,150,YL,4);box(c,480,90,300,120,YL,['TUT’S TOMB','found in 1922'],'#2a2608',14);txt(c,'after years of futile searching',390,260,MG,F(13,1),'center');txt(c,"Carter finds the tomb",460,326,CY,F(14,1),"center");}
+ else if(s===1){circ(c,300,140,50,YL,'rgba(250,204,21,.3)',4);circ(c,300,140,30,'#fde68a','rgba(250,204,21,.5)',2);ell(c,300,215,60,22,0,YL,'rgba(250,204,21,.2)',3);box(c,520,90,300,110,MG,['hastily ransacked','in antiquity','BUT surprisingly complete'],'#2a0a2a',13);txt(c,'gold = eternal brilliance = resurrection',560,260,YL,F(13,1),'center');txt(c,"richest royal collection ever found",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,60,100,150,80,CY,['board games'],'#0a1c2a',13);box(c,240,100,150,80,YL,['bronze razor'],'#2a2608',13);box(c,420,100,150,80,MG,['linen','undergarments'],'#2a0a2a',13);box(c,600,100,230,80,GR,['food + wine cases'],'#0a2a14',13);txt(c,'things he would want in the afterlife',450,240,GR,F(14,1),'center');txt(c,"everyday items too",460,326,GR,F(14,1),"center");}
+ else if(s===3){ell(c,460,150,300,78,0,YL,'rgba(250,204,21,.08)',3);ell(c,460,150,220,56,0,CY,'rgba(34,211,238,.08)',3);ell(c,460,150,140,34,0,MG,'rgba(232,121,249,.12)',3);txt(c,'3 nested coffins',460,50,YL,F(15,1),'center');txt(c,'shroud: willow, olive, celery, lotus, cornflower',460,258,GR,F(13,1),'center');txt(c,'burial in March or April',460,285,CY,F(13,1),'center');txt(c,"flowers tell the season",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["When Carter reached the mummy, he ran into trouble. The <span class=hl>ritual resins had hardened</span>, cementing Tut to the bottom of his <span class=hl>solid gold coffin</span>. “No amount of legitimate force could move them,” he wrote.", "The sun beats down like a hammer in southern Egypt. For several hours Carter set the mummy outside in blazing sunshine that heated it to <span class=hl>149 degrees Fahrenheit</span>. Nothing budged.", "The consolidated material had to be <span class=hl>chiselled away</span>. To separate Tut from his gold adornments, Carter’s men <span class=hl>removed the head and severed nearly every major joint</span>, then reassembled the remains on a layer of sand in a wooden box, with padding that concealed the damage.", "<span class=hl>In his defence</span>, Carter had little choice: if he had not cut the mummy free, thieves would have circumvented the guards and ripped it apart to get the gold. The royals were fabulously wealthy and hoped to take their riches with them."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Stuck in resin",460,26,YL,F(14,1),"center");
+ if(s===0){ell(c,460,200,200,40,0,YL,'rgba(250,204,21,.25)',4);ell(c,460,190,170,26,0,'#e8e8f2','rgba(232,232,242,.2)',3);txt(c,'hardened ritual resins',460,100,RD,F(15,1),'center');txt(c,'mummy cemented to the SOLID GOLD coffin',460,275,YL,F(13,1),'center');txt(c,"stuck fast",460,326,RD,F(14,1),"center");}
+ else if(s===1){circ(c,150,110,36,YL,'rgba(250,204,21,.5)',4);for(let k=0;k<8;k++){const g=k*.785+__t;line(c,150+Math.cos(g)*46,110+Math.sin(g)*46,150+Math.cos(g)*62,110+Math.sin(g)*62,YL,3);}ell(c,520,200,170,24,0,'#e8e8f2','rgba(232,232,242,.2)',3);txt(c,'149 degrees F',150,195,RD,F(15,1),'center');txt(c,'mummy outside in the sun',520,260,CY,F(13,1),'center');txt(c,'NOTHING BUDGED',620,130,MG,F(16,1),'center');txt(c,"sun heat failed",460,326,YL,F(14,1),"center");}
+ else if(s===2){line(c,240,180,330,230,'#e8e8f2',5);line(c,330,230,350,215,RD,6);ell(c,560,200,170,24,0,'#e8e8f2','rgba(232,232,242,.2)',3);circ(c,420,195,18,'#e8e8f2','rgba(232,232,242,.25)',3);txt(c,'CHISEL the resin away',250,150,CY,F(14,1),'center');txt(c,'head removed + joints severed',640,130,RD,F(13,1),'center');txt(c,'to free the gold adornments',640,155,YL,F(12,1),'center');txt(c,"freeing the king",460,326,RD,F(14,1),"center");}
+ else if(s===3){box(c,60,90,240,100,RD,['no cut = thieves','would rip it apart','for the gold'],'#2a0f0f',13);box(c,350,90,240,100,YL,['remains rebuilt on','sand in a wooden box','padding hides damage'],'#2a2608',13);box(c,640,90,220,100,CY,['royals took','riches with them','(they hoped)'],'#0a1c2a',13);txt(c,'Carter had little choice',460,250,GR,F(14,1),'center');txt(c,"his defence",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[2]=()=>{if([1].includes(s))draw();};
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Archaeology has changed substantially: it now focuses less on treasure and more on the <span class=hl>details of life and mysteries of death</span>, and uses more sophisticated tools, including medical technology.", "In <span class=hl>1968</span>, more than 40 years after the discovery, an anatomy professor X-rayed the mummy and found a startling fact: beneath the resin on his chest, the <span class=hl>breast-bone and front ribs are missing</span>.", "<span class=hl>Computed tomography (CT)</span> puts hundreds of X-rays in cross-section together like <span class=hl>slices of bread</span> to create a three-dimensional virtual body.", "Two big questions still lingered: <span class=hl>how did he die, and how old was he</span> at death? Tut was the last of his family line, and his funeral was the death rattle of a dynasty."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"New tools",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,70,100,300,100,RD,['BEFORE: treasure','gold + riches'],'#2a0f0f',14);box(c,550,100,300,100,CY,['NOW: life + death','mysteries, medical tech'],'#0a1c2a',14);arrow2(c,380,150,540,150,GR,4);txt(c,'archaeology has changed',460,250,YL,F(14,1),'center');txt(c,"a changing science",460,326,CY,F(14,1),"center");}
+ else if(s===1){ell(c,460,170,90,115,0,'#e8e8f2','rgba(232,232,242,.1)',3);for(let k=0;k<5;k++){ell(c,460,120+k*18,60-k*2,6,0,'#8b94c4','rgba(139,148,196,.1)',1);}c.strokeStyle=RD;c.lineWidth=4;c.setLineDash([6,6]);c.strokeRect(405,110,110,90);c.setLineDash([]);txt(c,'1968 X-RAY',200,160,YL,F(16,1),'center');txt(c,'breast-bone + front ribs',620,150,RD,F(13,1),'left');txt(c,'MISSING (under the resin)',620,175,CY,F(12,1),'left');txt(c,"a startling discovery",460,326,RD,F(14,1),"center");}
+ else if(s===2){for(let k=0;k<7;k++){ell(c,250,110+k*24,70,9,0,CY,'rgba(34,211,238,.2)',2);}arrow2(c,340,170,500,170,YL,4);ell(c,640,170,70,100,0,MG,'rgba(232,121,249,.15)',3);for(let k=0;k<6;k++)line(c,590,130+k*16,690,130+k*16,MG,1);txt(c,'X-ray slices',250,285,CY,F(13,1),'center');txt(c,'3D virtual body',640,285,MG,F(13,1),'center');txt(c,'like slices of bread',460,70,GR,F(14,1),'center');txt(c,"what CT does",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,90,100,300,100,MG,['HOW DID','HE DIE?'],'#2a0a2a',16);box(c,530,100,300,100,YL,['HOW OLD WAS','HE?'],'#2a2608',16);txt(c,'last of his line, a dynasty’s death rattle',460,260,GR,F(13,1),'center');txt(c,"still unanswered",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Amenhotep III</span>, Tut’s father or grandfather, was a powerful pharaoh who ruled for almost four decades at the height of the eighteenth dynasty’s golden age.", "His son <span class=hl>Amenhotep IV</span> promoted worship of the <span class=hl>Aten (sun disk)</span>, changed his name to <span class=hl>Akhenaten (servant of the Aten)</span> and moved the religious capital from <span class=hl>Thebes</span> to <span class=hl>Akhetaten (Amarna)</span>. He also attacked the god <span class=hl>Amun</span>, smashing his images and closing his temples.", "Ray Johnson: “It must have been a horrific time… Akhenaten went a little wacky.” After Akhenaten’s death, a mysterious ruler, <span class=hl>Smenkhkare</span>, appeared briefly and exited with hardly a trace.", "Then a very young <span class=hl>Tutankhaten</span> took the throne. He changed his name to <span class=hl>Tutankhamun (living image of Amun)</span>, oversaw a restoration of the old ways, reigned about <span class=hl>nine years</span> and died unexpectedly."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Royal family",460,26,YL,F(14,1),"center");
+ if(s===0){circ(c,460,120,30,YL,'rgba(250,204,21,.25)',3);ell(c,460,200,36,60,0,YL,'rgba(250,204,21,.12)',3);txt(c,'AMENHOTEP III',460,60,YL,F(15,1),'center');txt(c,'father or grandfather of Tut',460,270,CY,F(13,1),'center');txt(c,'ruled almost 4 decades: golden age',700,140,GR,F(13,1),'center');txt(c,'18th dynasty',700,165,MG,F(12,1),'center');txt(c,"a powerful pharaoh",460,326,YL,F(14,1),"center");}
+ else if(s===1){circ(c,150,150,50,YL,'rgba(250,204,21,.4)',4);for(let k=0;k<8;k++){const g=k*.785;line(c,150+Math.cos(g)*58,150+Math.sin(g)*58,150+Math.cos(g)*76,150+Math.sin(g)*76,YL,3);}arrow2(c,260,150,420,150,GR,3);box(c,430,100,200,100,CY,['THEBES','to AKHETATEN','(Amarna)'],'#0a1c2a',13);X(760,150,RD);txt(c,'AMUN',760,215,RD,F(14,1),'center');txt(c,'Aten = sun disk',150,250,YL,F(13,1),'center');txt(c,'temples shut',760,235,RD,F(12,1),'center');txt(c,"a religious revolution",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,90,100,220,90,RD,['AKHENATEN','dies'],'#2a0f0f',14);box(c,370,100,220,90,MG,['SMENKHKARE','appears briefly'],'#2a0a2a',13);ell(c,730,145,60,40,0,'#8b94c4','rgba(139,148,196,.15)',2);txt(c,'hardly a trace',730,150,CY,F(12,1),'center');txt(c,'then...',460,250,GR,F(16,1),'center');txt(c,"a mysterious ruler",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,100,90,260,100,CY,['TUTANKHATEN','very young king'],'#0a1c2a',14);arrow2(c,370,140,550,140,YL,4);box(c,560,90,280,100,YL,['TUTANKHAMUN','living image of Amun'],'#2a2608',13);txt(c,'restored the old ways; reigned ~9 years',460,250,GR,F(13,1),'center');txt(c,"the boy king renames himself",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["The Egyptian Mummy Project (inventory begun in late 2003) had recorded almost <span class=hl>600 mummies</span>. A portable CT machine donated by the <span class=hl>National Geographic Society and Siemens</span> would scan them; Tut was one of the first.", "The machine scanned the mummy head to toe, creating <span class=hl>1,700 digital X-ray images</span> in cross-section. The head, scanned in <span class=hl>0.62 millimetre slices</span>, took on eerie detail. Specialists in radiology, forensics and anatomy began to probe his secrets.", "Workmen carried Tut from the tomb in his box, up a ramp and stairs, and onto a <span class=hl>hydraulic lift</span> into the scanner trailer. Twenty minutes later the million-dollar scanner <span class=hl>quit because of sand in a cooler fan</span>. “Curse of the pharaoh,” joked a guard nervously.", "The <span class=hl>substitute plastic fans</span> worked well enough. Less than <span class=hl>three hours</span> after removal, Tut again rested in peace. Zahi Hawass: “I didn’t sleep last night, not for a second… now I think I will go and sleep.” Above the tomb stood <span class=hl>Orion</span>, the soul of Osiris."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Scan night",460,26,YL,F(14,1),"center");
+ if(s===0){for(let k=0;k<30;k++){ell(c,70+(k%10)*80,105+Math.floor(k/10)*48,22,9,0,YL,'rgba(250,204,21,.2)',2);}txt(c,'almost 600 mummies recorded so far',460,60,YL,F(14,1),'center');txt(c,'portable CT: donated by NatGeo + Siemens',460,270,CY,F(13,1),'center');txt(c,"the Egyptian Mummy Project",460,326,YL,F(14,1),"center");}
+ else if(s===1){circ(c,460,150,80,CY,'rgba(34,211,238,.1)',5);circ(c,460,150,56,MG,'rgba(232,121,249,.08)',3);ell(c,460,150,150,14,0,YL,'rgba(250,204,21,.25)',3);const p=(Math.sin(__t*2)+1)/2;line(c,380+p*160,60,380+p*160,240,GR,2);txt(c,'1,700 images, head to toe',460,285,GR,F(14,1),'center');txt(c,'head: 0.62 mm slices',730,100,CY,F(13,1),'center');txt(c,"the scan",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,60,90,210,90,YL,['box carried','up ramp + stairs','hydraulic lift'],'#2a2608',12);arrow2(c,280,135,350,135,GR,3);box(c,360,90,210,90,CY,['CT trailer','scan runs...'],'#0a1c2a',13);X(640,135,RD);txt(c,'20 min: scanner QUITS',760,110,RD,F(14,1),'center');txt(c,'sand in a cooler fan',760,145,MG,F(13,1),'center');txt(c,'guard: Curse of the pharaoh!',460,260,YL,F(13,1),'center');txt(c,"the breakdown",460,326,RD,F(14,1),"center");}
+ else if(s===3){box(c,70,90,220,90,GR,['plastic fans','fit as substitutes'],'#0a2a14',13);box(c,330,90,220,90,CY,['under 3 hours','Tut back in tomb'],'#0a1c2a',13);c.fillStyle='#e8e8f2';for(let k=0;k<7;k++)circ(c,640+Math.cos(k)*40,125+Math.sin(k*1.4)*30,2,'#e8e8f2','#e8e8f2',1);line(c,620,130,660,110,YL,2);line(c,660,110,700,150,YL,2);line(c,700,150,640,170,YL,2);txt(c,'Orion = soul of Osiris',690,230,MG,F(13,1),'center');txt(c,'Hawass can finally sleep',310,250,YL,F(13,1),'center');txt(c,"relief under the stars",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[5]=()=>{if([1].includes(s))draw();};
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["The <span class=hl>pharaoh’s curse</span> is a belief that death or misfortune falls on those who disturb the pharaoh. Yet the chapter closes with CT technology, not fear, probing the mystery: <span class=hl>science versus superstition</span>.", "The textbook asks groups to debate whether scientific intervention is necessary to unearth buried mysteries, and whether <span class=hl>traditions, rituals and funerary practices must be respected</span>. Carter’s methods left the mummy in very bad condition, as Hawass said.", "The textbook also asks if knowledge of the past is useful to complete our knowledge of the world we live in, and whether advanced technology gives <span class=hl>conclusive evidence</span> of past events. The chapter leaves the cause of death open.", "“<span class=hl>King Tut is one of the first mummies to be scanned, in death, as in life, moving regally ahead of his countrymen.</span>” He was a pharaoh first in line in life and among the first scanned in death."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Themes + people",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,70,100,300,100,RD,['CURSE','death for those','who disturb him'],'#2a0f0f',13);box(c,550,100,300,100,CY,['CT SCAN','technology + evidence'],'#0a1c2a',14);arrow2(c,380,150,540,150,GR,4);txt(c,'mystery solved by science, not fear',460,260,YL,F(13,1),'center');txt(c,"science, not fear",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,70,100,300,100,YL,['respect traditions','funerary practices'],'#2a2608',13);box(c,550,100,300,100,MG,['scientific scrutiny','unearths mysteries'],'#2a0a2a',13);line(c,460,90,460,210,RD,3);txt(c,'debate both sides',460,260,GR,F(14,1),'center');txt(c,"two views to weigh",460,326,YL,F(14,1),"center");}
+ else if(s===2){ell(c,460,170,260,60,0,YL,'rgba(250,204,21,.1)',3);for(let k=0;k<6;k++)ell(c,460,100+k*18,200-k*20,5,0,CY,'rgba(34,211,238,.15)',1);txt(c,'past knowledge completes our knowledge of today',460,60,GR,F(13,1),'center');txt(c,'technology: conclusive? cause of death still open',460,275,MG,F(13,1),'center');txt(c,"learning from the past",460,326,GR,F(14,1),"center");}
+ else if(s===3){circ(c,300,150,30,YL,'rgba(250,204,21,.3)',3);ell(c,300,215,40,45,0,YL,'rgba(250,204,21,.15)',3);arrow2(c,360,150,540,150,GR,4);ell(c,640,175,90,28,0,YL,'rgba(250,204,21,.2)',3);txt(c,'in life: first in line',300,285,YL,F(13,1),'center');txt(c,'in death: among the first scanned',640,265,CY,F(13,1),'center');txt(c,"regal, even in death",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Tut ka CT scan kab hua?",opts:["1922","5 January 2005, 6 pm","1968","1976"],a:1,why:"It was 6 pm on 5 January 2005."},
+{q:"Scanner kis wajah se band hua?",opts:["barish","cooler fan mein ret","power cut","guards ne roka"],a:1,why:"The scanner quit because of sand in a cooler fan."},
+{q:"Mummy ko gold coffin se kisne chipka rakha tha?",opts:["glue","hardened ritual resins","gold wires","sand"],a:1,why:"The ritual resins had hardened, cementing Tut to the coffin."},
+{q:"1968 ke X-ray me kya mila?",opts:["tooti taang","breast-bone aur front ribs missing","extra skull","khali coffin"],a:1,why:"The breast-bone and front ribs are missing."},
+{q:"Tutankhamun naam ka matlab?",opts:["servant of the Aten","living image of Amun","king of Egypt","son of Ra"],a:1,why:"Tutankhamun means living image of Amun."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Tut pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
