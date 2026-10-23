@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Excretory Products and their Elimination - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 Biology - Chapter 16 - Excretory Products and their Elimination</div>
+<h1>Excretory Products and their Elimination Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - nitrogenous wastes, nephron, urine formation, concentration, ADH + RAAS + ANF, micturition, disorders, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Nitrogenous Wastes + Organs 🚰⭐⭐</h2>
+<p class="why">Ammonotelic, ureotelic, uricotelic, excretory organs, kidney layout.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">3 wastes</button>
+<button class="b" data-o="1">who excretes what</button>
+<button class="b" data-o="2">organs</button>
+<button class="b" data-o="3">kidney layout</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Nephron Structure 🔬⭐⭐</h2>
+<p class="why">Malpighian body, tubule parts, afferent/efferent, nephron types.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">two parts</button>
+<button class="b" data-o="1">glomerulus</button>
+<button class="b" data-o="2">tubule path</button>
+<button class="b" data-o="3">types + blood</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Urine Formation 💧⭐⭐</h2>
+<p class="why">Filtration, reabsorption, secretion, 180 L to 1.5 L.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">filtration</button>
+<button class="b" data-o="1">reabsorption</button>
+<button class="b" data-o="2">secretion</button>
+<button class="b" data-o="3">the numbers</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Concentrating Urine 🧂⭐⭐</h2>
+<p class="why">Counter-current mechanism, osmolarity gradient, collecting duct.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">loop flow</button>
+<button class="b" data-o="1">gradient</button>
+<button class="b" data-o="2">descending vs ascending</button>
+<button class="b" data-o="3">collecting duct</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Regulation: ADH, RAAS, ANF 🎛️⭐⭐</h2>
+<p class="why">ADH, diabetes insipidus, JGA and renin, aldosterone, ANF.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">ADH</button>
+<button class="b" data-o="1">JGA / RAAS</button>
+<button class="b" data-o="2">ANF</button>
+<button class="b" data-o="3">feedback summary</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Micturition + Normal Urine 🚻⭐⭐</h2>
+<p class="why">Micturition reflex, voluntary control, normal and abnormal urine.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">reflex</button>
+<button class="b" data-o="1">control</button>
+<button class="b" data-o="2">normal urine</button>
+<button class="b" data-o="3">abnormal</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Disorders + Dialysis 🩺⭐⭐</h2>
+<p class="why">Uremia, stones, glomerulonephritis, dialysis, transplant.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">uremia</button>
+<button class="b" data-o="1">stones</button>
+<button class="b" data-o="2">glomerulonephritis</button>
+<button class="b" data-o="3">dialysis</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Excretion Pakka? ⭐</h2>
+<p class="why">5 sawaal - ureotelic, efferent, 180 L, ADH, uremia. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Wastes</b>Ammonotelic (bony fish), ureotelic (mammals), uricotelic (reptiles, birds). Ammonia needs most water, uric acid least.</div>
+<div class="rcard"><b>Nephron</b>Malpighian body + tubule. Afferent wider, efferent narrower. Bowman's, PCT, Henle's loop, DCT, collecting duct. Cortical 80-85%.</div>
+<div class="rcard"><b>Urine</b>Filtration (GFR ~125 mL/min, 180 L/day), reabsorption (PCT all glucose), secretion. Only ~1.5 L/day urine.</div>
+<div class="rcard"><b>Concentration</b>Counter-current in loop + vasa recta. Gradient 300 to 1200 mOsmol. Ascending limb: NaCl out, no water.</div>
+<div class="rcard"><b>Regulation</b>ADH: water reabsorption up. Low GFR: renin, angiotensin II, aldosterone. ANF lowers BP.</div>
+<div class="rcard"><b>Disorders</b>Micturition reflex. Glycosuria, ketonuria. Uremia, renal calculi, glomerulonephritis. Dialysis or transplant.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 Biology Chapter 16 (Excretory Products and their Elimination) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["Main nitrogenous wastes: <span class=hl>ammonia, urea, uric acid</span>. Water availability decides which one an animal makes.", "<span class=hl>Ammonotelic:</span> bony fish, aquatic amphibians, aquatic insects. <span class=hl>Ureotelic:</span> mammals, terrestrial amphibians, marine fish. <span class=hl>Uricotelic:</span> reptiles, birds, land snails, insects.", "Human excretory system: <span class=hl>pair of kidneys</span>, ureters, urinary bladder, urethra. Skin, lungs and liver also remove wastes.", "Kidney: last thoracic to third lumbar level. Outer <span class=hl>cortex</span>, inner <span class=hl>medulla</span> (pyramids) → pelvis → ureter. Unit = <span class=hl>nephron</span>, ~1 million per kidney."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Nitrogenous wastes",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,270,110,CY,["AMMONIA","very toxic","needs LOTS of water"],"#0a1c2a",14);box(c,330,70,270,110,MG,["UREA","less toxic","less water"],"#2a0a2a",14);box(c,620,70,260,110,GR,["URIC ACID","least toxic","MINIMUM water"],"#0a2a1a",14);txt(c,"ammonia → urea → uric acid = paani bachane ka safar",460,230,YL,F(14,1),"center");}
+ else if(s===1){box(c,40,70,270,110,CY,["AMMONOTELIC","bony fish, aquatic","amphibians + insects"],"#0a1c2a",13);box(c,330,70,270,110,MG,["UREOTELIC","mammals, land","amphibians, marine fish"],"#2a0a2a",13);box(c,620,70,260,110,GR,["URICOTELIC","reptiles, birds,","land snails, insects"],"#0a2a1a",13);txt(c,"suffix -telic = excrete karne wala",460,230,D,F(14,1),"center");}
+ else if(s===2){chain(c,["kidneys","ureters","bladder","urethra"],[0,1,2,3],100,CY);txt(c,"kidneys = main excretory organs",460,195,YL,F(15,1),"center");txt(c,"skin (sweat), lungs (CO2 + water), liver also help",460,235,GR,F(14,1),"center");}
+ else{ell(c,200,160,100,120,0,CY,"#0a1c2a",4);ell(c,200,160,60,80,0,MG,"#2a0a2a",3);txt(c,"cortex",200,60,CY,F(13,1),"center");txt(c,"medulla",200,165,MG,F(13,1),"center");txt(c,"pelvis → ureter",200,300,YL,F(12,1),"center");txt(c,"T12 to L3 level",600,100,YL,F(15,1),"center");txt(c,"right kidney thoda neeche (liver)",600,145,GR,F(14,1),"center");txt(c,"nephron = functional unit",600,190,CY,F(15,1),"center");txt(c,"~1 million per kidney",600,225,MG,F(15,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["Nephron = <span class=hl>Malpighian body</span> (glomerulus + Bowman's capsule) + <span class=hl>renal tubule</span>.", "<span class=hl>Afferent</span> arteriole brings blood (wider); <span class=hl>efferent</span> takes it away (narrower). Pressure builds, filtration happens.", "Bowman's capsule → <span class=hl>PCT</span> → <span class=hl>Henle's loop</span> → <span class=hl>DCT</span> → collecting duct → pelvis.", "<span class=hl>Cortical</span> 80-85%: short loop. <span class=hl>Juxtamedullary</span> 15-20%: long loop deep in medulla, with vasa recta."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Nephron",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,60,70,380,110,CY,["MALPIGHIAN BODY","glomerulus +","Bowman's capsule"],"#0a1c2a",14);box(c,480,70,380,110,MG,["RENAL TUBULE","PCT, Henle's loop, DCT"],"#2a0a2a",14);txt(c,"nephron = kidney ka filter factory",460,225,YL,F(15,1),"center");}
+ else if(s===1){box(c,40,70,270,110,GR,["AFFERENT","blood IN","WIDER"],"#0a2a1a",14);box(c,330,70,270,110,CY,["GLOMERULUS","capillary tuft","high pressure"],"#0a1c2a",14);box(c,620,70,260,110,RD,["EFFERENT","blood OUT","NARROWER"],"#2a0f0f",14);txt(c,"wide in, narrow out = ultrafiltration pressure",460,230,YL,F(14,1),"center");}
+ else if(s===2){chain(c,["Bowman's|capsule","PCT","Henle's|loop","DCT","collecting|duct"],[0,1,2,3,4],100,MG);txt(c,"loop = descending + ascending limb (U-shape)",460,200,YL,F(15,1),"center");txt(c,"collecting duct → pelvis",460,240,GR,F(14,1),"center");}
+ else{box(c,40,70,400,110,CY,["CORTICAL 80-85%","short Henle's loop","stays in cortex"],"#0a1c2a",14);box(c,480,70,400,110,MG,["JUXTAMEDULLARY 15-20%","long loop, deep in medulla","+ vasa recta"],"#2a0a2a",13);txt(c,"juxtamedullary = concentrated urine",460,225,YL,F(15,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Glomerular filtration:</span> water + small solutes enter Bowman's capsule. Blood cells + proteins stay. <span class=hl>GFR ~125 mL/min</span> (~180 L/day).", "<span class=hl>Reabsorption:</span> PCT takes back ~70-80% of water + electrolytes, all glucose + amino acids. Active + passive.", "<span class=hl>Secretion:</span> tubule cells add H⁺, K⁺, ammonia, drugs to the filtrate. Keeps blood pH + ion balance.", "Out of <span class=hl>180 L</span> filtrate, only ~<span class=hl>1.5 L/day</span> becomes urine."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Urine formation",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,400,110,CY,["PASS THROUGH","water, glucose, amino acids,","salts, urea, uric acid"],"#0a1c2a",13);box(c,480,70,400,110,RD,["STAY IN BLOOD","blood cells","+ proteins"],"#2a0f0f",14);txt(c,"3 layers: endothelium + basement membrane + podocytes",460,225,YL,F(14,1),"center");txt(c,"GFR ~125 mL/min = ~180 L/day",460,255,GR,F(14,1),"center");}
+ else if(s===1){box(c,40,70,400,110,GR,["PCT","~70-80% water + electrolytes","ALL glucose + amino acids"],"#0a2a1a",13);box(c,480,70,400,110,CY,["HENLE'S LOOP","descending: water OUT","ascending: NaCl OUT"],"#0a1c2a",13);txt(c,"active + passive transport dono",460,225,YL,F(15,1),"center");}
+ else if(s===2){box(c,60,70,380,110,MG,["SECRETION","H+, K+, ammonia, drugs","tubule cells → filtrate"],"#2a0a2a",13);box(c,480,70,380,110,YL,["WHY","blood pH + ionic","balance maintain"],"#2a2608",14);txt(c,"reabsorption ka ulta: blood se tubule me",460,225,GR,F(15,1),"center");}
+ else{c.fillStyle="#22d3ee";c.fillRect(120,240,120,-170);c.fillStyle="#e879f9";c.fillRect(320,240,120,-6);txt(c,"180 L filtrate",180,262,CY,F(14,1),"center");txt(c,"~1.5 L urine",380,262,MG,F(14,1),"center");txt(c,"filter → reabsorb → secrete",700,120,YL,F(16,1),"center");txt(c,"→ concentrate → urine",700,160,GR,F(16,1),"center");txt(c,"(bars not to scale)",700,220,D,F(12,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Counter-current:</span> flow in the two limbs of Henle's loop is opposite, and vasa recta runs opposite too.", "Medullary interstitium becomes more concentrated: <span class=hl>~300 mOsmol/L</span> at the cortex to <span class=hl>~1200</span> deep in the medulla.", "<span class=hl>Descending limb:</span> permeable to water. <span class=hl>Ascending limb:</span> NaCl goes out, water cannot.", "<span class=hl>Collecting duct</span> reabsorbs water as it passes the concentrated medulla: concentrated urine."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Concentrating urine",460,26,YL,F(14,1),"center");
+
+ if(s===0){line(c,300,60,300,260,CY,6);line(c,300,260,400,260,CY,6);line(c,400,260,400,60,MG,6);txt(c,"descending ↓",250,160,CY,F(13,1),"right");txt(c,"ascending ↑",450,160,MG,F(13,1),"left");txt(c,"opposite flow = counter-current",700,120,YL,F(15,1),"center");txt(c,"vasa recta bhi opposite",700,165,GR,F(14,1),"center");}
+ else if(s===1){const cols=["#0a1c2a","#10284a","#1c2f6a","#3a2f8a","#5a2f9a"];for(let k=0;k<5;k++){c.fillStyle=cols[k];c.fillRect(120+k*130,80,130,150);}txt(c,"cortex 300",185,260,CY,F(13,1),"center");txt(c,"deep medulla 1200 mOsmol",705,260,MG,F(13,1),"center");txt(c,"salt gradient grows deeper",460,60,YL,F(14,1),"center");}
+ else if(s===2){box(c,40,70,400,110,CY,["DESCENDING LIMB","permeable to WATER","water OUT, filtrate concentrated"],"#0a1c2a",13);box(c,480,70,400,110,MG,["ASCENDING LIMB","NaCl OUT","water can't leave"],"#2a0a2a",14);txt(c,"filtrate cortex me wapas dilute ho jaata hai",460,225,YL,F(14,1),"center");}
+ else{box(c,60,70,380,110,GR,["COLLECTING DUCT","passes through the","concentrated medulla"],"#0a2a1a",14);box(c,480,70,380,110,YL,["WATER OUT","concentrated urine","(zyada solute per litre)"],"#2a2608",14);}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>ADH (vasopressin)</span> from posterior pituitary makes DCT + collecting duct water-permeable. Dehydration → ADH up → less, concentrated urine.", "Low GFR → <span class=hl>JGA releases renin</span> → angiotensinogen → angiotensin I → <span class=hl>II</span> → BP up + <span class=hl>aldosterone</span> → Na⁺ + water reabsorbed.", "<span class=hl>ANF</span> from heart walls when BP is high: vessels dilate, NaCl reabsorption down, BP down. Opposes RAAS.", "ADH = save water. Renin/aldosterone = save Na⁺ + BP. ANF = lower BP."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"ADH, RAAS, ANF",460,26,YL,F(14,1),"center");
+
+ if(s===0){chain(c,["dehydration","ADH UP","DCT + duct|permeable","water|reabsorbed"],[0,1,2,3],100,CY);txt(c,"result: kam, concentrated urine",460,200,YL,F(15,1),"center");txt(c,"ADH ki kami = diabetes insipidus (bahut dilute urine)",460,240,GR,F(14,1),"center");}
+ else if(s===1){chain(c,["GFR LOW","JGA|renin","angiotensin|II","aldosterone","Na+ + water|reabsorb"],[0,1,2,3,4],100,MG);txt(c,"angiotensin II = powerful vasoconstrictor, BP up",460,200,YL,F(14,1),"center");txt(c,"aldosterone = adrenal cortex se",460,240,GR,F(14,1),"center");}
+ else if(s===2){chain(c,["BP HIGH","heart walls|ANF","vessels|dilate","NaCl reabs|DOWN","BP DOWN"],[0,1,2,3,4],100,GR);txt(c,"ANF = RAAS ka opponent",460,205,YL,F(16,1),"center");}
+ else{box(c,40,70,270,110,CY,["ADH","water bachao","kam urine"],"#0a1c2a",14);box(c,330,70,270,110,MG,["RENIN / ALDOSTERONE","Na+ + BP bachao"],"#2a0a2a",13);box(c,620,70,260,110,GR,["ANF","BP ghatao"],"#0a2a1a",14);txt(c,"feedback loops: GFR aur BP stable rakhte hain",460,230,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["Bladder fills → <span class=hl>stretch receptors</span> signal CNS → reflex: <span class=hl>detrusor contracts</span>, sphincters relax → urine out.", "Adults control it <span class=hl>voluntarily</span> (cerebrum). The reflex itself is the micturition reflex.", "Normal urine: pale yellow, slightly acidic, ~<span class=hl>1-1.5 L/day</span>, ~<span class=hl>25-30 g urea/day</span>.", "<span class=hl>Glycosuria</span> (glucose) and <span class=hl>ketonuria</span> (ketone bodies) are abnormal; seen in diabetes mellitus."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Micturition",460,26,YL,F(14,1),"center");
+
+ if(s===0){chain(c,["bladder|fills","stretch|receptors","CNS|signal","detrusor|contracts","urine|OUT"],[0,1,2,3,4],100,CY);txt(c,"sphincters relax",460,200,YL,F(15,1),"center");}
+ else if(s===1){box(c,60,70,380,110,MG,["CEREBRUM","voluntary control","in adults"],"#2a0a2a",14);box(c,480,70,380,110,CY,["MICTURITION REFLEX","detrusor + sphincters","local reflex"],"#0a1c2a",14);}
+ else if(s===2){box(c,40,70,270,110,YL,["COLOUR","pale yellow","slightly acidic"],"#2a2608",14);box(c,330,70,270,110,CY,["VOLUME","~1-1.5 L/day"],"#0a1c2a",14);box(c,620,70,260,110,GR,["UREA","~25-30 g/day"],"#0a2a1a",14);}
+ else{box(c,60,70,380,110,RD,["GLYCOSURIA","glucose in urine"],"#2a0f0f",14);box(c,480,70,380,110,YL,["KETONURIA","ketone bodies in urine"],"#2a2608",14);txt(c,"diabetes mellitus ke sanket",460,225,YL,F(15,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Uremia:</span> urea builds up in blood in kidney failure. Toxic. Dialysis or transplant needed.", "<span class=hl>Renal calculi:</span> crystals (e.g. calcium oxalate, uric acid) form stones in the kidney.", "<span class=hl>Glomerulonephritis:</span> inflammation of the glomeruli, which can lead to kidney failure.", "<span class=hl>Haemodialysis:</span> blood filtered outside the body by a machine. <span class=hl>Transplant:</span> long-term answer, donor must match."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Disorders + dialysis",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,60,70,380,110,RD,["UREMIA","urea accumulates in blood","kidney failure"],"#2a0f0f",14);box(c,480,70,380,110,YL,["TREATMENT","dialysis or","kidney transplant"],"#2a2608",14);}
+ else if(s===1){box(c,60,70,380,110,YL,["RENAL CALCULI","crystal masses","in the kidney"],"#2a2608",14);box(c,480,70,380,110,CY,["MADE OF","calcium oxalate,","uric acid crystals"],"#0a1c2a",14);}
+ else if(s===2){box(c,60,70,380,110,MG,["GLOMERULONEPHRITIS","inflammation of","glomeruli"],"#2a0a2a",14);box(c,480,70,380,110,RD,["RISK","kidney failure"],"#2a0f0f",15);}
+ else{chain(c,["blood|out","dialysis|machine","wastes|removed","clean blood|back"],[0,1,2,3],100,CY);txt(c,"haemodialysis = artificial kidney",460,200,YL,F(15,1),"center");txt(c,"transplant = long-term solution (donor match zaroori)",460,240,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Mammals kaunse nitrogenous waste ke saath ureotelic hain?",opts:["ammonia","urea","uric acid","creatinine"],a:1,why:"Mammals, terrestrial amphibians, marine fish: urea (ureotelic)."},
+{q:"Efferent arteriole afferent se kaisi hoti hai?",opts:["wider","narrower","same","absent"],a:1,why:"Efferent narrower, isliye glomerulus me pressure bana rehta hai."},
+{q:"~180 L filtrate se roz kitna urine banta hai?",opts:["~1.5 L","~18 L","~50 L","~180 L"],a:0,why:"Reabsorption ke baad sirf ~1.5 L/day urine."},
+{q:"ADH ka kaam kya hai?",opts:["water reabsorption badhata hai","renin release karta hai","BP ghatata hai","glucose filter karta hai"],a:0,why:"ADH DCT + collecting duct ko water-permeable banata hai."},
+{q:"Uremia kya hai?",opts:["urine me glucose","blood me urea jama hona","kidney stones","glomerulus ki inflammation"],a:1,why:"Uremia: kidney failure me blood me urea accumulate."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Excretion pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
