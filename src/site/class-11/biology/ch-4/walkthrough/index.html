@@ -372,7 +372,7 @@ function draw(){
  if(s===0){const H=[['fish',[1,1],1],['amphibia',[1,1,1],1],['reptile',[1,1,1],1],['crocodile',[1,1,1,1],1],['birds + mammals',[1,1,1,1],1]];
 const nm=['FISH: 2','AMPHIBIAN: 3','REPTILE: 3','CROCODILE: 4','BIRD, MAMM: 4'];const nn=[2,3,3,4,4];
 for(let i=0;i<5;i++){const x=70+i*165;for(let k=0;k<nn[i];k++){const col=k<(nn[i]===2?1:nn[i]===3?2:2)?MG:RD;const rr=k;c.fillStyle=(k<nn[i]/2?'rgba(232,121,249,.35)':'rgba(248,113,113,.35)');c.fillRect(x+(k%2)*42,120+Math.floor(k/2)*42,40,40);c.strokeStyle=k<nn[i]/2?MG:RD;c.lineWidth=2;c.strokeRect(x+(k%2)*42,120+Math.floor(k/2)*42,40,40);}txt(c,nm[i],x+40,230,YL,F(12,1),'center');}
-txt(c,'chambers increase',460,70,CY,F(14,1),'center');txt(c,"2 > 3 > 3 (croc 4) > 4",460,326,RD,F(14,1),"center");}
+txt(c,'chambers increase',460,70,CY,F(14,1),'center');txt(c,"2 → 3 → 3 (croc 4) → 4",460,326,RD,F(14,1),"center");}
  else if(s===1){ell(c,230,150,70,45,0,GR,'rgba(52,211,153,.3)',3);circ(c,310,125,10,GR,GR,1);line(c,170,185,150,225,GR,4);line(c,290,185,310,225,GR,4);
 ell(c,690,150,100,26,0,YL,'rgba(250,204,21,.2)',3);for(let k=0;k<12;k++)line(c,605+k*15,140,610+k*15,160,YL,1.5);circ(c,800,150,16,YL,'rgba(250,204,21,.3)',3);line(c,640,170,625,215,YL,4);line(c,740,170,755,215,YL,4);
 txt(c,'AMPHIBIA: moist skin, no scales',230,260,GR,F(13,1),'center');txt(c,'Rana, Bufo, Hyla, Ichthyophis',230,284,GR,F(11,1),'center');txt(c,'REPTILIA: scales / scutes',690,260,YL,F(13,1),'center');txt(c,'Naja, Calotes, Crocodilus, Chelone',690,284,YL,F(11,1),'center');txt(c,"land and water vs fully terrestrial",460,326,GR,F(14,1),"center");}
