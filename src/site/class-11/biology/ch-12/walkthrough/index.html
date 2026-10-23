@@ -104,7 +104,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 <div class="scene" id="sc4">
 <h2>5. Total ATP Count 🎯⭐</h2>
-<p class="why">Ek glucose se 38 ATP kaise.</p>
+<p class="why">NCERT ka theoretical ATP balance sheet - assumptions ke saath.</p>
 <div class="panel">
 <canvas id="cv4" width="920" height="330"></canvas>
 <div class="btnrow">
@@ -158,7 +158,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 <div class="rcard"><b>Fermentation</b>Yeast: ethanol + CO₂ (bread, beer). Muscle/Lactobacillus: lactic acid. Sirf 2 ATP. Yeast dies at 13% alcohol.</div>
 <div class="rcard"><b>Krebs</b>Link: pyruvate → acetyl CoA + CO₂ + NADH. Matrix. Acetyl CoA + OAA → citrate. Per glucose: 6 NADH + 2 FADH₂ + 2 ATP. Amphibolic.</div>
 <div class="rcard"><b>ETC</b>Cristae. NADH → I → Q → III → cyt c → IV → O₂. FADH₂ via II. ATP synthase. 1 NADH = 3 ATP, 1 FADH₂ = 2 ATP.</div>
-<div class="rcard"><b>Total ATP</b>2 + 2 + (10 NADH × 3) + (2 FADH₂ × 2) = 38 ATP (NCERT). Efficiency ~40%.</div>
+<div class="rcard"><b>Total ATP</b>2 + 2 + (10 NADH × 3) + (2 FADH₂ × 2) = 38 ATP: NCERT's theoretical count (assumes orderly pathway, only glucose, nothing diverted). Real yield differs; newer ~30-32.</div>
 <div class="rcard"><b>RQ</b>CO₂ / O₂. Carb = 1, protein ~0.9, fat ~0.7. Plants respire 24×7, photosynthesis only in light.</div>
 </div>
 </div>
@@ -247,7 +247,7 @@ draw();
 inits[1]=(()=>{
 const c=ctx("cv1");let s=0;const D="#8b94c4";const R=document.getElementById("r1");
 sel("sc1","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Fermentation:</span> O₂ na mile to pyruvate ka incomplete breakdown. Sirf glycolysis ke <span class=hl>net 2 ATP</span>.", "<span class=hl>Alcoholic:</span> yeast me pyruvate → <span class=hl>ethanol + CO₂</span>. Bread (dough phulti), beer, wine.", "<span class=hl>Lactic acid:</span> muscles (intense exercise) + <i>Lactobacillus</i> (curd). Cramps ka culprit.", "Problems: kam energy, toxic products, NADH → NAD⁺ wapas banana padta hai. Yeast <span class=hl>13% alcohol</span> pe mar jaata hai."];
+const INFO=["<span class=hl>Fermentation:</span> O₂ na mile to pyruvate ka incomplete breakdown. Sirf glycolysis ke <span class=hl>net 2 ATP</span>.", "<span class=hl>Alcoholic:</span> yeast me pyruvate → <span class=hl>ethanol + CO₂</span>. Bread (dough phulti), beer, wine.", "<span class=hl>Lactic acid:</span> muscles (intense exercise) + <i>Lactobacillus</i> (curd). Pyruvate → lactic acid. Cramps ka seedha karan lactic acid ko nahi maana jaata (evidence).", "Problems: kam energy, toxic products, NADH → NAD⁺ wapas banana padta hai. Yeast <span class=hl>13% alcohol</span> pe mar jaata hai."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Fermentation",460,26,YL,F(14,1),"center");
@@ -257,7 +257,7 @@ function draw(){
  else if(s===1){box(c,40,80,230,70,CY,["pyruvate"],"#0a1c2a",16);arrow2(c,273,115,347,115,YL,3);box(c,350,80,230,70,YL,["decarboxylase","+ alcohol dehydrogenase"],"#2a2608",12);arrow2(c,583,115,657,115,YL,3);box(c,660,80,230,70,GR,["ethanol + CO₂"],"#0a2a1a",16);
   txt(c,"bread: CO₂ se dough phulti  |  beer / wine: ethanol",460,210,GR,F(15,1),"center");}
  else if(s===2){box(c,60,80,300,70,CY,["pyruvate"],"#0a1c2a",16);arrow2(c,363,115,557,115,MG,3);box(c,560,80,300,70,MG,["lactic acid"],"#2a0a2a",16);
-  txt(c,"muscles: intense exercise → cramps",460,205,RD,F(15,1),"center");txt(c,"Lactobacillus: curd",460,240,GR,F(15,1),"center");}
+  txt(c,"muscles: intense exercise → lactic acid",460,205,RD,F(15,1),"center");txt(c,"Lactobacillus: curd",460,240,GR,F(15,1),"center");}
  else{box(c,40,80,250,70,RD,["sirf 2 ATP"],"#2a0f0f",16);box(c,335,80,250,70,RD,["toxic products"],"#2a0f0f",16);box(c,630,80,250,70,YL,["NADH → NAD⁺","zaroori"],"#2a2608",15);
   txt(c,"13% alcohol pe yeast khud mar jaata hai",460,215,YL,F(16,1),"center");}
  R.innerHTML=INFO[s];
@@ -306,7 +306,7 @@ draw();
 inits[4]=(()=>{
 const c=ctx("cv4");let s=0;const D="#8b94c4";const R=document.getElementById("r4");
 sel("sc4","b",i=>{s=i;draw();});
-const INFO=["Glycolysis: <span class=hl>2 ATP + 2 NADH × 3 = 8</span>.", "Link reaction: <span class=hl>2 NADH × 3 = 6</span>.", "Krebs: <span class=hl>2 ATP + 6 NADH × 3 + 2 FADH₂ × 2 = 24</span>.", "Total <span class=hl>38 ATP</span> (NCERT, old scheme). Efficiency ~40%, baaki heat."];
+const INFO=["Glycolysis: <span class=hl>2 ATP + 2 NADH × 3 = 8</span>.", "Link reaction: <span class=hl>2 NADH × 3 = 6</span>.", "Krebs: <span class=hl>2 ATP + 6 NADH × 3 + 2 FADH₂ × 2 = 24</span>.", "Total <span class=hl>38 ATP</span> = NCERT ka <span class=hl>theoretical</span> count, sirf assumptions ke saath (orderly pathway, sirf glucose, koi intermediate divert nahi, glycolysis NADH mitochondria me). Asli cell me yield alag; newer estimates ~30-32."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Total ATP",460,26,YL,F(14,1),"center");
@@ -314,8 +314,8 @@ function draw(){
  const lit=[s>=0,s>=1,s>=2];
  box(c,60,90,168,70,lit[0]?CY:D,["glycolysis","8"],"#0d0d1c",14);box(c,228,90,126,70,lit[1]?MG:D,["link","6"],"#0d0d1c",14);box(c,354,90,504,70,lit[2]?GR:D,["Krebs + ETC share","24"],"#0d0d1c",14);
  const T=["glycolysis: 2 + (2 × 3) = 8","link: 2 × 3 = 6","Krebs: 2 + (6 × 3) + (2 × 2) = 24","2 + 2 + 30 + 4"];
- txt(c,T[s],460,205,"#e8e8f2",F(16,1),"center");
- if(s===3)box(c,260,240,400,60,YL,["= 38 ATP"],"#2a2608",20);
+ txt(c,T[s],460,s===3?195:205,"#e8e8f2",F(16,1),"center");
+ if(s===3){box(c,230,212,460,46,YL,["= 38 ATP (NCERT, theoretical)"],"#2a2608",18);txt(c,"assumes: orderly pathway | only glucose | no intermediates diverted",460,284,D,F(13,1),"center");txt(c,"real cell yield differs; newer estimates ~30-32",460,306,D,F(13,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -339,7 +339,7 @@ draw();
 inits[6]=(()=>{
 const c=ctx("cv6");let s=0;const D="#8b94c4";const R=document.getElementById("r6");
 sel("sc6","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Cytoplasm:</span> glycolysis, fermentation. O₂ nahi chahiye.", "<span class=hl>Mitochondrial matrix:</span> link reaction + Krebs cycle.", "<span class=hl>Cristae (inner membrane):</span> ETC + ATP synthase. O₂ final acceptor.", "Poori respiration: cytoplasm → matrix → cristae. Total 38 ATP."];
+const INFO=["<span class=hl>Cytoplasm:</span> glycolysis, fermentation. O₂ nahi chahiye.", "<span class=hl>Mitochondrial matrix:</span> link reaction + Krebs cycle.", "<span class=hl>Cristae (inner membrane):</span> ETC + ATP synthase. O₂ final acceptor.", "Poori respiration: cytoplasm → matrix → cristae. Total 38 ATP (NCERT theoretical count)."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Site map",460,26,YL,F(14,1),"center");
@@ -348,7 +348,7 @@ function draw(){
  box(c,30,80,270,90,L[0]?CY:D,["CYTOPLASM","glycolysis"],"#0d0d1c",15);box(c,325,80,270,90,L[1]?MG:D,["MATRIX","link + Krebs"],"#0d0d1c",15);box(c,620,80,270,90,L[2]?GR:D,["CRISTAE","ETC + ATP synthase"],"#0d0d1c",15);
  arrow2(c,303,125,322,125,YL,3);arrow2(c,598,125,617,125,YL,3);
  txt(c,"O₂ nahi",165,205,L[0]?CY:D,F(13,1),"center");txt(c,"O₂ indirectly",460,205,L[1]?MG:D,F(13,1),"center");txt(c,"O₂ = final acceptor",755,205,L[2]?GR:D,F(13,1),"center");
- if(s===3)txt(c,"1 glucose = 38 ATP",460,265,YL,F(18,1),"center");
+ if(s===3)txt(c,"NCERT theoretical: 38 ATP (assumptions apply)",460,265,YL,F(16,1),"center");
  R.innerHTML=INFO[s];
 }
 draw();
@@ -360,7 +360,7 @@ const Q=[
 {q:"Glycolysis me NET ATP kitna banta hai?",opts:["2","4","6","38"],a:0,why:"4 bane, 2 use hue = net 2 ATP (+ 2 NADH)."},
 {q:"ETC me final electron acceptor kaun hai?",opts:["NADH","CO₂","oxygen","pyruvate"],a:2,why:"O₂ final acceptor hai, water banta hai."},
 {q:"Fat ka RQ lagbhag kitna hota hai?",opts:["1","0.9","1.5","0.7"],a:3,why:"Fat me O₂ kam, isliye RQ ~0.7. Carb = 1, protein ~0.9."},
-{q:"NCERT ke hisaab se 1 glucose ke complete oxidation se kitne ATP?",opts:["30","32","36","38"],a:3,why:"2 + 2 + 30 + 4 = 38 ATP (NCERT)."}];
+{q:"NCERT ke theoretical balance sheet (assumptions ke saath) me 1 glucose ke complete oxidation se kitne ATP?",opts:["30","32","36","38"],a:3,why:"2 + 2 + 30 + 4 = 38 ATP (NCERT theoretical count; real cell yield alag)."}];
 let i=0,score=0;
 function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
 function render(){
