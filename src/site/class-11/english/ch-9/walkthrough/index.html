@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>A Photograph - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Hornbill Chapter 9 - A Photograph (Poem)</div>
+<h1>A Photograph Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - the cardboard, the sea, twenty years later, wry, now, silence, reading the poem, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. The Cardboard Photo 🖼️⭐⭐</h2>
+<p class="why">Shirley Toulson, A Photograph: what the cardboard shows.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the cardboard</button>
+<button class="b" data-o="1">paddling</button>
+<button class="b" data-o="2">through their hair</button>
+<button class="b" data-o="3">the camera</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. The Big Girl and the Sea 🌊⭐⭐</h2>
+<p class="why">The mother as a child and the sea that changed less.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">some twelve</button>
+<button class="b" data-o="1">before I was born</button>
+<button class="b" data-o="2">changed less</button>
+<button class="b" data-o="3">transient feet</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Twenty, Thirty Years Later 😄⭐⭐</h2>
+<p class="why">The mother laughs at the snapshot.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">time gap</button>
+<button class="b" data-o="1">Betty, Dolly</button>
+<button class="b" data-o="2">dressed us</button>
+<button class="b" data-o="3">her past, my laughter</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Wry, With Laboured Ease 🌀⭐⭐⭐</h2>
+<p class="why">Reading the line that NCERT asks about.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">wry</button>
+<button class="b" data-o="1">laboured ease</button>
+<button class="b" data-o="2">of loss</button>
+<button class="b" data-o="3">both</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. “Now” - Counting the Years 🕰️⭐⭐</h2>
+<p class="why">The third stanza: dead nearly as many years as the girl lived.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the girl</button>
+<button class="b" data-o="1">nearly as many</button>
+<button class="b" data-o="2">this circumstance</button>
+<button class="b" data-o="3">three stanzas</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Its Silence Silences 🤫⭐⭐⭐</h2>
+<p class="why">The last two lines.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">nothing to say</button>
+<button class="b" data-o="1">silence</button>
+<button class="b" data-o="2">the last line</button>
+<button class="b" data-o="3">the tone</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Reading the Poem 🔎⭐⭐</h2>
+<p class="why">NCERT Think it out and the words to infer.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">cardboard</button>
+<button class="b" data-o="1">camera</button>
+<button class="b" data-o="2">laugh</button>
+<button class="b" data-o="3">phases</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - A Photograph Pakka? ⭐</h2>
+<p class="why">5 sawaal - uncle, age, sea, years, wry. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Photo</b>The cardboard shows how it was: two cousins paddling, the big girl about twelve, the uncle with the camera.</div>
+<div class="rcard"><b>Sea</b>The sea appears to have changed less; the girls’ feet are terribly transient.</div>
+<div class="rcard"><b>Laugh</b>Twenty-thirty years later she laughs: “See Betty and Dolly”, “look how they dressed us”.</div>
+<div class="rcard"><b>Wry</b>Her past is the sea holiday, mine is her laughter; both wry with the laboured ease of loss.</div>
+<div class="rcard"><b>Now</b>Dead nearly as many years as that girl lived; nothing to say about this circumstance.</div>
+<div class="rcard"><b>Silence</b>The last line: Its silence silences. Quote, then explain in your own words.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 9 (A Photograph) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>The cardboard shows me how it was</span> - the speaker looks at an old photograph of her <span class=hl>mother</span>.", "<span class=hl>Two girl cousins</span> went <span class=hl>paddling</span>, each holding one of the mother’s hands, and she the big girl, <span class=hl>some twelve years or so</span>.", "<span class=hl>All three stood still to smile through their hair</span>.", "They smile at the <span class=hl>uncle with the camera</span>. The speaker calls her mother’s a <span class=hl>sweet face</span>, from <span class=hl>before I was born</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Photo",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,260,50,400,200,YL,['THE CARDBOARD','a photograph'],'#2a2608',18);txt(c,'how it was',460,285,CY,F(14,1),'center');txt(c,"the old photo",460,326,YL,F(14,1),"center");}
+ else if(s===1){line(c,60,200,860,200,DM,3);circ(c,330,130,22,CY,'rgba(34,211,238,.25)',3);circ(c,460,115,28,MG,'rgba(232,121,249,.25)',3);circ(c,590,130,22,CY,'rgba(34,211,238,.25)',3);line(c,350,150,440,145,GR,3);line(c,570,150,480,145,GR,3);txt(c,'cousin',330,185,CY,F(12,1),'center');txt(c,'mother',460,65,MG,F(12,1),'center');txt(c,'cousin',590,185,CY,F(12,1),'center');txt(c,'two cousins paddling, holding her hands',460,260,YL,F(14,1),'center');txt(c,"three girls, one sea",460,326,CY,F(14,1),"center");}
+ else if(s===2){circ(c,330,130,22,CY,'rgba(34,211,238,.25)',3);circ(c,460,115,28,MG,'rgba(232,121,249,.25)',3);circ(c,590,130,22,CY,'rgba(34,211,238,.25)',3);line(c,320,110,340,150,DM,2);line(c,450,90,470,140,DM,2);line(c,580,110,600,150,DM,2);txt(c,'all three stood still to smile',460,230,YL,F(14,1),'center');txt(c,"smiling through their hair",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,120,90,240,100,YL,['THE UNCLE','with the camera'],'#2a2608',15);arrow2(c,370,140,520,140,CY,3);box(c,530,90,260,100,MG,['‘A SWEET FACE’','before I was born'],'#2a0a2a',15);txt(c,'the mother as a child',660,235,GR,F(14,1),'center');txt(c,"the camera",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[0]=()=>{if([0, 1].includes(s))draw();};
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["The mother is <span class=hl>the big girl - some twelve years or so</span>.", "<span class=hl>My mother’s</span> sweet face - <span class=hl>that was before I was born</span>. The speaker sees a mother she did not know as a child.", "<span class=hl>And the sea, which appears to have changed less</span>.", "The sea <span class=hl>washed their terribly transient feet</span>. NCERT asks you to infer <span class=hl>paddling</span> and <span class=hl>transient</span> from context, then check a dictionary."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Sea",460,26,YL,F(14,1),"center");
+ if(s===0){circ(c,460,110,34,MG,'rgba(232,121,249,.25)',3);line(c,460,144,460,230,MG,4);txt(c,'the big girl',460,50,MG,F(13,1),'center');txt(c,'some twelve years or so',460,265,YL,F(15,1),'center');txt(c,"her age in the photo",460,326,MG,F(14,1),"center");}
+ else if(s===1){box(c,120,80,260,100,YL,['PHOTO DAY','the mother, about 12'],'#2a2608',15);box(c,540,80,260,100,CY,['SPEAKER BORN','later'],'#0a1c2a',15);arrow2(c,390,130,530,130,GR,4);txt(c,'before I was born',460,235,MG,F(15,1),'center');txt(c,"a mother she never saw as a child",460,326,CY,F(14,1),"center");}
+ else if(s===2){const w=Math.sin(__t*2)*8;c.strokeStyle='#22d3ee';c.lineWidth=3;c.beginPath();for(let x=60;x<=860;x+=10){const y=170+Math.sin(x/40+__t*2)*8;if(x==60)c.moveTo(x,y);else c.lineTo(x,y);}c.stroke();txt(c,'the sea: appears to have changed less',460,250,CY,F(15,1),'center');txt(c,"the sea",460,326,CY,F(14,1),"center");}
+ else if(s===3){const w=Math.sin(__t*2)*8;c.strokeStyle='#22d3ee';c.lineWidth=3;c.beginPath();for(let x=60;x<=860;x+=10){const y=200+Math.sin(x/40+__t*2)*8;if(x==60)c.moveTo(x,y);else c.lineTo(x,y);}c.stroke();line(c,360,150,380,195,MG,5);line(c,440,150,460,195,MG,5);txt(c,'terribly transient feet',460,110,MG,F(15,1),'center');txt(c,'transient = temporary',460,265,YL,F(14,1),'center');txt(c,"washed over",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Some twenty - thirty years later</span> she would laugh at the snapshot.", "<span class=hl>“See Betty and Dolly,”</span> she would say.", "<span class=hl>“…and look how they dressed us for the beach.”</span>", "<span class=hl>The sea holiday was her past, mine is her laughter.</span> Both <span class=hl>wry with the laboured ease of loss</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Laugh",460,26,YL,F(14,1),"center");
+ if(s===0){line(c,100,170,820,170,DM,4);circ(c,140,170,12,YL,'rgba(250,204,21,.5)',3);circ(c,780,170,12,MG,'rgba(232,121,249,.5)',3);txt(c,'photo day',140,130,YL,F(14,1),'center');txt(c,'20-30 years later',780,130,MG,F(14,1),'center');txt(c,'the mother laughs at the snapshot',460,250,CY,F(15,1),'center');txt(c,"years pass",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,120,80,240,90,CY,['BETTY'],'#0a1c2a',16);box(c,540,80,240,90,MG,['DOLLY'],'#2a0a2a',16);txt(c,'“See Betty and Dolly”',460,240,YL,F(16,1),'center');txt(c,"names from the snapshot",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['“…look how they dressed us','for the beach.”'],'#2a2608',16);txt(c,'the mother, laughing',460,240,MG,F(15,1),'center');txt(c,"her own words",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,90,80,300,100,YL,['HER PAST','the sea holiday'],'#2a2608',15);box(c,530,80,300,100,MG,['MY PAST','her laughter'],'#2a0a2a',15);txt(c,'both wry with the laboured ease of loss',460,240,CY,F(14,1),'center');txt(c,"two pasts",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[2]=()=>{if([1].includes(s))draw();};
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Wry</span> means rueful: a twisted, half-amused look at something sad.", "<span class=hl>Laboured ease</span> puts effort and ease side by side: an ease that takes work.", "<span class=hl>Of loss</span>: the loss of the childhood day and, later, of the mother. NCERT Q5 asks for the meaning of the whole line.", "<span class=hl>Both</span> - the mother laughing at the photo, and the speaker remembering that laugh - are wry with the laboured ease of loss."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Wry",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,300,80,320,100,MG,['WRY','rueful, half-amused'],'#2a0a2a',16);txt(c,'a twisted smile at sadness',460,235,YL,F(15,1),'center');txt(c,"one word",460,326,MG,F(14,1),"center");}
+ else if(s===1){box(c,100,90,260,90,GR,['EASE'],'#0a2a1a',18);box(c,560,90,260,90,RD,['LABOURED'],'#2a0a0a',18);arrow2(c,370,135,550,135,YL,3);txt(c,'ease that takes effort',460,235,CY,F(15,1),'center');txt(c,"two ideas together",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,100,70,300,90,YL,['THE DAY','the photo'],'#2a2608',15);box(c,520,70,300,90,MG,['THE MOTHER','later'],'#2a0a2a',15);txt(c,'both are lost',460,230,CY,F(16,1),'center');txt(c,"loss",460,326,RD,F(14,1),"center");}
+ else if(s===3){circ(c,300,140,30,MG,'rgba(232,121,249,.25)',3);circ(c,620,140,30,CY,'rgba(34,211,238,.25)',3);arrow2(c,340,140,580,140,YL,3);txt(c,'mother',300,200,MG,F(13,1),'center');txt(c,'speaker',620,200,CY,F(13,1),'center');txt(c,'both wry, both live with loss',460,255,GR,F(14,1),'center');txt(c,"both",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["The girl in the photo is about <span class=hl>twelve</span> (the text says <span class=hl>some twelve years or so</span>).", "<span class=hl>Now she’s been dead nearly as many years as that girl lived.</span> So the text points to nearly twelve years, using the girl’s age in the photo.", "<span class=hl>And of this circumstance there is nothing to say at all.</span> NCERT Q6: what does <span class=hl>this circumstance</span> refer to?", "NCERT Q7: the three stanzas show <span class=hl>three phases</span> - the photo’s day, twenty-thirty years later, and now."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Now",460,26,YL,F(14,1),"center");
+ if(s===0){c.fillStyle='rgba(250,204,21,.3)';c.fillRect(120,120,360,40);txt(c,'girl’s age: about 12',300,100,YL,F(14,1),'center');txt(c,'some twelve years or so',300,210,MG,F(14,1),'center');txt(c,"the girl’s years",460,326,YL,F(14,1),"center");}
+ else if(s===1){const a=1;c.fillStyle='rgba(250,204,21,.3)';c.fillRect(120,110,360,36);c.fillStyle='rgba(232,121,249,.4)';c.fillRect(120,170,360*a*0.95,36);txt(c,'years she lived as a girl',300,95,YL,F(14,1),'center');txt(c,'years since her death: nearly as many',300,235,MG,F(14,1),'center');txt(c,"nearly equal",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,150,80,620,100,YL,['THIS CIRCUMSTANCE','she has been dead nearly as many years...'],'#2a2608',15);txt(c,'there is nothing to say at all',460,235,CY,F(15,1),'center');txt(c,"NCERT Q6",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,60,80,240,100,YL,['STANZA 1','the photo'],'#2a2608',15);box(c,340,80,240,100,MG,['STANZA 2','laughter later'],'#2a0a2a',15);box(c,620,80,240,100,CY,['STANZA 3','now'],'#0a1c2a',15);txt(c,'three phases',460,240,GR,F(15,1),'center');txt(c,"NCERT Q7",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[4]=()=>{if([0].includes(s))draw();};
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>There is nothing to say at all.</span>", "<span class=hl>Its silence silences.</span> The word silence and its verb silences repeat.", "The poem ends here: the last words are <span class=hl>Its silence silences</span>.", "The tone is <span class=hl>wry and quiet</span>; the speaker says little about the grief and ends in silence."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Silence",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,260,90,400,90,CY,['NOTHING TO SAY','at all'],'#0a1c2a',18);txt(c,'of this circumstance',460,235,YL,F(15,1),'center');txt(c,"no words",460,326,CY,F(14,1),"center");}
+ else if(s===1){const k=0.5+0.5*Math.sin(__t*2);circ(c,460,130,40+k*30,MG,'rgba(232,121,249,.15)',3);txt(c,'silence  silences',460,135,YL,F(18,1),'center');txt(c,'the word repeats',460,260,CY,F(14,1),'center');txt(c,"word play",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,200,90,520,100,YL,['“Its silence silences.”'],'#2a2608',20);txt(c,'the last words of the poem',460,235,CY,F(15,1),'center');txt(c,"the end",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,200,80,520,100,MG,['WRY AND QUIET','ends in silence'],'#2a0a2a',18);txt(c,'little said about the grief',460,235,CY,F(15,1),'center');txt(c,"a quiet tone",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["NCERT Q1: what does the word <span class=hl>cardboard</span> denote in the poem, and why is it used? Answer in your own words.", "NCERT Q2: what has the <span class=hl>camera</span> captured? Think of the girls, the sea and the smiles in the photo.", "NCERT Q4: the poet’s mother <span class=hl>laughed</span> at the snapshot. What did the laugh indicate? Use the lines <span class=hl>wry with the laboured ease of loss</span>.", "NCERT Q7: three stanzas, <span class=hl>three phases</span>. Name each, then check <span class=hl>paddling</span> and <span class=hl>transient</span> in a dictionary."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Text",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,260,80,400,100,YL,['“THE CARDBOARD”','why this word?'],'#2a2608',16);txt(c,'answer in your own words',460,235,CY,F(15,1),'center');txt(c,"NCERT Q1",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,260,80,400,100,MG,['THE CAMERA','captured one moment'],'#2a0a2a',16);txt(c,'girls, sea, smiles',460,235,GR,F(15,1),'center');txt(c,"NCERT Q2",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,200,80,520,100,CY,['THE MOTHER’S LAUGH','what does it indicate?'],'#0a1c2a',16);txt(c,'quote the line, then explain',460,235,YL,F(15,1),'center');txt(c,"NCERT Q4",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,60,80,240,100,YL,['PHASE 1'],'#2a2608',16);box(c,340,80,240,100,MG,['PHASE 2'],'#2a0a2a',16);box(c,620,80,240,100,CY,['PHASE 3'],'#0a1c2a',16);txt(c,'paddling, transient: check the dictionary',460,240,GR,F(14,1),'center');txt(c,"NCERT Q7",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Photo kisne li (text ke mutabik)?",opts:["a friend","the poet","the uncle with the camera","Betty"],a:2,why:"All three smile at the uncle with the camera."},
+{q:"Photo mein ‘the big girl’ kitni badi hai?",opts:["about six","some twelve years or so","twenty","thirty"],a:1,why:"She is some twelve years or so."},
+{q:"Text ke mutabik kya kam badla?",opts:["the dresses","the sea","the uncle","the cardboard"],a:1,why:"The sea appears to have changed less."},
+{q:"Maa ki maut ko kitne saal hue?",opts:["one year","twenty-thirty years","nearly as many years as that girl lived","before the photo"],a:2,why:"Dead nearly as many years as that girl lived."},
+{q:"‘Both wry with the laboured ease of loss’ ka sahi arth?",opts:["pure joy","rueful, effortful ease with loss","anger","boredom"],a:1,why:"Wry = rueful; laboured ease = ease that takes effort."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! A Photograph pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
