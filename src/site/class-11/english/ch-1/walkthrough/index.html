@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Animal Kingdom - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Hornbill Chapter 1 - The Portrait of a Lady</div>
+<h1>The Portrait of a Lady Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - grandmother, village, city, university, return, death, themes, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Dadi Ka Portrait 🧓⭐⭐</h2>
+<p class="why">Khushwant Singh ki grandmother: not pretty, always beautiful.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">old + wrinkled</button>
+<button class="b" data-o="1">spotless white</button>
+<button class="b" data-o="2">winter landscape</button>
+<button class="b" data-o="3">grandfather portrait</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Village Days 🏫⭐⭐</h2>
+<p class="why">Wake up, prayer, temple school and the village dogs.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">morning routine</button>
+<button class="b" data-o="1">school at temple</button>
+<button class="b" data-o="2">the dogs</button>
+<button class="b" data-o="3">close friends</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Turning Point: City 🚌⭐⭐</h2>
+<p class="why">English school, western science and the music lessons.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">parents send for them</button>
+<button class="b" data-o="1">English school</button>
+<button class="b" data-o="2">science vs scriptures</button>
+<button class="b" data-o="3">music lessons</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. University: Seclusion 🧶⭐⭐</h2>
+<p class="why">The common link snapped and the spinning wheel.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">room of his own</button>
+<button class="b" data-o="1">spinning wheel</button>
+<button class="b" data-o="2">feeding sparrows</button>
+<button class="b" data-o="3">happiest half-hour</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Abroad, Return and the Drum 🚉⭐⭐</h2>
+<p class="why">Five years away, a kiss on the forehead and the homecoming song.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">railway station</button>
+<button class="b" data-o="1">five years</button>
+<button class="b" data-o="2">her welcome</button>
+<button class="b" data-o="3">the drum</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Death and the Sparrows 🕊️⭐⭐</h2>
+<p class="why">A peaceful end and the silent birds.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">mild fever</button>
+<button class="b" data-o="1">praying till the end</button>
+<button class="b" data-o="2">the shroud</button>
+<button class="b" data-o="3">the sparrows</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Themes + Style 🎨⭐⭐</h2>
+<p class="why">Why the title, the silence and the sparrows matter.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">title: portrait</button>
+<button class="b" data-o="1">tradition vs modern</button>
+<button class="b" data-o="2">silence = language</button>
+<button class="b" data-o="3">contrast + humour</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Portrait of a Lady Pakka? ⭐</h2>
+<p class="why">5 sawaal - beautiful, temple school, sparrows, music, silent birds. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Portrait</b>Old, wrinkled, short, fat, slightly bent; never pretty but always beautiful; spotless white, rosary.</div>
+<div class="rcard"><b>Village</b>Wakes him, prayer, slate bundle, stale chapatti; school at the temple; stale chapattis for dogs.</div>
+<div class="rcard"><b>City</b>Turning-point. English school by bus. She feeds sparrows. Music = lewd associations; silence.</div>
+<div class="rcard"><b>University</b>Own room, link snapped. Spinning wheel sunrise to sunset; sparrow half-hour is her happiest.</div>
+<div class="rcard"><b>Return</b>Kiss on the forehead at the station. Five years. Drum and home-coming songs; first time she did not pray.</div>
+<div class="rcard"><b>Death</b>Mild fever, end near, prays. Red shroud. Thousands of sparrows silent, ignore the bread, fly away.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 1 (The Portrait of a Lady) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Old and wrinkled</span> for the twenty years the narrator had known her: short, fat, slightly bent, face a criss-cross of wrinkles.", "<span class=hl>She could never have been pretty; but she was always beautiful.</span> She hobbled about in spotless white, one hand on her waist, the other telling the beads of her rosary, lips moving in inaudible prayer.", "Simile: she was like the <span class=hl>winter landscape in the mountains</span>, an expanse of pure white serenity breathing peace and contentment.", "The grandfather's portrait (big turban, long white beard) looked at least a hundred years old, so the children found it hard to believe she was ever young and pretty. This is humour at the start."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Grandmother portrait",460,26,YL,F(14,1),"center");
+ if(s===0){ell(c,460,175,70,85,0,'#e8e8f2','rgba(232,232,242,.12)',3);circ(c,480,80,30,'#e8e8f2','rgba(232,232,242,.2)',3);for(let k=0;k<6;k++)line(c,462+k*5,70+k*5,500+k*0,70+k*6,YL,1);
+txt(c,'short, fat, slightly bent',460,285,CY,F(13,1),'center');txt(c,'face = criss-cross of wrinkles',590,100,YL,F(13,1),'left');txt(c,'20 years: always the same age',590,130,MG,F(12,1),'left');txt(c,"old, so terribly old",460,326,YL,F(14,1),"center");}
+ else if(s===1){ell(c,460,175,70,85,0,'#e8e8f2','rgba(255,255,255,.35)',3);circ(c,480,80,30,'#e8e8f2','rgba(255,255,255,.3)',3);line(c,440,190,410,215,'#e8e8f2',4);circ(c,405,225,6,RD,RD,1);for(let k=0;k<6;k++)circ(c,398-k*9,228+k*3,4,RD,RD,1);
+txt(c,'spotless WHITE',620,150,CY,F(14,1),'left');txt(c,'hand on waist, other on ROSARY',620,180,MG,F(13,1),'left');txt(c,'lips: inaudible prayer',620,210,GR,F(13,1),'left');txt(c,"could never have been pretty; always beautiful",460,326,MG,F(14,1),"center");}
+ else if(s===2){c.fillStyle='rgba(255,255,255,.7)';c.beginPath();c.moveTo(60,250);c.lineTo(230,100);c.lineTo(330,190);c.lineTo(450,70);c.lineTo(620,250);c.closePath();c.fill();c.fillStyle='rgba(34,211,238,.15)';c.fillRect(0,250,920,40);
+ell(c,740,160,30,50,0,'#e8e8f2','rgba(232,232,242,.5)',3);circ(c,745,100,18,'#e8e8f2','rgba(232,232,242,.5)',3);
+txt(c,'winter mountain landscape',340,285,CY,F(13,1),'center');txt(c,'= pure white serenity',740,235,MG,F(13,1),'center');txt(c,'peace + contentment',740,255,GR,F(12,1),'center');txt(c,"simile: she is like the mountains in winter",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,120,70,170,150,YL,[''],'#2a2608',12);circ(c,205,115,24,YL,'rgba(250,204,21,.2)',3);ell(c,205,95,38,12,0,YL,'rgba(250,204,21,.3)',3);line(c,185,135,165,200,'#e8e8f2',3);line(c,225,135,245,200,'#e8e8f2',3);
+ell(c,640,160,70,85,0,'#e8e8f2','rgba(232,232,242,.12)',3);circ(c,660,80,28,'#e8e8f2','rgba(232,232,242,.2)',3);arrow2(c,310,150,560,150,MG,3);
+txt(c,'GRANDFATHER portrait',205,245,YL,F(13,1),'center');txt(c,'big turban, long white beard',205,265,YL,F(11,1),'center');txt(c,'looks 100 years old',440,130,MG,F(12,1),'center');txt(c,'so how could she be young?',640,270,CY,F(13,1),'center');txt(c,"humour: hard to believe she was ever young",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["Parents left him with her when they went to live in the city. She woke him up and got him ready, said her <span class=hl>morning prayer</span> in a monotonous sing-song while bathing and dressing him. He listened because he loved her voice, but never learnt it.", "She tied his <span class=hl>wooden slate</span> (yellow chalk), tiny earthen ink-pot and red pen in a bundle. Breakfast was a thick <span class=hl>stale chapatti</span> with butter and sugar. The school was attached to the <span class=hl>temple</span>; the priest taught the alphabet and morning prayer while she read scriptures inside.", "She carried <span class=hl>several stale chapattis for the village dogs</span>. On the way back the dogs met them at the temple door and followed them home growling and fighting for the chapattis thrown to them.", "Grandmother and grandson were <span class=hl>good friends</span> and constantly together. This is the warm base of the story."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Village days",460,26,YL,F(14,1),"center");
+ if(s===0){circ(c,150,140,26,CY,'rgba(34,211,238,.2)',3);ell(c,150,200,22,40,0,CY,'rgba(34,211,238,.15)',3);ell(c,330,180,40,60,0,'#e8e8f2','rgba(232,232,242,.12)',3);circ(c,345,110,24,'#e8e8f2','rgba(232,232,242,.2)',3);arrow2(c,380,150,480,150,YL,3);
+box(c,500,90,300,100,MG,['morning prayer in a','monotonous sing-song','while bathing him'],'#2a0a2a',13);
+txt(c,'narrator',150,265,CY,F(13,1),'center');txt(c,'grandmother',330,265,YL,F(13,1),'center');txt(c,"she woke him and got him ready",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,60,90,200,90,YL,['SLATE + INK-POT','+ RED PEN','tied in a bundle'],'#2a2608',13);box(c,330,90,200,90,CY,['BREAKFAST:','thick stale chapatti','butter + sugar'],'#0a1c2a',13);
+c.strokeStyle=RD;c.lineWidth=3;c.strokeRect(610,110,200,100);line(c,610,110,710,60,RD,3);line(c,810,110,710,60,RD,3);
+txt(c,'TEMPLE',710,170,RD,F(14,1),'center');txt(c,'school is attached',710,190,RD,F(12,1),'center');txt(c,'priest teaches alphabet + prayer',710,250,GR,F(12,1),'center');txt(c,'she reads scriptures inside',710,272,MG,F(12,1),'center');txt(c,"school attached to the temple",460,326,YL,F(14,1),"center");}
+ else if(s===2){for(let k=0;k<3;k++){const x=250+k*150;ell(c,x,170,36,18,0,YL,'rgba(250,204,21,.2)',3);circ(c,x+40,155,12,YL,'rgba(250,204,21,.2)',3);line(c,x-22,185,x-22,215,YL,3);line(c,x+20,185,x+20,215,YL,3);}
+circ(c,120,140,20,'#e8e8f2','rgba(232,232,242,.2)',3);circ(c,170,140,10,'#fde68a','#fde68a',1);
+txt(c,'stale chapattis for the village DOGS',460,60,YL,F(14,1),'center');txt(c,'dogs follow them home growling + fighting for chapattis',460,265,CY,F(12,1),'center');txt(c,"kindness to the dogs",460,326,YL,F(14,1),"center");}
+ else if(s===3){circ(c,300,150,40,CY,'rgba(34,211,238,.2)',3);circ(c,500,150,40,'#e8e8f2','rgba(232,232,242,.2)',3);arrow2(c,345,150,455,150,GR,4);arrow2(c,455,165,345,165,GR,4);
+txt(c,'GOOD FRIENDS',400,70,GR,F(16,1),'center');txt(c,'narrator',300,225,CY,F(13,1),'center');txt(c,'grandmother',500,225,YL,F(13,1),'center');txt(c,'constantly together',400,265,GR,F(13,1),'center');txt(c,"close bond in the village",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["When parents were settled in the city they sent for them. That was a <span class=hl>turning-point in their friendship</span>. They shared the same room but she no longer came to school.", "He went to an <span class=hl>English school in a motor bus</span>. There were no dogs in the streets, so she took to <span class=hl>feeding sparrows</span> in the courtyard of the city house.", "He told her English words and western science: the law of gravity, Archimedes' Principle, the world being round. This made her <span class=hl>unhappy</span>: she could not help with lessons and was distressed there was no teaching about God and the scriptures.", "When he announced <span class=hl>music lessons</span> she was very disturbed. To her music had lewd associations, the monopoly of harlots and beggars, not for gentlefolk. She said nothing, but her silence meant disapproval, and she rarely talked to him after that."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"City turning point",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,60,110,160,90,CY,['VILLAGE','house'],'#0a1c2a',14);box(c,700,110,160,90,MG,['CITY','house'],'#2a0a2a',14);arrow2(c,230,155,690,155,YL,4);
+txt(c,'parents send for them',460,130,YL,F(13,1),'center');txt(c,'TURNING POINT in friendship',460,260,RD,F(14,1),'center');txt(c,"the move to the city",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,120,100,180,80,CY,['ENGLISH','SCHOOL'],'#0a1c2a',14);ell(c,520,150,90,32,0,MG,'rgba(232,121,249,.2)',3);circ(c,460,190,12,MG,MG,1);circ(c,580,190,12,MG,MG,1);arrow2(c,310,140,420,140,GR,3);
+circ(c,750,170,16,YL,'rgba(250,204,21,.3)',3);circ(c,785,175,12,YL,'rgba(250,204,21,.3)',3);
+txt(c,'MOTOR BUS',520,150,MG,F(13,1),'center');txt(c,'no dogs in city streets',460,250,RD,F(13,1),'center');txt(c,'she feeds SPARROWS',770,215,YL,F(13,1),'center');txt(c,"new school, new routine",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,60,90,250,100,CY,['gravity','Archimedes','round world'],'#0a1c2a',14);box(c,610,90,250,100,MG,['God + scriptures','not taught'],'#2a0a2a',14);X(460,140,RD);
+txt(c,'narrator tells her:',185,70,CY,F(13,1),'center');txt(c,'she is distressed:',735,70,MG,F(13,1),'center');txt(c,'she could not help with lessons: UNHAPPY',460,260,RD,F(13,1),'center');txt(c,"two different worlds",460,326,RD,F(14,1),"center");}
+ else if(s===3){for(let k=0;k<3;k++){circ(c,180+k*30,170-k*12,10,YL,YL,1);line(c,190+k*30,170-k*12,190+k*30,120-k*12,YL,3);}
+box(c,520,90,300,100,RD,['music = lewd','associations','not for gentlefolk'],'#2a0f0f',14);
+txt(c,'music lessons',230,235,YL,F(14,1),'center');txt(c,'SILENCE = disapproval',670,235,MG,F(14,1),'center');txt(c,'she rarely talked to him after',670,258,MG,F(12,1),'center');txt(c,"her silence says no",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["At University he got a <span class=hl>room of his own</span>. The common link of friendship was snapped. She accepted her seclusion with resignation.", "She rarely left her <span class=hl>spinning-wheel</span>. From sunrise to sunset she sat spinning and reciting prayers.", "Only in the <span class=hl>afternoon</span> she relaxed to feed the sparrows. She sat in the verandah breaking bread into little bits while hundreds of birds collected round her.", "Birds perched on her legs, shoulders and head. She smiled but never shooed them away. It was the <span class=hl>happiest half-hour</span> of her day."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"University seclusion",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,100,100,160,90,CY,['HIS ROOM','(own room)'],'#0a1c2a',14);box(c,660,100,160,90,YL,['HER ROOM','(alone)'],'#2a2608',14);line(c,280,145,640,145,RD,4);X(460,145,RD);
+txt(c,'common link of friendship SNAPPED',460,220,RD,F(14,1),'center');txt(c,'she accepted seclusion with resignation',460,250,MG,F(12,1),'center');txt(c,"growing apart",460,326,RD,F(14,1),"center");}
+ else if(s===1){const a=__t/4;circ(c,460,150,60,YL,'rgba(250,204,21,.1)',4);for(let k=0;k<6;k++){const g=a+k*1.047;line(c,460,150,460+Math.cos(g)*60,150+Math.sin(g)*60,YL,2);}circ(c,460,150,7,YL,YL,1);
+txt(c,'SPINNING WHEEL',460,250,YL,F(14,1),'center');txt(c,'sunrise to sunset: spinning + prayers',460,272,CY,F(13,1),'center');txt(c,"prayer and work all day",460,326,YL,F(14,1),"center");}
+ else if(s===2){ell(c,300,190,50,70,0,'#e8e8f2','rgba(232,232,242,.12)',3);circ(c,320,110,24,'#e8e8f2','rgba(232,232,242,.2)',3);for(let k=0;k<14;k++){circ(c,420+(k%7)*55,110+Math.floor(k/7)*60+Math.sin(k)*8,9,'#a16207','rgba(161,98,7,.5)',2);}
+txt(c,'AFTERNOON: breaks bread into bits',300,285,GR,F(13,1),'center');txt(c,'hundreds of sparrows',640,275,YL,F(13,1),'center');txt(c,"the sparrow time",460,326,GR,F(14,1),"center");}
+ else if(s===3){ell(c,300,190,50,70,0,'#e8e8f2','rgba(232,232,242,.12)',3);circ(c,320,110,24,'#e8e8f2','rgba(232,232,242,.2)',3);circ(c,262,230,9,'#a16207','rgba(161,98,7,.6)',2);circ(c,340,145,9,'#a16207','rgba(161,98,7,.6)',2);circ(c,325,82,9,'#a16207','rgba(161,98,7,.6)',2);
+txt(c,'on her legs',150,235,YL,F(13,1),'center');txt(c,'on her shoulders',460,150,YL,F(13,1),'left');txt(c,'on her head',460,85,YL,F(13,1),'left');txt(c,'she smiled, never shooed them away',560,230,MG,F(13,1),'left');txt(c,'happiest half-hour of her day',560,260,GR,F(13,1),'left');txt(c,"her joy",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[3]=()=>{if([1].includes(s))draw();};
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["When he went abroad for further studies she came to the <span class=hl>railway station</span>. Her lips moved in prayer, her fingers told the rosary. Silently she <span class=hl>kissed his forehead</span>, the last sign of physical contact he thought.", "He was away for <span class=hl>five years</span>. At her age one could never tell, but she could. She was not even sentimental.", "After five years she <span class=hl>met him at the station</span>. She did not look a day older, had no time for words and clasped him in her arms while reciting prayers. Her happiest moments were with her sparrows.", "That evening she did not pray. She collected the women of the neighbourhood, got an old drum and sang of the <span class=hl>home-coming of warriors</span> for several hours. It was the first time she did not pray."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Abroad and return",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,140,100,200,90,CY,['RAILWAY','STATION'],'#0a1c2a',15);ell(c,520,170,40,60,0,'#e8e8f2','rgba(232,232,242,.12)',3);circ(c,535,105,24,'#e8e8f2','rgba(232,232,242,.2)',3);arrow2(c,580,150,680,150,MG,3);
+txt(c,'KISS on the forehead',700,140,MG,F(14,1),'left');txt(c,'lips in prayer, no emotion',700,170,CY,F(12,1),'left');txt(c,"silent farewell",460,326,MG,F(14,1),"center");}
+ else if(s===1){line(c,100,150,820,150,CY,5);for(let k=0;k<6;k++){line(c,100+k*144,140,100+k*144,160,YL,3);}
+txt(c,'0',100,125,CY,F(12,1),'center');txt(c,'1',244,125,CY,F(12,1),'center');txt(c,'2',388,125,CY,F(12,1),'center');txt(c,'3',532,125,CY,F(12,1),'center');txt(c,'4',676,125,CY,F(12,1),'center');txt(c,'5 years',820,125,YL,F(13,1),'center');txt(c,'narrator abroad',460,210,CY,F(14,1),'center');txt(c,'she is not even sentimental',460,260,MG,F(13,1),'center');txt(c,"five years abroad",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,120,100,200,90,CY,['STATION'],'#0a1c2a',15);ell(c,520,170,40,60,0,'#e8e8f2','rgba(232,232,242,.12)',3);circ(c,535,105,24,'#e8e8f2','rgba(232,232,242,.2)',3);
+txt(c,'did not look a day older',590,130,YL,F(13,1),'left');txt(c,'clasped him; reciting prayers',590,160,MG,F(13,1),'left');txt(c,'happiest with her sparrows',590,190,GR,F(13,1),'left');txt(c,"unchanged welcome",460,326,GR,F(14,1),"center");}
+ else if(s===3){ell(c,300,160,60,28,0,YL,'rgba(250,204,21,.25)',4);line(c,240,160,360,160,YL,2);line(c,250,188,250,230,YL,4);line(c,350,188,350,230,YL,4);
+for(let k=0;k<3;k++){ell(c,580+k*70,200,24,40,0,MG,'rgba(232,121,249,.2)',3);circ(c,585+k*70,150,14,MG,'rgba(232,121,249,.2)',3);}
+txt(c,'old drum, sagging skins',300,275,YL,F(13,1),'center');txt(c,'women of the neighbourhood',650,275,MG,F(13,1),'center');txt(c,'songs of the HOME-COMING of warriors',460,60,CY,F(14,1),'center');txt(c,'first time she did not pray',460,95,RD,F(13,1),'center');txt(c,"the evening change",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["Next morning she was taken ill: a <span class=hl>mild fever</span>, the doctor said it would go. She thought differently: her end was near.", "Since only a few hours before the close of the last chapter of her life she had omitted to pray, she would <span class=hl>not waste more time talking</span>. She lay praying and telling her beads, the rosary fell from her lifeless fingers and a peaceful pallor spread on her face.", "They laid her on the ground, as is customary, and covered her with a <span class=hl>red shroud</span>. In the evening, in golden light, the family went to carry her to be cremated.", "<span class=hl>Thousands of sparrows</span> sat scattered all over the verandah and room, with no chirruping. His mother broke bread into crumbs as the grandmother used to, but the sparrows <span class=hl>took no notice</span>. When the body was carried off they flew away quietly. Next morning the sweeper swept the crumbs into the dustbin."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Death and sparrows",460,26,YL,F(14,1),"center");
+ if(s===0){circ(c,350,150,60,RD,'rgba(248,113,113,.15)',4);txt(c,'mild fever',350,155,RD,F(15,1),'center');arrow2(c,430,150,600,150,YL,3);
+txt(c,'doctor: it will go',600,130,GR,F(13,1),'left');txt(c,'she: my end is near',600,175,MG,F(14,1),'left');txt(c,"two opinions",460,326,RD,F(14,1),"center");}
+ else if(s===1){box(c,120,100,250,90,MG,['no more time','for talking'],'#2a0a2a',14);ell(c,620,180,80,25,0,'#e8e8f2','rgba(232,232,242,.2)',3);circ(c,560,170,14,'#e8e8f2','rgba(232,232,242,.2)',3);circ(c,700,215,6,RD,RD,1);line(c,700,200,700,215,RD,2);
+txt(c,'she omitted prayer for a few hours',245,230,RD,F(12,1),'center');txt(c,'lying in bed: prayer + rosary',620,265,CY,F(13,1),'center');txt(c,'rosary falls from lifeless fingers',620,60,YL,F(13,1),'center');txt(c,"praying till the end",460,326,MG,F(14,1),"center");}
+ else if(s===2){ell(c,460,200,160,26,0,RD,'rgba(248,113,113,.5)',3);c.fillStyle='rgba(250,204,21,.18)';c.fillRect(0,0,920,300);
+txt(c,'red SHROUD, on the ground',460,260,RD,F(14,1),'center');txt(c,'evening: golden light, crude stretcher',460,80,YL,F(14,1),'center');txt(c,"customary laying out",460,326,RD,F(14,1),"center");}
+ else if(s===3){for(let k=0;k<30;k++){const x=70+(k%10)*80,y=80+Math.floor(k/10)*55;ell(c,x,y,13,8,0,'#a16207','rgba(161,98,7,.6)',2);circ(c,x+13,y-3,4,'#a16207','#a16207',1);}
+ell(c,460,265,150,18,0,RD,'rgba(248,113,113,.5)',3);
+txt(c,'THOUSANDS of sparrows - no chirruping',460,54,YL,F(14,1),'center');txt(c,'bread crumbs ignored; body carried off, they fly away quietly',460,295,CY,F(12,1),'center');txt(c,"silent mourning",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["The <span class=hl>title</span> is a word-portrait: an old woman who was never pretty yet always beautiful, painted through small details (white clothes, rosary, wrinkles, sparrows).", "<span class=hl>Tradition vs modernity:</span> she disliked English schooling and music; he moved into western learning. The story shows the distance grow, but not the love.", "<span class=hl>Silence</span> speaks for her: she says nothing about music, shows no emotion at the station, and the sparrows too mourn in silence.", "The story opens with <span class=hl>humour</span> (the grandfather's portrait, 'hard to believe she was young') and ends in quiet pathos. Contrast of beginning and end gives it force."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Themes + style",460,26,YL,F(14,1),"center");
+ if(s===0){ell(c,460,160,110,100,0,'#e8e8f2','rgba(232,232,242,.1)',4);ell(c,460,160,95,85,0,YL,null,2);
+txt(c,'PORTRAIT of a LADY',460,50,YL,F(15,1),'center');txt(c,'white clothes',460,130,CY,F(12,1),'center');txt(c,'rosary',460,155,MG,F(12,1),'center');txt(c,'wrinkles',460,180,GR,F(12,1),'center');txt(c,'sparrows',460,205,YL,F(12,1),'center');txt(c,"character painted in words",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,20,80,430,110,CY,["SHE","scriptures,","prayer, simple"],"#0a1c2a",13);box(c,470,80,430,110,MG,["HE","English school,","science, abroad"],"#2a0a2a",13);txt(c,'distance grows, love does not',460,240,GR,F(14,1),'center');txt(c,"tradition vs modernity",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,20,80,280,100,CY,["no words","about music"],"#0a1c2a",13);box(c,320,80,280,100,MG,["no emotion","at the station"],"#2a0a2a",13);box(c,620,80,280,100,GR,["silent","sparrows"],"#0a2a1a",13);txt(c,'silence = her language',460,230,YL,F(14,1),'center');txt(c,"silence speaks",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,20,80,430,110,YL,["START","humour"],"#2a2608",14);box(c,470,80,430,110,RD,["END","quiet pathos"],"#2a0f0f",14);txt(c,'grandfather portrait joke -> silent sparrows',460,240,CY,F(13,1),'center');txt(c,"contrast gives force",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Lekhak ne apni dadi ke liye kya kaha?",opts:["pretty aur young","never pretty, always beautiful","tall aur strong","hamesha gussa"],a:1,why:"She could never have been pretty; but she was always beautiful."},
+{q:"Gaon ka school kahan attached tha?",opts:["market","temple","dadi ka ghar","station"],a:1,why:"The school was attached to the temple."},
+{q:"City me dogs na hone par dadi kisko khilane lagi?",opts:["cows","sparrows","fish","pigeons"],a:1,why:"There were no dogs in the streets, so she took to feeding sparrows."},
+{q:"Dadi ko music lessons kaise lage?",opts:["bahut pasand","lewd associations, gentlefolk ke liye nahi","sirf bhajan theek","koi farak nahi"],a:1,why:"To her music had lewd associations and was not meant for gentlefolk."},
+{q:"Mother ke bread crumbs par sparrows ne kya kiya?",opts:["kha liye","dhyan nahi diya, chupchaap ud gaye","cheekh uthe","ghar le gaye"],a:1,why:"The sparrows took no notice of the bread and flew away quietly."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Portrait of a Lady pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
