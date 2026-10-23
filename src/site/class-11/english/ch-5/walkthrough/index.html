@@ -1,1 +1,371 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>The Ailing Planet - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Hornbill Chapter 5 - The Ailing Planet</div>
+<h1>The Ailing Planet Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - Green Movement, Lusaka mirror, four systems, forests, population, laws + industry, borrowed earth, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. The Ailing Planet 🌍⭐⭐</h2>
+<p class="why">Nani Palkhivala, The Indian Express, 24 November 1994.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Green Movement</button>
+<button class="b" data-o="1">holistic view</button>
+<button class="b" data-o="2">vital signs</button>
+<button class="b" data-o="3">our duty</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. The Most Dangerous Animal 🪞⭐⭐</h2>
+<p class="why">A cage in the zoo at Lusaka, Zambia.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the notice</button>
+<button class="b" data-o="1">the cage</button>
+<button class="b" data-o="2">the mirror</button>
+<button class="b" data-o="3">partnership</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Four Systems Under Strain 🌾🐟⭐⭐</h2>
+<p class="why">Lester Brown: the earth’s principal biological systems.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the four</button>
+<button class="b" data-o="1">what they give</button>
+<button class="b" data-o="2">unsustainable</button>
+<button class="b" data-o="3">the collapse</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Vanishing Forests 🌳⭐⭐</h2>
+<p class="why">From tropical forests to India.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">tropical</button>
+<button class="b" data-o="1">an acre a second</button>
+<button class="b" data-o="2">firewood + dung</button>
+<button class="b" data-o="3">India</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. People and the Planet 👥⭐⭐</h2>
+<p class="why">The growth of world population.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">first billion</button>
+<button class="b" data-o="1">growth</button>
+<button class="b" data-o="2">every 4 days</button>
+<button class="b" data-o="3">the choice</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Laws, Industry, Voices ⚖️⭐⭐</h2>
+<p class="why">What the text says about action.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Article 48A</button>
+<button class="b" data-o="1">a UN study</button>
+<button class="b" data-o="2">industry</button>
+<button class="b" data-o="3">definition</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Borrowed, Not Inherited 🤝⭐⭐</h2>
+<p class="why">The Era of Responsibility.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">transcending concern</button>
+<button class="b" data-o="1">passport</button>
+<button class="b" data-o="2">Thatcher</button>
+<button class="b" data-o="3">Brown</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Planet Pakka? ⭐</h2>
+<p class="why">5 sawaal - Green party, mirror, four systems, population, borrowed. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Patient</b>Palkhivala, Indian Express, 24 Nov 1994; Green Movement 1972 NZ; earth = living organism, vital signs declining.</div>
+<div class="rcard"><b>Mirror</b>Lusaka zoo cage: “world’s most dangerous animal” = a mirror; domination to partnership.</div>
+<div class="rcard"><b>4 systems</b>Fisheries, forests, grasslands, croplands (Lester Brown); unsustainable claims, collapse.</div>
+<div class="rcard"><b>Forests</b>Tropical: 40-50 mn acres/yr; India 3.7 mn/yr, real loss ~8x official; Article 48A not enforced.</div>
+<div class="rcard"><b>People</b>1 bn c.1800, 2 bn 1900, 5.7 bn now; +1 mn every four days; India 920 mn; voluntary family planning.</div>
+<div class="rcard"><b>Borrowed</b>Sustainable development (WCED 1987); Woolard; Thatcher life tenancy; Brown: borrowed from children.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 5 (The Ailing Planet) - Interactive Walkthrough</div>
+</div>
+<script>
 
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["The Green Movement started nearly <span class=hl>twenty-five years ago</span>. In <span class=hl>1972</span> the world’s first nationwide Green party was founded in <span class=hl>New Zealand</span>. Since then, the movement has not looked back.", "We have shifted from the <span class=hl>mechanistic view</span> to a <span class=hl>holistic and ecological view</span> of the world, a shift as revolutionary as that of <span class=hl>Copernicus</span> in the sixteenth century. For the first time there is a growing consciousness that the earth itself is a <span class=hl>living organism</span> of which we are parts.", "The earth’s <span class=hl>vital signs</span> reveal a patient in declining health. It has its own metabolic needs and vital processes which need to be respected and preserved.", "We have begun to realise our <span class=hl>ethical obligations</span> to be good stewards of the planet and responsible trustees of the legacy to future generations."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Ailing planet",460,26,YL,F(14,1),"center");
+ if(s===0){circ(c,460,150,80,CY,'rgba(34,211,238,.15)',4);ell(c,430,130,30,18,0,GR,'rgba(52,211,153,.3)',2);ell(c,490,180,34,20,0,GR,'rgba(52,211,153,.3)',2);txt(c,'NEW ZEALAND',700,110,YL,F(14,1),'left');txt(c,'1972: first Green party',700,140,GR,F(13,1),'left');arrow2(c,690,125,560,150,YL,2);txt(c,'Earth',460,265,CY,F(14,1),'center');txt(c,"the Green Movement begins",460,326,GR,F(14,1),"center");}
+ else if(s===1){box(c,60,80,300,100,RD,['MECHANISTIC','view'],'#2a0f0f',16);box(c,560,80,300,100,GR,['HOLISTIC +','ECOLOGICAL view'],'#0a2a1a',16);arrow2(c,370,130,550,130,YL,4);txt(c,'as revolutionary as Copernicus',460,230,MG,F(13,1),'center');txt(c,'the earth is a living organism',460,262,CY,F(13,1),'center');txt(c,"a shift in perception",460,326,YL,F(14,1),"center");}
+ else if(s===2){circ(c,300,140,70,CY,'rgba(34,211,238,.15)',4);line(c,380,140,500,140,RD,3);line(c,500,140,530,100,RD,3);line(c,530,100,560,190,RD,3);line(c,560,190,590,140,RD,3);line(c,590,140,720,140,RD,3);txt(c,'vital signs: declining health',620,230,RD,F(14,1),'center');txt(c,'a patient',300,250,CY,F(14,1),'center');txt(c,"the earth is a patient",460,326,RD,F(14,1),"center");}
+ else if(s===3){circ(c,460,140,60,CY,'rgba(34,211,238,.15)',4);circ(c,300,150,16,YL,'rgba(250,204,21,.3)',3);circ(c,620,150,16,MG,'rgba(232,121,249,.3)',3);arrow2(c,316,148,396,140,GR,3);arrow2(c,604,148,524,140,GR,3);txt(c,'good stewards',300,200,YL,F(13,1),'center');txt(c,'trustees for the future',620,200,MG,F(13,1),'center');txt(c,"ethical obligations",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[0]=()=>{if([0].includes(s))draw();};
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["In the zoo at <span class=hl>Lusaka, Zambia</span>, there is a cage where the notice reads, <span class=hl>‘The world’s most dangerous animal’</span>.", "Inside the cage there is <span class=hl>no animal</span>. Visitors look in, expecting a fierce beast.", "There is only a <span class=hl>mirror</span> where you see yourself. The most dangerous animal is the human being.", "Thanks to the efforts of many agencies, a new awareness has dawned upon the most dangerous animal. He has realised the wisdom of shifting from a system based on <span class=hl>domination</span> to one based on <span class=hl>partnership</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Zoo mirror",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,260,80,400,100,RD,['THE WORLD’S MOST','DANGEROUS ANIMAL'],'#2a0f0f',18);txt(c,'notice on the cage, Lusaka zoo, Zambia',460,230,YL,F(14,1),'center');txt(c,"the notice",460,326,RD,F(14,1),"center");}
+ else if(s===1){c.strokeStyle=YL;c.lineWidth=4;for(let k=0;k<9;k++)line(c,300+k*40,60,300+k*40,240,YL,3);line(c,300,60,620,60,YL,4);line(c,300,240,620,240,YL,4);txt(c,'?',460,170,MG,F(40,1),'center');txt(c,'no animal inside',460,275,GR,F(14,1),'center');txt(c,"an empty-looking cage",460,326,YL,F(14,1),"center");}
+ else if(s===2){c.strokeStyle='#e8e8f2';c.lineWidth=4;c.fillStyle='rgba(232,232,242,.12)';c.fillRect(340,50,240,190);c.strokeRect(340,50,240,190);circ(c,460,120,28,CY,'rgba(34,211,238,.3)',3);line(c,460,148,460,200,CY,3);line(c,430,170,490,170,CY,3);txt(c,'a mirror: you see yourself',460,270,MG,F(14,1),'center');txt(c,"the mirror",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,60,80,300,100,RD,['DOMINATION'],'#2a0f0f',18);box(c,560,80,300,100,GR,['PARTNERSHIP'],'#0a2a1a',18);arrow2(c,370,130,550,130,YL,4);txt(c,'a new awareness has dawned',460,230,CY,F(14,1),'center');txt(c,"the shift",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["Mr <span class=hl>Lester R. Brown</span> points out that the earth’s principal biological systems are four: <span class=hl>fisheries, forests, grasslands and croplands</span>. They form the foundation of the global economic system.", "Besides supplying our food, these four systems provide <span class=hl>virtually all the raw materials for industry</span> except minerals and petroleum-derived synthetics.", "In large areas of the world, human claims on these systems are reaching an <span class=hl>unsustainable level</span>, a point where their productivity is being impaired.", "When this happens, <span class=hl>fisheries collapse, forests disappear, grasslands are converted into barren wastelands, and croplands deteriorate</span>. In poor countries local forests are decimated for firewood; firewood has become so expensive that what goes under the pot now costs more than what goes inside it."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Four systems",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,40,100,200,90,CY,['FISHERIES'],'#0a1c2a',15);box(c,260,100,200,90,GR,['FORESTS'],'#0a2a1a',15);box(c,480,100,200,90,YL,['GRASSLANDS'],'#2a2608',15);box(c,700,100,180,90,MG,['CROPLANDS'],'#2a0a2a',15);txt(c,'the four principal biological systems',460,240,YL,F(14,1),'center');txt(c,"Lester Brown’s four",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,330,40,260,70,YL,['GLOBAL ECONOMY'],'#2a2608',15);for(let k=0;k<4;k++){line(c,200+k*173,200,460,115,GR,2);}txt(c,'food',200,225,CY,F(13,1),'center');txt(c,'raw materials for industry',460,225,GR,F(13,1),'center');txt(c,'(not minerals / petroleum synthetics)',700,250,MG,F(12,1),'center');txt(c,"the foundation",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,60,90,300,100,CY,['HUMAN CLAIMS','keep growing'],'#0a1c2a',15);box(c,560,90,300,100,RD,['PRODUCTIVITY','IMPAIRED'],'#2a0f0f',15);arrow2(c,370,140,550,140,RD,4);txt(c,'unsustainable level',460,240,RD,F(16,1),'center');txt(c,"too much, too fast",460,326,RD,F(14,1),"center");}
+ else if(s===3){const f=Math.abs(Math.sin(__t*1.5));ell(c,150,150,50,22,0,CY,'rgba(34,211,238,.2)',3);line(c,200,150,230,130,CY,3);line(c,380,190,380,166,'#a16207',4);circ(c,380,156,16,GR,'rgba(52,211,153,.25)',3);line(c,380,190,420,230,RD,4);line(c,420,190,380,230,RD,4);c.fillStyle='rgba(161,98,7,.4)';c.fillRect(540,170,140,40);c.fillStyle='rgba(52,211,153,'+(0.5-0.4*f)+')';c.fillRect(740,170,120,40);txt(c,'fisheries collapse',150,230,RD,F(12,1),'center');txt(c,'forests vanish',380,260,RD,F(12,1),'center');txt(c,'barren wasteland',610,230,YL,F(12,1),'center');txt(c,'croplands deteriorate',800,230,MG,F(12,1),'center');txt(c,"four collapses",460,326,RD,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[2]=()=>{if([3].includes(s))draw();};
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Since the tropical forest is, in Dr Myers’ words, <span class=hl>“the powerhouse of evolution”</span>, several species of life face extinction as a result of its destruction. Scientists have catalogued about <span class=hl>1.4 million</span> living species; perhaps <span class=hl>three to a hundred million</span> more languish unnamed.", "The world’s ancient tropical forests are eroding at <span class=hl>forty to fifty million acres a year</span>. James Speth said we were told forests are lost at <span class=hl>an acre a second</span>, but it is closer to <span class=hl>an acre-and-a-half</span> a second.", "Growing use of <span class=hl>dung for burning</span> deprives the soil of an important natural fertiliser. The World Bank estimates a <span class=hl>five-fold increase</span> in forest planting is needed to meet the expected fuelwood demand in the year 2000.", "A report of Parliament’s Estimates Committee highlights the <span class=hl>near catastrophic depletion</span> of India’s forests. India is losing <span class=hl>3.7 million acres a year</span>. Large areas officially designated as forest are virtually treeless; the actual loss is about <span class=hl>eight times</span> the government figures."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Forests",460,26,YL,F(14,1),"center");
+ if(s===0){for(let k=0;k<6;k++){line(c,100+k*130,200,100+k*130,170,'#a16207',4);circ(c,100+k*130,150,24,GR,'rgba(52,211,153,.25)',3);}txt(c,'tropical forest: powerhouse of evolution',460,60,GR,F(14,1),'center');txt(c,'species face extinction when it is destroyed',460,260,RD,F(13,1),'center');txt(c,"Dr Myers",460,326,GR,F(14,1),"center");}
+ else if(s===1){box(c,60,90,380,100,RD,['40-50 MILLION','acres lost a year'],'#2a0f0f',17);box(c,500,90,360,100,YL,['1 acre / second?','closer to 1.5 acres'],'#2a2608',15);txt(c,'James Speth, World Resources Institute',460,240,CY,F(13,1),'center');txt(c,"the rate of loss",460,326,RD,F(14,1),"center");}
+ else if(s===2){box(c,60,90,380,100,YL,['FIREWOOD + DUNG','for cooking'],'#2a2608',15);box(c,500,90,360,100,RD,['SOIL LOSES','natural fertiliser'],'#2a0f0f',15);arrow2(c,450,140,490,140,GR,3);txt(c,'World Bank: 5x forest planting needed',460,240,CY,F(13,1),'center');txt(c,"fuel vs soil",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,60,70,260,100,RD,['3.7 MILLION','acres/year lost'],'#2a0f0f',16);box(c,360,70,220,100,YL,['ACTUAL LOSS','about 8 times'],'#2a2608',14);box(c,620,70,240,100,CY,['“virtually','treeless”'],'#0a1c2a',14);txt(c,'Estimates Committee: near catastrophic depletion',460,230,MG,F(13,1),'center');txt(c,'(official forest land, official figures)',460,260,GR,F(12,1),'center');txt(c,"India",460,326,RD,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["The growth of world population is one of the <span class=hl>strongest factors distorting the future</span> of human society. It took mankind <span class=hl>more than a million years</span> to reach the first billion, around the year <span class=hl>1800</span>.", "By <span class=hl>1900</span> a second billion was added, and the twentieth century added another <span class=hl>3.7 billion</span>. The present world population is estimated at <span class=hl>5.7 billion</span>.", "<span class=hl>Every four days</span> the world population increases by <span class=hl>one million</span>. India’s population is estimated at <span class=hl>920 million</span>, more than Africa and South America put together.", "<span class=hl>Fertility falls as incomes rise</span>, education spreads and health improves: development is the best contraceptive. But development may not be possible if numbers keep rising. The text wants <span class=hl>voluntary family planning</span>: the choice is between <span class=hl>control of population and perpetuation of poverty</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"People",460,26,YL,F(14,1),"center");
+ if(s===0){line(c,80,200,840,200,CY,3);circ(c,160,200,8,YL,YL,1);circ(c,640,200,8,MG,MG,1);txt(c,'over a million years',400,170,YL,F(14,1),'center');txt(c,'1 billion, around 1800',160,240,YL,F(13,1),'center');txt(c,'1900: 2 billion',640,240,MG,F(13,1),'center');arrow2(c,170,195,630,195,GR,3);txt(c,"a very slow start",460,326,YL,F(14,1),"center");}
+ else if(s===1){c.fillStyle='rgba(34,211,238,.3)';c.fillRect(100,200,100,-40);c.fillStyle='rgba(232,121,249,.3)';c.fillRect(260,200,100,-80);c.fillStyle='rgba(250,204,21,.3)';c.fillRect(420,200,100,-150);c.fillStyle='rgba(248,113,113,.4)';c.fillRect(580,200,100,-170);txt(c,'1 bn (c.1800)',150,225,CY,F(12,1),'center');txt(c,'2 bn (1900)',310,225,MG,F(12,1),'center');txt(c,'+3.7 bn in 20th c.',470,225,YL,F(12,1),'center');txt(c,'5.7 bn today',630,225,RD,F(12,1),'center');txt(c,'India: 920 million',780,130,GR,F(13,1),'center');txt(c,"the 20th century",460,326,RD,F(14,1),"center");}
+ else if(s===2){const k=Math.floor(__t*2)%4;for(let j=0;j<4;j++){box(c,80+j*200,100,170,80,j<=k?RD:CY,['DAY '+(j+1)],j<=k?'#2a0f0f':'#0a1c2a',16);}txt(c,'every four days: +1 million',460,240,YL,F(16,1),'center');txt(c,"a city every few days",460,326,RD,F(14,1),"center");}
+ else if(s===3){box(c,60,80,360,100,GR,['VOLUNTARY','family planning'],'#0a2a1a',16);box(c,500,80,360,100,RD,['perpetuation','of poverty'],'#2a0f0f',16);txt(c,'the real choice: control of population or poverty',460,230,YL,F(14,1),'center');txt(c,'not compulsory sterilisation',460,262,MG,F(13,1),'center');txt(c,"development + choice",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Article 48A</span> of the Constitution says the State shall endeavour to protect and improve the environment and safeguard forests and wildlife. But laws are <span class=hl>never respected nor enforced</span> in India, says the author.", "A <span class=hl>three-year UN study</span> using satellites and aerial photography warns the environment is so deteriorated that it is <span class=hl>‘critical’</span> in many of the <span class=hl>eighty-eight countries</span> studied. The First Brandt Report asked if we will leave a <span class=hl>scorched planet</span>.", "<span class=hl>Industry</span> has a crucial role. Du Pont’s Chairman <span class=hl>Edgar S. Woolard</span> declared himself the company’s <span class=hl>“Chief Environmental Officer”</span>: continued existence as a leading manufacturer requires excelling in environmental performance.", "The idea of <span class=hl>sustainable development</span> was popularised in <span class=hl>1987</span> by the World Commission on Environment and Development: development that meets the needs of the present without compromising the ability of future generations to meet their needs."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Laws + industry",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,60,70,360,110,CY,['ARTICLE 48A','protect environment,','forests, wildlife'],'#0a1c2a',14);box(c,500,70,360,110,RD,['REALITY','laws not respected','or enforced'],'#2a0f0f',14);arrow2(c,430,125,490,125,MG,3);txt(c,"law vs practice",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,60,70,240,100,MG,['UN STUDY','3 years'],'#2a0a2a',15);box(c,340,70,240,100,YL,['88 COUNTRIES','satellites + air photos'],'#2a2608',13);box(c,620,70,240,100,RD,['“CRITICAL”','in many'],'#2a0f0f',15);arrow2(c,305,120,335,120,GR,3);arrow2(c,585,120,615,120,GR,3);txt(c,"the evidence",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,330,50,260,80,YL,['EDGAR S. WOOLARD','Chairman, Du Pont'],'#2a2608',14);arrow2(c,460,135,460,185,GR,3);box(c,260,190,400,70,GR,['“CHIEF ENVIRONMENTAL OFFICER”'],'#0a2a1a',14);txt(c,"industry steps up",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,60,90,380,100,CY,['MEETS PRESENT','NEEDS'],'#0a1c2a',16);box(c,480,90,380,100,GR,['WITHOUT HARMING','FUTURE GENERATIONS'],'#0a2a1a',15);txt(c,'+',460,140,YL,F(30,1),'center');txt(c,'sustainable development: WCED, 1987',460,240,MG,F(14,1),'center');txt(c,"the definition",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["For the first time in human history we see a <span class=hl>transcending concern</span>: the survival not just of the people but of the planet. We take a <span class=hl>holistic view</span> of the basis of our existence.", "The environmental problem does not necessarily signal our demise; it is our <span class=hl>passport for the future</span>. The new world vision has ushered in the <span class=hl>Era of Responsibility</span>, seeing the world as an integrated whole rather than a dissociated collection of parts.", "<span class=hl>Margaret Thatcher</span>: “No generation has a <span class=hl>freehold</span> on this earth. All we have is a <span class=hl>life tenancy</span>, with a full repairing lease.” Her words passed decisively into the current coin of English usage.", "<span class=hl>Lester Brown</span>: “We have not inherited this earth from our forefathers; we have <span class=hl>borrowed</span> it from our children.”"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Borrowed",460,26,YL,F(14,1),"center");
+ if(s===0){circ(c,300,140,50,CY,'rgba(34,211,238,.2)',3);circ(c,620,140,30,GR,'rgba(52,211,153,.2)',3);txt(c,'people',300,145,CY,F(14,1),'center');txt(c,'planet',620,145,GR,F(14,1),'center');arrow2(c,360,140,580,140,YL,3);txt(c,'survival of both',460,230,YL,F(15,1),'center');txt(c,"transcending concern",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,240,70,440,100,YL,['PASSPORT FOR','THE FUTURE'],'#2a2608',18);txt(c,'Era of Responsibility: the world as an integrated whole',460,230,GR,F(13,1),'center');txt(c,"not our demise",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,60,70,320,100,MG,['FREEHOLD?','no generation has one'],'#2a0a2a',14);box(c,540,70,320,100,GR,['LIFE TENANCY','full repairing lease'],'#0a2a1a',14);arrow2(c,390,120,530,120,YL,3);txt(c,'Margaret Thatcher',460,230,CY,F(14,1),'center');txt(c,"a lease, not ownership",460,326,MG,F(14,1),"center");}
+ else if(s===3){circ(c,200,140,40,YL,'rgba(250,204,21,.2)',3);circ(c,720,140,26,CY,'rgba(34,211,238,.2)',3);arrow2(c,690,150,250,150,MG,3);txt(c,'us today',200,200,YL,F(13,1),'center');txt(c,'our children',720,200,CY,F(13,1),'center');txt(c,'NOT inherited from forefathers',460,100,RD,F(14,1),'center');txt(c,'BORROWED from our children',460,185,GR,F(14,1),'center');txt(c,"Lester Brown",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Pehli nationwide Green party kahan bani?",opts:["India","New Zealand","Zambia","USA"],a:1,why:"In 1972, in New Zealand."},
+{q:"Lusaka zoo ke cage mein kya tha?",opts:["sher","ek aaina (mirror)","bhediya","kuch nahi"],a:1,why:"A mirror: the most dangerous animal is the human."},
+{q:"Lester Brown ke chaar biological systems mein kaun SA nahi hai?",opts:["fisheries","forests","glaciers","croplands"],a:2,why:"The four are fisheries, forests, grasslands, croplands."},
+{q:"Duniya ki population text ke hisaab se kitne din mein 1 million badhti hai?",opts:["1 din","4 din","30 din","1 saal"],a:1,why:"Every four days, by one million."},
+{q:"“We have borrowed this earth from…”?",opts:["our forefathers","our children","the government","nature spirits"],a:1,why:"Lester Brown: borrowed from our children."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Planet pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
