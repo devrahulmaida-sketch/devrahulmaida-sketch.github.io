@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Cell: The Unit of Life - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 Biology - Chapter 8 - Cell: The Unit of Life</div>
+<h1>Cell: The Unit of Life Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - cell theory, prokaryotic cell, membrane + wall, endomembrane system, mitochondria + plastids, ribosome + cytoskeleton, nucleus + chromosomes, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Cell Theory + Discovery 🔬⭐⭐</h2>
+<p class="why">Hooke, Leeuwenhoek, Schleiden-Schwann, Virchow, sizes, prokaryote vs eukaryote.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">discovery</button>
+<button class="b" data-o="1">cell theory</button>
+<button class="b" data-o="2">sizes + shapes</button>
+<button class="b" data-o="3">pro vs eukaryote</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Prokaryotic Cell 🦠⭐⭐</h2>
+<p class="why">Cell envelope, Gram stain, mesosome, flagellum, ribosomes, inclusions.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">cell envelope</button>
+<button class="b" data-o="1">Gram + / −</button>
+<button class="b" data-o="2">flagellum</button>
+<button class="b" data-o="3">ribosome + extras</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Membrane, Transport, Cell Wall 🧱⭐⭐</h2>
+<p class="why">Fluid mosaic model, transport types, plant and fungal wall, plasmodesmata.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">fluid mosaic</button>
+<button class="b" data-o="1">transport</button>
+<button class="b" data-o="2">cell wall</button>
+<button class="b" data-o="3">plasmodesmata</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Endomembrane System 🏭⭐⭐</h2>
+<p class="why">RER, SER, Golgi, lysosome, vacuole.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">RER + SER</button>
+<button class="b" data-o="1">Golgi</button>
+<button class="b" data-o="2">lysosome</button>
+<button class="b" data-o="3">vacuole</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Mitochondria + Plastids ⚡⭐⭐</h2>
+<p class="why">Cristae, matrix, semi-autonomous, chloroplast, chromoplast, leucoplast.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">mitochondria</button>
+<button class="b" data-o="1">inside it</button>
+<button class="b" data-o="2">plastids</button>
+<button class="b" data-o="3">semi-autonomous</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Ribosome, Cytoskeleton, Cilia 🧬⭐⭐</h2>
+<p class="why">80S vs 70S, protein filaments, 9+2 axoneme, cilia vs flagella.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">ribosomes</button>
+<button class="b" data-o="1">cytoskeleton</button>
+<button class="b" data-o="2">9+2 pattern</button>
+<button class="b" data-o="3">cilia vs flagella</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Nucleus + Chromosomes 🧪⭐⭐</h2>
+<p class="why">Nuclear envelope, chromatin, nucleolus, centromere types, karyotype.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">nucleus</button>
+<button class="b" data-o="1">chromatin</button>
+<button class="b" data-o="2">chromosome types</button>
+<button class="b" data-o="3">nucleolus + karyotype</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Cell Pakka? ⭐</h2>
+<p class="why">5 sawaal - Virchow, ribosome, Golgi, cristae, centromere. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Cell theory</b>Schleiden + Schwann; Virchow 1855: every cell from a pre-existing cell. Mycoplasma smallest (0.3 µm), ostrich egg largest single cell.</div>
+<div class="rcard"><b>Prokaryote</b>No true nucleus, 70S ribosomes. Envelope: glycocalyx, wall, membrane. Gram +ve thick wall. Mesosome, plasmid, flagellum.</div>
+<div class="rcard"><b>Membrane + wall</b>Fluid mosaic (Singer-Nicolson 1972). Active transport needs ATP. Plant wall cellulose, fungi chitin. Plasmodesmata link cells.</div>
+<div class="rcard"><b>Endomembrane</b>RER proteins, SER lipids. Golgi: cis to trans, packaging. Lysosome hydrolytic, acidic. Plant vacuole ~90%, tonoplast.</div>
+<div class="rcard"><b>Mito + plastids</b>Cristae, matrix, own DNA + 70S. Chloroplast, chromoplast, leucoplast. Mito + chloroplast semi-autonomous.</div>
+<div class="rcard"><b>Nucleus + chromosome</b>80S eukaryote ribosome. Cilia/flagella 9+2. Euchromatin active. V, L, J, I = meta, submeta, acro, telo. Human karyotype 46.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 Biology Chapter 8 (Cell: The Unit of Life) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Hooke 1665:</span> cork me 'cells' (dead cell walls). <span class=hl>Leeuwenhoek:</span> pehli LIVING cell dekhi.", "<span class=hl>Schleiden + Schwann</span> cell theory. <span class=hl>Virchow 1855:</span> Omnis cellula-e cellula - har cell purani cell se.", "Smallest = <span class=hl>mycoplasma 0.3 µm</span>. Largest isolated single cell = <span class=hl>ostrich egg</span>. Longest = nerve cell. RBC ~7 µm.", "<span class=hl>Prokaryote:</span> no true nucleus, no membrane organelles, 70S. <span class=hl>Eukaryote:</span> true nucleus + organelles, 80S."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Cell theory",460,26,YL,F(14,1),"center");
+
+ if(s===0){chain(c,["Hooke|1665","Leeuwen-|hoek","Schleiden|1838","Schwann|1839","Virchow|1855"],[0,1,2,3,4],90,CY);txt(c,"cork = dead cell walls | Leeuwenhoek = LIVING cell",460,210,YL,F(15,1),"center");txt(c,"Virchow: har cell existing cell se banti hai",460,250,GR,F(14,1),"center");}
+ else if(s===1){box(c,40,70,260,110,CY,["1. sab living things","cells + unke products","se bane hain"],"#0a1c2a",13);box(c,330,70,260,110,MG,["2. cell = basic unit","of structure","aur function"],"#2a0a2a",13);box(c,620,70,260,110,GR,["3. Virchow (1855)","cell from pre-","existing cell"],"#0a2a1a",13);txt(c,"Schleiden (botanist) + Schwann (zoologist)",460,230,YL,F(15,1),"center");}
+ else if(s===2){circ(c,120,150,10,MG,"#2a0a2a",3);txt(c,"mycoplasma 0.3 µm",120,210,MG,F(13,1),"center");circ(c,320,150,22,CY,"#0a1c2a",3);txt(c,"RBC ~7 µm",320,210,CY,F(13,1),"center");ell(c,540,150,55,70,0,YL,"#2a2608",3);txt(c,"ostrich egg",540,250,YL,F(13,1),"center");txt(c,"= largest",540,268,YL,F(12,1),"center");line(c,680,150,880,150,GR,5);txt(c,"nerve cell = longest",780,190,GR,F(13,1),"center");}
+ else{box(c,40,70,400,120,CY,["PROKARYOTE","no true nucleus (nucleoid)","no membrane organelles","70S ribosomes"],"#0a1c2a",13);box(c,480,70,400,120,MG,["EUKARYOTE","true nucleus","membrane organelles","80S ribosomes"],"#2a0a2a",13);txt(c,"pro: bacteria, cyanobacteria, mycoplasma | euk: protists, fungi, plants, animals",460,235,D,F(13,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["Envelope = 3 layers: <span class=hl>glycocalyx</span> (slime layer or capsule), <span class=hl>cell wall</span>, <span class=hl>plasma membrane</span>.", "<span class=hl>Gram +ve:</span> thick wall, retains stain. <span class=hl>Gram −ve:</span> thin wall + outer lipid layer, no stain. <span class=hl>Mesosome:</span> membrane fold.", "<span class=hl>Flagellum:</span> filament + hook + basal body. <span class=hl>Pili/fimbriae:</span> attachment, conjugation.", "<span class=hl>70S ribosome</span> (50S + 30S). <span class=hl>Inclusion bodies:</span> reserve granules, gas vacuoles. <span class=hl>Plasmid:</span> small circular DNA."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Prokaryotic cell",460,26,YL,F(14,1),"center");
+
+ if(s===0){chain(c,["glycocalyx","cell wall","plasma|membrane"],[0,1,2],110,CY);txt(c,"outside → inside",460,200,YL,F(15,1),"center");txt(c,"glycocalyx = slime layer (loose) ya capsule (thick, tough)",460,240,GR,F(13,1),"center");}
+ else if(s===1){box(c,40,70,400,110,CY,["GRAM +VE","thick cell wall","stain RAKHTE hain"],"#0a1c2a",14);box(c,480,70,400,110,MG,["GRAM −VE","thin wall + extra lipid","stain NAHI rakhte"],"#2a0a2a",14);txt(c,"mesosome = plasma membrane ka inward fold",460,225,YL,F(14,1),"center");txt(c,"respiration, DNA replication, cell division me help",460,255,GR,F(13,1),"center");}
+ else if(s===2){chain(c,["filament","hook","basal body"],[0,1,2],100,MG);txt(c,"basal body = cell wall me embedded motor",460,190,YL,F(15,1),"center");txt(c,"pili / fimbriae: attachment + conjugation (DNA transfer)",460,235,GR,F(14,1),"center");}
+ else{box(c,40,70,270,100,CY,["RIBOSOME","70S = 50S + 30S","protein factory"],"#0a1c2a",13);box(c,330,70,270,100,YL,["INCLUSION BODIES","phosphate, glycogen,","gas vacuole"],"#2a2608",13);box(c,620,70,260,100,GR,["PLASMID","small circular DNA","antibiotic resistance"],"#0a2a1a",13);txt(c,"polysome = mRNA pe ribosome chain",460,215,D,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Fluid mosaic (Singer + Nicolson 1972):</span> phospholipid bilayer, quasi-fluid, proteins embedded + cholesterol.", "<span class=hl>Passive:</span> along gradient. <span class=hl>Facilitated:</span> carrier. <span class=hl>Active:</span> ATP, against gradient (Na-K pump).", "Plant wall: <span class=hl>cellulose + hemicellulose + pectin</span>. Middle lamella = calcium pectate. Fungi = chitin.", "<span class=hl>Plasmodesmata:</span> cytoplasmic bridges through cell walls, connect neighbouring cells."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Membrane + wall",460,26,YL,F(14,1),"center");
+
+ if(s===0){for(let k=0;k<12;k++){const x=120+k*60;circ(c,x,110,11,CY,"#0a1c2a",2);line(c,x-4,121,x-4,140,CY,2);line(c,x+4,121,x+4,140,CY,2);circ(c,x,200,11,CY,"#0a1c2a",2);line(c,x-4,189,x-4,170,CY,2);line(c,x+4,189,x+4,170,CY,2);}ell(c,330,155,26,30,0,MG,"#2a0a2a",3);ell(c,610,155,26,30,0,MG,"#2a0a2a",3);txt(c,"integral protein",330,258,MG,F(12,1),"center");txt(c,"phospholipid bilayer + cholesterol",720,258,CY,F(12,1),"center");txt(c,"proteins 'float' = mosaic",460,60,YL,F(13,1),"center");}
+ else if(s===1){box(c,30,70,270,110,GR,["PASSIVE","neutral molecules","high → low, no ATP"],"#0a2a1a",13);box(c,330,70,270,110,CY,["FACILITATED","polar molecules","carrier proteins"],"#0a1c2a",13);box(c,630,70,260,110,MG,["ACTIVE","needs ATP","low → high (Na-K pump)"],"#2a0a2a",13);txt(c,"selectively permeable membrane",460,230,YL,F(15,1),"center");}
+ else if(s===2){box(c,40,70,400,110,GR,["PLANT CELL WALL","cellulose + hemicellulose","+ pectin"],"#0a2a1a",14);box(c,480,70,400,110,YL,["FUNGI","wall = chitin"],"#2a2608",15);txt(c,"middle lamella = calcium pectate (cells ko jodta hai)",460,230,CY,F(14,1),"center");}
+ else{c.fillStyle="#1b2a38";c.fillRect(60,70,320,170);c.fillRect(540,70,320,170);c.fillStyle="#0a2a1a";c.fillRect(380,70,160,170);circ(c,220,155,40,CY,"#0a1c2a",3);circ(c,700,155,40,CY,"#0a1c2a",3);line(c,260,140,660,140,MG,4);line(c,260,170,660,170,MG,4);txt(c,"cell 1",220,155,CY,F(14,1),"center");txt(c,"cell 2",700,155,CY,F(14,1),"center");txt(c,"plasmodesmata",460,125,MG,F(13,1),"center");txt(c,"cell wall ke beech cytoplasmic bridge",460,275,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>RER:</span> ribosomes attached, makes proteins. <span class=hl>SER:</span> no ribosomes, lipids, steroid hormones, detox.", "<span class=hl>Golgi (1898):</span> stacked cisternae, cis face (forming) → trans face (maturing). Packaging, modifying, dispatch.", "<span class=hl>Lysosome:</span> single-membrane vesicle, hydrolytic enzymes, acidic pH. Autolysis: 'suicide bags'.", "<span class=hl>Plant vacuole:</span> one large central, up to 90% volume, tonoplast. Amoeba: food + contractile vacuole."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Endomembrane system",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,400,110,CY,["ROUGH ER (RER)","ribosomes attached (dotted)","makes secretory proteins"],"#0a1c2a",13);box(c,480,70,400,110,MG,["SMOOTH ER (SER)","no ribosomes","lipids, steroids, detox"],"#2a0a2a",13);txt(c,"ER = membrane network nucleus se plasma membrane tak",460,230,YL,F(14,1),"center");}
+ else if(s===1){chain(c,["ER|proteins","cis face|forming","trans face|maturing","vesicle|dispatch"],[0,1,2,3],100,CY);txt(c,"Golgi = post office: packaging + modification + dispatch",460,215,YL,F(15,1),"center");txt(c,"glycoproteins, glycolipids | plants: cell plate",460,250,GR,F(13,1),"center");}
+ else if(s===2){circ(c,200,150,60,RD,"#2a0f0f",4);txt(c,"enzymes",200,155,YL,F(14,1),"center");txt(c,"single membrane",200,235,RD,F(13,1),"center");txt(c,"hydrolytic enzymes, acidic pH",560,110,CY,F(15,1),"center");txt(c,"digest worn organelles, food, microbes",560,150,GR,F(14,1),"center");txt(c,"autolysis = 'suicide bags'",560,190,RD,F(15,1),"center");}
+ else{box(c,40,70,400,110,GR,["PLANT VACUOLE","one big central","~90% volume, tonoplast"],"#0a2a1a",13);box(c,480,70,400,110,CY,["AMOEBA","food vacuole","contractile = osmoregulation"],"#0a1c2a",13);txt(c,"animal cell me vacuole chhoti",460,230,D,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Mitochondria:</span> double membrane; inner membrane folds = <span class=hl>cristae</span> (more surface). Powerhouse, ATP.", "<span class=hl>Matrix:</span> respiration enzymes, circular DNA, 70S ribosomes, RNA. Divide by fission.", "<span class=hl>Plastids</span> (plants, euglenoids): chloroplast (green), chromoplast (colour), leucoplast (colourless, storage).", "Mito + chloroplast: <span class=hl>double membrane + own DNA + 70S ribosomes</span> = semi-autonomous."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Mitochondria + plastids",460,26,YL,F(14,1),"center");
+
+ if(s===0){ell(c,300,160,170,85,0,CY,"#0a1c2a",4);ell(c,300,160,140,60,0,MG,null,3);for(let k=0;k<5;k++){line(c,200+k*50,120,200+k*50,170,MG,3);line(c,225+k*50,200,225+k*50,150,MG,3);}txt(c,"outer membrane",300,262,CY,F(13,1),"center");txt(c,"inner membrane = cristae",300,285,MG,F(13,1),"center");txt(c,"powerhouse of the cell",700,130,YL,F(16,1),"center");txt(c,"ATP yahin banta hai",700,170,GR,F(15,1),"center");txt(c,"muscle cells me zyada",700,205,CY,F(14,1),"center");}
+ else if(s===1){box(c,40,70,270,110,CY,["MATRIX ENZYMES","aerobic respiration"],"#0a1c2a",14);box(c,330,70,270,110,MG,["OWN DNA","circular","+ RNA"],"#2a0a2a",14);box(c,620,70,260,110,GR,["70S RIBOSOMES","divides by fission"],"#0a2a1a",14);txt(c,"mitochondria khud divide karte hain",460,230,YL,F(15,1),"center");}
+ else if(s===2){box(c,30,70,270,120,GR,["CHLOROPLAST","green, photosynthesis","grana + stroma"],"#0a2a1a",13);box(c,330,70,270,120,MG,["CHROMOPLAST","coloured pigments","flower/fruit colour"],"#2a0a2a",13);box(c,630,70,260,120,YL,["LEUCOPLAST","colourless, storage","starch, oil, protein"],"#2a2608",13);txt(c,"amylo- = starch | elaio- = oil | aleuro- = protein",460,235,CY,F(14,1),"center");}
+ else{chain(c,["double|membrane","own|DNA","70S|ribosomes","divide|themselves"],[0,1,2,3],100,CY);txt(c,"mitochondria + chloroplast = semi-autonomous",460,205,YL,F(16,1),"center");txt(c,"70S inside organelles = endosymbiosis ka hint",460,245,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Ribosome:</span> no membrane, rRNA + protein, protein synthesis site. Eukaryote cytoplasm <span class=hl>80S (60S + 40S)</span>.", "<span class=hl>Cytoskeleton:</span> microtubules, microfilaments, intermediate filaments - shape, support, motility, spindle.", "<span class=hl>Axoneme 9+2:</span> 9 peripheral doublets + 2 central singlets. Basal body = 9+0.", "<span class=hl>Cilia:</span> short + many. <span class=hl>Flagella:</span> long + few."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Ribosome + cytoskeleton",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,400,110,CY,["EUKARYOTE CYTOPLASM","80S = 60S + 40S"],"#0a1c2a",15);box(c,480,70,400,110,MG,["PROKARYOTE + ORGANELLES","70S = 50S + 30S"],"#2a0a2a",15);txt(c,"non-membranous granules: rRNA + proteins",460,225,YL,F(14,1),"center");txt(c,"site of protein synthesis",460,255,GR,F(14,1),"center");}
+ else if(s===1){box(c,30,70,270,110,CY,["MICROTUBULES","tubulin"],"#0a1c2a",14);box(c,330,70,270,110,MG,["MICROFILAMENTS","actin"],"#2a0a2a",14);box(c,630,70,260,110,GR,["INTERMEDIATE","FILAMENTS"],"#0a2a1a",14);txt(c,"shape + support + motility + spindle (division)",460,230,YL,F(15,1),"center");}
+ else if(s===2){for(let k=0;k<9;k++){const a=k*Math.PI*2/9;circ(c,300+Math.cos(a)*85,160+Math.sin(a)*85,12,CY,"#0a1c2a",3);}circ(c,288,160,9,MG,"#2a0a2a",3);circ(c,312,160,9,MG,"#2a0a2a",3);txt(c,"9 doublets",300,285,CY,F(13,1),"center");txt(c,"9 + 2",660,120,YL,F(26,1),"center");txt(c,"cilia/flagella ka signature",660,170,GR,F(15,1),"center");txt(c,"basal body = 9 + 0",660,210,MG,F(14,1),"center");}
+ else{box(c,40,70,400,110,CY,["CILIA","short + many","hair-like outgrowths"],"#0a1c2a",14);box(c,480,70,400,110,MG,["FLAGELLA","long + few","hair-like outgrowths"],"#2a0a2a",14);txt(c,"dono 9+2 axoneme, basal body se nikalte hain",460,230,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Nucleus</span> (Robert Brown 1831): double-membrane envelope + nuclear pores, nucleoplasm, chromatin, nucleolus.", "<span class=hl>Euchromatin:</span> loose, active. <span class=hl>Heterochromatin:</span> dense, inactive. Chromatin = DNA + histones.", "Centromere position: <span class=hl>metacentric (V), sub-metacentric (L), acrocentric (J), telocentric (I)</span>.", "<span class=hl>Nucleolus:</span> rRNA site, no membrane. <span class=hl>Karyotype:</span> chromosome number + shape (human 46)."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Nucleus + chromosomes",460,26,YL,F(14,1),"center");
+
+ if(s===0){circ(c,260,165,105,CY,"#0a1c2a",5);circ(c,260,165,92,MG,null,2);circ(c,235,150,34,YL,"#2a2608",3);txt(c,"nucleolus",235,154,YL,F(10,1),"center");txt(c,"nuclear pore",260,48,CY,F(12,1),"center");txt(c,"double membrane envelope",260,295,CY,F(13,1),"center");txt(c,"control room of the cell",660,130,YL,F(16,1),"center");txt(c,"nuclear pores = transport control",660,170,GR,F(14,1),"center");txt(c,"nucleoplasm + chromatin",660,205,MG,F(14,1),"center");}
+ else if(s===1){box(c,40,70,400,110,GR,["EUCHROMATIN","loosely coiled","active (transcription ON)"],"#0a2a1a",14);box(c,480,70,400,110,RD,["HETEROCHROMATIN","dense, condensed","inactive"],"#2a0f0f",14);txt(c,"division me chromatin condense hoke chromosome banta hai",460,230,YL,F(14,1),"center");}
+ else if(s===2){line(c,60,70,100,200,CY,9);line(c,140,70,100,200,CY,9);txt(c,"metacentric (V)",100,240,CY,F(12,1),"center");line(c,270,70,270,200,MG,9);line(c,270,200,330,200,MG,9);txt(c,"sub-meta (L)",290,240,MG,F(12,1),"center");line(c,480,70,495,200,YL,9);line(c,495,200,520,200,YL,9);txt(c,"acrocentric (J)",495,240,YL,F(12,1),"center");line(c,700,70,700,200,GR,9);txt(c,"telocentric (I)",700,240,GR,F(12,1),"center");}
+ else{box(c,40,70,400,110,YL,["NUCLEOLUS","rRNA site, membrane-less","big in active cells"],"#2a2608",14);box(c,480,70,400,110,CY,["KARYOTYPE","number + shape","human = 46 = 23 pairs"],"#0a1c2a",14);txt(c,"karyotype = chromosome ID card",460,230,YL,F(15,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"'Omnis cellula-e cellula' kisne kaha?",opts:["Schleiden","Schwann","Virchow","Hooke"],a:2,why:"Rudolf Virchow (1855): har cell existing cell se banti hai."},
+{q:"Bacteria ke ribosome kaunse hain?",opts:["80S","70S","60S","40S"],a:1,why:"Prokaryote ribosome 70S (50S + 30S). Eukaryote cytoplasm me 80S."},
+{q:"Golgi apparatus ka mukhya kaam kya hai?",opts:["protein packaging + dispatch","ATP banana","rRNA banana","photosynthesis"],a:0,why:"Golgi proteins ko modify, package aur dispatch karta hai (post office)."},
+{q:"Mitochondria me cristae kya hain?",opts:["outer membrane ke pore","inner membrane ke folds","matrix ke enzymes","DNA ke loops"],a:1,why:"Cristae = inner membrane ke folds, surface area badhate hain."},
+{q:"J-shaped chromosome kaunsa hai?",opts:["metacentric","sub-metacentric","acrocentric","telocentric"],a:2,why:"V = meta, L = sub-meta, J = acro, I = telocentric."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Cell pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
