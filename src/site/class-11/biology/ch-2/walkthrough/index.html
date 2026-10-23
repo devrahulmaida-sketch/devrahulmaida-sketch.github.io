@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Biological Classification - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 Biology - Chapter 2 - Biological Classification</div>
+<h1>Biological Classification Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - history, Monera, Protista, Fungi, Plantae + Animalia, viruses + lichens, revision, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Classification History 📜⭐⭐</h2>
+<p class="why">Aristotle, Linnaeus 2 kingdoms, Whittaker 5 kingdoms, criteria.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">history</button>
+<button class="b" data-o="1">why 2 failed</button>
+<button class="b" data-o="2">criteria</button>
+<button class="b" data-o="3">outside 5 kingdoms</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Kingdom Monera 🦠⭐⭐</h2>
+<p class="why">Bacteria features, shapes, nutrition, archaebacteria, special groups.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">features</button>
+<button class="b" data-o="1">shapes</button>
+<button class="b" data-o="2">archaebacteria</button>
+<button class="b" data-o="3">special groups</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Kingdom Protista 🔬⭐⭐</h2>
+<p class="why">Chrysophytes, dinoflagellates, euglenoids, slime moulds, protozoans.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">chrysophytes</button>
+<button class="b" data-o="1">euglenoids</button>
+<button class="b" data-o="2">slime moulds</button>
+<button class="b" data-o="3">protozoans</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Kingdom Fungi 🍄⭐⭐</h2>
+<p class="why">Chitin wall, mycelium, four classes, reproduction.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">features</button>
+<button class="b" data-o="1">4 classes</button>
+<button class="b" data-o="2">reproduction</button>
+<button class="b" data-o="3">fungi vs plants</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Plantae + Animalia 🌿⭐⭐</h2>
+<p class="why">Plantae features, alternation of generations, Animalia features.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Plantae</button>
+<button class="b" data-o="1">life cycle</button>
+<button class="b" data-o="2">Animalia</button>
+<button class="b" data-o="3">compare</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Viruses, Viroids, Lichens 🧬⭐⭐</h2>
+<p class="why">Virus structure, examples, viroid, lichen, mycorrhiza.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">virus</button>
+<button class="b" data-o="1">examples</button>
+<button class="b" data-o="2">viroid</button>
+<button class="b" data-o="3">lichen + mycorrhiza</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Quick Revision 🎯⭐⭐</h2>
+<p class="why">Five kingdoms, key groups, wall types, virus/viroid/lichen.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">5 kingdoms</button>
+<button class="b" data-o="1">key groups</button>
+<button class="b" data-o="2">walls</button>
+<button class="b" data-o="3">non-5-kingdom</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Classification Pakka? ⭐</h2>
+<p class="why">5 sawaal - Whittaker, Mycoplasma, fungal wall, viroid, lichen. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>History</b>Aristotle, Linnaeus (2 kingdoms), Whittaker 1969 (5 kingdoms). Viruses, viroids, lichens are outside.</div>
+<div class="rcard"><b>Monera</b>Prokaryotes, peptidoglycan wall. Archaebacteria, cyanobacteria (N2 fixing), Mycoplasma (no wall, smallest).</div>
+<div class="rcard"><b>Protista</b>Unicellular eukaryotes. Diatoms, dinoflagellates, Euglena (pellicle), slime moulds, protozoans.</div>
+<div class="rcard"><b>Fungi</b>Chitin wall, mycelium. Phyco-, asco-, basidio-, deuteromycetes.</div>
+<div class="rcard"><b>Plantae, Animalia</b>Plants: chlorophyll, cellulose, alternation of generations. Animals: holozoic, no wall.</div>
+<div class="rcard"><b>Virus, viroid, lichen</b>Virus: DNA or RNA + capsid. Viroid: free RNA. Lichen: alga + fungus. Mycorrhiza: fungus + root.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 Biology Chapter 2 (Biological Classification) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Aristotle</span> grouped plants (trees, shrubs, herbs) and animals (with red blood vs without). <span class=hl>Linnaeus:</span> two kingdoms, Plantae + Animalia.", "Two kingdoms could not place <span class=hl>bacteria, fungi, unicellular organisms</span>. Photosynthetic vs non-photosynthetic was not enough.", "<span class=hl>R.H. Whittaker (1969):</span> five kingdoms - Monera, Protista, Fungi, Plantae, Animalia. Based on cell type, thallus organisation, nutrition, reproduction, phylogeny.", "<span class=hl>Viruses, viroids, lichens</span> do not fit the five kingdoms. They are studied separately."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"History",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,270,110,CY,["ARISTOTLE","plants: trees, shrubs,","herbs; animals: red blood"],"#0a1c2a",12);box(c,330,70,270,110,MG,["LINNAEUS","two kingdoms","Plantae + Animalia"],"#2a0a2a",13);box(c,620,70,260,110,GR,["WHITTAKER 1969","five kingdoms"],"#0a2a1a",14);txt(c,"2 kingdoms → 5 kingdoms",460,230,YL,F(15,1),"center");}
+ else if(s===1){box(c,60,70,380,110,RD,["TWO KINGDOMS","bacteria? fungi?","unicellular?"],"#2a0f0f",14);box(c,480,70,380,110,YL,["PROBLEM","photosynthetic vs not","was not enough"],"#2a2608",14);}
+ else if(s===2){box(c,20,60,170,100,CY,["CELL TYPE","pro / eukaryotic"],"#0a1c2a",12);box(c,200,60,170,100,MG,["THALLUS","uni / multi-","cellular"],"#2a0a2a",12);box(c,380,60,170,100,GR,["NUTRITION","auto /","heterotrophic"],"#0a2a1a",12);box(c,560,60,170,100,YL,["REPRODUCTION"],"#2a2608",11);box(c,740,60,160,100,RD,["PHYLOGENY"],"#2a0f0f",12);txt(c,"Whittaker ke 5 kingdoms ke criteria",460,215,D,F(14,1),"center");}
+ else{box(c,40,70,270,110,CY,["VIRUSES"],"#0a1c2a",15);box(c,330,70,270,110,MG,["VIROIDS"],"#2a0a2a",15);box(c,620,70,260,110,GR,["LICHENS"],"#0a2a1a",15);txt(c,"5-kingdom me fit nahi hote, alag se padhte hain",460,230,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["Monera: <span class=hl>prokaryotic</span>, cell wall (peptidoglycan), 70S ribosomes. Most abundant microbes, found everywhere including extreme habitats.", "Shapes: <span class=hl>coccus</span> (spherical), <span class=hl>bacillus</span> (rod), <span class=hl>vibrium</span> (comma), <span class=hl>spirillum</span> (spiral).", "<span class=hl>Archaebacteria:</span> halophiles (salty), thermoacidophiles (hot springs), methanogens (marshy areas, gobar gas). Different cell wall.", "<span class=hl>Cyanobacteria:</span> photosynthetic, fix N₂ (Nostoc, Anabaena). <span class=hl>Mycoplasma:</span> smallest living cells, no cell wall, can live without oxygen."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Monera",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,270,110,CY,["PROKARYOTIC","no true nucleus"],"#0a1c2a",14);box(c,330,70,270,110,MG,["CELL WALL","peptidoglycan","(murein)"],"#2a0a2a",14);box(c,620,70,260,110,GR,["RIBOSOMES","70S"],"#0a2a1a",15);txt(c,"zyadatar heterotrophic, kuch autotrophic",460,230,YL,F(14,1),"center");}
+ else if(s===1){circ(c,130,120,40,CY,"#0a1c2a",4);line(c,300,90,400,150,MG,12);c.strokeStyle=GR;c.lineWidth=7;c.beginPath();c.arc(610,125,30,0.2,2.9);c.stroke();c.strokeStyle=YL;c.lineWidth=5;c.beginPath();for(let x=0;x<=110;x+=4){const y=120+16*Math.sin(x/8);if(x)c.lineTo(755+x,y);else c.moveTo(755,y);}c.stroke();txt(c,"coccus",130,200,CY,F(14,1),"center");txt(c,"bacillus",350,200,MG,F(14,1),"center");txt(c,"vibrium (comma)",610,200,GR,F(13,1),"center");txt(c,"spirillum",810,200,YL,F(14,1),"center");txt(c,"spherical / rod / comma / spiral",460,260,D,F(14,1),"center");}
+ else if(s===2){box(c,40,70,270,110,RD,["HALOPHILES","salty areas"],"#2a0f0f",14);box(c,330,70,270,110,YL,["THERMOACIDOPHILES","hot springs"],"#2a2608",12);box(c,620,70,260,110,GR,["METHANOGENS","marshes, gobar gas"],"#0a2a1a",13);txt(c,"archaebacteria: alag cell wall structure",460,230,CY,F(14,1),"center");}
+ else{box(c,60,70,380,110,GR,["CYANOBACTERIA","photosynthetic, N2 fixing","Nostoc, Anabaena"],"#0a2a1a",13);box(c,480,70,380,110,RD,["MYCOPLASMA (PPLO)","smallest living cells","no cell wall"],"#2a0f0f",13);txt(c,"no wall + smallest = exam combo",460,225,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["Protista: <span class=hl>unicellular eukaryotes</span>, mostly aquatic. <span class=hl>Diatoms</span> (siliceous shell, main ocean producers) + golden algae. <span class=hl>Dinoflagellates:</span> red tides (Gonyaulax).", "<span class=hl>Euglena:</span> freshwater, protein-rich <span class=hl>pellicle</span> instead of cell wall. Autotrophic in light, heterotrophic without it.", "<span class=hl>Slime moulds:</span> saprophytic protists. The plasmodium is a multinucleate, wall-less mass; spores form in fruiting bodies.", "<span class=hl>Protozoans:</span> amoeboid (Amoeba), flagellated (Trypanosoma), ciliated (Paramoecium), sporozoans (Plasmodium, malaria)."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Protista",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,270,110,CY,["DIATOMS","siliceous shell","ocean producers"],"#0a1c2a",13);box(c,330,70,270,110,MG,["GOLDEN ALGAE","chrysophytes"],"#2a0a2a",14);box(c,620,70,260,110,RD,["DINOFLAGELLATES","red tides","Gonyaulax"],"#2a0f0f",13);}
+ else if(s===1){box(c,60,70,380,110,GR,["IN LIGHT","autotrophic","(photosynthesis)"],"#0a2a1a",14);box(c,480,70,380,110,YL,["WITHOUT LIGHT","heterotrophic"],"#2a2608",14);txt(c,"pellicle = protein-rich layer, no cell wall",460,225,CY,F(14,1),"center");}
+ else if(s===2){box(c,60,70,380,110,MG,["PLASMODIUM","multinucleate mass","no cell wall"],"#2a0a2a",14);box(c,480,70,380,110,CY,["SPORES","in fruiting bodies","favourable conditions"],"#0a1c2a",13);txt(c,"saprophytic protists",460,225,YL,F(14,1),"center");}
+ else{box(c,20,70,215,100,CY,["AMOEBOID","Amoeba"],"#0a1c2a",13);box(c,245,70,215,100,MG,["FLAGELLATED","Trypanosoma"],"#2a0a2a",13);box(c,470,70,215,100,GR,["CILIATED","Paramoecium"],"#0a2a1a",13);box(c,695,70,205,100,RD,["SPOROZOANS","Plasmodium"],"#2a0f0f",13);txt(c,"protozoans: animal-like, heterotrophic",460,225,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Fungi: heterotrophic eukaryotes. <span class=hl>Cell wall of chitin.</span> Body = <span class=hl>mycelium</span> (network of hyphae). Saprophytic, parasitic or symbiotic.", "<span class=hl>Phycomycetes</span> (Rhizopus, Mucor), <span class=hl>Ascomycetes</span> (yeast, Penicillium), <span class=hl>Basidiomycetes</span> (mushroom, rust, smut), <span class=hl>Deuteromycetes</span> (imperfect: Trichoderma, Alternaria).", "Vegetative: fragmentation, budding, fission. Asexual: spores. Sexual: oospores, ascospores, basidiospores.", "<span class=hl>Fungi wall = chitin. Plant wall = cellulose.</span> Exams ask this difference."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Fungi",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,270,110,CY,["CHITIN WALL"],"#0a1c2a",15);box(c,330,70,270,110,MG,["MYCELIUM","network of hyphae"],"#2a0a2a",14);box(c,620,70,260,110,GR,["NUTRITION","saprophytic,","parasitic, symbiotic"],"#0a2a1a",12);}
+ else if(s===1){box(c,20,60,215,110,CY,["PHYCO-","MYCETES","Rhizopus, Mucor"],"#0a1c2a",12);box(c,245,60,215,110,MG,["ASCO-","MYCETES","yeast, Penicillium"],"#2a0a2a",12);box(c,470,60,215,110,GR,["BASIDIO-","MYCETES","mushroom, rust"],"#0a2a1a",12);box(c,695,60,205,110,YL,["DEUTERO-","MYCETES","imperfect fungi"],"#2a2608",12);txt(c,"sac fungi = asco, club fungi = basidio",460,225,D,F(14,1),"center");}
+ else if(s===2){box(c,40,70,270,110,CY,["VEGETATIVE","fragmentation,","budding, fission"],"#0a1c2a",13);box(c,330,70,270,110,MG,["ASEXUAL","spores"],"#2a0a2a",14);box(c,620,70,260,110,GR,["SEXUAL","oospores, ascospores,","basidiospores"],"#0a2a1a",12);}
+ else{box(c,60,70,380,110,YL,["FUNGI","wall = CHITIN"],"#2a2608",14);box(c,480,70,380,110,GR,["PLANTAE","wall = CELLULOSE"],"#0a2a1a",14);txt(c,"pakka puchne wala difference",460,225,CY,F(15,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["Plantae: eukaryotic, <span class=hl>chlorophyll</span>, cellulose wall, autotrophic. Exceptions: insectivorous (Venus flytrap, bladderwort), parasitic (Cuscuta).", "<span class=hl>Alternation of generations:</span> diploid sporophyte ↔ haploid gametophyte. Algae mostly haplontic; bryophytes + pteridophytes haplo-diplontic.", "Animalia: eukaryotic, multicellular, <span class=hl>holozoic</span> heterotrophs, <span class=hl>no cell wall</span>, mostly motile, complex nervous system.", "Plantae: cellulose wall + chlorophyll. Animalia: no wall + holozoic nutrition."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Plantae + Animalia",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,270,110,GR,["CHLOROPHYLL","autotrophic"],"#0a2a1a",14);box(c,330,70,270,110,CY,["CELLULOSE","cell wall"],"#0a1c2a",14);box(c,620,70,260,110,YL,["EXCEPTIONS","Venus flytrap,","Cuscuta"],"#2a2608",13);}
+ else if(s===1){box(c,60,70,380,110,CY,["SPOROPHYTE","diploid"],"#0a1c2a",15);box(c,480,70,380,110,MG,["GAMETOPHYTE","haploid"],"#2a0a2a",15);txt(c,"sporophyte ↔ gametophyte",460,225,YL,F(15,1),"center");txt(c,"algae mostly haplontic",460,255,D,F(13,1),"center");}
+ else if(s===2){box(c,40,70,270,110,RD,["HOLOZOIC","eat + digest inside"],"#2a0f0f",13);box(c,330,70,270,110,CY,["NO CELL WALL"],"#0a1c2a",14);box(c,620,70,260,110,MG,["MOTILE","nervous system"],"#2a0a2a",13);txt(c,"body plan details: chapter 4",460,230,D,F(14,1),"center");}
+ else{box(c,60,70,380,110,GR,["PLANTAE","cellulose wall +","chlorophyll"],"#0a2a1a",14);box(c,480,70,380,110,RD,["ANIMALIA","no wall +","holozoic"],"#2a0f0f",14);}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Viruses:</span> crystallise like non-living things, multiply only inside a host. Obligate parasites. <span class=hl>DNA or RNA</span> (never both) + protein <span class=hl>capsid</span> of capsomeres.", "<span class=hl>TMV:</span> RNA virus. <span class=hl>Bacteriophages:</span> infect bacteria, usually dsDNA. Mumps, smallpox, herpes, influenza infect humans.", "<span class=hl>Viroid</span> (T.O. Diener): <span class=hl>free RNA only, no protein coat</span>. Causes potato spindle tuber disease.", "<span class=hl>Lichen:</span> alga (phycobiont) + fungus (mycobiont). Pollution indicators, no growth in SO₂. <span class=hl>Mycorrhiza:</span> fungus + plant root."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Viruses + lichens",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,60,70,380,110,CY,["GENETIC MATERIAL","DNA or RNA","never both"],"#0a1c2a",14);box(c,480,70,380,110,MG,["CAPSID","protein coat of","capsomeres"],"#2a0a2a",14);txt(c,"obligate parasite, crystallisable",460,225,YL,F(15,1),"center");}
+ else if(s===1){box(c,40,70,270,110,CY,["TMV","RNA virus","tobacco mosaic"],"#0a1c2a",14);box(c,330,70,270,110,MG,["BACTERIOPHAGE","infects bacteria","usually dsDNA"],"#2a0a2a",13);box(c,620,70,260,110,GR,["HUMAN VIRUSES","mumps, smallpox,","herpes, influenza"],"#0a2a1a",13);}
+ else if(s===2){box(c,60,70,380,110,RD,["VIROID","only free RNA","NO protein coat"],"#2a0f0f",14);box(c,480,70,380,110,YL,["DISCOVERED BY","T.O. Diener","potato spindle tuber"],"#2a2608",13);}
+ else{box(c,40,70,270,110,GR,["PHYCOBIONT","alga: makes food"],"#0a2a1a",14);box(c,330,70,270,110,MG,["MYCOBIONT","fungus: shelter +","minerals"],"#2a0a2a",13);box(c,620,70,260,110,CY,["MYCORRHIZA","fungus + root","gives phosphorus"],"#0a1c2a",13);txt(c,"lichens: pollution indicators (no SO2)",460,230,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Whittaker 1969: Monera, Protista, Fungi, Plantae, Animalia.", "Monera: archaebacteria, eubacteria, cyanobacteria, mycoplasma. Protista: diatoms, euglenoids, slime moulds, protozoans. Fungi: 4 classes.", "Chitin = fungi. Cellulose = plants. Peptidoglycan = bacteria. No wall = animals, mycoplasma.", "Virus = DNA or RNA + capsid. Viroid = free RNA. Lichen = alga + fungus."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Quick revision",460,26,YL,F(14,1),"center");
+
+ if(s===0){chain(c,["Monera","Protista","Fungi","Plantae","Animalia"],[0,1,2,3,4],100,CY);txt(c,"Whittaker 1969",460,200,YL,F(15,1),"center");}
+ else if(s===1){box(c,40,70,270,110,CY,["MONERA","archaebacteria,","cyanobacteria"],"#0a1c2a",13);box(c,330,70,270,110,MG,["PROTISTA","diatoms, Euglena,","slime moulds"],"#2a0a2a",13);box(c,620,70,260,110,GR,["FUNGI","phyco, asco,","basidio, deutero"],"#0a2a1a",13);}
+ else if(s===2){box(c,20,60,215,110,YL,["CHITIN","fungi"],"#2a2608",14);box(c,245,60,215,110,GR,["CELLULOSE","plants"],"#0a2a1a",14);box(c,470,60,215,110,CY,["PEPTIDOGLYCAN","bacteria"],"#0a1c2a",12);box(c,695,60,205,110,RD,["NO WALL","animals,","mycoplasma"],"#2a0f0f",13);}
+ else{box(c,40,70,270,110,CY,["VIRUS","DNA or RNA","+ capsid"],"#0a1c2a",14);box(c,330,70,270,110,RD,["VIROID","free RNA only"],"#2a0f0f",14);box(c,620,70,260,110,GR,["LICHEN","alga + fungus"],"#0a2a1a",14);}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Five kingdom classification kisne diya aur kab?",opts:["Linnaeus 1735","Whittaker 1969","Aristotle","Haeckel 1866"],a:1,why:"R.H. Whittaker (1969): Monera, Protista, Fungi, Plantae, Animalia."},
+{q:"Sabse chhoti living cells, bina cell wall ke kaun si hain?",opts:["Cyanobacteria","Archaebacteria","Mycoplasma","Euglena"],a:2,why:"Mycoplasma (PPLO): smallest living cells, no cell wall."},
+{q:"Fungi ki cell wall kisse bani hoti hai?",opts:["cellulose","chitin","peptidoglycan","protein pellicle"],a:1,why:"Fungi: chitin. Plants: cellulose."},
+{q:"Viroid me kya hota hai?",opts:["DNA + capsid","RNA + capsid","sirf free RNA","sirf protein"],a:2,why:"Viroid: free RNA only, protein coat nahi (T.O. Diener)."},
+{q:"Lichen kis ka symbiotic association hai?",opts:["alga + fungus","bacteria + virus","fungus + root","alga + protozoa"],a:0,why:"Lichen = phycobiont (alga) + mycobiont (fungus)."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Classification pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
