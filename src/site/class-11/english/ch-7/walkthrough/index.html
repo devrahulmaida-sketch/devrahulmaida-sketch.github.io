@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>The Adventure - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Hornbill Chapter 7 - The Adventure</div>
+<h1>The Adventure Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - Jijamata Express, Sarhad, East India House, five volumes, the Bakhar, empty chair, Rajendra explains, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. The Jijamata Express 🚆⭐⭐</h2>
+<p class="why">Pune to Bombay, and a plan. Jayant Narlikar, The Adventure (adapted text).</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the train</button>
+<button class="b" data-o="1">stations</button>
+<button class="b" data-o="2">the plan</button>
+<button class="b" data-o="3">Rajendra</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Where the Raj Begins 🚂⭐⭐</h2>
+<p class="why">Sarhad, Khan Sahib and the blue carriages.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Sarhad</button>
+<button class="b" data-o="1">Khan Sahib</button>
+<button class="b" data-o="2">GBMR</button>
+<button class="b" data-o="3">Victoria Terminus</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. East India House 🏛️⭐⭐</h2>
+<p class="why">Prepared for many shocks, but not for this.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the building</button>
+<button class="b" data-o="1">Hornby Road</button>
+<button class="b" data-o="2">Forbes building</button>
+<button class="b" data-o="3">no Vinay</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Five Volumes 📚⭐⭐</h2>
+<p class="why">The library of the Asiatic Society at the Town Hall.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the library</button>
+<button class="b" data-o="1">volumes 1-4</button>
+<button class="b" data-o="2">volume 5</button>
+<button class="b" data-o="3">Panipat</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. The Bakhar 📜⭐⭐</h2>
+<p class="why">What the other history says, and a bullet that missed.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">consequences</button>
+<button class="b" data-o="1">the Company</button>
+<button class="b" data-o="2">Bhausahebanchi Bakhar</button>
+<button class="b" data-o="3">a til</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. The Empty Chair 🪑⭐⭐</h2>
+<p class="why">Azad Maidan and the return.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the chair</button>
+<button class="b" data-o="1">the crowd</button>
+<button class="b" data-o="2">the morning</button>
+<button class="b" data-o="3">the torn page</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Rajendra Explains 🔬⭐⭐</h2>
+<p class="why">Two scientific theories, offered as the only explanation he can give.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the evidence</button>
+<button class="b" data-o="1">catastrophe</button>
+<button class="b" data-o="2">many worlds</button>
+<button class="b" data-o="3">the end</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - The Adventure Pakka? ⭐</h2>
+<p class="why">5 sawaal - train, Sarhad, Bakhar, Rajendra, Gaitonde. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Train</b>Jijamata Express, Pune to Bombay; Lonavala in 40 min; plan: library, then Rajendra.</div>
+<div class="rcard"><b>Sarhad</b>“This is where the British Raj begins”; GBMR carriages with Union Jack; Victoria Terminus.</div>
+<div class="rcard"><b>East India House</b>Company HQ; history books say wound up after 1857; Vinay Gaitonde not found.</div>
+<div class="rcard"><b>Volumes</b>Five volumes: Ashoka, Samudragupta, Ghori, Aurangzeb; change in volume 5 at Panipat.</div>
+<div class="rcard"><b>Bakhar</b>Bhausahebanchi Bakhar: bullet brushed past Vishwasrao’s ear; his own copy: he was hit.</div>
+<div class="rcard"><b>Rajendra</b>Catastrophe theory + many worlds; present, different world; Gaitonde will not preside again.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 7 (The Adventure) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["The <span class=hl>Jijamata Express</span> sped along the Pune-Bombay route <span class=hl>considerably faster than the Deccan Queen</span>. There were no industrial townships outside Pune.", "The first stop, <span class=hl>Lonavala</span>, came in <span class=hl>40 minutes</span>. The ghat section was no different from what he knew. The train stopped at <span class=hl>Karjat</span> only briefly and roared through <span class=hl>Kalyan</span>.", "<span class=hl>Professor Gaitonde</span> arrives at a plan in Bombay: go to a <span class=hl>big library</span> and browse history books. That is the surest way of finding out how the present state of affairs was reached.", "He also plans to return to Pune and have a long talk with <span class=hl>Rajendra Deshpande</span>, who would surely help him. That is, assuming that in this world there existed someone called Rajendra Deshpande!"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Train",460,26,YL,F(14,1),"center");
+ if(s===0){line(c,80,200,840,200,DM,4);box(c,60,100,150,60,CY,['PUNE'],'#0a1c2a',15);box(c,710,100,150,60,MG,['BOMBAY'],'#2a0a2a',15);arrow2(c,220,130,700,130,YL,4);txt(c,'Jijamata Express: faster than Deccan Queen',460,240,GR,F(14,1),'center');txt(c,"Pune to Bombay",460,326,CY,F(14,1),"center");}
+ else if(s===1){line(c,90,150,830,150,DM,4);const p=(Math.sin(__t*1.2)+1)/2;circ(c,130+p*660,150,10,YL,'rgba(250,204,21,.5)',3);circ(c,250,150,12,CY,'rgba(34,211,238,.3)',3);circ(c,460,150,12,GR,'rgba(52,211,153,.3)',3);circ(c,680,150,12,MG,'rgba(232,121,249,.3)',3);txt(c,'Lonavala: 40 min',250,200,CY,F(13,1),'center');txt(c,'Karjat: brief stop',460,200,GR,F(13,1),'center');txt(c,'Kalyan: roared through',680,200,MG,F(13,1),'center');txt(c,"stops along the way",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,300,60,320,100,YL,['BIG LIBRARY','history books'],'#2a2608',16);arrow2(c,200,110,290,110,CY,4);circ(c,160,110,30,CY,'rgba(34,211,238,.2)',3);txt(c,'Gaitonde',160,170,CY,F(13,1),'center');txt(c,'how did the present state come about?',460,230,GR,F(14,1),'center');txt(c,"the plan in Bombay",460,326,YL,F(14,1),"center");}
+ else if(s===3){circ(c,200,140,40,CY,'rgba(34,211,238,.2)',3);circ(c,720,140,40,MG,'rgba(232,121,249,.2)',3);arrow2(c,250,140,670,140,YL,3);txt(c,'Gaitonde',200,205,CY,F(13,1),'center');txt(c,'Rajendra Deshpande',720,205,MG,F(13,1),'center');txt(c,'a long talk in Pune ... if he exists in this world',460,250,RD,F(13,1),'center');txt(c,"a doubt",460,326,RD,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[0]=()=>{if([1].includes(s))draw();};
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["The train stopped beyond the long tunnel at a small station called <span class=hl>Sarhad</span>. An Anglo-Indian in uniform checked permits. Khan Sahib: <span class=hl>“This is where the British Raj begins.”</span>", "Khan Sahib is going to <span class=hl>Peshawar</span>: the <span class=hl>Frontier Mail</span> from Central, Bombay to Delhi, then <span class=hl>Lahore</span> and Peshawar. Gaitonde listens to learn the flavour of life in <span class=hl>this India</span>.", "The blue carriages carried the letters <span class=hl>GBMR</span>, Greater Bombay Metropolitan Railway, with a tiny <span class=hl>Union Jack</span> painted on each: a gentle reminder that we are in British territory.", "The train stopped at <span class=hl>Victoria Terminus</span>. The station looked remarkably neat and clean. The staff was mostly <span class=hl>Anglo-Indians and Parsees</span> with a handful of British officers."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Sarhad",460,26,YL,F(14,1),"center");
+ if(s===0){line(c,60,200,860,200,DM,4);box(c,350,70,220,70,YL,['SARHAD','small station'],'#2a2608',15);txt(c,'permit check',460,175,CY,F(13,1),'center');txt(c,'“This is where the British Raj begins.”',460,255,RD,F(14,1),'center');txt(c,"a border of sorts",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,60,80,160,60,CY,['BOMBAY'],'#0a1c2a',14);box(c,290,80,140,60,GR,['DELHI'],'#0a2a1a',14);box(c,500,80,140,60,MG,['LAHORE'],'#2a0a2a',14);box(c,710,80,150,60,YL,['PESHAWAR'],'#2a2608',14);arrow2(c,225,110,285,110,CY,3);arrow2(c,435,110,495,110,CY,3);arrow2(c,645,110,705,110,CY,3);txt(c,'Khan Sahib: Frontier Mail from Central',460,200,CY,F(14,1),'center');txt(c,"the long way to Peshawar",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,200,90,520,80,CY,['GBMR  Greater Bombay Metropolitan Railway'],'#0a1c2a',15);circ(c,300,210,10,CY,'rgba(34,211,238,.4)',3);circ(c,620,210,10,CY,'rgba(34,211,238,.4)',3);line(c,460,190,460,175,YL,3);txt(c,'tiny Union Jack on each carriage',460,255,YL,F(14,1),'center');txt(c,"blue carriages",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,260,60,400,100,MG,['VICTORIA TERMINUS','neat and clean'],'#2a0a2a',16);txt(c,'Anglo-Indians + Parsees',300,215,YL,F(13,1),'center');txt(c,'a handful of British officers',620,215,CY,F(13,1),'center');txt(c,"the terminus",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["Outside the station is an imposing building: <span class=hl>east india house, headquarters of the east india company</span>.", "History books said the Company was <span class=hl>wound up shortly after 1857</span>. Yet here it was, not only alive but <span class=hl>flourishing</span>. So history had taken a different turn, perhaps before 1857.", "On <span class=hl>Hornby Road</span> there was no Handloom House. Instead <span class=hl>Boots and Woolworth</span>, offices of <span class=hl>Lloyds and Barclays</span>, like a high street of a town in England. He turned right along Home Street into the <span class=hl>Forbes building</span>.", "He asks the English receptionist for <span class=hl>Mr Vinay Gaitonde</span>. She searches the telephone list, staff list and directory: <span class=hl>no one of that name</span>. If he himself were dead in this world, his son might not even have been born."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"East India House",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,200,50,520,100,YL,['EAST INDIA HOUSE','headquarters of the East India Company'],'#2a2608',15);txt(c,'an imposing building',460,200,CY,F(14,1),'center');txt(c,"the shock",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,60,80,300,100,RD,['HISTORY BOOKS','wound up after 1857'],'#2a0f0f',15);box(c,560,80,300,100,GR,['THIS WORLD','alive and flourishing'],'#0a2a1a',15);arrow2(c,370,130,550,130,YL,4);txt(c,'history took a different turn',460,235,MG,F(14,1),'center');txt(c,"1857?",460,326,RD,F(14,1),"center");}
+ else if(s===2){box(c,60,70,250,90,CY,['BOOTS','WOOLWORTH'],'#0a1c2a',14);box(c,335,70,250,90,MG,['LLOYDS','BARCLAYS'],'#2a0a2a',14);box(c,610,70,250,90,YL,['FORBES','building'],'#2a2608',14);txt(c,'Hornby Road, a high street of England',460,215,GR,F(14,1),'center');txt(c,"not the Bombay he knew",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,60,70,300,100,CY,['RECEPTIONIST','searches 3 lists'],'#0a1c2a',14);box(c,560,70,300,100,RD,['VINAY GAITONDE','not found'],'#2a0f0f',14);arrow2(c,370,120,550,120,RD,4);txt(c,'a blow, not totally unexpected',460,225,YL,F(14,1),'center');txt(c,"where is his son?",460,326,RD,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Grabbing a quick lunch, he made his way to the <span class=hl>Town Hall</span>. It was there, and it did house the library. He asked for history books including his own: his <span class=hl>five volumes</span> arrived.", "Volume one went up to <span class=hl>Ashoka</span>, two to <span class=hl>Samudragupta</span>, three to <span class=hl>Mohammad Ghori</span>, four to the death of <span class=hl>Aurangzeb</span>. Up to this period <span class=hl>history was as he knew it</span>.", "The change had evidently occurred in the <span class=hl>last volume</span>. Reading volume five from both ends inwards, he converged on the precise moment where history took a different turn.", "That page described the <span class=hl>Battle of Panipat</span>: the <span class=hl>Marathas won it handsomely</span>. Abdali was routed and chased back to Kabul by the army led by <span class=hl>Sadashivrao Bhau</span> and his nephew, young <span class=hl>Vishwasrao</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Volumes",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,300,60,320,90,CY,['TOWN HALL','Asiatic Society library'],'#0a1c2a',15);for(let k=0;k<5;k++){box(c,260+k*80,185,60,70,YL,[String(k+1)],'#2a2608',16);}txt(c,'his five volumes',460,285,GR,F(13,1),'center');txt(c,"the reading room",460,326,CY,F(14,1),"center");}
+ else if(s===1){const n=['Ashoka','Samudragupta','M. Ghori','Aurangzeb'];for(let k=0;k<4;k++){box(c,60+k*215,80,190,70,GR,['Vol '+(k+1),n[k]],'#0a2a1a',14);}txt(c,'history was as he knew it',460,215,GR,F(15,1),'center');txt(c,"volumes 1 to 4",460,326,GR,F(14,1),"center");}
+ else if(s===2){for(let k=0;k<4;k++){box(c,60+k*140,90,120,60,DM,['Vol '+(k+1)],'#0d0d1c',14);}box(c,640,70,220,100,RD,['VOLUME 5','the change'],'#2a0f0f',16);arrow2(c,620,120,630,120,YL,2);txt(c,'read from both ends inwards',460,230,YL,F(14,1),'center');txt(c,"where history turned",460,326,RD,F(14,1),"center");}
+ else if(s===3){box(c,60,70,300,100,YL,['MARATHAS','won handsomely'],'#2a2608',15);box(c,560,70,300,100,RD,['ABDALI','routed, chased to Kabul'],'#2a0f0f',14);arrow2(c,370,120,550,120,GR,4);txt(c,'Sadashivrao Bhau + Vishwasrao',460,225,CY,F(14,1),'center');txt(c,"Panipat",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["The book did not go into a blow-by-blow account of the battle itself. It elaborated its <span class=hl>consequences</span>. The Maratha victory was a <span class=hl>morale booster</span> and established their <span class=hl>supremacy in northern India</span>.", "The East India Company, watching from the sidelines, <span class=hl>temporarily shelved its expansionist programme</span>. It was reduced to <span class=hl>pockets of influence</span> near Bombay, Calcutta and Madras, like the Portuguese and the French.", "To learn how the Marathas won, he finds <span class=hl>Bhausahebanchi Bakhar</span>. He seldom relied on Bakhars as evidence, but buried in the graphic but <span class=hl>doctored accounts</span> he could spot the germ of truth.", "Three lines: Vishwasrao attacked the troops, and <span class=hl>God was merciful</span>. A shot <span class=hl>brushed past his ear</span>. Even the difference of a <span class=hl>til (sesame)</span> would have led to his death."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Bakhar",460,26,YL,F(14,1),"center");
+ if(s===0){const f=Math.abs(Math.sin(__t*2));box(c,60,80,300,100,GR,['MARATHA VICTORY','morale booster'],'#0a2a1a',15);arrow2(c,370,130,550,130,YL,4);box(c,560,80,300,100,CY,['SUPREMACY','northern India'],'#0a1c2a',15);circ(c,460,215,8+f*6,YL,'rgba(250,204,21,.4)',3);txt(c,"what the book dwells on",460,326,GR,F(14,1),"center");}
+ else if(s===1){box(c,60,80,300,100,YL,['EAST INDIA COMPANY','shelves expansion'],'#2a2608',14);box(c,560,80,300,100,RD,['POCKETS OF INFLUENCE','Bombay, Calcutta, Madras'],'#2a0f0f',13);arrow2(c,370,130,550,130,RD,4);txt(c,'like the Portuguese and the French',460,235,MG,F(14,1),'center');txt(c,"the Company held back",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,240,60,440,100,MG,['BHAUSAHEBANCHI BAKHAR','graphic but doctored accounts'],'#2a0a2a',15);txt(c,'a germ of truth',460,210,GR,F(15,1),'center');txt(c,"a source he seldom trusted",460,326,MG,F(14,1),"center");}
+ else if(s===3){circ(c,300,140,26,CY,'rgba(34,211,238,.2)',3);arrow2(c,600,120,360,140,RD,3);line(c,380,100,380,180,DM,2);txt(c,'Vishwasrao',300,200,CY,F(13,1),'center');txt(c,'a shot brushed past his ear',600,200,RD,F(13,1),'center');txt(c,'the difference of a til',460,255,YL,F(14,1),'center');txt(c,"a near miss",460,326,RD,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["At <span class=hl>eight</span> the librarian reminded him the library was closing. Absent-mindedly he shoved the notes into his right pocket and the <span class=hl>Bakhar into his left pocket</span>. In the <span class=hl>Azad Maidan</span> he found a throng moving towards a pandal.", "A lecture was in progress, but the <span class=hl>presidential chair was unoccupied</span>. He moved towards it. The audience: <span class=hl>“Vacate the chair!”</span> <span class=hl>“We abolished the old customs long ago.”</span>", "Gaitonde: an unchaired lecture is like <span class=hl>Hamlet without the Prince of Denmark</span>. He became a target for <span class=hl>tomatoes and eggs</span>, and the audience swarmed to the stage to eject him. In the crowd he was <span class=hl>nowhere to be seen</span>.", "He was found in the Azad Maidan <span class=hl>in the morning</span>, back in his own world. The Bakhar was lost in the melee; only a <span class=hl>torn-off page</span> remained, with the account of the bullet that missed."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Chair",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,300,60,320,70,CY,['AZAD MAIDAN','pandal'],'#0a1c2a',15);const b=Math.abs(Math.sin(__t*3))*6;line(c,420,200-b,500,200-b,YL,4);line(c,420,200-b,420,260,YL,4);line(c,500,200-b,500,260,YL,4);line(c,420,150,420,200-b,YL,4);txt(c,'unoccupied presidential chair',460,285,YL,F(13,1),'center');txt(c,"the sight stirs him",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,60,70,320,100,RD,['“Vacate the chair!”'],'#2a0f0f',16);box(c,540,70,320,100,MG,['“We abolished the old','customs long ago.”'],'#2a0a2a',14);txt(c,'an unchaired lecture is normal here',460,225,CY,F(14,1),'center');txt(c,"the audience objects",460,326,RD,F(14,1),"center");}
+ else if(s===2){circ(c,200,140,30,CY,'rgba(34,211,238,.2)',3);for(let k=0;k<5;k++){circ(c,380+k*90,140,18,YL,'rgba(250,204,21,.25)',3);arrow2(c,360+k*90,140,330+k*90,140,RD,2);}txt(c,'tomatoes and eggs',460,215,RD,F(14,1),'center');txt(c,"swarmed to the stage",460,326,RD,F(14,1),"center");}
+ else if(s===3){box(c,60,70,300,100,GR,['FOUND IN THE MORNING','Azad Maidan'],'#0a2a1a',14);box(c,560,70,300,100,YL,['TORN PAGE','the only evidence'],'#2a2608',14);arrow2(c,370,120,550,120,CY,4);txt(c,'the Bakhar itself was lost in the melee',460,225,MG,F(14,1),'center');txt(c,"back in his own world",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[5]=()=>{if([0].includes(s))draw();};
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Gaitonde’s own copy says: <span class=hl>“God expressed His displeasure. He was hit by the bullet.”</span> The torn page says the bullet <span class=hl>missed</span>. Rajendra: facts can be <span class=hl>stranger than fantasies</span>.", "<span class=hl>Catastrophe theory</span> applied to Panipat: forces were comparable, so leadership and <span class=hl>morale</span> decided. Vishwasrao was killed and Bhausaheb was never seen again: a <span class=hl>turning point</span>. The torn page shows the course when the bullet missed.", "<span class=hl>Quantum theory</span>: the behaviour of small systems <span class=hl>cannot be predicted definitively</span>; for an electron one can only quote <span class=hl>odds</span>. Imagine <span class=hl>many world pictures</span>. The observer can experience <span class=hl>only one at a time</span>.", "Rajendra: you <span class=hl>neither travelled to the past nor the future</span>; you were in the present, experiencing a different world. Gaitonde: he will never preside again and has <span class=hl>conveyed his regrets</span> to the Panipat seminar organisers."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Rajendra",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,60,80,300,100,RD,['TORN PAGE','the bullet missed'],'#2a0f0f',15);box(c,560,80,300,100,GR,['GAITONDE’S COPY','he was hit'],'#0a2a1a',15);arrow2(c,370,130,550,130,YL,4);txt(c,'two accounts of one moment',460,235,CY,F(14,1),'center');txt(c,"the evidence",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,60,80,240,90,CY,['COMPARABLE','forces'],'#0a1c2a',14);arrow2(c,310,125,350,125,YL,3);box(c,360,80,240,90,YL,['MORALE','decides'],'#2a2608',14);arrow2(c,610,125,650,125,YL,3);box(c,660,80,200,90,RD,['TURNING','POINT'],'#2a0f0f',14);txt(c,'Vishwasrao killed, Bhausaheb never seen again',460,230,RD,F(13,1),'center');txt(c,"catastrophe theory",460,326,RD,F(14,1),"center");}
+ else if(s===2){const f=0.5+0.5*Math.sin(__t*2);circ(c,200,140,40,CY,'rgba(34,211,238,.2)',3);circ(c,460,140,40,MG,'rgba(232,121,249,.2)',3);circ(c,720,140,40,GR,'rgba(52,211,153,.2)',3);circ(c,200+f*520,140,10,YL,'rgba(250,204,21,.6)',3);txt(c,'world A',200,205,CY,F(13,1),'center');txt(c,'world B',460,205,MG,F(13,1),'center');txt(c,'world C',720,205,GR,F(13,1),'center');txt(c,'the observer finds one',460,250,YL,F(14,1),'center');txt(c,"many world pictures",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,60,70,300,100,YL,['NOT THE PAST','NOT THE FUTURE'],'#2a2608',15);box(c,560,70,300,100,CY,['THE PRESENT','a different world'],'#0a1c2a',15);arrow2(c,370,120,550,120,GR,4);txt(c,'Gaitonde will not preside again',460,225,RD,F(14,1),'center');txt(c,"Rajendra’s guess",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[6]=()=>{if([1].includes(s))draw();};
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Gaitonde kis train mein hain?",opts:["Deccan Queen","Jijamata Express","Frontier Mail","Pune Passenger"],a:1,why:"The Jijamata Express."},
+{q:"Sarhad par Khan Sahib kya kehta hai?",opts:["Welcome to Pune","This is where the British Raj begins","The Company is wound up","Peshawar is near"],a:1,why:"“This is where the British Raj begins.”"},
+{q:"Gaitonde ki apni Bakhar copy mein Vishwasrao ke saath kya hua?",opts:["goli chook gayi","goli lag gayi","woh bhaag gaya","Abdali ne pakda"],a:1,why:"Hit by the bullet (his own copy); the torn page says it missed."},
+{q:"Rajendra ke mutabik Gaitonde ne kya kiya?",opts:["past mein travel","future mein travel","present mein alag world ka experience","sirf sapna dekha"],a:2,why:"Neither past nor future: the present, a different world."},
+{q:"Gaitonde ne aakhir mein kya faisla kiya?",opts:["Panipat par kitab likhna","meetings ki adhyakshta nahi karna","Bombay mein rehna","library band karana"],a:1,why:"He will not preside over meetings again."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! The Adventure pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
