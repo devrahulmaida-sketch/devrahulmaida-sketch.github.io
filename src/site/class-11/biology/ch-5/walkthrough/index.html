@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Morphology of Flowering Plants - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 Biology - Chapter 5 - Morphology of Flowering Plants</div>
+<h1>Morphology of Flowering Plants Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - root, stem, leaf, flower, fruit and seed, families, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Root System 🌱⭐⭐</h2>
+<p class="why">Tap, fibrous, adventitious, regions and modifications.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">types</button>
+<button class="b" data-o="1">regions</button>
+<button class="b" data-o="2">modifications</button>
+<button class="b" data-o="3">pneumatophore</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Stem + Modifications 🥔⭐⭐</h2>
+<p class="why">Nodes, underground, subaerial and aerial stems.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">stem basics</button>
+<button class="b" data-o="1">underground</button>
+<button class="b" data-o="2">subaerial</button>
+<button class="b" data-o="3">aerial</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. The Leaf 🍃⭐⭐</h2>
+<p class="why">Parts, venation, phyllotaxy and compound leaves.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">parts</button>
+<button class="b" data-o="1">venation</button>
+<button class="b" data-o="2">phyllotaxy</button>
+<button class="b" data-o="3">compound</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Leaf Modifications 🪤⭐⭐</h2>
+<p class="why">Tendrils, spines, fleshy leaves and insect traps.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">climb + defend</button>
+<button class="b" data-o="1">storage</button>
+<button class="b" data-o="2">insect traps</button>
+<button class="b" data-o="3">reproduce</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Flower: Whorls + Ovary 🌸⭐⭐</h2>
+<p class="why">Four whorls and the position of the ovary.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">4 whorls</button>
+<button class="b" data-o="1">hypogynous</button>
+<button class="b" data-o="2">perigynous</button>
+<button class="b" data-o="3">epigynous</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Aestivation + Placentation 🌼⭐⭐</h2>
+<p class="why">Bud arrangement, ovule arrangement and inflorescence.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">aestivation</button>
+<button class="b" data-o="1">placentation 1</button>
+<button class="b" data-o="2">placentation 2</button>
+<button class="b" data-o="3">inflorescence</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Fruit, Seed + Families 🥭⭐⭐</h2>
+<p class="why">Fruit, dicot and monocot seeds, three families.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">fruit</button>
+<button class="b" data-o="1">dicot seed</button>
+<button class="b" data-o="2">monocot seed</button>
+<button class="b" data-o="3">families</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Morphology Pakka? ⭐</h2>
+<p class="why">5 sawaal - tap root, potato, venation, ovary position, maize seed. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Root</b>Tap (dicots), fibrous (monocots), adventitious. Regions: cap, division, elongation, maturation. Pneumatophores in mangroves.</div>
+<div class="rcard"><b>Stem</b>Potato tuber, ginger rhizome, Colocasia corm. Runner, stolon (mint, jasmine), offset, sucker (banana, pineapple). Tendril, thorn, Opuntia.</div>
+<div class="rcard"><b>Leaf</b>Base, petiole, lamina. Reticulate (dicot), parallel (monocot). Pinnate (neem), palmate (silk cotton).</div>
+<div class="rcard"><b>Flower</b>Calyx, corolla, androecium, gynoecium. Hypogynous superior, perigynous half inferior, epigynous inferior ovary.</div>
+<div class="rcard"><b>Ovules</b>Marginal (pea), axile (China rose), parietal (mustard), free central (Dianthus), basal (sunflower).</div>
+<div class="rcard"><b>Seed + families</b>Maize: scutellum, coleoptile, coleorhiza. Fabaceae, Solanaceae, Liliaceae.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 Biology Chapter 5 (Morphology of Flowering Plants) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Tap root:</span> radicle becomes the main root with laterals (dicots, e.g. mustard). <span class=hl>Fibrous:</span> radicle is short-lived, thin roots cluster at the base (monocots, e.g. wheat). <span class=hl>Adventitious:</span> from any part other than the radicle (grass, banyan, Monstera).", "Regions from the tip: <span class=hl>root cap</span> (protection), <span class=hl>meristematic activity</span> (division), <span class=hl>elongation</span>, <span class=hl>maturation</span> (root hairs absorb water and minerals).", "<span class=hl>Storage:</span> carrot, turnip (tap), sweet potato (adventitious). <span class=hl>Support:</span> prop roots (banyan), stilt roots (maize, sugarcane). <span class=hl>Nodules</span> of legumes hold Rhizobium (N fixation).", "<span class=hl>Pneumatophores:</span> in Rhizophora (mangrove) roots grow UPWARD out of swampy soil to get oxygen for respiration."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Root",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,20,70,280,110,CY,["TAP ROOT","dicots: mustard"],"#0a1c2a",12);box(c,320,70,280,110,MG,["FIBROUS","monocots: wheat"],"#2a0a2a",12);box(c,620,70,280,110,GR,["ADVENTITIOUS","grass, banyan,","Monstera"],"#0a2a1a",12);txt(c,"radicle se = tap, baaki = adventitious",460,230,YL,F(14,1),"center");}
+ else if(s===1){box(c,20,70,205,110,CY,["ROOT CAP","protection"],"#0a1c2a",12);box(c,245,70,205,110,MG,["MERISTEMATIC","division"],"#2a0a2a",12);box(c,470,70,205,110,GR,["ELONGATION","growth in length"],"#0a2a1a",12);box(c,695,70,205,110,YL,["MATURATION","root hairs"],"#2a2608",12);txt(c,"tip se upar: cap, divide, elongate, mature",460,230,CY,F(14,1),"center");}
+ else if(s===2){box(c,20,70,280,110,YL,["STORAGE","carrot, turnip,","sweet potato"],"#2a2608",12);box(c,320,70,280,110,MG,["SUPPORT","prop: banyan","stilt: maize"],"#2a0a2a",12);box(c,620,70,280,110,GR,["NODULES","legume + Rhizobium"],"#0a2a1a",12);txt(c,"root = absorption + anchorage + more",460,230,YL,F(14,1),"center");}
+ else if(s===3){box(c,20,70,280,110,RD,["MANGROVE","Rhizophora"],"#2a0f0f",13);box(c,320,70,280,110,CY,["PNEUMATOPHORES","grow upward"],"#0a1c2a",12);box(c,620,70,280,110,GR,["OXYGEN","for respiration"],"#0a2a1a",13);txt(c,"swamp me root ka snorkel",460,230,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Stem</span> is the ascending part of the axis: nodes carry leaves and buds, internodes lie between. Young stems are green and photosynthesise. Functions: spread leaves, conduction, support, storage, propagation.", "<span class=hl>Underground stems</span> store food and tide over bad seasons: potato (tuber, eyes = buds), ginger and turmeric (rhizome), Colocasia (corm). Potato and ginger are STEMS, carrot and turnip are ROOTS.", "<span class=hl>Subaerial</span> (NCERT): runner (grass, strawberry), stolon (mint, jasmine), offset (Pistia, Eichhornia), sucker (banana, pineapple, Chrysanthemum). All spread the plant vegetatively.", "<span class=hl>Aerial:</span> tendrils (cucumber, grapevine) to climb, thorns (Citrus, Bougainvillea) for defence, flattened or fleshy green stems (Opuntia, Euphorbia) for photosynthesis."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Stem",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,20,70,280,110,CY,["NODES","leaves, buds"],"#0a1c2a",13);box(c,320,70,280,110,MG,["INTERNODES","between nodes"],"#2a0a2a",13);box(c,620,70,280,110,GR,["BUDS","terminal +","axillary"],"#0a2a1a",13);txt(c,"stem = nodes + internodes",460,230,YL,F(14,1),"center");}
+ else if(s===1){box(c,20,70,280,110,YL,["POTATO","tuber"],"#2a2608",13);box(c,320,70,280,110,MG,["GINGER","rhizome"],"#2a0a2a",13);box(c,620,70,280,110,GR,["COLOCASIA","corm"],"#0a2a1a",13);txt(c,"potato, ginger = stems (buds hote hain)",460,230,CY,F(14,1),"center");}
+ else if(s===2){box(c,20,70,205,110,CY,["RUNNER","grass, strawberry"],"#0a1c2a",12);box(c,245,70,205,110,MG,["STOLON","mint, jasmine"],"#2a0a2a",12);box(c,470,70,205,110,GR,["OFFSET","Pistia,","Eichhornia"],"#0a2a1a",12);box(c,695,70,205,110,YL,["SUCKER","banana, pineapple,","Chrysanthemum"],"#2a2608",11);txt(c,"4 subaerial types",460,230,MG,F(14,1),"center");}
+ else if(s===3){box(c,20,70,280,110,CY,["TENDRIL","cucumber, grape"],"#0a1c2a",12);box(c,320,70,280,110,RD,["THORN","Citrus,","Bougainvillea"],"#2a0f0f",12);box(c,620,70,280,110,GR,["OPUNTIA","green flat stem"],"#0a2a1a",12);txt(c,"aerial = climb, defend, photosynthesise",460,230,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Leaf</span> has a leaf base (stipules may be present), a petiole, and a flat green lamina with veins and midrib.", "<span class=hl>Reticulate</span> venation (net-like) is typical of dicots. <span class=hl>Parallel</span> venation is typical of monocots.", "<span class=hl>Phyllotaxy</span> is the leaf arrangement on stem: alternate (China rose), opposite (Calotropis, guava), whorled (Alstonia).", "<span class=hl>Compound leaf:</span> lamina cut into leaflets. Pinnate: leaflets on a common rachis (neem). Palmate: leaflets at one point (silk cotton)."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Leaf",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,20,70,280,110,CY,["LEAF BASE","stipules"],"#0a1c2a",13);box(c,320,70,280,110,MG,["PETIOLE","stalk"],"#2a0a2a",13);box(c,620,70,280,110,GR,["LAMINA","veins + midrib"],"#0a2a1a",13);txt(c,"3 parts of a leaf",460,230,YL,F(14,1),"center");}
+ else if(s===1){box(c,20,70,430,110,CY,["RETICULATE","net-like: dicot"],"#0a1c2a",12);box(c,470,70,430,110,MG,["PARALLEL","monocot"],"#2a0a2a",13);txt(c,"net = dicot, parallel = monocot",460,230,YL,F(14,1),"center");}
+ else if(s===2){box(c,20,70,280,110,CY,["ALTERNATE","China rose"],"#0a1c2a",12);box(c,320,70,280,110,MG,["OPPOSITE","Calotropis,","guava"],"#2a0a2a",12);box(c,620,70,280,110,GR,["WHORLED","Alstonia"],"#0a2a1a",12);txt(c,"phyllotaxy = arrangement",460,230,YL,F(14,1),"center");}
+ else if(s===3){box(c,20,70,280,110,CY,["SIMPLE","one lamina"],"#0a1c2a",13);box(c,320,70,280,110,MG,["PINNATE","neem"],"#2a0a2a",13);box(c,620,70,280,110,GR,["PALMATE","silk cotton"],"#0a2a1a",13);txt(c,"compound = leaflets",460,230,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Tendrils</span> (pea) help climbing. <span class=hl>Spines</span> (cactus) defend and cut water loss.", "<span class=hl>Fleshy leaves</span> store food (onion, garlic).", "<span class=hl>Pitcher</span> (Nepenthes) and <span class=hl>bladder</span> (Utricularia) are leaf modifications that trap insects.", "In <span class=hl>Bryophyllum</span> buds arise at the leaf margin and grow into new plants."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Leaf modifications",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,20,70,430,110,CY,["TENDRIL","pea: climbing"],"#0a1c2a",13);box(c,470,70,430,110,RD,["SPINE","cactus: defence"],"#2a0f0f",13);txt(c,"tendril = climb, spine = defend",460,230,YL,F(14,1),"center");}
+ else if(s===1){box(c,20,70,430,110,YL,["ONION","fleshy leaves"],"#2a2608",13);box(c,470,70,430,110,GR,["GARLIC","food storage"],"#0a2a1a",13);txt(c,"fleshy leaf = storage",460,230,CY,F(14,1),"center");}
+ else if(s===2){box(c,20,70,430,110,MG,["PITCHER","Nepenthes"],"#2a0a2a",13);box(c,470,70,430,110,CY,["BLADDER","Utricularia"],"#0a1c2a",13);txt(c,"insectivorous plants",460,230,YL,F(14,1),"center");}
+ else if(s===3){box(c,20,70,430,110,GR,["BRYOPHYLLUM","buds on margin"],"#0a2a1a",13);box(c,470,70,430,110,YL,["NEW PLANTLETS","vegetative"],"#2a2608",13);txt(c,"leaf se naya paudha",460,230,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["Four whorls from outside: <span class=hl>calyx</span> (sepals), <span class=hl>corolla</span> (petals), <span class=hl>androecium</span> (stamens, male), <span class=hl>gynoecium</span> (carpels, female).", "<span class=hl>Hypogynous:</span> ovary on top, other parts below it, so the ovary is SUPERIOR (mustard, China rose, brinjal).", "<span class=hl>Perigynous:</span> ovary at the centre, other parts on the rim of thalamus, so the ovary is HALF inferior (plum, rose, peach).", "<span class=hl>Epigynous:</span> margin of thalamus fused with the ovary, other parts above it, so the ovary is INFERIOR (guava, cucumber, sunflower ray florets)."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Flower whorls",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,20,70,205,110,GR,["CALYX","sepals"],"#0a2a1a",13);box(c,245,70,205,110,MG,["COROLLA","petals"],"#2a0a2a",13);box(c,470,70,205,110,YL,["ANDROECIUM","stamens"],"#2a2608",12);box(c,695,70,205,110,CY,["GYNOECIUM","carpels"],"#0a1c2a",12);txt(c,"outside se inside: C, C, A, G",460,230,CY,F(14,1),"center");}
+ else if(s===1){box(c,20,70,430,110,GR,["HYPOGYNOUS","superior ovary"],"#0a2a1a",12);box(c,470,70,430,110,YL,["mustard,","China rose, brinjal"],"#2a2608",12);txt(c,"ovary sabse upar",460,230,MG,F(14,1),"center");}
+ else if(s===2){box(c,20,70,430,110,MG,["PERIGYNOUS","half inferior"],"#2a0a2a",12);box(c,470,70,430,110,YL,["plum, rose, peach"],"#2a2608",12);txt(c,"ovary beech me, rim pe baaki",460,230,CY,F(14,1),"center");}
+ else if(s===3){box(c,20,70,430,110,CY,["EPIGYNOUS","inferior ovary"],"#0a1c2a",12);box(c,470,70,430,110,YL,["guava, cucumber,","sunflower ray florets"],"#2a2608",12);txt(c,"ovary sabse neeche",460,230,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Aestivation:</span> valvate (just touch, Calotropis), twisted (overlap one side, China rose, cotton), imbricate (irregular, gulmohar, cassia), vexillary (pea, bean).", "<span class=hl>Marginal</span> (pea): ovules along one margin. <span class=hl>Axile</span> (China rose, tomato, lemon): ovules on central axis of a chambered ovary.", "<span class=hl>Parietal</span> (mustard, Argemone): ovules on the ovary wall. <span class=hl>Free central</span> (Dianthus, Primrose): on central axis, no septa. <span class=hl>Basal</span> (sunflower, marigold).", "<span class=hl>Racemose:</span> main axis keeps growing, flowers arise laterally. <span class=hl>Cymose:</span> main axis ends in a flower."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Aestivation + placentation",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,20,70,205,110,CY,["VALVATE","Calotropis"],"#0a1c2a",12);box(c,245,70,205,110,MG,["TWISTED","China rose"],"#2a0a2a",12);box(c,470,70,205,110,GR,["IMBRICATE","gulmohar"],"#0a2a1a",12);box(c,695,70,205,110,YL,["VEXILLARY","pea, bean"],"#2a2608",12);txt(c,"bud me petals ka pattern",460,230,YL,F(14,1),"center");}
+ else if(s===1){box(c,20,70,430,110,CY,["MARGINAL","pea"],"#0a1c2a",13);box(c,470,70,430,110,MG,["AXILE","China rose,","tomato, lemon"],"#2a0a2a",12);txt(c,"marginal vs axile",460,230,YL,F(14,1),"center");}
+ else if(s===2){box(c,20,70,280,110,GR,["PARIETAL","mustard"],"#0a2a1a",12);box(c,320,70,280,110,MG,["FREE CENTRAL","Dianthus"],"#2a0a2a",12);box(c,620,70,280,110,YL,["BASAL","sunflower"],"#2a2608",12);txt(c,"3 more placentation types",460,230,CY,F(14,1),"center");}
+ else if(s===3){box(c,20,70,430,110,CY,["RACEMOSE","axis grows on"],"#0a1c2a",12);box(c,470,70,430,110,MG,["CYMOSE","axis ends in flower"],"#2a0a2a",12);txt(c,"inflorescence = 2 types",460,230,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Fruit</span> is a mature ovary; the wall is the pericarp. <span class=hl>Parthenocarpic</span> fruit forms without fertilisation (banana).", "<span class=hl>Dicot seed</span> (gram, bean): seed coat (testa + tegmen), hilum, micropyle, 2 cotyledons, embryo axis (plumule + radicle).", "<span class=hl>Monocot seed</span> (maize): coat fused with fruit wall, one cotyledon called scutellum, endosperm bulky, coleoptile covers plumule, coleorhiza covers radicle.", "<span class=hl>Fabaceae:</span> pea, gram, soybean. <span class=hl>Solanaceae:</span> tomato, brinjal, potato. <span class=hl>Liliaceae:</span> onion, garlic, lily, Aloe."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Fruit + seed + families",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,20,70,280,110,GR,["FRUIT","mature ovary"],"#0a2a1a",13);box(c,320,70,280,110,MG,["PERICARP","fruit wall"],"#2a0a2a",13);box(c,620,70,280,110,YL,["PARTHENO-","CARPIC","banana"],"#2a2608",12);txt(c,"bina fertilisation ka fruit",460,230,CY,F(14,1),"center");}
+ else if(s===1){box(c,20,70,280,110,CY,["TESTA + TEGMEN","seed coat"],"#0a1c2a",12);box(c,320,70,280,110,MG,["2 COTYLEDONS","food"],"#2a0a2a",12);box(c,620,70,280,110,GR,["PLUMULE +","RADICLE"],"#0a2a1a",12);txt(c,"dicot = 2 cotyledons",460,230,YL,F(14,1),"center");}
+ else if(s===2){box(c,20,70,280,110,CY,["SCUTELLUM","1 cotyledon"],"#0a1c2a",12);box(c,320,70,280,110,MG,["COLEOPTILE","covers plumule"],"#2a0a2a",12);box(c,620,70,280,110,GR,["COLEORHIZA","covers radicle"],"#0a2a1a",12);txt(c,"maize = monocot",460,230,YL,F(14,1),"center");}
+ else if(s===3){box(c,20,70,280,110,CY,["FABACEAE","pea, gram"],"#0a1c2a",12);box(c,320,70,280,110,MG,["SOLANACEAE","tomato, potato"],"#2a0a2a",12);box(c,620,70,280,110,GR,["LILIACEAE","onion, lily"],"#0a2a1a",12);txt(c,"3 families",460,230,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Tap root kis seed-leaf type me hoti hai?",opts:["monocots","dicots","dono","kisi me nahi"],a:1,why:"Tap root dicots me (mustard). Fibrous root monocots me (wheat)."},
+{q:"Kaun sa underground STEM hai?",opts:["carrot","turnip","potato","sweet potato"],a:2,why:"Potato = stem tuber (eyes = buds). Carrot, turnip = roots."},
+{q:"Reticulate venation kis me hoti hai?",opts:["monocots","dicots","grass","wheat"],a:1,why:"Reticulate = dicots. Parallel = monocots."},
+{q:"Guava me ovary ki position kya hai?",opts:["superior","half inferior","inferior","none"],a:2,why:"Guava: epigynous flower, inferior ovary."},
+{q:"Maize seed me single cotyledon ko kya kehte hain?",opts:["scutellum","coleoptile","coleorhiza","testa"],a:0,why:"Scutellum = single cotyledon of monocot seed."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Morphology pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
