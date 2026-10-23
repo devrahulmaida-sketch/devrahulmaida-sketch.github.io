@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Plant Growth and Development - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 Biology - Chapter 13 - Plant Growth and Development</div>
+<h1>Plant Growth and Development Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - growth basics, differentiation, auxins + gibberellins, cytokinins + ethylene + ABA, photoperiodism, vernalisation, revision, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Growth Basics 🌱⭐⭐</h2>
+<p class="why">Meristems, 3 phases, arithmetic vs geometric, sigmoid curve.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">open growth</button>
+<button class="b" data-o="1">3 phases</button>
+<button class="b" data-o="2">arithmetic / geometric</button>
+<button class="b" data-o="3">sigmoid curve</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Differentiation 🔄⭐⭐</h2>
+<p class="why">Differentiation, dedifferentiation, redifferentiation, development.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">differentiation</button>
+<button class="b" data-o="1">dedifferentiation</button>
+<button class="b" data-o="2">redifferentiation</button>
+<button class="b" data-o="3">development</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Auxins + Gibberellins 🌿⭐⭐</h2>
+<p class="why">IAA, apical dominance, 2,4-D, GA, bolting, seed germination.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">auxin sites</button>
+<button class="b" data-o="1">auxin uses</button>
+<button class="b" data-o="2">2,4-D weedicide</button>
+<button class="b" data-o="3">gibberellins</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Cytokinins, Ethylene, ABA 🧪⭐⭐</h2>
+<p class="why">Cytokinin, ethylene, ABA functions and the PGR team.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">cytokinins</button>
+<button class="b" data-o="1">ethylene</button>
+<button class="b" data-o="2">ABA</button>
+<button class="b" data-o="3">PGR summary</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Photoperiodism 💡⭐⭐</h2>
+<p class="why">LDP, SDP, day-neutral, critical duration, leaves perceive.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">3 categories</button>
+<button class="b" data-o="1">critical duration</button>
+<button class="b" data-o="2">long-night plants</button>
+<button class="b" data-o="3">perception</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Vernalisation ❄️⭐⭐</h2>
+<p class="why">Cold treatment, winter wheat, biennials, uses.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">definition</button>
+<button class="b" data-o="1">winter wheat</button>
+<button class="b" data-o="2">biennials</button>
+<button class="b" data-o="3">uses</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Quick Revision 🎯⭐⭐</h2>
+<p class="why">Growth, differentiation, PGR match, flowering switches.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">growth</button>
+<button class="b" data-o="1">cell fate</button>
+<button class="b" data-o="2">PGR match</button>
+<button class="b" data-o="3">flowering</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Growth Pakka? ⭐</h2>
+<p class="why">5 sawaal - sigmoid, dedifferentiation, 2,4-D, ethylene, vernalisation. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Growth</b>Meristematic, elongation, maturation. Arithmetic (linear) vs geometric (exponential). Sigmoid: lag, log, stationary.</div>
+<div class="rcard"><b>Cell fate</b>Differentiation, dedifferentiation (cork cambium), redifferentiation. Development = growth + differentiation.</div>
+<div class="rcard"><b>Auxin + GA</b>Auxin: apical dominance, rooting, parthenocarpy, 2,4-D weedicide. GA: bolting, germination, grapes, sugarcane.</div>
+<div class="rcard"><b>Cytokinin, C2H4, ABA</b>Cytokinin: division, anti-ageing. Ethylene: gas, ripening. ABA: stomata close, dormancy.</div>
+<div class="rcard"><b>Photoperiod</b>LDP, SDP (long-night), day-neutral by critical duration. Leaves perceive the signal.</div>
+<div class="rcard"><b>Vernalisation</b>Cold promotes flowering: winter wheat, rye, biennials like cabbage, carrot, sugarbeet.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 Biology Chapter 13 (Plant Growth and Development) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["Growth = <span class=hl>irreversible</span> increase in size. Plants grow <span class=hl>lifelong</span> (open growth) because of meristems.", "3 phases: <span class=hl>meristematic</span> (divide), <span class=hl>elongation</span> (vacuoles grow), <span class=hl>maturation</span> (final shape + function).", "<span class=hl>Arithmetic:</span> one daughter divides, other differentiates (linear). <span class=hl>Geometric:</span> both keep dividing (exponential).", "<span class=hl>Sigmoid curve:</span> lag (slow) → log (rapid) → stationary (plateau, resources limited)."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Growth basics",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,400,110,CY,["MERISTEMS","root + shoot apex","keep dividing"],"#0a1c2a",14);box(c,480,70,400,110,MG,["OPEN GROWTH","zindagi bhar","growth hoti hai"],"#2a0a2a",14);txt(c,"water, O2, nutrients, temperature, light, gravity chahiye",460,230,YL,F(14,1),"center");}
+ else if(s===1){chain(c,["meristematic","elongation","maturation"],[0,1,2],100,CY);txt(c,"divide → lambe hue → final shape",460,200,YL,F(15,1),"center");txt(c,"maturation: thick walls, specialised (e.g. tracheids)",460,240,GR,F(14,1),"center");}
+ else if(s===2){box(c,40,70,400,110,CY,["ARITHMETIC","1 cell divides,","1 differentiates (linear)"],"#0a1c2a",13);box(c,480,70,400,110,MG,["GEOMETRIC","both keep dividing","(exponential)"],"#2a0a2a",14);txt(c,"root elongation = arithmetic example",460,230,YL,F(14,1),"center");}
+ else{line(c,100,260,200,250,CY,5);line(c,200,250,360,100,MG,5);line(c,360,100,520,85,GR,5);txt(c,"lag",150,285,CY,F(13,1),"center");txt(c,"log",290,285,MG,F(13,1),"center");txt(c,"stationary",450,285,GR,F(13,1),"center");txt(c,"S-shape: slow → rocket → plateau",730,150,YL,F(15,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Differentiation:</span> meristem cells mature into specialised cells, e.g. tracheary elements: elongate, walls lignified, protoplasm lost.", "<span class=hl>Dedifferentiation:</span> mature cells regain ability to divide, e.g. interfascicular cambium, cork cambium. Also wound healing.", "<span class=hl>Redifferentiation:</span> dedifferentiated cells mature again into new specialised cells (e.g. cork cells).", "<span class=hl>Development</span> = growth + differentiation, seed to senescence."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Differentiation",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,60,70,380,110,CY,["MERISTEM CELL","dividing, thin walls"],"#0a1c2a",14);box(c,480,70,380,110,MG,["TRACHEARY ELEMENT","lignified wall,","dead, conducts water"],"#2a0a2a",13);arrow2(c,440,125,480,125,YL);txt(c,"structure + function badal gaye",460,230,YL,F(15,1),"center");}
+ else if(s===1){box(c,60,70,380,110,YL,["MATURE CELL","permanent tissue"],"#2a2608",14);box(c,480,70,380,110,GR,["REGAINS DIVISION","cork cambium,","interfascicular cambium"],"#0a2a1a",13);txt(c,"differentiated cell ka U-turn",460,230,YL,F(15,1),"center");}
+ else if(s===2){chain(c,["meristem","differen-|tiate","dedifferen-|tiate","redifferen-|tiate"],[0,1,2,3],100,MG);txt(c,"cork cambium → cork cells",460,200,YL,F(15,1),"center");txt(c,"plasticity = plants ki superpower",460,240,GR,F(14,1),"center");}
+ else{chain(c,["division","elongation","maturation","flowering","senescence"],[0,1,2,3,4],100,CY);txt(c,"development = poora journey, seed se senescence tak",460,200,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Auxins:</span> IAA natural; NAA and 2,4-D synthetic. Made at growing apices (shoot and root tips).", "<span class=hl>Uses:</span> apical dominance, rooting of cuttings, parthenocarpy, xylem differentiation, delays fruit drop.", "<span class=hl>2,4-D</span> kills dicot weeds in cereal (monocot) fields. Crop survives.", "<span class=hl>Gibberellins:</span> stem elongation + <span class=hl>bolting</span>, seed germination (amylase), bigger grapes, longer sugarcane."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Auxins + Gibberellins",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,270,110,CY,["IAA","natural"],"#0a1c2a",15);box(c,330,70,270,110,MG,["NAA","synthetic"],"#2a0a2a",15);box(c,620,70,260,110,GR,["2,4-D","synthetic"],"#0a2a1a",15);txt(c,"growing apices me bante hain",460,230,YL,F(15,1),"center");}
+ else if(s===1){box(c,40,70,270,110,CY,["APICAL DOMINANCE","tip grows, side","buds suppressed"],"#0a1c2a",12);box(c,330,70,270,110,MG,["ROOTING","cuttings me","roots (NAA)"],"#2a0a2a",13);box(c,620,70,260,110,GR,["PARTHENOCARPY","seedless fruit"],"#0a2a1a",12);txt(c,"tip kaatne se plant bushier",460,230,YL,F(14,1),"center");}
+ else if(s===2){box(c,40,70,400,110,RD,["DICOT WEEDS","killed by 2,4-D"],"#2a0f0f",14);box(c,480,70,400,110,GR,["CEREAL CROP","wheat survives","(monocot)"],"#0a2a1a",14);}
+ else{box(c,40,70,270,110,CY,["BOLTING","rosette stem","suddenly lamba"],"#0a1c2a",13);box(c,330,70,270,110,MG,["SEED GERMINATION","aleurone: amylase"],"#2a0a2a",12);box(c,620,70,260,110,YL,["GRAPES + CANE","size, stem length"],"#2a2608",13);txt(c,"GA3 = gibberellic acid (Gibberella fungus)",460,230,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Cytokinins</span> (zeatin, kinetin): promote cell division, delay senescence, push lateral buds (counter apical dominance).", "<span class=hl>Ethylene:</span> the only gaseous PGR. Fruit ripening, senescence + abscission, apical hook, more female flowers in cucumber.", "<span class=hl>ABA:</span> stress hormone. Closes stomata in water stress, keeps seeds dormant, promotes abscission + senescence.", "Auxin: dominance, rooting. GA: bolting, germination. Cytokinin: division. Ethylene: ripening. ABA: stomata close, dormancy."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Cytokinins, ethylene, ABA",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,270,110,CY,["DIVISION","cell division","promote"],"#0a1c2a",14);box(c,330,70,270,110,MG,["ANTI-AGEING","senescence","delay"],"#2a0a2a",14);box(c,620,70,260,110,GR,["LATERAL BUDS","grow"],"#0a2a1a",14);txt(c,"root apex + developing fruits/seeds me bante hain",460,230,YL,F(14,1),"center");}
+ else if(s===1){box(c,40,70,270,110,YL,["RIPENING","Ethephon: mango,","tomato"],"#2a2608",13);box(c,330,70,270,110,RD,["SENESCENCE","leaves, flowers,","fruits girte hain"],"#2a0f0f",13);box(c,620,70,260,110,CY,["APICAL HOOK","protects shoot"],"#0a1c2a",13);txt(c,"sirf GASEOUS PGR",460,230,GR,F(15,1),"center");}
+ else if(s===2){box(c,40,70,270,110,RD,["STOMATA CLOSE","water stress","me"],"#2a0f0f",14);box(c,330,70,270,110,CY,["DORMANCY","seed + bud"],"#0a1c2a",14);box(c,620,70,260,110,MG,["STRESS","drought, salt","tolerance"],"#2a0a2a",14);txt(c,"ABA = plant ka panic button",460,230,YL,F(15,1),"center");}
+ else{box(c,20,60,170,110,CY,["AUXIN","dominance","rooting"],"#0a1c2a",13);box(c,200,60,170,110,MG,["GA","bolting","germination"],"#2a0a2a",13);box(c,380,60,170,110,GR,["CYTOKININ","division","anti-ageing"],"#0a2a1a",13);box(c,560,60,170,110,YL,["ETHYLENE","ripening","fall"],"#2a2608",13);box(c,740,60,160,110,RD,["ABA","stomata","dormancy"],"#2a0f0f",13);txt(c,"promoters: auxin, GA, cytokinin  |  stop/shed: ABA, ethylene",460,230,D,F(13,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["Garner and Allard (1920): flowering depends on day/night length. <span class=hl>LDP, SDP, day-neutral</span>.", "<span class=hl>Critical duration:</span> the day-length that triggers flowering. Each plant has its own.", "SDP are really <span class=hl>long-night</span> plants. The dark period matters.", "<span class=hl>Leaves</span> perceive the light/dark signal. A signal moves to the flower buds."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Photoperiodism",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,40,70,270,110,CY,["LONG-DAY","wheat, oats,","spinach"],"#0a1c2a",13);box(c,330,70,270,110,MG,["SHORT-DAY","rice, tobacco,","chrysanthemum"],"#2a0a2a",13);box(c,620,70,260,110,GR,["DAY-NEUTRAL","tomato, cotton,","sunflower"],"#0a2a1a",13);txt(c,"Maryland Mammoth tobacco pe discover hua",460,230,YL,F(14,1),"center");}
+ else if(s===1){box(c,60,70,380,110,CY,["LDP","needs MORE than","critical light"],"#0a1c2a",14);box(c,480,70,380,110,MG,["SDP","needs LESS than","critical light"],"#2a0a2a",14);txt(c,"critical duration = trigger line, plant-specific",460,230,YL,F(14,1),"center");}
+ else if(s===2){box(c,60,70,380,110,MG,["SDP = LONG-NIGHT","dark period matters"],"#2a0a2a",14);box(c,480,70,380,110,YL,["FLASH OF LIGHT","in the night breaks","the dark period"],"#2a2608",13);}
+ else{box(c,60,70,380,110,GR,["LEAVES","detect light/dark"],"#0a2a1a",14);box(c,480,70,380,110,CY,["SIGNAL","moves to flower","buds"],"#0a1c2a",14);arrow2(c,440,125,480,125,YL);txt(c,"photoperiodism = light ka timer",460,230,YL,F(15,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Vernalisation:</span> flowering promoted by a period of <span class=hl>low temperature</span>.", "Winter varieties of wheat, rye, barley: cold-treated seeds flower sooner in spring.", "Biennials (cabbage, carrot, sugarbeet): grow in year 1, flower only after cold.", "Use in agriculture: shorter growing season, flowering sync."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Vernalisation",460,26,YL,F(14,1),"center");
+
+ if(s===0){box(c,60,70,380,110,CY,["COLD TREATMENT","low temperature"],"#0a1c2a",14);box(c,480,70,380,110,MG,["FLOWERING","promoted"],"#2a0a2a",15);arrow2(c,440,125,480,125,YL);txt(c,"thandi ka kickstart",460,230,YL,F(15,1),"center");}
+ else if(s===1){chain(c,["winter seed","cold","spring","flower|+ fruit"],[0,1,2,3],100,CY);txt(c,"winter wheat, rye, barley",460,200,YL,F(15,1),"center");}
+ else if(s===2){chain(c,["year 1|grow","winter|cold","year 2|flower"],[0,1,2],100,MG);txt(c,"cabbage, carrot, sugarbeet",460,200,YL,F(15,1),"center");}
+ else{box(c,60,70,380,110,GR,["SHORTER","growing season"],"#0a2a1a",14);box(c,480,70,380,110,YL,["SYNC","flowering time"],"#2a2608",14);txt(c,"photoperiodism + vernalisation = flowering ke switches",460,230,D,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Growth: meristematic → elongation → maturation. Sigmoid: lag, log, stationary.", "Differentiation → dedifferentiation → redifferentiation. Cork cambium example.", "Match: auxin = apical dominance, GA = bolting, cytokinin = division, ethylene = ripening, ABA = stomata close.", "LDP / SDP / day-neutral by critical duration. Vernalisation = cold promotes flowering."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Quick revision",460,26,YL,F(14,1),"center");
+
+ if(s===0){chain(c,["meristematic","elongation","maturation"],[0,1,2],100,CY);txt(c,"sigmoid: lag → log → stationary",460,200,YL,F(15,1),"center");}
+ else if(s===1){chain(c,["differen-|tiate","dedifferen-|tiate","redifferen-|tiate"],[0,1,2],100,MG);txt(c,"cork cambium = dedifferentiation example",460,200,YL,F(15,1),"center");}
+ else if(s===2){box(c,20,60,170,110,CY,["AUXIN","dominance"],"#0a1c2a",13);box(c,200,60,170,110,MG,["GA","bolting"],"#2a0a2a",14);box(c,380,60,170,110,GR,["CYTOKININ","division"],"#0a2a1a",13);box(c,560,60,170,110,YL,["ETHYLENE","ripening"],"#2a2608",13);box(c,740,60,160,110,RD,["ABA","stomata"],"#2a0f0f",13);}
+ else{box(c,60,70,380,110,CY,["PHOTOPERIODISM","LDP / SDP / neutral"],"#0a1c2a",14);box(c,480,70,380,110,MG,["VERNALISATION","cold → flowering"],"#2a0a2a",14);}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Sigmoid growth curve ke 3 phases ka sahi order kya hai?",opts:["lag, log, stationary","log, lag, stationary","stationary, log, lag","lag, stationary, log"],a:0,why:"Slow lag, rapid log (exponential), phir stationary plateau."},
+{q:"Cork cambium ka banna kis process ka example hai?",opts:["differentiation","dedifferentiation","redifferentiation","senescence"],a:1,why:"Mature cells wapas divide karne lagti hain: dedifferentiation."},
+{q:"Cereal fields me dicot weeds ko kaunsa auxin maarta hai?",opts:["IAA","NAA","2,4-D","GA3"],a:2,why:"2,4-D dicot weeds maarta hai, wheat jaisi monocot crop bach jaati hai."},
+{q:"Sirf gaseous PGR kaunsa hai?",opts:["auxin","cytokinin","ABA","ethylene"],a:3,why:"Ethylene gaseous hai: fruit ripening, senescence, abscission."},
+{q:"Vernalisation kya hai?",opts:["cold treatment se flowering promote","light period se flowering","gravity response","fruit ripening"],a:0,why:"Low temperature ke baad flowering: winter wheat, biennials."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Growth pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
