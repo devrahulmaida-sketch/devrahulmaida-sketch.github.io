@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Ranga’s Marriage - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Snapshots - Ranga’s Marriage</div>
+<h1>Ranga’s Marriage Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - the village, Ranga returns, his views on marriage, Ratna sings, the half-lie, Shastri’s reading, reading the story, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. The Village 🏘️⭐⭐⭐</h2>
+<p class="why">The narrator and Hosahalli.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">your servant</button>
+<button class="b" data-o="1">karigadabu</button>
+<button class="b" data-o="2">on no map</button>
+<button class="b" data-o="3">disgraceful</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Ranga Returns 🚌⭐⭐⭐</h2>
+<p class="why">Six months in Bangalore.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the crowd</button>
+<button class="b" data-o="1">janewara</button>
+<button class="b" data-o="2">lump of sugar</button>
+<button class="b" data-o="3">no change</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Ranga on Marriage 💍⭐⭐⭐</h2>
+<p class="why">Not now.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">not now</button>
+<button class="b" data-o="1">mature girl</button>
+<button class="b" data-o="2">admires</button>
+<button class="b" data-o="3">arranged</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Ratna Sings 🎵⭐⭐⭐</h2>
+<p class="why">Rama Rao’s niece.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">a girl of eleven</button>
+<button class="b" data-o="1">buttermilk</button>
+<button class="b" data-o="2">the song</button>
+<button class="b" data-o="3">ran inside</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. The Half-lie 🤥⭐⭐⭐</h2>
+<p class="why">What Shyama tells Ranga.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">who is that girl</button>
+<button class="b" data-o="1">already married</button>
+<button class="b" data-o="2">a year ago</button>
+<button class="b" data-o="3">roasted brinjal</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Shastri’s Reading 🔮⭐⭐⭐</h2>
+<p class="why">The plot with the astrologer.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">tutored</button>
+<button class="b" data-o="1">about a girl</button>
+<button class="b" data-o="2">pearl or ratna</button>
+<button class="b" data-o="3">definitely</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Reading the Story 🔎⭐⭐</h2>
+<p class="why">Text, supported reading and the book’s questions.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Q1 English</button>
+<button class="b" data-o="1">Q2 astrologers</button>
+<button class="b" data-o="2">Q3 marriage</button>
+<button class="b" data-o="3">Q4 narrator</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Ranga’s Marriage Pakka? ⭐</h2>
+<p class="why">5 sawaal - six months, Ratna, her age, the birthday, the brinjal. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Village</b>Shyama is the narrator; Hosahalli is on no map, and he calls the English words disgraceful.</div>
+<div class="rcard"><b>Ranga</b>Back from Bangalore after six months; the old lady says the janewara is still there.</div>
+<div class="rcard"><b>Marriage</b>Ranga is not marrying now; he wants a mature girl he admires and criticises arranged marriages.</div>
+<div class="rcard"><b>Ratna</b>Rama Rao’s niece, eleven, sings in Shyama’s room and runs inside shyly.</div>
+<div class="rcard"><b>Lie</b>Shyama says she was married a year ago; Ranga’s face shrivels like a roasted brinjal.</div>
+<div class="rcard"><b>Shastri</b>Tutored by Shyama: pearl or ratna, definitely. Ending: Shyama is three; he puts a ring on the boy’s finger.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 16 (Ranga’s Marriage) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Shyama is none other than your servant, the narrator of this tale.</span>", "Mysore State is to India what the <span class=hl>karigadabu</span> is to a feast; Hosahalli is <span class=hl>the filling</span>.", "The narrator says Hosahalli is <span class=hl>in no geography book and on no map</span>.", "On English words in Kannada: <span class=hl>What has happened is disgraceful, believe me.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Village",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,300,70,320,110,CY,['SHYAMA','THE NARRATOR'],'#0a1c2a',22);txt(c,'speaks to the reader',460,235,YL,F(15,1),'center');txt(c,"narrator",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,60,600,70,YL,['MYSORE STATE = KARIGADABU'],'#2a2608',20);box(c,340,150,240,70,MG,['HOSAHALLI = FILLING'],'#2a0a2a',16);txt(c,'the narrator’s simile',460,260,CY,F(15,1),'center');txt(c,"karigadabu",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,DM,['NOT IN A GEOGRAPHY BOOK','NOT ON A MAP'],'#14142a',20);txt(c,'says the narrator',460,235,CY,F(15,1),'center');txt(c,"no map",460,326,DM,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['“DISGRACEFUL,','BELIEVE ME.”'],'#2a0a2a',22);txt(c,'about English words in Kannada',460,235,CY,F(15,1),'center');txt(c,"English",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["People rushed to the doorstep: <span class=hl>Come, Ranga is here. Let’s go and have a look.</span>", "An old lady: <span class=hl>The janewara is still there. He hasn’t lost his caste.</span>", "Ranga was the same as <span class=hl>six months ago</span>; the crowd <span class=hl>melted away, like a lump of sugar in a child’s mouth</span>.", "The narrator found <span class=hl>no change in Ranga</span> that afternoon."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Ranga",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,60,80,240,80,CY,['“THE ACCOUNTANT’S','SON HAS COME”'],'#0a1c2a',15);box(c,340,80,240,80,YL,['“LET’S GO AND','HAVE A LOOK”'],'#2a2608',15);box(c,620,80,240,80,MG,['“NO PERFORMING','MONKEY HERE”'],'#2a0a2a',14);txt(c,'the crowd at the courtyard',460,235,CY,F(15,1),'center');txt(c,"crowd",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['“THE JANEWARA IS','STILL THERE.”'],'#2a2608',22);txt(c,'an old lady checks his chest',460,235,CY,F(15,1),'center');txt(c,"janewara",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,CY,['SAME HANDS, LEGS,','EYES AND NOSE'],'#0a1c2a',20);txt(c,'the crowd melts away',460,235,MG,F(15,1),'center');txt(c,"same Ranga",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,200,80,520,100,DM,['“I FOUND NO CHANGE','IN RANGA.”'],'#14142a',20);txt(c,'that afternoon',460,235,CY,F(15,1),'center');txt(c,"no change",460,326,DM,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["Ranga: <span class=hl>I am not going to get married now.</span>", "<span class=hl>If one gets married, it should be to a girl who is mature.</span> Otherwise one should remain a bachelor.", "<span class=hl>A man should marry a girl he admires.</span>", "<span class=hl>What we have now are arranged marriages.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Marriage",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,MG,['“I AM NOT GOING TO','GET MARRIED NOW.”'],'#2a0a2a',22);txt(c,'Ranga to Shyama',460,235,CY,F(15,1),'center');txt(c,"not now",460,326,MG,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,CY,['A GIRL WHO IS MATURE','OR REMAIN A BACHELOR'],'#0a1c2a',20);txt(c,'he cites the play Shakuntala',460,235,YL,F(15,1),'center');txt(c,"mature",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['A GIRL HE ADMIRES'],'#2a2608',24);txt(c,'his stated reason',460,235,CY,F(15,1),'center');txt(c,"admires",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,DM,['ARRANGED MARRIAGES'],'#14142a',24);txt(c,'his criticism (book Q3)',460,235,CY,F(15,1),'center');txt(c,"arranged",460,326,DM,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Rama Rao’s niece, a pretty girl of eleven</span>, from a big town. She plays veena and harmonium.", "Shyama: <span class=hl>I’ll send some buttermilk for you. Ask Ratna to fetch it.</span> It was a Friday.", "He asked her to sit in his room and sing; <span class=hl>Ranga reached the door</span> and stopped at the threshold.", "<span class=hl>Ratna ran inside, overcome by shyness.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Ratna",460,26,YL,F(14,1),"center");
+ if(s===0){circ(c,460,120,28,CY,'rgba(34,211,238,.2)',3);line(c,460,148,460,235,CY,4);txt(c,'Ratna: eleven, veena, harmonium',460,290,YL,F(15,1),'center');txt(c,"Ratna",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,260,100,YL,['BUTTERMILK','FOR RAMA RAO’S WIFE'],'#2a2608',15);box(c,500,80,260,100,MG,['A FRIDAY,','A GRAND SAREE'],'#2a0a2a',15);txt(c,"Friday",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,100,80,300,100,CY,['RATNA SINGS','IN SHYAMA’S ROOM'],'#0a1c2a',16);box(c,520,80,300,100,MG,['RANGA AT','THE THRESHOLD'],'#2a0a2a',16);arrow2(c,520,130,410,130,YL,3);txt(c,"the song",460,326,CY,F(14,1),"center");}
+ else if(s===3){const k=0.5+0.5*Math.sin(__t*3);box(c,160,80,600,100,GR,['“RAN INSIDE, OVERCOME','BY SHYNESS”'],'#0a2a1a',20);circ(c,460,235,6+k*8,YL,'rgba(250,204,21,.3)',3);txt(c,"shy",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["Ranga: <span class=hl>Who is that girl, swami?</span>", "Shyama: <span class=hl>I’m already married and you aren’t the marrying kind.</span>", "Ranga: <span class=hl>She isn’t married, then?</span> Shyama: <span class=hl>She was married a year ago.</span>", "<span class=hl>His face shrivelled like a roasted brinjal.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Lie",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,200,80,520,100,CY,['“WHO IS THAT GIRL,','SWAMI?”'],'#0a1c2a',22);txt(c,'Ranga asks',460,235,MG,F(15,1),'center');txt(c,"who?",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['“I’M ALREADY MARRIED','AND YOU AREN’T THE MARRYING KIND.”'],'#2a2608',16);txt(c,'Shyama deflects',460,235,CY,F(15,1),'center');txt(c,"deflects",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,100,80,320,100,CY,['“SHE ISN’T','MARRIED, THEN?”'],'#0a1c2a',17);box(c,500,80,320,100,MG,['“MARRIED A','YEAR AGO.”'],'#2a0a2a',17);txt(c,"the lie",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,DM,['“SHRIVELLED LIKE A','ROASTED BRINJAL”'],'#14142a',20);txt(c,'Ranga’s face',460,235,CY,F(15,1),'center');txt(c,"brinjal",460,326,DM,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["Shyama to Shastri: <span class=hl>Keep everything ready to read the stars. I’ll come later.</span> <span class=hl>I tutored him in all that I wanted him to say.</span>", "Shastri: it is <span class=hl>about a girl</span>, <span class=hl>the name of something found in the ocean</span>.", "He tries Kamala, moss, then <span class=hl>pearl or ratna, the precious stone</span>.", "Asked about negotiations bearing fruit, Shastri says <span class=hl>Definitely</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Shastri",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['“I TUTORED HIM IN ALL','THAT I WANTED HIM TO SAY.”'],'#0a1c2a',18);txt(c,'before the reading',460,235,MG,F(15,1),'center');txt(c,"tutored",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['“ABOUT A GIRL…','SOMETHING FOUND IN THE OCEAN”'],'#2a2608',17);txt(c,"hint",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,40,90,250,80,CY,['KAMALA'],'#0a1c2a',18);box(c,335,90,250,80,GR,['MOSS (PACHCHI)'],'#0a2a1a',16);box(c,630,90,250,80,MG,['PEARL / RATNA'],'#2a0a2a',16);txt(c,'three guesses',460,230,YL,F(15,1),'center');txt(c,"ocean thing",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,260,80,400,100,GR,['“DEFINITELY.”'],'#0a2a1a',30);txt(c,'Shastri on the negotiations',460,235,CY,F(15,1),'center');txt(c,"definitely",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Book Q1: the influence of English and the narrator’s attitude. Use the <span class=hl>“change”</span> episode and <span class=hl>disgraceful</span>.", "Book Q2: Shastri says <span class=hl>I developed on the hints you had given me</span>. Comment on astrologers’ perceptions.", "Book Q3: compare <span class=hl>arranged marriage</span> in the story with today, in your own words.", "Book Q4: what kind of person is the narrator? Quote his lines. <span class=hl>No moral is stated in the text.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Text",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['INFLUENCE OF ENGLISH','THE “CHANGE” EPISODE'],'#0a1c2a',20);txt(c,'book Q1',460,235,YL,F(15,1),'center');txt(c,"Q1",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['“I DEVELOPED ON THE','HINTS YOU HAD GIVEN ME.”'],'#2a2608',18);txt(c,'book Q2',460,235,CY,F(15,1),'center');txt(c,"Q2",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['ARRANGED MARRIAGE','THEN AND NOW'],'#2a0a2a',20);txt(c,'book Q3',460,235,CY,F(15,1),'center');txt(c,"Q3",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,200,80,520,100,GR,['QUOTE HIS LINES','then judge in your words'],'#0a2a1a',18);txt(c,'book Q4',460,235,CY,F(15,1),'center');txt(c,"Q4",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Ranga Bangalore se kitne mahine baad laut-ta hai (jaisa budhi ke saamne dikhta hai)?",opts:["three months","six months","nine months","a year"],a:1,why:"Ranga was the same as he had been six months ago."},
+{q:"Ratna Rama Rao ki kaun hai?",opts:["daughter","wife","niece","sister"],a:2,why:"Rama Rao’s niece, a pretty girl of eleven."},
+{q:"Text ke mutabiq Ratna ki umar kitni hai?",opts:["nine","eleven","fifteen","twenty"],a:1,why:"a pretty girl of eleven."},
+{q:"Ant mein bete Shyama ka kaun sa janmadin hai?",opts:["first","second","fifth","third"],a:3,why:"It’s Shyama’s birthday. He is three."},
+{q:"Shyama ke jhooth ke baad Ranga ka chehra kaisa ho jaata hai?",opts:["a ripe mango","a lump of sugar","a roasted brinjal","a neem fruit"],a:2,why:"His face shrivelled like a roasted brinjal."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Ranga’s Marriage pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
