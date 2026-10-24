@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>The Tale of Melon City - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Snapshots - The Tale of Melon City</div>
+<h1>The Tale of Melon City Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - the arch, the crown, the blame game, the wise man, the hanging, the melon king, reading the poem, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. The Arch 🏛️⭐⭐⭐</h2>
+<p class="why">The just and placid King.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the King</button>
+<button class="b" data-o="1">the order</button>
+<button class="b" data-o="2">the workmen</button>
+<button class="b" data-o="3">the ride</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. The Crown 👑⭐⭐⭐</h2>
+<p class="why">A frown on a placid face.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">crown lost</button>
+<button class="b" data-o="1">too low</button>
+<button class="b" data-o="2">a disgrace</button>
+<button class="b" data-o="3">hang the builder</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. The Blame Game 👉⭐⭐⭐</h2>
+<p class="why">Each points to the next.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the builder</button>
+<button class="b" data-o="1">the workmen</button>
+<button class="b" data-o="2">the masons</button>
+<button class="b" data-o="3">the architect</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. The Wise Man 🧓⭐⭐⭐</h2>
+<p class="why">Counsel and a Councillor.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">counsel</button>
+<button class="b" data-o="1">carried in</button>
+<button class="b" data-o="2">the arch is guilty</button>
+<button class="b" data-o="3">the Councillor</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. The Noose 🪢⭐⭐⭐</h2>
+<p class="why">Someone must hang.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the crowd</button>
+<button class="b" data-o="1">finer points</button>
+<button class="b" data-o="2">the noose</button>
+<button class="b" data-o="3">the King</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. The Melon King 🍈⭐⭐⭐</h2>
+<p class="why">A custom, a gate and an idiot.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the Ministers</button>
+<button class="b" data-o="1">the gate</button>
+<button class="b" data-o="2">a melon</button>
+<button class="b" data-o="3">years later</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Reading the Poem 🔎⭐⭐</h2>
+<p class="why">Text, supported reading and the book’s questions.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Q1 narrate</button>
+<button class="b" data-o="1">Q2 just and placid</button>
+<button class="b" data-o="2">Q3 peace</button>
+<button class="b" data-o="3">Q4 humour</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - The Tale of Melon City Pakka? ⭐</h2>
+<p class="why">5 sawaal - the arch, the blame, the wise man, the noose, the melon. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Arch</b>A just and placid King has an arch built to edify spectators; workmen build it since he is King.</div>
+<div class="rcard"><b>Crown</b>The arch is too low; he loses his crown; the chief of builders is to hang.</div>
+<div class="rcard"><b>Blame</b>Builder, workmen, bricks, masons, architect - and the King’s own amendments.</div>
+<div class="rcard"><b>Wise</b>The old wise man says hang the arch; a Councillor objects; the crowd mutters.</div>
+<div class="rcard"><b>Noose</b>“The nation wants a hanging”; only the King is tall enough for the high noose.</div>
+<div class="rcard"><b>Melon</b>The City Gate custom; an idiot says “A melon”; people accept it: “Peace and Liberty”.</div>
+</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 21 (The Tale of Melon City) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["In the city of which the poet sings, there was <span class=hl>a just and placid King</span>.", "He proclaimed an arch be built <span class=hl>triumphally</span> across the major thoroughfare <span class=hl>to edify spectators</span>.", "The workmen built it <span class=hl>since he was the King</span>.", "The King rode down the thoroughfare <span class=hl>to edify spectators there</span> — and passed under the arch."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Arch",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['“A JUST AND','PLACID KING”'],'#0a1c2a',22);txt(c,'the poem’s opening',460,235,YL,F(15,1),'center');txt(c,"the King",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['AN ARCH TO SPAN','THE MAJOR THOROUGHFARE'],'#2a2608',20);txt(c,'to edify spectators',460,235,CY,F(15,1),'center');txt(c,"the order",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,DM,['“THEY DID SO SINCE','HE WAS THE KING.”'],'#14142a',20);txt(c,'the workmen',460,235,CY,F(15,1),'center');txt(c,"workmen",460,326,DM,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['THE KING RIDES','UNDER THE ARCH'],'#0a2a1a',22);txt(c,'to edify spectators there',460,235,CY,F(15,1),'center');txt(c,"the ride",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["Under the arch <span class=hl>he lost his crown</span>.", "<span class=hl>The arch was built too low.</span> A frown appeared on his placid face.", "The King said: <span class=hl>This is a disgrace.</span>", "<span class=hl>The chief of builders will be hanged.</span> The rope and gallows were arranged."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Crown",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,YL,['UNDER THE ARCH','HE LOST HIS CROWN'],'#2a2608',22);txt(c,'the first mishap',460,235,CY,F(15,1),'center');txt(c,"crown lost",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,MG,['“THE ARCH WAS','BUILT TOO LOW.”'],'#2a0a2a',22);txt(c,'a frown on a placid face',460,235,CY,F(15,1),'center');txt(c,"too low",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,DM,['“THIS IS','A DISGRACE.”'],'#14142a',24);txt(c,'the King',460,235,CY,F(15,1),'center');txt(c,"a disgrace",460,326,DM,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,CY,['“THE CHIEF OF BUILDERS','WILL BE HANGED.”'],'#0a1c2a',19);txt(c,'rope and gallows arranged',460,235,YL,F(15,1),'center');txt(c,"builder",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["The chief of builders shouts: <span class=hl>O King, it was the workmen’s fault.</span> The King halts the proceedings.", "Being just, he orders <span class=hl>all the workmen hanged instead</span>; they reply that <span class=hl>the bricks were made of the wrong size</span>.", "<span class=hl>Summon the masons!</span> They stand there quivering and blame <span class=hl>the architect</span>.", "The architect: <span class=hl>You made certain amendments to the plans.</span> The King <span class=hl>saw red</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Blame",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['“IT WAS THE','WORKMEN’S FAULT.”'],'#0a1c2a',22);txt(c,'the chief of builders',460,235,YL,F(15,1),'center');txt(c,"builder",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['“THE BRICKS WERE MADE','OF THE WRONG SIZE.”'],'#2a2608',19);txt(c,'the workmen',460,235,CY,F(15,1),'center');txt(c,"workmen",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,DM,['“SUMMON','THE MASONS!”'],'#14142a',24);txt(c,'they stand there quivering',460,235,CY,F(15,1),'center');txt(c,"masons",460,326,DM,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['“YOU MADE CERTAIN','AMENDMENTS TO THE PLANS.”'],'#2a0a2a',18);txt(c,'the architect points to the King',460,235,CY,F(15,1),'center');txt(c,"architect",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Being just and placid, he says <span class=hl>I need some counsel. Bring me the wisest man.</span>", "The wisest man is <span class=hl>carried</span>: <span class=hl>he could not walk and could not see, so old (and therefore wise) was he</span>.", "His verdict: <span class=hl>the culprit must be punished</span>; the arch <span class=hl>banged the crown off, and it must be hanged</span>.", "A Councillor: <span class=hl>How can we hang so shamefully what touched your head, Your Majesty?</span> <span class=hl>True</span>, mused the King."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Wise",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['“BRING ME THE WISEST','MAN IN THIS COUNTRY.”'],'#0a1c2a',19);txt(c,'the King asks for counsel',460,235,YL,F(15,1),'center');txt(c,"counsel",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,DM,['OLD (AND THEREFORE','WISE) — CARRIED IN'],'#14142a',19);txt(c,'could not walk, could not see',460,235,CY,F(15,1),'center');txt(c,"carried in",460,326,DM,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['“THE ARCH MUST','BE HANGED.”'],'#2a0a2a',22);txt(c,'the wise man’s verdict',460,235,CY,F(15,1),'center');txt(c,"the arch",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,YL,['“HOW CAN WE HANG SO','SHAMEFULLY WHAT TOUCHED YOUR HEAD?”'],'#2a2608',15);txt(c,'the Councillor',460,235,CY,F(15,1),'center');txt(c,"Councillor",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["The crowd, <span class=hl>restless, was muttering aloud</span>; the King <span class=hl>perceived their mood and trembled</span>.", "<span class=hl>Let us postpone consideration of finer points like guilt. The nation wants a hanging.</span>", "<span class=hl>The noose was set up somewhat high.</span> Each man was measured by and by.", "<span class=hl>Only one man was so tall.</span> He was the King; he was <span class=hl>hanged by Royal Decree</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Noose",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,DM,['THE CROWD IS','RESTLESS, MUTTERING'],'#14142a',22);txt(c,'the King trembles',460,235,CY,F(15,1),'center');txt(c,"crowd",460,326,DM,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,MG,['“FINER POINTS','LIKE GUILT”'],'#2a0a2a',24);txt(c,'“The nation wants a hanging.”',460,235,CY,F(15,1),'center');txt(c,"finer points",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['THE NOOSE IS SET','SOMEWHAT HIGH'],'#2a2608',22);txt(c,'each man measured',460,235,CY,F(15,1),'center');txt(c,"noose",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,CY,['ONLY ONE MAN','IS TALL ENOUGH'],'#0a1c2a',22);txt(c,'the King, by Royal Decree',460,235,YL,F(15,1),'center');txt(c,"the King",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["The Ministers say <span class=hl>Thank Goodness we found someone</span>, then <span class=hl>Long live the King! The King is dead.</span> Being <span class=hl>practical-minded men</span> they send heralds.", "<span class=hl>The next to pass the City Gate will choose the ruler of our state, as is our custom.</span>", "An idiot passes. <span class=hl>A melon</span>, he replies — his standard answer; <span class=hl>he liked melons</span>. They crown a melon.", "Years later people say it is <span class=hl>customary choice</span>: <span class=hl>who are we to say what he should be as long as he leaves us in Peace and Liberty?</span> <span class=hl>Laissez faire.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Melon",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['“LONG LIVE THE KING!','THE KING IS DEAD.”'],'#0a1c2a',19);txt(c,'the Ministers',460,235,YL,F(15,1),'center');txt(c,"Ministers",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['“THE NEXT TO PASS THE','CITY GATE WILL CHOOSE”'],'#2a2608',18);txt(c,'as is our custom',460,235,CY,F(15,1),'center');txt(c,"the gate",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['“A MELON.”'],'#0a2a1a',28);txt(c,'the idiot liked melons',460,235,CY,F(15,1),'center');txt(c,"a melon",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['“PEACE AND','LIBERTY”'],'#2a0a2a',24);txt(c,'“laissez faire”',460,235,CY,F(15,1),'center');txt(c,"years later",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Book Q1: <span class=hl>narrate the tale in your own words</span> using the order: arch, crown, blame game, wise man, noose, melon.", "Book Q2: what <span class=hl>impression of a state</span> with a king who is <span class=hl>just and placid</span>? Use his orders and his reversals.", "Book Q3: how can <span class=hl>peace and liberty</span> be maintained in a state? The poem’s ending shows people content with <span class=hl>a melon king</span> so long as they have both.", "Book Q4: humour and irony - <span class=hl>old (and therefore wise)</span>, <span class=hl>hang the arch</span>, <span class=hl>the only man tall enough</span>, <span class=hl>Long live the King! The King is dead.</span> The text states no moral; the supported reading is satire on rule without thought."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Text",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['NARRATE IN','YOUR OWN WORDS'],'#0a1c2a',22);txt(c,'book Q1',460,235,YL,F(15,1),'center');txt(c,"Q1",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['“JUST AND','PLACID” STATE'],'#2a2608',22);txt(c,'book Q2',460,235,CY,F(15,1),'center');txt(c,"Q2",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['PEACE AND','LIBERTY'],'#0a2a1a',24);txt(c,'book Q3',460,235,CY,F(15,1),'center');txt(c,"Q3",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['HUMOUR AND','IRONY'],'#2a0a2a',24);txt(c,'book Q4: quote the lines',460,235,CY,F(15,1),'center');txt(c,"Q4",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Raja ne arch kyun banwaya?",opts:["to hold the army","to edify spectators on the thoroughfare","to honour a poet","to store grain"],a:1,why:"To edify spectators there."},
+{q:"Arch mein kya galti thi?",opts:["too narrow","too high","built too low","painted wrongly"],a:2,why:"The arch was built too low."},
+{q:"Architect ne raja ko kya yaad dilaya?",opts:["the masons were late","the King made amendments to the plans","the bricks were cheap","the workmen were ill"],a:1,why:"You made certain amendments to the plans."},
+{q:"Raja ko phaansi kyun hui?",opts:["the arch escaped","he asked for it","the Councillor ordered it","the noose was high and he was the only man tall enough"],a:3,why:"Only one man was so tall he fitted: the King."},
+{q:"Naya raja kaise chuna gaya?",opts:["by a vote","the wise man chose","an idiot passing the City Gate said a melon","by the Ministers’ test"],a:2,why:"The next to pass the City Gate; the idiot said a melon."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! The Tale of Melon City pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
