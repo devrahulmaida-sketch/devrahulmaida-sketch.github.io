@@ -317,14 +317,14 @@ draw();anims[5]=()=>{if([1].includes(s))draw();};
 inits[6]=(()=>{
 const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
 sel("sc6","b",i=>{s=i;draw();});
-const INFO=["Shape: <span class=hl>silent tree</span>, <span class=hl>goldfinch</span>, <span class=hl>machine and tremble</span>, <span class=hl>she launches away</span>, <span class=hl>empty</span>.", "Wording to notice: <span class=hl>simile</span> (sleek as a lizard), <span class=hl>metaphor</span> (a machine starts up; the engine of her family) and sound words (chitterings, trillings).", "Contrast: <span class=hl>silent, quite still</span> at the start and <span class=hl>subsides to empty</span> at the end, with sound in between.", "The NCERT text states no moral. Quote a line and explain it in <span class=hl>your own words</span>."];
+const INFO=["Shape: <span class=hl>silent tree</span>, <span class=hl>goldfinch</span>, <span class=hl>machine and tremble</span>, <span class=hl>she launches away</span>, <span class=hl>empty</span>.", "Wording to notice: <span class=hl>simile</span> (sleek as a lizard), <span class=hl>metaphor</span> (a machine starts up; the engine of her family) and sound words (chitterings, trillings).", "Contrast: <span class=hl>silent, quite still</span> at the start and <span class=hl>subsides to empty</span> at the end, with sound in between.", "The NCERT text states no moral explicitly. A supported reading is the contrast of the silent tree and the thrilled goldfinch; quote a line first, then explain it in <span class=hl>your own words</span>."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Text",460,26,YL,F(14,1),"center");
  if(s===0){box(c,40,90,160,80,CY,['SILENT'],'#0a1c2a',14);box(c,215,90,160,80,YL,['GOLDFINCH'],'#2a2608',14);box(c,390,90,160,80,MG,['MACHINE'],'#2a0a2a',14);box(c,565,90,160,80,GR,['TREMBLE'],'#0a2a1a',14);box(c,740,90,140,80,RD,['EMPTY'],'#2a0a0a',14);txt(c,'silent to empty',460,235,YL,F(15,1),'center');txt(c,"shape",460,326,CY,F(14,1),"center");}
  else if(s===1){box(c,60,80,240,100,GR,['SIMILE','sleek as a lizard'],'#0a2a1a',14);box(c,340,80,240,100,MG,['METAPHOR','engine of her family'],'#2a0a2a',14);box(c,620,80,240,100,CY,['SOUND WORDS','chitterings'],'#0a1c2a',14);txt(c,'wording, as it appears in the text',460,240,YL,F(14,1),'center');txt(c,"wording",460,326,GR,F(14,1),"center");}
  else if(s===2){box(c,100,80,300,100,CY,['SILENT, QUITE STILL'],'#0a1c2a',15);box(c,520,80,300,100,RD,['SUBSIDES TO EMPTY'],'#2a0a0a',15);arrow2(c,410,130,510,130,YL,4);txt(c,'sound in between',460,235,MG,F(15,1),'center');txt(c,"contrast",460,326,YL,F(14,1),"center");}
- else if(s===3){box(c,200,80,520,100,YL,['QUOTE THE LINE','then explain in your words'],'#2a2608',18);txt(c,'no moral is stated in the text',460,235,CY,F(15,1),'center');txt(c,"exam",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,200,80,520,100,YL,['QUOTE THE LINE','then explain in your words'],'#2a2608',18);txt(c,'no moral stated; read it from the text',460,235,CY,F(15,1),'center');txt(c,"exam",460,326,YL,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
