@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>The Laburnum Top - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Hornbill Chapter 10 - The Laburnum Top (Poem)</div>
+<h1>The Laburnum Top Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - the silent tree, the goldfinch, the thickness, trembles and thrills, the engine, towards the infinite, reading the poem, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. The Silent Tree 🌳⭐⭐</h2>
+<p class="why">The Laburnum Top: how the poem begins.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">silent, still</button>
+<button class="b" data-o="1">September sun</button>
+<button class="b" data-o="2">yellowing</button>
+<button class="b" data-o="3">seeds fallen</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Till the Goldfinch Comes 🐦⭐⭐⭐</h2>
+<p class="why">Arrival with a twitching chirrup.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">twitching chirrup</button>
+<button class="b" data-o="1">a suddeness</button>
+<button class="b" data-o="2">branch end</button>
+<button class="b" data-o="3">alert, abrupt</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Into the Thickness 🦎⭐⭐</h2>
+<p class="why">Sleek as a lizard, she enters.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">a simile</button>
+<button class="b" data-o="1">the thickness</button>
+<button class="b" data-o="2">a machine</button>
+<button class="b" data-o="3">chitterings</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Trembles and Thrills 🎶⭐⭐</h2>
+<p class="why">The whole tree responds.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">tree trembles</button>
+<button class="b" data-o="1">thrills</button>
+<button class="b" data-o="2">as if alive</button>
+<button class="b" data-o="3">contrast</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. The Engine of Her Family ⚙️⭐⭐⭐</h2>
+<p class="why">Metaphor in the middle of the poem.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the engine</button>
+<button class="b" data-o="1">stokes it full</button>
+<button class="b" data-o="2">her family</button>
+<button class="b" data-o="3">identity mask</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Towards the Infinite 🌌⭐⭐⭐</h2>
+<p class="why">She leaves; the tree is empty.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">whisperings</button>
+<button class="b" data-o="1">launches away</button>
+<button class="b" data-o="2">the infinite</button>
+<button class="b" data-o="3">subsides to empty</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Reading the Poem 🔎⭐⭐</h2>
+<p class="why">Contrast, devices and your own explanation.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the shape</button>
+<button class="b" data-o="1">devices</button>
+<button class="b" data-o="2">contrast</button>
+<button class="b" data-o="3">your words</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - The Laburnum Top Pakka? ⭐</h2>
+<p class="why">5 sawaal - tree, simile, metaphor, ending, poet. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Tree</b>Silent, quite still in yellow September sunlight; leaves yellowing, all its seeds fallen.</div>
+<div class="rcard"><b>Bird</b>Till the goldfinch comes, with a twitching chirrup: a suddeness, a startlement.</div>
+<div class="rcard"><b>Thick</b>Sleek as a lizard (simile); she enters the thickness and a machine starts up.</div>
+<div class="rcard"><b>Thrill</b>The whole tree trembles and thrills: chitterings, tremor of wings, trillings.</div>
+<div class="rcard"><b>Engine</b>It is the engine of her family (metaphor); she stokes it full.</div>
+<div class="rcard"><b>Away</b>She launches away, towards the infinite; the laburnum subsides to empty.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 10 (The Laburnum Top) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>The Laburnum Top is silent, quite still</span>.", "In the afternoon <span class=hl>yellow September sunlight</span>.", "<span class=hl>A few leaves yellowing</span>.", "<span class=hl>All its seeds fallen</span>. The NCERT text of the poem does not name the poet."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Tree",460,26,YL,F(14,1),"center");
+ if(s===0){line(c,460,280,460,170,DM,6);circ(c,460,140,50,YL,'rgba(250,204,21,.12)',3);txt(c,'silent, quite still',460,50,CY,F(15,1),'center');txt(c,"the tree, before",460,326,YL,F(14,1),"center");}
+ else if(s===1){circ(c,460,140,40,YL,'rgba(250,204,21,.3)',3);for(let k=0;k<8;k++){const a=k*Math.PI/4;line(c,460+Math.cos(a)*52,140+Math.sin(a)*52,460+Math.cos(a)*76,140+Math.sin(a)*76,YL,3);}line(c,460,225,460,275,DM,6);txt(c,'afternoon yellow September sunlight',460,290,CY,F(14,1),'center');txt(c,"the light",460,326,YL,F(14,1),"center");}
+ else if(s===2){line(c,460,260,460,150,DM,6);circ(c,430,130,16,YL,'rgba(250,204,21,.3)',3);circ(c,490,120,16,YL,'rgba(250,204,21,.3)',3);circ(c,460,95,16,GR,'rgba(52,211,153,.25)',3);txt(c,'a few leaves yellowing',460,50,MG,F(15,1),'center');txt(c,"yellow and green",460,326,MG,F(14,1),"center");}
+ else if(s===3){line(c,460,260,460,150,DM,6);circ(c,300,250,6,DM,'rgba(139,148,196,.5)',2);circ(c,380,262,6,DM,'rgba(139,148,196,.5)',2);circ(c,560,255,6,DM,'rgba(139,148,196,.5)',2);circ(c,640,265,6,DM,'rgba(139,148,196,.5)',2);txt(c,'all its seeds fallen',460,60,CY,F(15,1),'center');txt(c,"seeds on the ground",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[0]=()=>{if([1].includes(s))draw();};
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Till the goldfinch comes, with a twitching chirrup</span>.", "<span class=hl>A suddeness, a startlement</span> (spelling as in the NCERT text).", "The sudden moment happens <span class=hl>at a branch end</span>.", "<span class=hl>Sleek as a lizard, and alert and abrupt</span>, she enters the thickness."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Bird",460,26,YL,F(14,1),"center");
+ if(s===0){const p=Math.sin(__t*6)*6;circ(c,460+p,130,22,YL,'rgba(250,204,21,.4)',3);line(c,482+p,128,510+p,124,YL,3);txt(c,'chirrup chirrup',460,60,CY,F(15,1),'center');txt(c,"the goldfinch",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,160,90,240,90,CY,['SILENT TREE'],'#0a1c2a',16);arrow2(c,410,135,500,135,YL,5);box(c,510,90,250,90,MG,['A STARTLEMENT'],'#2a0a2a',16);txt(c,'a suddeness',460,235,YL,F(15,1),'center');txt(c,"the jolt",460,326,MG,F(14,1),"center");}
+ else if(s===2){line(c,100,200,820,200,DM,6);circ(c,820,200,6,YL,'rgba(250,204,21,.5)',3);circ(c,770,185,16,YL,'rgba(250,204,21,.4)',3);txt(c,'at a branch end',700,140,CY,F(14,1),'center');txt(c,"where she lands",460,326,YL,F(14,1),"center");}
+ else if(s===3){line(c,360,140,500,140,GR,14);circ(c,520,140,16,GR,'rgba(52,211,153,.4)',3);line(c,360,140,300,150,GR,4);txt(c,'sleek as a lizard (simile)',460,215,YL,F(15,1),'center');txt(c,"alert and abrupt",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Sleek as a lizard</span> - a simile: it uses <span class=hl>as</span>.", "<span class=hl>She enters the thickness</span> of the tree.", "<span class=hl>And a machine starts up</span> - a metaphor for the sound and motion.", "<span class=hl>Of chitterings, and of tremor of wings, and trillings</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Thick",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,120,90,260,90,GR,['SHE'],'#0a2a1a',18);box(c,540,90,260,90,YL,['A LIZARD'],'#2a2608',18);txt(c,'as',460,135,MG,F(22,1),'center');txt(c,'simile: sleek as a lizard',460,235,CY,F(15,1),'center');txt(c,"a comparison",460,326,GR,F(14,1),"center");}
+ else if(s===1){circ(c,460,130,70,GR,'rgba(52,211,153,.12)',3);circ(c,460,130,18,YL,'rgba(250,204,21,.4)',3);txt(c,'the thickness',460,50,CY,F(15,1),'center');txt(c,"inside the leaves",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,300,80,320,100,MG,['A MACHINE STARTS UP'],'#2a0a2a',17);txt(c,'metaphor for the sound and motion',460,235,YL,F(15,1),'center');txt(c,"the machine",460,326,MG,F(14,1),"center");}
+ else if(s===3){const j=Math.sin(__t*10)*4;box(c,160,90+j,200,70,CY,['CHITTERINGS'],'#0a1c2a',14);box(c,380,90-j,200,70,YL,['TREMOR OF WINGS'],'#2a2608',14);box(c,600,90+j,200,70,MG,['TRILLINGS'],'#2a0a2a',14);txt(c,'sound words from the text',460,235,GR,F(14,1),'center');txt(c,"chitterings and trillings",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[2]=()=>{if([1].includes(s))draw();};
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>The whole tree trembles and thrills</span>.", "<span class=hl>Thrills</span> carries excitement, not just movement.", "The tree behaves <span class=hl>as if alive</span>; a reader can call this personification, and should explain it in their own words.", "Silence at the start, <span class=hl>chitterings and trillings</span> in the middle: a contrast."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Thrill",460,26,YL,F(14,1),"center");
+ if(s===0){const j=Math.sin(__t*12)*5;line(c,460+j,260,460-j,150,DM,6);circ(c,460-j,120,60,YL,'rgba(250,204,21,.15)',3);txt(c,'the whole tree trembles',460,50,CY,F(15,1),'center');txt(c,"shaking",460,326,YL,F(14,1),"center");}
+ else if(s===1){const k=0.5+0.5*Math.sin(__t*4);circ(c,460,130,40+k*30,MG,'rgba(232,121,249,.15)',3);txt(c,'thrills',460,135,YL,F(20,1),'center');txt(c,"excitement",460,326,MG,F(14,1),"center");}
+ else if(s===2){line(c,460,260,460,150,DM,6);circ(c,460,140,45,GR,'rgba(52,211,153,.2)',3);txt(c,'as if alive',460,50,CY,F(15,1),'center');txt(c,'explain in your own words',460,285,MG,F(13,1),'center');txt(c,"personification? your reading",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,90,90,300,90,CY,['SILENT, QUITE STILL'],'#0a1c2a',15);box(c,530,90,300,90,MG,['CHITTERINGS, TRILLINGS'],'#2a0a2a',15);arrow2(c,400,135,520,135,YL,4);txt(c,'silence against sound',460,235,GR,F(15,1),'center');txt(c,"the contrast",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[3]=()=>{if([1, 2].includes(s))draw();};
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>It is the engine of her family.</span> The word <span class=hl>engine</span> is used for the bird’s part in the scene.", "<span class=hl>She stokes it full</span> - like feeding an engine; the text says only this.", "The text names <span class=hl>her family</span>; read it with the lines before and after.", "She <span class=hl>flirts out to a branch-end</span>, showing her <span class=hl>barred face identity mask</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Engine",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,280,80,360,100,YL,['“THE ENGINE','OF HER FAMILY”'],'#2a2608',18);txt(c,'a metaphor',460,235,MG,F(16,1),'center');txt(c,"engine",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,100,90,240,90,GR,['SHE'],'#0a2a1a',18);arrow2(c,350,135,540,135,YL,5);box(c,550,90,240,90,CY,['STOKES IT FULL'],'#0a1c2a',15);txt(c,'stokes: loads it up like an engine',460,235,MG,F(14,1),'center');txt(c,"stoking",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,260,90,400,90,MG,['HER FAMILY'],'#2a0a2a',20);txt(c,'read it with the lines around it',460,235,CY,F(14,1),'center');txt(c,"the family",460,326,MG,F(14,1),"center");}
+ else if(s===3){circ(c,460,120,40,YL,'rgba(250,204,21,.25)',3);line(c,430,115,490,115,RD,6);txt(c,'barred face identity mask',460,200,CY,F(15,1),'center');txt(c,"on a branch end",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Then with eerie delicate whistle-chirrup whisperings</span>.", "<span class=hl>She launches away</span>.", "She goes <span class=hl>towards the infinite</span>.", "<span class=hl>And the laburnum subsides to empty.</span> The poem ends here."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Away",460,26,YL,F(14,1),"center");
+ if(s===0){const k=0.5+0.5*Math.sin(__t*3);circ(c,460,120,30+k*20,CY,'rgba(34,211,238,.15)',3);txt(c,'eerie delicate whisperings',460,50,MG,F(15,1),'center');txt(c,"whistle-chirrup",460,326,CY,F(14,1),"center");}
+ else if(s===1){circ(c,220,200,14,YL,'rgba(250,204,21,.4)',3);arrow2(c,240,190,700,70,CY,4);txt(c,'she launches away',460,265,GR,F(15,1),'center');txt(c,"away",460,326,YL,F(14,1),"center");}
+ else if(s===2){line(c,100,260,820,60,DM,2);const k=(__t*0.4)%1;circ(c,100+720*k,260-200*k,10,YL,'rgba(250,204,21,.5)',3);txt(c,'towards the infinite',560,250,MG,F(15,1),'center');txt(c,"the infinite",460,326,MG,F(14,1),"center");}
+ else if(s===3){line(c,460,260,460,150,DM,6);circ(c,460,140,45,YL,'rgba(250,204,21,.08)',3);txt(c,'the laburnum subsides to empty',460,45,CY,F(15,1),'center');txt(c,"empty again",460,326,RD,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[5]=()=>{if([1].includes(s))draw();};
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Shape: <span class=hl>silent tree</span>, <span class=hl>goldfinch</span>, <span class=hl>machine and tremble</span>, <span class=hl>she launches away</span>, <span class=hl>empty</span>.", "Wording to notice: <span class=hl>simile</span> (sleek as a lizard), <span class=hl>metaphor</span> (a machine starts up; the engine of her family) and sound words (chitterings, trillings).", "Contrast: <span class=hl>silent, quite still</span> at the start and <span class=hl>subsides to empty</span> at the end, with sound in between.", "The NCERT text states no moral. Quote a line and explain it in <span class=hl>your own words</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Text",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,40,90,160,80,CY,['SILENT'],'#0a1c2a',14);box(c,215,90,160,80,YL,['GOLDFINCH'],'#2a2608',14);box(c,390,90,160,80,MG,['MACHINE'],'#2a0a2a',14);box(c,565,90,160,80,GR,['TREMBLE'],'#0a2a1a',14);box(c,740,90,140,80,RD,['EMPTY'],'#2a0a0a',14);txt(c,'silent to empty',460,235,YL,F(15,1),'center');txt(c,"shape",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,60,80,240,100,GR,['SIMILE','sleek as a lizard'],'#0a2a1a',14);box(c,340,80,240,100,MG,['METAPHOR','engine of her family'],'#2a0a2a',14);box(c,620,80,240,100,CY,['SOUND WORDS','chitterings'],'#0a1c2a',14);txt(c,'wording, as it appears in the text',460,240,YL,F(14,1),'center');txt(c,"wording",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,100,80,300,100,CY,['SILENT, QUITE STILL'],'#0a1c2a',15);box(c,520,80,300,100,RD,['SUBSIDES TO EMPTY'],'#2a0a0a',15);arrow2(c,410,130,510,130,YL,4);txt(c,'sound in between',460,235,MG,F(15,1),'center');txt(c,"contrast",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,200,80,520,100,YL,['QUOTE THE LINE','then explain in your words'],'#2a2608',18);txt(c,'no moral is stated in the text',460,235,CY,F(15,1),'center');txt(c,"exam",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Shuruaat mein ped kaisa hai?",opts:["trembling","silent, quite still","full of chirrups","bare"],a:1,why:"The Laburnum Top is silent, quite still."},
+{q:"‘Sleek as a ...’ - goldfinch kis jaisi?",opts:["snake","cat","lizard","fox"],a:2,why:"Sleek as a lizard (a simile)."},
+{q:"‘The engine of her family’ mein kya device hai?",opts:["simile","metaphor","irony","koi nahi"],a:1,why:"Engine is used as a metaphor."},
+{q:"Poem ka antim ansh kya hai?",opts:["the tree is full","the laburnum subsides to empty","she sings louder","seeds grow"],a:1,why:"And the laburnum subsides to empty."},
+{q:"NCERT text mein kavi ka naam?",opts:["Wordsworth diya hai","is ansh mein nahi diya","Keats diya hai","sirf title mein"],a:1,why:"This NCERT text does not name the poet."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Laburnum Top pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
