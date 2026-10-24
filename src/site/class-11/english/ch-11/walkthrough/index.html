@@ -317,14 +317,14 @@ draw();
 inits[6]=(()=>{
 const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
 sel("sc6","b",i=>{s=i;draw();});
-const INFO=["Shape: <span class=hl>question</span>, <span class=hl>I am the Poem of Earth</span>, <span class=hl>rise</span>, <span class=hl>changed and yet the same</span>, <span class=hl>descend</span>, <span class=hl>give back life</span>, <span class=hl>song</span>.", "Wording to notice: <span class=hl>voice of the rain</span>, <span class=hl>Poem of Earth</span>, <span class=hl>impalpable</span>, <span class=hl>bottomless sea</span>.", "The bracket speaks of a <span class=hl>song</span>; link it to the rain in <span class=hl>your own words</span>.", "The NCERT text states no moral and names no devices. Quote a line and explain it in <span class=hl>your own words</span>."];
+const INFO=["Shape: <span class=hl>question</span>, <span class=hl>I am the Poem of Earth</span>, <span class=hl>rise</span>, <span class=hl>changed and yet the same</span>, <span class=hl>descend</span>, <span class=hl>give back life</span>, <span class=hl>song</span>.", "Wording to notice: <span class=hl>voice of the rain</span>, <span class=hl>Poem of Earth</span>, <span class=hl>impalpable</span>, <span class=hl>bottomless sea</span>.", "The bracket speaks of a <span class=hl>song</span>; link it to the rain in <span class=hl>your own words</span>.", "The NCERT text states no moral or device names; readings like water cycle, metaphor and personification are supported by the wording. Quote a line first, then explain it in <span class=hl>your own words</span>."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Text",460,26,YL,F(14,1),"center");
  if(s===0){box(c,30,90,125,80,CY,['ASK'],'#0a1c2a',14);box(c,170,90,125,80,YL,['POEM'],'#2a2608',14);box(c,310,90,125,80,GR,['RISE'],'#0a2a1a',14);box(c,450,90,125,80,MG,['CHANGE'],'#2a0a2a',14);box(c,590,90,125,80,CY,['DESCEND'],'#0a1c2a',14);box(c,730,90,140,80,RD,['SONG'],'#2a0a0a',14);txt(c,'from question to song',460,235,YL,F(15,1),'center');txt(c,"shape",460,326,CY,F(14,1),"center");}
  else if(s===1){box(c,60,80,240,100,CY,['VOICE OF THE RAIN'],'#0a1c2a',14);box(c,340,80,240,100,YL,['POEM OF EARTH'],'#2a2608',14);box(c,620,80,240,100,MG,['IMPALPABLE'],'#2a0a2a',14);txt(c,'wording from the text',460,240,GR,F(14,1),'center');txt(c,"wording",460,326,YL,F(14,1),"center");}
  else if(s===2){box(c,100,80,300,100,CY,['THE RAIN'],'#0a1c2a',17);box(c,520,80,300,100,YL,['THE SONG'],'#2a2608',17);txt(c,'=',460,130,MG,F(26,1),'center');txt(c,'both return; explain in your words',460,235,GR,F(14,1),'center');txt(c,"the bracket",460,326,MG,F(14,1),"center");}
- else if(s===3){box(c,200,80,520,100,YL,['QUOTE THE LINE','then explain in your words'],'#2a2608',18);txt(c,'no moral is stated in the text',460,235,CY,F(15,1),'center');txt(c,"exam",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,200,80,520,100,YL,['QUOTE THE LINE','then explain in your words'],'#2a2608',18);txt(c,'no moral stated; read it from the text',460,235,CY,F(15,1),'center');txt(c,"exam",460,326,YL,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
