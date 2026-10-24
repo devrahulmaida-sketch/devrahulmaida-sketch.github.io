@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>रजनी - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 Hindi - Snapshots - रजनी</div>
+<h1>रजनी Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - lekhika aur patkatha, Leela ke flat mein, Headmaster, pati se bahas, Director of Education, aandolan, text ko padhna, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Lekhika aur Patkatha ✍️⭐⭐⭐</h2>
+<p class="why">Mannu Bhandari aur Rajni.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Mannu Bhandari</button>
+<button class="b" data-o="1">Patkatha</button>
+<button class="b" data-o="2">Rajni serial</button>
+<button class="b" data-o="3">Basu Chatterjee</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Leela ke Flat mein 🏠⭐⭐⭐</h2>
+<p class="why">Result ka din aur Amit.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">rasmalai</button>
+<button class="b" data-o="1">thaila</button>
+<button class="b" data-o="2">report</button>
+<button class="b" data-o="3">sawal</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Headmaster ka Kamra 🏫⭐⭐⭐</h2>
+<p class="why">Copy aur niyam.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">copy</button>
+<button class="b" data-o="1">niyam</button>
+<button class="b" data-o="2">aapsi mamla</button>
+<button class="b" data-o="3">slip</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Pati se Bahas 💬⭐⭐</h2>
+<p class="why">Sabse bada gunahgaar kaun?</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Ravi</button>
+<button class="b" data-o="1">bolti band</button>
+<button class="b" data-o="2">gunahgaar</button>
+<button class="b" data-o="3">sooli</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Director of Education 🏛️⭐⭐⭐</h2>
+<p class="why">Intezar, note aur shikayat.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">intezar</button>
+<button class="b" data-o="1">5 rupaye</button>
+<button class="b" data-o="2">90% grant</button>
+<button class="b" data-o="3">shikayat</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Aandolan aur Ant 📰⭐⭐⭐</h2>
+<p class="why">Montage, sampadak, meeting.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">montage</button>
+<button class="b" data-o="1">sampadak</button>
+<button class="b" data-o="2">meeting</button>
+<button class="b" data-o="3">Board</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Text ko Padhna 🔎⭐⭐</h2>
+<p class="why">Text, supported reading, book ke sawal.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Q1 mudda</button>
+<button class="b" data-o="1">Q3 masala</button>
+<button class="b" data-o="2">Q4 samasya</button>
+<button class="b" data-o="3">message</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - रजनी Pakka? ⭐</h2>
+<p class="why">5 sawaal - lekhika, copy, niyam, shikayat, Board. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Lekhika</b>Mannu Bhandari (1931-2021); patkatha, kahani nahi.</div>
+<div class="rcard"><b>Rajni serial</b>Basu Chatterjee; jujharu, insaaf-pasand stri-patra.</div>
+<div class="rcard"><b>Amit</b>Maths mein sabse kam; tuition nahi li.</div>
+<div class="rcard"><b>Headmaster</b>Early exams ki copies dikhane ka niyam nahi.</div>
+<div class="rcard"><b>Aandolan</b>Director, sampadak, 25 tarikh ki meeting.</div>
+<div class="rcard"><b>Sandesh</b>Anyay par chuppi bhi gunah; sangathit awaaz (supported reading).</div>
+</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 Hindi Chapter 7 (रजनी) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Mannu Bhandari</span>: janm <span class=hl>1931, Bhanpura (MP)</span>; nidhan <span class=hl>2021</span>.", "<span class=hl>Patkatha</span> = <span class=hl>pat ya screen</span> ke liye likhi katha - <span class=hl>film ya television</span> ke liye; yeh paath kahani nahi.", "<span class=hl>Rajni</span>: <span class=hl>navein dashak</span> ka bahucharchit TV dharavahik; paath mein uski <span class=hl>ek kadi</span>.", "<span class=hl>Basu Chatterjee</span> ke nirdeshan mein; <span class=hl>Rajni</span> = <span class=hl>jujharu aur insaaf-pasand</span> stri-patra."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Lekhika",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['MANNU BHANDARI','1931-2021'],'#0a1c2a',22);txt(c,'Bhanpura (MP)',460,235,YL,F(15,1),'center');txt(c,"Mannu Bhandari",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['PATKATHA','SCREEN KE LIYE'],'#2a2608',22);txt(c,'film ya television',460,235,CY,F(15,1),'center');txt(c,"Patkatha",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['RAJNI','DHARAVAHIK KI EK KADI'],'#2a0a2a',20);txt(c,'navein dashak',460,235,CY,F(15,1),'center');txt(c,"Rajni serial",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['BASU CHATTERJEE','NIRDESHAN'],'#0a2a1a',21);txt(c,'jujharu stri-patra',460,235,CY,F(15,1),'center');txt(c,"Basu Chatterjee",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["Leela ke flat mein <span class=hl>Rajni</span>; Amit ka <span class=hl>result</span> aane wala; <span class=hl>kesariya rasmalai</span> mangwa rakhi hai.", "Amit <span class=hl>halka-sa thaila</span> leke aata hai; chehra utra, <span class=hl>aansu bhari aankhen</span>; report Rajni ki taraf phenkta hai.", "<span class=hl>English 86, History 80, Civics 88, Hindi 82, Drawing 90</span>; <span class=hl>sabse kam Maths</span> mein.", "Rajni puchhti hai: <span class=hl>paper theek tha? jawab dosto/kitabon se dekhe the?</span> Amit: <span class=hl>nahi</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Flat",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['KESARIYA','RASMALAI'],'#0a1c2a',22);txt(c,'Amit ka result',460,235,YL,F(15,1),'center');txt(c,"rasmalai",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['HALKA THAILA','UTRA CHEHRA'],'#2a2608',21);txt(c,'aansu bhari aankhen',460,235,CY,F(15,1),'center');txt(c,"thaila",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['MATHS MEIN','SABSE KAM'],'#2a0a2a',21);txt(c,'baaki 80 se 90 tak',460,235,CY,F(15,1),'center');txt(c,"report",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['PAPER THEEK','DEKHE NAHI'],'#0a2a1a',21);txt(c,'Amit ka jawab: nahi',460,235,CY,F(15,1),'center');txt(c,"sawal",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["Rajni: <span class=hl>Amit ki maths ki copy</span> dekhni hai; Headmaster: <span class=hl>early exams ki copies dikhane ka niyam nahi</span>.", "Rajni <span class=hl>vyangya se</span>: <span class=hl>ye kaun sa niyam</span> hai ki achche bachche ko <span class=hl>tuition ke liye majboor</span> kiya jaye?", "Headmaster: <span class=hl>teachers aur students ka aapsi mamla</span>; Rajni: <span class=hl>kursi chhod dijiye</span>.", "Headmaster chikhkar bahar jaane ko kehta hai; chaprasi ki <span class=hl>slip</span> ki <span class=hl>chindi-chindi</span> kar deta hai."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Headmaster",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['MATHS KI COPY','DEKHNI HAI'],'#0a1c2a',21);txt(c,'Rajni ki maang',460,235,YL,F(15,1),'center');txt(c,"copy",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['NIYAM NAHI','COPIES DIKHANE KA'],'#2a2608',20);txt(c,'early exams ki',460,235,CY,F(15,1),'center');txt(c,"niyam",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['AAPSI MAMLA','TEACHER-STUDENT'],'#2a0a2a',21);txt(c,'Headmaster ka jawab',460,235,CY,F(15,1),'center');txt(c,"aapsi mamla",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['SLIP KI','CHINDI-CHINDI'],'#0a2a1a',21);txt(c,'chaprasi ki slip',460,235,CY,F(15,1),'center');txt(c,"slip",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Shaam ko <span class=hl>pati (Ravi)</span> puchhte hain: <span class=hl>kahin bahar gayi thi?</span> Rajni school ka naam leti hai.", "Rajni: <span class=hl>bolti band kar di</span> Headmaster ki; pati: <span class=hl>tumhara beta to abhi padhne nahi ja raha</span>.", "Rajni: <span class=hl>sabse bada gunahgaar wo jo chaaron taraf anyay dekhkar bhi chup baitha rehta hai, jaise tum</span>.", "Pati <span class=hl>hataash</span>, dono haathon se maatha thaam: <span class=hl>chadha diya sooli par</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Pati",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['PATI RAVI KE','SAWAAL'],'#0a1c2a',21);txt(c,'school gayi thi?',460,235,YL,F(15,1),'center');txt(c,"Ravi",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['BOLTI BAND','KAR DI'],'#2a2608',21);txt(c,'Headmaster ki',460,235,CY,F(15,1),'center');txt(c,"bolti band",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['SABSE BADA','GUNAHGAAR'],'#2a0a2a',21);txt(c,'chup baitha rehne wala',460,235,CY,F(15,1),'center');txt(c,"gunahgaar",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['CHADHA DIYA','SOOLI PAR'],'#0a2a1a',21);txt(c,'pati hataash',460,235,CY,F(15,1),'center');txt(c,"sooli",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["Office ke bahar <span class=hl>Rajni intezar</span> karti hain; ghadi dekhti hain; <span class=hl>milne ka samay</span> khatam hota ja raha hai.", "Ek aadmi slip ke neeche <span class=hl>5 rupaye ka note</span> rakhta hai, chaprasi ke saath <span class=hl>pehle andar</span> jaata hai; Rajni <span class=hl>darwaza dhakelkar</span> andar.", "Rajni: private schools ko Board <span class=hl>shayad 90% grant</span> deta hai; Director: <span class=hl>haan</span>; <span class=hl>syllabus aur final exam</span> Board ke haath.", "Director: <span class=hl>aaj tak kisi parent se shikayat nahi aayi</span>; Rajni: <span class=hl>shikayat ka dher lagwakar rahungi</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Director",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['RAJNI KA','INTEZAR'],'#0a1c2a',22);txt(c,'milne ka samay khatam',460,235,YL,F(15,1),'center');txt(c,"intezar",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['5 RUPAYE','KA NOTE'],'#2a2608',22);txt(c,'slip ke neeche',460,235,CY,F(15,1),'center');txt(c,"5 rupaye",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['90% GRANT','SYLLABUS + EXAM'],'#2a0a2a',20);txt(c,'Board ke haath',460,235,CY,F(15,1),'center');txt(c,"90% grant",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['SHIKAYAT KA','DHER'],'#0a2a1a',21);txt(c,'Rajni ka sankalp',460,235,CY,F(15,1),'center');txt(c,"shikayat",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Montage</span>: Rajni phone par, <span class=hl>register mein naam-pate</span>, <span class=hl>Leela ben aur mahilayein</span> ghar-ghar maa-baap se milti hain.", "<span class=hl>Sampadak</span>: <span class=hl>aapne aandolan ka roop de diya</span>; Rajni: <span class=hl>lagatar likhiye</span>; <span class=hl>PTI se flash</span>.", "<span class=hl>25 tarikh</span> ki parents meeting; prastav: <span class=hl>koi teacher apne hi school ke chhatron ka tuition nahi karega</span>; niyam todne par <span class=hl>sakht karyavahi</span>.", "Agle subah pati: <span class=hl>Board ne prastav jyon-ka-tyon swikar kar liya</span>; ant mein <span class=hl>rasmalai</span> par sab hanste hain."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Aandolan",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['MONTAGE','GHAR-GHAR MULAQAT'],'#0a1c2a',20);txt(c,'Leela ben saath',460,235,YL,F(15,1),'center');txt(c,"montage",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['SAMPADAK','PTI SE FLASH'],'#2a2608',21);txt(c,'aandolan ka roop',460,235,CY,F(15,1),'center');txt(c,"sampadak",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['25 TARIKH','PARENTS MEETING'],'#2a0a2a',21);txt(c,'tuition par niyam',460,235,CY,F(15,1),'center');txt(c,"meeting",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['BOARD NE PRASTAV','JYON-KA-TYON MAANA'],'#0a2a1a',18);txt(c,'ant: rasmalai',460,235,CY,F(15,1),'center');txt(c,"Board",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Book Q1 (<span class=hl>MCQ</span>): Rajni ne mudda gambhirta se kyun liya? Text ke saboot: <span class=hl>anyay ke viruddh awaaz uthane ki saamarthya</span> ka option ek <span class=hl>supported reading</span> hai.", "Book Q3: <span class=hl>tau ek aur andolan ka masala mil gaya</span> - <span class=hl>pati ne phusphusakar</span>, meeting ke dauran; <span class=hl>supported reading</span>: andolan ko halke mein lena.", "Book Q4: NCERT ke shabd: <span class=hl>vyavsaay banti shiksha ki samasya</span>; copy text mein <span class=hl>dikhai nahi jaati</span>.", "Message (<span class=hl>supported reading</span>): <span class=hl>anyay par chuppi bhi gunah</span> (explicit) + <span class=hl>sangathit awaaz</span>; text seedha moral nahi likhta."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Text",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['MUDDA','GAMBHIRTA SE'],'#0a1c2a',21);txt(c,'book Q1',460,235,YL,F(15,1),'center');txt(c,"Q1 mudda",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['ANDOLAN KA','MASALA'],'#2a2608',21);txt(c,'book Q3',460,235,CY,F(15,1),'center');txt(c,"Q3 masala",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['VYAVSAAY BANTI','SHIKSHA'],'#0a2a1a',20);txt(c,'book Q4',460,235,CY,F(15,1),'center');txt(c,"Q4 samasya",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['SANGATHIT','AWAAZ'],'#2a0a2a',21);txt(c,'supported reading',460,235,CY,F(15,1),'center');txt(c,"message",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Rajni patkatha ki lekhika kaun hain?",opts:["Mahadevi Verma","Mannu Bhandari","Krishna Sobti","Ismat Chughtai"],a:1,why:"Mannu Bhandari (1931-2021); yeh patkatha Rajni dharavahik ki ek kadi hai."},
+{q:"Rajni kiski copy dekhna chahti thi?",opts:["Leela ki","Pati ki","Amit ki maths ki","Mr. Pathak ki"],a:2,why:"Amit ki maths ki copy, jo Headmaster ne dikhane se mana kiya."},
+{q:"Headmaster ne copy dikhane se mana kyun kiya?",opts:["copy kho gayi thi","early exams ki copies na dikhane ka niyam","school band tha","Rajni late aayi"],a:1,why:"Headmaster: early exams ki copies dikhane ka niyam nahi hai."},
+{q:"Director se Rajni ne kya kaha ki woh karegi?",opts:["school badlegi","chup rahegi","tuition dilayegi","shikayat ka dher lagwayegi"],a:3,why:"Rajni: shikayat ka dher lagwakar rahungi."},
+{q:"Ant mein Board ne kya kiya?",opts:["prastav thukra diya","Rajni se maafi maangi","prastav jyon-ka-tyon swikar kar liya","meeting radd ki"],a:2,why:"Akhbaar ke anusar Board ne prastav jyon-ka-tyon swikar kar liya."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! रजनी pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
