@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>The Summer of the Beautiful White Horse - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Snapshots - The Summer of the Beautiful White Horse</div>
+<h1>The Summer of the Beautiful White Horse Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - a dawn visit, poor but honest, stealing?, the rides, John Byro, eyes and heart, reading the story, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. A Dawn Visit 🐴⭐⭐⭐</h2>
+<p class="why">The opening: 4 a.m., a tap on the window.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">four in the morning</button>
+<button class="b" data-o="1">tapping</button>
+<button class="b" data-o="2">white horse</button>
+<button class="b" data-o="3">not dreaming</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Poor but Honest 🪙⭐⭐⭐</h2>
+<p class="why">The tribe, in Aram’s own words.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">we were poor</button>
+<button class="b" data-o="1">eleven centuries</button>
+<button class="b" data-o="2">proud first</button>
+<button class="b" data-o="3">honest next</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Stealing? 🤔⭐⭐⭐</h2>
+<p class="why">Aram’s question and Aram’s own reasoning.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">where did you steal</button>
+<button class="b" data-o="1">leap out</button>
+<button class="b" data-o="2">not same as money</button>
+<button class="b" data-o="3">until we sell</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. The Rides 🏇⭐⭐</h2>
+<p class="why">Mourad rides, then Aram’s turn.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Mourad rides</button>
+<button class="b" data-o="1">Aram’s turn</button>
+<button class="b" data-o="2">seven vines</button>
+<button class="b" data-o="3">half an hour</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Hiding and John Byro 🌾⭐⭐⭐</h2>
+<p class="why">The barn, then the owner’s complaint.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">the barn</button>
+<button class="b" data-o="1">John Byro</button>
+<button class="b" data-o="2">sixty dollars</button>
+<button class="b" data-o="3">you have legs</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Eyes and Heart 💛⭐⭐⭐</h2>
+<p class="why">The meeting on the road and the return.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">My Heart</button>
+<button class="b" data-o="1">look in mouth</button>
+<button class="b" data-o="2">eyes vs heart</button>
+<button class="b" data-o="3">returned</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Reading the Story 🔎⭐⭐</h2>
+<p class="why">Text, supported reading and the book’s questions.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Q1 no action</button>
+<button class="b" data-o="1">Q2 why return</button>
+<button class="b" data-o="2">Q3 nostalgia</button>
+<button class="b" data-o="3">your words</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - White Horse Pakka? ⭐</h2>
+<p class="why">5 sawaal - Aram, honesty, horse name, Byro, owner. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Dawn</b>Mourad comes at four in the morning on a beautiful white horse. You’re not dreaming.</div>
+<div class="rcard"><b>Honest</b>We were poor, but famous for our honesty for something like eleven centuries.</div>
+<div class="rcard"><b>Steal</b>Aram: it wouldn’t become stealing until we offered to sell the horse.</div>
+<div class="rcard"><b>Rides</b>Aram’s horse leaped over seven vines and threw him; Mourad needed half an hour to find it.</div>
+<div class="rcard"><b>Byro</b>John Byro, an Assyrian farmer, lost his horse last month: sixty dollars, a surrey, ten miles on foot.</div>
+<div class="rcard"><b>Heart</b>A suspicious man would believe his eyes instead of his heart. The horse goes back.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 14 (The Summer of the Beautiful White Horse) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["Mourad came to Aram’s house <span class=hl>at four in the morning</span> and woke him up.", "He was <span class=hl>tapping on the window</span> of Aram’s room.", "<span class=hl>My cousin Mourad was sitting on a beautiful white horse.</span>", "<span class=hl>Yes, he said in Armenian. It’s a horse. You’re not dreaming.</span> Make it quick if you want to ride."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Dawn",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,300,80,320,100,YL,['4 A.M.'],'#2a2608',32);txt(c,'Mourad comes to the house',460,235,CY,F(15,1),'center');txt(c,"four",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,120,70,200,150,CY,['ARAM’S','WINDOW'],'#0a1c2a',16);line(c,340,140,420,140,MG,5);line(c,340,170,420,170,MG,5);txt(c,'tap tap',480,155,MG,F(16,1),'center');txt(c,"tapping",460,326,CY,F(14,1),"center");}
+ else if(s===2){const hx=300,hy=140;box(c,hx,hy,150,60,'#f5f5ff',[],'#1a1a2e',3);line(c,hx+150,hy+10,hx+185,hy-30,'#f5f5ff',8);circ(c,hx+198,hy-34,16,'#f5f5ff','rgba(245,245,255,.15)',3);line(c,hx,hy+8,hx-28,hy+45,'#f5f5ff',6);line(c,hx+192,hy-48,hx+188,hy-64,'#f5f5ff',4);line(c,hx+204,hy-48,hx+208,hy-64,'#f5f5ff',4);line(c,hx+150,hy+4,hx+178,hy-34,CY,3);line(c,hx+15,hy+60,hx+15,hy+110,'#f5f5ff',5);line(c,hx+55,hy+60,hx+55,hy+110,'#f5f5ff',5);line(c,hx+100,hy+60,hx+100,hy+110,'#f5f5ff',5);line(c,hx+138,hy+60,hx+138,hy+110,'#f5f5ff',5);txt(c,'the beautiful white horse',460,45,CY,F(15,1),'center');txt(c,"white horse",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,120,90,320,100,CY,['“It’s a horse.','You’re not dreaming.”'],'#0a1c2a',17);box(c,500,90,300,100,MG,['“Make it quick','if you want to ride.”'],'#2a0a2a',17);txt(c,"not dreaming",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>We were poor. We had no money.</span> Aram says the whole tribe was poverty-stricken.", "The family was <span class=hl>famous for its honesty for something like eleven centuries</span>.", "<span class=hl>We were proud first, honest next</span>, and after that we believed in right and wrong.", "<span class=hl>None of us would take advantage of anybody in the world, let alone steal.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Honest",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,200,80,520,100,DM,['“WE WERE POOR”'],'#14142a',26);txt(c,'no money',460,235,CY,F(15,1),'center');txt(c,"poor",460,326,DM,F(14,1),"center");}
+ else if(s===1){box(c,200,80,520,100,YL,['ELEVEN CENTURIES','of honesty'],'#2a2608',24);txt(c,'something like eleven centuries',460,235,CY,F(15,1),'center');txt(c,"11 centuries",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,60,90,250,90,CY,['PROUD'],'#0a1c2a',22);box(c,340,90,250,90,MG,['HONEST'],'#2a0a2a',22);box(c,620,90,250,90,GR,['RIGHT AND','WRONG'],'#0a2a1a',18);arrow2(c,312,135,336,135,YL,3);arrow2(c,592,135,616,135,YL,3);txt(c,'in this order',460,235,YL,F(15,1),'center');txt(c,"first, next, after",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['NO ONE WOULD TAKE','ADVANTAGE, LET ALONE STEAL'],'#0a2a1a',20);txt(c,"honesty",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[1]=()=>{if([3].includes(s))draw();};
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["Aram asks: <span class=hl>Mourad, where did you steal this horse?</span>", "Mourad answers: <span class=hl>Leap out of the window, if you want to ride.</span> Aram takes this to mean it was true.", "Aram thinks <span class=hl>stealing a horse for a ride was not the same thing as stealing something else, such as money</span>.", "<span class=hl>It wouldn’t become stealing until we offered to sell the horse.</span> Aram says they would never do that."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Steal",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,100,80,320,100,CY,['“WHERE DID YOU','STEAL THIS HORSE?”'],'#0a1c2a',17);box(c,500,80,320,100,MG,['“LEAP OUT OF','THE WINDOW”'],'#2a0a2a',17);txt(c,'question, then a non-answer',460,235,YL,F(15,1),'center');txt(c,"the question",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,200,70,520,100,MG,['“LEAP OUT OF THE WINDOW,','IF YOU WANT TO RIDE.”'],'#2a0a2a',18);txt(c,'Aram concludes: it was true',460,225,CY,F(15,1),'center');txt(c,"leap out",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,60,90,380,90,YL,['STEALING A HORSE','FOR A RIDE'],'#2a2608',17);box(c,480,90,380,90,DM,['STEALING MONEY'],'#14142a',17);txt(c,'Aram’s reasoning',460,235,CY,F(15,1),'center');txt(c,"not the same?",460,326,YL,F(14,1),"center");}
+ else if(s===3){const k=0.5+0.5*Math.sin(__t*2);box(c,160,80,600,100,GR,['UNTIL WE OFFERED','TO SELL THE HORSE'],'#0a2a1a',20);circ(c,460,230,8+k*8,MG,'rgba(232,121,249,.3)',3);txt(c,"until we sell",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Mourad <span class=hl>raced the horse across a field</span>, crossed an irrigation ditch, and returned <span class=hl>dripping wet</span>.", "<span class=hl>Now it’s my turn to ride</span>, Aram says. The horse did not move at first.", "The horse ran to Dikran Halabian’s vineyard and <span class=hl>leaped over seven vines</span> before Aram fell.", "It took Mourad <span class=hl>half an hour</span> to find the horse and bring him back."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Rides",460,26,YL,F(14,1),"center");
+ if(s===0){const hx=180,hy=140;box(c,hx,hy,150,60,'#f5f5ff',[],'#1a1a2e',3);line(c,hx+150,hy+10,hx+185,hy-30,'#f5f5ff',8);circ(c,hx+198,hy-34,16,'#f5f5ff','rgba(245,245,255,.15)',3);line(c,hx,hy+8,hx-28,hy+45,'#f5f5ff',6);line(c,hx+192,hy-48,hx+188,hy-64,'#f5f5ff',4);line(c,hx+204,hy-48,hx+208,hy-64,'#f5f5ff',4);line(c,hx+150,hy+4,hx+178,hy-34,CY,3);line(c,hx+15,hy+60,hx+15,hy+110,'#f5f5ff',5);line(c,hx+55,hy+60,hx+55,hy+110,'#f5f5ff',5);line(c,hx+100,hy+60,hx+100,hy+110,'#f5f5ff',5);line(c,hx+138,hy+60,hx+138,hy+110,'#f5f5ff',5);arrow2(c,430,180,760,180,YL,4);txt(c,'across a field, over a ditch',560,130,CY,F(14,1),'center');txt(c,"Mourad rides",460,326,YL,F(14,1),"center");}
+ else if(s===1){const hx=260,hy=140;box(c,hx,hy,150,60,'#f5f5ff',[],'#1a1a2e',3);line(c,hx+150,hy+10,hx+185,hy-30,'#f5f5ff',8);circ(c,hx+198,hy-34,16,'#f5f5ff','rgba(245,245,255,.15)',3);line(c,hx,hy+8,hx-28,hy+45,'#f5f5ff',6);line(c,hx+192,hy-48,hx+188,hy-64,'#f5f5ff',4);line(c,hx+204,hy-48,hx+208,hy-64,'#f5f5ff',4);line(c,hx+150,hy+4,hx+178,hy-34,CY,3);line(c,hx+15,hy+60,hx+15,hy+110,'#f5f5ff',5);line(c,hx+55,hy+60,hx+55,hy+110,'#f5f5ff',5);line(c,hx+100,hy+60,hx+100,hy+110,'#f5f5ff',5);line(c,hx+138,hy+60,hx+138,hy+110,'#f5f5ff',5);txt(c,'Aram’s turn',460,45,MG,F(15,1),'center');txt(c,"Aram rides",460,326,MG,F(14,1),"center");}
+ else if(s===2){line(c,80,260,840,260,GR,3);for(let i=0;i<7;i++){line(c,160+i*100,260,160+i*100,215,GR,5);}arrow2(c,100,175,820,175,CY,4);txt(c,'seven vines',460,60,YL,F(18,1),'center');txt(c,"seven vines",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,200,80,520,100,CY,['HALF AN HOUR','to find the horse'],'#0a1c2a',24);txt(c,'Mourad brings him back',460,235,MG,F(15,1),'center');txt(c,"half an hour",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[3]=()=>{if([1, 2].includes(s))draw();};
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["The boys hide the horse in the <span class=hl>barn of a deserted vineyard</span> that once belonged to a farmer named Fetvajian.", "<span class=hl>John Byro</span> is an <span class=hl>Assyrian</span> farmer who had learned to speak Armenian out of loneliness. His horse was <span class=hl>stolen last month</span>.", "Byro: <span class=hl>That horse cost me sixty dollars.</span> Khosrove: <span class=hl>I spit on money.</span>", "Byro: <span class=hl>I walked ten miles to get here.</span> Khosrove: <span class=hl>You have legs.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Byro",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,200,70,520,120,GR,['DESERTED VINEYARD','BARN'],'#0a2a1a',22);txt(c,'Fetvajian’s old vineyard',460,235,CY,F(15,1),'center');txt(c,"hidden",460,326,GR,F(14,1),"center");}
+ else if(s===1){box(c,120,70,300,110,YL,['JOHN BYRO','Assyrian farmer'],'#2a2608',18);box(c,500,70,300,110,MG,['HIS HORSE','stolen last month'],'#2a0a2a',18);txt(c,'he learned Armenian out of loneliness',460,235,CY,F(14,1),'center');txt(c,"the owner",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,80,80,350,100,YL,['“THAT HORSE COST','ME SIXTY DOLLARS”'],'#2a2608',18);box(c,490,80,350,100,MG,['“I SPIT','ON MONEY”'],'#2a0a2a',18);txt(c,'Byro vs Khosrove',460,235,CY,F(15,1),'center');txt(c,"sixty dollars",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,80,80,350,100,CY,['“I WALKED','TEN MILES”'],'#0a1c2a',18);box(c,490,80,350,100,MG,['“YOU HAVE','LEGS”'],'#2a0a2a',18);txt(c,'Mother: He has a gentle heart',460,235,GR,F(14,1),'center');txt(c,"you have legs",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[4]=()=>{if([1].includes(s))draw();};
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["Byro asks the horse’s name. Mourad says, in Armenian, <span class=hl>My Heart</span>.", "Byro looks into the horse’s mouth: <span class=hl>Tooth for tooth.</span> He says he would swear it is his horse <span class=hl>if he didn’t know your parents</span>.", "<span class=hl>A suspicious man would believe his eyes instead of his heart.</span>", "Next morning the boys put the horse in Byro’s barn. Later Byro says the horse is <span class=hl>stronger than ever, better-tempered, too</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Heart",460,26,YL,F(14,1),"center");
+ if(s===0){const hx=280,hy=140;box(c,hx,hy,150,60,'#f5f5ff',[],'#1a1a2e',3);line(c,hx+150,hy+10,hx+185,hy-30,'#f5f5ff',8);circ(c,hx+198,hy-34,16,'#f5f5ff','rgba(245,245,255,.15)',3);line(c,hx,hy+8,hx-28,hy+45,'#f5f5ff',6);line(c,hx+192,hy-48,hx+188,hy-64,'#f5f5ff',4);line(c,hx+204,hy-48,hx+208,hy-64,'#f5f5ff',4);line(c,hx+150,hy+4,hx+178,hy-34,CY,3);line(c,hx+15,hy+60,hx+15,hy+110,'#f5f5ff',5);line(c,hx+55,hy+60,hx+55,hy+110,'#f5f5ff',5);line(c,hx+100,hy+60,hx+100,hy+110,'#f5f5ff',5);line(c,hx+138,hy+60,hx+138,hy+110,'#f5f5ff',5);txt(c,'“My Heart”',460,45,MG,F(18,1),'center');txt(c,"the name",460,326,MG,F(14,1),"center");}
+ else if(s===1){box(c,120,70,300,110,CY,['LOOK INTO','THE MOUTH'],'#0a1c2a',18);box(c,500,70,300,110,YL,['“TOOTH','FOR TOOTH”'],'#2a2608',18);txt(c,'Byro checks the horse',460,235,MG,F(14,1),'center');txt(c,"looking",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,80,80,350,100,CY,['HIS EYES'],'#0a1c2a',22);box(c,490,80,350,100,MG,['HIS HEART'],'#2a0a2a',22);txt(c,'a suspicious man trusts',460,60,YL,F(14,1),'center');txt(c,'rather than his heart',460,235,YL,F(14,1),'center');txt(c,"eyes vs heart",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,70,600,110,GR,['THE HORSE IS IN','BYRO’S BARN'],'#0a2a1a',22);txt(c,'stronger than ever',460,235,CY,F(15,1),'center');txt(c,"returned",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Book Q1: the story does not have <span class=hl>breathless adventure</span> - <span class=hl>what makes it interesting</span>?", "Book Q2: did the boys return the horse because they were <span class=hl>conscience-stricken</span> or because they were <span class=hl>afraid</span>?", "Book Q3: the story begins in a mood of <span class=hl>nostalgia</span>. Narrate an incident from your own childhood.", "The NCERT text states no moral. Quote a line, then explain it in <span class=hl>your own words</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Text",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['WHAT MAKES IT','INTERESTING?'],'#0a1c2a',22);txt(c,'no breathless action',460,235,YL,F(15,1),'center');txt(c,"Q1",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,60,90,380,90,YL,['CONSCIENCE?'],'#2a2608',20);box(c,480,90,380,90,MG,['FEAR?'],'#2a0a2a',20);txt(c,'Q2: use evidence from the story',460,235,CY,F(15,1),'center');txt(c,"Q2",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['“THE GOOD OLD DAYS','WHEN I WAS NINE”'],'#0a2a1a',20);txt(c,'mood of nostalgia',460,235,CY,F(15,1),'center');txt(c,"Q3",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,200,80,520,100,YL,['QUOTE THE LINE','then explain in your words'],'#2a2608',18);txt(c,'no moral is stated',460,235,CY,F(15,1),'center');txt(c,"exam",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Aram ki umar kitni hai jab wo kahani sunata hai?",opts:["seven","nine","thirteen","sixteen"],a:1,why:"“when I was nine”."},
+{q:"Garoghlanian family kitne samay se imaandari ke liye mashhoor hai?",opts:["eleven years","eleven months","something like eleven centuries","a hundred years"],a:2,why:"famous for our honesty for something like eleven centuries."},
+{q:"Mourad ghode ka naam kya batata hai?",opts:["Vazire","My Heart","Khosrove","Zorab"],a:1,why:"My Heart, in Armenian."},
+{q:"John Byro ki kaun si line hai?",opts:["Quiet, man, quiet","I spit on money","I have a way with dogs","A suspicious man would believe his eyes instead of his heart"],a:3,why:"Byro says it when he looks at the horse."},
+{q:"John Byro kaun hai?",opts:["an Armenian baker","a Garoghlanian uncle","an Assyrian farmer","a city dweller"],a:2,why:"an Assyrian who had learned to speak Armenian out of loneliness."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! White Horse pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
