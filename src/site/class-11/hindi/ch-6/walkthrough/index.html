@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>स्पीति में बारिश - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 Hindi - Snapshots - स्पीति में बारिश</div>
+<h1>स्पीति में बारिश Ka Visual Walkthrough</h1>
+<p class="sub">NCERT Aroh 2022-23 edition ka paath (archived edition; current syllabus status yahan claim nahi). 8 interactive scenes - lekhak, itihaas, swayatta, aankde, pahad, ritu-barish, Kaza ki raat, quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Lekhak aur Path ✍️⭐⭐⭐</h2>
+<p class="why">Krishnanath aur yatra-vrittant.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Krishnanath</button>
+<button class="b" data-o="1">yatra-vrittant</button>
+<button class="b" data-o="2">paath ka vishay</button>
+<button class="b" data-o="3">2022-23</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Itihaas ke Padav 🏛️⭐⭐⭐</h2>
+<p class="why">1846 se 1966 tak.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">1846</button>
+<button class="b" data-o="1">1873</button>
+<button class="b" data-o="2">1960</button>
+<button class="b" data-o="3">1966</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Swayatta aur Zorawar Singh ⛰️⭐⭐⭐</h2>
+<p class="why">Bhugol hi raksha.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">bhugol</button>
+<button class="b" data-o="1">wireless</button>
+<button class="b" data-o="2">Zorawar Singh</button>
+<button class="b" data-o="3">nono</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Aankde aur Jeevan 📊⭐⭐⭐</h2>
+<p class="why">Kam log, kathin jeevan.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">1901</button>
+<button class="b" data-o="1">1971</button>
+<button class="b" data-o="2">8-9 mahine</button>
+<button class="b" data-o="3">ek fasal</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Pahad aur Maane ⛰️⭐⭐⭐</h2>
+<p class="why">Oonchai, mantra aur nimantran.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">oonchai</button>
+<button class="b" data-o="1">maane</button>
+<button class="b" data-o="2">Himalaya</button>
+<button class="b" data-o="3">yuva</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Ritu, Fasal aur Barish 🌾⭐⭐</h2>
+<p class="why">Do ritu, jau aur Kalidas.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">do ritu</button>
+<button class="b" data-o="1">fasal</button>
+<button class="b" data-o="2">Kalidas</button>
+<button class="b" data-o="3">barish kam</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Kaza ki Raat 🌧️⭐⭐⭐</h2>
+<p class="why">Barish sunai di, dikhi nahi.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">dak bungalow</button>
+<button class="b" data-o="1">aawaaz</button>
+<button class="b" data-o="2">dungchhen</button>
+<button class="b" data-o="3">yatra shubh</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - स्पीति में बारिश Pakka? ⭐</h2>
+<p class="why">5 sawaal - lekhak, ritu, ghati, fasal, barish ki raat. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Lekhak</b>Krishnanath (1934-2016); yatra-vrittant.</div>
+<div class="rcard"><b>Itihaas</b>1846 British; 1873 Regulation; 1960 zila; 1966 Himachal.</div>
+<div class="rcard"><b>Swayatta</b>Bhugol ne sirja; Zorawar Singh par log ghar chhod bhaage.</div>
+<div class="rcard"><b>Jeevan</b>8-9 mahine kate; ek fasal; jau mukhya.</div>
+<div class="rcard"><b>Barish</b>Do ritu; Lahul se kam; Kaza ki raat sunai di.</div>
+<div class="rcard"><b>Source</b>NCERT Aroh 2022-23 edition; current syllabus status claim nahi.</div>
+</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 Hindi Chapter 6 (स्पीति में बारिश) - NCERT 2022-23 edition text - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Krishnanath</span>: janm <span class=hl>1934, Varanasi (UP)</span>; mrityu <span class=hl>2016</span>; samman: <span class=hl>Lohia Samman</span>.", "Pramukh rachnayein (NCERT parichay): <span class=hl>Ladakh mein Raag-Virag, Kinnar Dharmlok, Spiti mein Barish, Prithvi-Parikrama, Bauddh Nibandhavali</span>.", "<span class=hl>Spiti mein Barish</span> ek <span class=hl>yatra-vrittant</span> hai: Spiti ki <span class=hl>jansankhya, ritu, fasal, jalvayu, bhugol</span> aur kathin jeevan.", "Yeh scene <span class=hl>NCERT Aroh 2022-23 edition</span> ke paath par based hai; <span class=hl>current syllabus status</span> yahan claim nahi kiya gaya."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Lekhak",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['KRISHNANATH','1934-2016'],'#0a1c2a',22);txt(c,'Varanasi (UP)',460,235,YL,F(15,1),'center');txt(c,"Krishnanath",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['YATRA-VRITTANT','AANKHON DEKHA'],'#2a2608',20);txt(c,'Spiti ki yatra',460,235,CY,F(15,1),'center');txt(c,"yatra-vrittant",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['SPITI MEIN','BARISH'],'#2a0a2a',22);txt(c,'paath ka naam',460,235,CY,F(15,1),'center');txt(c,"paath ka vishay",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['NCERT EDITION','2022-23'],'#0a2a1a',22);txt(c,'archived text',460,235,CY,F(15,1),'center');txt(c,"2022-23",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>1846</span>: Kashmir ke raja <span class=hl>Gulab Singh</span> ke zariye Kullu, Lahul, Spiti <span class=hl>British adheenta</span> mein; <span class=hl>1847</span> mein Kangra zile se joda gaya.", "<span class=hl>1873</span>: <span class=hl>Spiti Regulation</span> - Lahul aur Spiti ko <span class=hl>vishesh darja</span>; British Bharat ke anya kanoon yahan lagu nahi.", "<span class=hl>1960</span>: Lahul-Spiti <span class=hl>Punjab</span> ke andar alag zila, kendra <span class=hl>Kelang (Keylong)</span>.", "<span class=hl>1966</span>: Himachal Pradesh bana to Lahul-Spiti <span class=hl>uttari chhor ka zila</span>; text: <span class=hl>desh ka sabse adhik durgam kshetra</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Itihaas",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['1846','BRITISH ADHEENTA'],'#0a1c2a',21);txt(c,'Gulab Singh ke zariye',460,235,YL,F(15,1),'center');txt(c,"1846",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['1873','SPITI REGULATION'],'#2a2608',20);txt(c,'vishesh darja',460,235,CY,F(15,1),'center');txt(c,"1873",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['1960','ALAG ZILA'],'#2a0a2a',22);txt(c,'kendra Keylong',460,235,CY,F(15,1),'center');txt(c,"1960",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['1966','HIMACHAL MEIN'],'#0a2a1a',21);txt(c,'durgam kshetra',460,235,CY,F(15,1),'center');txt(c,"1966",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["Text: Spiti ki <span class=hl>swayattta</span> ko <span class=hl>bhugol ne sirja</span>; <span class=hl>bhugol hi raksha karta hai aur sanhar bhi</span>.", "Lahul-Spiti ka sampark aksar <span class=hl>wireless set</span> se, jo <span class=hl>Kelang aur Kaza</span> ke beech <span class=hl>khadakta rehta hai</span>.", "<span class=hl>Zorawar Singh</span> ke akraman par Spiti ke log <span class=hl>ghar chhodkar bhaag gaye</span>; usne <span class=hl>Spiti aur viharon ko loota</span>; lekhak: <span class=hl>yeh apratikar shayad suraksha ki paddhati</span>.", "<span class=hl>Nono</span> = sthaniya shasak; British raj mein uska adhikar <span class=hl>dwitiya darje ke magistrate</span> ke barabar; log use <span class=hl>apna raja</span> maante the."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Swayatta",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['BHUGOL = RAKSHA','SANHAR BHI'],'#0a1c2a',18);txt(c,'swayattta ka karan',460,235,YL,F(15,1),'center');txt(c,"bhugol",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['WIRELESS SET','KELANG-KAZA'],'#2a2608',20);txt(c,'sampark ka sadhan',460,235,CY,F(15,1),'center');txt(c,"wireless",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['ZORAWAR SINGH','AKRAMAN'],'#2a0a2a',19);txt(c,'log ghar chhod bhaage',460,235,CY,F(15,1),'center');txt(c,"Zorawar Singh",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['NONO','SANSTHANIYA SHASAK'],'#0a2a1a',19);txt(c,'logon ka raja',460,235,CY,F(15,1),'center');txt(c,"nono",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>1901</span> ki janganana: Spiti ki jansankhya <span class=hl>3,231</span>; <span class=hl>1971</span> ki janganana: <span class=hl>7,196</span> (text ke anusaar).", "Imperial Gazetteer (Oxford, 1908, khand 23) ke anusaar kshetrafal <span class=hl>2,155 vargmeel</span>; text: <span class=hl>prati vargmeel char se bhi kam</span> log.", "Text: <span class=hl>aath-nau mahine</span> baaki duniya se kate; <span class=hl>thand mein thithurte</span>; <span class=hl>lakdi bhi nahi</span>.", "<span class=hl>Sirf ek fasal</span>; lekhak: log kyun rehte hain? <span class=hl>main nahi jaanta</span>; <span class=hl>tark se rehna siddh nahi ho sakta</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Aankde",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['1901 -> 1971','3,231 -> 7,196'],'#0a1c2a',20);txt(c,'jansankhya text ke anusaar',460,235,YL,F(15,1),'center');txt(c,"1901",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['4 SE KAM','PRATI VARGMEEL'],'#2a2608',21);txt(c,'Gazetteer 1908 ke anusaar',460,235,CY,F(15,1),'center');txt(c,"1971",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['8-9 MAHINE','KATE HUE'],'#2a0a2a',21);txt(c,'baaki duniya se',460,235,CY,F(15,1),'center');txt(c,"8-9 mahine",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['EK FASAL','LAKDI BHI NAHI'],'#0a2a1a',21);txt(c,'kathin jeevan',460,235,CY,F(15,1),'center');txt(c,"ek fasal",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["Cunningham ke anusaar samudra-tal se <span class=hl>Lahul 10,535 ft</span>, <span class=hl>Spiti 12,986 ft</span> (lagbhag 13,000 ft); <span class=hl>Baralacha darra</span> ka andaza <span class=hl>16,221 se 16,500 ft</span>.", "Dakshin ki shreni <span class=hl>maane</span>: lekhak sochte hain shayad <span class=hl>maane mantra</span> (<span class=hl>Om mani padme hum</span>) ke naam par; Gazetteer: <span class=hl>21,646 ft</span>.", "Rohtang jot ke paar <span class=hl>madhya Himalaya</span> (Lahul-Spiti); Kullu-Manali, Shimla, Mussoorie waghera <span class=hl>Himalaya ka talua</span>, text ke shabd.", "Lekhak: <span class=hl>hod nahi</span>; chahte hain <span class=hl>yuva pehle apna ahankar galayein</span>, phir <span class=hl>choti ka ahankar chur karein</span>; <span class=hl>yeh ek yuva nimantran hai</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Pahad",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['LAHUL 10,535 FT','SPITI 12,986 FT'],'#0a1c2a',18);txt(c,'Cunningham ke anusaar',460,235,YL,F(15,1),'center');txt(c,"oonchai",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['MAANE','OM MANI PADME HUM'],'#2a2608',18);txt(c,'lekhak ka anuman',460,235,CY,F(15,1),'center');txt(c,"maane",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['MADHYA HIMALAYA','ROHTANG KE PAAR'],'#2a0a2a',18);txt(c,'talua ke paar',460,235,CY,F(15,1),'center');txt(c,"Himalaya",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['YUVA NIMANTRAN','AHANKAR GALAO'],'#0a2a1a',19);txt(c,'lekhak ka aagrah',460,235,CY,F(15,1),'center');txt(c,"yuva",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["Text: Lahul ki tarah Spiti mein bhi <span class=hl>do hi ritu</span>; <span class=hl>June se September</span> chhoti vasant, baaki varsh <span class=hl>sheet</span>; <span class=hl>December se</span> baraf, April-May tak.", "Fasalein: <span class=hl>do kism ka jau, gehun, matar, sarson</span>; <span class=hl>jau mukhya</span>; sinchai <span class=hl>nalon aur kuhl</span> se; <span class=hl>koi phal nahi</span>; ped nahi.", "<span class=hl>Kalidas</span> ke Ritusamhara ki varsha ki shobha <span class=hl>Vindhyachal</span> mein, yahan nahi; Spiti ke log shayad puchhein <span class=hl>yeh devta kaun hai</span>?", "Spiti mein <span class=hl>Lahul se bhi kam varsha</span>; madhya Himalaya <span class=hl>monsoon ki pahunch ke pare</span>; dharti <span class=hl>sukhi, thandi aur vandhya</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Ritu",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['DO HI RITU','VASANT + SHEET'],'#0a1c2a',20);txt(c,'June-Sept chhoti vasant',460,235,YL,F(15,1),'center');txt(c,"do ritu",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['JAU MUKHYA','KOI PHAL NAHI'],'#2a2608',20);txt(c,'matar, sarson bhi',460,235,CY,F(15,1),'center');txt(c,"fasal",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['KALIDAS KI VARSHA','VINDHYACHAL MEIN'],'#2a0a2a',16);txt(c,'Spiti mein nahi',460,235,CY,F(15,1),'center');txt(c,"Kalidas",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['LAHUL SE KAM','VARSHA'],'#0a2a1a',21);txt(c,'monsoon se pare',460,235,CY,F(15,1),'center');txt(c,"barish kam",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Kaza ke dak bungalow</span> mein aadhi raat ka pichhla pehar; <span class=hl>lamp ki lau</span>; khidki ka paalla kholte hi <span class=hl>tez hawa ka jhonka</span>.", "Lekhak <span class=hl>barish dekh nahi rahe the, sun rahe the</span>: tushar jaisi boondein, jaise <span class=hl>nagade par thaap</span>.", "Text: <span class=hl>dungchhen ko hawa bajaa rahi thi</span>; <span class=hl>mahashankh ki dhwani</span> ghati mein tairti thi.", "Subah chai peete sunna: <span class=hl>hamari yatra shubh hai</span>; <span class=hl>bahut dinon baad barish hui</span>. Book: <span class=hl>varsha yahan ek ghatna hai, ek sukhad sanyog</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Raat",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['KAZA DAK','BUNGALOW'],'#0a1c2a',21);txt(c,'aadhi raat ka pichhla pehar',460,235,YL,F(15,1),'center');txt(c,"dak bungalow",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['DEKHI NAHI','SUNI'],'#2a2608',22);txt(c,'boondein nagade par thaap',460,235,CY,F(15,1),'center');txt(c,"aawaaz",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['DUNGCHHEN','MAHASHANKH'],'#2a0a2a',21);txt(c,'hawa ki dhwani',460,235,CY,F(15,1),'center');txt(c,"dungchhen",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['YATRA SHUBH','BARISH HUI'],'#0a2a1a',21);txt(c,'ek sukhad sanyog',460,235,CY,F(15,1),'center');txt(c,"yatra shubh",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Spiti mein Barish ke lekhak kaun hain?",opts:["Shekhar Joshi","Krishnanath","Mannu Bhandari","Ismat Chughtai"],a:1,why:"Krishnanath (1934-2016); yeh ek yatra-vrittant hai."},
+{q:"Text ke anusaar Spiti mein kitni ritu hoti hain?",opts:["chhah","teen","do","ek"],a:2,why:"Text: Lahul ki tarah Spiti mein bhi do hi ritu hoti hain."},
+{q:"Spiti ki mukhya ghati kis nadi ki ghati hai?",opts:["Satluj","Spiti nadi","Beas","Chenab"],a:1,why:"Text: mukhya ghati isi naam ki Spiti nadi ki ghati hai."},
+{q:"Spiti ki mukhya fasal kaun si hai?",opts:["gehun","matar","sarson","jau"],a:3,why:"Text: do kism ka jau, gehun, matar aur sarson; inmein jau mukhya hai."},
+{q:"Kaza ki raat lekhak ne barish ke baare mein kya anubhav kiya?",opts:["baraf giri dikhi","bijli kadakti dekhi","barish ki aawaaz suni, dekh nahi paye","toofan mein bahar nikle"],a:2,why:"Text: main use dekh nahi raha tha, sun raha tha."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! स्पीति pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
