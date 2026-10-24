@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>The Address - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 English - Snapshots - The Address</div>
+<h1>The Address Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - at the door, the door closes, the mother’s account, after the Liberation, the living room, the spoons, reading the story, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. At the Door 🚪⭐⭐⭐</h2>
+<p class="why">The first visit.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">a chink</button>
+<button class="b" data-o="1">I don’t know you</button>
+<button class="b" data-o="2">green cardigan</button>
+<button class="b" data-o="3">no one came back</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. The Door Closes 🏠⭐⭐⭐</h2>
+<p class="why">The refusal and the name-plate.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">I regret</button>
+<button class="b" data-o="1">not convenient</button>
+<button class="b" data-o="2">name-plate</button>
+<button class="b" data-o="3">number 46</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. The Mother’s Account 🥄⭐⭐⭐</h2>
+<p class="why">The flashback: the first half of the War.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">something changed</button>
+<button class="b" data-o="1">every time</button>
+<button class="b" data-o="2">what she took</button>
+<button class="b" data-o="3">remember that</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. After the Liberation 🕊️⭐⭐</h2>
+<p class="why">Fear, then curiosity.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">not interested</button>
+<button class="b" data-o="1">afraid</button>
+<button class="b" data-o="2">more normal</button>
+<button class="b" data-o="3">wanted to see</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. The Living Room 🛋️⭐⭐⭐</h2>
+<p class="why">The second visit.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">a girl of fifteen</button>
+<button class="b" data-o="1">candle-holder</button>
+<button class="b" data-o="2">a room I knew</button>
+<button class="b" data-o="3">burn mark</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. The Spoons 🥄⭐⭐⭐</h2>
+<p class="why">The girl, the antique box and the train.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">spoons box</button>
+<button class="b" data-o="1">antique?</button>
+<button class="b" data-o="2">apple on the plate</button>
+<button class="b" data-o="3">I must catch my train</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Reading the Story 🔎⭐⭐</h2>
+<p class="why">Text, supported reading and the book’s questions.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Q1 clue</button>
+<button class="b" data-o="1">Q2 hardships</button>
+<button class="b" data-o="2">Q3 why forget</button>
+<button class="b" data-o="3">Q4 predicament</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - The Address Pakka? ⭐</h2>
+<p class="why">5 sawaal - cardigan, jingling, the girl, the address, burn mark. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Door</b>The woman opens the door a chink, says she does not know her, and wears the mother’s green cardigan.</div>
+<div class="rcard"><b>Closed</b>I regret I cannot do anything for you. The name-plate says Dorling; the number is 46.</div>
+<div class="rcard"><b>Mother</b>Mrs Dorling took the table silver, antique plates, large vases and crockery. Remember Number 46.</div>
+<div class="rcard"><b>Liberation</b>After the Liberation she was afraid of the stored things, then gradually grew curious.</div>
+<div class="rcard"><b>Room</b>A room I knew and did not know: the Hanukkah candle-holder, the table-cloth, the burn mark.</div>
+<div class="rcard"><b>Spoons</b>I must catch my train. She hears the spoons and forks jingle and resolves to forget the address.</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 English Chapter 15 (The Address) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["She had opened the door <span class=hl>a chink</span>. The narrator stood on the step.", "<span class=hl>No, I don’t know you.</span> The narrator: <span class=hl>I’m Mrs S’s daughter.</span>", "The woman was wearing <span class=hl>my mother’s green knitted cardigan</span>.", "<span class=hl>Have you come back? I thought that no one had come back.</span> - the book’s Q1."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Door",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,360,50,200,200,CY,[],'#0a1c2a',3);line(c,500,50,500,250,YL,8);line(c,520,100,520,200,MG,4);txt(c,'the door, open a chink',460,290,CY,F(15,1),'center');txt(c,"a chink",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,80,80,360,100,CY,['“NO, I DON’T','KNOW YOU.”'],'#0a1c2a',18);box(c,480,80,360,100,MG,['“I’M MRS S’S','DAUGHTER.”'],'#2a0a2a',18);txt(c,'question and answer',460,235,YL,F(15,1),'center');txt(c,"not recognised",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,300,60,320,150,GR,['MY MOTHER’S','GREEN KNITTED','CARDIGAN'],'#0a2a1a',20);txt(c,'the woman is wearing it',460,255,CY,F(15,1),'center');txt(c,"the cardigan",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,120,70,680,110,YL,['“I THOUGHT THAT NO ONE','HAD COME BACK.”'],'#2a2608',22);txt(c,'book Q1: what is the clue?',460,235,CY,F(15,1),'center');txt(c,"Q1",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[0]=()=>{if([0].includes(s))draw();};
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>I regret I cannot do anything for you.</span>", "<span class=hl>It is not convenient for me now… Another time.</span> She closes the door cautiously.", "The name-plate: <span class=hl>Dorling</span>, in black letters on white enamel.", "On the jamb, a bit higher: <span class=hl>Number 46</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Closed",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,200,80,520,100,CY,['“I REGRET I CANNOT','DO ANYTHING FOR YOU.”'],'#0a1c2a',20);txt(c,'she refuses',460,235,MG,F(15,1),'center');txt(c,"refusal",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,100,80,320,100,YL,['“NOT CONVENIENT','FOR ME NOW.”'],'#2a0a2a',17);box(c,500,80,320,100,DM,['“ANOTHER TIME.”'],'#14142a',17);txt(c,'she closes the door cautiously',460,235,CY,F(15,1),'center');txt(c,"not convenient",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,260,80,400,100,'#f5f5ff',['DORLING'],'#14142a',34);txt(c,'black letters on white enamel',460,235,CY,F(15,1),'center');txt(c,"name-plate",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,300,60,320,130,YL,['NUMBER 46'],'#2a2608',32);txt(c,'on the jamb, a bit higher',460,235,CY,F(15,1),'center');txt(c,"the number",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["The narrator was home for a few days and noticed <span class=hl>something about the rooms had changed</span>. She missed various things.", "Mrs Dorling had renewed contact and came regularly. <span class=hl>Every time she leaves here she takes something home with her.</span>", "The <span class=hl>table silver</span>, the <span class=hl>antique plates</span>, the <span class=hl>large vases</span>, the <span class=hl>crockery</span>. The mother adds: <span class=hl>She suggested it to me herself.</span>", "<span class=hl>In Marconi Street. Number 46. Remember that.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Mother",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,200,70,520,100,DM,['SOMETHING ABOUT THE','ROOMS HAD CHANGED'],'#14142a',20);txt(c,'she missed various things',460,225,CY,F(15,1),'center');txt(c,"missing things",460,326,DM,F(14,1),"center");}
+ else if(s===1){box(c,100,80,320,100,CY,['MRS DORLING','COMES REGULARLY'],'#0a1c2a',17);arrow2(c,430,130,490,130,YL,3);box(c,500,80,320,100,MG,['LEAVES WITH','SOMETHING'],'#2a0a2a',17);txt(c,"every time",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,40,80,190,80,CY,['TABLE','SILVER'],'#0a1c2a',15);box(c,250,80,190,80,YL,['ANTIQUE','PLATES'],'#2a2608',15);box(c,460,80,190,80,MG,['LARGE','VASES'],'#2a0a2a',15);box(c,670,80,190,80,GR,['CROCKERY'],'#0a2a1a',15);txt(c,'she suggested it herself',460,230,YL,F(15,1),'center');txt(c,"what she took",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['“MARCONI STREET.','NUMBER 46. REMEMBER THAT.”'],'#0a2a1a',20);txt(c,'the mother gives the address',460,235,CY,F(15,1),'center');txt(c,"the address",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["After the Liberation she was <span class=hl>absolutely not interested</span> in <span class=hl>all that stored stuff</span>.", "She was <span class=hl>afraid of being confronted with things that had belonged to a connection that no longer existed</span>.", "Gradually <span class=hl>everything became more normal again</span>: lighter bread, a bed you could sleep in unthreatened.", "One day she noticed she was <span class=hl>curious</span>: <span class=hl>I wanted to see them, touch, remember.</span>"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Liberation",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,200,80,520,100,DM,['“ALL THAT','STORED STUFF”'],'#14142a',22);txt(c,'not interested',460,235,CY,F(15,1),'center');txt(c,"not interested",460,326,DM,F(14,1),"center");}
+ else if(s===1){const k=0.5+0.5*Math.sin(__t*2);box(c,160,80,600,100,MG,['AFRAID OF THINGS FROM','A CONNECTION THAT NO LONGER EXISTED'],'#2a0a2a',16);circ(c,460,230,8+k*8,CY,'rgba(34,211,238,.2)',2);txt(c,"afraid",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,40,90,250,80,YL,['LIGHTER BREAD'],'#2a2608',15);box(c,335,90,250,80,GR,['A BED, UNTHREATENED'],'#0a2a1a',14);box(c,630,90,250,80,CY,['A ROOM WITH A VIEW'],'#0a1c2a',14);txt(c,'everything more normal',460,230,YL,F(15,1),'center');txt(c,"more normal",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,120,80,680,100,CY,['“I WANTED TO SEE THEM,','TOUCH, REMEMBER.”'],'#0a1c2a',22);txt(c,"curious",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["Now <span class=hl>a girl of about fifteen</span> opened the door. Her mother was <span class=hl>doing an errand</span>.", "<span class=hl>An old-fashioned iron Hanukkah candle-holder hung next to a mirror.</span> We never used it.", "<span class=hl>I was in a room I knew and did not know.</span> She was <span class=hl>horrified</span>.", "On the woollen table-cloth she found <span class=hl>the burn mark</span> that had never been repaired."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Room",460,26,YL,F(14,1),"center");
+ if(s===0){circ(c,460,120,28,CY,'rgba(34,211,238,.2)',3);line(c,460,148,460,235,CY,4);txt(c,'about fifteen',620,130,YL,F(15,1),'center');txt(c,'“my mother’s doing an errand”',460,290,MG,F(14,1),'center');txt(c,"the girl",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,260,100,YL,['IRON HANUKKAH','CANDLE-HOLDER'],'#2a2608',15);box(c,500,80,260,100,CY,['NEXT TO','A MIRROR'],'#0a1c2a',17);txt(c,'Hanukkah = a Hebrew festival in December (footnote)',460,235,GR,F(13,1),'center');txt(c,"candle-holder",460,326,YL,F(14,1),"center");}
+ else if(s===2){const k=0.5+0.5*Math.sin(__t*2);box(c,160,70,600,110,MG,['“A ROOM I KNEW','AND DID NOT KNOW”'],'#2a0a2a',22);circ(c,460,235,8+k*8,YL,'rgba(250,204,21,.25)',2);txt(c,'tasteless, ugly furniture, muggy smell',460,285,CY,F(14,1),'center');txt(c,"horrified",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,DM,['WOOLLEN TABLE-CLOTH'],'#14142a',22);circ(c,640,170,14,MG,'rgba(232,121,249,.35)',3);txt(c,'burn mark',640,215,MG,F(14,1),'center');txt(c,"burn mark",460,326,DM,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["She opened a box and <span class=hl>took some spoons out</span>. <span class=hl>That’s a nice box.</span>", "<span class=hl>My mother says it is antique. We’ve got lots more.</span>", "The still life over the tea-table: <span class=hl>the apple on the pewter plate</span> she fancied as a child. The girl: <span class=hl>it wasn’t anything special</span>.", "<span class=hl>I was forgetting the time. I must catch my train.</span> As she left she heard <span class=hl>the jingling of spoons and forks</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Spoons",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,300,70,320,120,CY,['A BOX OF','SPOONS'],'#0a1c2a',24);txt(c,'“That’s a nice box.”',460,235,YL,F(16,1),'center');txt(c,"the box",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,80,80,360,100,YL,['“MY MOTHER SAYS','IT IS ANTIQUE.”'],'#2a2608',18);box(c,480,80,360,100,MG,['“WE’VE GOT','LOTS MORE.”'],'#2a0a2a',18);txt(c,"antique",460,326,YL,F(14,1),"center");}
+ else if(s===2){circ(c,460,130,40,MG,'rgba(232,121,249,.2)',4);line(c,360,190,560,190,'#f5f5ff',6);txt(c,'the apple on the pewter plate',460,270,CY,F(15,1),'center');txt(c,"still life",460,326,MG,F(14,1),"center");}
+ else if(s===3){const k=0.5+0.5*Math.sin(__t*3);box(c,120,70,680,100,GR,['“I MUST CATCH MY TRAIN.”'],'#0a2a1a',22);circ(c,460,230,6+k*10,YL,'rgba(250,204,21,.3)',3);txt(c,'jingling of spoons and forks',460,285,CY,F(15,1),'center');txt(c,"the train",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();anims[5]=()=>{if([3].includes(s))draw();};
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Book Q1: does <span class=hl>“I thought that no one had come back”</span> give a clue? Answer from the story.", "Book Q2: what <span class=hl>hardships</span> did the girl face before and after the War? Use details from the text.", "Book Q3: <span class=hl>why did she want to forget the address</span>? The text: objects <span class=hl>lose their value</span> when <span class=hl>severed</span> from the old life.", "Book Q4: <span class=hl>a human predicament that follows war</span>. Quote lines and explain in <span class=hl>your own words</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Text",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['“NO ONE HAD','COME BACK”'],'#0a1c2a',22);txt(c,'a clue about what?',460,235,YL,F(15,1),'center');txt(c,"Q1",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,60,90,380,90,YL,['BEFORE','THE WAR ENDED'],'#2a2608',18);box(c,480,90,380,90,MG,['AFTER','THE WAR'],'#2a0a2a',18);txt(c,'details from the text',460,235,CY,F(15,1),'center');txt(c,"Q2",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,120,70,680,110,GR,['“INSTANTLY LOSE THEIR VALUE','WHEN SEVERED”'],'#0a2a1a',20);txt(c,'plus a small rented room',460,235,CY,F(15,1),'center');txt(c,"Q3",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,200,80,520,100,YL,['QUOTE THE LINE','then explain in your words'],'#2a2608',18);txt(c,'no moral is stated',460,235,CY,F(15,1),'center');txt(c,"exam",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Pehli visit par aurat ne kya pehna tha jo narrator ki maa ka tha?",opts:["a brown coat","a green knitted cardigan","a shapeless hat","a gold ring"],a:1,why:"She was wearing my mother’s green knitted cardigan."},
+{q:"Jaate hue narrator ne kya suna?",opts:["a train whistle","a doorbell","the jingling of spoons and forks","a baby crying"],a:2,why:"As she walked down the passage she heard the jingling of spoons and forks."},
+{q:"Doosri visit par darwaza kholne wali ladki ki umar kitni thi?",opts:["about ten","about fifteen","about twenty","about thirty"],a:1,why:"a girl of about fifteen."},
+{q:"Ant mein narrator kya bhoolne ka nirnay leti hai?",opts:["the war","her mother","the girl","the address"],a:3,why:"I resolved to forget the address."},
+{q:"Narrator ko table-cloth par kya nishaan milta hai?",opts:["an ink stain","a tea stain","a burn mark","a tear"],a:2,why:"I had found the burn mark on the table-cloth."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! The Address pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
