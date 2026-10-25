@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Acids, Bases and Salts - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 10 Science - Snapshots - Acids, Bases and Salts</div>
+<h1>Acids, Bases and Salts Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - indicators, reactions, neutralisation and oxides, H+ and water, pH, salts and common salt chemicals, water of crystallisation, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Indicators 🎨⭐⭐⭐</h2>
+<p class="why">Acid aur base ki pehchaan bina taste kiye.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">blue litmus</button>
+<button class="b" data-o="1">red litmus</button>
+<button class="b" data-o="2">phenolphthalein</button>
+<button class="b" data-o="3">olfactory</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Reactions with Metals aur Carbonates ⚗️⭐⭐⭐</h2>
+<p class="why">Kaun si gas banti hai?</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Zn + H2SO4</button>
+<button class="b" data-o="1">NaOH + Zn</button>
+<button class="b" data-o="2">carbonate</button>
+<button class="b" data-o="3">lime water</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Neutralisation aur Oxides ⚖️⭐⭐⭐</h2>
+<p class="why">Acid aur base ek doosre ka asar khatam karte hain.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">NaOH + HCl</button>
+<button class="b" data-o="1">ionic</button>
+<button class="b" data-o="2">metal oxide</button>
+<button class="b" data-o="3">non-metal oxide</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. H+ aur Paani 💧⭐⭐⭐</h2>
+<p class="why">Acidic character ke liye paani zaroori hai.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">bulb</button>
+<button class="b" data-o="1">glucose</button>
+<button class="b" data-o="2">dry HCl</button>
+<button class="b" data-o="3">dilution</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. pH Scale 📏⭐⭐⭐</h2>
+<p class="why">Solution kitna acidic ya basic hai.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">pH 7</button>
+<button class="b" data-o="1">less than 7</button>
+<button class="b" data-o="2">more than 7</button>
+<button class="b" data-o="3">real life</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Salts aur Common Salt ke Chemicals 🧂⭐⭐⭐</h2>
+<p class="why">Neutral, acidic, basic salts aur NaCl se bane products.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">neutral salt</button>
+<button class="b" data-o="1">basic salt</button>
+<button class="b" data-o="2">chlor-alkali</button>
+<button class="b" data-o="3">baking soda</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Crystal ka Paani aur Plaster of Paris 🧱⭐⭐⭐</h2>
+<p class="why">Kya salts ke crystals sach mein dry hain?</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">CuSO4</button>
+<button class="b" data-o="1">heat</button>
+<button class="b" data-o="2">gypsum</button>
+<button class="b" data-o="3">POP sets</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Acids, Bases and Salts Pakka? ⭐</h2>
+<p class="why">5 sawaal - pH, lime water, dilution, copper sulphate, Plaster of Paris. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Indicators</b>Litmus: acid blue ko red, base red ko blue; phenolphthalein NaOH mein pink.</div>
+<div class="rcard"><b>Reactions</b>Acid + metal gives salt + H2; carbonate + acid gives salt + CO2 + H2O; CO2 lime water ko milky karti hai.</div>
+<div class="rcard"><b>Neutralise</b>Acid + base gives salt + water; H+ + OH- gives H2O; metal oxides basic, non-metal oxides acidic.</div>
+<div class="rcard"><b>pH</b>7 neutral, 7 se kam acidic, 7 se zyada basic; body 7.0-7.8; acid rain 5.6 se kam.</div>
+<div class="rcard"><b>Salts</b>Strong acid + strong base neutral; NaCl se NaOH, Cl2, H2, baking soda, washing soda.</div>
+<div class="rcard"><b>Crystal</b>CuSO4.5H2O blue; gypsum CaSO4.2H2O; Plaster of Paris CaSO4.half H2O, nami se bachao.</div>
+</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 10 Science Chapter 2 (Acids, Bases and Salts) - NCERT Class X Science (rev. Oct 2022, reprint Jan 2026) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["Acids <span class=hl>khatte</span> hote hain aur <span class=hl>blue litmus ko red</span> karte hain.", "Bases <span class=hl>kadve</span> hote hain aur <span class=hl>red litmus ko blue</span> karte hain.", "NaOH mein <span class=hl>phenolphthalein pink</span> hoti hai; HCl daalne par <span class=hl>pink colour chala jaata hai</span> (Activity 2.6).", "<span class=hl>Olfactory indicators</span> ki smell acidic ya basic medium mein badal jaati hai: onion, vanilla, clove."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Indicators",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['ACID','BLUE LITMUS  gives  RED'],'#0a1c2a',22);txt(c,'khatta swad',460,235,YL,F(15,1),'center');txt(c,"blue litmus",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['BASE','RED LITMUS  gives  BLUE'],'#2a2608',22);txt(c,'kadva swad',460,235,CY,F(15,1),'center');txt(c,"red litmus",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,100,80,320,100,MG,['NaOH +','PHENOLPHTHALEIN: PINK'],'#2a0a2a',16);box(c,500,80,320,100,DM,['+ HCl','PINK GOES AWAY'],'#14142a',18);arrow2(c,430,130,490,130,GR,3);txt(c,"phenolphthalein",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['ONION  VANILLA  CLOVE','SMELL CHANGES'],'#0a2a1a',20);txt(c,'olfactory indicators',460,235,CY,F(15,1),'center');txt(c,"olfactory",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Acid + Metal gives Salt + Hydrogen</span>: Zn + H2SO4 gives ZnSO4 + H2. Gas <span class=hl>jalti candle ke paas jalti hai</span>.", "<span class=hl>2NaOH + Zn gives Na2ZnO2 + H2</span> (sodium zincate). Yeh reaction <span class=hl>sab metals ke saath possible nahi</span>.", "<span class=hl>Metal carbonate or hydrogencarbonate + Acid gives Salt + CO2 + H2O</span>: Na2CO3 + 2HCl gives 2NaCl + H2O + CO2.", "CO2 ko <span class=hl>lime water</span> mein daalne par <span class=hl>white precipitate of CaCO3</span> (milky); <span class=hl>excess CO2</span> par Ca(HCO3)2 banta hai jo ghulansheel hai."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Metals",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,100,80,320,100,CY,['Zn + H2SO4','ACID + METAL'],'#0a1c2a',18);box(c,500,80,320,100,YL,['ZnSO4 + H2','GAS BURNS'],'#2a2608',18);arrow2(c,430,130,490,130,GR,3);txt(c,"Zn + H2SO4",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,MG,['2NaOH + Zn  gives','Na2ZnO2 + H2'],'#2a0a2a',20);txt(c,'sodium zincate',460,235,CY,F(15,1),'center');txt(c,"NaOH + Zn",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['Na2CO3 + 2HCl  gives','2NaCl + H2O + CO2'],'#2a2608',19);txt(c,'effervescence',460,235,CY,F(15,1),'center');txt(c,"carbonate",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,100,80,320,100,DM,['CO2 +','LIME WATER'],'#14142a',20);box(c,500,80,320,100,GR,['CaCO3','WHITE, MILKY'],'#0a2a1a',20);arrow2(c,430,130,490,130,GR,3);txt(c,"lime water",460,326,DM,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Base + Acid gives Salt + Water</span>: NaOH + HCl gives NaCl + H2O. Isse <span class=hl>neutralisation</span> kehte hain.", "Ionic form: <span class=hl>H+(aq) + OH-(aq) gives H2O(l)</span>.", "<span class=hl>Metal oxide + Acid gives Salt + Water</span>: CuO + dilute HCl se <span class=hl>blue-green CuCl2</span>. Isliye metal oxides <span class=hl>basic</span> hain.", "<span class=hl>Non-metal oxide + Base gives Salt + Water</span>: CO2 + Ca(OH)2. Isliye non-metal oxides <span class=hl>acidic</span> hain."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Neutralise",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['NaOH + HCl  gives','NaCl + H2O'],'#0a1c2a',22);txt(c,'base + acid = salt + water',460,235,YL,F(15,1),'center');txt(c,"NaOH + HCl",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['H+ + OH-  gives  H2O'],'#2a2608',24);txt(c,'neutralisation, ionic form',460,235,CY,F(15,1),'center');txt(c,"ionic",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,100,80,320,100,MG,['CuO + HCl','METAL OXIDE'],'#2a0a2a',18);box(c,500,80,320,100,GR,['CuCl2 + H2O','BLUE-GREEN'],'#0a2a1a',18);arrow2(c,430,130,490,130,GR,3);txt(c,"metal oxide",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,DM,['CO2 + Ca(OH)2  gives','CaCO3 + H2O'],'#14142a',20);txt(c,'non-metal oxide acts as an acid',460,235,CY,F(15,1),'center');txt(c,"non-metal oxide",460,326,DM,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Activity 2.8: HCl aur H2SO4 ke solution mein <span class=hl>bulb glows</span> kyunki current <span class=hl>ions</span> le jaate hain; acids mein <span class=hl>H+</span> hota hai.", "<span class=hl>Glucose aur alcohol</span> mein hydrogen hai par <span class=hl>bulb nahi glows</span>; isliye wo acid nahi hain.", "<span class=hl>Dry HCl gas</span> dry blue litmus ka colour nahi badalti; <span class=hl>paani ke saath</span> HCl + H2O gives H3O+ + Cl-.", "Dilute karte waqt <span class=hl>acid ko paani mein dheere dheere</span> daalo; process <span class=hl>highly exothermic</span> hai."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"H plus",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,YL,['HCl  OR  H2SO4  SOLUTION','BULB GLOWS: IONS PRESENT'],'#2a2608',19);txt(c,'acids give H+ ions',460,235,CY,F(15,1),'center');txt(c,"bulb",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,DM,['GLUCOSE  OR  ALCOHOL','BULB DOES NOT GLOW'],'#14142a',20);txt(c,'hydrogen hai, par acid nahi',460,235,CY,F(15,1),'center');txt(c,"glucose",460,326,DM,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,CY,['DRY HCl GAS: NO CHANGE','WITH WATER: H3O+ + Cl-'],'#0a1c2a',18);txt(c,'H+ paani ki maujoodgi mein banta hai',460,235,YL,F(14,1),'center');txt(c,"dry HCl",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['ADD ACID SLOWLY','TO WATER, WITH STIRRING'],'#2a0a2a',20);txt(c,'ulta karne par mixture chhalak sakta hai',460,235,CY,F(14,1),'center');txt(c,"dilution",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>pH 7</span> matlab <span class=hl>neutral</span>. Scale <span class=hl>0-14</span> hai aur hydrogen ion concentration napti hai.", "<span class=hl>pH 7 se kam</span> matlab <span class=hl>acidic</span>; H+ zyada to pH kam.", "<span class=hl>pH 7 se zyada</span> matlab <span class=hl>basic</span>.", "Body <span class=hl>pH 7.0 se 7.8</span>; <span class=hl>acid rain pH 5.6 se kam</span>; <span class=hl>tooth decay pH 5.5 se kam</span> par shuru."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"pH",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,GR,['pH = 7','NEUTRAL, SCALE 0 TO 14'],'#0a2a1a',22);txt(c,'universal indicator se napo',460,235,CY,F(15,1),'center');txt(c,"pH 7",460,326,GR,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,MG,['pH LESS THAN 7','ACIDIC'],'#2a0a2a',22);txt(c,'zyada H+ = kam pH',460,235,CY,F(15,1),'center');txt(c,"acidic",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,CY,['pH MORE THAN 7','BASIC'],'#0a1c2a',22);txt(c,'OH- zyada',460,235,YL,F(15,1),'center');txt(c,"basic",460,326,CY,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,YL,['BODY 7.0-7.8','ACID RAIN BELOW 5.6'],'#2a2608',21);txt(c,'tooth decay below pH 5.5',460,235,CY,F(15,1),'center');txt(c,"real life",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Strong acid + strong base</span> ka salt <span class=hl>neutral (pH 7)</span>; <span class=hl>strong acid + weak base</span> ka salt <span class=hl>acidic</span>.", "<span class=hl>Strong base + weak acid</span> ka salt <span class=hl>basic (pH more than 7)</span>.", "<span class=hl>2NaCl + 2H2O gives 2NaOH + Cl2 + H2</span>: <span class=hl>Cl2 anode par</span>, <span class=hl>H2 cathode par</span>.", "<span class=hl>Baking soda NaHCO3</span> heat par <span class=hl>Na2CO3 + H2O + CO2</span> deta hai; baking powder mein tartaric acid ke saath."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Salts",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,GR,['STRONG ACID + STRONG BASE','NEUTRAL SALT, pH 7'],'#0a2a1a',20);txt(c,'strong acid + weak base: acidic',460,235,CY,F(15,1),'center');txt(c,"neutral salt",460,326,GR,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,CY,['STRONG BASE + WEAK ACID','BASIC SALT, pH MORE THAN 7'],'#0a1c2a',19);txt(c,'jaise sodium carbonate',460,235,YL,F(15,1),'center');txt(c,"basic salt",460,326,CY,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['2NaCl + 2H2O  gives','2NaOH + Cl2 + H2'],'#2a2608',20);txt(c,'brine mein electricity',460,235,CY,F(15,1),'center');txt(c,"chlor-alkali",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['2NaHCO3  gives','Na2CO3 + H2O + CO2'],'#2a0a2a',20);txt(c,'on heating',460,235,CY,F(15,1),'center');txt(c,"baking soda",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Copper sulphate</span> crystals <span class=hl>blue</span> hain: <span class=hl>CuSO4.5H2O</span>, yaani <span class=hl>5 water molecules</span> ek formula unit mein.", "Garam karne par <span class=hl>paani nikalta hai</span> aur salt <span class=hl>white</span> ho jaata hai; paani daalne par <span class=hl>blue wapas</span> aata hai.", "<span class=hl>Gypsum CaSO4.2H2O</span> ko garam karne par <span class=hl>Plaster of Paris CaSO4.half H2O</span> banta hai.", "POP paani se milkar phir <span class=hl>gypsum (hard solid mass)</span> ban jaata hai; isliye <span class=hl>moisture-proof container</span> mein rakhte hain."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Crystal",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['CuSO4.5H2O','BLUE CRYSTALS'],'#0a1c2a',22);txt(c,'water of crystallisation = 5 molecules',460,235,YL,F(14,1),'center');txt(c,"CuSO4",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,100,80,320,100,YL,['HEAT','WATER LEAVES'],'#2a2608',20);box(c,500,80,320,100,DM,['WHITE SALT','+ WATER: BLUE AGAIN'],'#14142a',16);arrow2(c,430,130,490,130,GR,3);txt(c,"heat",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,100,80,320,100,MG,['GYPSUM','CaSO4.2H2O'],'#2a0a2a',19);box(c,500,80,320,100,GR,['PLASTER OF PARIS','CaSO4.half H2O'],'#0a2a1a',15);arrow2(c,430,130,490,130,GR,3);txt(c,"gypsum",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['POP + WATER  gives','GYPSUM, HARD MASS'],'#0a2a1a',20);txt(c,'fractured bones ka plaster, keep dry',460,235,CY,F(14,1),'center');txt(c,"POP sets",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Neutral solution ka pH kitna hota hai?",opts:["0","7","10","14"],a:1,why:"pH 7 neutral hai; scale 0-14."},
+{q:"CO2 ko lime water mein daalne par kya banta hai?",opts:["blue solution","clear solution","white precipitate of CaCO3 (milky)","red solution"],a:2,why:"Ca(OH)2 + CO2 gives CaCO3 white precipitate."},
+{q:"Acid ko dilute karne ka sahi tareeka kaun sa hai?",opts:["acid ko paani mein dheere dheere daalo","paani ko concentrated acid mein daalo","dono ek saath daalo","pehle acid ko garam karo"],a:0,why:"Always add acid slowly to water with stirring."},
+{q:"Copper sulphate crystals garam karne par kya hota hai?",opts:["blue hi rehte hain","white ho jaate hain","green ho jaate hain","red ho jaate hain"],a:1,why:"Water of crystallisation nikalta hai, salt white ho jaata hai."},
+{q:"Plaster of Paris ka formula kaun sa hai?",opts:["CaSO4.2H2O","CaSO4","CaSO4.half H2O","CuSO4.5H2O"],a:2,why:"POP is calcium sulphate hemihydrate."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Acids, Bases and Salts pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
