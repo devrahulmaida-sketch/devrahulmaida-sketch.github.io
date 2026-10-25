@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Forest and Wildlife Resources - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 10 Social Science (Geography) - Snapshots - Forest and Wildlife Resources</div>
+<h1>Forest and Wildlife Resources Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - biodiversity, conservation, Wildlife Act 1972, Project Tiger, forest categories, community conservation, JFM and sacred groves, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Biodiversity 🌿⭐⭐⭐</h2>
+<p class="why">Hum sab ek web mein.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">web</button>
+<button class="b" data-o="1">primary producers</button>
+<button class="b" data-o="2">India</button>
+<button class="b" data-o="3">stress</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Conservation kyon 🛡️⭐⭐⭐</h2>
+<p class="why">Kya bachana hai.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">ecological</button>
+<button class="b" data-o="1">genetic</button>
+<button class="b" data-o="2">crops</button>
+<button class="b" data-o="3">fisheries</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Wildlife Protection Act 🦌⭐⭐⭐</h2>
+<p class="why">1972 ka kanoon.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">1972</button>
+<button class="b" data-o="1">thrust</button>
+<button class="b" data-o="2">species</button>
+<button class="b" data-o="3">recent</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Project Tiger 🐅⭐⭐⭐</h2>
+<p class="why">Numbers aur threats.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">1973</button>
+<button class="b" data-o="1">threats</button>
+<button class="b" data-o="2">two-thirds</button>
+<button class="b" data-o="3">reserves</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Forest Categories 🌳⭐⭐⭐</h2>
+<p class="why">Teen types.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">reserved</button>
+<button class="b" data-o="1">protected</button>
+<button class="b" data-o="2">unclassed</button>
+<button class="b" data-o="3">MP</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Community Conservation 🤝⭐⭐⭐</h2>
+<p class="why">Logon ka kaam.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">Sariska</button>
+<button class="b" data-o="1">Sonchuri</button>
+<button class="b" data-o="2">Chipko</button>
+<button class="b" data-o="3">Beej Bachao</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. JFM aur Sacred Groves 🛕⭐⭐⭐</h2>
+<p class="why">Joint management.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">JFM</button>
+<button class="b" data-o="1">1988</button>
+<button class="b" data-o="2">sacred groves</button>
+<button class="b" data-o="3">Bishnoi</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Forest and Wildlife Resources Pakka? ⭐</h2>
+<p class="why">5 sawaal - biodiversity, Act 1972, tiger numbers, reserved forests, JFM. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Biodiversity</b>Wildlife and cultivated species in a network of interdependencies; forests are primary producers.</div>
+<div class="rcard"><b>Conservation</b>Preserves ecological and genetic diversity and life support systems: water, air, soil.</div>
+<div class="rcard"><b>Wildlife Act 1972</b>Hunting ban, habitat protection, trade restriction; Project Tiger 1973.</div>
+<div class="rcard"><b>Forest categories</b>Reserved: more than half. Protected: almost one-third. Unclassed: other forests and wastelands.</div>
+<div class="rcard"><b>Community</b>Sariska, Sonchuri (1,200 ha), Chipko, Beej Bachao, Navdanya.</div>
+<div class="rcard"><b>JFM and groves</b>JFM since 1988 (Odisha); sacred groves; Bishnoi villages.</div>
+</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 10 Social Science (Geography) Chapter 2 (Forest and Wildlife Resources) - NCERT Class X Contemporary India II, chapter file jess102 (Reprint 2025-26) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["Hum sab living beings ke saath ek <span class=hl>complex web of ecological system</span> ka hissa hain aur us par dependent hain.", "<span class=hl>Forests</span> ecological system mein <span class=hl>primary producers</span> hain; baaki sab living beings depend karte hain.", "India <span class=hl>biological diversity</span> mein duniya ke richest countries mein se ek hai.", "Flora aur fauna aaj <span class=hl>great stress</span> mein hain, mainly insensitivity to our environment se."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Biodiversity",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['COMPLEX WEB OF ECOLOGICAL','SYSTEM'],'#0a1c2a',18);txt(c,'plants, animals, micro-organisms recreate air, water, soil',460,235,YL,F(15,1),'center');txt(c,"web",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['FORESTS','PRIMARY PRODUCERS'],'#0a2a1a',22);txt(c,'all other living beings depend on them',460,235,CY,F(15,1),'center');txt(c,"primary producers",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['BIOLOGICAL DIVERSITY','ONE OF THE RICHEST'],'#2a2608',20);txt(c,'India among the richest countries',460,235,CY,F(15,1),'center');txt(c,"India",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['FLORA AND FAUNA','UNDER GREAT STRESS'],'#2a0a2a',20);txt(c,'mainly insensitivity to our environment',460,235,CY,F(15,1),'center');txt(c,"stress",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["Conservation <span class=hl>ecological diversity</span> aur life support systems (water, air, soil) preserve karta hai.", "Ye plants aur animals ki <span class=hl>genetic diversity</span> bhi preserve karta hai.", "Agriculture mein hum ab bhi <span class=hl>traditional crop varieties</span> par dependent hain.", "Fisheries <span class=hl>aquatic biodiversity</span> ke maintenance par dependent hain."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Conservation",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['ECOLOGICAL DIVERSITY','WATER, AIR, SOIL'],'#0a1c2a',20);txt(c,'life support systems',460,235,YL,F(15,1),'center');txt(c,"ecological",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['GENETIC DIVERSITY','PLANTS AND ANIMALS'],'#0a2a1a',20);txt(c,'better growth of species and breeding',460,235,CY,F(15,1),'center');txt(c,"genetic",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['TRADITIONAL CROP','VARIETIES'],'#2a2608',22);txt(c,'agriculture still depends on them',460,235,CY,F(15,1),'center');txt(c,"crops",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['FISHERIES','AQUATIC BIODIVERSITY'],'#2a0a2a',22);txt(c,'maintenance of aquatic biodiversity',460,235,CY,F(15,1),'center');txt(c,"fisheries",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["1960s-70s mein demand ke baad <span class=hl>Indian Wildlife (Protection) Act 1972</span> implement hua.", "Thrust: <span class=hl>hunting ban</span>, habitats ko legal protection, wildlife trade par restriction.", "Projects: tiger, one-horned rhinoceros, hangul, three crocodiles, Asiatic lion.", "Haal mein <span class=hl>Indian elephant, black buck, great Indian bustard, snow leopard</span> ko full ya partial protection."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Wildlife Act",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['INDIAN WILDLIFE','(PROTECTION) ACT 1972'],'#0a1c2a',22);txt(c,'all-India list of protected species',460,235,YL,F(15,1),'center');txt(c,"1972",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['BAN HUNTING','PROTECT HABITATS'],'#0a2a1a',24);txt(c,'restrict trade in wildlife',460,235,CY,F(15,1),'center');txt(c,"thrust",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['TIGER, RHINOCEROS, HANGUL','CROCODILES, ASIATIC LION'],'#2a2608',18);txt(c,'specific animals, gravely threatened',460,235,CY,F(15,1),'center');txt(c,"species",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['ELEPHANT, BLACK BUCK','BUSTARD, SNOW LEOPARD'],'#2a0a2a',20);txt(c,'full or partial legal protection',460,235,CY,F(15,1),'center');txt(c,"recent",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Tiger population century ke turn par estimated <span class=hl>55,000</span> se ghat kar <span class=hl>1,827</span> reh gayi; <span class=hl>Project Tiger 1973</span>.", "Threats: <span class=hl>poaching, shrinking habitat, prey base ki depletion, growing human population</span>.", "India aur Nepal duniya ki bachi tiger population ka lagbhag <span class=hl>two-thirds</span> habitat dete hain.", "Tiger reserves: <span class=hl>Corbett, Sunderbans, Bandhavgarh, Sariska, Manas, Periyar</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Project Tiger",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['55,000 TO 1,827','PROJECT TIGER 1973'],'#0a1c2a',24);txt(c,'tiger numbers as per the text',460,235,YL,F(15,1),'center');txt(c,"1973",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,MG,['POACHING, SHRINKING HABITAT','PREY DEPLETION, POPULATION'],'#2a0a2a',19);txt(c,'major threats to the tiger',460,235,CY,F(15,1),'center');txt(c,"threats",460,326,MG,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['INDIA AND NEPAL','ABOUT TWO-THIRDS'],'#0a2a1a',22);txt(c,'of the surviving tiger population',460,235,CY,F(15,1),'center');txt(c,"two-thirds",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,YL,['CORBETT, SUNDERBANS','BANDHAVGARH, SARISKA'],'#2a2608',20);txt(c,'also Manas and Periyar',460,235,CY,F(15,1),'center');txt(c,"reserves",460,326,YL,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Reserved forests</span>: total forest land ka <span class=hl>half se zyada</span>; sabse valuable.", "<span class=hl>Protected forests</span>: almost <span class=hl>one-third</span>; further depletion se protected.", "<span class=hl>Unclassed forests</span>: other forests aur wastelands; government, private aur communities ke.", "Reserved + protected = <span class=hl>permanent forest estates</span>. Madhya Pradesh: <span class=hl>75 per cent</span> of its forest area."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Forest categories",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['RESERVED FORESTS','MORE THAN HALF'],'#0a1c2a',22);txt(c,'most valuable for conservation',460,235,YL,F(15,1),'center');txt(c,"reserved",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['PROTECTED FORESTS','ALMOST ONE-THIRD'],'#0a2a1a',22);txt(c,'protected from further depletion',460,235,CY,F(15,1),'center');txt(c,"protected",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['UNCLASSED FORESTS','OTHER FORESTS, WASTELANDS'],'#2a2608',20);txt(c,'government, private, community',460,235,CY,F(15,1),'center');txt(c,"unclassed",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['MADHYA PRADESH','75 PER CENT PERMANENT'],'#2a0a2a',22);txt(c,'of its total forest area',460,235,CY,F(15,1),'center');txt(c,"MP",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["Sariska Tiger Reserve (Rajasthan): villagers ne Wildlife Protection Act cite kar <span class=hl>mining</span> ke khilaf ladai ladi.", "Alwar ke <span class=hl>paanch villages</span> ne <span class=hl>1,200 hectares</span> forest ko Bhairodev Dakav Sonchuri declare kiya.", "<span class=hl>Chipko movement</span>: Himalayas mein deforestation roka; community afforestation successful.", "<span class=hl>Beej Bachao Andolan</span> (Tehri) aur <span class=hl>Navdanya</span>: chemicals ke bina diversified crop production."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Community",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['SARISKA TIGER RESERVE','VILLAGERS VS MINING'],'#0a1c2a',21);txt(c,'citing the Wildlife Protection Act',460,235,YL,F(15,1),'center');txt(c,"Sariska",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['BHAIRODEV DAKAV SONCHURI','1,200 HECTARES'],'#0a2a1a',20);txt(c,'five villages in Alwar, Rajasthan',460,235,CY,F(15,1),'center');txt(c,"Sonchuri",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['CHIPKO MOVEMENT','HIMALAYAS'],'#2a2608',22);txt(c,'resisted deforestation in several areas',460,235,CY,F(15,1),'center');txt(c,"Chipko",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['BEEJ BACHAO ANDOLAN','AND NAVDANYA'],'#2a0a2a',20);txt(c,'diversified crops without synthetic chemicals',460,235,CY,F(15,1),'center');txt(c,"Beej Bachao",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Joint Forest Management: <span class=hl>village institutions</span> degraded forest ki protection karti hain.", "Formal existence <span class=hl>1988</span> se, jab <span class=hl>Odisha</span> ne pehla resolution pass kiya.", "<span class=hl>Sacred groves</span>: forests of Gods and Goddesses; local interference banned.", "<span class=hl>Bishnoi</span> villages: blackbuck (chinkara), nilgai aur peacocks community ka part."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"JFM and groves",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['JOINT FOREST MANAGEMENT','LOCAL VILLAGE INSTITUTIONS'],'#0a1c2a',19);txt(c,'non-timber produce and timber share',460,235,YL,F(15,1),'center');txt(c,"JFM",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['1988','ODISHA FIRST RESOLUTION'],'#0a2a1a',24);txt(c,'formal existence of JFM',460,235,CY,F(15,1),'center');txt(c,"1988",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['SACRED GROVES','UNTOUCHED FOREST PATCHES'],'#2a2608',21);txt(c,'nature worship, age-old tribal belief',460,235,CY,F(15,1),'center');txt(c,"sacred groves",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['BISHNOI VILLAGES','BLACKBUCK, NILGAI, PEACOCK'],'#2a0a2a',20);txt(c,'an integral part of the community',460,235,CY,F(15,1),'center');txt(c,"Bishnoi",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Indian Wildlife (Protection) Act kab implement hua?",opts:["1962","1967","1972","1980"],a:2,why:"The Indian Wildlife (Protection) Act was implemented in 1972."},
+{q:"Text ke anusar 1973 mein tiger population kitni reh gayi thi?",opts:["55,000","1,827","18,270","5,500"],a:1,why:"The tiger population had dwindled to 1,827 from an estimated 55,000 at the turn of the century."},
+{q:"Kaun si forest category total forest land ka half se zyada hai?",opts:["Protected forests","Unclassed forests","Reserved forests","Sacred groves"],a:2,why:"More than half of the total forest land has been declared reserved forests."},
+{q:"Joint Forest Management ka pehla resolution kis state ne pass kiya?",opts:["Rajasthan","Uttarakhand","Madhya Pradesh","Odisha"],a:3,why:"JFM has been in formal existence since 1988, when Odisha passed the first resolution."},
+{q:"Beej Bachao Andolan kahan chala?",opts:["Alwar","Tehri","Sariska","Kaziranga"],a:1,why:"The text names the Beej Bachao Andolan in Tehri."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Forest and Wildlife Resources pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
