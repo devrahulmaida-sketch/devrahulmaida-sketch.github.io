@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Light - Reflection and Refraction - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 10 Science - Snapshots - Light - Reflection and Refraction</div>
+<h1>Light - Reflection and Refraction Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - reflection, spherical mirrors, concave mirror, convex mirror and sign convention, mirror formula, refraction, lenses, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Reflection of Light 🪞⭐⭐⭐</h2>
+<p class="why">Laws aur plane mirror.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">reflection</button>
+<button class="b" data-o="1">laws</button>
+<button class="b" data-o="2">plane mirror</button>
+<button class="b" data-o="3">inverted</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Spherical Mirrors 🥄⭐⭐⭐</h2>
+<p class="why">P, C, R, F, f.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">concave convex</button>
+<button class="b" data-o="1">P and C</button>
+<button class="b" data-o="2">focus</button>
+<button class="b" data-o="3">R = 2f</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Concave Mirror Images 🔦⭐⭐⭐</h2>
+<p class="why">Object ki position se image.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">rays</button>
+<button class="b" data-o="1">beyond C</button>
+<button class="b" data-o="2">between C and F</button>
+<button class="b" data-o="3">P and F</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Convex Mirror aur Signs 🚗⭐⭐⭐</h2>
+<p class="why">Rear-view mirror aur convention.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">convex image</button>
+<button class="b" data-o="1">rear-view</button>
+<button class="b" data-o="2">left object</button>
+<button class="b" data-o="3">signs</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Mirror Formula 🧮⭐⭐⭐</h2>
+<p class="why">Formula aur magnification.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">formula</button>
+<button class="b" data-o="1">magnification</button>
+<button class="b" data-o="2">example 9.2</button>
+<button class="b" data-o="3">real or virtual</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Refraction of Light 🔍⭐⭐⭐</h2>
+<p class="why">Speed change aur bending.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">speed change</button>
+<button class="b" data-o="1">towards normal</button>
+<button class="b" data-o="2">slab</button>
+<button class="b" data-o="3">refractive index</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Lenses 🔬⭐⭐⭐</h2>
+<p class="why">Images, formula aur power.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">convex concave</button>
+<button class="b" data-o="1">convex images</button>
+<button class="b" data-o="2">lens formula</button>
+<button class="b" data-o="3">power</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Light Pakka? ⭐</h2>
+<p class="why">5 sawaal - concave mirror image, rear-view mirror, glass slab, speed in glass, power of a lens. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Reflection</b>i = r; plane mirror image is virtual, erect, same size, laterally inverted.</div>
+<div class="rcard"><b>Mirrors</b>R = 2f; concave gives virtual erect enlarged image only between P and F.</div>
+<div class="rcard"><b>Convex mirror</b>Always virtual, erect, diminished; wider field of view.</div>
+<div class="rcard"><b>Mirror formula</b>1/v + 1/u = 1/f; m = -v/u.</div>
+<div class="rcard"><b>Refraction</b>Rarer to denser: towards normal; n = c/v; slab ray emerges parallel.</div>
+<div class="rcard"><b>Lens</b>1/v - 1/u = 1/f; m = v/u; P = 1/f in dioptres.</div>
+</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 10 Science Chapter 9 (Light - Reflection and Refraction) - NCERT Class X Science, chapter file jesc109 - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["Object light ko <span class=hl>reflect</span> karta hai; wo light aankh tak pahunche to hum object dekhte hain.", "<span class=hl>Angle of incidence = angle of reflection</span>; incident ray, normal aur reflected ray <span class=hl>ek hi plane</span> mein.", "Plane mirror ka image <span class=hl>virtual aur erect</span>, object ke barabar size ka, utni hi doori par mirror ke peeche.", "Plane mirror ka image <span class=hl>laterally inverted</span> hota hai."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Reflection",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['LIGHT FALLS ON AN OBJECT','REFLECTED LIGHT REACHES THE EYE'],'#0a1c2a',18);txt(c,'we see the object',460,235,YL,F(15,1),'center');txt(c,"reflection",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['ANGLE i = ANGLE r','RAYS AND NORMAL IN ONE PLANE'],'#2a2608',20);txt(c,'laws of reflection',460,235,CY,F(15,1),'center');txt(c,"laws",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['PLANE MIRROR IMAGE','VIRTUAL  ERECT  SAME SIZE'],'#0a2a1a',21);txt(c,'as far behind the mirror as the object is in front',460,235,CY,F(14,1),'center');txt(c,"plane mirror",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['LATERALLY INVERTED'],'#2a0a2a',24);txt(c,"inverted",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["Surface andar curved to <span class=hl>concave mirror</span>; bahar curved to <span class=hl>convex mirror</span>.", "<span class=hl>Pole P</span> surface ka centre; <span class=hl>centre of curvature C</span> mirror ka part nahi; <span class=hl>R = PC</span>.", "Axis ke parallel rays concave mirror se reflect hokar <span class=hl>principal focus F</span> par meet karti hain; P se F ki doori <span class=hl>f</span>.", "Chhote aperture ke mirror mein <span class=hl>R = 2f</span>: F, P aur C ke beech mein."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Spherical mirrors",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,100,80,320,100,CY,['CONCAVE','CURVES INWARDS'],'#0a1c2a',20);box(c,500,80,320,100,MG,['CONVEX','CURVES OUTWARDS'],'#2a0a2a',20);txt(c,'parts of a sphere',460,235,YL,F(15,1),'center');txt(c,"concave convex",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,100,80,320,100,YL,['POLE P','CENTRE OF SURFACE'],'#2a2608',20);box(c,500,80,320,100,CY,['CENTRE C','NOT PART OF MIRROR'],'#0a1c2a',19);txt(c,'R = PC',460,235,GR,F(16,1),'center');txt(c,"P and C",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['PRINCIPAL FOCUS F','PARALLEL RAYS MEET'],'#0a2a1a',21);txt(c,'f = distance from P to F',460,235,CY,F(15,1),'center');txt(c,"focus",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['R = 2f','F IS MIDWAY BETWEEN P AND C'],'#2a0a2a',21);txt(c,'small aperture mirrors',460,235,CY,F(15,1),'center');txt(c,"R = 2f",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["Do rays kaafi hain: axis ke parallel ray <span class=hl>F se</span> guzarti; F wali ray <span class=hl>axis ke parallel</span>; C wali ray <span class=hl>wapas usi path</span> par.", "Object <span class=hl>C ke aage</span>: image F aur C ke beech, <span class=hl>diminished, real, inverted</span>.", "Object <span class=hl>C aur F ke beech</span>: image C ke aage, <span class=hl>enlarged, real, inverted</span>.", "Object <span class=hl>P aur F ke beech</span>: image mirror ke peeche, <span class=hl>enlarged, virtual, erect</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Concave mirror",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['PARALLEL RAY GOES THROUGH F','RAY THROUGH C RETURNS'],'#0a1c2a',18);txt(c,'any two rays locate the image',460,235,YL,F(15,1),'center');txt(c,"rays",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['OBJECT BEYOND C','IMAGE BETWEEN F AND C'],'#2a2608',20);txt(c,'diminished  real  inverted',460,235,CY,F(15,1),'center');txt(c,"beyond C",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['OBJECT BETWEEN C AND F','IMAGE BEYOND C'],'#0a2a1a',20);txt(c,'enlarged  real  inverted',460,235,CY,F(15,1),'center');txt(c,"between C and F",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['OBJECT BETWEEN P AND F','IMAGE BEHIND THE MIRROR'],'#2a0a2a',20);txt(c,'enlarged  virtual  erect',460,235,CY,F(15,1),'center');txt(c,"P and F",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Convex mirror ka image hamesha <span class=hl>virtual, erect aur diminished</span>, mirror ke peeche.", "Isliye <span class=hl>rear-view mirror</span>: erect image aur <span class=hl>wider field of view</span>.", "New Cartesian Sign Convention: pole origin; object hamesha mirror ke <span class=hl>left</span> mein.", "Right (+x) <span class=hl>positive</span>, left (-x) <span class=hl>negative</span>; axis ke upar (+y) positive, neeche (-y) negative."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Convex mirror",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['CONVEX MIRROR IMAGE','VIRTUAL  ERECT  DIMINISHED'],'#0a1c2a',19);txt(c,'formed behind the mirror',460,235,YL,F(15,1),'center');txt(c,"convex image",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['REAR-VIEW MIRROR','WIDER FIELD OF VIEW'],'#2a2608',21);txt(c,'always erect and diminished',460,235,CY,F(15,1),'center');txt(c,"rear-view",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['POLE = ORIGIN','OBJECT ON THE LEFT'],'#0a2a1a',21);txt(c,'principal axis is the x-axis',460,235,CY,F(15,1),'center');txt(c,"left object",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,100,80,320,100,GR,['RIGHT AND UP','POSITIVE'],'#0a2a1a',20);box(c,500,80,320,100,MG,['LEFT AND DOWN','NEGATIVE'],'#2a0a2a',20);txt(c,"signs",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>1/v + 1/u = 1/f</span>: sab spherical mirrors aur sab object positions ke liye; signs ke saath.", "<span class=hl>m = h'/h = -v/u</span>.", "Example 9.2: f = -15 cm, u = -25 cm: <span class=hl>v = -37.5 cm</span>, h' = -6.0 cm: real, inverted, enlarged.", "<span class=hl>Negative m</span> matlab real image; <span class=hl>positive m</span> matlab virtual image."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Mirror formula",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['1/v + 1/u = 1/f'],'#0a1c2a',28);txt(c,'use u, v, f with signs',460,235,YL,F(15,1),'center');txt(c,"formula",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['m = h over h  =  -v over u'],'#2a2608',24);txt(c,'ratio of image height to object height',460,235,CY,F(14,1),'center');txt(c,"magnification",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['v = -37.5 CM','m = -1.5'],'#0a2a1a',24);txt(c,'real  inverted  enlarged',460,235,CY,F(15,1),'center');txt(c,"example 9.2",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,100,80,320,100,CY,['NEGATIVE m','REAL'],'#0a1c2a',22);box(c,500,80,320,100,MG,['POSITIVE m','VIRTUAL'],'#2a0a2a',22);txt(c,"real or virtual",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["Light ek transparent medium se doosre mein <span class=hl>obliquely</span> jaye to direction badalti hai: <span class=hl>refraction</span>, jo <span class=hl>speed badalne</span> se hota hai.", "<span class=hl>Rarer se denser</span>: normal ki taraf; <span class=hl>denser se rarer</span>: normal se door.", "Rectangular glass slab: <span class=hl>emergent ray incident ray ke parallel</span>, thodi side mein shifted.", "<span class=hl>sin i / sin r = constant</span> (Snell); absolute refractive index <span class=hl>n = c/v</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Refraction",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['LIGHT SPEED CHANGES','AT THE BOUNDARY OF TWO MEDIA'],'#0a1c2a',19);txt(c,'direction changes: refraction',460,235,YL,F(15,1),'center');txt(c,"speed change",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,100,80,320,100,GR,['RARER TO DENSER','TOWARDS NORMAL'],'#0a2a1a',20);box(c,500,80,320,100,MG,['DENSER TO RARER','AWAY FROM NORMAL'],'#2a0a2a',20);txt(c,"towards normal",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['GLASS SLAB','EMERGENT RAY PARALLEL, SHIFTED'],'#2a2608',20);txt(c,'bending at two faces is equal and opposite',460,235,CY,F(14,1),'center');txt(c,"slab",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,CY,['n = c / v','WATER 1.33   CROWN GLASS 1.52   DIAMOND 2.42'],'#0a1c2a',17);txt(c,'vacuum speed 3 x 10^8 m per s',460,235,YL,F(15,1),'center');txt(c,"refractive index",460,326,CY,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Convex lens</span> converge karta hai, <span class=hl>concave lens</span> diverge; <span class=hl>optical centre O</span> se ray bina deviation ke nikalti hai.", "Convex lens: object <span class=hl>F1 aur O ke beech</span> ho to image <span class=hl>virtual, erect, enlarged</span>; concave lens hamesha virtual, erect, diminished.", "<span class=hl>1/v - 1/u = 1/f</span> aur <span class=hl>m = v/u</span>. Example 9.4: f = +10, u = -15: v = +30 cm, m = -2.", "<span class=hl>P = 1/f</span> in <span class=hl>dioptre</span>: convex positive, concave negative; lenses in contact: <span class=hl>P = P1 + P2</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Lenses",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,100,80,320,100,CY,['CONVEX','CONVERGES LIGHT'],'#0a1c2a',20);box(c,500,80,320,100,MG,['CONCAVE','DIVERGES LIGHT'],'#2a0a2a',20);txt(c,'ray through O passes straight',460,235,YL,F(15,1),'center');txt(c,"convex concave",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['OBJECT BETWEEN F1 AND O','VIRTUAL  ERECT  ENLARGED'],'#0a2a1a',19);txt(c,'concave lens: always virtual erect diminished',460,235,CY,F(14,1),'center');txt(c,"convex images",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['1/v - 1/u = 1/f','m = v / u'],'#2a2608',24);txt(c,'example 9.4: v = +30 cm  m = -2',460,235,CY,F(15,1),'center');txt(c,"lens formula",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['P = 1 / f','UNIT: DIOPTRE (D)'],'#2a0a2a',22);txt(c,'+2.0 D lens: convex, f = +0.50 m',460,235,CY,F(15,1),'center');txt(c,"power",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Concave mirror ka image virtual, erect aur enlarged kab banta hai?",opts:["object C par","object P aur F ke beech","object infinity par","object C ke aage"],a:1,why:"For an object between P and F the image is behind the mirror, enlarged, virtual and erect."},
+{q:"Convex mirror rear-view mirror kyon use hota hai?",opts:["wo real image deta hai","wo image enlarge karta hai","uski focal length zero hoti hai","wo erect, diminished image deta hai aur field of view wider hai"],a:3,why:"A convex mirror always gives an erect, diminished image and has a wider field of view."},
+{q:"Rectangular glass slab se nikli ray incident ray ke kaisi hoti hai?",opts:["parallel, thodi shifted","perpendicular","bilkul same line mein","ulti direction mein"],a:0,why:"The bending at the two parallel faces is equal and opposite, so the emergent ray is parallel to the incident ray but slightly shifted."},
+{q:"Light air se glass (n = 1.50) mein jaye to speed kya hogi?",opts:["3 x 10^8 m/s","4.5 x 10^8 m/s","2 x 10^8 m/s","1.5 x 10^8 m/s"],a:2,why:"v = c/n = 3 x 10^8 / 1.50 = 2 x 10^8 m/s."},
+{q:"Lens ki power +2.0 D hai. Focal length aur type?",opts:["-0.50 m, concave","+0.50 m, convex","+2.0 m, convex","-2.0 m, concave"],a:1,why:"f = 1/P = +0.50 m, and positive power means a convex lens."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Light pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
