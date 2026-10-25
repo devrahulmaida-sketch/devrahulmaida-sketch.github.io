@@ -274,12 +274,12 @@ draw();
 inits[3]=(()=>{
 const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
 sel("sc3","b",i=>{s=i;draw();});
-const INFO=["Circular loop ke <span class=hl>centre par</span> field lines <span class=hl>straight lines</span> jaisi.", "<span class=hl>n turns</span> ka coil: field ek turn ka <span class=hl>n guna</span>.", "<span class=hl>Solenoid</span> ka field <span class=hl>bar magnet</span> jaisa; andar <span class=hl>uniform</span>.", "Andar <span class=hl>soft iron</span> rakho to <span class=hl>electromagnet</span> banta hai."];
+const INFO=["Circular loop ke <span class=hl>centre par</span> field lines <span class=hl>straight lines</span> jaisi.", "<span class=hl>n turns</span> ka coil, har turn mein wahi current ek direction mein: field ek turn ka <span class=hl>n guna</span>.", "<span class=hl>Solenoid</span> ka field <span class=hl>bar magnet</span> jaisa; andar <span class=hl>uniform</span>.", "Andar <span class=hl>soft iron</span> rakho to <span class=hl>electromagnet</span> banta hai."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Loop and solenoid",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,CY,['CIRCULAR LOOP','STRAIGHT LINES AT THE CENTRE'],'#0a1c2a',20);txt(c,'every section adds in the same direction',460,235,YL,F(15,1),'center');txt(c,"loop",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['COIL OF N TURNS','N TIMES THE FIELD'],'#2a2608',22);txt(c,'fields of the turns add up',460,235,CY,F(15,1),'center');txt(c,"n turns",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['N TURNS, SAME CURRENT','N TIMES ONE TURN FIELD'],'#2a2608',22);txt(c,'same direction in every turn, so fields add up',460,235,CY,F(15,1),'center');txt(c,"n turns",460,326,YL,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,GR,['SOLENOID','LIKE A BAR MAGNET'],'#0a2a1a',24);txt(c,'uniform field inside',460,235,CY,F(15,1),'center');txt(c,"solenoid",460,326,GR,F(14,1),"center");}
  else if(s===3){box(c,160,80,600,100,MG,['ELECTROMAGNET','SOFT IRON CORE IN A COIL'],'#2a0a2a',21);txt(c,'magnetised while current flows',460,235,CY,F(15,1),'center');txt(c,"electromagnet",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
