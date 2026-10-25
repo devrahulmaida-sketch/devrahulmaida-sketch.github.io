@@ -165,7 +165,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 </div>
 <div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
-<div class="foot">Learn With Rahul - Class 10 Science Chapter 6 (Control and Coordination) - NCERT Class X Science (rev. Oct 2022, reprint Jan 2026) - Interactive Walkthrough</div>
+<div class="foot">Learn With Rahul - Class 10 Science Chapter 6 (Control and Coordination) - NCERT Class X Science, chapter file jesc106 (Reprint 2026-27) - Interactive Walkthrough</div>
 </div>
 <script>
 
@@ -244,12 +244,12 @@ draw();
 inits[1]=(()=>{
 const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
 sel("sc1","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Reflex action</span>: environment ke change par achanak, <span class=hl>bina sochi</span> action, jaise garam cheez se haath hatana.", "<span class=hl>Reflex arc</span>: <span class=hl>input nerve</span> aur <span class=hl>output nerve</span> ka seedha connection.", "Reflex arc <span class=hl>spinal cord</span> mein banta hai; information <span class=hl>brain tak bhi</span> jaati hai.", "Brain ki <span class=hl>thinking process fast nahi</span>, isliye quick response ke liye reflex arc efficient hai."];
+const INFO=["<span class=hl>Reflex action</span>: environment ke change par achanak, <span class=hl>bina sochi</span> action, jaise garam cheez se haath hatana.", "<span class=hl>Reflex arc</span>: <span class=hl>receptor</span>, <span class=hl>sensory neuron</span>, <span class=hl>spinal cord</span>, <span class=hl>motor neuron</span>, phir <span class=hl>muscle</span> (effector).", "Reflex arc <span class=hl>spinal cord</span> mein banta hai; information <span class=hl>brain tak bhi</span> jaati hai.", "Brain ki <span class=hl>thinking process fast nahi</span>, isliye quick response ke liye reflex arc efficient hai."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Reflex",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,CY,['REFLEX ACTION','SUDDEN  NO THINKING'],'#0a1c2a',22);txt(c,'garam cheez se haath hatana',460,235,YL,F(15,1),'center');txt(c,"reflex",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,100,80,320,100,YL,['INPUT NERVE','FROM RECEPTOR'],'#2a2608',20);box(c,500,80,320,100,GR,['OUTPUT NERVE','TO MUSCLE'],'#0a2a1a',20);arrow2(c,430,130,490,130,GR,3);txt(c,"reflex arc",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,20,70,150,100,CY,['RECEPTOR','SENSES HEAT'],'#0a1c2a',16);box(c,200,70,150,100,YL,['SENSORY','NEURON'],'#2a2608',16);box(c,380,70,150,100,MG,['SPINAL CORD','CONNECTION'],'#2a0a2a',16);box(c,560,70,150,100,GR,['MOTOR','NEURON'],'#0a2a1a',16);box(c,740,70,150,100,DM,['MUSCLE','EFFECTOR'],'#14142a',16);arrow2(c,172,120,198,120,YL,3);arrow2(c,352,120,378,120,MG,3);arrow2(c,532,120,558,120,GR,3);arrow2(c,712,120,738,120,GR,3);txt(c,'simplified: signal brain tak bhi jaata hai',460,235,CY,F(14,1),'center');txt(c,"reflex arc",460,326,YL,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,MG,['SPINAL CORD','REFLEX ARC FORMED HERE'],'#2a0a2a',21);txt(c,'brain tak information bhi jaati hai',460,235,CY,F(14,1),'center');txt(c,"spinal cord",460,326,MG,F(14,1),"center");}
  else if(s===3){box(c,160,80,600,100,DM,['FASTER THAN THINKING','BRAIN IS SLOWER'],'#14142a',21);txt(c,'kai animals mein thinking network nahi',460,235,CY,F(14,1),'center');txt(c,"why",460,326,DM,F(14,1),"center");}
  R.innerHTML=INFO[s];
