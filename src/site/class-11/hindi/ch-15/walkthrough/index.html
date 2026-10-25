@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>घर की याद - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 11 Hindi - Snapshots - घर की याद</div>
+<h1>घर की याद Ka Visual Walkthrough</h1>
+<p class="sub">NCERT Aroh (Reprint 2026-27) ka paath: kavi parichay, pani aur ghar, parivar, pita, sawan se sandesh aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Kavi Bhawani Prasad Mishra ✍️⭐⭐⭐</h2>
+<p class="why">NCERT parichay: janm, rachnayen, mrityu.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">janm</button>
+<button class="b" data-o="1">rachnayen</button>
+<button class="b" data-o="2">samman</button>
+<button class="b" data-o="3">mrityu</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Mishra ji ki Kavita 🌿⭐⭐⭐</h2>
+<p class="why">Sahaj lay aur gharelu vishay.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">sahaj lay</button>
+<button class="b" data-o="1">gharelu</button>
+<button class="b" data-o="2">Gandhivad</button>
+<button class="b" data-o="3">vyangya</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Ghar ki Yaad ka Swaroop 🏠⭐⭐⭐</h2>
+<p class="why">Ghar ke marm ka udghatan.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">udghatan</button>
+<button class="b" data-o="1">visthapan</button>
+<button class="b" data-o="2">parijan</button>
+<button class="b" data-o="3">kendriya</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Pani Gir Raha Hai 🌧️⭐⭐⭐</h2>
+<p class="why">Pran-man ghirta raha hai.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">pani</button>
+<button class="b" data-o="1">ghirna</button>
+<button class="b" data-o="2">nazar mein</button>
+<button class="b" data-o="3">poor hai jo</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Bhai-Behen aur Maa 👨‍👩‍👧‍👦⭐⭐⭐</h2>
+<p class="why">Paritap ka ghar aur bin-padhi maa.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">paritap</button>
+<button class="b" data-o="1">char bhai</button>
+<button class="b" data-o="2">maa</button>
+<button class="b" data-o="3">patra</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. Pita aur Paanchva Main 👨‍👦⭐⭐⭐</h2>
+<p class="why">Budhapa ek kshan bhi nahin vyaapa.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">pita ji</button>
+<button class="b" data-o="1">maut ke aage</button>
+<button class="b" data-o="2">paanchva</button>
+<button class="b" data-o="3">hete</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Sawan se Sandesh aur Text ko Padhna 🧭⭐⭐</h2>
+<p class="why">Explicit, supported reading, teaching background.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">sawan</button>
+<button class="b" data-o="1">bas</button>
+<button class="b" data-o="2">explicit</button>
+<button class="b" data-o="3">supported</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - घर की याद Pakka? ⭐</h2>
+<p class="why">5 sawaal - kavita ka Gandhi, paritap ka ghar, paritap ka arth, maa, sawan se sandesh. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Kavi</b>Bhawani Prasad Mishra (1913-1985); Tigariya, Hoshangabad; kavita ka Gandhi.</div>
+<div class="rcard"><b>Swaroop</b>Ghar ke marm ka udghatan; jail-pravas mein ghar se visthapan ki peeda.</div>
+<div class="rcard"><b>Pani aur ghar</b>Raat bhar pani; pran-man ghirta; ghar nazar mein tir raha hai.</div>
+<div class="rcard"><b>Parivar</b>Char bhai, char bahinen; paritap ka ghar; bin-padhi maa; patra.</div>
+<div class="rcard"><b>Pita</b>Budhapa nahin vyaapa; daud jaayen; maut ke aage na hichken; paanchva main.</div>
+<div class="rcard"><b>Sandesh</b>Sawan se: tum baras lo ve na barsen; main maze mein hun, shak na dena.</div>
+</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 11 Hindi Chapter 15 (घर की याद) - NCERT Aroh (Reprint 2026-27) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["NCERT parichay: <span class=hl>janm san 1913, Tigariya gaon, Hoshangabad (M.P.)</span>.", "Rachnayen: <span class=hl>Satpura ke jungle, Sannata, Geetfarosh, Chakit hai dukh, Buni hui rassi, Khushboo ke shilalekh, Anam tum aate ho, Idam na mam</span> aadi.", "Samman: <span class=hl>Sahitya Akademi, Madhya Pradesh Shasan ka Shikhar Samman, Delhi Prashasan ka Ghalib Puraskar, Padmashri</span>.", "<span class=hl>Mrityu san 1985</span>; parichay: unhe <span class=hl>kavita ka Gandhi</span> bhi kaha gaya hai."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Kavi",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['JANM 1913','TIGARIYA, HOSHANGABAD'],'#0a1c2a',19);txt(c,'Madhya Pradesh',460,235,YL,F(15,1),'center');txt(c,"janm",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['SATPURA KE JUNGLE','SANNATA GEETFAROSH'],'#2a2608',18);txt(c,'aur bhi rachnayen',460,235,CY,F(15,1),'center');txt(c,"rachnayen",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['SAHITYA AKADEMI','GHALIB PURASKAR PADMASHRI'],'#2a0a2a',17);txt(c,'NCERT parichay',460,235,CY,F(15,1),'center');txt(c,"samman",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['MRITYU 1985','KAVITA KA GANDHI'],'#0a2a1a',20);txt(c,'parichay ki sanjna',460,235,CY,F(15,1),'center');txt(c,"mrityu",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["Parichay: <span class=hl>kavita Hindi ki sahaj lay ki kavita</span> hai; <span class=hl>bol-chal ke gadyatmak-se lagte vakya-vinyas</span> ko kavita mein badalne ki kshamta.", "Parichay: jis vishay ko uthate hain use <span class=hl>gharelu bana lete hain</span> - <span class=hl>angan ka paudha, shaam aur door dikhti pahad ki neeli choti</span> bhi parivar ka ang.", "Parichay: <span class=hl>Gandhivad par astha</span>; <span class=hl>Gandhi vangmay ke Hindi khandon ka sampadan</span>; <span class=hl>ahinsa aur sahanshilta ko rachnatmak abhivyakti</span>.", "Parichay: nayi kavita ke daur ke kaviyon mein <span class=hl>vyangya aur kshobh bharpoor</span>, par wah <span class=hl>pratikriyaparak na hokar srijanatmak</span> hai."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Safar",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['SAHAJ LAY','BOL-CHAL KA VAKYA-VINYAS'],'#0a1c2a',18);txt(c,'kavita ki visheshta',460,235,YL,F(15,1),'center');txt(c,"sahaj lay",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['GHARELU VISHAY','ANGAN KA PAUDHA'],'#2a2608',20);txt(c,'parivar ka ang',460,235,CY,F(15,1),'center');txt(c,"gharelu",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['GANDHIVAD PAR ASTHA','GANDHI VANGMAY'],'#2a0a2a',18);txt(c,'ahinsa, sahanshilta',460,235,CY,F(15,1),'center');txt(c,"Gandhivad",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['VYANGYA AUR KSHOBH','SRIJANATMAK'],'#0a2a1a',19);txt(c,'pratikriyaparak nahin',460,235,CY,F(15,1),'center');txt(c,"vyangya",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["NCERT parichay: <span class=hl>Ghar ki yaad kavita mein ghar ke marm ka udghatan</span> hai.", "<span class=hl>Kavi ko jail-pravas ke dauran ghar se visthapan ki peeda salti hai</span>.", "<span class=hl>Kavi ke smriti-sansar mein uske parijan ek-ek kar shamil hote chale jaate hain</span>.", "<span class=hl>Ghar ki avadharna ki sarthak aur marmik yaad kavita ki kendriya samvedna</span> hai. Source: NCERT Aroh current PDF (Reprint 2026-27)."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Ghar",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['GHAR KE MARM KA','UDGHATAN'],'#0a1c2a',21);txt(c,'NCERT parichay',460,235,YL,F(15,1),'center');txt(c,"udghatan",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['JAIL-PRAVAS','GHAR SE VISTHAPAN'],'#2a2608',20);txt(c,'peeda salti hai',460,235,CY,F(15,1),'center');txt(c,"visthapan",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['PARIJAN EK-EK KAR','SMRITI-SANSAR MEIN'],'#2a0a2a',18);txt(c,'shamil hote chale',460,235,CY,F(15,1),'center');txt(c,"parijan",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['MARMIK YAAD','KENDRIYA SAMVEDNA'],'#0a2a1a',20);txt(c,'ghar ki avadharna',460,235,CY,F(15,1),'center');txt(c,"kendriya",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["Text: <span class=hl>aaj pani gir raha hai, bahut pani gir raha hai; raat bhar girta raha hai</span>.", "Text: <span class=hl>pran man ghirta raha hai</span> (book Q1: pani ke raat bhar girne aur pran-man ke ghirne mein parasparik sambandh).", "Text: <span class=hl>bahut pani gir raha hai, ghar nazar mein tir raha hai</span>; NCERT shabd-arth: <span class=hl>nazar mein tir raha hai = ankhon mein tair raha hai</span>.", "Text: <span class=hl>ghar ki mujhse door hai jo, ghar khushi ka poor hai jo</span>; shabd-arth: <span class=hl>poor hai jo = ghar jo paripurn hai, khushiyon se bharapoora</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Barish",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['PANI GIR RAHA HAI','RAAT BHAR GIRTA RAHA'],'#0a1c2a',19);txt(c,'bahut pani',460,235,YL,F(15,1),'center');txt(c,"pani",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['PRAN MAN GHIRTA RAHA','BARISH KE SAATH'],'#2a2608',18);txt(c,'book Q1',460,235,CY,F(15,1),'center');txt(c,"ghirna",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['GHAR NAZAR MEIN TIR','RAHA HAI'],'#2a0a2a',20);txt(c,'ankhon mein tair raha',460,235,CY,F(15,1),'center');txt(c,"nazar mein",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['KHUSHI KA POOR','PARIPURN GHAR'],'#0a2a1a',20);txt(c,'mujhse door hai jo',460,235,CY,F(15,1),'center');txt(c,"poor hai jo",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["Text: <span class=hl>ghar ki ghar mein char bhai, mayke mein bahin aai; bahin aai baap ke ghar, haay re paritap ke ghar!</span> Shabd-arth: <span class=hl>paritap = atyadhik dukh</span> (book Q2).", "Text: <span class=hl>ghar mein sab jude hain; char bhai char bahinen, bhuja bhai pyaar bahinen</span>.", "Text: <span class=hl>aur maa bin-padhi meri, dukh mein vah gadhi meri; maa ki jiski god mein sir rakh liya to dukh nahin phir</span>.", "Text: <span class=hl>maa ki jiski sneh-dhara ka yahan tak bhi pasara; use likhna nahin aata jo ki uska patra paata</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Parivar",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['PARITAP KE GHAR','MAYKE MEIN BAHIN AAI'],'#0a1c2a',19);txt(c,'paritap = atyadhik dukh',460,235,YL,F(15,1),'center');txt(c,"paritap",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['CHAR BHAI CHAR BAHINEN','BHUJA BHAI PYAAR BAHINEN'],'#2a2608',16);txt(c,'sab jude hain',460,235,CY,F(15,1),'center');txt(c,"char bhai",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['BIN-PADHI MAA','DUKH MEIN GADHI'],'#2a0a2a',20);txt(c,'god mein sir rakh liya',460,235,CY,F(15,1),'center');txt(c,"maa",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['SNEH-DHARA KA PASARA','PATRA LIKHNA NAHIN AATA'],'#0a2a1a',16);txt(c,'maa ka sneh',460,235,CY,F(15,1),'center');txt(c,"patra",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["Text: <span class=hl>pita ji jinko budhapa ek kshan bhi nahin vyaapa; jo abhi bhi daud jaayen, jo abhi bhi khilkhilayen</span> (book Q3: pita ke vyaktitva ki visheshtayen).", "Text: <span class=hl>maut ke aage na hichken, sher ke aage na bichken; bol mein badal garajta, kaam mein jhanjha larajta</span>.", "Text: <span class=hl>paanchva main hun abhaga, jise sone par suhaga; pita ji kehte rahe hain pyaar mein bahte rahe hain</span>.", "Text: <span class=hl>aaj unke swarn bete lage honge unhen hete, kyonki main un par suhaga bandha betha hun abhaga</span>; shabd-arth: <span class=hl>hete = gaun, heen</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Pita",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['PITA JI','BUDHAPA NAHIN VYAAPA'],'#0a1c2a',20);txt(c,'daud jaayen, khilkhilayen',460,235,YL,F(15,1),'center');txt(c,"pita ji",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['MAUT KE AAGE NA HICHKEN','SHER KE AAGE NA BICHKEN'],'#2a2608',15);txt(c,'bol mein badal garajta',460,235,CY,F(15,1),'center');txt(c,"maut ke aage",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['PAANCHVA MAIN','ABHAGA, SONE PAR SUHAGA'],'#2a0a2a',17);txt(c,'pyaar mein bahte rahe',460,235,CY,F(15,1),'center');txt(c,"paanchva",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['HETE','GAUN, HEEN'],'#0a2a1a',22);txt(c,'shabd-arth',460,235,CY,F(15,1),'center');txt(c,"hete",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["Text: <span class=hl>he sajile hare sawan, he ki mere punya pawan; tum baras lo ve na barsen, paanchven ko ve na tarsen</span>.", "Text: <span class=hl>main maze mein hun sahi hai, ghar nahin hun bas yahi hai; kintu yah bas bada bas hai, isi bas se sab viras hai</span> (book Q4: bas shabd ka prayog).", "<span class=hl>Explicit (NCERT parichay):</span> <span class=hl>ghar ki avadharna ki sarthak aur marmik yaad kavita ki kendriya samvedna</span> hai.", "<span class=hl>Supported reading:</span> antim panktiyon mein kavi kehta hai <span class=hl>kah na dena jagta hun, kah na dena maun hun main, unhen koi shak na dena</span> - wah apni peeda parijanon se chhipana chahta hai (book Q5)."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Sandesh",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['HE SAJILE HARE SAWAN','TUM BARAS LO'],'#0a1c2a',18);txt(c,'ve na barsen',460,235,YL,F(15,1),'center');txt(c,"sawan",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['MAIN MAZE MEIN HUN','BAS YAHI HAI'],'#2a2608',19);txt(c,'bas bada bas hai',460,235,CY,F(15,1),'center');txt(c,"bas",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,MG,['EXPLICIT','NCERT PARICHAY'],'#2a0a2a',21);txt(c,'quote karo',460,235,CY,F(15,1),'center');txt(c,"explicit",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['SUPPORTED READING','SHAK NA DENA'],'#0a2a1a',19);txt(c,'text-adharit',460,235,CY,F(15,1),'center');txt(c,"supported",460,326,GR,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"NCERT parichay mein Bhawani Prasad Mishra ko aur kya kaha gaya hai?",opts:["Kavita ka Nirala","Kavita ka Gandhi","Kavita ka Kabir","Kavita ka Tulsi"],a:1,why:"NCERT parichay: unhen kavita ka Gandhi bhi kaha gaya hai."},
+{q:"Mayke aai bahin ke liye kavi ne ghar ko kya kaha hai?",opts:["Khushi ka ghar","Swarg ka dwar","Sukh ka sagar","Paritap ka ghar"],a:3,why:"Text: bahin aai baap ke ghar, haay re paritap ke ghar!"},
+{q:"NCERT shabd-chhavi mein paritap ka kya arth hai?",opts:["Makkhan","Parampara","Atyadhik dukh","Gaun, heen"],a:2,why:"Shabd-chhavi: paritap = atyadhik dukh."},
+{q:"Maa ke baare mein kavita kya kehti hai?",opts:["Bin-padhi, dukh mein gadhi","Bahut padhi-likhi","Door shahar mein","Jail mein saath"],a:0,why:"Text: aur maa bin-padhi meri, dukh mein vah gadhi meri."},
+{q:"Kavi sawan se kya kehta hai?",opts:["Tum sab par barso","Tum baras lo, ve na barsen; paanchven ko ve na tarsen","Ghar par mat barso","Ruk jao"],a:1,why:"Text: tum baras lo ve na barsen, paanchven ko ve na tarsen."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! घर की याद pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
