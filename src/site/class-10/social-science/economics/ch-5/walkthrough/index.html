@@ -158,7 +158,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 <div class="rcard"><b>Marketplace</b>Lone consumers are weak; unfair practices need rules.</div>
 <div class="rcard"><b>Movement</b>1960s organised; 1985 UN Guidelines; 1986 COPRA.</div>
 <div class="rcard"><b>Rights</b>Safety, information, choice, redressal, representation, education (chapter list).</div>
-<div class="rcard"><b>Commissions</b>District, state, national. Chapter limits are older; PIB 2021 update shown.</div>
+<div class="rcard"><b>Commissions</b>District, state, national. Chapter limits are older; dated PIB 2021 update shown.</div>
 <div class="rcard"><b>Logos</b>ISI, Agmark, Hallmark show quality standards were followed.</div>
 <div class="rcard"><b>Way forward</b>Process is slow and costly; active participation needed.</div>
 </div>
@@ -289,14 +289,14 @@ draw();
 inits[4]=(()=>{
 const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
 sel("sc4","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Prakash</span>: money order nahi pahuncha; council se salah; Commission mein form; judge ne dono ko suna aur verdict diya (chapter).", "<span class=hl>Three tiers</span>: District, State, National Commission; dismiss hone par upar appeal.", "Chapter ki limits: District Rs 1 crore tak, State Rs 1 se 10 crore, National Rs 10 crore se upar. Yeh chapter-era limits hain.", "Official update (PIB, 30 Dec 2021): District Rs 50 lakh tak, State Rs 50 lakh se Rs 2 crore, National Rs 2 crore se upar. Legal advice nahi; filing se pehle current rules dekho."];
+const INFO=["<span class=hl>Prakash</span>: money order nahi pahuncha; council se salah; Commission mein form; judge ne dono ko suna aur verdict diya (chapter).", "<span class=hl>Three tiers</span>: District, State, National Commission; dismiss hone par upar appeal.", "Chapter ki limits: District Rs 1 crore tak, State Rs 1 se 10 crore, National Rs 10 crore se upar. Yeh chapter-era limits hain.", "Dated official update (PIB, 30 Dec 2021; later rules not checked): consideration paid ke basis par District Rs 50 lakh tak, State Rs 50 lakh se upar Rs 2 crore tak, National Rs 2 crore se upar. Claim ya market value nahi. Aaj ka current claim ya filing guidance nahi."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Redressal",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,YL,['PRAKASH MONEY ORDER CASE','FROM POST OFFICE TO VERDICT'],'#2a2608',21);txt(c,'chapter story',460,235,CY,F(15,1),'center');txt(c,"prakash",460,326,YL,F(14,1),"center");}
  else if(s===1){box(c,160,80,600,100,CY,['THREE TIERS','DISTRICT, STATE, NATIONAL'],'#0a1c2a',21);txt(c,'appeal goes upward',460,235,YL,F(15,1),'center');txt(c,"tiers",460,326,CY,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,MG,['CHAPTER LIMITS','1 CRORE AND 10 CRORE'],'#2a0a2a',21);txt(c,'older figures, chapter era',460,235,CY,F(15,1),'center');txt(c,"chapterlimit",460,326,MG,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,GR,['PIB 2021 UPDATE','50 LAKH AND 2 CRORE'],'#0a2a1a',21);txt(c,'not legal advice',460,235,CY,F(15,1),'center');txt(c,"official",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['PIB 30 DEC 2021 UPDATE','50 LAKH AND 2 CRORE'],'#0a2a1a',19);txt(c,'consideration paid, dated',460,235,CY,F(15,1),'center');txt(c,"official",460,326,GR,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -319,14 +319,14 @@ draw();
 inits[6]=(()=>{
 const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
 sel("sc6","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Groups</span>: chapter-era mein 2000 se zyada, sirf 50-60 well organised.", "Process <span class=hl>cumbersome, expensive, time consuming</span>; lawyers; cash memo nahi milta; zyadatar purchases chhote retail.", "Chapter ke anusar 2019 amendment: internet buying shamil, manufacturer ya service provider zimmedar, mediation.", "Official: Consumer Protection Act 2019 20 July 2020 se in force (Dept of Consumer Affairs FAQ, PIB)."];
+const INFO=["<span class=hl>Groups</span>: chapter-era mein 2000 se zyada, sirf 50-60 well organised.", "Process <span class=hl>cumbersome, expensive, time consuming</span>; lawyers; cash memo nahi milta; zyadatar purchases chhote retail.", "Chapter ke anusar 2019 amendment: internet buying shamil, manufacturer ya service provider zimmedar, mediation.", "Dated official history: Consumer Protection Act 2019 notified 9 Aug 2019, in force 20 July 2020 (Dept of Consumer Affairs FAQ, PIB)."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Challenges",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,CY,['2000 PLUS GROUPS','ONLY 50 TO 60 ORGANISED'],'#0a1c2a',21);txt(c,'chapter era figure',460,235,YL,F(15,1),'center');txt(c,"groups",460,326,CY,F(14,1),"center");}
  else if(s===1){box(c,160,80,600,100,YL,['PROCESS IS SLOW','COSTLY AND TIME CONSUMING'],'#2a2608',21);txt(c,'lawyers, no cash memo',460,235,CY,F(15,1),'center');txt(c,"slow",460,326,YL,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,MG,['2019 CHANGES IN CHAPTER','ONLINE BUYING, MEDIATION'],'#2a0a2a',21);txt(c,'per the chapter',460,235,CY,F(15,1),'center');txt(c,"amend",460,326,MG,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,GR,['ACT 2019 IN FORCE','FROM 20 JULY 2020'],'#0a2a1a',21);txt(c,'official sources',460,235,CY,F(15,1),'center');txt(c,"official",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,GR,['ACT 2019: NOTIFIED 9 AUG 2019','IN FORCE 20 JULY 2020'],'#0a2a1a',19);txt(c,'dated official history',460,235,CY,F(15,1),'center');txt(c,"official",460,326,GR,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
