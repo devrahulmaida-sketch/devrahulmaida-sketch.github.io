@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Lifelines of National Economy - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 10 Social Science (Geography) - Snapshots - Lifelines of National Economy</div>
+<h1>Lifelines of National Economy Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - roadways, railways, pipelines and waterways, sea ports, airways and communication, international trade, tourism, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. Roadways 🛣️⭐⭐⭐</h2>
+<p class="why">Second largest network.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">network</button>
+<button class="b" data-o="1">why roads</button>
+<button class="b" data-o="2">classes</button>
+<button class="b" data-o="3">BRO</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Railways 🚆⭐⭐⭐</h2>
+<p class="why">Principal mode.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">first train</button>
+<button class="b" data-o="1">zones</button>
+<button class="b" data-o="2">gauges</button>
+<button class="b" data-o="3">problems</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. Pipelines and Waterways 🛢️⭐⭐⭐</h2>
+<p class="why">Low running cost.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">pipelines</button>
+<button class="b" data-o="1">networks</button>
+<button class="b" data-o="2">waterways</button>
+<button class="b" data-o="3">NWs</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Sea Ports ⚓⭐⭐⭐</h2>
+<p class="why">95 per cent of volume.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">trade share</button>
+<button class="b" data-o="1">west coast</button>
+<button class="b" data-o="2">east coast</button>
+<button class="b" data-o="3">Kolkata</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. Airways and Communication ✈️⭐⭐⭐</h2>
+<p class="why">Fast and far.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">air</button>
+<button class="b" data-o="1">UDAN</button>
+<button class="b" data-o="2">post</button>
+<button class="b" data-o="3">media</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. International Trade 🌐⭐⭐⭐</h2>
+<p class="why">Economic barometer.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">meaning</button>
+<button class="b" data-o="1">balance</button>
+<button class="b" data-o="2">exports</button>
+<button class="b" data-o="3">imports</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. Tourism 🧳⭐⭐</h2>
+<p class="why">Tourism as trade.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">growth</button>
+<button class="b" data-o="1">schemes</button>
+<button class="b" data-o="2">types</button>
+<button class="b" data-o="3">benefits</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Lifelines of National Economy Pakka? ⭐</h2>
+<p class="why">5 sawaal - East-West corridor, first train, railway km, deepest landlocked port, pipelines. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Roadways</b>62.16 lakh km (2020-21); six classes; BRO 1960; Atal Tunnel 9.02 km.</div>
+<div class="rcard"><b>Railways</b>First train Mumbai-Thane 1853, 34 km; 17 zones; total 67,956 km; broad gauge 1.676 m.</div>
+<div class="rcard"><b>Pipelines and waterways</b>Low running cost; Assam-Kanpur, Salaya-Jalandhar, HVJ; 14,500 km waterways, 111 NWs.</div>
+<div class="rcard"><b>Ports</b>95 per cent of volume (68 per cent of value) by sea; 12 major ports; Vishakhapatnam deepest landlocked.</div>
+<div class="rcard"><b>Air and communication</b>UDAN, Pawanhans; six mail channels; AIR, Doordarshan, Digital India.</div>
+<div class="rcard"><b>Trade and tourism</b>Economic barometer; export above import is favourable; tourism builds national integration.</div>
+</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 10 Social Science (Geography) Chapter 7 (Lifelines of National Economy) - NCERT Class X Contemporary India II, chapter file jess107 (Reprint 2026-27) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>62.16 lakh km</span> (2020-21): text ke anusar world ka second largest road network.", "Cost kam, mountains par ja sakti hain, <span class=hl>door-to-door service</span> aur railway, air, sea ports ki <span class=hl>feeder</span>.", "<span class=hl>6 classes</span>: Golden Quadrilateral, National, State, District, Other aur Border Roads.", "<span class=hl>BRO</span> 1960 mein bana; Atal Tunnel <span class=hl>9.02 km</span>, Pir Panjal range."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Roadways",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['SECOND LARGEST ROAD NETWORK','62.16 LAKH KM, 2020-21'],'#0a1c2a',19);txt(c,'as stated in the chapter',460,235,YL,F(15,1),'center');txt(c,"network",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['LOW COST, DOOR TO DOOR','FEEDER TO RAIL, AIR, SEA'],'#0a2a1a',20);txt(c,'roads reach hills and villages',460,235,CY,F(15,1),'center');txt(c,"why roads",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['SIX CLASSES OF ROADS','GOLDEN QUADRILATERAL TO BORDER'],'#2a2608',20);txt(c,'by capacity',460,235,CY,F(15,1),'center');txt(c,"classes",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['BORDER ROADS: BRO, 1960','ATAL TUNNEL 9.02 KM'],'#2a0a2a',20);txt(c,'Manali to Lahul-Spiti all year',460,235,CY,F(15,1),'center');txt(c,"BRO",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>1853</span> mein Mumbai se Thane, <span class=hl>34 km</span>; Indian Railways largest public sector undertaking.", "Indian Railway ab <span class=hl>17 zones</span> mein; northern plains mein network sabse favourable.", "Broad <span class=hl>63,950</span> + Metre <span class=hl>2,402</span> + Narrow <span class=hl>1,604</span> = <span class=hl>67,956 km</span>.", "Problems: bina ticket travel, chori aur damage, chain pulling; Konkan railway par landslides."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Railways",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['MUMBAI TO THANE, 1853','34 KM'],'#0a1c2a',21);txt(c,'first train in India',460,235,YL,F(15,1),'center');txt(c,"first train",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['17 RAILWAY ZONES','NORTHERN PLAINS FAVOURABLE'],'#0a2a1a',20);txt(c,'level land, dense population',460,235,CY,F(15,1),'center');txt(c,"zones",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['63,950 + 2,402 + 1,604','TOTAL 67,956 KM'],'#2a2608',21);txt(c,'broad gauge is 1.676 m',460,235,CY,F(15,1),'center');txt(c,"gauges",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['TICKETLESS TRAVEL, THEFT','CHAIN PULLING'],'#2a0a2a',21);txt(c,'damage to railway property',460,235,CY,F(15,1),'center');txt(c,"problems",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Pipelines</span>: crude oil, petroleum products, gas; initial cost high, <span class=hl>running cost minimal</span>, trans-shipment loss nahi.", "3 networks: Assam se <span class=hl>Kanpur</span>; Salaya se <span class=hl>Jalandhar</span>; <span class=hl>HVJ</span> gas pipeline (1,700 km se 18,500 km infrastructure).", "<span class=hl>Waterways</span>: cheapest, heavy goods ke liye best; inland navigation <span class=hl>14,500 km</span>.", "<span class=hl>111</span> National Waterways (Act 2016); NW-1 Ganga 1620 km, NW-2 Brahmaputra 891 km."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Pipelines and waterways",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['CRUDE OIL, GAS, SLURRY','HIGH COST, LOW RUNNING COST'],'#0a1c2a',20);txt(c,'no trans-shipment losses',460,235,YL,F(15,1),'center');txt(c,"pipelines",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['ASSAM TO KANPUR','SALAYA TO JALANDHAR, HVJ'],'#0a2a1a',21);txt(c,'three pipeline networks',460,235,CY,F(15,1),'center');txt(c,"networks",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['CHEAPEST MODE OF TRANSPORT','14,500 KM INLAND WATERWAYS'],'#2a2608',20);txt(c,'fuel-efficient, eco friendly',460,235,CY,F(15,1),'center');txt(c,"waterways",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['111 NATIONAL WATERWAYS','NW-1 GANGA, 1620 KM'],'#2a0a2a',20);txt(c,'National Waterways Act, 2016',460,235,CY,F(15,1),'center');txt(c,"NWs",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>95 per cent</span> trade volume (<span class=hl>68 per cent</span> value) sea se; <span class=hl>12 major</span> aur 200 notified non-major ports.", "West: Deendayal (Kandla), <span class=hl>Mumbai</span> biggest, Jawaharlal Nehru, Mormugao (iron ore), New Mangalore, Cochin.", "East: Tuticorin, Chennai, <span class=hl>Vishakhapatnam</span> deepest landlocked, Paradwip (iron ore).", "<span class=hl>Kolkata</span> inland riverine tidal port; Hoogly dredging; <span class=hl>Haldia</span> subsidiary port."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Sea ports",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['95 PER CENT OF VOLUME','68 PER CENT OF VALUE'],'#0a1c2a',21);txt(c,'moved by sea as stated',460,235,YL,F(15,1),'center');txt(c,"trade share",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['KANDLA, MUMBAI, JNPT','MORMUGAO, NEW MANGALORE'],'#0a2a1a',21);txt(c,'COCHIN in the south-west',460,235,CY,F(15,1),'center');txt(c,"west coast",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['TUTICORIN, CHENNAI','VISHAKHAPATNAM, PARADWIP'],'#2a2608',21);txt(c,'deepest landlocked port',460,235,CY,F(15,1),'center');txt(c,"east coast",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['KOLKATA: RIVERINE PORT','HALDIA RELIEVES IT'],'#2a0a2a',21);txt(c,'tidal port, constant dredging',460,235,CY,F(15,1),'center');txt(c,"Kolkata",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Airways</span>: fastest, high mountains, deserts aur oceans paar; north-east mein access aasan; Pawanhans helicopters.", "<span class=hl>UDAN</span> (Ude Desh ka Aam Nagrik): regional connectivity, flying affordable.", "Postal network <span class=hl>world mein largest</span>; first-class aur second-class mail; <span class=hl>6 mail channels</span>.", "<span class=hl>AIR</span>, <span class=hl>Doordarshan</span>, newspapers ~100 languages (Hindi sabse zyada), <span class=hl>CBFC</span>, <span class=hl>Digital India</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Airways and communication",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['FASTEST MODE OF TRANSPORT','NORTH-EAST, HELICOPTERS'],'#0a1c2a',21);txt(c,'Pawanhans serves hard terrain',460,235,YL,F(15,1),'center');txt(c,"air",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['UDAN: REGIONAL CONNECTIVITY','FLYING MADE AFFORDABLE'],'#0a2a1a',20);txt(c,'Ministry of Civil Aviation',460,235,CY,F(15,1),'center');txt(c,"UDAN",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['LARGEST POSTAL NETWORK','SIX MAIL CHANNELS'],'#2a2608',21);txt(c,'first and second class mail',460,235,CY,F(15,1),'center');txt(c,"post",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['AIR, DOORDARSHAN, PRESS','FILMS, CBFC, DIGITAL INDIA'],'#2a0a2a',21);txt(c,'mass communication',460,235,CY,F(15,1),'center');txt(c,"media",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Trade</span>: goods ka exchange; do countries ke beech <span class=hl>international trade</span>.", "<span class=hl>Balance of trade</span> = export minus import; export zyada = <span class=hl>favourable</span>.", "Exports: <span class=hl>gems and jewellery</span>, chemicals, agriculture and allied products; India <span class=hl>software giant</span>.", "Imports: petroleum crude, gems and jewellery, chemicals, base metals, electronics, machinery."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"International trade",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['INTERNATIONAL TRADE','ECONOMIC BAROMETER'],'#0a1c2a',21);txt(c,'index of economic prosperity',460,235,YL,F(15,1),'center');txt(c,"meaning",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['EXPORT MORE THAN IMPORT','FAVOURABLE BALANCE'],'#0a2a1a',20);txt(c,'import more is unfavourable',460,235,CY,F(15,1),'center');txt(c,"balance",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['GEMS AND JEWELLERY','CHEMICALS, AGRICULTURE, IT'],'#2a2608',21);txt(c,'as listed in the chapter',460,235,CY,F(15,1),'center');txt(c,"exports",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['PETROLEUM CRUDE, METALS','ELECTRONICS, MACHINERY'],'#2a0a2a',20);txt(c,'as listed in the chapter',460,235,CY,F(15,1),'center');txt(c,"imports",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Tourism</span> pichhle do dashakon mein remarkable grow hua (text ke anusar).", "Schemes: <span class=hl>Swadesh Darshan 2.0</span>, Vibrant Village Programme, <span class=hl>PRASHAD</span>, Paryatan Mitra.", "Types: <span class=hl>heritage, eco, adventure, cultural, medical, business</span> tourism.", "Benefits: <span class=hl>national integration</span>, local handicrafts, international understanding."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Tourism",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['TOURISM GREW REMARKABLY','LAST TWO DECADES'],'#0a1c2a',21);txt(c,'as stated in the chapter',460,235,YL,F(15,1),'center');txt(c,"growth",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['SWADESH DARSHAN 2.0','PRASHAD, PARYATAN MITRA'],'#0a2a1a',21);txt(c,'also Vibrant Village Programme',460,235,CY,F(15,1),'center');txt(c,"schemes",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['HERITAGE, ECO, ADVENTURE','CULTURAL, MEDICAL, BUSINESS'],'#2a2608',21);txt(c,'six types of tourism',460,235,CY,F(15,1),'center');txt(c,"types",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['NATIONAL INTEGRATION','SUPPORTS LOCAL HANDICRAFTS'],'#2a0a2a',21);txt(c,'builds international understanding',460,235,CY,F(15,1),'center');txt(c,"benefits",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"East-West Corridor kin do extreme locations ko jodta hai?",opts:["Mumbai and Nagpur","Silchar and Porbandar","Mumbai and Kolkata","Nagpur and Siliguri"],a:1,why:"The East-West Corridor connects Silchar (Assam) and Porbandar (Gujarat)."},
+{q:"India mein pehli train kahan se kahan aur kab chali?",opts:["Mumbai to Pune, 1853","Mumbai to Thane, 1853","Mumbai to Thane, 1900","Delhi to Agra, 1853"],a:1,why:"The first train steamed off from Mumbai to Thane in 1853, covering 34 km."},
+{q:"Table 7.1 ke anusar Indian Railway network ka total route length kitna hai?",opts:["63,950 km","65,000 km","67,956 km","62.16 lakh km"],a:2,why:"63,950 + 2,402 + 1,604 = 67,956 km. (62.16 lakh km is the road network.)"},
+{q:"East coast par deepest landlocked aur well protected port kaun sa hai?",opts:["Chennai","Paradwip","Tuticorin","Vishakhapatnam"],a:3,why:"Vishakhapatnam is the deepest landlocked and well protected port."},
+{q:"Kaun sa mode trans-shipment losses aur delays rule out karta hai?",opts:["Railways","Pipeline","Roadways","Waterways"],a:1,why:"Pipelines rule out trans-shipment losses or delays."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Lifelines of National Economy pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
