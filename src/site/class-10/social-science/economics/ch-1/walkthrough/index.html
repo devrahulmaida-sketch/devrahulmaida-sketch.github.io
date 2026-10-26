@@ -304,13 +304,13 @@ draw();
 inits[5]=(()=>{
 const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
 sel("sc5","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Not sustainable</span>: scientists ki warning; duniya children se borrow ki hai.", "Lagbhag <span class=hl>300 districts</span> mein 20 saal mein <span class=hl>4 metre+</span> water level decline.", "Desh ka lagbhag <span class=hl>ek-tihai</span> hissa overuse; 25 saal mein <span class=hl>60 per cent</span> (present use par).", "Groundwater <span class=hl>renewable</span> hai, par rain se zyada nikalo to overuse."];
+const INFO=["<span class=hl>Not sustainable</span>: scientists ki warning; duniya children se borrow ki hai.", "Lagbhag <span class=hl>300 districts</span> mein chapter ke anusar 20 saal mein <span class=hl>4 metre+</span> water level decline (chapter-era figure, aaj ka nahi).", "Desh ka lagbhag <span class=hl>ek-tihai</span> hissa overuse; chapter ke anusar 25 saal mein <span class=hl>60 per cent</span> (present use par; chapter-era projection, current nahi).", "Groundwater <span class=hl>renewable</span> hai, par rain se zyada nikalo to overuse."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Groundwater",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,CY,['PRESENT DEVELOPMENT','IS NOT SUSTAINABLE'],'#0a1c2a',21);txt(c,'warning from scientists',460,235,YL,F(15,1),'center');txt(c,"warning",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,GR,['ABOUT 300 DISTRICTS','DECLINE OF OVER 4 METRES'],'#0a2a1a',21);txt(c,'in the past 20 years',460,235,CY,F(15,1),'center');txt(c,"districts",460,326,GR,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,YL,['ONE-THIRD OVERUSING NOW','60 PER CENT IN 25 YEARS'],'#2a2608',20);txt(c,'if present use continues',460,235,CY,F(15,1),'center');txt(c,"one-third",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['ABOUT 300 DISTRICTS','DECLINE OF OVER 4 METRES'],'#0a2a1a',21);txt(c,'AS STATED IN THE CHAPTER, NOT CURRENT',460,235,CY,F(15,1),'center');txt(c,"districts",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['ONE-THIRD OVERUSING NOW','60 PER CENT IN 25 YEARS'],'#2a2608',20);txt(c,'CHAPTER-ERA PROJECTION, NOT CURRENT',460,235,CY,F(15,1),'center');txt(c,"one-third",460,326,YL,F(14,1),"center");}
  else if(s===3){box(c,160,80,600,100,MG,['RENEWABLE RESOURCE','BUT CAN BE OVERUSED'],'#2a0a2a',21);txt(c,'use more than rain replenishes',460,235,CY,F(15,1),'center');txt(c,"renewable",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
@@ -338,7 +338,7 @@ const Q=[
 {q:"Table 1.2 mein Country A aur Country B ka average income kitna hai?",opts:["A 10000, B 12000","A 9500, B 500","Dono 10000","Dono 50000"],a:2,why:"A: (9500 + 10500 + 9800 + 10000 + 10200) / 5 = 10000. B: (500 x 4 + 48000) / 5 = 10000."},
 {q:"Table 1.4 ke anusar 2018 mein Kerala ki IMR (per 1000 live births) kitni thi?",opts:["30","32","43","7"],a:3,why:"IMR in 2018: Kerala 7, Haryana 30, Bihar 32."},
 {q:"UNDP ka Human Development Report countries ko kis par compare karta hai?",opts:["Sirf per capita income","Sirf literacy","Education, health aur per capita income","Sirf area"],a:2,why:"It compares countries on educational levels, health status and per capita income."},
-{q:"Text ke anusar lagbhag kitne districts mein groundwater level 4 metre se zyada gira?",opts:["100","200","300","500"],a:2,why:"About 300 districts reported a water level decline of over 4 metres during the past 20 years."}];
+{q:"Text ke anusar lagbhag kitne districts mein groundwater level 4 metre se zyada gira?",opts:["100","200","300","500"],a:2,why:"About 300 districts reported a water level decline of over 4 metres during the past 20 years, as stated in this chapter edition (not a current figure)."}];
 let i=0,score=0;
 function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
 function render(){
