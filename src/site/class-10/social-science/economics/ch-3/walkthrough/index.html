@@ -244,12 +244,12 @@ draw();
 inits[1]=(()=>{
 const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
 sel("sc1","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Modern money</span> = currency (notes, coins) + deposits with banks.", "<span class=hl>RBI</span> central government ki taraf se notes issue karta hai; rupee ko payment mein refuse nahi kiya ja sakta.", "<span class=hl>Demand deposits</span>: bank account ka paisa jo demand par nikal sakte hain.", "<span class=hl>Cheque</span> se bina cash ke ek account se doosre mein payment hota hai."];
+const INFO=["<span class=hl>Modern money</span> = currency (notes, coins) + deposits with banks.", "Official (RBI Act s.22, s.26): bank notes ka sole right <span class=hl>RBI</span> ka; coins, Re 1 note GoI ke; s.26(2): series legal tender se hat sakti hai.", "<span class=hl>Demand deposits</span>: bank account ka paisa jo demand par nikal sakte hain.", "<span class=hl>Cheque</span> se bina cash ke ek account se doosre mein payment hota hai."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Forms of money",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,CY,['CURRENCY: NOTES, COINS','AUTHORISED BY GOVERNMENT'],'#0a1c2a',21);txt(c,'no use of its own',460,235,YL,F(15,1),'center');txt(c,"currency",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,GR,['RBI ISSUES NOTES','RUPEE CANNOT BE REFUSED'],'#0a2a1a',21);txt(c,'as per Indian law',460,235,CY,F(15,1),'center');txt(c,"rbi",460,326,GR,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['RBI: SOLE RIGHT TO ISSUE','BANK NOTES, RBI ACT S.22'],'#0a2a1a',20);txt(c,'coins and Re 1 note: Govt of India',460,235,CY,F(15,1),'center');txt(c,"rbi",460,326,GR,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,YL,['DEMAND DEPOSITS','WITHDRAW ON DEMAND'],'#2a2608',21);txt(c,'safe and earn interest',460,235,CY,F(15,1),'center');txt(c,"deposit",460,326,YL,F(14,1),"center");}
  else if(s===3){box(c,160,80,600,100,MG,['CHEQUE','PAY WITHOUT CASH'],'#2a0a2a',21);txt(c,'from one account to another',460,235,CY,F(15,1),'center');txt(c,"cheque",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
@@ -274,14 +274,14 @@ draw();
 inits[3]=(()=>{
 const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
 sel("sc3","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Salim</span>: credit se order poora hua, profit hua, loan chukaya: earnings badhi.", "<span class=hl>Swapna</span>: crop fail, debt badha, zameen ka hissa bechna pada: debt-trap.", "Terms: <span class=hl>interest rate</span>, <span class=hl>collateral</span>, documents aur mode of repayment.", "Megha: Rs 5 lakh, 12 per cent, 10 saal; Python se instalment about Rs 7,174 (illustration, chapter mein nahi)."];
+const INFO=["<span class=hl>Salim</span>: credit se order poora hua, profit hua, loan chukaya: earnings badhi.", "<span class=hl>Swapna</span>: crop fail, debt badha, zameen ka hissa bechna pada: debt-trap.", "Terms: <span class=hl>interest rate</span>, <span class=hl>collateral</span>, documents aur mode of repayment.", "Megha: Rs 5 lakh, 12 per cent, 10 saal. Illustration (chapter mein nahi): fixed 12 per cent annual, barabar monthly instalments, reducing balance, koi fee nahi; Python se about Rs 7,174."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Credit terms",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,GR,['SALIM: CREDIT HELPED','3,000 PAIRS DELIVERED'],'#0a2a1a',21);txt(c,'earnings rose',460,235,CY,F(15,1),'center');txt(c,"salim",460,326,GR,F(14,1),"center");}
  else if(s===1){box(c,160,80,600,100,MG,['SWAPNA: DEBT-TRAP','CROP FAILED, LAND SOLD'],'#2a0a2a',21);txt(c,'risk without support',460,235,CY,F(15,1),'center');txt(c,"swapna",460,326,MG,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,CY,['INTEREST, COLLATERAL','DOCUMENTS, REPAYMENT'],'#0a1c2a',21);txt(c,'terms of credit',460,235,YL,F(15,1),'center');txt(c,"terms",460,326,CY,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,YL,['MEGHA: RS 5 LAKH LOAN','12 PERCENT, 10 YEARS'],'#2a2608',21);txt(c,'about Rs 7,174 a month',460,235,CY,F(15,1),'center');txt(c,"megha",460,326,YL,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,YL,['MEGHA: RS 5 LAKH LOAN','12 PERCENT, 10 YEARS'],'#2a2608',19);txt(c,'illustration: about Rs 7,174 a month',460,235,CY,F(15,1),'center');txt(c,"megha",460,326,YL,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -289,11 +289,11 @@ draw();
 inits[4]=(()=>{
 const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
 sel("sc4","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Shyamal</span>: moneylender se 5 per cent per month (60 per annum); trader se 3 per cent per month.", "<span class=hl>Arun</span>: bank loan 8.5 per cent per annum; cold storage receipt par naya loan.", "<span class=hl>Rama</span>: landowner se 5 per cent per month; Rs 5,000 par monthly interest Rs 250.", "<span class=hl>Krishak Cooperative</span>: 2300 members; members ke deposits collateral banate hain."];
+const INFO=["<span class=hl>Shyamal</span>: moneylender se 5 per cent per month (60 per annum); trader se 3 per cent per month (36 per annum). Simple annualised rate, monthly x 12; compounded ya effective nahi.", "<span class=hl>Arun</span>: bank loan 8.5 per cent per annum; cold storage receipt par naya loan.", "<span class=hl>Rama</span>: landowner se 5 per cent per month; Rs 5,000 par monthly interest Rs 250.", "<span class=hl>Krishak Cooperative</span>: 2300 members; members ke deposits collateral banate hain."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Sonpur",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,YL,['SHYAMAL: 5 THEN 3','PERCENT PER MONTH'],'#2a2608',21);txt(c,'60 and 36 per annum',460,235,CY,F(15,1),'center');txt(c,"shyamal",460,326,YL,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,YL,['SHYAMAL: 5 THEN 3','PERCENT PER MONTH'],'#2a2608',20);txt(c,'60 and 36: simple annual, x12',460,235,CY,F(15,1),'center');txt(c,"shyamal",460,326,YL,F(14,1),"center");}
  else if(s===1){box(c,160,80,600,100,GR,['ARUN: BANK LOAN','8.5 PERCENT A YEAR'],'#0a2a1a',21);txt(c,'repay in 3 years',460,235,CY,F(15,1),'center');txt(c,"arun",460,326,GR,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,MG,['RAMA: LANDOWNER LOAN','5 PERCENT PER MONTH'],'#2a0a2a',21);txt(c,'repays by working',460,235,CY,F(15,1),'center');txt(c,"rama",460,326,MG,F(14,1),"center");}
  else if(s===3){box(c,160,80,600,100,CY,['KRISHAK COOPERATIVE','2300 FARMER MEMBERS'],'#0a1c2a',21);txt(c,'pooled resources',460,235,YL,F(15,1),'center');txt(c,"coop",460,326,CY,F(14,1),"center");}
@@ -304,12 +304,12 @@ draw();
 inits[5]=(()=>{
 const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
 sel("sc5","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Formal</span>: banks, cooperatives; RBI supervises. <span class=hl>Informal</span>: moneylenders, traders, employers.", "Informal lenders aksar bahut high interest lete hain aur koi supervise nahi karta.", "Graph 1, rural 2019 (as stated): commercial banks 51%, moneylenders 23%, cooperative banks 10%.", "Graph 2, urban (as stated): poor 54 per cent informal; rich 17 per cent informal, 83 per cent formal."];
+const INFO=["<span class=hl>Formal</span>: banks, cooperatives; RBI supervises. <span class=hl>Informal</span>: moneylenders, traders, employers.", "Chapter: informal lenders aksar bahut high interest lete hain aur unki credit activities ko koi organisation supervise nahi karta (chapter ka statement, yeh nahi ki koi kanoon lagu nahi).", "Graph 1, rural 2019 (as stated): commercial banks 51%, moneylenders 23%, cooperative banks 10%.", "Graph 2, urban (as stated): poor 54 per cent informal; rich 17 per cent informal, 83 per cent formal."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Formal and informal",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,GR,['FORMAL: BANKS, COOPERATIVES','SUPERVISED BY RBI'],'#0a2a1a',21);txt(c,'cheaper credit',460,235,CY,F(15,1),'center');txt(c,"formal",460,326,GR,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,MG,['INFORMAL: MONEYLENDERS','HIGH INTEREST'],'#2a0a2a',21);txt(c,'no supervision',460,235,CY,F(15,1),'center');txt(c,"informal",460,326,MG,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,MG,['INFORMAL: MONEYLENDERS','HIGH INTEREST'],'#2a0a2a',19);txt(c,'no organisation supervises, per chapter',460,235,CY,F(15,1),'center');txt(c,"informal",460,326,MG,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,CY,['RURAL 2019: BANKS 51 PERCENT','MONEYLENDERS 23 PERCENT'],'#0a1c2a',20);txt(c,'as stated in the chapter',460,235,YL,F(15,1),'center');txt(c,"graph",460,326,CY,F(14,1),"center");}
  else if(s===3){box(c,160,80,600,100,YL,['URBAN POOR: 54 PERCENT','INFORMAL; RICH: 17 PERCENT'],'#2a2608',20);txt(c,'as stated in the chapter',460,235,CY,F(15,1),'center');txt(c,"poor",460,326,YL,F(14,1),"center");}
  R.innerHTML=INFO[s];
@@ -335,7 +335,7 @@ inits[7]=(()=>{
 const box=document.getElementById("quizBox");
 const Q=[
 {q:"Double coincidence of wants kahan zaroori hai?",opts:["Barter system mein","Cheque payment mein","Bank deposit mein","SHG meeting mein"],a:0,why:"In a barter system both parties must want what the other sells; money removes this need."},
-{q:"India mein currency notes kaun issue karta hai?",opts:["Moneylender","Reserve Bank of India","Cooperative society","Krishak Cooperative"],a:1,why:"The RBI issues currency notes on behalf of the central government."},
+{q:"Chapter ke anusar India mein currency notes kaun issue karta hai?",opts:["Moneylender","Reserve Bank of India","Cooperative society","Krishak Cooperative"],a:1,why:"The RBI issues currency notes on behalf of the central government."},
 {q:"Collateral kya hai?",opts:["Loan par interest","Asset jo guarantee ke roop mein loan chukne tak rehta hai","Bank ka cash reserve","Loan ka document"],a:1,why:"Collateral is an asset the borrower owns and uses as a guarantee until the loan is repaid."},
 {q:"Chapter ke anusar formal sources of credit mein kaun nahi aata?",opts:["Banks","Cooperatives","Employers","Cooperative banks"],a:2,why:"The chapter lists banks and cooperatives as formal and employers as informal."},
 {q:"SHG ke baare mein sahi kaun sa hai?",opts:["Bank sab decisions leta hai","Members decisions lete hain aur group repayment ki zimmedari leta hai","Collateral zaroori hai","Sirf men members hote hain"],a:1,why:"In an SHG the members decide on savings and loans and the group is responsible for repayment."}];
