@@ -155,7 +155,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 <div class="recap">
 <h2>Formula / Fact Recap - Ek Nazar Mein</h2>
 <div class="rcards">
-<div class="rcard"><b>Background</b>Apartheid; thirty years in prison; ANC won 252 of 400 seats in 1994.</div>
+<div class="rcard"><b>Background</b>Apartheid; thirty years in prison (chapter intro statement); ANC won 252 of 400 seats in 1994.</div>
 <div class="rcard"><b>Inauguration</b>Union Buildings, Pretoria; first black President; Let freedom reign.</div>
 <div class="rcard"><b>Anthems</b>Nkosi Sikelel iAfrika and Die Stem; generals pledge loyalty.</div>
 <div class="rcard"><b>Courage and love</b>Courage is triumph over fear; hate is learned, love can be taught.</div>
@@ -229,12 +229,12 @@ function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);la
 inits[0]=(()=>{
 const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
 sel("sc0","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Apartheid</span>: race ke aadhar par logon ko alag karne wala system.", "Mandela ne <span class=hl>tees saal jail</span> mein bitaye.", "1994 mein South Africa ke <span class=hl>pehle democratic elections</span>; Mandela pehle black President.", "BBC item: ANC ne <span class=hl>400 mein se 252 seats</span> jeeti."];
+const INFO=["<span class=hl>Apartheid</span>: race ke aadhar par logon ko alag karne wala system.", "Chapter intro ke anusar Mandela ne <span class=hl>tees saal jail</span> mein bitaye (chapter ka kathan).", "1994 mein South Africa ke <span class=hl>pehle democratic elections</span>; Mandela pehle black President.", "BBC item: ANC ne <span class=hl>400 mein se 252 seats</span> jeeti."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Background",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,CY,['APARTHEID','SEPARATION BY RACE'],'#0a1c2a',21);txt(c,'chapter intro',460,235,YL,F(15,1),'center');txt(c,"apart",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['THIRTY YEARS','IN PRISON'],'#2a2608',21);txt(c,'Mandela',460,235,CY,F(15,1),'center');txt(c,"jail",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['THIRTY YEARS','IN PRISON'],'#2a2608',21);txt(c,'as the chapter intro states it',460,235,CY,F(15,1),'center');txt(c,"jail",460,326,YL,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,GR,['FIRST DEMOCRATIC ELECTIONS','SOUTH AFRICA 1994'],'#0a2a1a',21);txt(c,'the chapter',460,235,CY,F(15,1),'center');txt(c,"vote",460,326,GR,F(14,1),"center");}
  else if(s===3){box(c,160,80,600,100,MG,['ANC WON 252','OF 400 SEATS'],'#2a0a2a',21);txt(c,'BBC item in the chapter',460,235,CY,F(15,1),'center');txt(c,"seats",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
@@ -337,7 +337,7 @@ const Q=[
 {q:"BBC item ke anusar ANC ne 400 mein se kitni seats jeeti?",opts:["140","252","300","400"],a:1,why:"The BBC item in the chapter says the ANC won 252 of the 400 seats in the first democratic elections of South Africa."},
 {q:"Mandela ke anusar do national anthems mein blacks ne kaunsa gaya?",opts:["Nkosi Sikelel iAfrika","Die Stem","Jana Gana Mana","God Save the Queen"],a:1,why:"The chapter says whites sang Nkosi Sikelel iAfrika and blacks sang Die Stem, the old anthem of the Republic."},
 {q:"Mandela ke anusar courage kya hai?",opts:["Absence of fear","Never feeling afraid","Triumph over fear","Fighting without thinking"],a:2,why:"The chapter says courage was not the absence of fear but the triumph over it."},
-{q:"Mandela ne kitne saal jail mein bitaye (chapter ke anusar)?",opts:["Ten","Twenty","Thirty","Forty"],a:2,why:"The chapter introduction says Mandela had to spend thirty years in prison."},
+{q:"Mandela ne kitne saal jail mein bitaye (chapter ke anusar)?",opts:["Ten","Twenty","Thirty","Forty"],a:2,why:"The chapter introduction says Mandela had to spend thirty years in prison. This is the chapter statement, not an independently checked duration."},
 {q:"A Tiger in the Zoo mein tiger apni brilliant eyes se kise dekhta hai?",opts:["Visitors","Brilliant stars","Deer","Patrolling cars"],a:1,why:"The poem says he stares with his brilliant eyes at the brilliant stars."}];
 let i=0,score=0;
 function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
