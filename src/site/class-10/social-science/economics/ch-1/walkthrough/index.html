@@ -97,7 +97,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 <div class="btnrow">
 <button class="b sel" data-o="0">income</button>
 <button class="b" data-o="1">IMR</button>
-<button class="b" data-o="2">NAR</button>
+<button class="b" data-o="2">Bihar</button>
 <button class="b" data-o="3">PDS</button>
 </div>
 <div class="readout" id="r3"></div>
@@ -157,7 +157,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 <div class="rcards">
 <div class="rcard"><b>Goals</b>Different people, different and sometimes conflicting goals; income plus freedom, security, respect.</div>
 <div class="rcard"><b>Averages</b>Per capita income = total income / population; Countries A and B both average 10000 but differ in spread.</div>
-<div class="rcard"><b>States</b>Income Haryana 2,36,147, Kerala 2,04,105, Bihar 40,982; IMR 30, 7, 32 (as stated).</div>
+<div class="rcard"><b>States</b>Income Haryana 2,36,147, Kerala 2,04,105, Bihar 40,982; IMR Haryana 30, Kerala 7 (as stated).</div>
 <div class="rcard"><b>HDI</b>UNDP compares education, health and income; India rank 132, Sri Lanka 73 (HDR 2021-22).</div>
 <div class="rcard"><b>Groundwater</b>About 300 districts with over 4 metre decline; renewable but can be overused.</div>
 <div class="rcard"><b>Crude oil</b>Non-renewable; world reserves 50.2 years at the 2017 rate per Table 1.7.</div>
@@ -274,13 +274,13 @@ draw();
 inits[3]=(()=>{
 const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
 sel("sc3","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Per capita income 2018-19</span>: Haryana Rs 2,36,147; Kerala Rs 2,04,105; Bihar Rs 40,982.", "<span class=hl>IMR</span> 2018 (per 1000): Haryana 30, Kerala 7, Bihar 32. Ratio 30 / 7 = 4.29.", "<span class=hl>Net attendance</span> age 14-15: Haryana 61, Kerala 83, Bihar 43; literacy 82, 94, 62.", "<span class=hl>PDS</span> aur public facilities: collective provision sasta aur best; Kerala mein basic health aur education."];
+const INFO=["<span class=hl>Per capita income 2018-19</span>: Haryana Rs 2,36,147; Kerala Rs 2,04,105; Bihar Rs 40,982.", "<span class=hl>IMR</span> 2018 (per 1000): Haryana 30, Kerala 7 (chapter text). Ratio 30 / 7 = 4.29.", "<span class=hl>Bihar</span>: about half of children aged 14-15 not attending school beyond Class 8 (chapter text). Other Table 1.4 columns: pending original table check.", "<span class=hl>PDS</span> aur public facilities: collective provision sasta aur best; Kerala mein basic health aur education."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Haryana, Kerala, Bihar",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,CY,['HARYANA 2,36,147','KERALA 2,04,105, BIHAR 40,982'],'#0a1c2a',22);txt(c,'per capita income 2018-19',460,235,YL,F(15,1),'center');txt(c,"income",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,GR,['IMR: HARYANA 30, KERALA 7','BIHAR 32'],'#0a2a1a',21);txt(c,'per 1000 live births, 2018',460,235,CY,F(15,1),'center');txt(c,"IMR",460,326,GR,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,YL,['ATTENDANCE: 61, 83, 43','HARYANA, KERALA, BIHAR'],'#2a2608',21);txt(c,'age 14-15, 2017-18',460,235,CY,F(15,1),'center');txt(c,"NAR",460,326,YL,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,GR,['IMR: HARYANA 30, KERALA 7','RATIO 30 / 7 = 4.29'],'#0a2a1a',21);txt(c,'per 1000 live births, 2018',460,235,CY,F(15,1),'center');txt(c,"IMR",460,326,GR,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,YL,['BIHAR: ABOUT HALF','NOT ATTENDING BEYOND CLASS 8'],'#2a2608',21);txt(c,'age 14-15, chapter text',460,235,CY,F(15,1),'center');txt(c,"Bihar",460,326,YL,F(14,1),"center");}
  else if(s===3){box(c,160,80,600,100,MG,['COLLECTIVE PROVISION','CHEAPEST AND BEST'],'#2a0a2a',21);txt(c,'schools, health, ration shops',460,235,CY,F(15,1),'center');txt(c,"PDS",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
@@ -336,7 +336,7 @@ const box=document.getElementById("quizBox");
 const Q=[
 {q:"Per capita income kya hai?",opts:["Total income x population","Total income / total population","Total population / total income","Highest income in the country"],a:1,why:"Average income, also called per capita income, is total income divided by total population."},
 {q:"Table 1.2 mein Country A aur Country B ka average income kitna hai?",opts:["A 10000, B 12000","A 9500, B 500","Dono 10000","Dono 50000"],a:2,why:"A: (9500 + 10500 + 9800 + 10000 + 10200) / 5 = 10000. B: (500 x 4 + 48000) / 5 = 10000."},
-{q:"Table 1.4 ke anusar 2018 mein Kerala ki IMR (per 1000 live births) kitni thi?",opts:["30","32","43","7"],a:3,why:"IMR in 2018: Kerala 7, Haryana 30, Bihar 32."},
+{q:"Table 1.4 ke anusar 2018 mein Kerala ki IMR (per 1000 live births) kitni thi?",opts:["30","12","3","7"],a:3,why:"IMR in 2018: Kerala 7, Haryana 30 (as stated in the chapter text)."},
 {q:"UNDP ka Human Development Report countries ko kis par compare karta hai?",opts:["Sirf per capita income","Sirf literacy","Education, health aur per capita income","Sirf area"],a:2,why:"It compares countries on educational levels, health status and per capita income."},
 {q:"Text ke anusar lagbhag kitne districts mein groundwater level 4 metre se zyada gira?",opts:["100","200","300","500"],a:2,why:"About 300 districts reported a water level decline of over 4 metres during the past 20 years, as stated in this chapter edition (not a current figure)."}];
 let i=0,score=0;
