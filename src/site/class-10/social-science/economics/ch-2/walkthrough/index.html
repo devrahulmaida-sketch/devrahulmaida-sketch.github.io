@@ -289,14 +289,14 @@ draw();
 inits[4]=(()=>{
 const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
 sel("sc4","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Irrigation</span>: well ya canal se doosri crop; chapter ke anusar 1 hectare wheat = 2 logon ko 50 din ka kaam.", "<span class=hl>Cheap credit</span> bank se, moneylender ke high interest ki jagah; storage aur roads bhi.", "<span class=hl>Semi-rural industries</span>: dal mill, cold storage, honey centres; education aur tourism mein jobs.", "<span class=hl>MGNREGA 2005</span>: rural areas mein 100 din ka rozgar guaranteed (chapter text, about 625 districts)."];
+const INFO=["<span class=hl>Irrigation</span>: well ya canal se doosri crop; chapter ke anusar 1 hectare wheat = 2 logon ko 50 din ka kaam.", "<span class=hl>Cheap credit</span> bank se, moneylender ke high interest ki jagah; storage aur roads bhi.", "<span class=hl>Semi-rural industries</span>: dal mill, cold storage, honey centres; education aur tourism mein jobs.", "<span class=hl>Chapter-era</span>: MGNREGA 2005, 100 din, about 625 districts. <span class=hl>Current law</span>: VB-G RAM G Act 2025, in force 1 July 2026, 125 din (PIB, PRID 2292527)."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Creating jobs",460,26,YL,F(14,1),"center");
  if(s===0){box(c,160,80,600,100,GR,['WELL OR CANAL: 2ND CROP','1 HA WHEAT: 2 PEOPLE, 50 DAYS'],'#0a2a1a',20);txt(c,'as stated in the chapter',460,235,CY,F(15,1),'center');txt(c,"irrigation",460,326,GR,F(14,1),"center");}
  else if(s===1){box(c,160,80,600,100,CY,['CHEAP BANK CREDIT','STORAGE AND BETTER ROADS'],'#0a1c2a',21);txt(c,'instead of high interest',460,235,YL,F(15,1),'center');txt(c,"credit",460,326,CY,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,YL,['DAL MILL, COLD STORAGE','IN SEMI-RURAL AREAS'],'#2a2608',21);txt(c,'jobs outside big cities',460,235,CY,F(15,1),'center');txt(c,"industry",460,326,YL,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,MG,['MGNREGA 2005: RIGHT TO WORK','100 DAYS IN A YEAR'],'#2a0a2a',20);txt(c,'as stated in the chapter text',460,235,CY,F(15,1),'center');txt(c,"MGNREGA",460,326,MG,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['CHAPTER-ERA: MGNREGA 2005','100 DAYS, 625 DISTRICTS'],'#2a0a2a',20);txt(c,'CURRENT LAW: VB-G RAM G, 125 DAYS (PIB)',460,235,CY,F(15,1),'center');txt(c,"MGNREGA",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
