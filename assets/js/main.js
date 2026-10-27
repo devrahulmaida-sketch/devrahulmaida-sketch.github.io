@@ -26,7 +26,7 @@
   var path = location.pathname;
   document.querySelectorAll('.nav nav a').forEach(function(a){
     var href = a.getAttribute('href').split('#')[0];
-    if (href && href !== '/' && path.indexOf(href) === 0) a.style.color = 'var(--amber)';
-    else if (href === '/' && (path === '/' || path === '/index.html')) a.style.color = 'var(--amber)';
+    if (href && href !== '/' && href !== '/src/site/' && path.indexOf(href) === 0) a.style.color = 'var(--amber)';
+    else if ((href === '/' || href === '/src/site/') && (path === href || path === href + 'index.html')) a.style.color = 'var(--amber)';
   });
 })();
