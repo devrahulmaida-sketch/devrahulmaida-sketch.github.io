@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Top - Visual Walkthrough | Learn With Rahul</title>
+ <title>Top (तोप) - Visual Walkthrough | Learn With Rahul</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
@@ -44,8 +44,8 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 <body>
 <div class="wrap">
 <p class="backlink" style="margin:0 0 12px;font-size:14px"><a href="../index.html" style="color:#22d3ee;font-weight:700;text-decoration:none">← Notes Pe Wapas</a> &nbsp;|&nbsp; <a href="/src/site/" style="color:#8fa0c8;text-decoration:none">Home</a></p>
-<div class="crumb">Class 10 Hindi (Sparsh) - Top</div>
-<h1>Top Ka Visual Walkthrough</h1>
+<div class="crumb">Class 10 Hindi (Sparsh) - Top (तोप)</div>
+<h1>Top (तोप) Ka Visual Walkthrough</h1>
 <p class="sub">8 interactive scenes - kavi, pratik aur dharohar, East India Company, 1857 ki top, chidiyan, shabdarth, aur quiz.</p>
 <div class="dots" id="dots"></div>
 <div class="scene on" id="sc0">
@@ -119,8 +119,8 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 </div>
 <div class="scene" id="sc5">
-<h2>6. Chidiyan aur top 🐦⭐⭐⭐</h2>
-<p class="why">Kavita ka doosra bhaag.</p>
+<h2>6. Top ka daawa, chidiyon ka jawab 🐦⭐⭐⭐</h2>
+<p class="why">Pehle top ki dheeng (pehla panel), phir chidiyon ki baat (baaki panel). Kavita ka doosra bhaag.</p>
 <div class="panel">
 <canvas id="cv5" width="920" height="330"></canvas>
 <div class="btnrow">
@@ -147,7 +147,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 </div>
 <div class="scene" id="sc7">
-<h2>8. Quiz - Top Pakka? ⭐</h2>
+<h2>8. Quiz - Top (तोप) Pakka? ⭐</h2>
 <p class="why">5 sawaal - Kirtinagar, sailani, farig, Company Bagh, do baar. Score 5/5 lao!</p>
 <div class="panel">
 <div id="quizBox"></div>
@@ -308,10 +308,10 @@ const INFO=["<span class=hl>Main badi jabar</span>, uda diye the <span class=hl>
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Chidiyan",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,CY,['MAIN BADI JABAR UDA DIYE','SOORAMAON KE DHAJJE'],'#0a1c2a',20);txt(c,'pad ki pankti',460,235,YL,F(15,1),'center');txt(c,"jabar",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['CHHOTE LADKON KI GHUDSAWARI','SE AGAR YEH FARIG HO'],'#2a2608',20);txt(c,'pad ki pankti',460,235,CY,F(15,1),'center');txt(c,"ghud",460,326,YL,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,GR,['UPAR BAITHKAR CHIDIYAN','HI KARTI HAIN GAPSHAP'],'#0a2a1a',21);txt(c,'pad ki pankti',460,235,CY,F(15,1),'center');txt(c,"chidi",460,326,GR,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,MG,['KITNI BHI BADI HO TOP','EK DIN MUNH BAND'],'#2a0a2a',21);txt(c,'pad ki pankti',460,235,CY,F(15,1),'center');txt(c,"band",460,326,MG,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,CY,['TOP KA DAAWA: MAIN BADI JABAR','UDA DIYE SOORAMAON KE DHAJJE'],'#0a1c2a',19);txt(c,'pad ki pankti',460,235,YL,F(15,1),'center');txt(c,"jabar",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['AB: CHHOTE LADKON KI GHUDSAWARI','SE AGAR YEH FARIG HO'],'#2a2608',19);txt(c,'pad ki pankti',460,235,CY,F(15,1),'center');txt(c,"ghud",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['CHIDIYAN: UPAR BAITHKAR','AKSAR KARTI HAIN GAPSHAP'],'#0a2a1a',20);txt(c,'pad ki pankti',460,235,CY,F(15,1),'center');txt(c,"chidi",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['CHIDIYON KI BAAT: KITNI BHI BADI','HO TOP, EK DIN MUNH BAND'],'#2a0a2a',19);txt(c,'pad ki pankti',460,235,CY,F(15,1),'center');txt(c,"band",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -343,7 +343,7 @@ let i=0,score=0;
 function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
 function render(){
  if(i>=Q.length){
-  const msg=score===5?"PERFECT! Top pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  const msg=score===5?"PERFECT! Top (तोप) pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
   box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
   document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
   return;
