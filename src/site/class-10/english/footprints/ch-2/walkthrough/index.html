@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>The Thiefs Story - Visual Walkthrough | Learn With Rahul</title>
+ <title>The Thief's Story - Visual Walkthrough | Learn With Rahul</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
@@ -43,8 +43,8 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </head>
 <body>
 <div class="wrap">
-<div class="crumb">Class 10 English (Footprints without Feet) - Snapshots - The Thiefs Story</div>
-<h1>The Thiefs Story Ka Visual Walkthrough</h1>
+<div class="crumb">Class 10 English (Footprints without Feet) - Snapshots - The Thief's Story</div>
+<h1>The Thief's Story Ka Visual Walkthrough</h1>
 <p class="sub">8 interactive scenes - the people, the meeting, working for Anil, the plan, the theft, the station, the return, aur quiz.</p>
 <div class="dots" id="dots"></div>
 <div class="scene on" id="sc0">
@@ -146,7 +146,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 </div>
 <div class="scene" id="sc7">
-<h2>8. Quiz - The Thiefs Story Pakka? ⭐</h2>
+<h2>8. Quiz - The Thief's Story Pakka? ⭐</h2>
 <p class="why">5 sawaal - the author, Anils age, the money, the train, the pay. Score 5/5 lao!</p>
 <div class="panel">
 <div id="quizBox"></div>
@@ -165,7 +165,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 </div>
 <div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
-<div class="foot">Learn With Rahul - Class 10 English Footprints without Feet Chapter 2 (The Thiefs Story) - NCERT supplementary reader, chapter file jefp102 (print stamp seen: Reprint 2025-26) - Interactive Walkthrough</div>
+<div class="foot">Learn With Rahul - Class 10 English Footprints without Feet Chapter 2 (The Thief's Story) - NCERT supplementary reader, chapter file jefp102 (print stamp seen: Reprint 2025-26) - Interactive Walkthrough</div>
 </div>
 <script>
 
@@ -304,12 +304,12 @@ draw();
 inits[5]=(()=>{
 const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
 sel("sc5","b",i=>{s=i;draw();});
-const INFO=["<span class=hl>Teen chehre</span>: dar, gussa, sweekar.", "Anil ke chehre par <span class=hl>dukh</span>: bharose ka.", "<span class=hl>Maidan</span>, baarish, <span class=hl>clock tower</span>.", "Notes <span class=hl>geele</span>; ab sentences nahi."];
+const INFO=["<span class=hl>Teen chehre</span>: dar, gussa, sweekar.", "Narrator ka andaza: Anil ko <span class=hl>dukh</span> hoga, bharose ka.", "<span class=hl>Maidan</span>, baarish, <span class=hl>clock tower</span>.", "Notes <span class=hl>geele</span>; ab sentences nahi."];
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Station",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,CY,['THE GREEDY SHOW FEAR','THE RICH ANGER'],'#0a1c2a',21);txt(c,'the poor acceptance',460,235,YL,F(15,1),'center');txt(c,"faces",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['ANIL WOULD BE SAD','FOR THE LOST TRUST'],'#2a2608',21);txt(c,'not for the money',460,235,CY,F(15,1),'center');txt(c,"sadness",460,326,YL,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,CY,['THE GREEDY SHOW FEAR','THE RICH ANGER'],'#0a1c2a',21);txt(c,'the poor acceptance, says the narrator',460,235,YL,F(15,1),'center');txt(c,"faces",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['THE THIEF EXPECTS ANIL','TO BE SAD OVER TRUST'],'#2a2608',21);txt(c,'as the narrator sees it',460,235,CY,F(15,1),'center');txt(c,"sadness",460,326,YL,F(14,1),"center");}
  else if(s===2){box(c,160,80,600,100,GR,['RAIN ON THE MAIDAN','THE CLOCK TOWER'],'#0a2a1a',21);txt(c,'midnight',460,235,CY,F(15,1),'center');txt(c,"maidan",460,326,GR,F(14,1),"center");}
  else if(s===3){box(c,160,80,600,100,MG,['THE NOTES ARE DAMP','NO MORE SENTENCES'],'#2a0a2a',21);txt(c,'he thinks',460,235,CY,F(15,1),'center');txt(c,"notes",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
@@ -343,7 +343,7 @@ let i=0,score=0;
 function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
 function render(){
  if(i>=Q.length){
-  const msg=score===5?"PERFECT! The Thiefs Story pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  const msg=score===5?"PERFECT! The Thief's Story pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
   box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
   document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
   return;
