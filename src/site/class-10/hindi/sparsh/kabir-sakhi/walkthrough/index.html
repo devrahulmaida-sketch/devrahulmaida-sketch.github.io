@@ -50,7 +50,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 <div class="dots" id="dots"></div>
 <div class="scene on" id="sc0">
 <h2>1. Kabir ✍️⭐⭐⭐</h2>
-<p class="why">The author box.</p>
+<p class="why">Lekhak parichay (page).</p>
 <div class="panel">
 <canvas id="cv0" width="920" height="330"></canvas>
 <div class="btnrow">
@@ -64,7 +64,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 <div class="scene" id="sc1">
 <h2>2. The Sakhi Form 📜⭐⭐⭐</h2>
-<p class="why">Path pravesh.</p>
+<p class="why">Path pravesh (page).</p>
 <div class="panel">
 <canvas id="cv1" width="920" height="330"></canvas>
 <div class="btnrow">
@@ -78,7 +78,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 <div class="scene" id="sc2">
 <h2>3. Sakhis 1 and 2 🦌⭐⭐⭐</h2>
-<p class="why">Words and the deer.</p>
+<p class="why">Shabdarth aur mrig.</p>
 <div class="panel">
 <canvas id="cv2" width="920" height="330"></canvas>
 <div class="btnrow">
@@ -92,7 +92,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 <div class="scene" id="sc3">
 <h2>4. Sakhis 3 and 4 💡⭐⭐⭐</h2>
-<p class="why">The lamp and the two kinds of people.</p>
+<p class="why">Deepak aur do tarah ke log.</p>
 <div class="panel">
 <canvas id="cv3" width="920" height="330"></canvas>
 <div class="btnrow">
@@ -106,7 +106,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 <div class="scene" id="sc4">
 <h2>5. Sakhis 5 and 6 🐍⭐⭐⭐</h2>
-<p class="why">Separation and the critic.</p>
+<p class="why">Birah aur nindak.</p>
 <div class="panel">
 <canvas id="cv4" width="920" height="330"></canvas>
 <div class="btnrow">
@@ -120,7 +120,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 <div class="scene" id="sc5">
 <h2>6. Sakhis 7 and 8 📖⭐⭐⭐</h2>
-<p class="why">The book and the burning stick.</p>
+<p class="why">Pothi aur jalti lakdi.</p>
 <div class="panel">
 <canvas id="cv5" width="920" height="330"></canvas>
 <div class="btnrow">
@@ -134,7 +134,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 </div>
 <div class="scene" id="sc6">
 <h2>7. The Words 📖⭐⭐</h2>
-<p class="why">Glossary.</p>
+<p class="why">Shabdarth.</p>
 <div class="panel">
 <canvas id="cv6" width="920" height="330"></canvas>
 <div class="btnrow">
@@ -156,11 +156,11 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 <div class="recap">
 <h2>Formula / Fact Recap - Ek Nazar Mein</h2>
 <div class="rcards">
-<div class="rcard"><b>Kabir</b>1398-1518; Ramanand's disciple; last years at Maghar (author box).</div>
-<div class="rcard"><b>Sakhi</b>A doha: 13 and 11 pauses, 24 matras (Path pravesh).</div>
-<div class="rcard"><b>Glossary</b>aapa = ego, kundali = navel, bhuvangam = snake, baura = mad, ashir = letter, peev = beloved, muraada = burning stick.</div>
-<div class="rcard"><b>Readings</b>Line meanings beyond the glossary are my interpretation (meri vyakhya).</div>
-<div class="rcard"><b>Open tasks</b>Prashn 1 to 4, 6, 7, language and project tasks are not keyed.</div>
+<div class="rcard"><b>Kabir</b>1398-1518; Ramanand ke shishya; antim varsh Maghar mein (lekhak parichay, page).</div>
+<div class="rcard"><b>Sakhi</b>Ek doha: 13 aur 11 par vishram, 24 matra (Path pravesh).</div>
+<div class="rcard"><b>Shabdarth</b>aapa = ahankar, kundali = nabhi, bhuvangam = saanp, baura = pagal, ashir = akshar, peev = priya, muraada = jalti lakdi.</div>
+<div class="rcard"><b>Vyakhya</b>Shabdarth ke alawa har pankti ka arth meri vyakhya hai.</div>
+<div class="rcard"><b>Khule kaam</b>Prashn 1 se 4, 6, 7, bhasha aur project kaam key nahin hain.</div>
 </div>
 </div>
 </div>
@@ -233,10 +233,10 @@ const INFO=["<span class=hl>Kabir</span> (1398-1518): janm 1398, Kashi mein <spa
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Kabir",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,CY,['KABIR 1398 TO 1518','BORN IN KASHI IS BELIEVED'],'#0a1c2a',21);txt(c,'NCERT author box',460,235,YL,F(15,1),'center');txt(c,"dates",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['DISCIPLE OF GURU','RAMANAND LIVED 120 YEARS'],'#2a2608',21);txt(c,'NCERT author box',460,235,CY,F(15,1),'center');txt(c,"guru",460,326,YL,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,GR,['LAST YEARS WERE','SPENT AT MAGHAR'],'#0a2a1a',21);txt(c,'NCERT author box',460,235,CY,F(15,1),'center');txt(c,"maghar",460,326,GR,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,MG,['GOD IS ONE FORMLESS','EXPERIENCE OVER SCRIPTURE'],'#2a0a2a',21);txt(c,'NCERT author box',460,235,CY,F(15,1),'center');txt(c,"belief",460,326,MG,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,CY,['KABIR 1398 SE 1518','JANM KASHI MEIN MANA JATA'],'#0a1c2a',20);txt(c,'page ke anusar',460,235,YL,F(15,1),'center');txt(c,"dates",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['GURU RAMANAND KE SHISHYA','120 VARSH KI AAYU'],'#2a2608',20);txt(c,'page ke anusar',460,235,CY,F(15,1),'center');txt(c,"guru",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['ANTIM VARSH MAGHAR','MEIN BITAYE'],'#0a2a1a',21);txt(c,'page ke anusar',460,235,CY,F(15,1),'center');txt(c,"maghar",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['ISHWAR EK NIRVIKAR AROOP','ANUBHAV GYAN ZYADA MAANA'],'#2a0a2a',19);txt(c,'page ke anusar',460,235,CY,F(15,1),'center');txt(c,"belief",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -248,10 +248,10 @@ const INFO=["<span class=hl>Sakhi</span> shabd <span class=hl>sakshi</span> ka t
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Form",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,CY,['SAKHI COMES FROM','SAKSHI WITNESS'],'#0a1c2a',21);txt(c,'Path pravesh',460,235,YL,F(15,1),'center');txt(c,"word",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['A DOHA OF 24 MATRAS','PAUSES AT 13 AND 11'],'#2a2608',21);txt(c,'Path pravesh',460,235,CY,F(15,1),'center');txt(c,"doha",460,326,YL,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,GR,['LANGUAGE OF THE EASTERN','REGION'],'#0a2a1a',21);txt(c,'NCERT author box',460,235,CY,F(15,1),'center');txt(c,"lang",460,326,GR,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,MG,['CALLED PACHMEL KHICHDI','AND SADHUKKADI'],'#2a0a2a',21);txt(c,'Path pravesh',460,235,CY,F(15,1),'center');txt(c,"khichdi",460,326,MG,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,CY,['SAKHI SHABD SAKSHI','SE BANA HAI'],'#0a1c2a',21);txt(c,'Path pravesh ke anusar',460,235,YL,F(15,1),'center');txt(c,"word",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['SAKHI EK DOHA HAI','13+11 PAR VISHRAM, 24 MATRA'],'#2a2608',19);txt(c,'Path pravesh ke anusar',460,235,CY,F(15,1),'center');txt(c,"doha",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['BHASHA PURVI JANPAD','KI THI'],'#0a2a1a',21);txt(c,'page ke anusar',460,235,CY,F(15,1),'center');txt(c,"lang",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['PACHMEL KHICHDI AUR','SADHUKKADI BHI KAHA JATA'],'#2a0a2a',20);txt(c,'Path pravesh ke anusar',460,235,CY,F(15,1),'center');txt(c,"khichdi",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -263,10 +263,10 @@ const INFO=["<span class=hl>Aapa</span> = aham (ahankar), glossary.", "<span cla
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"S12",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,CY,['AAPA MEANS AHAM','OR EGO'],'#0a1c2a',21);txt(c,'page glossary',460,235,YL,F(15,1),'center');txt(c,"aapa",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['KUNDALI MEANS NABHI','OR NAVEL'],'#2a2608',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"kundali",460,326,YL,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,GR,['GHAT GHAT MEANS IN','EVERY PARTICLE'],'#0a2a1a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"ghat",460,326,GR,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,MG,['MY READING DEER SEEKS','MUSK IN THE FOREST'],'#2a0a2a',21);txt(c,'my interpretation',460,235,CY,F(15,1),'center');txt(c,"meaning",460,326,MG,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,CY,['AAPA YAANI AHAM','(AHANKAR)'],'#0a1c2a',21);txt(c,'page glossary',460,235,YL,F(15,1),'center');txt(c,"aapa",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['KUNDALI YAANI NABHI','(NAVEL)'],'#2a2608',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"kundali",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['GHAT GHAT YAANI','KAN-KAN MEIN'],'#0a2a1a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"ghat",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['MRIG NABHI KI KASTURI','BAN MEIN DHOONDHTA HAI'],'#2a0a2a',20);txt(c,'meri vyakhya',460,235,CY,F(15,1),'center');txt(c,"meaning",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -278,10 +278,10 @@ const INFO=["<span class=hl>Deepak dekhya maanhi</span>: sakhi ki pankti (page).
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"S34",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,CY,['THE LAMP IS SEEN','WITHIN'],'#0a1c2a',21);txt(c,'line of the sakhi',460,235,YL,F(15,1),'center');txt(c,"lamp",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['ALL THE DARKNESS','IS GONE'],'#2a2608',21);txt(c,'line of the sakhi',460,235,CY,F(15,1),'center');txt(c,"dark",460,326,YL,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,GR,['THE WORLD IS HAPPY','EATS AND SLEEPS'],'#0a2a1a',21);txt(c,'line of the sakhi',460,235,CY,F(15,1),'center');txt(c,"sukhiya",460,326,GR,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,MG,['KABIR IS SAD','WAKES AND WEEPS'],'#2a0a2a',21);txt(c,'line of the sakhi',460,235,CY,F(15,1),'center');txt(c,"dukhiya",460,326,MG,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,CY,['DEEPAK DEKHYA MAANHI','(APNE ANDAR)'],'#0a1c2a',21);txt(c,'sakhi ki pankti',460,235,YL,F(15,1),'center');txt(c,"lamp",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['SAB ANDHIYARA','MITI GAYA'],'#2a2608',21);txt(c,'sakhi ki pankti',460,235,CY,F(15,1),'center');txt(c,"dark",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['SANSAR SUKHI: KHAYE','AUR SOVAI'],'#0a2a1a',21);txt(c,'sakhi ki pankti',460,235,CY,F(15,1),'center');txt(c,"sukhiya",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['KABIR DUKHI: JAAGAI','AUR ROVAI'],'#2a0a2a',21);txt(c,'sakhi ki pankti',460,235,CY,F(15,1),'center');txt(c,"dukhiya",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -293,10 +293,10 @@ const INFO=["<span class=hl>Bhuvangam</span> = bhujang / saanp, glossary.", "<sp
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"S56",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,CY,['BHUVANGAM MEANS','SNAKE'],'#0a1c2a',21);txt(c,'page glossary',460,235,YL,F(15,1),'center');txt(c,"bhuv",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['BAURA MEANS MAD','OR CRAZY'],'#2a2608',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"baura",460,326,YL,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,GR,['KEEP THE CRITIC NEAR','SAYS THE SAKHI'],'#0a2a1a',21);txt(c,'line of the sakhi',460,235,CY,F(15,1),'center');txt(c,"nindak",460,326,GR,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,MG,['NEDA MEANS NEAR','NIKAT'],'#2a0a2a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"neda",460,326,MG,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,CY,['BHUVANGAM YAANI','SAANP'],'#0a1c2a',21);txt(c,'page glossary',460,235,YL,F(15,1),'center');txt(c,"bhuv",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['BAURA YAANI','PAGAL'],'#2a2608',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"baura",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['NINDAK KO NEDE RAKHIYE','(SAKHI KI PANKTI)'],'#0a2a1a',20);txt(c,'sakhi ki pankti',460,235,CY,F(15,1),'center');txt(c,"nindak",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['NEDA YAANI','NIKAT'],'#2a0a2a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"neda",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -308,10 +308,10 @@ const INFO=["<span class=hl>Pothi padhi padhi</span> jag mua: sakhi ki pankti (p
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"S78",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,CY,['READING BOOK AFTER BOOK','THE WORLD DIED'],'#0a1c2a',21);txt(c,'line of the sakhi',460,235,YL,F(15,1),'center');txt(c,"pothi",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['ASHIR MEANS AKSHAR','OR LETTER'],'#2a2608',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"ashir",460,326,YL,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,GR,['PEEV MEANS PRIYA','OR BELOVED'],'#0a2a1a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"peev",460,326,GR,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,MG,['MURADA MEANS A','BURNING STICK'],'#2a0a2a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"murada",460,326,MG,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,CY,['POTHI PADHI PADHI','JAG MUA, PANDIT NA BHAYA'],'#0a1c2a',20);txt(c,'sakhi ki pankti',460,235,YL,F(15,1),'center');txt(c,"pothi",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['ASHIR YAANI','AKSHAR'],'#2a2608',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"ashir",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['PEEV YAANI','PRIYA'],'#0a2a1a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"peev",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['MURAADA YAANI','JALTI HUI LAKDI'],'#2a0a2a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"murada",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -323,10 +323,10 @@ const INFO=["<span class=hl>Baani</span> = boli, glossary.", "<span class=hl>Sab
 function draw(){
  c.clearRect(0,0,920,330);
  txt(c,"Words",460,26,YL,F(14,1),"center");
- if(s===0){box(c,160,80,600,100,CY,['BAANI MEANS BOLI','OR SPEECH'],'#0a1c2a',21);txt(c,'page glossary',460,235,YL,F(15,1),'center');txt(c,"baani",460,326,CY,F(14,1),"center");}
- else if(s===1){box(c,160,80,600,100,YL,['SABAN MEANS SOAP','SABUN'],'#2a2608',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"saban",460,326,YL,F(14,1),"center");}
- else if(s===2){box(c,160,80,600,100,GR,['AANGANI MEANS','COURTYARD'],'#0a2a1a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"angan",460,326,GR,F(14,1),"center");}
- else if(s===3){box(c,160,80,600,100,MG,['QUESTION 7 ASKS ABOUT','THE LANGUAGE'],'#2a0a2a',21);txt(c,'page exercise',460,235,CY,F(15,1),'center');txt(c,"nida",460,326,MG,F(14,1),"center");}
+ if(s===0){box(c,160,80,600,100,CY,['BAANI YAANI','BOLI'],'#0a1c2a',21);txt(c,'page glossary',460,235,YL,F(15,1),'center');txt(c,"baani",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['SABAN YAANI','SABUN'],'#2a2608',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"saban",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['AANGANI YAANI','AANGAN'],'#0a2a1a',21);txt(c,'page glossary',460,235,CY,F(15,1),'center');txt(c,"angan",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['PRASHN 7 POOCHHTA HAI','BHASHA KI VISHESHTA'],'#2a0a2a',21);txt(c,'page ke prashn se',460,235,CY,F(15,1),'center');txt(c,"nida",460,326,MG,F(14,1),"center");}
  R.innerHTML=INFO[s];
 }
 draw();
@@ -334,11 +334,11 @@ draw();
 inits[7]=(()=>{
 const box=document.getElementById("quizBox");
 const Q=[
-{q:"Glossary ke anusar kundali ka kya arth hai?",opts:["Nabhi","Sing","Pair","Aankh"],a:0,why:"The page glossary gives kundali as nabhi (navel)."},
-{q:"Glossary ke anusar bhuvangam ka kya arth hai?",opts:["Pagal","Nikat","Bhujang / saanp","Akshar"],a:2,why:"The page glossary gives bhuvangam as bhujang / saanp (snake)."},
-{q:"Sakhi 'Pothi padhi padhi' ke anusar kaun pandit hota hai?",opts:["Jo bahut pothiyan padhe","Jo peev (priya) ka ek akshar padhe","Jo bahut yatra kare","Jo shastra ratta"],a:1,why:"The sakhi says: aikai ashir peev ka, padhai su pandit hoi - the one who reads one letter of the beloved is learned."},
-{q:"Sakhi ke anusar deepak dekhne par kya mit gaya?",opts:["Sansar","Bhay","Dukh","Andhiyara"],a:3,why:"The sakhi says: sab andhiyara miti gaya, jab deepak dekhya maanhi."},
-{q:"Sakhi ke anusar Kabir kise nede rakhne ko kehte hain?",opts:["Mitra ko","Nindak ko","Raja ko","Pandit ko"],a:1,why:"The sakhi says: nindak neda rakhiye, aangan kuti bandhai."}];
+{q:"Glossary ke anusar kundali ka kya arth hai?",opts:["Nabhi","Sing","Pair","Aankh"],a:0,why:"Page ke shabdarth mein kundali ka arth nabhi diya hai."},
+{q:"Glossary ke anusar bhuvangam ka kya arth hai?",opts:["Pagal","Nikat","Bhujang / saanp","Akshar"],a:2,why:"Page ke shabdarth mein bhuvangam ka arth bhujang / saanp diya hai."},
+{q:"Sakhi 'Pothi padhi padhi' ke anusar kaun pandit hota hai?",opts:["Jo bahut pothiyan padhe","Jo peev (priya) ka ek akshar padhe","Jo bahut yatra kare","Jo shastra ratta"],a:1,why:"Sakhi kehti hai: aikai ashir peev ka, padhai su pandit hoi. Yaani jo peev (priya) ka ek akshar padhe, wahi pandit hai."},
+{q:"Sakhi ke anusar deepak dekhne par kya mit gaya?",opts:["Sansar","Bhay","Dukh","Andhiyara"],a:3,why:"Sakhi ki pankti: sab andhiyara miti gaya, jab deepak dekhya maanhi."},
+{q:"Sakhi ke anusar Kabir kise nede rakhne ko kehte hain?",opts:["Mitra ko","Nindak ko","Raja ko","Pandit ko"],a:1,why:"Sakhi ki pankti: nindak neda rakhiye, aangan kuti bandhai."}];
 let i=0,score=0;
 function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
 function render(){
