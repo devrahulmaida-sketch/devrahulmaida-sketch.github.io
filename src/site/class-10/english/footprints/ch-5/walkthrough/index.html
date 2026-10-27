@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Footprints without Feet - Visual Walkthrough | Learn With Rahul</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#07070f;color:#e8e8f2;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+.wrap{width:100%;max-width:1100px}
+.crumb{font-size:13px;color:#22d3ee;letter-spacing:.5px;border:1px solid #164e63;background:#0b1220;display:inline-block;padding:5px 14px;border-radius:999px;margin-bottom:16px}
+h1{font-size:clamp(30px,5vw,46px);font-weight:800;background:linear-gradient(90deg,#22d3ee,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#9ca3c0;font-size:15px;margin-bottom:18px}
+.dots{display:flex;gap:8px;margin:6px 0 20px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2d2d52;cursor:pointer;transition:all .25s}
+.dot.on{background:#22d3ee;box-shadow:0 0 10px #22d3ee}
+.scene{display:none}
+.scene.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.scene h2{font-size:20px;color:#7dd3fc;margin-bottom:6px}
+.scene .why{font-size:14px;color:#a5b0d0;margin-bottom:14px;line-height:1.5}
+.panel{background:#0d0d1c;border:1px solid #23233f;border-radius:16px;padding:18px;margin-bottom:14px}
+canvas{display:block;width:100%;border-radius:12px;background:#0a0a16}
+.btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button{background:#16162e;border:1px solid #2d2d52;color:#cbd5f5;padding:9px 16px;border-radius:10px;font-size:14px;cursor:pointer;transition:all .2s}
+button:hover{border-color:#22d3ee;color:#22d3ee}
+button.sel{background:#0e2a3a;border-color:#22d3ee;color:#22d3ee}
+.nav{display:flex;justify-content:space-between;margin-top:18px}
+.readout{font-family:'Cascadia Code',monospace;font-size:13.5px;line-height:1.7;color:#c9d4ff;background:#0a0f22;border:1px solid #1e2a4a;border-radius:12px;padding:12px 16px;margin-top:12px;white-space:pre-wrap}
+.hl{color:#e879f9;font-weight:700}
+.cy{color:#22d3ee;font-weight:700}
+.foot{margin-top:34px;text-align:center;color:#4b5578;font-size:12.5px}
+input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
+.slrow{display:flex;align-items:center;gap:12px;margin-top:10px}
+.slrow label{font-size:13px;color:#8fa0c8;min-width:120px}
+.slrow .v{color:#e879f9;font-family:monospace;min-width:44px;text-align:right}
+.recap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.rcard{background:#0d0d1c;border:1px solid #23233f;border-radius:14px;padding:16px}
+.rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
+.rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
+.rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb">Class 10 English (Footprints without Feet) - Snapshots - Footprints without Feet</div>
+<h1>Footprints without Feet Ka Visual Walkthrough</h1>
+<p class="sub">8 interactive scenes - the prints, Griffin, the shops, Iping, the clergyman, the furniture, the headless man, aur quiz.</p>
+<div class="dots" id="dots"></div>
+<div class="scene on" id="sc0">
+<h2>1. The Prints 👣⭐⭐⭐</h2>
+<p class="why">The start.</p>
+<div class="panel">
+<canvas id="cv0" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">boys</button>
+<button class="b" data-o="1">mud</button>
+<button class="b" data-o="2">fade</button>
+<button class="b" data-o="3">wells</button>
+</div>
+<div class="readout" id="r0"></div>
+</div>
+</div>
+<div class="scene" id="sc1">
+<h2>2. Griffin 🔬⭐⭐⭐</h2>
+<p class="why">The scientist.</p>
+<div class="panel">
+<canvas id="cv1" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">who</button>
+<button class="b" data-o="1">drugs</button>
+<button class="b" data-o="2">glass</button>
+<button class="b" data-o="3">use</button>
+</div>
+<div class="readout" id="r1"></div>
+</div>
+</div>
+<div class="scene" id="sc2">
+<h2>3. The Shops 🏬⭐⭐⭐</h2>
+<p class="why">Winter in London.</p>
+<div class="panel">
+<canvas id="cv2" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">fire</button>
+<button class="b" data-o="1">store</button>
+<button class="b" data-o="2">run</button>
+<button class="b" data-o="3">drury</button>
+</div>
+<div class="readout" id="r2"></div>
+</div>
+</div>
+<div class="scene" id="sc3">
+<h2>4. Iping 🚂⭐⭐⭐</h2>
+<p class="why">The inn.</p>
+<div class="panel">
+<canvas id="cv3" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">train</button>
+<button class="b" data-o="1">rooms</button>
+<button class="b" data-o="2">hall</button>
+<button class="b" data-o="3">cash</button>
+</div>
+<div class="readout" id="r3"></div>
+</div>
+</div>
+<div class="scene" id="sc4">
+<h2>5. The Study 💰⭐⭐⭐</h2>
+<p class="why">The empty room.</p>
+<div class="panel">
+<canvas id="cv4" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">noise</button>
+<button class="b" data-o="1">poker</button>
+<button class="b" data-o="2">empty</button>
+<button class="b" data-o="3">money</button>
+</div>
+<div class="readout" id="r4"></div>
+</div>
+</div>
+<div class="scene" id="sc5">
+<h2>6. The Furniture 🪑⭐⭐⭐</h2>
+<p class="why">The inn is shaken.</p>
+<div class="panel">
+<canvas id="cv5" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">door</button>
+<button class="b" data-o="1">hat</button>
+<button class="b" data-o="2">chair</button>
+<button class="b" data-o="3">ghost</button>
+</div>
+<div class="readout" id="r5"></div>
+</div>
+</div>
+<div class="scene" id="sc6">
+<h2>7. The End 🫥⭐⭐⭐</h2>
+<p class="why">The headless man.</p>
+<div class="panel">
+<canvas id="cv6" width="920" height="330"></canvas>
+<div class="btnrow">
+<button class="b sel" data-o="0">throw</button>
+<button class="b" data-o="1">bar</button>
+<button class="b" data-o="2">jaffers</button>
+<button class="b" data-o="3">free</button>
+</div>
+<div class="readout" id="r6"></div>
+</div>
+</div>
+<div class="scene" id="sc7">
+<h2>8. Quiz - Footprints without Feet Pakka? ⭐</h2>
+<p class="why">5 sawaal - the scientist, the prints, the fire, the village, the constable. Score 5/5 lao!</p>
+<div class="panel">
+<div id="quizBox"></div>
+</div>
+</div>
+<div class="recap">
+<h2>Formula / Fact Recap - Ek Nazar Mein</h2>
+<div class="rcards">
+<div class="rcard"><b>Prints</b>Muddy bare footprints; H.G. Wells.</div>
+<div class="rcard"><b>Griffin</b>The scientist; rare drugs; glass-like body, says the story.</div>
+<div class="rcard"><b>Shops</b>A London store; Drury Lane disguise.</div>
+<div class="rcard"><b>Iping</b>The inn; Mrs Hall; the empty study.</div>
+<div class="rcard"><b>Furniture</b>Hat and chair push the Halls out.</div>
+<div class="rcard"><b>End</b>Headless man; Jaffers knocked out; Griffin free.</div>
+</div>
+</div>
+</div>
+<div class="nav"><button id="prev">&#x2190; Peeche</button><button id="next">Aage &#x2192;</button></div>
+<div class="foot">Learn With Rahul - Class 10 English Footprints without Feet Chapter 5 (Footprints without Feet) - NCERT supplementary reader, chapter file jefp105 (print stamp seen: Reprint 2025-26) - Interactive Walkthrough</div>
+</div>
+<script>
+
+
+
+
+
+
+
+
+"use strict";
+const CY="#22d3ee",MG="#e879f9",YL="#facc15",GR="#34d399",RD="#f87171",DM="#5b6488";
+let cur=0;const N=8;
+const dots=document.getElementById("dots");
+for(let i=0;i<N;i++){const d=document.createElement("div");d.className="dot";d.onclick=()=>go(i);dots.appendChild(d);}
+const inits=[];const anims={};
+function go(i){cur=i;document.querySelectorAll(".scene").forEach((s,j)=>s.classList.toggle("on",j===i));[...dots.children].forEach((d,j)=>d.classList.toggle("on",j===i));if(inits[i])inits[i]();}
+document.getElementById("prev").onclick=()=>go((cur+N-1)%N);
+document.getElementById("next").onclick=()=>go((cur+1)%N);
+function ctx(id){return document.getElementById(id).getContext("2d");}
+function txt(c,t,x,y,col,font,align){c.fillStyle=col||"#e8e8f2";c.font=font||"15px 'Cascadia Code',monospace";c.textAlign=align||"left";c.fillText(t,x,y);}
+let __t=0;
+setInterval(()=>{__t++;const a=anims[cur];if(a)a(__t);},70);
+function grid2(c,ox,oy,u){
+ c.strokeStyle="#1a1a33";c.lineWidth=1;
+ for(let i=-12;i<=12;i++){c.beginPath();c.moveTo(ox+i*u,10);c.lineTo(ox+i*u,320);c.stroke();
+  c.beginPath();c.moveTo(20,oy+i*u);c.lineTo(900,oy+i*u);c.stroke();}
+ c.strokeStyle="#2d2d52";c.lineWidth=2;
+ c.beginPath();c.moveTo(20,oy);c.lineTo(900,oy);c.stroke();
+ c.beginPath();c.moveTo(ox,10);c.lineTo(ox,320);c.stroke();
+}
+function arrow2(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+ const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<10)return;
+ const ux=dx/L,uy=dy/L,s=9;
+ c.fillStyle=col;c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-ux*s-uy*s*0.45,y2-uy*s+ux*s*0.45);c.lineTo(x2-ux*s+uy*s*0.45,y2-uy*s-ux*s*0.45);c.closePath();c.fill();}
+function rot3(p,th){const c=Math.cos(th),s=Math.sin(th);return [p[0]*c-p[1]*s,p[0]*s+p[1]*c,p[2]];}
+function proj(p,ox,oy,u){return [ox+u*(p[0]-0.6*p[1]),oy-u*(p[2]-0.45*p[1])];}
+function drawAxes(c,ox,oy,u,th,L){
+ const ax=[[[0,0,0],[L,0,0],CY,"x"],[[0,0,0],[0,L,0],MG,"y"],[[0,0,0],[0,0,L],YL,"z"]];
+ ax.forEach(a=>{const p1=proj(rot3(a[0],th),ox,oy,u),p2=proj(rot3(a[1],th),ox,oy,u);
+  c.strokeStyle=a[2];c.lineWidth=1.5;c.globalAlpha=0.55;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();c.globalAlpha=1;
+  txt(c,a[3],p2[0]+6,p2[1]+4,a[2],"bold 13px 'Cascadia Code',monospace");});
+}
+function arrow3(c,p1,p2,col,w){c.strokeStyle=col;c.lineWidth=w||3;c.beginPath();c.moveTo(p1[0],p1[1]);c.lineTo(p2[0],p2[1]);c.stroke();
+ const dx=p2[0]-p1[0],dy=p2[1]-p1[1],L=Math.hypot(dx,dy);if(L<8)return;
+ const ux=dx/L,uy=dy/L,s=8;
+ c.fillStyle=col;c.beginPath();c.moveTo(p2[0],p2[1]);c.lineTo(p2[0]-ux*s-uy*s*0.5,p2[1]-uy*s+ux*s*0.5);c.lineTo(p2[0]-ux*s+uy*s*0.5,p2[1]-uy*s-ux*s*0.5);c.closePath();c.fill();}
+function fmt(x,d){return (Math.round(x*Math.pow(10,d||3))/Math.pow(10,d||3)).toFixed(d||3);}function wrap(c,t,x,y,col,font,maxw,lh){c.fillStyle=col;c.font=font||"14px 'Cascadia Code',monospace";c.textAlign="left";
+ const ws=t.split(" ");let line="",yy=y;
+ for(const w of ws){const test=line?line+" "+w:w;
+  if(test.length>maxw&&line){c.fillText(line,x,yy);yy+=lh||17;line=w;}else line=test;}
+ c.fillText(line,x,yy);return yy+(lh||17);}
+const F=(n,b)=>(b?"bold ":"")+n+"px 'Cascadia Code',monospace";
+function circ(c,x,y,r,stroke,fill,lw){c.beginPath();c.arc(x,y,r,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,rot||0,0,7);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw||2.5;c.stroke();}}
+function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
+function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
+function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
+function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
+inits[0]=(()=>{
+const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
+sel("sc0","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Do ladke</span> seedhiyon par nange pairon ke nishaan dekhte hain.", "Nishaan <span class=hl>kichad</span> ke hain, taaza.", "Nishaan <span class=hl>fade</span> hote hue gayab.", "Kahani ke ant mein <span class=hl>H.G. Wells</span> ka naam."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Prints",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['TWO BOYS IN LONDON','FRESH BARE FOOTPRINTS'],'#0a1c2a',21);txt(c,'on the steps of a house',460,235,YL,F(15,1),'center');txt(c,"boys",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['MUDDY IMPRINTS','APPEAR ONE BY ONE'],'#2a2608',21);txt(c,'from nowhere',460,235,CY,F(15,1),'center');txt(c,"mud",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['THE PRINTS FADE','AND DISAPPEAR'],'#0a2a1a',21);txt(c,'the boys follow them',460,235,CY,F(15,1),'center');txt(c,"fade",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['H G WELLS','SIGNS THE STORY'],'#2a0a2a',21);txt(c,'a story about invisibility',460,235,CY,F(15,1),'center');txt(c,"wells",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[1]=(()=>{
+const c=ctx("cv1");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r1");
+sel("sc1","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Griffin</span> ek scientist hai.", "Kahani ke anusar usne <span class=hl>durlabh dawaein</span> nigali.", "Sharir <span class=hl>shisha jaisa</span> transparent aur thos.", "Chapter poochta hai: <span class=hl>use ya misuse</span>?"];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Griffin",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['GRIFFIN','THE SCIENTIST'],'#0a1c2a',21);txt(c,'he makes the body transparent',460,235,YL,F(15,1),'center');txt(c,"who",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['CERTAIN RARE DRUGS','HE SWALLOWS THEM'],'#2a2608',21);txt(c,'as the story tells it',460,235,CY,F(15,1),'center');txt(c,"drugs",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['AS TRANSPARENT AS GLASS','AND AS SOLID AS GLASS'],'#0a2a1a',21);txt(c,'says the story',460,235,CY,F(15,1),'center');txt(c,"glass",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['USE OR MISUSE','OF HIS DISCOVERY'],'#2a0a2a',21);txt(c,'the opening question',460,235,CY,F(15,1),'center');txt(c,"use",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[2]=(()=>{
+const c=ctx("cv2");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r2");
+sel("sc2","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Landlord</span> ne nikaalna chaha, Griffin ne aag lagayi.", "Mid-winter mein <span class=hl>bade store</span> mein chupa.", "Assistants aaye, wo <span class=hl>bhaaga</span> aur kapde utaare.", "<span class=hl>Drury Lane</span> mein bandages aur nakli naak."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Shops",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['HIS LANDLORD TRIED','TO EJECT HIM'],'#0a1c2a',21);txt(c,'so he set fire to the house',460,235,YL,F(15,1),'center');txt(c,"fire",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['A BIG LONDON STORE','WARM CLOTHES AND SLEEP'],'#2a2608',21);txt(c,'after closing time',460,235,CY,F(15,1),'center');txt(c,"store",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['HE PANICS AND RUNS','THE NEW CLOTHES COME OFF'],'#0a2a1a',21);txt(c,'invisible again',460,235,CY,F(15,1),'center');txt(c,"run",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['DRURY LANE','BANDAGES AND DARK GLASSES'],'#2a0a2a',21);txt(c,'a false nose and whiskers',460,235,CY,F(15,1),'center');txt(c,"drury",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[3]=(()=>{
+const c=ctx("cv3");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r3");
+sel("sc3","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Train</span> se Iping gaon.", "Inn mein <span class=hl>do kamre</span>.", "<span class=hl>Mrs Hall</span> use eccentric scientist maanti hai.", "Paisa khatam, <span class=hl>cheque</span> ka bahana."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Iping",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['BY TRAIN TO','THE VILLAGE OF IPING'],'#0a1c2a',21);txt(c,'to be away from London',460,235,YL,F(15,1),'center');txt(c,"train",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['TWO ROOMS AT THE INN','I WISH TO BE ALONE'],'#2a2608',21);txt(c,'he says',460,235,CY,F(15,1),'center');txt(c,"rooms",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['MRS HALL THINKS','HE IS ECCENTRIC'],'#0a2a1a',21);txt(c,'he paid in advance',460,235,CY,F(15,1),'center');txt(c,"hall",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['THE MONEY RUNS OUT','HE WAITS FOR A CHEQUE'],'#2a0a2a',21);txt(c,'he says',460,235,CY,F(15,1),'center');txt(c,"cash",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[4]=(()=>{
+const c=ctx("cv4");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r4");
+sel("sc4","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Clergyman</span> aur patni ne study mein khanak suni.", "Haath mein <span class=hl>poker</span>, darwaza khola.", "Kamra <span class=hl>khaali</span> dikha.", "Desk khula, <span class=hl>paisa gayab</span>."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Study",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['A CLERGYMAN AND HIS WIFE','HEAR MONEY BEING TAKEN'],'#0a1c2a',21);txt(c,'early in the morning',460,235,YL,F(15,1),'center');txt(c,"noise",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['POKER IN HAND','SURRENDER'],'#2a2608',21);txt(c,'he flings the door open',460,235,CY,F(15,1),'center');txt(c,"poker",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['THE ROOM LOOKS EMPTY','NO ONE ANYWHERE'],'#0a2a1a',21);txt(c,'not even up the chimney',460,235,CY,F(15,1),'center');txt(c,"empty",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['THE DESK IS OPEN','THE MONEY IS MISSING'],'#2a0a2a',21);txt(c,'an extraordinary affair',460,235,CY,F(15,1),'center');txt(c,"money",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[5]=(()=>{
+const c=ctx("cv5");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r5");
+sel("sc5","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Darwaza</span> khula, kapde kamre mein.", "<span class=hl>Hat</span> Mrs Hall ke chehre par.", "<span class=hl>Kursi</span> ne unhe baahar dhakela.", "Wo ise <span class=hl>bhoot</span> samajhti hai."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"Furniture",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['THE DOOR IS OPEN','CLOTHES LIE ABOUT'],'#0a1c2a',21);txt(c,'the bedclothes are cold',460,235,YL,F(15,1),'center');txt(c,"door",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['A SNIFF AT HER EAR','THE HAT LEAPS AT HER'],'#2a2608',21);txt(c,'Mrs Hall panics',460,235,CY,F(15,1),'center');txt(c,"hat",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['THE CHAIR CHARGES','AND PUSHES THEM OUT'],'#0a2a1a',21);txt(c,'then the door locks',460,235,CY,F(15,1),'center');txt(c,"chair",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['SHE THINKS IT IS HAUNTED','THE NEIGHBOURS SAY WITCHCRAFT'],'#2a0a2a',21);txt(c,'as the story says',460,235,CY,F(15,1),'center');txt(c,"ghost",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[6]=(()=>{
+const c=ctx("cv6");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r6");
+sel("sc6","b",i=>{s=i;draw();});
+const INFO=["<span class=hl>Griffin</span> gusse mein bandages utaarta hai.", "Bar mein <span class=hl>headless man</span>.", "<span class=hl>Constable Jaffers</span> warrant ke saath.", "Jaffers behosh, Griffin <span class=hl>chhoot</span> gaya."];
+function draw(){
+ c.clearRect(0,0,920,330);
+ txt(c,"End",460,26,YL,F(14,1),"center");
+ if(s===0){box(c,160,80,600,100,CY,['I WILL SHOW YOU','BANDAGES AND NOSE OFF'],'#0a1c2a',21);txt(c,'he shouts in anger',460,235,YL,F(15,1),'center');txt(c,"throw",460,326,CY,F(14,1),"center");}
+ else if(s===1){box(c,160,80,600,100,YL,['A HEADLESS MAN','IN THE BAR'],'#2a2608',21);txt(c,'the people stare',460,235,CY,F(15,1),'center');txt(c,"bar",460,326,YL,F(14,1),"center");}
+ else if(s===2){box(c,160,80,600,100,GR,['CONSTABLE JAFFERS','ARRESTS HIM ON A WARRANT'],'#0a2a1a',21);txt(c,'with or without a head',460,235,CY,F(15,1),'center');txt(c,"jaffers",460,326,GR,F(14,1),"center");}
+ else if(s===3){box(c,160,80,600,100,MG,['JAFFERS IS KNOCKED OUT','GRIFFIN SHAKES HIMSELF FREE'],'#2a0a2a',21);txt(c,'hold him they cry',460,235,CY,F(15,1),'center');txt(c,"free",460,326,MG,F(14,1),"center");}
+ R.innerHTML=INFO[s];
+}
+draw();
+});
+inits[7]=(()=>{
+const box=document.getElementById("quizBox");
+const Q=[
+{q:"Chapter ke scientist ka naam kya hai?",opts:["Jaffers","Griffin","Hall","Wells"],a:1,why:"The story names the scientist as Griffin."},
+{q:"Invisible aadmi pehli baar kaise dikhai diya?",opts:["He stepped in mud and left footprints","He took off his glasses","He lit a lamp","The constable caught him"],a:0,why:"He happened to step in some mud and left footprints as he walked."},
+{q:"Griffin ne ghar mein aag kyun lagayi?",opts:["To steal money","In revenge on his landlord, who tried to eject him","To test his drug","To hide his footprints"],a:1,why:"His landlord tried to eject him, so in revenge Griffin set fire to the house."},
+{q:"Griffin train se kis gaon gaya?",opts:["Drury Lane","London","Shotover Grange","Iping"],a:3,why:"He took a train to the village of Iping."},
+{q:"Mr Jaffers kaun hai?",opts:["The clergyman","The landlord","The constable","The shopkeeper"],a:2,why:"The story calls him Mr Jaffers, the constable."}];
+let i=0,score=0;
+function bar(){return "<div style='font-size:12px;color:#5b6488;font-family:monospace;margin-bottom:10px'>Sawaal "+(i+1)+" / 5 &nbsp;|&nbsp; Score: "+score+"</div>";}
+function render(){
+ if(i>=Q.length){
+  const msg=score===5?"PERFECT! Footprints without Feet pakka! ⭐":score>=3?"Badhiya! Jo galat hue unhe recap se revise karo.":"Koi baat nahi - scenes dobara dekho, phir try karo!";
+  box.innerHTML="<div style='text-align:center;padding:24px 8px'><div style='font-size:44px;font-weight:800;color:#22d3ee;font-family:monospace'>"+score+" / 5</div><div style='margin:12px 0 20px;color:#a5b0d0;font-size:14px'>"+msg+"</div><button id='qre'>Dobara Try Karo ↺</button></div>";
+  document.getElementById("qre").onclick=()=>{i=0;score=0;render();};
+  return;
+ }
+ const q=Q[i];
+ let h=bar()+"<div style='font-size:15.5px;font-weight:600;color:#e8e8f2;margin-bottom:14px;line-height:1.5'>"+q.q+"</div>";
+ q.opts.forEach((o,j)=>{h+="<button data-j='"+j+"' style='display:block;width:100%;text-align:left;margin-bottom:8px'>"+String.fromCharCode(65+j)+". "+o+"</button>";});
+ h+="<div id='qwhy' style='font-size:13px;color:#a5b0d0;line-height:1.6;margin-top:6px'></div>";
+ box.innerHTML=h;
+ box.querySelectorAll("button[data-j]").forEach(b=>b.onclick=()=>{
+  const j=parseInt(b.dataset.j);
+  box.querySelectorAll("button[data-j]").forEach(x=>{
+   x.disabled=true;x.style.cursor="default";
+   if(parseInt(x.dataset.j)===q.a){x.style.borderColor="#34d399";x.style.color="#34d399";}
+  });
+  if(j===q.a){score++;document.getElementById("qwhy").innerHTML="<span style='color:#34d399;font-weight:700'>SAHI! </span>"+q.why;}
+  else{b.style.borderColor="#f87171";b.style.color="#f87171";document.getElementById("qwhy").innerHTML="<span style='color:#f87171;font-weight:700'>GALAT. </span>"+q.why;}
+  const nb=document.createElement("button");
+  nb.textContent=i<Q.length-1?"Agla Sawaal →":"Score Dekho →";
+  nb.style.marginTop="12px";
+  nb.onclick=()=>{i++;render();};
+  box.appendChild(nb);
+ });
+}
+return function(){i=0;score=0;render();};
+})();
+</script></body></html>
