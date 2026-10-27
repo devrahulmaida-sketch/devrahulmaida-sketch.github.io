@@ -39,6 +39,7 @@ input[type=range]{width:100%;accent-color:#22d3ee;margin-top:8px}
 .rcard h3{color:#e879f9;font-size:15px;margin-bottom:8px}
 .rcard p{font-size:13.5px;color:#b8c2e0;line-height:1.65;font-family:'Cascadia Code',monospace}
 .rcard b{display:block;color:#e879f9;font-size:15px;margin-bottom:6px}
+.mobile-textbox{display:none}@media(max-width:640px){.panel canvas{display:none}.mobile-textbox{display:flex;min-height:150px;box-sizing:border-box;flex-direction:column;justify-content:center;gap:12px;padding:20px 14px;border:1px solid var(--panel-accent,#22d3ee);border-radius:12px;background:var(--panel-fill,#0a1c2a);text-align:center;overflow-wrap:anywhere}.mobile-textbox strong{font:700 20px/1.45 system-ui,sans-serif;color:var(--panel-accent,#22d3ee)}.mobile-textbox small{font:14px/1.5 system-ui,sans-serif;color:#c5cde5}}
 </style>
 </head>
 <body>
@@ -225,7 +226,8 @@ function ell(c,x,y,rx,ry,rot,stroke,fill,lw){c.beginPath();c.ellipse(x,y,rx,ry,r
 function line(c,x1,y1,x2,y2,col,w){c.strokeStyle=col;c.lineWidth=w||2.5;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();}
 function lines(c,arr,x,y0,dy,al){arr.forEach((a,i)=>txt(c,a[0],x,y0+i*dy,a[1],F(a[3]||13,a[2]),al||"left"));}
 function sel(id,cls,fn){const bs=document.querySelectorAll("#"+id+" ."+cls);bs.forEach((b,i)=>b.onclick=()=>{bs.forEach((x,j)=>x.classList.toggle("sel",j===i));fn(i);});}
-function box(c,x,y,w,h,col,ls,fill,fs){c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
+function mobileText(c,ls,col,fill){let el=c.canvas.nextElementSibling;if(!el||!el.classList.contains('mobile-textbox')){el=document.createElement('div');el.className='mobile-textbox';c.canvas.after(el);}el.replaceChildren();el.style.setProperty('--panel-accent',col);el.style.setProperty('--panel-fill',fill||'#0a1c2a');for(const t of ls){const x=document.createElement('strong');x.textContent=t;el.append(x);}const cap=document.createElement('small');cap.textContent=ls[0]==='MERI VYAKHYA'?'meri vyakhya':'path ke anusar';el.append(cap);}
+function box(c,x,y,w,h,col,ls,fill,fs){mobileText(c,ls,col,fill);c.fillStyle=fill||"#0d0d1c";c.fillRect(x,y,w,h);c.strokeStyle=col;c.lineWidth=2.5;c.strokeRect(x,y,w,h);const n=ls.length,f=fs||12;ls.forEach((t,i)=>txt(c,t,x+w/2,y+h/2+4+(i-(n-1)/2)*(f+3),col,F(f,i===0&&n>1?0:0),"center"));}
 function chain(c,labels,hi,y,hc){const n=labels.length,w=108,st=(900-w)/(n-1);labels.forEach((l,i)=>{const x=10+i*st,on=hi.includes(i);box(c,x,y,w,50,on?(hc||YL):"#7a82b0",l.split("|"),on?"#2a2608":"#0d0d1c",12);if(i<n-1)arrow2(c,x+w+2,y+25,x+st-2,y+25,on&&hi.includes(i+1)?(hc||YL):"#2d2d52",2);});}
 inits[0]=(()=>{
 const c=ctx("cv0");let s=0;const D="#8b94c4";const X=(x,y,col)=>{line(c,x-7,y-15,x+7,y+15,col,4);line(c,x+7,y-15,x-7,y+15,col,4);};const R=document.getElementById("r0");
