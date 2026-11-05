@@ -451,13 +451,17 @@
   }
   var ticking=false;
   function pickScene(){
-    var line=Math.max((bar.hidden?0:bar.offsetHeight)+20,window.innerHeight*0.3),pick=null,i,r,scene=-1,label='';
+    var line=Math.round(window.innerHeight*0.3),pick=null,i,r,scene=-1,label='';
     if(practice&&practice.getBoundingClientRect().top<=line)return{scene:-1,label:''};
     if(shortNotes&&shortNotes.getBoundingClientRect().top<=line)return{scene:5,label:'Formula pack - quick recap'};
     for(i=0;i<secs.length;i++){
       if(secs[i].offsetParent===null)continue;
       r=secs[i].getBoundingClientRect();
       if(r.top<=line)pick=secs[i];else break;
+    }
+    if(!pick&&secs.length&&!bar.hidden&&curScene>=0){
+      var f=secs[0].getBoundingClientRect();
+      if(f.top<=window.innerHeight*0.75)return{scene:curScene,label:titleEl.textContent};
     }
     if(pick){scene=sceneFor(pick);var h=pick.querySelector('h3');label=cut(h?h.textContent:'')}
     return{scene:scene,label:label};
@@ -466,7 +470,6 @@
     ticking=false;dockTop();
     if(closed){bar.hidden=true;placeBar();return}
     var res=pickScene();
-    if(res.scene>=0&&bar.hidden){bar.hidden=false;placeBar();res=pickScene()}
     if(res.scene<0){bar.hidden=true;placeBar();return}
     bar.hidden=false;post(res.scene);placeBar();
     titleEl.textContent=res.label;
