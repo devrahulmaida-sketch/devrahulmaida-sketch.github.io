@@ -36,6 +36,15 @@
   .recap .formula{display:block;margin:8px auto;max-width:420px;font-size:1rem;padding:10px}
   footer{text-align:center;color:#5c5c78;font-size:.78rem;margin-top:30px}
   a{color:#22d3ee}
+  /* sync/compact mode: embedded on the chapter page as a scroll-linked visual */
+  body.sync{background:transparent}
+  body.sync header,body.sync .dots,body.sync .nav,body.sync footer,body.sync .sub,body.sync .fact,body.sync .ctrl{display:none}
+  body.sync .wrap{padding:2px 4px;max-width:none}
+  body.sync .scene{padding-top:0}
+  body.sync .card{margin:0;border:none;border-radius:0;padding:4px 2px;background:transparent}
+  body.sync .scene h2{font-size:.82rem;margin:0 0 4px;line-height:1.3}
+  body.sync canvas{border-radius:8px}
+  body.sync .recap .formula{font-size:.78rem;padding:6px 8px;margin:4px auto;max-width:98%}
 </style>
 </head>
 <body>
@@ -324,8 +333,32 @@ function draw5(t){
 // ---------- main loop ----------
 const draws=[draw1,draw2,draw3,draw4,draw5];
 let T0=performance.now();
-function frame(now){const t=(now-T0)/1000;draws.forEach(d=>d(t));requestAnimationFrame(frame)}
-requestAnimationFrame(frame);
+// sync/embed mode: the chapter page drives the scene with postMessage while scrolling
+const qp=new URLSearchParams(location.search);
+const SYNC=qp.get('sync')==='1';
+const STILL=qp.get('still')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches;
+function stillDraw(){draws.forEach(d=>d(1.35))}
+function reportH(){if(!SYNC)return;try{var w=document.querySelector('.wrap');var h=w?w.scrollHeight:document.documentElement.scrollHeight;parent.postMessage({type:'wt-height',h:h},location.origin)}catch(_){}}
+if(SYNC){
+  document.body.classList.add('sync');
+  const si=parseInt(qp.get('scene')||'0',10);
+  if(!isNaN(si)) go(si);
+  window.addEventListener('message',e=>{
+    if(e.origin!==location.origin)return;
+    const d=e.data||{};
+    if(d.type==='wt-scene'){go(d.i|0);if(STILL)stillDraw();reportH();}
+  });
+  addEventListener('load',()=>{reportH();setTimeout(reportH,250);try{parent.postMessage({type:'wt-ready'},location.origin)}catch(_){}});
+  addEventListener('resize',reportH);
+}
+if(STILL){
+  stillDraw();
+  document.addEventListener('click',()=>setTimeout(stillDraw,0));
+  document.addEventListener('input',()=>setTimeout(stillDraw,0));
+}else{
+  function frame(now){const t=(now-T0)/1000;if(SYNC){if(draws[cur])draws[cur](t)}else{draws.forEach(d=>d(t))}requestAnimationFrame(frame)}
+  requestAnimationFrame(frame);
+}
 </script>
 </body>
 </html>
