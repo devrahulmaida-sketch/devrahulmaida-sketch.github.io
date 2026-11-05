@@ -443,7 +443,7 @@
   function update(){
     ticking=false;
     if(closed){bar.hidden=true;placeBar();return}
-    var line=window.innerHeight*0.38,pick=null,i,r,scene=-1,label='';
+    var line=Math.max((bar.hidden?0:bar.offsetHeight)+20,window.innerHeight*0.3),pick=null,i,r,scene=-1,label='';
     if(practice&&practice.getBoundingClientRect().top<=line){bar.hidden=true;placeBar();return}
     if(shortNotes&&shortNotes.getBoundingClientRect().top<=line){scene=5;label='Formula pack - quick recap'}
     else{
