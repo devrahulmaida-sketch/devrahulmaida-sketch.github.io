@@ -98,7 +98,7 @@
       <button class="btn" id="b3lock">Lock the Standing Wave</button>
       <button class="btn" id="b3reset">Reset</button>
     </div>
-    <div class="fact"><span class="formula">y = 2A sin(kx)cos(&omega;t)</span> &nbsp; <b>Nodes (N):</b> hamesha zero - khamosh points. <b>Antinodes (A):</b> maximum hilne wale. N-to-N = &lambda;/2, N-to-A = &lambda;/4. Standing wave me energy travel <b>NAHI</b> hoti - sab stored! Fixed end reflection: wave PALT ke aati hai (phase change &pi;).</div>
+    <div class="fact"><span class="formula">y = 2A sin(kx)cos(&omega;t)</span> &nbsp; <b>Nodes (N):</b> hamesha zero - khamosh points. <b>Antinodes (A):</b> maximum hilne wale. N-to-N = &lambda;/2, N-to-A = &lambda;/4. Standing wave me NET energy transport <b>NAHI</b> - har segment me kinetic &harr; potential badalti rehti hai! Fixed end reflection: wave PALT ke aati hai (phase change &pi;).</div>
   </div>
 </section>
 
@@ -115,7 +115,7 @@
       <button class="btn" id="b4next">Harmonic &rarr;</button>
       <span class="slider" id="v4read"></span>
     </div>
-    <div class="fact"><b>Open pipe:</b> <span class="formula">&nu;&#8345; = n&nu;&#8321;</span> SAARE harmonics (string jaisa). <b>Closed pipe:</b> <span class="formula">&nu;&#8321; = v/4L</span> sirf ODD harmonics (1,3,5...) - 2&nu;&#8321; allowed NAHI! Same length ka open pipe DOUBLE fundamental deta hai. End correction e &asymp; 0.6r (0.3d) per open end.</div>
+    <div class="fact"><b>Open pipe:</b> <span class="formula">&nu;&#8345; = n&nu;&#8321;</span> SAARE harmonics (string jaisa). <b>Closed pipe:</b> <span class="formula">&nu;&#8321; = v/4L</span> sirf ODD harmonics (1,3,5...) - 2&nu;&#8321; allowed NAHI! Same length ka open pipe DOUBLE fundamental deta hai. End correction e &asymp; 0.6r (0.3d) per open end (approx, unflanged pipe).</div>
   </div>
 </section>
 
@@ -289,6 +289,7 @@ function draw4(t){
     prev=e}
   if(!S4.open){g.fillStyle='#f87171';g.beginPath();g.arc(x1-4,mid,5,0,7);g.fill();g.font='11px sans-serif';g.fillText('N',x1-24,mid+20)}
   label(g,S4.open?'OPEN pipe - dono ends ANTINODE':'CLOSED pipe - band end = NODE',x0,top-30,'#8f8fb8');
+  label(g,'plotted: air DISPLACEMENT envelope (khula end = antinode, band end = node)',x0,bot+46,'#8f8fb8');
   const v=340,f1=S4.open? v/2 : v/4; // L=1m
   document.getElementById('v4read').innerHTML=S4.open
     ? ('harmonic n='+n+' → ν = '+n+' × (v/2L = '+f1+') = <b style="color:#22d3ee">'+(n*f1)+' Hz</b> (L=1m) - SAARE harmonics allowed')
