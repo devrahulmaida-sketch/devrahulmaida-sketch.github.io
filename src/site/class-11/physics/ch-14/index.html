@@ -383,6 +383,103 @@
     <p class="foot-note">Made for students • Free forever</p>
   </div>
 </footer>
+
+<!-- Scroll-synced interactive visual: walkthrough scene follows the section being read -->
+<style>
+#wt-bar{position:fixed;top:0;left:0;right:0;z-index:900;background:#0a0a12;border-bottom:1px solid #22d3ee55;box-shadow:0 6px 18px rgba(0,0,0,.35);font-family:-apple-system,'Segoe UI',Roboto,sans-serif}
+#wt-bar .wt-bar-top{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:5px 10px}
+#wt-bar-title{font-size:.8rem;color:#7dd3fc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#wt-bar .wt-bar-actions{display:flex;align-items:center;flex-shrink:0}
+#wt-bar .wt-bar-actions a{color:#22d3ee;font-size:.72rem;text-decoration:none;margin-right:8px;white-space:nowrap}
+#wt-bar .wt-bar-actions button{background:#1b1b2e;color:#e8e8f0;border:1px solid #33334f;border-radius:8px;padding:2px 9px;cursor:pointer;margin-left:5px;font-size:.85rem;line-height:1.2}
+#wt-bar button:focus-visible,#wt-chip:focus-visible,#wt-bar a:focus-visible{outline:2px solid #22d3ee;outline-offset:2px}
+#wt-bar .wt-frame-wrap{padding:0 8px 7px}
+#wt-frame{width:100%;border:0;display:block;background:transparent;border-radius:8px;height:200px}
+@media(min-width:760px){#wt-bar{max-width:720px;left:50%;right:auto;transform:translateX(-50%);border:1px solid #22d3ee55;border-top:none;border-radius:0 0 14px 14px}}
+#wt-chip{position:fixed;right:12px;bottom:14px;z-index:900;background:#22d3ee;color:#06222a;font-weight:700;border:none;border-radius:999px;padding:9px 15px;box-shadow:0 4px 14px rgba(0,0,0,.4);cursor:pointer;font-size:.85rem}
+@media(prefers-reduced-motion:reduce){#wt-bar{box-shadow:none}}
+</style>
+<div id="wt-bar" role="region" aria-label="Section visual - scroll ke saath badalta hai" hidden>
+  <div class="wt-bar-top">
+    <span id="wt-bar-title">Visual</span>
+    <span class="wt-bar-actions">
+      <a href="walkthrough/index.html">Full walkthrough</a>
+      <button id="wt-min" type="button" title="Chhota / bada karo" aria-label="Visual chhota ya bada karo">&ndash;</button>
+      <button id="wt-close" type="button" title="Visual band karo" aria-label="Visual band karo">&times;</button>
+    </span>
+  </div>
+  <div class="wt-frame-wrap"><iframe id="wt-frame" title="Padh rahe ho us section ka visual" loading="lazy" scrolling="no"></iframe></div>
+</div>
+<button id="wt-chip" type="button" title="Visual wapas laao" hidden>Visual dikhao</button>
+<script>
+(function(){
+  var bar=document.getElementById('wt-bar'),chip=document.getElementById('wt-chip'),
+      frame=document.getElementById('wt-frame'),titleEl=document.getElementById('wt-bar-title');
+  if(!bar||!frame)return;
+  var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var baseSrc='walkthrough/index.html?sync=1'+(still?'&still=1':'');
+  var loaded=false,ready=false,pending=-1,curScene=-1,closed=false;
+  try{closed=sessionStorage.getItem('wtbar-closed')==='1'}catch(e){}
+  var secs=[].slice.call(document.querySelectorAll('#notes .note-sec'));
+  var shortNotes=document.getElementById('short-notes');
+  var practice=document.getElementById('practice');
+  function sceneFor(el){
+    var block=el.closest('.lang-block');if(!block)return -1;
+    var list=[].slice.call(block.querySelectorAll('.note-sec'));
+    var i=list.indexOf(el);return (i>=0&&i<=4)?i:-1;
+  }
+  function post(i){
+    if(i===curScene&&ready)return;curScene=i;
+    if(!loaded){frame.src=baseSrc+'&scene='+i;loaded=true;return}
+    if(!ready){pending=i;return}
+    try{frame.contentWindow.postMessage({type:'wt-scene',i:i},location.origin)}catch(e){}
+  }
+  function cut(txt){txt=(txt||'').replace(/\s+/g,' ').trim();return txt.length>52?txt.slice(0,52)+'\u2026':txt}
+  function placeBar(){
+    if(bar.hidden){document.body.style.paddingTop='';return}
+    document.body.style.paddingTop=bar.offsetHeight+'px';
+  }
+  var ticking=false;
+  function update(){
+    ticking=false;
+    if(closed){bar.hidden=true;placeBar();return}
+    var line=window.innerHeight*0.38,pick=null,i,r,scene=-1,label='';
+    if(practice&&practice.getBoundingClientRect().top<=line){bar.hidden=true;placeBar();return}
+    if(shortNotes&&shortNotes.getBoundingClientRect().top<=line){scene=5;label='Formula pack - quick recap'}
+    else{
+      for(i=0;i<secs.length;i++){
+        if(secs[i].offsetParent===null)continue;
+        r=secs[i].getBoundingClientRect();
+        if(r.top<=line)pick=secs[i];else break;
+      }
+      if(pick){scene=sceneFor(pick);var h=pick.querySelector('h3');label=cut(h?h.textContent:'')}
+    }
+    if(scene<0){bar.hidden=true;placeBar();return}
+    bar.hidden=false;post(scene);placeBar();
+    titleEl.textContent=label;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
+  window.addEventListener('resize',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}});
+  window.addEventListener('message',function(e){
+    if(e.origin!==location.origin)return;var d=e.data||{};
+    if(d.type==='wt-height'&&d.h){frame.style.height=Math.min(d.h,Math.round(window.innerHeight*0.34))+'px';placeBar()}
+    if(d.type==='wt-ready'){ready=true;var j=pending>=0?pending:curScene;pending=-1;if(j>=0){try{frame.contentWindow.postMessage({type:'wt-scene',i:j},location.origin)}catch(e){}}}
+  });
+  document.getElementById('wt-close').addEventListener('click',function(){
+    closed=true;try{sessionStorage.setItem('wtbar-closed','1')}catch(e){}
+    bar.hidden=true;placeBar();chip.hidden=false;chip.focus();
+  });
+  chip.addEventListener('click',function(){
+    closed=false;try{sessionStorage.removeItem('wtbar-closed')}catch(e){}
+    chip.hidden=true;update();
+  });
+  document.getElementById('wt-min').addEventListener('click',function(){
+    var w=bar.querySelector('.wt-frame-wrap'),hidden=w.style.display==='none';
+    w.style.display=hidden?'':'none';this.innerHTML=hidden?'&ndash;':'+';placeBar();
+  });
+  update();
+})();
+</script>
 <script src="/assets/js/main.js"></script>
 </body>
 </html>
