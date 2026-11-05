@@ -396,6 +396,7 @@
 #wt-bar .wt-frame-wrap{padding:0 8px 7px}
 #wt-frame{width:100%;border:0;display:block;background:transparent;border-radius:8px;height:200px}
 @media(min-width:760px){#wt-bar{max-width:720px;left:50%;right:auto;transform:translateX(-50%);border:1px solid #22d3ee55;border-top:none;border-radius:0 0 14px 14px}}
+@media(min-width:1024px){#wt-bar.wt-side{left:auto;right:12px;transform:none;width:min(340px,30vw);max-width:none;border:1px solid #22d3ee55;border-radius:14px}}
 #wt-chip{position:fixed;right:12px;bottom:14px;z-index:900;background:#22d3ee;color:#06222a;font-weight:700;border:none;border-radius:999px;padding:9px 15px;box-shadow:0 4px 14px rgba(0,0,0,.4);cursor:pointer;font-size:.85rem}
 @media(prefers-reduced-motion:reduce){#wt-bar{box-shadow:none}}
 </style>
@@ -440,33 +441,39 @@
     bar.style.top=(nav?Math.ceil(nav.getBoundingClientRect().bottom):0)+'px';
   }
   function placeBar(){
-    if(bar.hidden){document.body.style.paddingTop='';return}
-    document.body.style.paddingTop=bar.offsetHeight+'px';
+    var wide=window.innerWidth>=1024,nav=document.querySelector('.nav');
+    bar.classList.toggle('wt-side',wide&&!bar.hidden);
+    if(bar.hidden){document.body.style.paddingTop='';document.body.style.paddingRight='';if(nav)nav.style.width='';return}
+    if(wide){document.body.style.paddingTop='';document.body.style.paddingRight=(bar.offsetWidth+20)+'px';if(nav)nav.style.width='calc(100% + '+(bar.offsetWidth+20)+'px)'}
+    else{document.body.style.paddingRight='';document.body.style.paddingTop=bar.offsetHeight+'px';if(nav)nav.style.width=''}
   }
   var ticking=false;
-  function update(){
-    ticking=false;
-    if(closed){bar.hidden=true;placeBar();return}
+  function pickScene(){
     var line=Math.max((bar.hidden?0:bar.offsetHeight)+20,window.innerHeight*0.3),pick=null,i,r,scene=-1,label='';
-    if(practice&&practice.getBoundingClientRect().top<=line){bar.hidden=true;placeBar();return}
-    if(shortNotes&&shortNotes.getBoundingClientRect().top<=line){scene=5;label='Formula pack - quick recap'}
-    else{
-      for(i=0;i<secs.length;i++){
-        if(secs[i].offsetParent===null)continue;
-        r=secs[i].getBoundingClientRect();
-        if(r.top<=line)pick=secs[i];else break;
-      }
-      if(pick){scene=sceneFor(pick);var h=pick.querySelector('h3');label=cut(h?h.textContent:'')}
+    if(practice&&practice.getBoundingClientRect().top<=line)return{scene:-1,label:''};
+    if(shortNotes&&shortNotes.getBoundingClientRect().top<=line)return{scene:5,label:'Formula pack - quick recap'};
+    for(i=0;i<secs.length;i++){
+      if(secs[i].offsetParent===null)continue;
+      r=secs[i].getBoundingClientRect();
+      if(r.top<=line)pick=secs[i];else break;
     }
-    if(scene<0){bar.hidden=true;placeBar();return}
-    bar.hidden=false;post(scene);placeBar();
-    titleEl.textContent=label;
+    if(pick){scene=sceneFor(pick);var h=pick.querySelector('h3');label=cut(h?h.textContent:'')}
+    return{scene:scene,label:label};
+  }
+  function update(){
+    ticking=false;dockTop();
+    if(closed){bar.hidden=true;placeBar();return}
+    var res=pickScene();
+    if(res.scene>=0&&bar.hidden){bar.hidden=false;placeBar();res=pickScene()}
+    if(res.scene<0){bar.hidden=true;placeBar();return}
+    bar.hidden=false;post(res.scene);placeBar();
+    titleEl.textContent=res.label;
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
-  window.addEventListener('resize',function(){dockTop();if(!ticking){ticking=true;requestAnimationFrame(update)}});
+  window.addEventListener('resize',function(){dockTop();placeBar();if(!ticking){ticking=true;requestAnimationFrame(update)}});
   window.addEventListener('message',function(e){
     if(e.origin!==location.origin)return;var d=e.data||{};
-    if(d.type==='wt-height'&&d.h){frame.style.height=Math.min(d.h,Math.round(window.innerHeight*0.34))+'px';placeBar()}
+    if(d.type==='wt-height'&&d.h){var cap=bar.classList.contains('wt-side')?0.5:0.34;frame.style.height=Math.min(d.h,Math.round(window.innerHeight*cap))+'px';placeBar()}
     if(d.type==='wt-ready'){ready=true;var j=pending>=0?pending:curScene;pending=-1;if(j>=0){try{frame.contentWindow.postMessage({type:'wt-scene',i:j},location.origin)}catch(e){}}}
   });
   document.getElementById('wt-close').addEventListener('click',function(){
