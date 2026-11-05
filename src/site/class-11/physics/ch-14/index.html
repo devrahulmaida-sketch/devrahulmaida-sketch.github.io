@@ -386,7 +386,7 @@
 
 <!-- Scroll-synced interactive visual: walkthrough scene follows the section being read -->
 <style>
-#wt-bar{position:fixed;top:0;left:0;right:0;z-index:900;background:#0a0a12;border-bottom:1px solid #22d3ee55;box-shadow:0 6px 18px rgba(0,0,0,.35);font-family:-apple-system,'Segoe UI',Roboto,sans-serif}
+#wt-bar{position:fixed;top:44px;left:0;right:0;z-index:900;background:#0a0a12;border-bottom:1px solid #22d3ee55;box-shadow:0 6px 18px rgba(0,0,0,.35);font-family:-apple-system,'Segoe UI',Roboto,sans-serif}
 #wt-bar .wt-bar-top{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:5px 10px}
 #wt-bar-title{font-size:.8rem;color:#7dd3fc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #wt-bar .wt-bar-actions{display:flex;align-items:center;flex-shrink:0}
@@ -435,6 +435,10 @@
     try{frame.contentWindow.postMessage({type:'wt-scene',i:i},location.origin)}catch(e){}
   }
   function cut(txt){txt=(txt||'').replace(/\s+/g,' ').trim();return txt.length>52?txt.slice(0,52)+'\u2026':txt}
+  function dockTop(){
+    var nav=document.querySelector('.nav');
+    bar.style.top=(nav?Math.ceil(nav.getBoundingClientRect().bottom):0)+'px';
+  }
   function placeBar(){
     if(bar.hidden){document.body.style.paddingTop='';return}
     document.body.style.paddingTop=bar.offsetHeight+'px';
@@ -459,7 +463,7 @@
     titleEl.textContent=label;
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
-  window.addEventListener('resize',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}});
+  window.addEventListener('resize',function(){dockTop();if(!ticking){ticking=true;requestAnimationFrame(update)}});
   window.addEventListener('message',function(e){
     if(e.origin!==location.origin)return;var d=e.data||{};
     if(d.type==='wt-height'&&d.h){frame.style.height=Math.min(d.h,Math.round(window.innerHeight*0.34))+'px';placeBar()}
@@ -477,6 +481,7 @@
     var w=bar.querySelector('.wt-frame-wrap'),hidden=w.style.display==='none';
     w.style.display=hidden?'':'none';this.innerHTML=hidden?'&ndash;':'+';placeBar();
   });
+  dockTop();
   update();
 })();
 </script>
