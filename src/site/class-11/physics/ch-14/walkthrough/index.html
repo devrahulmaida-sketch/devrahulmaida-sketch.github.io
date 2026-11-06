@@ -331,6 +331,51 @@ function draw5(t){
   const beats=Math.abs(S5.a-S5.b);
   document.getElementById('v5read').innerHTML='beats = |ν1 − ν2| = |'+S5.a+' − '+S5.b+'| = <b style="color:#fbbf24">'+beats+' per second</b>'+(beats===0?' - PERFECT UNISON (tuned!)':'')+(beats>15?' - bahut alag, beats count karna mushkil':'');
 }
+// ---------- scroll-linked idea state (driven by chapter page) ----------
+let HL='';
+const HLTXT={
+ 't':'TRANSVERSE - particles move PERPENDICULAR (rope, light)',
+ 'l':'LONGITUDINAL - particles move PARALLEL (sound)',
+ 'terms':'λ wavelength · A amplitude · ν frequency · T = 1/ν',
+ 'speed':'v = νλ - medium decides speed, source decides frequency',
+ 'tension':'string pe v = √(T/μ) - tight/patli string = tez wave',
+ 'add':'net displacement = wave1 + wave2 (SUM)',
+ 'lock':'STANDING WAVE - pattern locked, nodes (N) marked',
+ 'string':'string fixed at ends: L = nλ/2, ν₁ = v/2L - SAARE harmonics',
+ 'open':'OPEN pipe - dono ends antinode, SAARE harmonics',
+ 'closed':'CLOSED pipe - band end node, sirf ODD harmonics',
+ 'beats':'beats = |ν1 − ν2| - wah-wah envelope',
+ 'tune':'beats → 0 = PERFECT TUNE (unison)'
+};
+function banner(){
+  if(!HL||cur>4)return;
+  const[c,g]=ctx('cv'+(cur+1));
+  g.font='bold 14px sans-serif';g.textAlign='center';
+  const w=g.measureText(HL).width;
+  g.fillStyle='rgba(10,10,18,.72)';g.fillRect(c.width/2-w/2-8,8,w+16,22);
+  g.fillStyle='#fbbf24';g.fillText(HL,c.width/2,24);
+  g.textAlign='left';
+}
+function applySub(i,sub){
+  HL=HLTXT[sub]||'';
+  if(i===0&&(sub==='t'||sub==='l')){
+    s1mode=sub;
+    document.getElementById('b1t').classList.toggle('hot',sub==='t');
+    document.getElementById('b1l').classList.toggle('hot',sub==='l');
+  }
+  if(i===2){s3lock=(sub==='lock')}
+  if(i===3){
+    if(sub==='open'||sub==='string'){S4.open=true;S4.n=1}
+    if(sub==='closed'){S4.open=false;S4.n=1}
+    document.getElementById('b4open').classList.toggle('hot',S4.open);
+    document.getElementById('b4closed').classList.toggle('hot',!S4.open);
+  }
+  if(i===4){
+    if(sub==='tune'){S5.b=S5.a}
+    else if(sub==='beats'){S5.a=200;S5.b=204}
+    document.getElementById('s5a').value=S5.a;document.getElementById('s5b').value=S5.b;
+  }
+}
 // ---------- main loop ----------
 const draws=[draw1,draw2,draw3,draw4,draw5];
 let T0=performance.now();
@@ -338,7 +383,7 @@ let T0=performance.now();
 const qp=new URLSearchParams(location.search);
 const SYNC=qp.get('sync')==='1';
 const STILL=qp.get('still')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches;
-function stillDraw(){draws.forEach(d=>d(1.35))}
+function stillDraw(){draws.forEach(d=>d(1.35));banner()}
 function reportH(){if(!SYNC)return;try{var w=document.querySelector('.wrap');var h=w?w.scrollHeight:document.documentElement.scrollHeight;parent.postMessage({type:'wt-height',h:h},location.origin)}catch(_){}}
 if(SYNC){
   document.body.classList.add('sync');
@@ -347,7 +392,7 @@ if(SYNC){
   window.addEventListener('message',e=>{
     if(e.origin!==location.origin)return;
     const d=e.data||{};
-    if(d.type==='wt-scene'){go(d.i|0);if(STILL)stillDraw();reportH();}
+    if(d.type==='wt-scene'){go(d.i|0);applySub(d.i|0,d.sub||'');if(STILL)stillDraw();reportH();}
   });
   addEventListener('load',()=>{reportH();setTimeout(reportH,250);try{parent.postMessage({type:'wt-ready'},location.origin)}catch(_){}});
   addEventListener('resize',reportH);
@@ -357,7 +402,7 @@ if(STILL){
   document.addEventListener('click',()=>setTimeout(stillDraw,0));
   document.addEventListener('input',()=>setTimeout(stillDraw,0));
 }else{
-  function frame(now){const t=(now-T0)/1000;if(SYNC){if(draws[cur])draws[cur](t)}else{draws.forEach(d=>d(t))}requestAnimationFrame(frame)}
+  function frame(now){const t=(now-T0)/1000;if(SYNC){if(draws[cur]){draws[cur](t);banner()}}else{draws.forEach(d=>d(t))}requestAnimationFrame(frame)}
   requestAnimationFrame(frame);
 }
 </script>
