@@ -30,3 +30,249 @@
     else if ((href === '/' || href === '/src/site/') && (path === href || path === href + 'index.html')) a.style.color = 'var(--amber)';
   });
 })();
+
+/* ============================================================
+   Reading tools v1: progress bar, section jump menu,
+   previous/next chapter links, homepage search + continue.
+   Runs on every page; each feature no-ops when its page
+   does not need it.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  function onReady(fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  var CH = null;
+  function withCatalogue(cb) {
+    if (CH) { cb(CH); return; }
+    try {
+      var x = new XMLHttpRequest();
+      x.open('GET', '/assets/data/chapters.json', true);
+      x.onreadystatechange = function () {
+        if (x.readyState !== 4) return;
+        try { CH = x.status === 200 ? JSON.parse(x.responseText) : []; }
+        catch (e) { CH = []; }
+        cb(CH);
+      };
+      x.send();
+    } catch (e) { cb([]); }
+  }
+
+  function currentChapter() {
+    var m = location.pathname.match(/^\/src\/site\/class-(\d+)\/(.+)\/ch-(\d+)\/?$/);
+    return m ? { c: m[1], g: m[2], n: parseInt(m[3], 10) } : null;
+  }
+  function isHome() {
+    return /^\/src\/site\/?(index\.html)?$/.test(location.pathname);
+  }
+  function subjLabel(s) { return s.replace(/-/g, ' '); }
+
+  /* ---------- 1. reading progress bar (every page) ---------- */
+  function progressBar() {
+    var bar = document.createElement('div');
+    bar.className = 'm-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, h.scrollTop / max) : 0) + ')';
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  /* ---------- 2. section jump menu (chapter pages) ---------- */
+  function jumpMenu() {
+    function collectTargets() {
+      var out = [], i, j, hs = null;
+      var blocks = document.querySelectorAll('.lang-block');
+      for (i = 0; i < blocks.length; i++) {
+        if (blocks[i].hasAttribute('hidden')) continue;
+        hs = blocks[i].querySelectorAll('.note-sec h3');
+        if (hs.length) break;
+        hs = null;
+      }
+      if (!hs) hs = document.querySelectorAll('.note-sec h3');
+      for (j = 0; j < hs.length; j++) {
+        if (!hs[j].id) hs[j].id = 'm-sec-' + j;
+        out.push({ id: hs[j].id, label: hs[j].textContent.trim() });
+      }
+      var extra = [['walkthrough', 'Walkthrough'], ['short-notes', 'Short notes'], ['practice', 'Practice']];
+      for (i = 0; i < extra.length; i++) {
+        if (document.getElementById(extra[i][0])) out.push({ id: extra[i][0], label: extra[i][1] });
+      }
+      return out;
+    }
+    if (!collectTargets().length) return;
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'm-jump-btn';
+    btn.textContent = 'Sections';
+    btn.setAttribute('aria-haspopup', 'true');
+    document.body.appendChild(btn);
+
+    var veil = null, panel = null;
+    function close() {
+      if (veil) veil.remove();
+      if (panel) panel.remove();
+      veil = panel = null;
+      document.removeEventListener('keydown', onKey);
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    function open() {
+      var items = collectTargets();
+      veil = document.createElement('div');
+      veil.className = 'm-jump-veil';
+      veil.addEventListener('click', close);
+      panel = document.createElement('div');
+      panel.className = 'm-jump-panel';
+      panel.setAttribute('role', 'dialog');
+      panel.setAttribute('aria-label', 'Page sections');
+      var html = '<div class="m-jump-head">Is page mein<button type="button" class="m-jump-close" aria-label="Close">&#10005;</button></div><div class="m-jump-list">';
+      for (var i = 0; i < items.length; i++) {
+        html += '<a class="m-jump-item" href="#' + esc(items[i].id) + '" data-t="' + esc(items[i].id) + '">' + esc(items[i].label) + '</a>';
+      }
+      panel.innerHTML = html + '</div>';
+      document.body.appendChild(veil);
+      document.body.appendChild(panel);
+      panel.querySelector('.m-jump-close').addEventListener('click', close);
+      panel.addEventListener('click', function (e) {
+        var a = e.target.closest ? e.target.closest('.m-jump-item') : null;
+        if (!a) return;
+        e.preventDefault();
+        var el = document.getElementById(a.getAttribute('data-t'));
+        close();
+        if (el) el.scrollIntoView();
+      });
+      document.addEventListener('keydown', onKey);
+    }
+    btn.addEventListener('click', open);
+  }
+
+  /* ---------- 3. previous / next chapter ---------- */
+  function prevNext() {
+    var cur = currentChapter();
+    if (!cur) return;
+    withCatalogue(function (all) {
+      var prev = null, next = null, i;
+      for (i = 0; i < all.length; i++) {
+        var e = all[i];
+        if (e.c !== cur.c || e.g !== cur.g) continue;
+        if (e.n < cur.n && (!prev || e.n > prev.n)) prev = e;
+        if (e.n > cur.n && (!next || e.n < next.n)) next = e;
+      }
+      if (!prev && !next) return;
+      var nav = document.createElement('nav');
+      nav.className = 'm-pnx wrap';
+      nav.setAttribute('aria-label', 'Chapter navigation');
+      var html = '';
+      if (prev) {
+        html += '<a class="m-pnx-link" href="' + esc(prev.u) + '"><span class="m-pnx-k">&larr; Pichla chapter</span><span class="m-pnx-t">Ch ' + prev.n + ' - ' + esc(prev.t) + '</span></a>';
+      } else {
+        html += '<a class="m-pnx-link" href="/src/site/class-' + esc(cur.c) + '/' + esc(cur.g.split('/')[0]) + '/"><span class="m-pnx-k">&larr; Subject index</span><span class="m-pnx-t">' + esc(subjLabel(cur.g.split('/')[0])) + '</span></a>';
+      }
+      if (next) {
+        html += '<a class="m-pnx-link m-pnx-next" href="' + esc(next.u) + '"><span class="m-pnx-k">Agla chapter &rarr;</span><span class="m-pnx-t">Ch ' + next.n + ' - ' + esc(next.t) + '</span></a>';
+      } else {
+        html += '<a class="m-pnx-link m-pnx-next" href="/src/site/class-' + esc(cur.c) + '/' + esc(cur.g.split('/')[0]) + '/"><span class="m-pnx-k">Subject index &rarr;</span><span class="m-pnx-t">' + esc(subjLabel(cur.g.split('/')[0])) + '</span></a>';
+      }
+      nav.innerHTML = html;
+      var foot = document.querySelector('footer.foot');
+      if (foot && foot.parentNode) foot.parentNode.insertBefore(nav, foot);
+      else document.body.appendChild(nav);
+    });
+  }
+
+  /* ---------- 4. homepage: chapter search + continue reading ---------- */
+  function norm(s) { return String(s).toLowerCase().replace(/[^a-z0-9\u0900-\u097F]+/g, ' '); }
+  function homeTools() {
+    if (!isHome()) return;
+    var hero = document.querySelector('.hero-inner');
+    if (!hero) return;
+
+    var cont = null;
+    try {
+      var last = JSON.parse(localStorage.getItem('maida-last-ch') || 'null');
+      if (last && last.u && last.t && /^\/src\/site\//.test(last.u)) {
+        cont = document.createElement('a');
+        cont.className = 'm-cont';
+        cont.href = last.u;
+        cont.innerHTML = '<span class="m-cont-k">Aage padho &rarr;</span> ' + esc(last.t);
+      }
+    } catch (e) {}
+
+    var box = document.createElement('div');
+    box.className = 'm-find';
+    box.innerHTML = '<input id="m-find-q" type="search" autocomplete="off" placeholder="Chapter khojo - jaise waves, motion, ya class 9 maths" aria-label="Chapter khojo">' +
+      '<div class="m-find-res" id="m-find-res" hidden></div>';
+    var anchor = hero.querySelector('.hero-sub') || hero.querySelector('.hero-stats');
+    if (anchor && anchor.parentNode === hero) hero.insertBefore(box, anchor.nextSibling);
+    else hero.appendChild(box);
+    if (cont) hero.insertBefore(cont, box);
+
+    var q = box.querySelector('#m-find-q'), res = box.querySelector('#m-find-res');
+    withCatalogue(function (all) {
+      q.addEventListener('input', function () {
+        var v = norm(q.value).trim();
+        if (v.length < 2) { res.hidden = true; res.innerHTML = ''; return; }
+        var toks = v.split(/\s+/), hits = [], i, j;
+        for (i = 0; i < all.length; i++) {
+          var e = all[i];
+          var hay = norm(e.t) + ' ' + norm(subjLabel(e.g)) + ' class ' + e.c + ' ch ' + e.n;
+          var ok = true;
+          for (j = 0; j < toks.length; j++) if (hay.indexOf(toks[j]) < 0) { ok = false; break; }
+          if (ok) hits.push(e);
+          if (hits.length >= 8) break;
+        }
+        if (!hits.length) {
+          res.innerHTML = '<div class="m-find-none">Kuch nahi mila - spelling ya class number badal kar dekho.</div>';
+          res.hidden = false;
+          return;
+        }
+        var h = '';
+        for (i = 0; i < hits.length; i++) {
+          h += '<a class="m-find-item" href="' + esc(hits[i].u) + '">' +
+            '<span class="m-find-badge">' + esc(hits[i].c) + '</span>' +
+            '<span class="m-find-sub">' + esc(subjLabel(hits[i].g)) + ' &middot; Ch ' + hits[i].n + '</span>' +
+            '<span class="m-find-title">' + esc(hits[i].t) + '</span></a>';
+        }
+        res.innerHTML = h;
+        res.hidden = false;
+      });
+    });
+  }
+
+  /* ---------- 5. remember last chapter ---------- */
+  function recordVisit() {
+    var cur = currentChapter();
+    if (!cur) return;
+    try {
+      var h1 = document.querySelector('.ch-hero h1') || document.querySelector('h1');
+      var t = h1 ? h1.textContent.trim().slice(0, 80) : '';
+      localStorage.setItem('maida-last-ch', JSON.stringify({ u: location.pathname, t: t }));
+    } catch (e) {}
+  }
+
+  onReady(function () {
+    try { progressBar(); } catch (e) {}
+    try { jumpMenu(); } catch (e) {}
+    try { prevNext(); } catch (e) {}
+    try { homeTools(); } catch (e) {}
+    try { recordVisit(); } catch (e) {}
+  });
+})();
