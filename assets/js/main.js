@@ -166,14 +166,12 @@
 
     /* keep the pill out of the way while reading: hide on scroll down,
        show again on scroll up or when scrolling stops */
-    var lastY = window.scrollY || 0, hideTimer = null;
+    var lastY = window.scrollY || 0;
     window.addEventListener('scroll', function () {
       var y = window.scrollY || 0;
       if (y > lastY + 4 && y > 120 && !panel) btn.classList.add('m-jump-hidden');
-      else if (y < lastY - 4) btn.classList.remove('m-jump-hidden');
+      else if (y < lastY - 4 || y <= 120) btn.classList.remove('m-jump-hidden');
       lastY = y;
-      if (hideTimer) clearTimeout(hideTimer);
-      hideTimer = setTimeout(function () { btn.classList.remove('m-jump-hidden'); }, 1600);
     }, { passive: true });
   }
 
