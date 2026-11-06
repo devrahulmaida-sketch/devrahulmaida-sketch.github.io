@@ -495,7 +495,7 @@
     }
     if(!pick&&secs.length&&!bar.hidden&&curScene>=0){
       var f=secs[0].getBoundingClientRect();
-      if(f.top<=window.innerHeight*0.75)return{scene:curScene,sub:curSub,label:titleEl.textContent,el:null};
+      if(curScene>=0&&curScene<=4&&f.top<=window.innerHeight*0.75)return{scene:curScene,sub:curSub,label:titleEl.textContent,el:null};
     }
     if(pick){
       scene=sceneFor(pick);var h=pick.querySelector('h3');label=cut(h?h.textContent:'');
