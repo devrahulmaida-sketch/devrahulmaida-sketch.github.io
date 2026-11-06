@@ -247,3 +247,53 @@ body.m-has-jump{padding-bottom:76px}
 .m-jump-btn{transition:transform .25s ease,opacity .25s ease}
 .m-jump-btn.m-jump-hidden{transform:translateY(90px);opacity:0;pointer-events:none}
 @media(max-width:640px){.m-jump-btn{left:10px;bottom:10px;padding:8px 14px;font-size:.85rem}}
+
+/* ============================================================
+   v5 visual polish (brand-preserving): dual-accent section
+   rules, readable measure, status accents, mobile tables.
+   Additive only - existing rules and page inline styles win
+   where they are more specific.
+   ============================================================ */
+/* --- type polish --- */
+h1,h2,h3,h4{letter-spacing:-.01em}
+.btn{letter-spacing:.01em}
+
+/* --- section heads: navy rule with a saffron lead segment --- */
+.sec-head{position:relative}
+.sec-head::after{content:'';position:absolute;left:0;bottom:-2px;width:72px;height:2px;background:var(--saffron)}
+
+/* --- notes: readable measure + visible section-header band --- */
+.note-sec p,.note-sec li,.jee-sol p{max-width:72ch}
+.note-sec h3{background:linear-gradient(90deg,#fdf6ee 0%,rgba(253,246,238,0) 75%);border-radius:4px;padding-top:4px;padding-bottom:4px}
+
+/* --- cards: status accent (open/done subjects read at a glance) --- */
+.card.done{border-top-color:var(--green)}
+
+/* --- footer: saffron bookend echoing the masthead rule --- */
+.foot{border-top:3px solid var(--saffron)}
+
+/* --- missing component styles used by chapter pages --- */
+.weight-medium{border-color:#c3cddf;color:var(--navy)}
+.formula-conditions{font-size:.85rem;color:var(--muted);margin:-6px 0 10px}
+
+/* --- wide tables scroll internally, never clip, never push the page --- */
+.tbl{display:block;overflow-x:auto}
+@media(max-width:640px){
+  .tbl{font-size:.84rem}
+  .tbl th,.tbl td{padding:6px 8px}
+  .hero-cta{gap:10px}
+  .hero-cta .btn{padding:10px 14px;font-size:.88rem;letter-spacing:0}
+}
+
+/* --- home hero: navy banner in the same brand palette --- */
+.hero{background:linear-gradient(135deg,var(--navy-dd) 0%,var(--navy-d) 55%,var(--navy) 100%);border-bottom:3px solid var(--saffron);color:#dbe4f2}
+.hero h1{color:#fff}
+.hero .grad{color:#fbbf24}
+.hero-sub{color:#b9c8de}
+.hero-sub b{color:#fff}
+.hero .btn-primary{background:var(--saffron);border-color:var(--saffron)}
+.hero .btn-primary:hover{background:#a84a05}
+.hero .btn-ghost{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.45);color:#fff}
+.hero .btn-ghost:hover{background:rgba(255,255,255,.14);border-color:#fff}
+.hero-stats{box-shadow:var(--shadow-lift)}
+.hero #m-find-q{border-color:rgba(255,255,255,.35)}
