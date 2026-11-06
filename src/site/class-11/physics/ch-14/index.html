@@ -60,10 +60,13 @@
   </div>
 </section>
 
-<section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
+<section id="walkthrough" style="margin:16px 0;padding:20px 16px;border:1px solid #22d3ee66;border-radius:16px;background:linear-gradient(160deg,#0a0a12 0%,#0d1b2e 100%);text-align:center;box-shadow:0 8px 24px rgba(10,10,18,.35)">
+  <span style="display:inline-block;background:#c05606;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:1.2px;border-radius:999px;padding:3px 13px;margin-bottom:9px;text-transform:uppercase">Naya</span>
   <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Poora chapter 5 animated scenes mein - sliders ghumao, standing waves lock karo, beats suno-jaisa dekho.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+  <p style="margin:0 0 8px;font-size:.95em;color:#c9c9e0">Poora chapter 5 animated scenes mein - sliders ghumao, standing waves lock karo, beats suno-jaisa dekho.</p>
+  <p style="margin:0 0 12px;font-size:.95em;color:#8fe3f5;font-weight:600">Ab notes padhte waqt bhi: neeche Long Notes mein visual upar aapke saath scroll karega, section badalte hi scene badlega.</p>
+  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none;margin:3px 5px">Walkthrough Kholo →</a>
+  <a href="#notes" style="display:inline-block;padding:10px 22px;background:transparent;color:#7dd3fc;font-weight:700;border-radius:999px;text-decoration:none;border:1px solid #22d3ee66;margin:3px 5px">Notes mein try karo ↓</a>
 </section>
 <section id="concept-shorts" style="padding-top:10px">
   <div class="sec-head"><h2>Concept Shorts — JEE Advanced</h2></div>
@@ -388,7 +391,12 @@
 <!-- Scroll-synced interactive visual: walkthrough scene follows the section being read -->
 <!-- deploy nudge 2026-11-06: retrigger Pages after run #2437 deploy timeout -->
 <style>
-#wt-bar{position:fixed;top:44px;left:0;right:0;z-index:900;background:#0a0a12;border-bottom:1px solid #22d3ee55;box-shadow:0 6px 18px rgba(0,0,0,.35);font-family:-apple-system,'Segoe UI',Roboto,sans-serif}
+#wt-bar{position:fixed;top:44px;left:0;right:0;z-index:900;background:#0a0a12;border-bottom:1px solid #22d3ee55;box-shadow:0 6px 18px rgba(0,0,0,.35);font-family:-apple-system,'Segoe UI',Roboto,sans-serif;--wt-tx:0}
+@keyframes wt-in{from{opacity:0;transform:translateX(var(--wt-tx)) translateY(-10px)}to{opacity:1;transform:translateX(var(--wt-tx)) translateY(0)}}
+#wt-bar:not([hidden]){animation:wt-in .28s ease}
+#wt-dots{display:inline-flex;gap:5px;margin-left:8px;vertical-align:middle}
+#wt-dots i{width:7px;height:7px;border-radius:50%;background:#2c3a55;display:inline-block;transition:background .2s,transform .2s}
+#wt-dots i.on{background:#22d3ee;transform:scale(1.25)}
 #wt-bar .wt-bar-top{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:5px 10px}
 #wt-bar-title{font-size:.8rem;color:#7dd3fc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #wt-bar .wt-bar-actions{display:flex;align-items:center;flex-shrink:0}
@@ -397,14 +405,14 @@
 #wt-bar button:focus-visible,#wt-chip:focus-visible,#wt-bar a:focus-visible{outline:2px solid #22d3ee;outline-offset:2px}
 #wt-bar .wt-frame-wrap{padding:0 8px 7px}
 #wt-frame{width:100%;border:0;display:block;background:transparent;border-radius:8px;height:200px}
-@media(min-width:760px){#wt-bar{max-width:720px;left:50%;right:auto;transform:translateX(-50%);border:1px solid #22d3ee55;border-top:none;border-radius:0 0 14px 14px}}
-@media(min-width:760px){#wt-bar.wt-side{left:auto;right:12px;transform:none;width:min(340px,30vw);max-width:none;border:1px solid #22d3ee55;border-radius:14px}}
+@media(min-width:760px){#wt-bar{max-width:720px;left:50%;right:auto;transform:translateX(-50%);border:1px solid #22d3ee55;border-top:none;border-radius:0 0 14px 14px;--wt-tx:-50%}}
+@media(min-width:760px){#wt-bar.wt-side{left:auto;right:12px;transform:none;width:min(340px,30vw);max-width:none;border:1px solid #22d3ee55;border-radius:14px;--wt-tx:0}}
 #wt-chip{position:fixed;right:12px;bottom:14px;z-index:900;background:#22d3ee;color:#06222a;font-weight:700;border:none;border-radius:999px;padding:9px 15px;box-shadow:0 4px 14px rgba(0,0,0,.4);cursor:pointer;font-size:.85rem}
-@media(prefers-reduced-motion:reduce){#wt-bar{box-shadow:none}}
+@media(prefers-reduced-motion:reduce){#wt-bar{box-shadow:none}#wt-bar:not([hidden]){animation:none}#wt-dots i{transition:none}}
 </style>
 <div id="wt-bar" role="region" aria-label="Section visual - scroll ke saath badalta hai" hidden>
   <div class="wt-bar-top">
-    <span id="wt-bar-title">Visual</span>
+    <span id="wt-bar-title">Visual</span><span id="wt-dots" aria-hidden="true"></span>
     <span class="wt-bar-actions">
       <a href="walkthrough/index.html">Full walkthrough</a>
       <button id="wt-min" type="button" title="Chhota / bada karo" aria-label="Visual chhota ya bada karo">&ndash;</button>
@@ -423,6 +431,8 @@
   var baseSrc='walkthrough/index.html?sync=1'+(still?'&still=1':'');
   var loaded=false,ready=false,pending=-1,curScene=-1,closed=false;
   try{closed=sessionStorage.getItem('wtbar-closed')==='1'}catch(e){}
+  var dotsEl=document.getElementById('wt-dots'),dots=[];
+  if(dotsEl){for(var di=0;di<6;di++){var d=document.createElement('i');dotsEl.appendChild(d);dots.push(d)}}
   var secs=[].slice.call(document.querySelectorAll('#notes .note-sec'));
   var shortNotes=document.getElementById('short-notes');
   var practice=document.getElementById('practice');
@@ -473,6 +483,7 @@
     if(res.scene<0){bar.hidden=true;placeBar();return}
     bar.hidden=false;post(res.scene);placeBar();
     titleEl.textContent=res.label;
+    for(var dk=0;dk<dots.length;dk++){dots[dk].classList.toggle('on',dk===res.scene)}
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
   window.addEventListener('resize',function(){dockTop();placeBar();if(!ticking){ticking=true;requestAnimationFrame(update)}});
