@@ -125,6 +125,7 @@
     btn.textContent = 'Sections';
     btn.setAttribute('aria-haspopup', 'true');
     document.body.appendChild(btn);
+    document.body.classList.add('m-has-jump');
 
     var veil = null, panel = null;
     function close() {
@@ -220,7 +221,7 @@
     box.className = 'm-find';
     box.innerHTML = '<input id="m-find-q" type="search" autocomplete="off" placeholder="Chapter khojo - jaise waves, motion, ya class 9 maths" aria-label="Chapter khojo">' +
       '<div class="m-find-res" id="m-find-res" hidden></div>';
-    var anchor = hero.querySelector('.hero-sub') || hero.querySelector('.hero-stats');
+    var anchor = hero.querySelector('h1') || hero.querySelector('.hero-sub') || hero.querySelector('.hero-stats');
     if (anchor && anchor.parentNode === hero) hero.insertBefore(box, anchor.nextSibling);
     else hero.appendChild(box);
     if (cont) hero.insertBefore(cont, box);
@@ -268,11 +269,37 @@
     } catch (e) {}
   }
 
+  /* ---------- 0. stylesheet freshness: self-heal a stale cached style.css ---------- */
+  function ensureCss() {
+    var found = false, i, j;
+    for (i = 0; i < document.styleSheets.length; i++) {
+      var sh = document.styleSheets[i];
+      if (!sh.href || sh.href.indexOf('/assets/css/style.css') < 0) continue;
+      try {
+        var rs = sh.cssRules;
+        for (j = 0; j < rs.length; j++) {
+          if (rs[j].selectorText === '.m-jump-btn') { found = true; break; }
+        }
+      } catch (e) { found = true; }
+      if (found) break;
+    }
+    if (!found) {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = '/assets/css/style.css?v=rt1';
+      document.head.appendChild(l);
+      return 'reloaded-css';
+    }
+    return 'css-ok';
+  }
+
   onReady(function () {
     try { progressBar(); } catch (e) {}
     try { jumpMenu(); } catch (e) {}
     try { prevNext(); } catch (e) {}
     try { homeTools(); } catch (e) {}
     try { recordVisit(); } catch (e) {}
+    if (document.readyState === 'complete') { try { ensureCss(); } catch (e) {} }
+    else window.addEventListener('load', function () { try { ensureCss(); } catch (e) {} });
   });
 })();
