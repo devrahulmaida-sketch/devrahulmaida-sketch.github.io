@@ -306,3 +306,10 @@ h1,h2,h3,h4{letter-spacing:-.01em}
   .ch-tags{margin-top:10px}
   .ch-tags .pill{font-size:.72rem;padding:3px 10px}
 }
+
+/* --- unified navy hero band on class/subject/chapter pages --- */
+.ch-hero{background:linear-gradient(135deg,var(--navy-dd) 0%,var(--navy-d) 55%,var(--navy) 100%);border:1px solid var(--navy-d);border-left:4px solid var(--saffron);color:#dbe4f2;box-shadow:var(--shadow)}
+.ch-hero h1{color:#fff}
+.ch-hero .crumb,.ch-hero .crumb a{color:#9fb2d0}
+.ch-hero p[style*="muted"]{color:#b9c8de !important}
+.ch-hero p[style*="saffron"]{color:#fbbf24 !important}

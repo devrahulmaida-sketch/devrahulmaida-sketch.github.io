@@ -36,6 +36,15 @@ canvas{display:block;width:100%;background:#0b0b16;border:1px solid #23233d;bord
 .recap .card p{font-size:.86em;color:#c9c9e0;line-height:1.6;font-family:ui-monospace,monospace}
 .navrow{display:flex;justify-content:space-between;margin-top:18px}
 .credit{text-align:center;color:#565672;font-size:.75em;margin-top:26px}
+/* sync/compact mode: embedded on the chapter page as a scroll-linked visual */
+body.sync{background:transparent;padding:2px}
+body.sync header,body.sync h1,body.sync .dots,body.sync .navrow,body.sync .sub,body.sync .fact,body.sync .credit,body.sync .backlink,body.sync .tag,body.sync .badge{display:none}
+body.sync .wrap{padding:2px 4px;max-width:none}
+body.sync .scene{padding-top:0}
+body.sync .scene h2{font-size:.82rem;margin:0 0 4px;line-height:1.3}
+body.sync canvas{border-radius:8px;width:auto;height:auto;max-width:100%;max-height:230px;display:block;margin:0 auto}
+body.sync .readout{font-size:.72rem;padding:8px 10px}
+body.sync .recap .card{padding:6px 8px;margin:4px auto;max-width:98%;font-size:.8rem}
 </style>
 </head>
 <body>
@@ -376,8 +385,30 @@ function tick(now){
   if(DRAW[cur])DRAW[cur](nowT,dt);
   requestAnimationFrame(tick);
 }
-go(0);
-requestAnimationFrame(tick);
+// sync/embed mode: the chapter page drives the scene with postMessage while scrolling
+const qp=new URLSearchParams(location.search);
+const SYNC=qp.get('sync')==='1';
+const STILL=qp.get('still')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches;
+function reportH(){if(!SYNC)return;try{var w=document.querySelector('.wrap');var h=w?w.scrollHeight:document.documentElement.scrollHeight;parent.postMessage({type:'wt-height',h:h},location.origin)}catch(_){}}
+function stillDraw(){for(var i=0;i<DRAW.length;i++){try{DRAW[i](1.35,0.016)}catch(_){}}}
+go(Math.max(0,parseInt(qp.get('scene')||'0',10)||0));
+if(SYNC){
+  document.body.classList.add('sync');
+  window.addEventListener('message',function(e){
+    if(e.origin!==location.origin)return;
+    var d=e.data||{};
+    if(d.type==='wt-scene'){go(d.i|0);if(STILL)stillDraw();reportH();}
+  });
+  addEventListener('load',function(){reportH();setTimeout(reportH,250);try{parent.postMessage({type:'wt-ready'},location.origin)}catch(_){}});
+  addEventListener('resize',reportH);
+}
+if(STILL){
+  stillDraw();
+  document.addEventListener('click',function(){setTimeout(stillDraw,0)});
+  document.addEventListener('input',function(){setTimeout(stillDraw,0)});
+}else{
+  requestAnimationFrame(tick);
+}
 </script>
 </body>
 </html>
