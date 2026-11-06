@@ -193,10 +193,10 @@ function draw1(t){
       g.fillStyle=density>0.55?'#e879f9':density<-0.55?'#38bdf8':'#5eead4';
       g.beginPath();g.arc(x,mid,density>0.55?7:4.5,0,7);g.fill()}
     label(g,'compression (bheed)',90,mid-70,'#e879f9');label(g,'rarefaction (khalai)',360,mid+86,'#38bdf8');
-    g.fillStyle='#8f8fb8';g.font='13px sans-serif';g.fillText('particles aage-peeche slide karte hain - wave ke PARALLEL',30,H-18);
+    g.fillStyle='#8f8fb8';g.font=fpx(13);g.fillText('particles aage-peeche slide karte hain - wave ke PARALLEL',30,H-18);
   }
 }
-function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function label(g,txt,x,y,col){g.fillStyle=col;g.font=fpx(13);g.fillText(txt,x,y)}
 
 // ---------- SCENE 2: travelling wave + sliders ----------
 const S2={A:35,L:220,F:12,T:50};
@@ -285,11 +285,11 @@ function draw4(t){
   let prev=env4(0,S4.open,n);
   for(let i=1;i<=200;i++){
     const u=i/200,e=env4(u,S4.open,n);
-    if(prev*e<0){const x=x0+u*(x1-x0);g.fillStyle='#f87171';g.beginPath();g.arc(x,mid,5,0,7);g.fill();g.font='11px sans-serif';g.fillText('N',x-4,mid+20)}
+    if(prev*e<0){const x=x0+u*(x1-x0);g.fillStyle='#f87171';g.beginPath();g.arc(x,mid,5,0,7);g.fill();g.font=fpx(11);g.fillText('N',x-4,mid+20)}
     prev=e}
-  if(!S4.open){g.fillStyle='#f87171';g.beginPath();g.arc(x1-4,mid,5,0,7);g.fill();g.font='11px sans-serif';g.fillText('N',x1-24,mid+20)}
+  if(!S4.open){g.fillStyle='#f87171';g.beginPath();g.arc(x1-4,mid,5,0,7);g.fill();g.font=fpx(11);g.fillText('N',x1-24,mid+20)}
   label(g,S4.open?'OPEN pipe - dono ends ANTINODE':'CLOSED pipe - band end = NODE',x0,top-30,'#8f8fb8');
-  label(g,'plotted: air DISPLACEMENT envelope (khula end = antinode, band end = node)',x0,bot+46,'#8f8fb8');
+  label(g,'DISPLACEMENT envelope (khula=antinode, band=node)',x0,bot+46,'#8f8fb8');
   const v=340,f1=S4.open? v/2 : v/4; // L=1m
   document.getElementById('v4read').innerHTML=S4.open
     ? ('harmonic n='+n+' → ν = '+n+' × (v/2L = '+f1+') = <b style="color:#22d3ee">'+(n*f1)+' Hz</b> (L=1m) - SAARE harmonics allowed')
@@ -333,6 +333,9 @@ function draw5(t){
 }
 // ---------- scroll-linked idea state (driven by chapter page) ----------
 let HL='';
+let FS=1;
+function fitFS(){const c=document.getElementById('cv1');if(c&&c.clientWidth)FS=Math.min(2,Math.max(1,780/c.clientWidth))}
+function fpx(n){return Math.round(n*FS)+'px sans-serif'}
 const HLTXT={
  't':'TRANSVERSE - particles move PERPENDICULAR (rope, light)',
  'l':'LONGITUDINAL - particles move PARALLEL (sound)',
@@ -350,7 +353,7 @@ const HLTXT={
 function banner(){
   if(!HL||cur>4)return;
   const[c,g]=ctx('cv'+(cur+1));
-  g.font='bold 14px sans-serif';g.textAlign='center';
+  g.font='bold '+Math.round(14*Math.min(FS,1.7))+'px sans-serif';g.textAlign='center';
   const w=g.measureText(HL).width;
   g.fillStyle='rgba(10,10,18,.72)';g.fillRect(c.width/2-w/2-8,8,w+16,22);
   g.fillStyle='#fbbf24';g.fillText(HL,c.width/2,24);
@@ -394,8 +397,8 @@ if(SYNC){
     const d=e.data||{};
     if(d.type==='wt-scene'){go(d.i|0);applySub(d.i|0,d.sub||'');if(STILL)stillDraw();reportH();}
   });
-  addEventListener('load',()=>{reportH();setTimeout(reportH,250);try{parent.postMessage({type:'wt-ready'},location.origin)}catch(_){}});
-  addEventListener('resize',reportH);
+  addEventListener('load',()=>{fitFS();reportH();setTimeout(reportH,250);try{parent.postMessage({type:'wt-ready'},location.origin)}catch(_){}});
+  addEventListener('resize',()=>{fitFS();reportH()});
 }
 if(STILL){
   stillDraw();
