@@ -405,6 +405,7 @@
 #wt-bar button:focus-visible,#wt-chip:focus-visible,#wt-bar a:focus-visible{outline:2px solid #22d3ee;outline-offset:2px}
 #wt-bar .wt-frame-wrap{padding:0 8px 7px}
 #wt-sub{font-size:.72rem;color:#fbbf24;padding:0 2px 5px;line-height:1.35}
+#wt-line{font-size:.78rem;color:#e8e8f0;padding:2px 2px 3px;line-height:1.42;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;border-top:1px solid #22223a}
 #wt-frame.wt-dim{opacity:.35}
 #wt-frame{width:100%;border:0;display:block;background:transparent;border-radius:8px;height:200px}
 @media(min-width:760px){#wt-bar{max-width:720px;left:50%;right:auto;transform:translateX(-50%);border:1px solid #22d3ee55;border-top:none;border-radius:0 0 14px 14px;--wt-tx:-50%}}
@@ -413,6 +414,7 @@
 #wt-frame.wt-xfade{opacity:.25}
 #notes .note-sec,#short-notes{scroll-margin-top:250px}
 #notes .note-sec.wt-active{box-shadow:0 0 0 2px #f59e0b,0 10px 24px rgba(0,0,0,.10)}
+#notes li.wt-hot{background:rgba(245,158,11,.10);border-radius:8px;box-shadow:inset 3px 0 0 #f59e0b}
 @media(prefers-reduced-motion:reduce){#wt-frame{transition:none}}
 #wt-chip{position:fixed;right:12px;bottom:14px;z-index:900;background:#22d3ee;color:#06222a;font-weight:700;border:none;border-radius:999px;padding:9px 15px;box-shadow:0 4px 14px rgba(0,0,0,.4);cursor:pointer;font-size:.85rem}
 @media(prefers-reduced-motion:reduce){#wt-bar{box-shadow:none}#wt-bar:not([hidden]){animation:none}#wt-dots i{transition:none}}
@@ -426,7 +428,7 @@
       <button id="wt-close" type="button" title="Visual band karo" aria-label="Visual band karo">&times;</button>
     </span>
   </div>
-  <div class="wt-frame-wrap"><div id="wt-sub" hidden></div><iframe id="wt-frame" title="Padh rahe ho us section ka visual" loading="lazy" scrolling="no"></iframe></div>
+  <div class="wt-frame-wrap"><div id="wt-sub" hidden></div><iframe id="wt-frame" title="Padh rahe ho us section ka visual" loading="lazy" scrolling="no"></iframe><div id="wt-line" aria-hidden="true" hidden></div></div>
 </div>
 <button id="wt-chip" type="button" title="Visual wapas laao" hidden>Visual dikhao</button>
 <script>
@@ -435,7 +437,8 @@
       frame=document.getElementById('wt-frame'),titleEl=document.getElementById('wt-bar-title');
   if(!bar||!frame)return;
   var still=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var baseSrc='walkthrough/index.html?sync=1'+(still?'&still=1':'');
+  var WTVER='wt-2026-11-06-b';
+  var baseSrc='walkthrough/index.html?sync=1&v='+WTVER+(still?'&still=1':'');
   var loaded=false,ready=false,curScene=-1,curSub='',closed=false;
   try{closed=sessionStorage.getItem('wtbar-closed')==='1'}catch(e){}
   var SUBTXT={
@@ -453,7 +456,7 @@
    'tune':'beats → 0 = PERFECT TUNE (unison)',
    'none':'Is line ka visual abhi nahi - scene sirf section ka general idea hai'
   };
-  var subEl=document.getElementById('wt-sub');
+  var subEl=document.getElementById('wt-sub'),lineEl=document.getElementById('wt-line');
   var dotsEl=document.getElementById('wt-dots'),dots=[];
   if(dotsEl){for(var di=0;di<6;di++){var d=document.createElement('i');dotsEl.appendChild(d);dots.push(d)}}
   var secs=[].slice.call(document.querySelectorAll('#notes .note-sec'));
@@ -479,7 +482,7 @@
     return out;
   }
   function setActive(el){for(var si=0;si<secs.length;si++){secs[si].classList.toggle('wt-active',secs[si]===el)}}
-  var curAnc=null;
+  var curAnc=null,hotAnc=null;
   function jumpToCurrent(){
     var el=curAnc||document.querySelector('#notes .note-sec.wt-active');if(!el)return;
     var top=window.scrollY+el.getBoundingClientRect().top-(bar.getBoundingClientRect().bottom+8);
@@ -502,40 +505,50 @@
   }
   var ticking=false;
   function pickScene(){
-    var line=Math.round(window.innerHeight*0.3),pick=null,i,r,scene=-1,label='';
+    var line=Math.round(window.innerHeight*0.3),i,r,scene=-1,label='';
     if(!bar.hidden&&!bar.classList.contains('wt-side'))line=Math.max(line,Math.ceil(bar.getBoundingClientRect().bottom)+12);
     if(practice&&practice.getBoundingClientRect().top<=line)return{scene:-1,sub:'',label:'',el:null};
     if(shortNotes&&shortNotes.getBoundingClientRect().top<=line)return{scene:5,sub:'',label:'Formula pack - quick recap',el:null};
+    // visual follows the first idea line fully visible under the dock (the line being read);
+    // in stretches without a fully visible anchor, keep the most recent anchor passed
+    var dock=bar.hidden?line:Math.ceil(bar.getBoundingClientRect().bottom)+6,low=window.innerHeight*0.8,lead=null,trail=null,all=[];
     for(i=0;i<secs.length;i++){
       if(secs[i].offsetParent===null)continue;
-      r=secs[i].getBoundingClientRect();
-      if(r.top<=line)pick=secs[i];else break;
+      var els=secs[i].querySelectorAll('[data-wt]');
+      for(var ai=0;ai<els.length;ai++){if(els[ai].offsetParent!==null)all.push(els[ai])}
     }
-    if(!pick&&secs.length&&!bar.hidden&&curScene>=0){
-      var f=secs[0].getBoundingClientRect();
-      if(curScene>=0&&curScene<=4&&f.top<=window.innerHeight*0.75)return{scene:curScene,sub:curSub,label:titleEl.textContent,el:null};
+    for(i=0;i<all.length;i++){
+      r=all[i].getBoundingClientRect();
+      if(r.top>=dock){if(r.top<=low)lead=all[i];break}
+      trail=all[i];
     }
-    if(pick){
-      scene=sceneFor(pick);var h=pick.querySelector('h3');label=cut(h?h.textContent:'');
-      var anc=anchorFor(pick,line);
-      if(anc){
-        var parts=(anc.getAttribute('data-wt')||'').split(':'),si=parseInt(parts[0],10);
-        if(!isNaN(si))scene=si;
-        label=cut(anc.getAttribute('data-wt-label')||'')||label;
-        return{scene:scene,sub:parts[1]||'',label:label,el:pick,anc:anc};
+    var anc=lead||trail;
+    if(!anc){
+      if(secs.length&&!bar.hidden&&curScene>=0&&curScene<=4){
+        var f=secs[0].getBoundingClientRect();
+        if(f.top<=window.innerHeight*0.75)return{scene:curScene,sub:curSub,label:titleEl.textContent,el:null};
       }
-      return{scene:scene,sub:'',label:label,el:pick,anc:null};
+      return{scene:-1,sub:'',label:'',el:null};
     }
-    return{scene:scene,sub:'',label:label,el:null};
+    var secEl=anc.closest('.note-sec');
+    scene=sceneFor(secEl);
+    var h=secEl?secEl.querySelector('h3'):null;label=cut(h?h.textContent:'');
+    var parts=(anc.getAttribute('data-wt')||'').split(':'),si=parseInt(parts[0],10);
+    if(!isNaN(si))scene=si;
+    label=cut(anc.getAttribute('data-wt-label')||'')||label;
+    return{scene:scene,sub:parts[1]||'',label:label,el:secEl,anc:anc};
   }
   function update(){
     ticking=false;dockTop();
     if(closed){bar.hidden=true;placeBar();return}
     var res=pickScene();
-    if(res.scene<0){bar.hidden=true;placeBar();setActive(null);curAnc=null;return}
+    if(res.scene<0){bar.hidden=true;placeBar();setActive(null);curAnc=null;if(hotAnc){hotAnc.classList.remove('wt-hot');hotAnc=null}return}
     bar.hidden=false;post(res.scene,res.sub);placeBar();
     titleEl.textContent=res.label;setActive(res.el);curAnc=res.anc||null;
+    if(hotAnc&&hotAnc!==res.anc)hotAnc.classList.remove('wt-hot');
+    hotAnc=res.anc||null;if(hotAnc)hotAnc.classList.add('wt-hot');
     if(subEl){var st=SUBTXT[res.sub]||'';subEl.textContent=st;subEl.hidden=!st}
+    if(lineEl){var lt=res.anc?(res.anc.textContent||'').replace(/\s+/g,' ').trim():'';lineEl.textContent=lt;lineEl.hidden=!lt}
     frame.classList.toggle('wt-dim',res.sub==='none');
     for(var dk=0;dk<dots.length;dk++){dots[dk].classList.toggle('on',dk===res.scene)}
   }
