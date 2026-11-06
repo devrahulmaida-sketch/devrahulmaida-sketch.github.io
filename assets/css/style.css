@@ -229,3 +229,16 @@ section{max-width:1080px;margin:0 auto;padding:44px 20px}
 .m-find-none{background:var(--card2);border:1px dashed var(--line);border-radius:10px;padding:10px 14px;color:var(--muted);font-size:.9rem}
 
 .note-sec h3,#short-notes,#practice,#walkthrough{scroll-margin-top:84px}
+
+/* ---------- hero hierarchy: discovery leads, caveats demoted ---------- */
+.hero-sub{font-size:.88rem;margin:18px 0 0;max-width:720px}
+.hero .m-find{margin-top:14px}
+.hero .m-cont{margin-top:12px}
+@media(max-width:640px){
+  .hero{padding:22px 16px 24px}
+  .hero-badge{font-size:.68rem;padding:3px 10px;margin-bottom:10px;letter-spacing:.8px}
+  .hero h1{font-size:1.55rem;margin-bottom:2px}
+  .hero-cta{margin-bottom:22px}
+}
+/* Sections pill guard: never cover end-of-page content */
+body.m-has-jump{padding-bottom:76px}
