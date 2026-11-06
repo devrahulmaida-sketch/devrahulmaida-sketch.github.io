@@ -297,3 +297,12 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .hero .btn-ghost:hover{background:rgba(255,255,255,.14);border-color:#fff}
 .hero-stats{box-shadow:var(--shadow-lift)}
 .hero #m-find-q{border-color:rgba(255,255,255,.35)}
+
+/* --- index + chapter heroes: discovery leads on mobile --- */
+@media(max-width:640px){
+  .ch-hero{padding:16px 18px;margin-top:18px}
+  .ch-hero h1{font-size:1.35rem}
+  .ch-hero p:not(.crumb){font-size:.85rem;line-height:1.5}
+  .ch-tags{margin-top:10px}
+  .ch-tags .pill{font-size:.72rem;padding:3px 10px}
+}
