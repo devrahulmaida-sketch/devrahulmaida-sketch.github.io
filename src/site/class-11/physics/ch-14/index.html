@@ -119,7 +119,7 @@
     <ul>
 <li data-wt="2:add" data-wt-label="Net = dono ka SUM"><b>Principle of superposition:</b> do waves ek saath aayein to net displacement = individual displacements ka SUM. (Waves ek dusre se GUZAR jaati hain bina bigde!)</li>
 <li data-wt="2:add" data-wt-label="Constructive / destructive"><b>Interference:</b> constructive (crest+crest = double) ya destructive (crest+trough = cancel).</li>
-<li data-wt="2:add" data-wt-label="Reflection - phase π"><b>Reflection:</b> fixed end se → wave PALT ke aati hai (crest wapas trough banke — <b>phase change π</b>); free end se → bina palte (no phase change). ⭐</li>
+<li data-wt="2:none" data-wt-label="Reflection - phase π"><b>Reflection:</b> fixed end se → wave PALT ke aati hai (crest wapas trough banke — <b>phase change π</b>); free end se → bina palte (no phase change). ⭐</li>
 <li data-wt="2:lock" data-wt-label="STANDING - pattern freeze"><b>Standing (stationary) wave ⭐:</b> do identical waves OPPOSITE directions me travel karein → pattern freeze ho jaata hai! y = 2A sin(kx)cos(ωt).</li>
 <li data-wt="2:lock" data-wt-label="Nodes N · Antinodes A"><b>Nodes (N):</b> hamesha zero displacement (khamosh points). <b>Antinodes (A):</b> maximum oscillation (sabse zyada hilne wale). Distance N-to-N = A-to-A = λ/2; N-to-A = λ/4. ⭐</li>
 <li>Standing wave me NET energy transport NAHI hota (isliye "stationary") — par energy khaali nahi baithti: do nodes ke beech har segment me kinetic ↔ potential badalti rehti hai.</li>
@@ -185,7 +185,7 @@
     <ul>
 <li data-wt="2:add" data-wt-label="Net = dono ka SUM"><b>अध्यारोपण सिद्धांत:</b> दो तरंगें साथ आएं तो कुल विस्थापन = अलग-अलग विस्थापनों का योग।</li>
 <li data-wt="2:add" data-wt-label="Constructive / destructive"><b>व्यतिकरण:</b> संपोषी (शृंग+शृंग = दोगुना) या विनाशी (शृंग+गर्त = निरसन)।</li>
-<li data-wt="2:add" data-wt-label="Reflection - phase π"><b>परावर्तन:</b> बंधे सिरे से → तरंग पलटकर (<b>कला परिवर्तन π</b>); मुक्त सिरे से → बिना पलटे। ⭐</li>
+<li data-wt="2:none" data-wt-label="Reflection - phase π"><b>परावर्तन:</b> बंधे सिरे से → तरंग पलटकर (<b>कला परिवर्तन π</b>); मुक्त सिरे से → बिना पलटे। ⭐</li>
 <li data-wt="2:lock" data-wt-label="STANDING - pattern freeze"><b>अप्रगामी तरंग ⭐:</b> दो समान तरंगें विपरीत दिशाओं में → पैटर्न स्थिर! y = 2A sin(kx)cos(ωt)।</li>
 <li data-wt="2:lock" data-wt-label="Nodes N · Antinodes A"><b>निस्पंद (node):</b> सदा शून्य विस्थापन। <b>प्रस्पंद (antinode):</b> अधिकतम दोलन। निस्पंद-से-निस्पंद = λ/2; निस्पंद-से-प्रस्पंद = λ/4। ⭐</li>
 <li>अप्रगामी तरंग में ऊर्जा का नेट स्थानांतरण नहीं होता — दो निस्पंदों के बीच ऊर्जा गतिज ↔ स्थितिज रूप में बदलती रहती है।</li>
@@ -250,7 +250,7 @@
     <ul>
 <li data-wt="2:add" data-wt-label="Net = dono ka SUM"><b>Principle of superposition:</b> when two waves meet, the net displacement is the SUM of the individual ones. (Waves pass through each other undisturbed!)</li>
 <li data-wt="2:add" data-wt-label="Constructive / destructive"><b>Interference:</b> constructive (crest + crest = double) or destructive (crest + trough = cancel).</li>
-<li data-wt="2:add" data-wt-label="Reflection - phase π"><b>Reflection:</b> from a fixed end the wave returns INVERTED (crest comes back as a trough — <b>phase change π</b>); from a free end, uninverted. ⭐</li>
+<li data-wt="2:none" data-wt-label="Reflection - phase π"><b>Reflection:</b> from a fixed end the wave returns INVERTED (crest comes back as a trough — <b>phase change π</b>); from a free end, uninverted. ⭐</li>
 <li data-wt="2:lock" data-wt-label="STANDING - pattern freeze"><b>Standing (stationary) wave ⭐:</b> two identical waves travelling in OPPOSITE directions freeze into a pattern! y = 2A sin(kx)cos(ωt).</li>
 <li data-wt="2:lock" data-wt-label="Nodes N · Antinodes A"><b>Nodes (N):</b> always zero displacement. <b>Antinodes (A):</b> maximum oscillation. N-to-N = A-to-A = λ/2; N-to-A = λ/4. ⭐</li>
 <li>A standing wave has NO net energy transfer across any plane (hence 'stationary') — but the energy is not idle: between two nodes it keeps oscillating between kinetic and potential.</li>
@@ -461,12 +461,13 @@
     return out;
   }
   function setActive(el){for(var si=0;si<secs.length;si++){secs[si].classList.toggle('wt-active',secs[si]===el)}}
+  var curAnc=null;
   function jumpToCurrent(){
-    var el=document.querySelector('#notes .note-sec.wt-active');if(!el)return;
+    var el=curAnc||document.querySelector('#notes .note-sec.wt-active');if(!el)return;
     var top=window.scrollY+el.getBoundingClientRect().top-(bar.getBoundingClientRect().bottom+8);
     window.scrollTo({top:Math.max(0,top),behavior:still?'auto':'smooth'});
   }
-  titleEl.style.cursor='pointer';titleEl.setAttribute('role','button');titleEl.setAttribute('tabindex','0');titleEl.title='Is section par wapas jao';
+  titleEl.style.cursor='pointer';titleEl.setAttribute('role','button');titleEl.setAttribute('tabindex','0');titleEl.title='Active line par jao';
   titleEl.addEventListener('click',jumpToCurrent);
   titleEl.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();jumpToCurrent()}});
   function cut(txt){txt=(txt||'').replace(/\s+/g,' ').trim();return txt.length>52?txt.slice(0,52)+'\u2026':txt}
@@ -483,7 +484,8 @@
   }
   var ticking=false;
   function pickScene(){
-    var line=Math.max(Math.round(window.innerHeight*0.3),bar.hidden?0:Math.ceil(bar.getBoundingClientRect().bottom)+12),pick=null,i,r,scene=-1,label='';
+    var line=Math.round(window.innerHeight*0.3),pick=null,i,r,scene=-1,label='';
+    if(!bar.hidden&&!bar.classList.contains('wt-side'))line=Math.max(line,Math.ceil(bar.getBoundingClientRect().bottom)+12);
     if(practice&&practice.getBoundingClientRect().top<=line)return{scene:-1,sub:'',label:'',el:null};
     if(shortNotes&&shortNotes.getBoundingClientRect().top<=line)return{scene:5,sub:'',label:'Formula pack - quick recap',el:null};
     for(i=0;i<secs.length;i++){
@@ -502,9 +504,10 @@
         var parts=(anc.getAttribute('data-wt')||'').split(':'),si=parseInt(parts[0],10);
         if(!isNaN(si))scene=si;
         label=cut(anc.getAttribute('data-wt-label')||'')||label;
-        return{scene:scene,sub:parts[1]||'',label:label,el:pick};
+        if((parts[1]||'')==='none')label=cut(label+' · is line ka visual nahi');
+        return{scene:scene,sub:parts[1]||'',label:label,el:pick,anc:anc};
       }
-      return{scene:scene,sub:'',label:label,el:pick};
+      return{scene:scene,sub:'',label:label,el:pick,anc:null};
     }
     return{scene:scene,sub:'',label:label,el:null};
   }
@@ -512,9 +515,9 @@
     ticking=false;dockTop();
     if(closed){bar.hidden=true;placeBar();return}
     var res=pickScene();
-    if(res.scene<0){bar.hidden=true;placeBar();setActive(null);return}
+    if(res.scene<0){bar.hidden=true;placeBar();setActive(null);curAnc=null;return}
     bar.hidden=false;post(res.scene,res.sub);placeBar();
-    titleEl.textContent=res.label;setActive(res.el);
+    titleEl.textContent=res.label;setActive(res.el);curAnc=res.anc||null;
     for(var dk=0;dk<dots.length;dk++){dots[dk].classList.toggle('on',dk===res.scene)}
   }
   window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
