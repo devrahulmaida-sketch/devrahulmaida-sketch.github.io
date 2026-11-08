@@ -41,10 +41,16 @@ body.sync{background:transparent;padding:2px}
 body.sync header,body.sync h1,body.sync .dots,body.sync .navrow,body.sync .sub,body.sync .fact,body.sync .credit,body.sync .backlink,body.sync .tag,body.sync .badge{display:none}
 body.sync .wrap{padding:2px 4px;max-width:none}
 body.sync .scene{padding-top:0}
-body.sync .scene h2{font-size:.82rem;margin:0 0 4px;line-height:1.3}
-body.sync canvas{border-radius:8px;width:auto;height:auto;max-width:100%;max-height:230px;display:block;margin:0 auto}
-body.sync .readout{font-size:.72rem;padding:8px 10px}
-body.sync .recap .card{padding:6px 8px;margin:4px auto;max-width:98%;font-size:.8rem}
+body.sync .scene h2{display:none}
+body.sync canvas{border-radius:8px;width:100%;height:auto;max-width:100%;display:block;margin:0 auto}
+body.sync .readout,body.sync .sliderrow,body.sync .btnrow{display:none}
+body.sync.expanded .readout{display:block;font-size:14px;padding:6px 8px;margin:5px 0;line-height:1.4;min-height:0}
+body.sync.expanded .sliderrow{display:flex;margin:6px 0;font-size:14px;gap:6px}
+body.sync.expanded .sliderrow input{min-width:0;min-height:32px}
+body.sync.expanded .btnrow{display:flex;margin:5px 0}
+body.sync.expanded .btn{padding:7px 10px;font-size:14px}
+body.sync .recap.on{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+body.sync .recap .card{padding:5px 6px;margin:0;max-width:none;font-size:.72rem}
 </style>
 </head>
 <body>
@@ -130,7 +136,7 @@ function go(i){cur=Math.max(0,Math.min(scenes.length-1,i));scenes.forEach((s,j)=
 document.getElementById('prev').onclick=()=>go(cur-1);
 document.getElementById('next').onclick=()=>go(cur==scenes.length-1?0:cur+1);
 function ctx(id){const c=document.getElementById(id);return[c,c.getContext('2d')]}
-function label(g,txt,x,y,col){g.fillStyle=col;g.font='13px sans-serif';g.fillText(txt,x,y)}
+function label(g,txt,x,y,col){if(document.body.classList.contains('sync')&&/^LANE /.test(txt))return;g.fillStyle=col;g.font=(document.body.classList.contains('sync')?'25px':'13px')+' sans-serif';x=Math.max(10,Math.min(x,g.canvas.width-g.measureText(txt).width-10));g.fillText(txt,x,y)}
 function dot(g,x,y,r,col){g.fillStyle=col;g.beginPath();g.arc(x,y,Math.max(0.5,r),0,7);g.fill()}
 function line(g,x1,y1,x2,y2,col,w,dash){g.strokeStyle=col;g.lineWidth=w||1.5;if(dash)g.setLineDash(dash);g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke();g.setLineDash([])}
 function arrow(g,x1,y1,x2,y2,col,w){
@@ -144,7 +150,7 @@ function arrow(g,x1,y1,x2,y2,col,w){
 function block(g,x,y,w,h,col,txt){
   g.fillStyle='#12122a';g.strokeStyle=col;g.lineWidth=2;
   g.beginPath();g.roundRect(x-w/2,y-h/2,w,h,6);g.fill();g.stroke();
-  if(txt){g.fillStyle=col;g.font='bold 13px sans-serif';g.textAlign='center';g.fillText(txt,x,y+4);g.textAlign='left'}
+  if(txt){g.fillStyle=col;g.font=(document.body.classList.contains('sync')?'bold 25px':'bold 13px')+' sans-serif';g.textAlign='center';g.fillText(txt,x,y+4);g.textAlign='left'}
 }
 const TAU=Math.PI*2;
 const L=(a,b,p)=>a+(b-a)*p;
@@ -185,7 +191,7 @@ function draw1(t){
     const win=aB>aA?'B (halka!)':'A';
     label(g,'RACE KHATAM - jeeta: '+win,W/2-120,30,'#4ade80');
   }
-  if(!running)label(g,'"Race Shuru!" dabao - dono pe EK JAISI force lagegi',200,30,'#565672');
+  if(!running)label(g,document.body.classList.contains('sync')?'Controls kholo: Race Shuru':'"Race Shuru!" dabao - dono pe EK JAISI force lagegi',200,30,'#9aa0c9');
   document.getElementById('v1read').innerHTML='a = F/m: Block A: '+S1.F+'/'+S1.mA+' = <b>'+aA.toFixed(2)+' m/s2</b> | Block B: '+S1.F+'/2 = <b>'+aB.toFixed(2)+' m/s2</b>. SAME force, par halka B tez bhaga! Zyada mass = zyada inertia = zyada "na-nu-nu".';
 }
 
@@ -371,7 +377,7 @@ function draw5(t){
   line(g,cx,nty,ntx,nty,'#3b3b5c',1.2,[4,4]);
   // horizontal component arrow from car towards circle centre (left)
   arrow(g,cx,cy-24,cx-90,cy-24,'#e879f9',2.5);
-  label(g,'N sinθ = centripetal!',cx-240,cy-32,'#e879f9');
+  label(g,'N sinθ = centripetal!',document.body.classList.contains('sync')?20:cx-240,document.body.classList.contains('sync')?cy-70:cy-32,'#e879f9');
   label(g,'N cosθ = mg ko balance',cx+16,nty+30,'#9aa0c9');
   // readout
   const kmh=v*3.6;
@@ -389,7 +395,7 @@ function tick(now){
 const qp=new URLSearchParams(location.search);
 const SYNC=qp.get('sync')==='1';
 const STILL=qp.get('still')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches;
-function reportH(){if(!SYNC)return;try{var w=document.querySelector('.wrap');var h=w?w.scrollHeight:document.documentElement.scrollHeight;parent.postMessage({type:'wt-height',h:h},location.origin)}catch(_){}}
+function reportH(){if(!SYNC)return;try{var w=document.querySelector('.wrap');var h=(w?Math.ceil(w.getBoundingClientRect().height):0)+4;parent.postMessage({type:'wt-height',h:h},location.origin)}catch(_){}}
 function stillDraw(){for(var i=0;i<DRAW.length;i++){try{DRAW[i](1.35,0.016)}catch(_){}}}
 go(Math.max(0,parseInt(qp.get('scene')||'0',10)||0));
 if(SYNC){
@@ -398,6 +404,7 @@ if(SYNC){
     if(e.origin!==location.origin)return;
     var d=e.data||{};
     if(d.type==='wt-scene'){go(d.i|0);if(STILL)stillDraw();reportH();}
+    if(d.type==='wt-expand'){document.body.classList.toggle('expanded',!!d.expanded);reportH();}
   });
   addEventListener('load',function(){reportH();setTimeout(reportH,250);try{parent.postMessage({type:'wt-ready'},location.origin)}catch(_){}});
   addEventListener('resize',reportH);
