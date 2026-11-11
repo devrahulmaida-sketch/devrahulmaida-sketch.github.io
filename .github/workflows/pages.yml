@@ -1,0 +1,50 @@
+name: Publish size-safe static site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/videos/
+      - uses: actions/configure-pages@v5
+      - name: Prepare content-preserving distribution and enforce size ceiling
+        run: |
+          python3 - <<'PY'
+          import pathlib, shutil, subprocess
+          out = pathlib.Path('_site')
+          for path in subprocess.check_output(['git','ls-files','-z']).decode().split('\0'):
+              if not path or path.startswith(('videos/', '.github/')) or path == '.gitignore':
+                  continue
+              src = pathlib.Path(path)
+              assert src.is_file() and not src.is_symlink(), path
+              dest = out / path
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copyfile(src, dest)
+          size = sum(p.stat().st_size for p in out.rglob('*') if p.is_file())
+          assert size < 900_000_000, f'Published files exceed safety ceiling: {size}'
+          assert not (out/'videos').exists(), 'Original backups must stay outside Pages artifact'
+          print(f'Published source files: {size} bytes; original videos remain in repository')
+          PY
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5
