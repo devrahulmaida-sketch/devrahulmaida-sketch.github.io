@@ -10,7 +10,7 @@
   function setLang(l){
     if (!document.querySelector('.lang-block[data-lang="'+l+'"]')) l = 'hinglish';
     document.querySelectorAll('.lang-block').forEach(function(b){ b.hidden = (b.dataset.lang !== l); });
-    btns.forEach(function(b){ b.classList.toggle('active', b.dataset.lang === l); });
+    btns.forEach(function(b){ b.classList.toggle('active', b.dataset.lang === l); b.setAttribute('aria-pressed',String(b.dataset.lang===l)); });
     document.querySelectorAll('.lang-title,.lang-sub').forEach(function(el){
       var v = el.getAttribute('data-'+l); if (v) el.textContent = v;
     });
@@ -50,9 +50,10 @@
     });
   }
 
-  var CH = null;
+  var CH = null, CHpending = [];
   function withCatalogue(cb) {
     if (CH) { cb(CH); return; }
+    CHpending.push(cb);if(CHpending.length>1)return;
     try {
       var x = new XMLHttpRequest();
       x.open('GET', '/assets/data/chapters.json', true);
@@ -60,10 +61,10 @@
         if (x.readyState !== 4) return;
         try { CH = x.status === 200 ? JSON.parse(x.responseText) : []; }
         catch (e) { CH = []; }
-        cb(CH);
+        var callbacks=CHpending;CHpending=[];callbacks.forEach(function(fn){fn(CH)});
       };
       x.send();
-    } catch (e) { cb([]); }
+    } catch (e) { var callbacks=CHpending;CHpending=[];callbacks.forEach(function(fn){fn([])}); }
   }
 
   function currentChapter() {
@@ -108,7 +109,7 @@
       }
       if (!hs) hs = document.querySelectorAll('.note-sec h3');
       for (j = 0; j < hs.length; j++) {
-        if (!hs[j].id) hs[j].id = 'm-sec-' + j;
+        if (!hs[j].id) hs[j].id = 'm-sec-' + (hs[j].closest('.lang-block')?hs[j].closest('.lang-block').dataset.lang:'all') + '-' + j;
         out.push({ id: hs[j].id, label: hs[j].textContent.trim() });
       }
       var extra = [['walkthrough', 'Walkthrough'], ['short-notes', 'Short notes'], ['practice', 'Practice']];
@@ -132,9 +133,9 @@
       if (veil) veil.remove();
       if (panel) panel.remove();
       veil = panel = null;
-      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('keydown', onKey);btn.setAttribute('aria-expanded','false');btn.focus();
     }
-    function onKey(e) { if (e.key === 'Escape') close(); }
+    function onKey(e) { if(e.key==='Escape'){close();return}if(e.key==='Tab'&&panel){var f=panel.querySelectorAll('button,a[href]');if(e.shiftKey&&document.activeElement===f[0]){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&document.activeElement===f[f.length-1]){e.preventDefault();f[0].focus()}} }
     function open() {
       var items = collectTargets();
       veil = document.createElement('div');
@@ -143,7 +144,7 @@
       panel = document.createElement('div');
       panel.className = 'm-jump-panel';
       panel.setAttribute('role', 'dialog');
-      panel.setAttribute('aria-label', 'Page sections');
+      panel.setAttribute('aria-label', 'Page sections');panel.setAttribute('aria-modal','true');
       var html = '<div class="m-jump-head">Is page mein<button type="button" class="m-jump-close" aria-label="Close">&#10005;</button></div><div class="m-jump-list">';
       for (var i = 0; i < items.length; i++) {
         html += '<a class="m-jump-item" href="#' + esc(items[i].id) + '" data-t="' + esc(items[i].id) + '">' + esc(items[i].label) + '</a>';
@@ -160,7 +161,7 @@
         close();
         if (el) el.scrollIntoView();
       });
-      document.addEventListener('keydown', onKey);
+      document.addEventListener('keydown', onKey);btn.setAttribute('aria-expanded','true');panel.querySelector('button').focus();
     }
     btn.addEventListener('click', open);
 
@@ -312,4 +313,43 @@
     if (document.readyState === 'complete') { try { ensureCss(); } catch (e) {} }
     else window.addEventListener('load', function () { try { ensureCss(); } catch (e) {} });
   });
+})();
+
+/* Content-preserving discovery and click-to-load video controls. */
+(function(){
+ 'use strict';document.documentElement.classList.add('m-enhanced');
+ document.querySelectorAll('.m-video').forEach(function(box){
+  var button=box.querySelector('.m-video-load'),tpl=box.querySelector('template');
+  if(!button||!tpl)return;
+  button.addEventListener('click',function(){
+   var frame=tpl.content.querySelector('iframe').cloneNode(true);
+   frame.loading='eager';box.replaceChildren(frame);frame.focus();
+  },{once:true});
+ });
+ var cards=document.querySelector('.cards');
+ var isIndex=/^\/src\/site\/class-\d+\/.+\/$/.test(location.pathname)&&!location.pathname.includes('/ch-')&&!location.pathname.includes('/walkthrough/');
+ if(isIndex&&cards){
+  var entries=Array.prototype.slice.call(cards.children).filter(function(x){return x.classList.contains('card')});
+  if(entries.length>3){
+   cards.classList.add('m-index-list');
+   entries.forEach(function(card){
+    var topics=card.querySelector('.card-topics'),meta=card.querySelector('.card-meta');
+    if(!topics&&!meta)return;
+    var detail=document.createElement('details');detail.className='m-index-details';
+    var summary=document.createElement('summary');summary.textContent='Topics aur details';detail.append(summary);
+    if(topics)detail.append(topics);if(meta)detail.append(meta);card.append(detail);
+   });
+   var tools=document.createElement('div');tools.className='m-index-tools';
+   tools.innerHTML='<label for="m-index-q">Is list mein khojo</label><input id="m-index-q" type="search" placeholder="Chapter ka naam ya topic" autocomplete="off"><p class="m-index-status" role="status" aria-live="polite"></p>';
+   cards.before(tools);var input=tools.querySelector('input'),status=tools.querySelector('[role="status"]');
+   var empty=document.createElement('p');empty.className='m-index-empty';empty.textContent='Koi matching chapter nahi. Doosra naam ya topic try karo.';empty.hidden=true;cards.after(empty);
+   function filter(){var terms=input.value.toLowerCase().trim().split(/\s+/).filter(Boolean),n=0;
+    entries.forEach(function(e){var text=e.textContent.toLowerCase();var show=terms.every(function(t){return text.includes(t)});e.hidden=!show;if(show)n++});
+    status.textContent=n+' / '+entries.length+' entries dikh rahe hain. Coverage har chapter par dekhein.';empty.hidden=n!==0;
+   }
+   input.addEventListener('input',filter);filter();
+  }
+ }
+ var dest=document.querySelector('#notes')||document.querySelector('.hero')||document.querySelector('.ch-hero');
+ if(dest){if(!dest.id)dest.id='main-content';var skip=document.createElement('a');skip.className='m-skip';skip.href='#'+dest.id;skip.textContent='Main content par jao';document.body.prepend(skip);dest.setAttribute('tabindex','-1')}
 })();

@@ -313,3 +313,58 @@ h1,h2,h3,h4{letter-spacing:-.01em}
 .ch-hero .crumb,.ch-hero .crumb a{color:#9fb2d0}
 .ch-hero p[style*="muted"]{color:#b9c8de !important}
 .ch-hero p[style*="saffron"]{color:#fbbf24 !important}
+
+/* Discovery and low-data player pass. Existing chapter text is unchanged. */
+[hidden]{display:none!important}
+.m-video{width:100%;aspect-ratio:16/9;background:#101e36;border-radius:10px;overflow:hidden;color:#fff;position:relative}
+.m-video-portrait{aspect-ratio:9/16}
+.m-video-fill{position:absolute;inset:0;height:100%}
+.player-wrap>.m-video{height:100%;aspect-ratio:auto}
+.m-video>iframe{display:block;width:100%;height:100%;border:0}
+.m-video-load{display:none;width:100%;height:100%;padding:20px;border:1px solid #46648b;border-radius:10px;background:linear-gradient(145deg,#0b2145,#183d69);color:#fff;cursor:pointer;text-align:center;font:inherit;align-items:center;justify-content:center;flex-direction:column;gap:9px}
+.m-enhanced .m-video-load{display:flex}
+.m-video-load:hover{background:#183d69}
+.m-video-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#fbbf24;color:#0b2145;font-size:22px;padding-left:3px}
+.m-video-title{font-weight:600;font-size:1rem;line-height:1.4;max-width:46ch;overflow-wrap:anywhere}
+.m-video-hint{font-weight:700;color:#fbbf24;font-size:.9rem}
+.m-video-load small{color:#ccd9eb;font-size:.76rem}
+.m-home-scope{font-size:.9rem;color:#dbe4f2;margin:12px 0}
+.m-coverage{margin-top:18px;max-width:860px;font-size:.9rem;color:#dbe4f2}
+.m-coverage summary,.m-planned summary{cursor:pointer;padding:8px 0;font-weight:600}
+.m-coverage .hero-stats{margin-top:12px}
+.m-planned{margin-top:24px;border:1px solid var(--line);border-radius:10px;padding:10px 16px;background:#fff}
+.m-planned .cards{margin:12px 0}
+.m-index-tools{margin:0 0 18px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.m-index-tools label{display:block;font-weight:700;color:var(--navy-d);margin-bottom:6px}
+.m-index-tools input{width:100%;font:inherit;padding:10px 12px;min-height:44px;border:1px solid #8f9eb5;border-radius:8px;background:#fff;color:var(--txt)}
+.m-index-status{font-size:.87rem;color:var(--muted);margin-top:7px}
+.m-index-list{display:grid;grid-template-columns:1fr;gap:12px}
+.m-index-list .card{display:grid;grid-template-columns:48px 1fr auto;gap:4px 14px;padding:16px;align-items:start;border-top:1px solid var(--line);border-left:4px solid var(--navy);transform:none}
+.m-index-list .card-top{grid-column:1;grid-row:1/5;margin:0;display:block}
+.m-index-list .card-top .badge{display:none}
+.m-index-list .card h3{grid-column:2;margin:0;font-size:1.1rem}
+.m-index-list .card-tag{grid-column:2;margin:0;font-size:.88rem}
+.m-index-list .card-links{grid-column:3;grid-row:1/3;align-self:center;min-width:140px;margin:0}
+.m-index-details{grid-column:2/-1;font-size:.85rem}
+.m-index-details summary{cursor:pointer;color:var(--navy);padding:7px 0;min-height:36px}
+.m-index-details .card-topics{margin:4px 0 8px}
+.m-index-details .card-meta{margin-bottom:4px}
+.m-index-empty{padding:22px;border:1px dashed var(--line);background:#fff;border-radius:10px}
+.m-skip{position:fixed;top:8px;left:12px;z-index:9999;transform:translateY(-160%);padding:10px 14px;background:#fff;color:var(--navy);border:2px solid var(--navy);border-radius:8px}
+.m-skip:focus{transform:translateY(0)}
+@media(max-width:640px){
+ .hero-cta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+ .hero-cta .btn{padding:10px 12px;min-height:44px}
+ .hero .m-find{margin-top:16px}
+ .m-index-list .card{grid-template-columns:38px 1fr;gap:3px 10px;padding:14px 12px}
+ .m-index-list .ch-num{min-width:34px;height:34px;font-size:.9rem}
+ .m-index-list .card-links{grid-column:2;grid-row:auto;justify-self:start;margin-top:7px;min-width:145px}
+ .m-index-list .card h3{font-size:1.06rem}
+ .m-index-list .m-index-details{grid-column:2}
+ .m-index-list .btn{min-height:44px}
+ .m-index-tools{padding:14px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation:none!important;transition:none!important}}
+/* Long source URLs and scientific names wrap instead of widening mobile pages. */
+.note-sec,.jee-q,.m-pnx-link{min-width:0;overflow-wrap:anywhere}
+.m-video-caption-link{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
