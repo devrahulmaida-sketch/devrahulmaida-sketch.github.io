@@ -1,364 +1,115 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 11 — Introduction to 3D Geometry | Class 11 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 11 Maths Chapter 11: Introduction to Three Dimensional Geometry — long + short notes in Hindi, English, Hinglish. Coordinates, octants, distance and section formulas in 3D.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 11 Maths Chapter 11: Introduction to Three Dimensional Geometry — long + short notes in Hindi, English, Hinglish. Coordinates, octants, distance and section formulas in 3D." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:16px;line-height:1.65;margin:8px 0;padding:12px;background:#f5f7fb;border:1px solid #d5deec;border-radius:4px} #practice .jee-sol summary{font-size:16px} #notes .note-sec p{line-height:1.7} #short-notes .small-note{font-size:16px;line-height:1.7}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-11/">Class 11</a> / <a href="/src/site/class-11/maths/">Mathematics</a> / Chapter 11</p>
-  <h1>Introduction to 3D Geometry</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">त्रिविम ज्यामिति का परिचय</p>
-  <p style="color:var(--muted);margin-top:6px">(x, y, z) ka khel — octants, distance aur section formula</p>
-  <div class="ch-tags">
-    <span class="pill weight-medium">JEE Weightage: MEDIUM</span>
-    <span class="pill">Video: 1 min 7 sec</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-11/">Class 11</a> / <a href="/src/site/class-11/maths/">Mathematics</a> / Chapter 11</p>
+<h1>Introduction to 3D Geometry</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">त्रिविम ज्यामिति का परिचय</p>
+<p style="color:var(--muted);margin-top:6px">(x, y, z) ka khel — octants, distance aur section formula</p>
+<div class="ch-tags">
+<span class="pill weight-medium">JEE Weightage: MEDIUM</span>
+<span class="pill">Video: 1 min 7 sec</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Chapter video - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Chapter video</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/z4VFuGr_jEo" title="Chapter video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/z4VFuGr_jEo" title="Chapter video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=z4VFuGr_jEo" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#short-notes">Short Notes</a>
-    <a class='btn btn-primary' href='#practice'>JEE Practice</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Chapter video - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Chapter video</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/z4VFuGr_jEo" title="Chapter video"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/z4VFuGr_jEo" title="Chapter video"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/watch?v=z4VFuGr_jEo" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#short-notes">Short Notes</a>
+<a class="btn btn-primary" href="#practice">JEE Practice</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">3D space 5 animated scenes mein - (x,y,z) explorer, octant quiz (signs ka game), distance ki double Pythagoras, section formula ratio slider, aur shape detective (equilateral/isosceles/right/collinear).</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">3D space 5 animated scenes mein - (x,y,z) explorer, octant quiz (signs ka game), distance ki double Pythagoras, section formula ratio slider, aur shape detective (equilateral/isosceles/right/collinear).</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="concept-shorts" style="padding-top:10px">
-  <div class="sec-head"><h2>Concept Shorts - JEE Advanced</h2></div>
-  <div class="concept-shorts-grid" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
-    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="Plane Dividing a Line Segment - Section Formula in 3D | Class 11 Maths Ch 11 (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Plane Dividing a Line Segment - Section Formula in 3D | Class 11 Maths Ch 11 (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/aLwdNnE1PKo" title="Plane Dividing a Line Segment - Section Formula in 3D | Class 11 Maths Ch 11 (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/aLwdNnE1PKo" title="Plane Dividing a Line Segment - Section Formula in 3D | Class 11 Maths Ch 11 (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/aLwdNnE1PKo" target="_blank" rel="noopener">Plane Dividing a Line Segment - Section Formula in 3D</a></p>
-    </div>    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="Class 11 Maths Ch 11 - 3D Lines ka ANGLE in 10 Seconds: Direction Ratios | NCERT (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Class 11 Maths Ch 11 - 3D Lines ka ANGLE in 10 Seconds: Direction Ratios | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/aqBbXM7-4ko" title="Class 11 Maths Ch 11 - 3D Lines ka ANGLE in 10 Seconds: Direction Ratios | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/aqBbXM7-4ko" title="Class 11 Maths Ch 11 - 3D Lines ka ANGLE in 10 Seconds: Direction Ratios | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/aqBbXM7-4ko" target="_blank" rel="noopener">3D Lines ka ANGLE in 10 Seconds: Direction Ratios</a></p>
-    </div>    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="Class 11 Maths Ch 11 - 3D DISTANCE Trick Axis vs Plane | NCERT (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Class 11 Maths Ch 11 - 3D DISTANCE Trick Axis vs Plane | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/k42-9P4Wacs" title="Class 11 Maths Ch 11 - 3D DISTANCE Trick Axis vs Plane | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/k42-9P4Wacs" title="Class 11 Maths Ch 11 - 3D DISTANCE Trick Axis vs Plane | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/k42-9P4Wacs" target="_blank" rel="noopener">3D DISTANCE Trick Axis vs Plane</a></p>
-    </div>
-
-
-  </div>
+<div class="sec-head"><h2>Concept Shorts - JEE Advanced</h2></div>
+<div class="concept-shorts-grid" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
+<div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="Plane Dividing a Line Segment - Section Formula in 3D | Class 11 Maths Ch 11 (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Plane Dividing a Line Segment - Section Formula in 3D | Class 11 Maths Ch 11 (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/aLwdNnE1PKo" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Plane Dividing a Line Segment - Section Formula in 3D | Class 11 Maths Ch 11 (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/aLwdNnE1PKo" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Plane Dividing a Line Segment - Section Formula in 3D | Class 11 Maths Ch 11 (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/aLwdNnE1PKo" rel="noopener" target="_blank">Plane Dividing a Line Segment - Section Formula in 3D</a></p>
+</div> <div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="Class 11 Maths Ch 11 - 3D Lines ka ANGLE in 10 Seconds: Direction Ratios | NCERT (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Class 11 Maths Ch 11 - 3D Lines ka ANGLE in 10 Seconds: Direction Ratios | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/aqBbXM7-4ko" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 11 - 3D Lines ka ANGLE in 10 Seconds: Direction Ratios | NCERT (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/aqBbXM7-4ko" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 11 - 3D Lines ka ANGLE in 10 Seconds: Direction Ratios | NCERT (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/aqBbXM7-4ko" rel="noopener" target="_blank">3D Lines ka ANGLE in 10 Seconds: Direction Ratios</a></p>
+</div> <div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="Class 11 Maths Ch 11 - 3D DISTANCE Trick Axis vs Plane | NCERT (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Class 11 Maths Ch 11 - 3D DISTANCE Trick Axis vs Plane | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/k42-9P4Wacs" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 11 - 3D DISTANCE Trick Axis vs Plane | NCERT (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/k42-9P4Wacs" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 11 - 3D DISTANCE Trick Axis vs Plane | NCERT (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/k42-9P4Wacs" rel="noopener" target="_blank">3D DISTANCE Trick Axis vs Plane</a></p>
+</div>
+</div>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Long notes - selected foundations" data-hi="विस्तृत नोट्स - चुनी हुई बुनियाद" data-hinglish="Long notes - selected foundations">Long notes - selected foundations</h2><p class="lang-sub" data-en="Read slowly — this builds the concept solidly" data-hi="Concept pakka karne ke liye — aaram se padho" data-hinglish="Concept pakka karne ke liye — aaram se padho">Concept pakka karne ke liye — aaram se padho</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ 3D Geometry — Flat Se Full Space Tak</h3>
-    <p>Ab tak hum 2D (x, y) me khel rahe the — paper ki sheet. Lekin asli duniya 3D hai: upar-neeche, aage-peeche, dayan-bayan. <b>3D geometry</b> me har point ko TEEN coordinates chahiye: (x, y, z). Room ka kona socho — floor pe x aur y, deewar ke saath upar z. Chapter chhota hai lekin 12th ke Vectors aur 3D Geometry ka base hai.</p>
-<ul>
-<li><b>Teen axes:</b> x-axis, y-axis, z-axis — sab ek doosre ke perpendicular, origin (0,0,0) pe milte hain.</li>
-<li><b>Coordinate planes:</b> XY-plane (z = 0), YZ-plane (x = 0), ZX-plane (y = 0).</li>
-<li><b>Point likhna:</b> (3, 2, 5) = x me 3, y me 2, z me 5 — teen measurements, ek point.</li>
-<li><b>Right-handed system:</b> thumb x, first finger y, middle finger z — right hand rule!</li>
-</ul>
-<p class="small-note">💡 Feel: 2D = Google Maps (flat), 3D = drone delivery (height bhi chahiye)!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Octants — Space ke 8 Sections ⭐</h3>
-    <p>Teen coordinate planes space ko <b>8 octants</b> me divide karte hain (2D me quadrants 4 the, 3D me double!).</p>
-<ul>
-<li><b>Octant I:</b> (+, +, +) — sab positive.</li>
-<li><b>Baaki octants:</b> signs ka combination — (−,+,+), (−,−,+), (+,−,+), (+,+,−), (−,+,−), (−,−,−), (+,−,−).</li>
-<li><b>Exam question ⭐:</b> "(−2, 4, 7) kis octant me?" — signs dekho: (−,+,+).</li>
-<li><b>Points ON planes/axes:</b> x-axis pe (a, 0, 0); XY-plane pe (a, b, 0) — ek coordinate zero!</li>
-</ul>
-<p class="small-note">🎯 Trick: octant sirf signs ka game hai — coordinates ki VALUES matter nahi karti, sirf +/−!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Distance Formula — 3D Version ⭐</h3>
-    <ul>
-<li><b>Distance between (x₁,y₁,z₁) aur (x₂,y₂,z₂) ⭐:</b> √[(x₂−x₁)² + (y₂−y₁)² + (z₂−z₁)²] — 2D formula me bas ek z-term aur!</li>
-<li><b>Origin se distance:</b> √(x² + y² + z²).</li>
-<li><b>Pythagoras ka extension:</b> room ki diagonal — floor ki diagonal pe deewar ka triangle!</li>
-<li><b>Collinearity check:</b> teen points ke liye AB + BC = AC (distance se).</li>
-<li><b>Shape identification ⭐:</b> equilateral triangle (3 sides same), isosceles (2 same), right triangle (Pythagoras), square/rhombus/rectangle (sides + diagonals check).</li>
-</ul>
-<p class="small-note">💡 Formula wahi Pythagoras hai — sirf ek dimension aur add. (x²+y²) pe z² aur jodo, root lo!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Section Formula — 3D Me Bhi Same ⭐</h3>
-    <ul>
-<li><b>Internal division ⭐:</b> point joining (x₁,y₁,z₁) aur (x₂,y₂,z₂) ko m:n me divide karta hai → ((mx₂+nx₁)/(m+n), (my₂+ny₁)/(m+n), (mz₂+nz₁)/(m+n)).</li>
-<li><b>External division:</b> m − n sign ke saath — ((mx₂−nx₁)/(m−n), ...).</li>
-<li><b>Midpoint ⭐:</b> ((x₁+x₂)/2, (y₁+y₂)/2, (z₁+z₂)/2).</li>
-<li><b>Triangle ka centroid:</b> ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3, (z₁+z₂+z₃)/3).</li>
-<li><b>k nikalna:</b> "point kis ratio me divide karta hai?" — k:1 assume karo, coordinates match karo.</li>
-</ul>
-<p class="small-note">💡 2D section formula yaad hai? 3D me kuch naya NAHI — sirf har coordinate ke saath z bhi same treatment!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Exam Patterns — 3D Ke Standard Questions</h3>
-    <ul>
-<li><b>Octant batao:</b> signs dekhke — easiest 1 mark.</li>
-<li><b>Distance nikalo:</b> direct formula, kabhi-kabhi unknown point ke liye equation.</li>
-<li><b>Shape prove karo ⭐:</b> "ye teen points equilateral triangle banate hain" — teeno distances same dikhao.</li>
-<li><b>Section formula:</b> ratio find karna ya point find karna.</li>
-<li><b>Collinearity:</b> distance method ya section method (koi point baaki do ke segment pe?).</li>
-<li><b>Locus-lite:</b> "given 2 points se equidistant points ka set" — perpendicular bisector plane.</li>
-</ul>
-<p class="small-note">💡 Chapter sirf 2 formulas ka: distance + section. Dono 2D ke twins hain — ek hi effort me dono pakke!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ त्रिविम ज्यामिति — सपाट से पूर्ण आकाश तक</h3>
-    <p>अब तक हम 2D (x, y) में खेल रहे थे। पर असली दुनिया 3D है। <b>त्रिविम ज्यामिति</b> में हर बिंदु को तीन निर्देशांक चाहिए: (x, y, z)। कमरे का कोना सोचो — फर्श पर x और y, दीवार के साथ ऊपर z। यह अध्याय 12वीं के सदिश और 3D ज्यामिति की नींव है।</p>
-<ul>
-<li><b>तीन अक्ष:</b> x-अक्ष, y-अक्ष, z-अक्ष — परस्पर लंबवत, मूलबिंदु (0,0,0) पर।</li>
-<li><b>निर्देशांक तल:</b> XY-तल (z = 0), YZ-तल (x = 0), ZX-तल (y = 0)।</li>
-<li><b>बिंदु:</b> (3, 2, 5) = x में 3, y में 2, z में 5।</li>
-<li><b>दक्षिणावर्त नियम:</b> अंगूठा x, तर्जनी y, मध्यमा z — दाएँ हाथ का नियम!</li>
-</ul>
-<p class="small-note">💡 2D = समतल नक्शा, 3D = ड्रोन डिलीवरी (ऊँचाई भी)!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ अष्टांश — आकाश के 8 भाग ⭐</h3>
-    <p>तीन निर्देशांक तल आकाश को <b>8 अष्टांशों</b> में बाँटते हैं।</p>
-<ul>
-<li><b>अष्टांश I:</b> (+, +, +) — सभी धनात्मक।</li>
-<li><b>अन्य अष्टांश:</b> चिह्नों के संयोजन — (−,+,+), (−,−,+), (+,−,+), (+,+,−), (−,+,−), (−,−,−), (+,−,−)।</li>
-<li><b>परीक्षा प्रश्न ⭐:</b> "(−2, 4, 7) किस अष्टांश में?" — चिह्न देखो: (−,+,+)।</li>
-<li><b>तल/अक्ष पर बिंदु:</b> x-अक्ष पर (a, 0, 0); XY-तल पर (a, b, 0)।</li>
-</ul>
-<p class="small-note">🎯 अष्टांश केवल चिह्नों का खेल — मान मायने नहीं रखते, केवल +/−!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ दूरी सूत्र — 3D संस्करण ⭐</h3>
-    <ul>
-<li><b>(x₁,y₁,z₁) और (x₂,y₂,z₂) के बीच दूरी ⭐:</b> √[(x₂−x₁)² + (y₂−y₁)² + (z₂−z₁)²] — 2D सूत्र में बस एक z-पद और!</li>
-<li><b>मूलबिंदु से दूरी:</b> √(x² + y² + z²)।</li>
-<li><b>पाइथागोरस का विस्तार:</b> कमरे का विकर्ण।</li>
-<li><b>संरेखता:</b> AB + BC = AC।</li>
-<li><b>आकृति पहचान ⭐:</b> समबाहु (3 भुजाएँ समान), समद्विबाहु (2 समान), समकोण (पाइथागोरस), वर्ग/समचतुर्भुज/आयत।</li>
-</ul>
-<p class="small-note">💡 सूत्र वही पाइथागोरस — बस एक विमा और जोड़ो!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ विभाजन सूत्र — 3D में भी समान ⭐</h3>
-    <ul>
-<li><b>आंतरिक विभाजन ⭐:</b> ((mx₂+nx₁)/(m+n), (my₂+ny₁)/(m+n), (mz₂+nz₁)/(m+n))।</li>
-<li><b>बाह्य विभाजन:</b> m − n चिह्न के साथ।</li>
-<li><b>मध्यबिंदु ⭐:</b> ((x₁+x₂)/2, (y₁+y₂)/2, (z₁+z₂)/2)।</li>
-<li><b>त्रिभुज का केंद्रक:</b> ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3, (z₁+z₂+z₃)/3)।</li>
-<li><b>k निकालना:</b> k:1 मानो, निर्देशांक मिलाओ।</li>
-</ul>
-<p class="small-note">💡 2D विभाजन सूत्र याद है? 3D में कुछ नया नहीं — z भी वही व्यवहार!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ परीक्षा के पैटर्न</h3>
-    <ul>
-<li><b>अष्टांश बताओ:</b> चिह्न देखकर — सबसे आसान।</li>
-<li><b>दूरी निकालो:</b> सीधा सूत्र।</li>
-<li><b>आकृति सिद्ध करो ⭐:</b> "समबाहु त्रिभुज" — तीनों दूरियाँ समान दिखाओ।</li>
-<li><b>विभाजन सूत्र:</b> अनुपात या बिंदु ज्ञात करना।</li>
-<li><b>संरेखता:</b> दूरी विधि या विभाजन विधि।</li>
-</ul>
-<p class="small-note">💡 अध्याय केवल 2 सूत्रों का: दूरी + विभाजन — दोनों 2D के जुड़वाँ!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ 3D Geometry — From Flatland to Full Space</h3>
-    <p>Until now we played in 2D (x, y) — a sheet of paper. But the real world is 3D: up-down, forward-back, left-right. In <b>3D geometry</b> every point needs THREE coordinates: (x, y, z). Think of a room's corner — x and y along the floor, z up the wall. The chapter is small but it's the base for Class 12 Vectors and 3D Geometry.</p>
-<ul>
-<li><b>Three axes:</b> x-axis, y-axis, z-axis — all mutually perpendicular, meeting at the origin (0,0,0).</li>
-<li><b>Coordinate planes:</b> XY-plane (z = 0), YZ-plane (x = 0), ZX-plane (y = 0).</li>
-<li><b>Reading a point:</b> (3, 2, 5) = 3 in x, 2 in y, 5 in z — three measurements, one point.</li>
-<li><b>Right-handed system:</b> thumb = x, first finger = y, middle finger = z — the right-hand rule!</li>
-</ul>
-<p class="small-note">💡 Feel it: 2D is a flat map; 3D is drone delivery (height matters too)!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Octants — the 8 Sections of Space ⭐</h3>
-    <p>The three coordinate planes divide space into <b>8 octants</b> (2D had 4 quadrants; 3D has double!).</p>
-<ul>
-<li><b>Octant I:</b> (+, +, +) — all positive.</li>
-<li><b>Other octants:</b> sign combinations — (−,+,+), (−,−,+), (+,−,+), (+,+,−), (−,+,−), (−,−,−), (+,−,−).</li>
-<li><b>Exam question ⭐:</b> "Which octant holds (−2, 4, 7)?" — read the signs: (−,+,+).</li>
-<li><b>Points ON planes/axes:</b> on the x-axis (a, 0, 0); on the XY-plane (a, b, 0) — one coordinate is zero!</li>
-</ul>
-<p class="small-note">🎯 Trick: octants are only about signs — the VALUES don't matter, just +/−!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Distance Formula — the 3D Version ⭐</h3>
-    <ul>
-<li><b>Distance between (x₁,y₁,z₁) and (x₂,y₂,z₂) ⭐:</b> √[(x₂−x₁)² + (y₂−y₁)² + (z₂−z₁)²] — the 2D formula with one extra z-term!</li>
-<li><b>Distance from the origin:</b> √(x² + y² + z²).</li>
-<li><b>Pythagoras extended:</b> a room's diagonal — a triangle on the floor's diagonal plus the wall!</li>
-<li><b>Collinearity check:</b> three points satisfy AB + BC = AC.</li>
-<li><b>Shape identification ⭐:</b> equilateral triangle (3 equal sides), isosceles (2 equal), right triangle (Pythagoras), square/rhombus/rectangle (check sides + diagonals).</li>
-</ul>
-<p class="small-note">💡 It's the same Pythagoras — just add one more dimension. Add z² to (x²+y²) and root it!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Section Formula — Same in 3D ⭐</h3>
-    <ul>
-<li><b>Internal division ⭐:</b> the point dividing the join of (x₁,y₁,z₁) and (x₂,y₂,z₂) in ratio m:n is ((mx₂+nx₁)/(m+n), (my₂+ny₁)/(m+n), (mz₂+nz₁)/(m+n)).</li>
-<li><b>External division:</b> with the m − n sign — ((mx₂−nx₁)/(m−n), ...).</li>
-<li><b>Midpoint ⭐:</b> ((x₁+x₂)/2, (y₁+y₂)/2, (z₁+z₂)/2).</li>
-<li><b>Centroid of a triangle:</b> ((x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3, (z₁+z₂+z₃)/3).</li>
-<li><b>Finding k:</b> "in what ratio does a point divide?" — assume k:1 and match coordinates.</li>
-</ul>
-<p class="small-note">💡 Remember the 2D section formula? Nothing new in 3D — the z-coordinate just gets the same treatment!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Exam Patterns — Standard 3D Questions</h3>
-    <ul>
-<li><b>Name the octant:</b> read the signs — the easiest mark.</li>
-<li><b>Find the distance:</b> direct formula, sometimes forming equations for an unknown point.</li>
-<li><b>Prove the shape ⭐:</b> "these three points form an equilateral triangle" — show all three distances equal.</li>
-<li><b>Section formula:</b> find the ratio or find the point.</li>
-<li><b>Collinearity:</b> distance method or section method (does one point lie on the segment of the other two?).</li>
-<li><b>Locus-lite:</b> "set of points equidistant from 2 given points" — the perpendicular bisector plane.</li>
-</ul>
-<p class="small-note">💡 The chapter is just 2 formulas: distance + section. Both are twins of their 2D versions — one effort, two wins!</p>
-  </div>
-  </div>
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Teen coordinates, ek point</h3><p>Teen mutually perpendicular axes chuno jo origin O(0,0,0) par milte hain. Point P ek ordered triple (x,y,z) hai. Order zaroori hai: (2,3,4) aur (4,3,2) alag points hain.</p><p>Coordinates signed positions hain, hamesha positive distances nahi. P(−2,3,4) mein x=−2 hai. YZ, ZX aur XY planes se perpendicular distances |x|=2, |y|=3 aur |z|=4 hain.</p><p>P(−2,3,4) locate karne ke liye x par −2, phir y ke parallel 3, phir z ke parallel 4 chalo. Beech ke points (−2,0,0), (−2,3,0), phir P hain. Yeh P tak ek path hai, shortest distance OP nahi.</p></div><div class="note-sec"><h3>2. Planes, axes aur octants</h3><p>XY plane mein z=0; YZ mein x=0; ZX, jise XZ bhi kehte hain, mein y=0. x-axis par y=z=0; y-axis par x=z=0; z-axis par x=y=0. Origin teeno axes aur teeno planes par hai.</p><p>Planes space ko eight open regions, yani octants mein baantte hain. NCERT order mein signs (x,y,z): I (+,+,+), II (−,+,+), III (−,−,+), IV (+,−,+), V (+,+,−), VI (−,+,−), VII (−,−,−), VIII (+,−,−).</p><p>(−2,3,4) ke signs (−,+,+) hain, to octant II. Koi coordinate zero ho to point boundary plane par hai, octant ke andar nahi. Jaise (0,−3,4) YZ mein hai, lekin kisi coordinate axis par nahi.</p></div><div class="note-sec"><h3>3. Distance aur chhota check</h3><p>A(x₁,y₁,z₁), B(x₂,y₂,z₂) ke liye AB=√[(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²]. Square karne se pehle har difference brackets mein rakho. Distance nonnegative hai. A aur B ulatne par bhi same result aata hai.</p><p>Formula kyun: pehle Pythagoras x,y changes ko coordinate-parallel plane mein combine karta hai. Doosra right triangle z change add karta hai. Squared distance teeno squared changes ka sum hai.</p><p>Example: A(1,−2,3), B(4,2,3) ke differences (3,4,0), to AB=√(9+16)=5. z same hai, isliye 2D distance milti hai. Origin se OP=√(x²+y²+z²).</p></div><div class="note-sec"><h3>4. Midpoint, section aur centroid</h3><p>A,B ka midpoint ((x₁+x₂)/2,(y₁+y₂)/2,(z₁+z₂)/2) hai. Internal division AP:PB=m:n, m,n&gt;0 aur A≠B par P=((nx₁+mx₂)/(m+n),(ny₁+my₂)/(m+n),(nz₁+mz₂)/(m+n)). Weight m, B ko multiply karta hai, A ko nahi.</p><p>External division mein positive length ratio AP:PB=m:n rehta hai, lekin P endpoint ke bahar hai. m≠n par P=((mx₂−nx₁)/(m−n),(my₂−ny₁)/(m−n),(mz₂−nz₁)/(m−n)). Distinct endpoints ke equal positive ratios ka finite external point nahi hota. Har coordinate aur point segment ke andar/bahar hai ya nahi, check karo.</p><p>Noncollinear triangle ABC ka centroid coordinate-wise average hai: G=((x₁+x₂+x₃)/3,(y₁+y₂+y₃)/3,(z₁+z₂+z₃)/3). Section formulas yahan Exemplar enrichment hain; inspected textbook chapter mein separate section-formula subsection nahi hai.</p></div><div class="note-sec"><h3>5. Geometry checks aur scope</h3><p>Teen distinct points collinear tab hain jab ek straight line par hon. B agar A,C ke beech ho to AB+BC=AC. Middle point nahi pata ho to largest distance ko baaki dono ke sum se compare karo. Sirf naam B hone se beech ka point mat maano.</p><p>Right triangle test se pehle points noncollinear hone chahiye. Squared sides compare karo: largest square baaki dono squares ke sum ke barabar ho. A,B se equal distance ke points ke liye PA²=PB² rakho aur carefully expand karo; distances nonnegative hain, isliye square karna safe hai.</p><p>Yeh notes aur ten original questions selected foundations hain, official exercise solutions, PYQs ya full JEE preparation nahi. Full textbook/Exemplar exercises, detailed spatial diagrams, general quadrilateral proofs, broader loci, Class 12 vectors, lines aur planes abhi cover nahi hain.</p></div></div>
+<div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. तीन निर्देशांक, एक बिंदु</h3><p>तीन परस्पर लंबवत अक्ष चुनें जो मूलबिंदु O(0,0,0) पर मिलते हैं। बिंदु P को क्रमित त्रिक (x,y,z) से लिखते हैं। क्रम महत्वपूर्ण है: (2,3,4) और (4,3,2) अलग बिंदु हैं।</p><p>निर्देशांक चिह्न सहित स्थितियां हैं, हमेशा धन दूरियां नहीं। P(−2,3,4) में x=−2 है। YZ, ZX और XY तलों से लंबवत दूरियां क्रमशः |x|=2, |y|=3 और |z|=4 हैं।</p><p>P(−2,3,4) के लिए x पर −2, फिर y के समांतर 3, फिर z के समांतर 4 चलें। बीच के बिंदु (−2,0,0), (−2,3,0), फिर P हैं। यह P तक एक रास्ता है, सबसे छोटी दूरी OP नहीं।</p></div><div class="note-sec"><h3>2. तल, अक्ष और अष्टांश</h3><p>XY तल में z=0; YZ में x=0; ZX, जिसे XZ भी कहते हैं, में y=0। x-अक्ष पर y=z=0; y-अक्ष पर x=z=0; z-अक्ष पर x=y=0। मूलबिंदु तीनों अक्षों और तीनों तलों पर है।</p><p>तल आकाश को आठ खुले भागों, यानी अष्टांशों में बांटते हैं। NCERT के क्रम में (x,y,z) के चिह्न: I (+,+,+), II (−,+,+), III (−,−,+), IV (+,−,+), V (+,+,−), VI (−,+,−), VII (−,−,−), VIII (+,−,−)।</p><p>(−2,3,4) के चिह्न (−,+,+) हैं, इसलिए अष्टांश II। कोई निर्देशांक शून्य हो तो बिंदु सीमा वाले तल पर है, किसी अष्टांश के भीतर नहीं। जैसे (0,−3,4) YZ तल में है, पर किसी निर्देशांक अक्ष पर नहीं।</p></div><div class="note-sec"><h3>3. दूरी और छोटी जांच</h3><p>A(x₁,y₁,z₁), B(x₂,y₂,z₂) के लिए AB=√[(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²]। वर्ग करने से पहले हर अंतर को कोष्ठक में रखें। दूरी अऋण है। A और B का क्रम बदलने पर भी वही उत्तर आता है।</p><p>सूत्र का कारण: पहले पाइथागोरस से निर्देशांक तल के समांतर तल में x,y के परिवर्तनों को जोड़ते हैं। फिर दूसरा समकोण त्रिभुज z का परिवर्तन जोड़ता है। दूरी का वर्ग तीनों परिवर्तनों के वर्गों का योग है।</p><p>उदाहरण: A(1,−2,3), B(4,2,3) के अंतर (3,4,0) हैं, इसलिए AB=√(9+16)=5। z समान है, इसलिए द्विविम दूरी मिलती है। मूलबिंदु से OP=√(x²+y²+z²)।</p></div><div class="note-sec"><h3>4. मध्यबिंदु, विभाजन और केंद्रक</h3><p>A,B का मध्यबिंदु ((x₁+x₂)/2,(y₁+y₂)/2,(z₁+z₂)/2) है। आंतरिक विभाजन AP:PB=m:n, m,n&gt;0 और A≠B पर P=((nx₁+mx₂)/(m+n),(ny₁+my₂)/(m+n),(nz₁+mz₂)/(m+n))। भार m, B को गुणा करता है, A को नहीं।</p><p>बाह्य विभाजन में भी धन लंबाइयों का अनुपात AP:PB=m:n है, पर P किसी सिरे के बाहर होता है। m≠n पर P=((mx₂−nx₁)/(m−n),(my₂−ny₁)/(m−n),(mz₂−nz₁)/(m−n))। भिन्न सिरों के लिए समान धन अनुपात का कोई परिमित बाह्य बिंदु नहीं। हर निर्देशांक और बिंदु के खंड के भीतर/बाहर होने की जांच करें।</p><p>असंरेख त्रिभुज ABC का केंद्रक निर्देशांकों का औसत है: G=((x₁+x₂+x₃)/3,(y₁+y₂+y₃)/3,(z₁+z₂+z₃)/3)। विभाजन सूत्र यहां Exemplar की अतिरिक्त सामग्री हैं; जांचे गए पाठ्यपुस्तक अध्याय में विभाजन सूत्र का अलग उपखंड नहीं है।</p></div><div class="note-sec"><h3>5. ज्यामितीय जांच और सीमा</h3><p>तीन भिन्न बिंदु एक सीधी रेखा पर हों तो संरेख हैं। B यदि A,C के बीच है तो AB+BC=AC। बीच का बिंदु न पता हो तो सबसे बड़ी दूरी को बाकी दोनों के योग से मिलाएं। केवल B नाम होने से उसे बीच का बिंदु न मानें।</p><p>समकोण त्रिभुज की जांच से पहले बिंदु असंरेख होने चाहिए। भुजाओं के वर्ग मिलाएं: सबसे बड़ा वर्ग बाकी दोनों के योग के बराबर हो। A,B से समान दूरी वाले बिंदुओं के लिए PA²=PB² रखकर सावधानी से विस्तार करें; दूरियां अऋण होने के कारण वर्ग करना सुरक्षित है।</p><p>ये नोट्स और दस मौलिक प्रश्न चुनी हुई बुनियादी सामग्री हैं, आधिकारिक प्रश्नावली हल, पिछले वर्षों के प्रश्न या पूरी JEE तैयारी नहीं। पूरी पाठ्यपुस्तक/Exemplar प्रश्नावलियां, विस्तृत त्रिविम चित्र, सामान्य चतुर्भुज प्रमाण, अन्य बिंदुपथ, कक्षा 12 के सदिश, रेखाएं और तल अभी शामिल नहीं हैं।</p></div></div>
+<div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. Three coordinates, one point</h3><p>Choose three mutually perpendicular axes meeting at origin O(0,0,0). A point P is an ordered triple (x,y,z). Order matters: (2,3,4) and (4,3,2) are different points.</p><p>Coordinates are signed positions, not always positive distances. For P(−2,3,4), x is −2. Its perpendicular distances from the YZ, ZX and XY planes are |x|=2, |y|=3 and |z|=4.</p><p>Locate P(−2,3,4) by moving −2 along x, then 3 parallel to y, then 4 parallel to z. The intermediate points are (−2,0,0), (−2,3,0), then P. This describes a path to P, not the shortest distance OP.</p></div><div class="note-sec"><h3>2. Planes, axes and octants</h3><p>The XY plane has z=0; YZ has x=0; ZX (also called XZ) has y=0. On the x-axis both y and z are zero; similarly y-axis: x=z=0, and z-axis: x=y=0. The origin belongs to all three axes and all three planes.</p><p>The planes divide space into eight open regions called octants. In NCERT order, signs (x,y,z) are I (+,+,+), II (−,+,+), III (−,−,+), IV (+,−,+), V (+,+,−), VI (−,+,−), VII (−,−,−), VIII (+,−,−).</p><p>For (−2,3,4), the signs are (−,+,+), so octant II. If any coordinate is zero, the point is on a boundary plane, not inside an octant. For example, (0,−3,4) lies in YZ but on no coordinate axis.</p></div><div class="note-sec"><h3>3. Distance and a small check</h3><p>For A(x₁,y₁,z₁), B(x₂,y₂,z₂), AB=√[(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²]. Keep each difference in brackets before squaring. Distance is nonnegative. Reversing A and B gives the same result.</p><p>Why it works: Pythagoras first combines the x and y changes in a coordinate-parallel plane. A second right triangle adds the z change. The squared distance is the sum of the three squared changes.</p><p>Example: A(1,−2,3), B(4,2,3) gives differences (3,4,0), so AB=√(9+16)=5. Here z is unchanged, so the result reduces to a 2D distance. From the origin, OP=√(x²+y²+z²).</p></div><div class="note-sec"><h3>4. Midpoint, section and centroid</h3><p>The midpoint of A and B is ((x₁+x₂)/2,(y₁+y₂)/2,(z₁+z₂)/2). For internal division AP:PB=m:n with m,n&gt;0 and A≠B, P=((nx₁+mx₂)/(m+n),(ny₁+my₂)/(m+n),(nz₁+mz₂)/(m+n)). The weight m multiplies B, not A.</p><p>External division uses the same positive length ratio AP:PB=m:n but P lies beyond an endpoint. For m≠n, P=((mx₂−nx₁)/(m−n),(my₂−ny₁)/(m−n),(mz₂−nz₁)/(m−n)). Equal positive ratios give no finite external point for distinct endpoints. Check every coordinate and whether P is inside or outside the segment.</p><p>For a noncollinear triangle ABC, its centroid is the coordinate-wise average: G=((x₁+x₂+x₃)/3,(y₁+y₂+y₃)/3,(z₁+z₂+z₃)/3). Section formulas are included as Exemplar enrichment here; the inspected textbook chapter has no separate section-formula subsection.</p></div><div class="note-sec"><h3>5. Geometry checks and scope</h3><p>For three distinct points, collinear means lying on one straight line. If B is between A and C, AB+BC=AC. When the middle point is unknown, test whether the largest distance equals the sum of the other two. Do not assume B is the middle point from its name.</p><p>To test a right triangle, first ensure the points are not collinear. Compare squared side lengths: the largest must equal the sum of the other two. For points equally distant from A and B, set PA²=PB² and expand carefully; equal nonnegative distances can safely be squared.</p><p>These notes and ten original questions cover selected foundations, not official exercise solutions, PYQs or full JEE preparation. Full textbook/Exemplar exercises, detailed spatial diagrams, general quadrilateral proofs, broader loci, vectors, lines and planes in Class 12 remain outside this pass.</p></div></div>
 </section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-hinglish="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-en="Selected formulas and their conditions" data-hi="चुने हुए सूत्र और उनकी शर्तें" data-hinglish="Selected formulas aur unki conditions">Selected formulas and their conditions</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>Point: (x, y, z)</li><li>Planes: XY (z=0), YZ (x=0), ZX (y=0)</li><li>8 octants — signs ka combo</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Distance ⭐</h4>
-      <ul><li>√[(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²]</li><li>Origin se: √(x²+y²+z²)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Section ⭐</h4>
-      <ul><li>Internal: (mx₂+nx₁)/(m+n) har coord</li><li>Midpoint: average of coords</li><li>Centroid: (x₁+x₂+x₃)/3</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Shapes</h4>
-      <ul><li>Equilateral: 3 same sides</li><li>Right Δ: Pythagoras</li><li>Collinear: AB+BC = AC</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Tricks</h4>
-      <ul><li>Octant = sirf signs</li><li>Plane pe point: ek coord 0</li><li>3D formulas = 2D + z-term</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>आधार ⭐</h4>
-      <ul><li>बिंदु: (x, y, z)</li><li>तल: XY (z=0), YZ (x=0), ZX (y=0)</li><li>8 अष्टांश</li></ul>
-    </div>
-    <div class="shorts-card"><h4>दूरी ⭐</h4>
-      <ul><li>√[(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²]</li><li>मूलबिंदु से: √(x²+y²+z²)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>विभाजन ⭐</h4>
-      <ul><li>आंतरिक: (mx₂+nx₁)/(m+n)</li><li>मध्यबिंदु: निर्देशांकों का औसत</li><li>केंद्रक: (x₁+x₂+x₃)/3</li></ul>
-    </div>
-    <div class="shorts-card"><h4>आकृतियाँ</h4>
-      <ul><li>समबाहु: 3 समान भुजाएँ</li><li>समकोण: पाइथागोरस</li><li>संरेख: AB+BC = AC</li></ul>
-    </div>
-    <div class="shorts-card"><h4>तरकीबें</h4>
-      <ul><li>अष्टांश = केवल चिह्न</li><li>तल पर: एक निर्देशांक 0</li><li>3D = 2D + z-पद</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>Point: (x, y, z)</li><li>Planes: XY (z=0), YZ (x=0), ZX (y=0)</li><li>8 octants — sign combos</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Distance ⭐</h4>
-      <ul><li>√[(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²]</li><li>From origin: √(x²+y²+z²)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Section ⭐</h4>
-      <ul><li>Internal: (mx₂+nx₁)/(m+n) per coord</li><li>Midpoint: average of coords</li><li>Centroid: (x₁+x₂+x₃)/3</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Shapes</h4>
-      <ul><li>Equilateral: 3 equal sides</li><li>Right Δ: Pythagoras</li><li>Collinear: AB+BC = AC</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Tricks</h4>
-      <ul><li>Octant = signs only</li><li>On a plane: one coord 0</li><li>3D formulas = 2D + z-term</li></ul>
-    </div>
-    </div>
-  </div>
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="small-note">Ordered triple (x,y,z): order aur signs rakho. O=(0,0,0).</p><p class="small-note">XY: z=0. YZ: x=0. ZX: y=0. Har coordinate axis ke liye baaki do coordinates zero chahiye.</p><p class="small-note">YZ, ZX, XY se distances |x|,|y|,|z| hain. Coordinates khud negative ho sakte hain.</p><p class="small-note">Octants I–IV: (+++),(−++),(−−+),(+−+); V–VIII: (++−),(−+−),(−−−),(+−−). Zero ho to boundary, open octant nahi.</p><p class="small-note">AB²=(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²; AB iska nonnegative square root hai.</p><p class="small-note">Midpoint: har coordinate mein (A+B)/2. Internal AP:PB=m:n se (nA+mB)/(m+n), m,n&gt;0.</p><p class="small-note">External AP:PB=m:n se (mB−nA)/(m−n), m,n&gt;0, m≠n. Point AB ke bahar hai, check karo.</p><p class="small-note">Centroid G=(A+B+C)/3. Teen distinct collinear points: largest distance = baaki dono ka sum.</p></div>
+<div class="lang-block" data-lang="hi" hidden=""><p class="small-note">क्रमित त्रिक (x,y,z): क्रम और चिह्न रखें। O=(0,0,0)।</p><p class="small-note">XY: z=0। YZ: x=0। ZX: y=0। हर निर्देशांक अक्ष के लिए बाकी दो निर्देशांक शून्य चाहिए।</p><p class="small-note">YZ, ZX, XY से दूरियां |x|,|y|,|z| हैं। निर्देशांक स्वयं ऋण हो सकते हैं।</p><p class="small-note">अष्टांश I–IV: (+++),(−++),(−−+),(+−+); V–VIII: (++−),(−+−),(−−−),(+−−)। शून्य हो तो सीमा, खुला अष्टांश नहीं।</p><p class="small-note">AB²=(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²; AB इसका अऋण वर्गमूल है।</p><p class="small-note">मध्यबिंदु: हर निर्देशांक में (A+B)/2। आंतरिक AP:PB=m:n से (nA+mB)/(m+n), m,n&gt;0।</p><p class="small-note">बाह्य AP:PB=m:n से (mB−nA)/(m−n), m,n&gt;0, m≠n। बिंदु AB के बाहर है, जांचें।</p><p class="small-note">केंद्रक G=(A+B+C)/3। तीन भिन्न संरेख बिंदु: सबसे बड़ी दूरी = बाकी दोनों का योग।</p></div>
+<div class="lang-block" data-lang="en" hidden=""><p class="small-note">Ordered triple (x,y,z): keep order and signs. O=(0,0,0).</p><p class="small-note">XY: z=0. YZ: x=0. ZX: y=0. Each coordinate axis needs the other two coordinates zero.</p><p class="small-note">Plane distances from YZ, ZX, XY are |x|,|y|,|z|. Coordinates themselves may be negative.</p><p class="small-note">Octants I–IV: (+++),(−++),(−−+),(+−+); V–VIII: (++−),(−+−),(−−−),(+−−). Zero means boundary, not an open octant.</p><p class="small-note">AB²=(x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²; AB is its nonnegative square root.</p><p class="small-note">Midpoint: (A+B)/2 coordinate-wise. Internal AP:PB=m:n gives (nA+mB)/(m+n), m,n&gt;0.</p><p class="small-note">External AP:PB=m:n gives (mB−nA)/(m−n), m,n&gt;0, m≠n. Verify the point is outside AB.</p><p class="small-note">Centroid G=(A+B+C)/3. Three distinct collinear points: largest distance = sum of other two.</p></div>
 </section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-  </div>
-</section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> For P(−2,3,4), find its octant and distances from the coordinate planes.<details class="jee-sol"><summary>Show answer</summary><p>Rule: signs give the octant; absolute coordinates give plane distances.</p><p>Steps: signs (−,+,+) mean II. Distances from YZ, ZX, XY are |−2|, |3|, |4|.</p><p>Answer/check: octant II; distances 2,3,4. The coordinate x is −2, but its distance from YZ is +2.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Where does (0,−3,4) lie? Is it on an axis or in an octant?<details class="jee-sol"><summary>Show answer</summary><p>Rule: a zero coordinate puts the point in a coordinate plane. An axis needs two zero coordinates.</p><p>Steps: x=0, but y and z are nonzero.</p><p>Answer/check: in YZ, not on a coordinate axis and not inside any octant. It is not in XY or ZX.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Find AB for A(1,−2,3), B(4,2,3).<details class="jee-sol"><summary>Show answer</summary><p>Rule: square the three coordinate differences, add, then take the nonnegative square root.</p><p>Steps: B−A=(3,4,0), so AB²=9+16+0=25.</p><p>Answer/check: AB=5. Reversing endpoints gives (−3,−4,0), whose squared sum is still 25.</p></details></div><div class="jee-q"><span class="qn">Q4</span> Find all points on the z-axis at distance 5 from A(3,0,1).<details class="jee-sol"><summary>Show answer</summary><p>Rule: a point on the z-axis is P(0,0,z).</p><p>Steps: PA²=9+(z−1)²=25, so (z−1)²=16 and z−1=±4.</p><p>Answer/check: (0,0,5) and (0,0,−3). Both give PA²=9+16=25; do not lose the negative branch.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Find the midpoint of A(−2,4,1), B(6,0,5).<details class="jee-sol"><summary>Show answer</summary><p>Rule: average each matching coordinate.</p><p>Steps: M=((−2+6)/2,(4+0)/2,(1+5)/2).</p><p>Answer/check: M(2,2,3). MA²=16+4+4=24=MB², and M lies on AB.</p></details></div><div class="jee-q"><span class="qn">Q6</span> A(1,2,3), B(7,8,9): find P dividing AB internally with AP:PB=1:2.<details class="jee-sol"><summary>Show answer</summary><p>Rule: P=(2A+B)/3, coordinate by coordinate.</p><p>Steps: P=((2+7)/3,(4+8)/3,(6+9)/3).</p><p>Answer/check: P(3,4,5). P−A=(2,2,2) and B−P=(4,4,4), so AP:PB=1:2.</p></details></div><div class="jee-q"><span class="qn">Q7</span> A(1,2,3), B(7,8,9): find the external point P with AP:PB=2:1.<details class="jee-sol"><summary>Show answer</summary><p>Rule: external P=(2B−A)/(2−1).</p><p>Steps: P=(14−1,16−2,18−3).</p><p>Answer/check: P(13,14,15), beyond B. P−A=(12,12,12), P−B=(6,6,6), so the length ratio is 2:1.</p></details></div><div class="jee-q"><span class="qn">Q8</span> For A(0,0,0), B(3,4,0), C(6,8,0), test collinearity and name the middle point.<details class="jee-sol"><summary>Show answer</summary><p>Rule: the largest distance must equal the other two added.</p><p>Steps: AB=5, BC=5, AC=10, so AB+BC=AC.</p><p>Answer/check: collinear, with B between A and C. B=(A+C)/2 gives an independent midpoint check.</p></details></div><div class="jee-q"><span class="qn">Q9</span> Show that A(0,0,0), B(3,0,0), C(0,4,0) form a right triangle; find its centroid.<details class="jee-sol"><summary>Show answer</summary><p>Rule: compare squared sides; average three coordinates for the centroid.</p><p>Steps: AB²=9, AC²=16, BC²=25=9+16. G=((0+3+0)/3,(0+0+4)/3,0).</p><p>Answer/check: right angle at A; G(1,4/3,0). The triangle is noncollinear, and its centroid lies in z=0.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Find the locus of points P(x,y,z) equally distant from A(1,0,0), B(−1,0,0).<details class="jee-sol"><summary>Show answer</summary><p>Rule: equate squared distances PA²=PB².</p><p>Steps: (x−1)²+y²+z²=(x+1)²+y²+z², so −2x=2x.</p><p>Answer/check: x=0, the YZ plane. Any (0,y,z) gives equal squared distances 1+y²+z².</p></details></div><div class="tip-box">These notes and ten original questions cover selected foundations, not official exercise solutions, PYQs or full JEE preparation. Full textbook/Exemplar exercises, detailed spatial diagrams, general quadrilateral proofs, broader loci, vectors, lines and planes in Class 12 remain outside this pass.</div></div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> P(−2,3,4) ka octant aur coordinate planes se distances nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: signs se octant; absolute coordinates se plane distances milti hain.</p><p>Steps: signs (−,+,+) ka matlab II. YZ, ZX, XY se distances |−2|, |3|, |4| hain.</p><p>Answer/check: octant II; distances 2,3,4. Coordinate x=−2 hai, lekin YZ se distance +2 hai.</p></details></div><div class="jee-q"><span class="qn">Q2</span> (0,−3,4) kahan hai? Axis par ya octant mein?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: zero coordinate se point coordinate plane mein aata hai. Axis ke liye do zero coordinates chahiye.</p><p>Steps: x=0, lekin y,z nonzero hain.</p><p>Answer/check: YZ mein, kisi coordinate axis par nahi aur kisi octant ke andar nahi. XY ya ZX mein bhi nahi.</p></details></div><div class="jee-q"><span class="qn">Q3</span> A(1,−2,3), B(4,2,3) ke beech AB nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: teeno coordinate differences ke squares jodo, phir nonnegative square root lo.</p><p>Steps: B−A=(3,4,0), isliye AB²=9+16+0=25.</p><p>Answer/check: AB=5. Endpoints ulatne se (−3,−4,0) milta hai, jiska squared sum bhi 25 hai.</p></details></div><div class="jee-q"><span class="qn">Q4</span> z-axis par A(3,0,1) se distance 5 wale saare points nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: z-axis ka point P(0,0,z) hai.</p><p>Steps: PA²=9+(z−1)²=25, to (z−1)²=16 aur z−1=±4.</p><p>Answer/check: (0,0,5) aur (0,0,−3). Dono par PA²=9+16=25; negative branch mat chhodo.</p></details></div><div class="jee-q"><span class="qn">Q5</span> A(−2,4,1), B(6,0,5) ka midpoint nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: matching coordinates ka average lo.</p><p>Steps: M=((−2+6)/2,(4+0)/2,(1+5)/2).</p><p>Answer/check: M(2,2,3). MA²=16+4+4=24=MB², aur M line AB par hai.</p></details></div><div class="jee-q"><span class="qn">Q6</span> A(1,2,3), B(7,8,9): AP:PB=1:2 mein internally divide karne wala P nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: har coordinate ke liye P=(2A+B)/3.</p><p>Steps: P=((2+7)/3,(4+8)/3,(6+9)/3).</p><p>Answer/check: P(3,4,5). P−A=(2,2,2), B−P=(4,4,4), isliye AP:PB=1:2.</p></details></div><div class="jee-q"><span class="qn">Q7</span> A(1,2,3), B(7,8,9): AP:PB=2:1 wala external P nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: external P=(2B−A)/(2−1).</p><p>Steps: P=(14−1,16−2,18−3).</p><p>Answer/check: P(13,14,15), B ke aage hai. P−A=(12,12,12), P−B=(6,6,6), to length ratio 2:1.</p></details></div><div class="jee-q"><span class="qn">Q8</span> A(0,0,0), B(3,4,0), C(6,8,0) ki collinearity aur middle point batao.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: largest distance, baaki dono distances ke sum ke barabar ho.</p><p>Steps: AB=5, BC=5, AC=10, isliye AB+BC=AC.</p><p>Answer/check: collinear; B, A aur C ke beech hai. B=(A+C)/2 independent midpoint check hai.</p></details></div><div class="jee-q"><span class="qn">Q9</span> A(0,0,0), B(3,0,0), C(0,4,0) right triangle hain, dikhao; centroid bhi nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: squared sides compare karo; centroid ke liye teen coordinates ka average lo.</p><p>Steps: AB²=9, AC²=16, BC²=25=9+16. G=((0+3+0)/3,(0+0+4)/3,0).</p><p>Answer/check: right angle A par; G(1,4/3,0). Triangle noncollinear hai aur centroid z=0 mein hai.</p></details></div><div class="jee-q"><span class="qn">Q10</span> A(1,0,0), B(−1,0,0) se equal distance wale P(x,y,z) ka locus nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: squared distances PA²=PB² rakho.</p><p>Steps: (x−1)²+y²+z²=(x+1)²+y²+z², to −2x=2x.</p><p>Answer/check: x=0, yani YZ plane. Har (0,y,z) par dono squared distances 1+y²+z² hain.</p></details></div><div class="tip-box">Yeh notes aur ten original questions selected foundations hain, official exercise solutions, PYQs ya full JEE preparation nahi. Full textbook/Exemplar exercises, detailed spatial diagrams, general quadrilateral proofs, broader loci, Class 12 vectors, lines aur planes abhi cover nahi hain.</div></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> P(−2,3,4) का अष्टांश और निर्देशांक तलों से दूरियां निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: चिह्नों से अष्टांश; निर्देशांकों के निरपेक्ष मान से तलों की दूरियां मिलती हैं।</p><p>चरण: चिह्न (−,+,+) का अर्थ II। YZ, ZX, XY से दूरियां |−2|, |3|, |4| हैं।</p><p>उत्तर/जांच: अष्टांश II; दूरियां 2,3,4। निर्देशांक x=−2 है, पर YZ से दूरी +2 है।</p></details></div><div class="jee-q"><span class="qn">Q2</span> (0,−3,4) कहां है? क्या यह अक्ष पर या अष्टांश में है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: शून्य निर्देशांक बिंदु को निर्देशांक तल में रखता है। अक्ष के लिए दो निर्देशांक शून्य चाहिए।</p><p>चरण: x=0, पर y,z अशून्य हैं।</p><p>उत्तर/जांच: YZ में है, किसी निर्देशांक अक्ष पर या अष्टांश के भीतर नहीं। यह XY या ZX में भी नहीं है।</p></details></div><div class="jee-q"><span class="qn">Q3</span> A(1,−2,3), B(4,2,3) के बीच AB निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: तीनों निर्देशांक अंतरों के वर्ग जोड़कर अऋण वर्गमूल लें।</p><p>चरण: B−A=(3,4,0), इसलिए AB²=9+16+0=25।</p><p>उत्तर/जांच: AB=5। सिरों का क्रम बदलने पर (−3,−4,0) मिलता है, जिसके वर्गों का योग भी 25 है।</p></details></div><div class="jee-q"><span class="qn">Q4</span> z-अक्ष पर A(3,0,1) से दूरी 5 वाले सभी बिंदु निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: z-अक्ष का बिंदु P(0,0,z) है।</p><p>चरण: PA²=9+(z−1)²=25, इसलिए (z−1)²=16 और z−1=±4।</p><p>उत्तर/जांच: (0,0,5) और (0,0,−3)। दोनों पर PA²=9+16=25; ऋण वाली शाखा न छोड़ें।</p></details></div><div class="jee-q"><span class="qn">Q5</span> A(−2,4,1), B(6,0,5) का मध्यबिंदु निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: संगत निर्देशांकों का औसत लें।</p><p>चरण: M=((−2+6)/2,(4+0)/2,(1+5)/2)।</p><p>उत्तर/जांच: M(2,2,3)। MA²=16+4+4=24=MB² और M रेखा AB पर है।</p></details></div><div class="jee-q"><span class="qn">Q6</span> A(1,2,3), B(7,8,9): AP:PB=1:2 में आंतरिक विभाजन करने वाला P निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: हर निर्देशांक के लिए P=(2A+B)/3।</p><p>चरण: P=((2+7)/3,(4+8)/3,(6+9)/3)।</p><p>उत्तर/जांच: P(3,4,5)। P−A=(2,2,2), B−P=(4,4,4), इसलिए AP:PB=1:2।</p></details></div><div class="jee-q"><span class="qn">Q7</span> A(1,2,3), B(7,8,9): AP:PB=2:1 वाला बाह्य बिंदु P निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: बाह्य P=(2B−A)/(2−1)।</p><p>चरण: P=(14−1,16−2,18−3)।</p><p>उत्तर/जांच: P(13,14,15), B के आगे है। P−A=(12,12,12), P−B=(6,6,6), इसलिए लंबाइयों का अनुपात 2:1।</p></details></div><div class="jee-q"><span class="qn">Q8</span> A(0,0,0), B(3,4,0), C(6,8,0) की संरेखता और बीच का बिंदु बताएं।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: सबसे बड़ी दूरी बाकी दोनों दूरियों के योग के बराबर हो।</p><p>चरण: AB=5, BC=5, AC=10, इसलिए AB+BC=AC।</p><p>उत्तर/जांच: संरेख हैं; B, A और C के बीच है। B=(A+C)/2 से अलग मध्यबिंदु जांच मिलती है।</p></details></div><div class="jee-q"><span class="qn">Q9</span> A(0,0,0), B(3,0,0), C(0,4,0) समकोण त्रिभुज हैं, दिखाएं; केंद्रक भी निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: भुजाओं के वर्ग मिलाएं; केंद्रक के लिए तीनों निर्देशांकों का औसत लें।</p><p>चरण: AB²=9, AC²=16, BC²=25=9+16। G=((0+3+0)/3,(0+0+4)/3,0)।</p><p>उत्तर/जांच: समकोण A पर; G(1,4/3,0)। त्रिभुज असंरेख है और केंद्रक z=0 में है।</p></details></div><div class="jee-q"><span class="qn">Q10</span> A(1,0,0), B(−1,0,0) से समान दूरी वाले P(x,y,z) का बिंदुपथ निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: दूरियों के वर्ग PA²=PB² रखें।</p><p>चरण: (x−1)²+y²+z²=(x+1)²+y²+z², इसलिए −2x=2x।</p><p>उत्तर/जांच: x=0, यानी YZ तल। हर (0,y,z) पर दोनों दूरियों के वर्ग 1+y²+z² हैं।</p></details></div><div class="tip-box">ये नोट्स और दस मौलिक प्रश्न चुनी हुई बुनियादी सामग्री हैं, आधिकारिक प्रश्नावली हल, पिछले वर्षों के प्रश्न या पूरी JEE तैयारी नहीं। पूरी पाठ्यपुस्तक/Exemplar प्रश्नावलियां, विस्तृत त्रिविम चित्र, सामान्य चतुर्भुज प्रमाण, अन्य बिंदुपथ, कक्षा 12 के सदिश, रेखाएं और तल अभी शामिल नहीं हैं।</div></div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/kemh111.pdf">Textbook Ch11</a> <a href="https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep212.pdf">Exemplar Ch12</a> </p></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-11/maths/ch-12/">Limits and Derivatives</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-11/maths/ch-12/">Limits and Derivatives</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
