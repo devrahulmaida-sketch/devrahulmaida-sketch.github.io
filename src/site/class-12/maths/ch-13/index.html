@@ -1,350 +1,102 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 13 — Probability | Class 12 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 12 Maths Chapter 13: Probability — long + short notes in Hindi, English, Hinglish. Conditional probability, multiplication theorem, independent events, total probability, Bayes' theorem, random variables and mean.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Selected Class 12 probability foundations in Hindi, English and Hinglish: conditional probability, independence, total probability, Bayes, and ten original worked questions. Not complete exercise coverage." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:1rem;line-height:1.75;padding:.75rem;background:#f5f7fb;border:1px solid #d6e1f1;border-radius:4px} #practice .jee-q{overflow-wrap:anywhere} #practice summary{font-size:1rem} #notes .note-sec p{line-height:1.8}</style><style>.prob-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:1rem;table-layout:fixed}.prob-table th,.prob-table td{border:1px solid #d6e1f1;padding:.35rem;text-align:center;overflow-wrap:anywhere}.prob-table caption{padding:.5rem}#notes p,#short-notes p{overflow-wrap:anywhere}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 13</p>
-  <h1>Probability</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">प्रायिकता</p>
-  <p style="color:var(--muted);margin-top:6px">Conditional probability se Bayes' theorem tak — board ka last boss</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video available</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 13</p>
+<h1>Probability</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">प्रायिकता</p>
+<p style="color:var(--muted);margin-top:6px">Conditional probability, independence aur Bayes: selected basics with worked steps</p>
+<div class="ch-tags">
+<span class="pill weight-high">Selected foundations</span>
+<span class="pill">Video available</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Probability - Class 12 Maths Short - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Probability - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/fo8FYoUCwW4" title="Probability - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/fo8FYoUCwW4" title="Probability - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/fo8FYoUCwW4" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Probability - Class 12 Maths Short - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Probability - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/fo8FYoUCwW4" title="Probability - Class 12 Maths Short"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/fo8FYoUCwW4" title="Probability - Class 12 Maths Short"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/fo8FYoUCwW4" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Probability - Class 12 Mathematics Short 2 - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Probability - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player2" class="yt-embed" src="https://www.youtube.com/embed/PN0xFshJ9rc" title="Probability - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player2" class="yt-embed" src="https://www.youtube.com/embed/PN0xFshJ9rc" title="Probability - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/PN0xFshJ9rc" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Probability - Class 12 Mathematics Short 2 - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Probability - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/PN0xFshJ9rc" title="Probability - Class 12 Mathematics Short 2"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/PN0xFshJ9rc" title="Probability - Class 12 Mathematics Short 2"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/PN0xFshJ9rc" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Probability 5 animated scenes mein - conditional (universe shrink), total probability tree, Bayes reverse, random variables + mean, aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Probability 5 animated scenes mein - conditional (universe shrink), total probability tree, Bayes reverse, random variables + mean, aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Selected foundations" data-hi="चुनी हुई बुनियादें" data-hinglish="Selected foundations">Selected foundations</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Conditional Probability — 'Diya Gaya Hai Ki...' ⭐⭐</h3>
-    <ul>
-<li><b>Concept ⭐⭐:</b> P(A|B) = event A ki probability <b>jab B ho CHUKA hai</b> — extra information se sample space SIKUD jaata hai!</li>
-<li><b>Formula ⭐⭐:</b> <b>P(A|B) = P(A ∩ B) / P(B)</b>, jahan P(B) ≠ 0. "B ke hone pe A ki probability".</li>
-<li>Example: die pe 4 aaya hai (B). Even number aane ki probability? P(A|B) = P({4})/P({2,4,6})... wait — B = {4} diya hai to P(even | {4} aaya) = <b>1</b> (4 to even hai hi!). Sample space ab sirf {4}.</li>
-<li><b>Shrink the universe ⭐:</b> B ke hone ke baad sample space = sirf B. Us chhote universe me A wale outcomes count karo — formula ka yehi matlab hai.</li>
-<li>Properties: P(S|B) = 1; P(A′|B) = 1 − P(A|B); P((A ∪ B)|C) = P(A|C) + P(B|C) − P((A ∩ B)|C).</li>
-</ul>
-<p class="small-note">💡 Feel: "diya gaya hai ki" = duniya chhoti ho gayi. Ab sirf B wali duniya me A kitna likely hai — bas yehi hisaab hai.</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Multiplication Theorem aur Independent Events ⭐⭐</h3>
-    <ul>
-<li><b>Multiplication theorem ⭐:</b> P(A ∩ B) = <b>P(A)·P(B|A)</b> = P(B)·P(A|B) — "pehle A, phir A ke saath B" style me dono ka joint chance.</li>
-<li><b>Independent events ⭐⭐:</b> ek event ka hona doosre ki probability CHANGE na kare — <b>P(A|B) = P(A)</b> ya <b>P(A ∩ B) = P(A)·P(B)</b>. (Toss + die: coin ka result die ko affect nahi karta!)</li>
-<li><b>Independent vs mutually exclusive ⭐⭐:</b> MUTUALLY EXCLUSIVE = saath ho hi nahi sakte (P(A∩B) = 0). INDEPENDENT = ek doosre ko affect nahi karte. DONO ALAG concepts hain — non-trivial events dono ek saath nahi ho sakte! (Exam trap!)</li>
-<li>Teen events independent: P(A∩B∩C) = P(A)P(B)P(C) + SAARE pairs bhi independent honi chahiye (pairwise + mutual!).</li>
-<li>Example: 2 cards WITHOUT replacement — draws independent NAHI (pehla card deck badal deta hai). WITH replacement — independent!</li>
-</ul>
-<p class="small-note">🎯 "Without replacement" dekho to independence check zaroor karo — yahi boards ka favourite confusion point hai.</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Total Probability Theorem ⭐⭐</h3>
-    <ul>
-<li><b>Setup:</b> sample space EVENTS E₁, E₂, ..., Eₙ me partition ho (sab disjoint, milke poora S) — jaise 3 machines, 2 bags, alag routes.</li>
-<li><b>Theorem ⭐⭐:</b> P(A) = <b>P(E₁)P(A|E₁) + P(E₂)P(A|E₂) + ... + P(Eₙ)P(A|Eₙ)</b> — har raaste ka (probability × uss raaste pe A ka chance), sab ADD karo!</li>
-<li>Example: 2 bags — Bag I: 3 red, 2 black; Bag II: 2 red, 3 black. Bag randomly choose (1/2 each) → P(red) = (1/2)(3/5) + (1/2)(2/5) = <b>1/2</b>.</li>
-<li><b>Tree diagram ⭐:</b> branches banao — pehle partition (E₁, E₂), phir har branch pe A ya A′. Multiply along branch, add across branches — theorem visual ban jaata hai!</li>
-<li>Kab use kare: jab event A ke hone ke <b>MULTIPLE raaste</b> hon aur har raaste ka apna chance ho.</li>
-</ul>
-<p class="small-note">💡 Total probability = "sab raaston ka hisaab jod do". Weighted average jaisi cheez — har raasta apne weight ke saath contribute karta hai.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Bayes' Theorem — Result Se Wapsi ⭐⭐</h3>
-    <ul>
-<li><b>Question type:</b> event A ho GAYA (defective item mil gaya!) — ab poocho: wo kis RAASTE (machine/bag) se aaya hoga? = <b>reverse (posterior) probability</b>.</li>
-<li><b>Formula ⭐⭐:</b> P(Eᵢ|A) = <b>P(Eᵢ)P(A|Eᵢ) / [Σⱼ P(Eⱼ)P(A|Eⱼ)]</b> — "us raaste ka contribution ÷ total probability (denominator = total probability theorem!)".</li>
-<li><b>Steps ⭐:</b> (1) Partitions E₁, E₂... aur unki PRIOR probabilities likho. (2) Har Eᵢ pe P(A|Eᵢ) likho. (3) Denominator = total probability nikalo. (4) Ratio = answer.</li>
-<li>Example: machines M1 (60% output, 1% defective), M2 (40% output, 2% defective). Defective item mila → P(M1 se) = (0.6×0.01)/(0.6×0.01 + 0.4×0.02) = 0.006/0.014 = <b>3/7</b>.</li>
-<li><b>Real life:</b> medical tests, spam filters, fault detection — sab Bayes pe chalte hain!</li>
-</ul>
-<p class="small-note">🎯 Bayes = "hisaab ulta karo". Pehle total probability se denominator banao — 90% students ka step yahi hai. Denominator = question ka half work done!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Random Variables aur Probability Distribution ⭐</h3>
-    <ul>
-<li><b>Random variable X ⭐:</b> experiment ke har outcome ko ek NUMBER assign karta hai — 2 coins me heads ka count: X = 0, 1, 2.</li>
-<li><b>Probability distribution ⭐:</b> har value xᵢ ke saath uski probability P(X = xᵢ) ki <b>table</b>. Rules: har P(xᵢ) ≥ 0 aur <b>ΣP(xᵢ) = 1</b> (ye check exam me puchte hain!).</li>
-<li><b>Mean / Expectation ⭐⭐:</b> <b>E(X) = μ = Σ xᵢ·P(xᵢ)</b> — value × probability ka sum = "long-run average".</li>
-<li>Example: X = heads in 2 tosses → distribution: P(0) = 1/4, P(1) = 1/2, P(2) = 1/4 → E(X) = 0(1/4) + 1(1/2) + 2(1/4) = <b>1</b>. (2 tosses me average 1 head — obvious sa, par prove ho gaya!)</li>
-<li><b>Syllabus note ⭐:</b> random variable ka <b>VARIANCE</b> (aur binomial distribution) rationalized NCERT se <b>DELETE</b> — sirf distribution + MEAN padhna hai.</li>
-</ul>
-<p class="small-note">💡 E(X) = "expected value" — ek baar ka guaranteed nahi, LAMBE run ka average. Distribution table + Σxᵢpᵢ = chapter ka last formula!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ सप्रतिबंध प्रायिकता — 'दिया गया है कि...' ⭐⭐</h3>
-    <ul>
-<li><b>अवधारणा ⭐⭐:</b> P(A|B) = घटना A की प्रायिकता <b>जब B हो चुकी है</b> — अतिरिक्त सूचना से प्रतिदर्श समष्टि <b>सिकुड़</b> जाती है!</li>
-<li><b>सूत्र ⭐⭐:</b> <b>P(A|B) = P(A ∩ B) / P(B)</b>, जहां P(B) ≠ 0।</li>
-<li>उदाहरण: पासे पर B = सम संख्या {2,4,6} दी गई। P(4 आया | B) = P({4})/P({2,4,6}) = <b>1/3</b>।</li>
-<li><b>ब्रह्मांड सिकोड़ो ⭐:</b> B के बाद प्रतिदर्श समष्टि = केवल B — उसमें A वाले परिणाम गिनो।</li>
-<li>गुण: P(S|B) = 1; P(A′|B) = 1 − P(A|B)।</li>
-</ul>
-<p class="small-note">💡 "दिया गया है कि" = दुनिया छोटी हो गई। अब B वाली दुनिया में A कितना संभावित?</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ गुणन प्रमेय और स्वतंत्र घटनाएं ⭐⭐</h3>
-    <ul>
-<li><b>गुणन प्रमेय ⭐:</b> P(A ∩ B) = <b>P(A)·P(B|A)</b> = P(B)·P(A|B)।</li>
-<li><b>स्वतंत्र घटनाएं ⭐⭐:</b> एक का होना दूसरी की प्रायिकता <b>न</b> बदले — <b>P(A ∩ B) = P(A)·P(B)</b>।</li>
-<li><b>स्वतंत्र बनाम परस्पर अपवर्जी ⭐⭐:</b> अपवर्जी = साथ हो ही नहीं सकतीं (P(A∩B) = 0)। स्वतंत्र = प्रभाव नहीं डालतीं। <b>दोनों अलग अवधारणाएं!</b> (परीक्षा जाल!)</li>
-<li>उदाहरण: प्रतिस्थापन <b>बिना</b> पत्ते निकालना — खींचे स्वतंत्र <b>नहीं</b>; प्रतिस्थापन <b>सहित</b> — स्वतंत्र!</li>
-</ul>
-<p class="small-note">🎯 "बिना प्रतिस्थापन" देखो तो स्वतंत्रता जांचो — बोर्ड का प्रिय भ्रम बिंदु!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ कुल प्रायिकता प्रमेय ⭐⭐</h3>
-    <ul>
-<li><b>व्यवस्था:</b> प्रतिदर्श समष्टि घटनाओं E₁, E₂, ..., Eₙ में <b>विभाजित</b> (सब असंयुक्त, मिलकर पूरी S)।</li>
-<li><b>प्रमेय ⭐⭐:</b> P(A) = <b>P(E₁)P(A|E₁) + P(E₂)P(A|E₂) + ... + P(Eₙ)P(A|Eₙ)</b> — प्रत्येक रास्ते का (प्रायिकता × उस रास्ते पर A), सब जोड़ो!</li>
-<li>उदाहरण: 2 थैले — I: 3 लाल, 2 काले; II: 2 लाल, 3 काले। P(लाल) = (1/2)(3/5) + (1/2)(2/5) = <b>1/2</b>।</li>
-<li><b>वृक्ष आरेख ⭐:</b> शाखाएं बनाओ — शाखा पर गुणा, शाखाओं के बीच जोड़!</li>
-</ul>
-<p class="small-note">💡 कुल प्रायिकता = "सभी रास्तों का हिसाब जोड़ो" — भारित औसत जैसा।</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ बेज प्रमेय — परिणाम से वापसी ⭐⭐</h3>
-    <ul>
-<li><b>प्रश्न प्रकार:</b> घटना A हो <b>गई</b> (दोषपूर्ण वस्तु मिली!) — कौन-से <b>रास्ते</b> (मशीन/थैले) से आई? = <b>उत्तर प्रायिकता</b>।</li>
-<li><b>सूत्र ⭐⭐:</b> P(Eᵢ|A) = <b>P(Eᵢ)P(A|Eᵢ) / [Σⱼ P(Eⱼ)P(A|Eⱼ)]</b> — हर = कुल प्रायिकता प्रमेय!</li>
-<li><b>चरण ⭐:</b> (1) विभाजन E₁, E₂... और उनकी <b>पूर्व</b> प्रायिकताएं लिखो। (2) प्रत्येक पर P(A|Eᵢ)। (3) हर = कुल प्रायिकता। (4) अनुपात = उत्तर।</li>
-<li>उदाहरण: M1 (60% उत्पादन, 1% दोषपूर्ण), M2 (40%, 2%)। दोषपूर्ण मिली → P(M1) = 0.006/0.014 = <b>3/7</b>।</li>
-</ul>
-<p class="small-note">🎯 बेज = "हिसाब उल्टा करो"। हर = कुल प्रायिकता — यही आधा काम!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ यादृच्छिक चर और प्रायिकता बंटन ⭐</h3>
-    <ul>
-<li><b>यादृच्छिक चर X ⭐:</b> प्रत्येक परिणाम को एक <b>संख्या</b> देता है — 2 सिक्कों में चितों की संख्या: X = 0, 1, 2।</li>
-<li><b>प्रायिकता बंटन ⭐:</b> प्रत्येक xᵢ के साथ P(X = xᵢ) की <b>तालिका</b>। नियम: P(xᵢ) ≥ 0 और <b>ΣP(xᵢ) = 1</b>।</li>
-<li><b>माध्य / प्रत्याशा ⭐⭐:</b> <b>E(X) = μ = Σ xᵢ·P(xᵢ)</b> — "दीर्घावधि का औसत"।</li>
-<li>उदाहरण: 2 टॉस में चित → P(0)=1/4, P(1)=1/2, P(2)=1/4 → E(X) = 0 + 1/2 + 1/2 = <b>1</b>।</li>
-<li><b>पाठ्यक्रम टिप्पणी ⭐:</b> <b>प्रसरण (variance)</b> और द्विपद बंटन NCERT से <b>हटाए गए</b> — केवल बंटन + माध्य।</li>
-</ul>
-<p class="small-note">💡 E(X) = "अपेक्षित मान" — लंबे रन का औसत। तालिका + Σxᵢpᵢ = अंतिम सूत्र!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Conditional Probability — 'Given That...' ⭐⭐</h3>
-    <ul>
-<li><b>Concept ⭐⭐:</b> P(A|B) = the probability of A <b>given that B has ALREADY happened</b> — extra information SHRINKS the sample space!</li>
-<li><b>Formula ⭐⭐:</b> <b>P(A|B) = P(A ∩ B) / P(B)</b>, where P(B) ≠ 0. "The probability of A, given B".</li>
-<li>Example: a die shows an even number (B = {2,4,6}). What is P(it is 4 | B)? = P({4})/P({2,4,6}) = <b>1/3</b>. The universe is now only {2,4,6}.</li>
-<li><b>Shrink the universe ⭐:</b> once B happens, the sample space is just B. Count A's outcomes inside that small universe — that is exactly what the formula does.</li>
-<li>Properties: P(S|B) = 1; P(A′|B) = 1 − P(A|B); P((A ∪ B)|C) = P(A|C) + P(B|C) − P((A ∩ B)|C).</li>
-</ul>
-<p class="small-note">💡 Feel: "given that" = the world got smaller. Now, within B's world, how likely is A — that is the whole calculation.</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Multiplication Theorem and Independent Events ⭐⭐</h3>
-    <ul>
-<li><b>Multiplication theorem ⭐:</b> P(A ∩ B) = <b>P(A)·P(B|A)</b> = P(B)·P(A|B) — "first A, then B given A" gives the joint chance of both.</li>
-<li><b>Independent events ⭐⭐:</b> one event's outcome does NOT change the other's probability — <b>P(A|B) = P(A)</b> or <b>P(A ∩ B) = P(A)·P(B)</b>. (A coin toss and a die roll don't affect each other!)</li>
-<li><b>Independent vs mutually exclusive ⭐⭐:</b> MUTUALLY EXCLUSIVE = cannot happen together (P(A∩B) = 0). INDEPENDENT = do not affect each other. These are DIFFERENT concepts — non-trivial events cannot be both! (Exam trap!)</li>
-<li>Three independent events: P(A∩B∩C) = P(A)P(B)P(C), AND all pairs must also be independent (pairwise + mutual!).</li>
-<li>Example: 2 cards drawn WITHOUT replacement — the draws are NOT independent (the first card changes the deck). WITH replacement — independent!</li>
-</ul>
-<p class="small-note">🎯 Spot "without replacement" and you know independence fails — the favourite confusion point of boards.</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Theorem of Total Probability ⭐⭐</h3>
-    <ul>
-<li><b>Setup:</b> the sample space is PARTITIONED into events E₁, E₂, ..., Eₙ (all disjoint, together covering S) — like 3 machines, 2 bags, different routes.</li>
-<li><b>Theorem ⭐⭐:</b> P(A) = <b>P(E₁)P(A|E₁) + P(E₂)P(A|E₂) + ... + P(Eₙ)P(A|Eₙ)</b> — for every route, take (probability × chance of A on that route) and ADD them all!</li>
-<li>Example: 2 bags — Bag I: 3 red, 2 black; Bag II: 2 red, 3 black. A bag is chosen randomly (1/2 each) → P(red) = (1/2)(3/5) + (1/2)(2/5) = <b>1/2</b>.</li>
-<li><b>Tree diagram ⭐:</b> draw branches — first the partition (E₁, E₂), then on each branch A or A′. Multiply along a branch, add across branches — the theorem turns visual!</li>
-<li>Use it when event A can happen via MULTIPLE routes, each with its own chance.</li>
-</ul>
-<p class="small-note">💡 Total probability = "add up the account of every route". Like a weighted average — each route contributes with its own weight.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Bayes' Theorem — Walking Back from the Result ⭐⭐</h3>
-    <ul>
-<li><b>Question type:</b> event A has HAPPENED (a defective item turned up!) — now ask: which ROUTE (machine/bag) did it most likely come from? = the <b>reverse (posterior) probability</b>.</li>
-<li><b>Formula ⭐⭐:</b> P(Eᵢ|A) = <b>P(Eᵢ)P(A|Eᵢ) / [Σⱼ P(Eⱼ)P(A|Eⱼ)]</b> — "that route's contribution ÷ the total probability (the denominator IS the total probability theorem!)".</li>
-<li><b>Steps ⭐:</b> (1) Write the partitions E₁, E₂... and their PRIOR probabilities. (2) Write P(A|Eᵢ) for each. (3) Compute the denominator = total probability. (4) The ratio = the answer.</li>
-<li>Example: machines M1 (60% of output, 1% defective), M2 (40% of output, 2% defective). A defective item is found → P(from M1) = (0.6×0.01)/(0.6×0.01 + 0.4×0.02) = 0.006/0.014 = <b>3/7</b>.</li>
-<li><b>Real life:</b> medical tests, spam filters, fault detection — all run on Bayes!</li>
-</ul>
-<p class="small-note">🎯 Bayes = "do the math in reverse". Build the denominator with total probability first — that is half the work of the question!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Random Variables and Probability Distributions ⭐</h3>
-    <ul>
-<li><b>Random variable X ⭐:</b> assigns a NUMBER to every outcome of an experiment — the count of heads in 2 coin tosses: X = 0, 1, 2.</li>
-<li><b>Probability distribution ⭐:</b> a <b>table</b> pairing each value xᵢ with its probability P(X = xᵢ). Rules: every P(xᵢ) ≥ 0 and <b>ΣP(xᵢ) = 1</b> (exams ask you to check this!).</li>
-<li><b>Mean / Expectation ⭐⭐:</b> <b>E(X) = μ = Σ xᵢ·P(xᵢ)</b> — the sum of value × probability = the "long-run average".</li>
-<li>Example: X = heads in 2 tosses → distribution: P(0) = 1/4, P(1) = 1/2, P(2) = 1/4 → E(X) = 0(1/4) + 1(1/2) + 2(1/4) = <b>1</b>. (An average of 1 head in 2 tosses — obvious, but now proven!)</li>
-<li><b>Syllabus note ⭐:</b> the <b>VARIANCE</b> of a random variable (and the binomial distribution) are <b>DELETED</b> from rationalized NCERT — only distributions + the MEAN remain.</li>
-</ul>
-<p class="small-note">💡 E(X) = the "expected value" — not a guarantee for one trial, but the LONG-run average. Distribution table + Σxᵢpᵢ = the chapter's last formula!</p>
-  </div>
-  </div>
-</section>
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Given B mein B ko nayi duniya maano</h3><p>Event outcomes ka set hai. A∩B ka matlab A aur B dono; A′ ka matlab not A. P(B)&gt;0 par P(A|B)=P(A∩B)/P(B). Bar ke baad wali event woh information hai jo already pata hai. Wahi denominator mein jaati hai.</p><p>Hamara example: fair die roll karo. A={4,5,6}, B={2,4,6}. Even result given ho to sirf B possible hai. A∩B={4,6}, to P(A|B)=(2/6)/(3/6)=2/3. B ke andar outcomes tabhi count karo jab bache outcomes equally likely hon. Unequal probabilities mein unke probability weights jodo.</p></div><div class="note-sec"><h3>2. Condition badli to denominator badla</h3><p>P(A|B), P(B|A) ka intersection numerator same, par denominator usually alag hai. Swap mat karo. P(B)=0 par elementary ratio P(A|B) undefined hai, automatically zero nahi.</p><p>Fair die mein C={6}, B={2,4,6} lo. P(C|B)=1/3, par P(B|C)=1, kyunki 6 pata ho to even guaranteed hai. A={4,5,6} ke liye P(A′|B)=1−P(A|B)=1/3. Complement target event ko badalta hai, condition B ko nahi.</p></div><div class="note-sec"><h3>3. Multiplication mein information update hoti hai</h3><p>Multiplication rule P(A∩B)=P(A)P(B|A), jab P(A)&gt;0. P(B)&gt;0 ho to P(B)P(A|B) bhi same hai. Teen events mein P(A)P(B|A)P(C|A∩B) lo, jahan required conditioning probabilities positive hon.</p><p>Hamare bag mein 3 red,2 blue balls hain. Without replacement do uniform draws mein dono red ka chance (3/5)(2/4)=3/10. Ek red ke baad 4 mein 2 red bache. Replacement aur independent new draw ho to (3/5)(3/5)=9/25. Pehle sampling rule likho.</p></div><div class="note-sec"><h3>4. Independent aur mutually exclusive alag hain</h3><p>Independence ka test P(A∩B)=P(A)P(B) hai. Product definition zero-probability events par bhi work karti hai. P(B)&gt;0 par independence ka equivalent P(A|B)=P(A) hai. Independent ka matlab saath na hona nahi.</p><p>Mutually exclusive mein A∩B empty hai. Dono probabilities positive hon to independence possible nahi: intersection probability 0, product positive. Fair die mein odd aur even mutually exclusive aur dependent hain.</p><p>Do independent fair coin tosses mein A=first heads, B=second heads: P(A)=P(B)=1/2, P(A∩B)=1/4. Teen events mein pairwise independence se mutual independence prove nahi; triple-intersection product bhi chahiye.</p></div><div class="note-sec"><h3>5. Total probability alag routes ko jodti hai</h3><p>Partition E₁,...,Eₙ sample space ko disjoint aur exhaustive routes mein baantta hai. P(A|Eᵢ) likhte waqt routes ki probability positive ho. Phir P(A)=Σ P(Eᵢ)P(A|Eᵢ). Har term route aur A dono ka chance hai, sirf conditional probability nahi.</p><p>Hamara example: Bag I ko chance 1/3, Bag II ko 2/3 se choose karo. Bag I mein 3 red,2 blue; Bag II mein 1 red,4 blue. Chosen bag se ek ball uniformly draw karo. P(red)=(1/3)(3/5)+(2/3)(1/5)=1/5+2/15=1/3. 3/5 aur 1/5 ka equal average mat lo: bags equal chance se choose nahi hue.</p><table class="prob-table"><caption>Hamara route-weight check</caption><thead><tr><th scope="col">Route</th><th scope="col">Prior</th><th scope="col">Route par red</th><th scope="col">Route aur red</th></tr></thead><tbody><tr><th scope="row">I</th><td>1/3</td><td>3/5</td><td>1/5</td></tr><tr><th scope="row">II</th><td>2/3</td><td>1/5</td><td>2/15</td></tr></tbody></table></div><div class="note-sec"><h3>6. Bayes sawaal reverse karta hai, fraction nahi</h3><p>Same partition aur P(A)&gt;0 par P(Eᵢ|A)=P(Eᵢ)P(A|Eᵢ)/Σ P(Eⱼ)P(A|Eⱼ). Pehle wanted route aur observation ki joint probability nikalo, phir observation ki total probability se divide karo.</p><p>Hamare bag example mein red given ho to P(Bag I|red)=(1/5)/(1/3)=3/5. P(Bag II|red)=(2/15)/(1/3)=2/5; posterior probabilities ka sum 1. Yahan P(red|Bag I)=3/5 bhi hai, par yeh numerical coincidence hai, conditions reverse karne ka rule nahi.</p><p>Yeh selected conditional-probability foundations aur das original questions hain, poori textbook exercise solutions ya poori JEE preparation nahi. Lambe multi-stage word problems, full mutual-independence proofs, random-variable distributions, expectation, variance aur binomial models shamil nahi. Deleted topics ya pakke exam marks ka daava nahi hai.</p></div></div><div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. B दिया हो तो B को नई समष्टि मानें</h3><p>घटना परिणामों का समुच्चय है। A∩B का अर्थ A और B दोनों; A′ का अर्थ A नहीं। P(B)&gt;0 पर P(A|B)=P(A∩B)/P(B)। रेखा के बाद वाली घटना वह सूचना है जो पहले से ज्ञात है। वही हर में जाती है।</p><p>हमारा उदाहरण: एक निष्पक्ष पासा फेंकें। A={4,5,6}, B={2,4,6}। सम परिणाम दिया हो तो केवल B संभव है। A∩B={4,6}, अतः P(A|B)=(2/6)/(3/6)=2/3। B के भीतर परिणाम तभी गिनें जब शेष परिणाम समसंभावित हों। असमान प्रायिकताओं में उनके प्रायिकता भार जोड़ें।</p></div><div class="note-sec"><h3>2. प्रतिबंध बदला तो हर बदला</h3><p>P(A|B), P(B|A) का प्रतिच्छेद अंश समान, पर हर सामान्यतः अलग है। इन्हें न बदलें। P(B)=0 पर प्राथमिक अनुपात P(A|B) अपरिभाषित है, अपने-आप शून्य नहीं।</p><p>निष्पक्ष पासे में C={6}, B={2,4,6} लें। P(C|B)=1/3, पर P(B|C)=1, क्योंकि 6 ज्ञात हो तो सम परिणाम निश्चित है। A={4,5,6} के लिए P(A′|B)=1−P(A|B)=1/3। पूरक लक्ष्य घटना को बदलता है, प्रतिबंध B को नहीं।</p></div><div class="note-sec"><h3>3. गुणन में सूचना अद्यतन होती है</h3><p>गुणन नियम P(A∩B)=P(A)P(B|A), जब P(A)&gt;0। P(B)&gt;0 हो तो P(B)P(A|B) भी समान है। तीन घटनाओं में P(A)P(B|A)P(C|A∩B) लें, जहां आवश्यक प्रतिबंध घटनाओं की प्रायिकताएं धनात्मक हों।</p><p>हमारे थैले में 3 लाल,2 नीली गेंदें हैं। बिना वापस रखे दो एकसमान यादृच्छिक निकासों में दोनों लाल की प्रायिकता (3/5)(2/4)=3/10। एक लाल के बाद 4 में 2 लाल शेष हैं। वापस रखकर स्वतंत्र नया निकास हो तो (3/5)(3/5)=9/25। पहले चयन नियम लिखें।</p></div><div class="note-sec"><h3>4. स्वतंत्र और परस्पर अपवर्जी अलग हैं</h3><p>स्वतंत्रता की जांच P(A∩B)=P(A)P(B) है। गुणनफल परिभाषा शून्य-प्रायिकता घटनाओं पर भी लागू है। P(B)&gt;0 पर स्वतंत्रता का समतुल्य P(A|B)=P(A) है। स्वतंत्र का अर्थ साथ न होना नहीं।</p><p>परस्पर अपवर्जी में A∩B रिक्त है। दोनों प्रायिकताएं धनात्मक हों तो स्वतंत्रता संभव नहीं: प्रतिच्छेद की प्रायिकता 0, गुणनफल धनात्मक। निष्पक्ष पासे में विषम और सम परस्पर अपवर्जी तथा आश्रित हैं।</p><p>दो स्वतंत्र निष्पक्ष सिक्का उछालों में A=पहले में चित, B=दूसरे में चित: P(A)=P(B)=1/2, P(A∩B)=1/4। तीन घटनाओं में जोड़ीवार स्वतंत्रता से पारस्परिक स्वतंत्रता सिद्ध नहीं; तीनों के प्रतिच्छेद का गुणनफल संबंध भी चाहिए।</p></div><div class="note-sec"><h3>5. संपूर्ण प्रायिकता अलग मार्गों को जोड़ती है</h3><p>विभाजन E₁,...,Eₙ प्रतिदर्श समष्टि को असंयुक्त और निःशेष मार्गों में बांटता है। P(A|Eᵢ) लिखते समय मार्गों की प्रायिकता धनात्मक हो। तब P(A)=Σ P(Eᵢ)P(A|Eᵢ)। हर पद मार्ग और A दोनों की प्रायिकता है, केवल सप्रतिबंध प्रायिकता नहीं।</p><p>हमारा उदाहरण: थैला I प्रायिकता 1/3, थैला II प्रायिकता 2/3 से चुनें। थैला I में 3 लाल,2 नीली; थैला II में 1 लाल,4 नीली हैं। चुने थैले से एक गेंद एकसमान यादृच्छिक रूप से निकालें। P(लाल)=(1/3)(3/5)+(2/3)(1/5)=1/5+2/15=1/3। 3/5 और 1/5 का समान औसत न लें: थैले समान प्रायिकता से नहीं चुने गए।</p><table class="prob-table"><caption>हमारी मार्ग-भार जांच</caption><thead><tr><th scope="col">मार्ग</th><th scope="col">पूर्व प्रायिकता</th><th scope="col">मार्ग पर लाल</th><th scope="col">मार्ग और लाल</th></tr></thead><tbody><tr><th scope="row">I</th><td>1/3</td><td>3/5</td><td>1/5</td></tr><tr><th scope="row">II</th><td>2/3</td><td>1/5</td><td>2/15</td></tr></tbody></table></div><div class="note-sec"><h3>6. बेज प्रश्न उलटता है, भिन्न नहीं</h3><p>उसी विभाजन और P(A)&gt;0 पर P(Eᵢ|A)=P(Eᵢ)P(A|Eᵢ)/Σ P(Eⱼ)P(A|Eⱼ)। पहले वांछित मार्ग और प्रेक्षण की संयुक्त प्रायिकता निकालें, फिर प्रेक्षण की संपूर्ण प्रायिकता से भाग दें।</p><p>हमारे थैला उदाहरण में लाल दिया हो तो P(थैला I|लाल)=(1/5)/(1/3)=3/5। P(थैला II|लाल)=(2/15)/(1/3)=2/5; पश्च प्रायिकताओं का योग 1। यहां P(लाल|थैला I)=3/5 भी है, पर यह संख्यात्मक संयोग है, प्रतिबंध उलटने का नियम नहीं।</p><p>ये चुनी सप्रतिबंध-प्रायिकता बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली के हल या पूरी JEE तैयारी नहीं। लंबे बहुचरणीय शब्द प्रश्न, पूर्ण पारस्परिक-स्वतंत्रता प्रमाण, यादृच्छिक-चर बंटन, प्रत्याशा, प्रसरण और द्विपद मॉडल शामिल नहीं। हटे विषयों या निश्चित परीक्षा अंकों का दावा नहीं है।</p></div></div><div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. Given B means use B as the new universe</h3><p>An event is a set of outcomes. A∩B means both A and B; A′ means not A. For P(B)&gt;0, conditional probability is P(A|B)=P(A∩B)/P(B). The event after the bar is the information we already have. It goes in the denominator.</p><p>Our example: roll one fair die. Let A={4,5,6} and B={2,4,6}. Given an even result, only B remains possible. A∩B={4,6}, so P(A|B)=(2/6)/(3/6)=2/3. Count favourable outcomes inside B only when those remaining outcomes are equally likely. With unequal probabilities, add their probability weights.</p></div><div class="note-sec"><h3>2. The denominator changes when the condition changes</h3><p>P(A|B) and P(B|A) have the same intersection numerator, but usually different denominators. Do not swap them. If P(B)=0, the elementary ratio P(A|B) is undefined; it is not automatically zero.</p><p>For a fair die take C={6} and B={2,4,6}. P(C|B)=1/3, but P(B|C)=1 because knowing 6 guarantees an even result. Also P(A′|B)=1−P(A|B)=1/3 for A={4,5,6}. The complement changes the target event, not the condition B.</p></div><div class="note-sec"><h3>3. Multiplication keeps track of changing information</h3><p>The multiplication rule is P(A∩B)=P(A)P(B|A), provided P(A)&gt;0. It also equals P(B)P(A|B) when P(B)&gt;0. For three events use P(A)P(B|A)P(C|A∩B), with the required conditioning probabilities positive.</p><p>Our bag contains 3 red and 2 blue balls. Two draws are uniform without replacement. For both red: (3/5)(2/4)=3/10. After one red, only 2 red among 4 balls remain. With replacement and an independent new draw, the probability is (3/5)(3/5)=9/25. State the sampling rule first.</p></div><div class="note-sec"><h3>4. Independent is different from mutually exclusive</h3><p>Two events are independent when P(A∩B)=P(A)P(B). This product definition also handles zero-probability events. When P(B)&gt;0, independence is equivalent to P(A|B)=P(A). Independent does not mean that the events cannot happen together.</p><p>Mutually exclusive means A∩B is empty. If both probabilities are positive, such events cannot be independent: the intersection probability is 0 but their product is positive. For a fair die, odd and even are mutually exclusive and dependent.</p><p>For two independent fair coin tosses, A=first toss is heads and B=second toss is heads: P(A)=P(B)=1/2, P(A∩B)=1/4. For three events, pairwise independence alone is not enough for mutual independence; the triple-intersection product must also hold.</p></div><div class="note-sec"><h3>5. Total probability adds disjoint routes</h3><p>A partition E₁,...,Eₙ splits the sample space into disjoint, exhaustive routes. Use routes with positive probability when writing P(A|Eᵢ). Then P(A)=Σ P(Eᵢ)P(A|Eᵢ). Each term is the probability of both that route and A, not just a conditional probability.</p><p>Our example: choose Bag I with probability 1/3, Bag II with probability 2/3. Bag I has 3 red,2 blue; Bag II has 1 red,4 blue. Draw one ball uniformly from the chosen bag. P(red)=(1/3)(3/5)+(2/3)(1/5)=1/5+2/15=1/3. Do not average 3/5 and 1/5 equally: the bags are not chosen equally often.</p><table class="prob-table"><caption>Our route-weight check</caption><thead><tr><th scope="col">Route</th><th scope="col">Prior</th><th scope="col">Red given route</th><th scope="col">Route and red</th></tr></thead><tbody><tr><th scope="row">I</th><td>1/3</td><td>3/5</td><td>1/5</td></tr><tr><th scope="row">II</th><td>2/3</td><td>1/5</td><td>2/15</td></tr></tbody></table></div><div class="note-sec"><h3>6. Bayes reverses the question, not the fraction</h3><p>For the same partition and P(A)&gt;0, Bayes gives P(Eᵢ|A)=P(Eᵢ)P(A|Eᵢ)/Σ P(Eⱼ)P(A|Eⱼ). First find the joint probability for the wanted route and observation, then divide by the total probability of that observation.</p><p>In our bag example, given a red ball, P(Bag I|red)=(1/5)/(1/3)=3/5. Similarly P(Bag II|red)=(2/15)/(1/3)=2/5; the posterior probabilities sum to 1. P(red|Bag I)=3/5 happens to equal the first answer here, but that numerical coincidence is not a rule for reversing conditions.</p><p>These are selected conditional-probability foundations and ten original questions, not complete textbook exercise solutions or complete JEE preparation. Long multi-stage word problems, full mutual-independence proofs, random-variable distributions, expectation, variance and binomial models are not covered here. No deleted-topic or guaranteed exam-mark claim is made.</p></div></div></section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Conditional ⭐⭐</h4>
-      <ul><li>P(A|B) = P(A∩B)/P(B)</li><li>Sample space shrink hojata hai</li><li>P(A′|B) = 1 − P(A|B)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Independent ⭐⭐</h4>
-      <ul><li>P(A∩B) = P(A)P(B)</li><li>Independent ≠ mutually exclusive!</li><li>Without replacement → dependent</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Total prob ⭐⭐</h4>
-      <ul><li>P(A) = Σ P(Eᵢ)P(A|Eᵢ)</li><li>Raaston ka weighted sum</li><li>Tree diagram banao</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Bayes ⭐⭐</h4>
-      <ul><li>P(Eᵢ|A) = P(Eᵢ)P(A|Eᵢ)/Σ(...)</li><li>Denominator = total probability</li><li>'A ho gaya, kaunsa E?' type</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Distribution ⭐</h4>
-      <ul><li>ΣP(xᵢ) = 1 check</li><li>Mean E(X) = Σ xᵢP(xᵢ)</li><li>Variance DELETED</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>सप्रतिबंध ⭐⭐</h4>
-      <ul><li>P(A|B) = P(A∩B)/P(B)</li><li>प्रतिदर्श समष्टि सिकुड़ती है</li><li>P(A′|B) = 1 − P(A|B)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>स्वतंत्र ⭐⭐</h4>
-      <ul><li>P(A∩B) = P(A)P(B)</li><li>स्वतंत्र ≠ परस्पर अपवर्जी!</li><li>बिना प्रतिस्थापन → आश्रित</li></ul>
-    </div>
-    <div class="shorts-card"><h4>कुल प्रायिकता ⭐⭐</h4>
-      <ul><li>P(A) = Σ P(Eᵢ)P(A|Eᵢ)</li><li>रास्तों का भारित योग</li><li>वृक्ष आरेख बनाओ</li></ul>
-    </div>
-    <div class="shorts-card"><h4>बेज ⭐⭐</h4>
-      <ul><li>P(Eᵢ|A) = P(Eᵢ)P(A|Eᵢ)/Σ(...)</li><li>हर = कुल प्रायिकता</li><li>'A हो गई, कौन-सा E?'</li></ul>
-    </div>
-    <div class="shorts-card"><h4>बंटन ⭐</h4>
-      <ul><li>ΣP(xᵢ) = 1 जांच</li><li>माध्य E(X) = Σ xᵢP(xᵢ)</li><li>प्रसरण हटाया गया</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Conditional ⭐⭐</h4>
-      <ul><li>P(A|B) = P(A∩B)/P(B)</li><li>Sample space shrinks</li><li>P(A′|B) = 1 − P(A|B)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Independent ⭐⭐</h4>
-      <ul><li>P(A∩B) = P(A)P(B)</li><li>Independent ≠ mutually exclusive!</li><li>Without replacement → dependent</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Total prob ⭐⭐</h4>
-      <ul><li>P(A) = Σ P(Eᵢ)P(A|Eᵢ)</li><li>Weighted sum over routes</li><li>Draw a tree diagram</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Bayes ⭐⭐</h4>
-      <ul><li>P(Eᵢ|A) = P(Eᵢ)P(A|Eᵢ)/Σ(...)</li><li>Denominator = total probability</li><li>'A happened — which E?'</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Distribution ⭐</h4>
-      <ul><li>Check ΣP(xᵢ) = 1</li><li>Mean E(X) = Σ xᵢP(xᵢ)</li><li>Variance DELETED</li></ul>
-    </div>
-    </div>
-  </div>
-</section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> P(A) = 0.5, P(B) = 0.4, P(A ∩ B) = 0.2. P(A|B) nikalo.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>P(A|B) = P(A ∩ B)/P(B) = 0.2/0.4 = <b>1/2</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> A aur B independent hain, P(A) = 1/2, P(B) = 1/3. P(A ∩ B)?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Independent → P(A)·P(B) = (1/2)(1/3) = <b>1/6</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> P(A ∩ B) = 0 ka matlab A, B independent hain?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — wo <b>mutually exclusive</b> hain! Independent ke liye P(A∩B) = P(A)P(B) chahiye. Alag concepts!</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> Die pe even aane ki condition hai. 6 aane ki probability?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Sample space ab {2, 4, 6} → P(6 | even) = <b>1/3</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> Bag I: 3 red 2 black; Bag II: 2 red 3 black; bag randomly. P(red)?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>(1/2)(3/5) + (1/2)(2/5) = 3/10 + 2/10 = <b>1/2</b> (total probability).</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> Total probability theorem ka formula bolo.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>P(A) = <b>Σ P(Eᵢ)·P(A|Eᵢ)</b> — partitions E₁...Eₙ pe.</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> Bayes' theorem kab use hota hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Jab event A <b>ho chuka ho</b> aur poochna ho ki wo <b>kis wajah/route (Eᵢ)</b> se aaya — reverse probability.</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> Bayes formula ke denominator me kya hota hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Total probability</b> — Σⱼ P(Eⱼ)P(A|Eⱼ). Pehle yehi nikalo!</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> Distribution me P(X=0)=0.2, P(X=1)=0.5, P(X=2)=0.3. Valid hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Haan</b> — sab ≥ 0 aur sum = 0.2 + 0.5 + 0.3 = <b>1</b> ✓.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> Upar wale X ka mean nikalo.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>E(X) = 0(0.2) + 1(0.5) + 2(0.3) = <b>1.1</b>.</p></details></div>
-  </div>
-</section>
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="tip-box">P(A|B)=P(A∩B)/P(B), sirf P(B)&gt;0 par.</p><p class="tip-box">Bar ke baad wali event condition hai.</p><p class="tip-box">P(A′|B)=1−P(A|B); B fixed rakho.</p><p class="tip-box">P(A∩B)=P(A)P(B|A), P(A)&gt;0 par.</p><p class="tip-box">Independence: P(A∩B)=P(A)P(B).</p><p class="tip-box">Positive-probability mutually exclusive events dependent hain.</p><p class="tip-box">Total probability mein disjoint, exhaustive routes aur unke weights lo.</p><p class="tip-box">Bayes: wanted joint probability ko total observation probability se divide karo.</p></div><div class="lang-block" data-lang="hi" hidden=""><p class="tip-box">P(A|B)=P(A∩B)/P(B), केवल P(B)&gt;0 पर।</p><p class="tip-box">रेखा के बाद वाली घटना प्रतिबंध है।</p><p class="tip-box">P(A′|B)=1−P(A|B); B स्थिर रखें।</p><p class="tip-box">P(A∩B)=P(A)P(B|A), P(A)&gt;0 पर।</p><p class="tip-box">स्वतंत्रता: P(A∩B)=P(A)P(B)।</p><p class="tip-box">धनात्मक-प्रायिकता परस्पर अपवर्जी घटनाएं आश्रित हैं।</p><p class="tip-box">संपूर्ण प्रायिकता में असंयुक्त, निःशेष मार्ग और उनके भार लें।</p><p class="tip-box">बेज: वांछित संयुक्त प्रायिकता को प्रेक्षण की संपूर्ण प्रायिकता से भाग दें।</p></div><div class="lang-block" data-lang="en" hidden=""><p class="tip-box">P(A|B)=P(A∩B)/P(B), only when P(B)&gt;0.</p><p class="tip-box">The event after the bar is the condition.</p><p class="tip-box">P(A′|B)=1−P(A|B); keep B fixed.</p><p class="tip-box">P(A∩B)=P(A)P(B|A), when P(A)&gt;0.</p><p class="tip-box">Independence: P(A∩B)=P(A)P(B).</p><p class="tip-box">Positive-probability mutually exclusive events are dependent.</p><p class="tip-box">Total probability uses disjoint, exhaustive routes and their weights.</p><p class="tip-box">Bayes: wanted joint probability divided by total observation probability.</p></div></section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> Fair die ka result even hai. 3 se bada hone ka chance?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: B={2,4,6} par condition lagao.</p><p>Steps: Bache equally likely teen outcomes mein favourable 4,6 hain.</p><p>Answer/check: 2/3. Conditioned universe lo, saare six outcomes nahi.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Fair die mein P(6|even), P(even|6) compare karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Bar ke baad event denominator deti hai.</p><p>Steps: Pehli duniya {2,4,6}, doosri {6} hai.</p><p>Answer/check: 1/3 aur 1. Conditions reverse karne se usually answer badalta hai.</p></details></div><div class="jee-q"><span class="qn">Q3</span> P(B)=0 ho to kya P(A|B) automatically 0 hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Elementary definition ka denominator dekho.</p><p>Steps: P(A∩B)/P(B) mein zero se divide hoga.</p><p>Answer/check: Nahi. Yeh elementary conditional probability undefined hai.</p></details></div><div class="jee-q"><span class="qn">Q4</span> P(A|B)=2/3 aur P(B)&gt;0. P(A′|B) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Same condition ke andar complement lo.</p><p>Steps: 1−2/3=1/3.</p><p>Answer/check: 1/3. Condition B hi hai, B′ nahi.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Bag mein 3 red,2 blue. Without replacement do uniform draws mein both red ka chance?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Pehle red ke baad bag update karo.</p><p>Steps: (3/5)(2/4)=6/20.</p><p>Answer/check: 3/10. Replacement aur independent draws mein 9/25 hota.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Independent events mein P(A)=1/2, P(B)=1/3. Intersection aur union?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Product lo, phir addition se overlap ghatao.</p><p>Steps: Intersection=(1/2)(1/3)=1/6; union=1/2+1/3−1/6.</p><p>Answer/check: Intersection 1/6; union 2/3. Overlap zero nahi.</p></details></div><div class="jee-q"><span class="qn">Q7</span> Fair die mein odd aur even independent hain?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Intersection probability ko product se compare karo.</p><p>Steps: Intersection empty hai, probability 0; product=(1/2)(1/2)=1/4.</p><p>Answer/check: Nahi. Mutually exclusive aur dependent hain.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Bag I chance 1/3, Bag II chance 2/3. Red chances 3/5,1/5 respectively. P(red)?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Weighted disjoint routes jodo.</p><p>Steps: (1/3)(3/5)+(2/3)(1/5)=1/5+2/15.</p><p>Answer/check: 1/3. Unweighted average galat hoga.</p></details></div><div class="jee-q"><span class="qn">Q9</span> Pichhle model mein P(Bag I|red)?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Wanted joint probability ko total P(red) se divide karo.</p><p>Steps: P(Bag I and red)=1/5; P(red)=1/3.</p><p>Answer/check: (1/5)/(1/3)=3/5. Bag II posterior 2/5; sum 1 hai.</p></details></div><div class="jee-q"><span class="qn">Q10</span> P(A)=1/2, P(B)=2/5, P(A∩B)=1/5. Independent hain? P(A|B)?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Independence kehne se pehle product check karo.</p><p>Steps: (1/2)(2/5)=1/5 intersection ke equal; conditional=(1/5)/(2/5).</p><p>Answer/check: Independent; P(A|B)=1/2=P(A). Joint/complement ke chaaron cells nonnegative hain.</p></details></div><div class="tip-box">Yeh selected conditional-probability foundations aur das original questions hain, poori textbook exercise solutions ya poori JEE preparation nahi. Lambe multi-stage word problems, full mutual-independence proofs, random-variable distributions, expectation, variance aur binomial models shamil nahi. Deleted topics ya pakke exam marks ka daava nahi hai.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh207.pdf">Textbook Ch 13</a></p></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> निष्पक्ष पासे का परिणाम सम है। 3 से बड़ा होने की प्रायिकता?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: B={2,4,6} पर प्रतिबंध लगाएं।</p><p>चरण: शेष समसंभावित तीन परिणामों में अनुकूल 4,6 हैं।</p><p>उत्तर/जांच: 2/3। प्रतिबंधित समष्टि लें, सभी छह परिणाम नहीं।</p></details></div><div class="jee-q"><span class="qn">Q2</span> निष्पक्ष पासे में P(6|सम), P(सम|6) की तुलना करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: रेखा के बाद घटना हर देती है।</p><p>चरण: पहली समष्टि {2,4,6}, दूसरी {6} है।</p><p>उत्तर/जांच: 1/3 और 1। प्रतिबंध उलटने से सामान्यतः उत्तर बदलता है।</p></details></div><div class="jee-q"><span class="qn">Q3</span> P(B)=0 हो तो क्या P(A|B) अपने-आप 0 है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: प्राथमिक परिभाषा का हर देखें।</p><p>चरण: P(A∩B)/P(B) में शून्य से भाग होगा।</p><p>उत्तर/जांच: नहीं। यह प्राथमिक सप्रतिबंध प्रायिकता अपरिभाषित है।</p></details></div><div class="jee-q"><span class="qn">Q4</span> P(A|B)=2/3 और P(B)&gt;0। P(A′|B) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: उसी प्रतिबंध के भीतर पूरक लें।</p><p>चरण: 1−2/3=1/3।</p><p>उत्तर/जांच: 1/3। प्रतिबंध B ही है, B′ नहीं।</p></details></div><div class="jee-q"><span class="qn">Q5</span> थैले में 3 लाल,2 नीली। बिना वापस रखे दो एकसमान यादृच्छिक निकासों में दोनों लाल की प्रायिकता?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: पहले लाल के बाद थैला अद्यतन करें।</p><p>चरण: (3/5)(2/4)=6/20।</p><p>उत्तर/जांच: 3/10। वापस रखने और स्वतंत्र निकासों में 9/25 होता।</p></details></div><div class="jee-q"><span class="qn">Q6</span> स्वतंत्र घटनाओं में P(A)=1/2, P(B)=1/3। प्रतिच्छेद और संघ?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: गुणनफल लें, फिर योग से उभयनिष्ठ भाग घटाएं।</p><p>चरण: प्रतिच्छेद=(1/2)(1/3)=1/6; संघ=1/2+1/3−1/6।</p><p>उत्तर/जांच: प्रतिच्छेद 1/6; संघ 2/3। उभयनिष्ठ भाग शून्य नहीं।</p></details></div><div class="jee-q"><span class="qn">Q7</span> निष्पक्ष पासे में विषम और सम स्वतंत्र हैं?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: प्रतिच्छेद प्रायिकता की गुणनफल से तुलना करें।</p><p>चरण: प्रतिच्छेद रिक्त, प्रायिकता 0; गुणनफल=(1/2)(1/2)=1/4।</p><p>उत्तर/जांच: नहीं। परस्पर अपवर्जी और आश्रित हैं।</p></details></div><div class="jee-q"><span class="qn">Q8</span> थैला I प्रायिकता 1/3, थैला II प्रायिकता 2/3। लाल प्रायिकताएं क्रमशः 3/5,1/5। P(लाल)?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: भारित असंयुक्त मार्ग जोड़ें।</p><p>चरण: (1/3)(3/5)+(2/3)(1/5)=1/5+2/15।</p><p>उत्तर/जांच: 1/3। बिना भार का औसत गलत होगा।</p></details></div><div class="jee-q"><span class="qn">Q9</span> पिछले मॉडल में P(थैला I|लाल)?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: वांछित संयुक्त प्रायिकता को संपूर्ण P(लाल) से भाग दें।</p><p>चरण: P(थैला I और लाल)=1/5; P(लाल)=1/3।</p><p>उत्तर/जांच: (1/5)/(1/3)=3/5। थैला II की पश्च प्रायिकता 2/5; योग 1 है।</p></details></div><div class="jee-q"><span class="qn">Q10</span> P(A)=1/2, P(B)=2/5, P(A∩B)=1/5। स्वतंत्र हैं? P(A|B)?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: स्वतंत्रता कहने से पहले गुणनफल जांचें।</p><p>चरण: (1/2)(2/5)=1/5 प्रतिच्छेद के बराबर; सप्रतिबंध=(1/5)/(2/5)।</p><p>उत्तर/जांच: स्वतंत्र; P(A|B)=1/2=P(A)। संयुक्त/पूरक के चारों खाने अऋणात्मक हैं।</p></details></div><div class="tip-box">ये चुनी सप्रतिबंध-प्रायिकता बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली के हल या पूरी JEE तैयारी नहीं। लंबे बहुचरणीय शब्द प्रश्न, पूर्ण पारस्परिक-स्वतंत्रता प्रमाण, यादृच्छिक-चर बंटन, प्रत्याशा, प्रसरण और द्विपद मॉडल शामिल नहीं। हटे विषयों या निश्चित परीक्षा अंकों का दावा नहीं है।</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh207.pdf">Textbook Ch 13</a></p></div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> A fair die is even. What is the chance it exceeds 3?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Condition on B={2,4,6}.</p><p>Steps: The favourable remaining outcomes are 4,6 out of three equally likely outcomes.</p><p>Answer/check: 2/3. Use the conditioned universe, not all six outcomes.</p></details></div><div class="jee-q"><span class="qn">Q2</span> For a fair die compare P(6|even) and P(even|6).<details class="jee-sol"><summary>Show answer</summary><p>Rule: The event after the bar supplies the denominator.</p><p>Steps: The first universe is {2,4,6}; the second is {6}.</p><p>Answer/check: 1/3 and 1. Reversing conditions usually changes the answer.</p></details></div><div class="jee-q"><span class="qn">Q3</span> If P(B)=0, is P(A|B) automatically 0?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Check the denominator in the elementary definition.</p><p>Steps: P(A∩B)/P(B) would divide by zero.</p><p>Answer/check: No. This elementary conditional probability is undefined.</p></details></div><div class="jee-q"><span class="qn">Q4</span> P(A|B)=2/3 with P(B)&gt;0. Find P(A′|B).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Take the complement inside the same condition.</p><p>Steps: 1−2/3=1/3.</p><p>Answer/check: 1/3. The condition remains B, not B′.</p></details></div><div class="jee-q"><span class="qn">Q5</span> A bag has 3 red and 2 blue balls. Draw twice uniformly without replacement. Find P(both red).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Update the bag after the first red.</p><p>Steps: (3/5)(2/4)=6/20.</p><p>Answer/check: 3/10. With replacement and independent draws it would be 9/25.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Independent events have P(A)=1/2, P(B)=1/3. Find P(A∩B) and P(A∪B).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use the product, then addition minus overlap.</p><p>Steps: Intersection=(1/2)(1/3)=1/6; union=1/2+1/3−1/6.</p><p>Answer/check: Intersection 1/6; union 2/3. The overlap is not zero.</p></details></div><div class="jee-q"><span class="qn">Q7</span> For a fair die, are odd and even independent?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Compare the intersection probability to the product.</p><p>Steps: Intersection is empty, so probability 0; product=(1/2)(1/2)=1/4.</p><p>Answer/check: No. They are mutually exclusive and dependent.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Choose Bag I with chance 1/3 and Bag II with 2/3. Red chances are 3/5 and 1/5 respectively. Find P(red).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Add the weighted disjoint routes.</p><p>Steps: (1/3)(3/5)+(2/3)(1/5)=1/5+2/15.</p><p>Answer/check: 1/3. An unweighted average would be wrong.</p></details></div><div class="jee-q"><span class="qn">Q9</span> For the previous model, find P(Bag I|red).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Divide the wanted joint probability by total P(red).</p><p>Steps: P(Bag I and red)=1/5; P(red)=1/3.</p><p>Answer/check: (1/5)/(1/3)=3/5. Bag II posterior is 2/5; they sum to 1.</p></details></div><div class="jee-q"><span class="qn">Q10</span> P(A)=1/2, P(B)=2/5, P(A∩B)=1/5. Are A,B independent? Find P(A|B).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Check the product before claiming independence.</p><p>Steps: (1/2)(2/5)=1/5 equals the intersection; conditional=(1/5)/(2/5).</p><p>Answer/check: Independent; P(A|B)=1/2=P(A). All four joint/complement cells are nonnegative.</p></details></div><div class="tip-box">These are selected conditional-probability foundations and ten original questions, not complete textbook exercise solutions or complete JEE preparation. Long multi-stage word problems, full mutual-independence proofs, random-variable distributions, expectation, variance and binomial models are not covered here. No deleted-topic or guaranteed exam-mark claim is made.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh207.pdf">Textbook Ch 13</a></p></div></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Class 12 Mathematics complete.</b> Revision ke liye short notes aur practice dohrao.</div>
+<div class="tip-box"><b>Class 12 Mathematics: selected foundations.</b> Yeh poore course ya saari exercises ka replacement nahi. Revision ke liye short notes aur practice dohrao.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
