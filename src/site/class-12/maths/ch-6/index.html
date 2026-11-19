@@ -1,352 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 6 — Application of Derivatives | Class 12 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 12 Maths Chapter 6: Application of Derivatives — long + short notes in Hindi, English, Hinglish. Rate of change, increasing and decreasing functions, maxima and minima, word problems.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 12 Maths Chapter 6: Application of Derivatives — long + short notes in Hindi, English, Hinglish. Rate of change, increasing and decreasing functions, maxima and minima, word problems." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:1rem;line-height:1.75;padding:.75rem;background:#f5f7fb;border:1px solid #d6e1f1;border-radius:4px} #practice .jee-q{overflow-wrap:anywhere} #practice summary{font-size:1rem} #notes .note-sec p{line-height:1.8}</style><style>.sign-example{width:100%;border-collapse:collapse;font-size:1rem;margin:1rem 0}.sign-example td,.sign-example th{border:1px solid #d6e1f1;padding:.45rem;text-align:center}.sign-example caption{font-size:1rem;color:#1d437e;margin:.5rem 0} #notes p,#short-notes p{overflow-wrap:anywhere}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 6</p>
-  <h1>Application of Derivatives</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">अवकलजों के अनुप्रयोग</p>
-  <p style="color:var(--muted);margin-top:6px">Rate of change, increasing-decreasing aur maxima-minima ke word problems</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video available</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 6</p>
+<h1>Application of Derivatives</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">अवकलजों के अनुप्रयोग</p>
+<p style="color:var(--muted);margin-top:6px">Rate of change, increasing-decreasing aur maxima-minima ke word problems</p>
+<div class="ch-tags">
+<span class="pill weight-high">JEE Weightage: HIGH</span>
+<span class="pill">Video available</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Application of Derivatives - Class 12 Maths Short - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Application of Derivatives - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/_4Z-NSkthzE" title="Application of Derivatives - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/_4Z-NSkthzE" title="Application of Derivatives - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/_4Z-NSkthzE" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Application of Derivatives - Class 12 Maths Short - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Application of Derivatives - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/_4Z-NSkthzE" title="Application of Derivatives - Class 12 Maths Short"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/_4Z-NSkthzE" title="Application of Derivatives - Class 12 Maths Short"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/_4Z-NSkthzE" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Applications of Derivatives - Class 12 Mathematics Short 2 - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Applications of Derivatives - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player2" class="yt-embed" src="https://www.youtube.com/embed/bTvmhoTf5K8" title="Applications of Derivatives - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player2" class="yt-embed" src="https://www.youtube.com/embed/bTvmhoTf5K8" title="Applications of Derivatives - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/bTvmhoTf5K8" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Applications of Derivatives - Class 12 Mathematics Short 2 - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Applications of Derivatives - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/bTvmhoTf5K8" title="Applications of Derivatives - Class 12 Mathematics Short 2"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/bTvmhoTf5K8" title="Applications of Derivatives - Class 12 Mathematics Short 2"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/bTvmhoTf5K8" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Application of Derivatives 5 animated scenes mein - rate of change balloon, increasing/decreasing sign chart, maxima-minima tests, word-problem optimizer, aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Application of Derivatives 5 animated scenes mein - rate of change balloon, increasing/decreasing sign chart, maxima-minima tests, word-problem optimizer, aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Selected foundations" data-hi="चुनी हुई बुनियादें" data-hinglish="Selected foundations">Selected foundations</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Rate of Change — Derivative Ka Asli Matlab ⭐</h3>
-    <ul>
-<li><b>Core idea:</b> dy/dx = <b>y ki change rate x ke respect me</b>. Physics me: velocity = dx/dt, acceleration = dv/dt.</li>
-<li><b>Rate of change problems ⭐:</b> (1) Jo quantity change ho rahi hai uska relation likho (jaise circle ka area A = πr²). (2) Dono taraf TIME ke respect me differentiate karo: dA/dt = 2πr·dr/dt. (3) Given values daal ke unknown rate nikalo.</li>
-<li>Example: balloon ka radius 2 cm/s se badh raha hai, r = 10 pe dA/dt = 2π(10)(2) = <b>40π cm²/s</b>.</li>
-<li><b>Dhyaan:</b> rate NEGATIVE bhi ho sakti hai — matlab quantity GHAT rahi hai (leak, cooling, shrinking).</li>
-<li>Units hamesha likho — cm/s, m²/s — examiner marks deta hai units pe bhi!</li>
-</ul>
-<p class="small-note">💡 Feel: derivative = speedometer. Position batata hai function, SPEED batata hai derivative!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Increasing aur Decreasing Functions ⭐⭐</h3>
-    <ul>
-<li><b>Test ⭐⭐:</b> interval me <b>f′(x) &gt; 0 → strictly increasing</b>; <b>f′(x) &lt; 0 → strictly decreasing</b>. Slope positive = graph upar ja raha; negative = neeche.</li>
-<li><b>Method:</b> (1) f′(x) nikalo. (2) f′(x) = 0 ke points (critical points) se number line todo. (3) Har interval me f′(x) ka SIGN check karo.</li>
-<li>Example: f(x) = x² − 4x + 3 → f′(x) = 2x − 4. x &lt; 2: f′ &lt; 0 (decreasing); x &gt; 2: f′ &gt; 0 (increasing).</li>
-<li><b>Quadratic yaad rakhne ka trick:</b> upward parabola vertex ke PEHLE decreasing, BAAD me increasing.</li>
-<li>Log/trig wale functions me bhi same sign-analysis chalta hai — bas f′ sahi nikalna aana chahiye!</li>
-</ul>
-<p class="small-note">🎯 Sign chart banao: critical points pe vertical lines, har zone me + ya −. Yehi 4-marker ka framework hai.</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Maxima aur Minima — Peaks aur Valleys ⭐⭐</h3>
-    <ul>
-<li><b>Critical points:</b> jahan f′(x) = 0 ya f′(x) exist NAHI karta — yahi maxima/minima ke candidates hain.</li>
-<li><b>First derivative test:</b> f′ ka sign + se − ho jaaye → <b>local MAXIMUM</b>; − se + ho jaaye → <b>local MINIMUM</b>. Sign change nahi hua (point of inflection type) → na max na min.</li>
-<li><b>Second derivative test ⭐⭐:</b> critical point c pe: f″(c) &lt; 0 → <b>local max</b>; f″(c) &gt; 0 → <b>local min</b>; f″(c) = 0 → test FAIL, first derivative test lagao.</li>
-<li><b>Local vs Absolute:</b> local = apne neighbourhood ka best; absolute (global) = POORE domain/interval ka best. Closed interval [a, b] me absolute max/min ke liye critical points AUR endpoints (a, b) dono check karo! ⭐</li>
-<li>Turning point = wo point jahan graph direction badalta hai (max ya min).</li>
-</ul>
-<p class="small-note">💡 Pahad socho: top pe slope 0 (max), ghati ke bottom pe slope 0 (min). Second derivative batata hai upar-muh (min) ya neeche-muh (max) katora hai.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Maxima/Minima Ke Word Problems ⭐⭐</h3>
-    <ul>
-<li><b>Strategy:</b> (1) Jo maximize/minimize karna hai usko ek variable ke function me likho (constraint use karke). (2) f′ = 0 solve karo. (3) Second derivative se confirm karo max ya min. (4) Answer units ke saath!</li>
-<li><b>Classic 1 ⭐:</b> Fixed perimeter me MAXIMUM area ka rectangle = <b>SQUARE</b> hamesha!</li>
-<li><b>Classic 2:</b> Fixed sum (x + y = k) me product xy maximum jab <b>x = y = k/2</b>.</li>
-<li><b>Classic 3:</b> Minimum surface area / maximum volume wale box-cylinder problems — constraint se h eliminate karo, phir differentiate.</li>
-<li><b>Classic 4:</b> Number ka square minimum / two parts ka product maximum type NCERT exercises — same pattern.</li>
-<li>Ye problems 5-markers hain — steps likhne pe marks milte hain, sirf answer pe nahi!</li>
-</ul>
-<p class="small-note">🎯 80% word problems me ek hi move kaam aata hai: constraint se ek variable hatao → single-variable calculus.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Syllabus Note aur Exam Weightage</h3>
-    <ul>
-<li><b>Rationalized syllabus ⭐:</b> <b>tangents &amp; normals</b> (equations nikalna) aur <b>approximations (differentials se)</b> NCERT/CBSE se <b>DELETE</b> ho chuke hain — ab chapter ke 3 pillars: rate of change, increasing/decreasing, maxima/minima.</li>
-<li><b>Weightage:</b> Calculus unit (Ch 5-9) boards me ~35 marks — AOD se pakka 5-marker word problem aata hai.</li>
-<li><b>Common mistakes:</b> second derivative test bhool jaana; closed interval me endpoints check na karna; constraint eliminate kiye bina differentiate kar dena.</li>
-<li>JEE me isi chapter se tangent-normal, monotonicity, maxima-minima sab aate hain — concepts yahan strong karo to aage kaam aayenge.</li>
-<li>Graph sochna sikh lo: f′ ka sign chart dimag me ban jaaye to 90% questions visual ho jaate hain.</li>
-</ul>
-<p class="small-note">💡 AOD = derivative ki "job interview" — theory chhoti, applications badi. Word problems ki practice hi asli tayari hai.</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ परिवर्तन दर — अवकलज का असली अर्थ ⭐</h3>
-    <ul>
-<li><b>मूल विचार:</b> dy/dx = <b>x के सापेक्ष y की परिवर्तन दर</b>। भौतिकी में: वेग = dx/dt, त्वरण = dv/dt।</li>
-<li><b>दर वाले प्रश्न ⭐:</b> (1) राशियों का संबंध लिखो (A = πr²)। (2) दोनों ओर <b>समय</b> के सापेक्ष अवकलन: dA/dt = 2πr·dr/dt। (3) मान रखकर अज्ञात दर निकालो।</li>
-<li>उदाहरण: त्रिज्या 2 cm/s से बढ़ रही है, r = 10 पर dA/dt = 2π(10)(2) = <b>40π cm²/s</b>।</li>
-<li><b>ध्यान दो:</b> दर ऋणात्मक भी हो सकती है — राशि <b>घट</b> रही है।</li>
-<li>इकाइयां अवश्य लिखो — cm/s, m²/s!</li>
-</ul>
-<p class="small-note">💡 अवकलज = स्पीडोमीटर। स्थिति फलन बताता है, गति अवकलज!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ वर्धमान और ह्रासमान फलन ⭐⭐</h3>
-    <ul>
-<li><b>परीक्षण ⭐⭐:</b> अंतराल में <b>f′(x) &gt; 0 → वर्धमान</b>; <b>f′(x) &lt; 0 → ह्रासमान</b>।</li>
-<li><b>विधि:</b> (1) f′(x) निकालो। (2) f′(x) = 0 के बिंदुओं से संख्या रेखा बांटो। (3) प्रत्येक अंतराल में f′ का <b>चिह्न</b> जांचो।</li>
-<li>उदाहरण: f(x) = x² − 4x + 3 → f′(x) = 2x − 4। x &lt; 2: ह्रासमान; x &gt; 2: वर्धमान।</li>
-<li><b>द्विघात ट्रिक:</b> ऊपर-मुंह परवलय शीर्ष से पहले ह्रासमान, बाद में वर्धमान।</li>
-</ul>
-<p class="small-note">🎯 चिह्न चार्ट बनाओ — यही 4-अंकीय प्रश्न का ढांचा है।</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ उच्चिष्ठ और निम्निष्ठ — चोटियां और घाटियां ⭐⭐</h3>
-    <ul>
-<li><b>क्रांतिक बिंदु:</b> जहां f′(x) = 0 या f′(x) मौजूद नहीं — यही उच्चिष्ठ/निम्निष्ठ के उम्मीदवार।</li>
-<li><b>प्रथम अवकलज परीक्षण:</b> f′ का चिह्न + से − → <b>स्थानीय उच्चिष्ठ</b>; − से + → <b>स्थानीय निम्निष्ठ</b>।</li>
-<li><b>द्वितीय अवकलज परीक्षण ⭐⭐:</b> क्रांतिक बिंदु c पर: f″(c) &lt; 0 → <b>उच्चिष्ठ</b>; f″(c) &gt; 0 → <b>निम्निष्ठ</b>; f″(c) = 0 → परीक्षण विफल!</li>
-<li><b>स्थानीय बनाम निरपेक्ष:</b> बंद अंतराल [a, b] में निरपेक्ष उच्च/निम्न के लिए क्रांतिक बिंदु <b>और</b> सीमा बिंदु (a, b) दोनों जांचो! ⭐</li>
-</ul>
-<p class="small-note">💡 पहाड़ सोचो: चोटी पर ढलान 0 (उच्चिष्ठ), घाटी में 0 (निम्निष्ठ)।</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ उच्चिष्ठ/निम्निष्ठ के शाब्दिक प्रश्न ⭐⭐</h3>
-    <ul>
-<li><b>रणनीति:</b> (1) अधिकतम/न्यूनतम राशि को एक चर के फलन में लिखो (बंधन से)। (2) f′ = 0 हल करो। (3) द्वितीय अवकलज से पुष्टि। (4) इकाइयों सहित उत्तर!</li>
-<li><b>क्लासिक 1 ⭐:</b> निश्चित परिमाप में अधिकतम क्षेत्रफल वाला आयत = <b>वर्ग</b>!</li>
-<li><b>क्लासिक 2:</b> निश्चित योग (x + y = k) में गुणनफल xy अधिकतम जब <b>x = y = k/2</b>।</li>
-<li><b>क्लासिक 3:</b> न्यूनतम पृष्ठ-क्षेत्रफल / अधिकतम आयतन वाले बक्से-बेलन प्रश्न — बंधन से h हटाओ, फिर अवकलन।</li>
-<li>ये 5-अंकीय हैं — चरणों पर अंक मिलते हैं!</li>
-</ul>
-<p class="small-note">🎯 80% प्रश्नों में एक ही चाल: बंधन से एक चर हटाओ → एक-चर कलन।</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ पाठ्यक्रम टिप्पणी और परीक्षा महत्व</h3>
-    <ul>
-<li><b>युक्तिसंगत पाठ्यक्रम ⭐:</b> <b>स्पर्शरेखाएं और अभिलंब</b> तथा <b>सन्निकटन (differentials)</b> NCERT/CBSE से <b>हटाए गए</b> — अब 3 स्तंभ: परिवर्तन दर, वर्धमान/ह्रासमान, उच्चिष्ठ/निम्निष्ठ।</li>
-<li><b>महत्व:</b> कलन इकाई (अध्याय 5-9) बोर्ड में ~35 अंक — AOD से 5-अंकीय शाब्दिक प्रश्न पक्का।</li>
-<li><b>सामान्य गलतियां:</b> द्वितीय अवकलज परीक्षण भूलना; सीमा बिंदु न जांचना; बंधन हटाए बिना अवकलन।</li>
-<li>JEE में स्पर्शरेखा-अभिलंब, एकदिष्टता, उच्च-निम्न सब आते हैं — अवधारणाएं यहां मजबूत करो।</li>
-</ul>
-<p class="small-note">💡 AOD = अवकलज की "नौकरी की इंटरव्यू" — शाब्दिक प्रश्नों का अभ्यास ही असली तैयारी।</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Rate of Change — What a Derivative Really Means ⭐</h3>
-    <ul>
-<li><b>Core idea:</b> dy/dx = <b>the rate of change of y with respect to x</b>. In physics: velocity = dx/dt, acceleration = dv/dt.</li>
-<li><b>Rate problems ⭐:</b> (1) Write the relation between the changing quantities (like a circle's area A = πr²). (2) Differentiate both sides with respect to TIME: dA/dt = 2πr·dr/dt. (3) Plug in the given values and solve for the unknown rate.</li>
-<li>Example: a balloon's radius grows at 2 cm/s; at r = 10, dA/dt = 2π(10)(2) = <b>40π cm²/s</b>.</li>
-<li><b>Note:</b> a rate can be NEGATIVE — it means the quantity is DECREASING (leak, cooling, shrinking).</li>
-<li>Always write units — cm/s, m²/s — examiners award marks for units too!</li>
-</ul>
-<p class="small-note">💡 Feel: the derivative is a speedometer. The function tells position, the derivative tells SPEED!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Increasing and Decreasing Functions ⭐⭐</h3>
-    <ul>
-<li><b>Test ⭐⭐:</b> on an interval, <b>f′(x) &gt; 0 → strictly increasing</b>; <b>f′(x) &lt; 0 → strictly decreasing</b>. Positive slope = graph climbing; negative = falling.</li>
-<li><b>Method:</b> (1) Find f′(x). (2) Split the number line at the critical points (where f′(x) = 0). (3) Check the SIGN of f′(x) in each interval.</li>
-<li>Example: f(x) = x² − 4x + 3 → f′(x) = 2x − 4. x &lt; 2: f′ &lt; 0 (decreasing); x &gt; 2: f′ &gt; 0 (increasing).</li>
-<li><b>Quadratic trick:</b> an upward parabola is decreasing BEFORE the vertex, increasing AFTER it.</li>
-<li>Log/trig functions follow the same sign analysis — you just need f′ computed correctly!</li>
-</ul>
-<p class="small-note">🎯 Build a sign chart: vertical lines at critical points, + or − in each zone. This is the 4-marker framework.</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Maxima and Minima — Peaks and Valleys ⭐⭐</h3>
-    <ul>
-<li><b>Critical points:</b> where f′(x) = 0 or f′(x) does NOT exist — these are the candidates for maxima/minima.</li>
-<li><b>First derivative test:</b> f′ changes sign + to − → <b>local MAXIMUM</b>; − to + → <b>local MINIMUM</b>. No sign change → neither (inflection-type point).</li>
-<li><b>Second derivative test ⭐⭐:</b> at a critical point c: f″(c) &lt; 0 → <b>local max</b>; f″(c) &gt; 0 → <b>local min</b>; f″(c) = 0 → test FAILS, use the first derivative test.</li>
-<li><b>Local vs Absolute:</b> local = best in its neighbourhood; absolute (global) = best over the WHOLE domain/interval. On a closed interval [a, b] check critical points AND the endpoints (a, b) for absolute max/min! ⭐</li>
-<li>Turning point = where the graph changes direction (a max or a min).</li>
-</ul>
-<p class="small-note">💡 Picture a mountain: at the top the slope is 0 (max), at the valley bottom it is 0 (min). The second derivative tells whether the bowl faces up (min) or down (max).</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Maxima/Minima Word Problems ⭐⭐</h3>
-    <ul>
-<li><b>Strategy:</b> (1) Write the quantity to maximize/minimize as a function of ONE variable (use the constraint). (2) Solve f′ = 0. (3) Confirm max or min with the second derivative. (4) Answer with units!</li>
-<li><b>Classic 1 ⭐:</b> the rectangle of MAXIMUM area for a fixed perimeter is always a <b>SQUARE</b>!</li>
-<li><b>Classic 2:</b> for a fixed sum (x + y = k), the product xy is maximum when <b>x = y = k/2</b>.</li>
-<li><b>Classic 3:</b> minimum surface area / maximum volume box-and-cylinder problems — eliminate h using the constraint, then differentiate.</li>
-<li><b>Classic 4:</b> NCERT exercises on minimum squares / maximum products of two parts — same pattern.</li>
-<li>These are 5-markers — marks come for the STEPS, not just the final answer!</li>
-</ul>
-<p class="small-note">🎯 One move solves 80% of word problems: eliminate a variable using the constraint → single-variable calculus.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Syllabus Note and Exam Weightage</h3>
-    <ul>
-<li><b>Rationalized syllabus ⭐:</b> <b>tangents &amp; normals</b> (finding their equations) and <b>approximations (via differentials)</b> are <b>DELETED</b> from NCERT/CBSE — the chapter now has 3 pillars: rate of change, increasing/decreasing, maxima/minima.</li>
-<li><b>Weightage:</b> the Calculus unit (Ch 5-9) carries ~35 marks in boards — a 5-marker AOD word problem is guaranteed.</li>
-<li><b>Common mistakes:</b> forgetting the second derivative test; not checking endpoints on a closed interval; differentiating without eliminating the constraint.</li>
-<li>For JEE this chapter feeds tangent-normal, monotonicity, and maxima-minima questions — strong concepts here pay off later.</li>
-<li>Learn to picture the graph: once the sign chart of f′ forms in your head, 90% of questions turn visual.</li>
-</ul>
-<p class="small-note">💡 AOD is the derivative's "job interview" — small theory, big applications. Practising word problems is the real preparation.</p>
-  </div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Rate ka variable, sign aur unit</h3><p>dy/dx, x ke respect mein y ka instantaneous rate hai. Dono time par depend karein to chain rule dy/dt=(dy/dx)(dx/dt) deta hai. Numbers rakhne se pehle changing variable batao.</p><p>Growing circle mein A=πr², isliye dA/dt=2πr dr/dt. r=10 cm, dr/dt=2 cm/s par dA/dt=40π cm²/s. Yeh circle area hai, sphere surface area nahi.</p><p>Negative rate us quantity ka decrease batata hai. One-dimensional motion mein velocity ds/dt aur speed |ds/dt| hai. Velocity −2 m/s ho to speed 2 m/s hai; dono same nahi.</p></div><div class="note-sec"><h3>2. Increasing/decreasing ke liye interval</h3><p>Jis interval mein f differentiable hai, wahan har jagah f′&gt;0 ho to strictly increasing, f′&lt;0 ho to strictly decreasing. Yeh sufficient tests hain, har single point par necessary nahi: x³ strictly increasing hai, phir bhi 0 par derivative zero hai.</p><p>Pehle domain nikalo. Derivative zeros, undefined derivative aur domain boundaries par split karo. Har bache interval mein sign check karo. Missing domain point ke paar interval mat jodo.</p><p>f(x)=x²−4x+3 ka f′(x)=2x−4. (−∞,2) par negative, 2 par zero, (2,∞) par positive hai. Neeche hamari sign table hai: 2 se pehle decreasing, baad mein increasing.</p><table class="sign-example"><caption>Hamari sign check: f(x)=x²−4x+3</caption><thead><tr><th scope="col">Interval / point</th><th scope="col">Sign of f′</th><th scope="col">Behaviour</th></tr></thead><tbody><tr><th scope="row">(−∞,2)</th><td>−</td><td>Decreasing</td></tr><tr><th scope="row">2</th><td>0</td><td>Stationary</td></tr><tr><th scope="row">(2,∞)</th><td>+</td><td>Increasing</td></tr></tbody></table></div><div class="note-sec"><h3>3. Stationary point sirf candidate hai</h3><p>Stationary point domain ka woh point hai jahan f′=0. Interior critical points mein undefined derivative wale points bhi aate hain. Akeli condition extremum prove nahi karti. x³ ka 0 par derivative zero hai, par function badhta rehta hai.</p><p>First-derivative test: continuous interior point par nearby sign + se − ho to local maximum; − se + ho to local minimum. Dono taraf f′ strictly positive ho, ya dono taraf strictly negative ho, to extremum nahi.</p><p>Second-derivative test mein stationary c lo aur nearby f twice continuously differentiable ho: f″(c)&gt;0 se local minimum, f″(c)&lt;0 se local maximum. f″(c)=0 ho to test inconclusive hai. x⁴ ka 0 par second derivative 0 hai, phir bhi absolute minimum hai.</p></div><div class="note-sec"><h3>4. Absolute extrema mein endpoints bhi</h3><p>Local matlab nearby domain points se comparison; absolute matlab chosen domain ke har point se comparison. Interval badalne par answer badal sakta hai.</p><p>Closed bounded [a,b] par continuous function absolute maximum aur minimum attain karta hai. a,b aur sab interior critical points ki values compare karo. Simple function mein finite candidates hon to value list banao.</p><p>x²−4x+3 ko [0,5] par lo: candidates 0,2,5 aur values 3,−1,8 hain. Absolute minimum −1 at x=2; absolute maximum 8 at x=5. Open interval mein bound attain hona zaroori nahi: x on (0,1) ka maximum/minimum nahi.</p></div><div class="note-sec"><h3>5. Model optimise karo, sirf derivative nahi</h3><p>Quantity aur feasible domain likho. Constraint se ek variable bachao. Candidates nikalo, required maximum/minimum prove karo, phir dimensions aur units do. Domain ke bahar ka solution reject karo.</p><p>Perimeter 20 cm wale rectangle ki sides x, 10−x cm lo, 0&lt;x&lt;10. Area A=x(10−x)=25−(x−5)²≤25. A′=10−2x se x=5 aur A″=−2 se maximum. 5 cm × 5 cm square ka area 25 cm² hai.</p><p>Completed square hamara independent global check hai, sirf stationary calculation nahi. Yeh selected foundations aur das original questions hain, full textbook exercises ya full JEE preparation nahi. Tangent/normal equations, approximations, harder related rates, multistage models aur lambe optimisation problems abhi cover nahi hain.</p></div></div><div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. दर का चर, चिह्न और इकाई</h3><p>dy/dx, x के सापेक्ष y के परिवर्तन की तात्कालिक दर है। दोनों समय पर निर्भर हों तो शृंखला नियम dy/dt=(dy/dx)(dx/dt) देता है। मान रखने से पहले बदलने वाला चर बताएं।</p><p>बढ़ते वृत्त में A=πr², इसलिए dA/dt=2πr dr/dt। r=10 cm, dr/dt=2 cm/s पर dA/dt=40π cm²/s। यह वृत्त का क्षेत्रफल है, गोले का पृष्ठीय क्षेत्रफल नहीं।</p><p>ऋणात्मक दर उस राशि में कमी बताती है। एकविमीय गति में वेग ds/dt और चाल |ds/dt| है। वेग −2 m/s हो तो चाल 2 m/s है; दोनों एक नहीं।</p></div><div class="note-sec"><h3>2. वर्धमान/ह्रासमान के लिए अंतराल</h3><p>जिस अंतराल में f अवकलनीय है, वहां हर जगह f′&gt;0 हो तो निरंतर बढ़ता, f′&lt;0 हो तो निरंतर घटता है। ये पर्याप्त जांच हैं, हर बिंदु पर आवश्यक नहीं: x³ निरंतर बढ़ता है, फिर भी 0 पर अवकलज शून्य है।</p><p>पहले प्रांत निकालें। अवकलज के शून्यों, अपरिभाषित अवकलज और प्रांत सीमाओं पर बांटें। हर शेष अंतराल में चिह्न जांचें। अनुपस्थित प्रांत बिंदु के पार अंतराल न जोड़ें।</p><p>f(x)=x²−4x+3 का f′(x)=2x−4 है। (−∞,2) पर ऋणात्मक, 2 पर शून्य, (2,∞) पर धनात्मक है। नीचे हमारी चिह्न सारणी है: 2 से पहले घटता, बाद में बढ़ता है।</p><table class="sign-example"><caption>हमारी चिह्न जांच: f(x)=x²−4x+3</caption><thead><tr><th scope="col">अंतराल / बिंदु</th><th scope="col">f′ का चिह्न</th><th scope="col">व्यवहार</th></tr></thead><tbody><tr><th scope="row">(−∞,2)</th><td>−</td><td>घटता</td></tr><tr><th scope="row">2</th><td>0</td><td>स्थिर</td></tr><tr><th scope="row">(2,∞)</th><td>+</td><td>बढ़ता</td></tr></tbody></table></div><div class="note-sec"><h3>3. स्थिर बिंदु केवल संभावित बिंदु है</h3><p>स्थिर बिंदु प्रांत का वह बिंदु है जहां f′=0। आंतरिक क्रांतिक बिंदुओं में अपरिभाषित अवकलज वाले बिंदु भी आते हैं। अकेली शर्त चरम मान सिद्ध नहीं करती। x³ का 0 पर अवकलज शून्य है, पर फलन बढ़ता रहता है।</p><p>प्रथम अवकलज जांच: संतत आंतरिक बिंदु पर पास का चिह्न + से − हो तो स्थानीय उच्चिष्ठ; − से + हो तो स्थानीय निम्निष्ठ। दोनों ओर f′ धनात्मक हो, या दोनों ओर ऋणात्मक हो, तो चरम मान नहीं।</p><p>द्वितीय अवकलज जांच में स्थिर c लें और पास में f दो बार संतत अवकलनीय हो: f″(c)&gt;0 से स्थानीय निम्निष्ठ, f″(c)&lt;0 से स्थानीय उच्चिष्ठ। f″(c)=0 हो तो जांच अनिर्णायक है। x⁴ का 0 पर द्वितीय अवकलज 0 है, फिर भी निरपेक्ष निम्निष्ठ है।</p></div><div class="note-sec"><h3>4. निरपेक्ष चरम मान में सिरे भी</h3><p>स्थानीय का अर्थ पास के प्रांत बिंदुओं से तुलना; निरपेक्ष का अर्थ चुने प्रांत के हर बिंदु से तुलना है। अंतराल बदलने पर उत्तर बदल सकता है।</p><p>बंद परिबद्ध [a,b] पर संतत फलन निरपेक्ष उच्चिष्ठ और निम्निष्ठ प्राप्त करता है। a,b और सभी आंतरिक क्रांतिक बिंदुओं के मानों की तुलना करें। सरल फलन में सीमित संभावित बिंदु हों तो मान सूची बनाएं।</p><p>x²−4x+3 को [0,5] पर लें: संभावित बिंदु 0,2,5 और मान 3,−1,8 हैं। निरपेक्ष निम्निष्ठ −1, x=2 पर; उच्चिष्ठ 8, x=5 पर है। खुले अंतराल में सीमा प्राप्त होना आवश्यक नहीं: (0,1) पर x का उच्चिष्ठ/निम्निष्ठ नहीं।</p></div><div class="note-sec"><h3>5. प्रतिरूप का अनुकूलन करें</h3><p>राशि और स्वीकार्य प्रांत लिखें। बंधन से एक चर बचाएं। संभावित बिंदु निकालें, अपेक्षित उच्चिष्ठ/निम्निष्ठ सिद्ध करें, फिर विमाएं और इकाइयां दें। प्रांत के बाहर का हल हटाएं।</p><p>परिमाप 20 cm वाले आयत की भुजाएं x, 10−x cm लें, 0&lt;x&lt;10। क्षेत्रफल A=x(10−x)=25−(x−5)²≤25। A′=10−2x से x=5 और A″=−2 से उच्चिष्ठ। 5 cm × 5 cm वर्ग का क्षेत्रफल 25 cm² है।</p><p>पूर्ण वर्ग हमारी स्वतंत्र वैश्विक जांच है, केवल स्थिर-बिंदु गणना नहीं। ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली या पूरी JEE तैयारी नहीं। स्पर्शरेखा/अभिलंब समीकरण, सन्निकटन, कठिन संबद्ध दरें, बहुचरण प्रतिरूप और लंबे अनुकूलन प्रश्न अभी शामिल नहीं हैं।</p></div></div><div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. Rates have a variable, a sign and units</h3><p>dy/dx is the instantaneous rate of y with respect to x. If both depend on time, the chain rule gives dy/dt=(dy/dx)(dx/dt). State which variable is changing before substituting numbers.</p><p>For a growing circle A=πr², so dA/dt=2πr dr/dt. If r=10 cm and dr/dt=2 cm/s, dA/dt=40π cm²/s. This is a circle area calculation, not a sphere surface-area calculation.</p><p>A negative rate means decrease in that quantity. In one-dimensional motion, velocity is ds/dt and speed is |ds/dt|. They are not interchangeable: velocity −2 m/s means speed 2 m/s.</p></div><div class="note-sec"><h3>2. Increasing and decreasing need intervals</h3><p>On an interval where f is differentiable, f′&gt;0 throughout implies strictly increasing, and f′&lt;0 throughout implies strictly decreasing. These are sufficient tests, not necessary at every individual point: x³ is strictly increasing although its derivative is zero at 0.</p><p>First find the domain. Split it at derivative zeros, places where the derivative is undefined, and domain boundaries. Check derivative signs on each resulting interval. Do not bridge a missing domain point.</p><p>For f(x)=x²−4x+3, f′(x)=2x−4. It is negative on (−∞,2), zero at 2 and positive on (2,∞). Our sign table below records this: decreasing before 2 and increasing after 2.</p><table class="sign-example"><caption>Our sign check: f(x)=x²−4x+3</caption><thead><tr><th scope="col">Interval / point</th><th scope="col">Sign of f′</th><th scope="col">Behaviour</th></tr></thead><tbody><tr><th scope="row">(−∞,2)</th><td>−</td><td>Decreasing</td></tr><tr><th scope="row">2</th><td>0</td><td>Stationary</td></tr><tr><th scope="row">(2,∞)</th><td>+</td><td>Increasing</td></tr></tbody></table></div><div class="note-sec"><h3>3. A stationary point is only a candidate</h3><p>A stationary point is a domain point where f′=0. Interior critical points also include points where the derivative does not exist. Neither condition alone proves an extremum. For x³ at 0, the derivative is 0 but the function keeps increasing.</p><p>First-derivative test: at a continuous interior point, a nearby sign change from + to − gives a local maximum; − to + gives a local minimum. If f′ is strictly positive on both sides, or strictly negative on both sides, there is no extremum.</p><p>For the second-derivative test, take a stationary c with f twice continuously differentiable nearby: f″(c)&gt;0 gives a local minimum; f″(c)&lt;0 a local maximum. If f″(c)=0, the test is inconclusive. For x⁴ at 0 it is 0, yet 0 is an absolute minimum.</p></div><div class="note-sec"><h3>4. Absolute extrema must include endpoints</h3><p>Local means compared with nearby domain points; absolute means compared with every point in the chosen domain. The chosen interval can change the answer.</p><p>A continuous function on a closed bounded interval [a,b] attains an absolute maximum and minimum. Compare values at a,b and every interior critical point. When a simple function has finitely many such candidates, make a value list.</p><p>For x²−4x+3 on [0,5], candidates are 0,2,5. Their values are 3,−1,8. Absolute minimum −1 occurs at x=2; absolute maximum 8 at x=5. An open interval may fail to attain a bound: x on (0,1) has no maximum or minimum.</p></div><div class="note-sec"><h3>5. Optimise a model, not just a derivative</h3><p>Write the quantity to optimise and its feasible domain. Use the constraint to leave one variable. Find candidates, prove the required maximum/minimum, then give dimensions and units. A solution outside the domain must be rejected.</p><p>For a rectangle with perimeter 20 cm, let sides be x and 10−x cm, with 0&lt;x&lt;10. Area A=x(10−x)=25−(x−5)²≤25. A′=10−2x vanishes at x=5 and A″=−2 confirms a maximum. The square 5 cm × 5 cm attains 25 cm².</p><p>The completed square is our independent global check, not merely a stationary-point calculation. These notes and ten original questions are selected foundations, not full textbook exercises or full JEE preparation. Tangent/normal equations, approximations, harder related rates, multistage models and long optimisation problems remain outside this pass.</p></div></div></section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Rate of change ⭐</h4>
-      <ul><li>dy/dx = y ki rate x me</li><li>Relation likho → t me differentiate</li><li>Negative rate = quantity ghat rahi</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Inc/Dec ⭐⭐</h4>
-      <ul><li>f′ > 0 → increasing</li><li>f′ &lt; 0 → decreasing</li><li>Critical points se sign chart</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Max/Min ⭐⭐</h4>
-      <ul><li>f′ = 0 → candidates</li><li>f″ &lt; 0 → max; f″ > 0 → min</li><li>+ se − sign change → max</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Absolute ⭐</h4>
-      <ul><li>Closed interval: critical + endpoints</li><li>Local ≠ global</li><li>f″ = 0 → first derivative test</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Syllabus ⭐</h4>
-      <ul><li>Tangents/normals DELETED</li><li>Approximations DELETED</li><li>3 pillars: rate, inc/dec, max-min</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>परिवर्तन दर ⭐</h4>
-      <ul><li>dy/dx = y की दर x में</li><li>संबंध → t में अवकलन</li><li>ऋणात्मक दर = राशि घट रही</li></ul>
-    </div>
-    <div class="shorts-card"><h4>वर्धमान/ह्रासमान ⭐⭐</h4>
-      <ul><li>f′ > 0 → वर्धमान</li><li>f′ &lt; 0 → ह्रासमान</li><li>क्रांतिक बिंदुओं से चिह्न चार्ट</li></ul>
-    </div>
-    <div class="shorts-card"><h4>उच्च/निम्न ⭐⭐</h4>
-      <ul><li>f′ = 0 → उम्मीदवार</li><li>f″ &lt; 0 → उच्चिष्ठ; f″ > 0 → निम्निष्ठ</li><li>+ से − चिह्न बदलाव → उच्चिष्ठ</li></ul>
-    </div>
-    <div class="shorts-card"><h4>निरपेक्ष ⭐</h4>
-      <ul><li>बंद अंतराल: क्रांतिक + सीमा बिंदु</li><li>स्थानीय ≠ निरपेक्ष</li><li>f″ = 0 → प्रथम अवकलज परीक्षण</li></ul>
-    </div>
-    <div class="shorts-card"><h4>पाठ्यक्रम ⭐</h4>
-      <ul><li>स्पर्शरेखा/अभिलंब हटाए गए</li><li>सन्निकटन हटाया गया</li><li>3 स्तंभ: दर, वर्ध/ह्रास, उच्च-निम्न</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Rate of change ⭐</h4>
-      <ul><li>dy/dx = rate of y w.r.t. x</li><li>Write relation → differentiate in t</li><li>Negative rate = quantity decreasing</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Inc/Dec ⭐⭐</h4>
-      <ul><li>f′ > 0 → increasing</li><li>f′ &lt; 0 → decreasing</li><li>Sign chart from critical points</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Max/Min ⭐⭐</h4>
-      <ul><li>f′ = 0 → candidates</li><li>f″ &lt; 0 → max; f″ > 0 → min</li><li>+ to − sign change → max</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Absolute ⭐</h4>
-      <ul><li>Closed interval: critical + endpoints</li><li>Local ≠ global</li><li>f″ = 0 → first derivative test</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Syllabus ⭐</h4>
-      <ul><li>Tangents/normals DELETED</li><li>Approximations DELETED</li><li>3 pillars: rate, inc/dec, max-min</li></ul>
-    </div>
-    </div>
-  </div>
-</section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> dy/dx ka physical matlab kya hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>y ki parivartan dar x ke sapeksh</b> — jaise velocity position ki rate hai time me.</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> Circle ka radius 3 cm/s se badh raha hai. r = 5 pe area ki rate?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>A = πr² → dA/dt = 2πr·dr/dt = 2π(5)(3) = <b>30π cm²/s</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> f′(x) &lt; 0 poore interval me ho to function kaisa hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Strictly decreasing</b> — slope negative, graph neeche utar raha hai.</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> f(x) = x² − 6x + 5 kab decreasing hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>f′(x) = 2x − 6 &lt; 0 jab x &lt; 3 → <b>(−∞, 3) me decreasing</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> Critical point pe f″(c) > 0 ho to kya hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Local minimum</b> — upar-muh katora shape.</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> f″(c) = 0 aa jaaye to kya karein?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Second derivative test <b>fail</b> — <b>first derivative test</b> (sign change) lagao.</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> x + y = 20 ho to xy kab maximum?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Jab <b>x = y = 10</b> — product 100. Fixed sum me barabar parts ka product max!</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> Closed interval [a, b] pe absolute maximum kaise dhundein?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Critical points + <b>endpoints a, b</b> — sab pe f ka value compare karo, sabse bada = absolute max.</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> Fixed perimeter me maximum area wala rectangle kaunsa?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Square</b> — hamesha! Length = breadth.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> Tangents aur normals ke questions ab bhi boards me aate hain?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — tangents/normals aur approximations rationalized syllabus se <b>delete</b> ho chuke hain.</p></details></div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="tip-box">Related rates: instant values rakhne se pehle relation differentiate karo.</p><p class="tip-box">Velocity signed hai; one-dimensional motion mein speed uski absolute value hai.</p><p class="tip-box">Interval par f′&gt;0 se increasing, f′&lt;0 se decreasing. Domain check karo.</p><p class="tip-box">Stationary matlab f′=0. Critical point par derivative missing bhi ho sakta hai; extremum guaranteed nahi.</p><p class="tip-box">First derivative: + se − local max; − se + local min, point par continuity ke saath.</p><p class="tip-box">Stationary c aur second-test conditions par f″&gt;0 min, f″&lt;0 max, f″=0 inconclusive.</p><p class="tip-box">Continuous function on [a,b]: absolute extrema ke liye endpoints aur interior critical values compare karo.</p><p class="tip-box">Optimisation: constraint → ek variable → feasible domain → candidates → proof → units.</p></div><div class="lang-block" data-lang="hi" hidden=""><p class="tip-box">संबद्ध दरें: तात्कालिक मान रखने से पहले संबंध अवकलित करें।</p><p class="tip-box">वेग चिह्नयुक्त है; एकविमीय गति में चाल उसका निरपेक्ष मान है।</p><p class="tip-box">अंतराल पर f′&gt;0 से बढ़ता, f′&lt;0 से घटता है। प्रांत जांचें।</p><p class="tip-box">स्थिर का अर्थ f′=0। क्रांतिक बिंदु पर अवकलज न भी हो; चरम मान निश्चित नहीं।</p><p class="tip-box">प्रथम अवकलज: + से − स्थानीय उच्चिष्ठ; − से + स्थानीय निम्निष्ठ, बिंदु पर सांतत्य के साथ।</p><p class="tip-box">स्थिर c और द्वितीय-जांच की शर्तों में f″&gt;0 निम्निष्ठ, f″&lt;0 उच्चिष्ठ, f″=0 अनिर्णायक।</p><p class="tip-box">[a,b] पर संतत फलन: निरपेक्ष चरम मान के लिए सिरों और आंतरिक क्रांतिक मानों की तुलना करें।</p><p class="tip-box">अनुकूलन: बंधन → एक चर → स्वीकार्य प्रांत → संभावित बिंदु → प्रमाण → इकाइयां।</p></div><div class="lang-block" data-lang="en" hidden=""><p class="tip-box">Related rates: differentiate the relation before substituting the instant values.</p><p class="tip-box">Velocity is signed; speed is its absolute value in one-dimensional motion.</p><p class="tip-box">On an interval: f′&gt;0 implies increasing, f′&lt;0 implies decreasing. Check the domain.</p><p class="tip-box">Stationary means f′=0. A critical point may also have no derivative; neither guarantees an extremum.</p><p class="tip-box">First derivative: + to − gives local max; − to + gives local min, with continuity at the point.</p><p class="tip-box">At stationary c, under the second-derivative test conditions: f″&gt;0 min, f″&lt;0 max, f″=0 inconclusive.</p><p class="tip-box">For a continuous function on [a,b], compare endpoint and interior critical values for absolute extrema.</p><p class="tip-box">Optimisation: constraint → one variable → feasible domain → candidates → proof → units.</p></div></section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> Circle radius 2 cm/s se badhta hai. r=10 cm par area rate?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: A=πr² par chain rule lagao.</p><p>Steps: dA/dt=2πr dr/dt=2π×10×2.</p><p>Answer/check: 40π cm²/s. Positive sign area badhna batata hai.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Position s(t)=t²−4t metres, t seconds mein hai. t=1 par velocity aur speed?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Velocity s′(t), speed uski absolute value hai.</p><p>Steps: s′(t)=2t−4, isliye s′(1)=−2.</p><p>Answer/check: Velocity −2 m/s; speed 2 m/s.</p></details></div><div class="jee-q"><span class="qn">Q3</span> f(x)=x²−4x+3 ke increasing/decreasing intervals?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: f′ ke zero ke dono taraf sign check karo.</p><p>Steps: f′=2x−4; x&lt;2 par negative, x&gt;2 par positive.</p><p>Answer/check: (−∞,2) par decreasing, (2,∞) par increasing.</p></details></div><div class="jee-q"><span class="qn">Q4</span> f′(0)=0 se kya x³ ka 0 par max/min prove hota hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Stationary point zaroori nahi extremum ho.</p><p>Steps: f′=3x², 0 ke dono taraf positive hai. Nearby negative/positive x par values f(0)=0 se neeche/upar hain.</p><p>Answer/check: Nahi. x³ badhta rehta hai, 0 par dono extrema mein se koi nahi.</p></details></div><div class="jee-q"><span class="qn">Q5</span> x²−4x+3 ke stationary point ko classify karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Derivative sign change ya second derivative lo.</p><p>Steps: f′=2x−4=0 at x=2; f″=2&gt;0. Sign − se + hota hai.</p><p>Answer/check: x=2 par local minimum −1. f=(x−2)²−1 se real line par absolute bhi hai.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Kya |x| ka 0 par derivative bina minimum ho sakta hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Sirf derivative formula nahi, function values dekho.</p><p>Steps: Har real x par |x|≥0 aur |0|=0. One-sided slopes −1 aur 1 hain.</p><p>Answer/check: Haan, x=0 par absolute minimum 0 hai, derivative nahi hai.</p></details></div><div class="jee-q"><span class="qn">Q7</span> f(x)=x⁴ mein f″(0)=0. Kya minimum nahi ho sakta?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Zero second derivative par test inconclusive hai.</p><p>Steps: f′=4x³, 0 par negative se positive hota hai; x⁴≥0 bhi hai.</p><p>Answer/check: Aisa nahi. x=0 par absolute minimum 0 hai.</p></details></div><div class="jee-q"><span class="qn">Q8</span> x²−4x+3 ke [0,5] par absolute extrema nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Endpoints aur interior critical values compare karo.</p><p>Steps: Candidates 0,2,5 par values 3,−1,8 hain.</p><p>Answer/check: x=2 par minimum −1; x=5 par maximum 8. Maximum endpoint par hai.</p></details></div><div class="jee-q"><span class="qn">Q9</span> Rectangle ka perimeter 20 cm hai. Largest area nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Perimeter constraint aur positive sides use karo.</p><p>Steps: Sides x,10−x aur 0&lt;x&lt;10. A=x(10−x)=25−(x−5)².</p><p>Answer/check: Maximum 25 cm², sides 5 cm aur 5 cm. Perimeter check: 2(5+5)=20 cm.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Do positive numbers ka sum 10 hai. Largest product?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Ek variable lo aur global bound prove karo.</p><p>Steps: Numbers x,10−x, jahan 0&lt;x&lt;10. Product=25−(x−5)²≤25.</p><p>Answer/check: Largest product 25, numbers 5 aur 5. Equality tabhi jab square zero ho.</p></details></div><div class="tip-box">Completed square hamara independent global check hai, sirf stationary calculation nahi. Yeh selected foundations aur das original questions hain, full textbook exercises ya full JEE preparation nahi. Tangent/normal equations, approximations, harder related rates, multistage models aur lambe optimisation problems abhi cover nahi hain.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh106.pdf">Textbook Ch 6</a></p></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> वृत्त की त्रिज्या 2 cm/s से बढ़ती है। r=10 cm पर क्षेत्रफल दर?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: A=πr² पर शृंखला नियम लगाएं।</p><p>चरण: dA/dt=2πr dr/dt=2π×10×2।</p><p>उत्तर/जांच: 40π cm²/s। धनात्मक चिह्न क्षेत्रफल बढ़ना बताता है।</p></details></div><div class="jee-q"><span class="qn">Q2</span> स्थिति s(t)=t²−4t मीटर, t सेकंड में है। t=1 पर वेग और चाल?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: वेग s′(t), चाल उसका निरपेक्ष मान है।</p><p>चरण: s′(t)=2t−4, इसलिए s′(1)=−2।</p><p>उत्तर/जांच: वेग −2 m/s; चाल 2 m/s।</p></details></div><div class="jee-q"><span class="qn">Q3</span> f(x)=x²−4x+3 के वर्धमान/ह्रासमान अंतराल?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: f′ के शून्य के दोनों ओर चिह्न जांचें।</p><p>चरण: f′=2x−4; x&lt;2 पर ऋणात्मक, x&gt;2 पर धनात्मक।</p><p>उत्तर/जांच: (−∞,2) पर घटता, (2,∞) पर बढ़ता है।</p></details></div><div class="jee-q"><span class="qn">Q4</span> f′(0)=0 से क्या x³ का 0 पर उच्चिष्ठ/निम्निष्ठ सिद्ध है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: स्थिर बिंदु आवश्यक नहीं चरम बिंदु हो।</p><p>चरण: f′=3x², 0 के दोनों ओर धनात्मक है। पास के ऋणात्मक/धनात्मक x पर मान f(0)=0 से नीचे/ऊपर हैं।</p><p>उत्तर/जांच: नहीं। x³ बढ़ता रहता है, 0 पर दोनों में से कोई चरम मान नहीं।</p></details></div><div class="jee-q"><span class="qn">Q5</span> x²−4x+3 के स्थिर बिंदु को वर्गीकृत करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अवकलज चिह्न परिवर्तन या द्वितीय अवकलज लें।</p><p>चरण: f′=2x−4=0 जब x=2; f″=2&gt;0। चिह्न − से + होता है।</p><p>उत्तर/जांच: x=2 पर स्थानीय निम्निष्ठ −1। f=(x−2)²−1 से वास्तविक रेखा पर निरपेक्ष भी है।</p></details></div><div class="jee-q"><span class="qn">Q6</span> क्या |x| का 0 पर अवकलज बिना निम्निष्ठ हो सकता है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: केवल अवकलज सूत्र नहीं, फलन मान देखें।</p><p>चरण: हर वास्तविक x पर |x|≥0 और |0|=0। एकपक्षीय ढालें −1 और 1 हैं।</p><p>उत्तर/जांच: हां, x=0 पर निरपेक्ष निम्निष्ठ 0 है, अवकलज नहीं है।</p></details></div><div class="jee-q"><span class="qn">Q7</span> f(x)=x⁴ में f″(0)=0। क्या निम्निष्ठ नहीं हो सकता?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: शून्य द्वितीय अवकलज पर जांच अनिर्णायक है।</p><p>चरण: f′=4x³, 0 पर ऋणात्मक से धनात्मक होता है; x⁴≥0 भी है।</p><p>उत्तर/जांच: ऐसा नहीं। x=0 पर निरपेक्ष निम्निष्ठ 0 है।</p></details></div><div class="jee-q"><span class="qn">Q8</span> x²−4x+3 के [0,5] पर निरपेक्ष चरम मान निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: सिरों और आंतरिक क्रांतिक मानों की तुलना करें।</p><p>चरण: संभावित बिंदुओं 0,2,5 पर मान 3,−1,8 हैं।</p><p>उत्तर/जांच: x=2 पर निम्निष्ठ −1; x=5 पर उच्चिष्ठ 8। उच्चिष्ठ सिरे पर है।</p></details></div><div class="jee-q"><span class="qn">Q9</span> आयत का परिमाप 20 cm है। सबसे बड़ा क्षेत्रफल?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: परिमाप बंधन और धनात्मक भुजाएं लें।</p><p>चरण: भुजाएं x,10−x तथा 0&lt;x&lt;10। A=x(10−x)=25−(x−5)²।</p><p>उत्तर/जांच: उच्चिष्ठ 25 cm², भुजाएं 5 cm और 5 cm। परिमाप जांच: 2(5+5)=20 cm।</p></details></div><div class="jee-q"><span class="qn">Q10</span> दो धनात्मक संख्याओं का योग 10 है। सबसे बड़ा गुणनफल?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: एक चर लें और वैश्विक सीमा सिद्ध करें।</p><p>चरण: संख्याएं x,10−x, जहां 0&lt;x&lt;10। गुणनफल=25−(x−5)²≤25।</p><p>उत्तर/जांच: सबसे बड़ा गुणनफल 25, संख्याएं 5 और 5। समानता तभी जब वर्ग शून्य हो।</p></details></div><div class="tip-box">पूर्ण वर्ग हमारी स्वतंत्र वैश्विक जांच है, केवल स्थिर-बिंदु गणना नहीं। ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली या पूरी JEE तैयारी नहीं। स्पर्शरेखा/अभिलंब समीकरण, सन्निकटन, कठिन संबद्ध दरें, बहुचरण प्रतिरूप और लंबे अनुकूलन प्रश्न अभी शामिल नहीं हैं।</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh106.pdf">Textbook Ch 6</a></p></div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> A circle radius grows at 2 cm/s. Find its area rate when r=10 cm.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use the chain rule on A=πr².</p><p>Steps: dA/dt=2πr dr/dt=2π×10×2.</p><p>Answer/check: 40π cm²/s. The positive sign means area increases.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Position s(t)=t²−4t metres, with t in seconds. Find velocity and speed at t=1.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Velocity is s′(t); speed is its absolute value.</p><p>Steps: s′(t)=2t−4, so s′(1)=−2.</p><p>Answer/check: Velocity −2 m/s; speed 2 m/s.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Find increasing/decreasing intervals for f(x)=x²−4x+3.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Check the sign of f′ on each side of its zero.</p><p>Steps: f′=2x−4; it is negative for x&lt;2 and positive for x&gt;2.</p><p>Answer/check: Decreasing on (−∞,2), increasing on (2,∞).</p></details></div><div class="jee-q"><span class="qn">Q4</span> Does f′(0)=0 prove x³ has a maximum or minimum at 0?<details class="jee-sol"><summary>Show answer</summary><p>Rule: A stationary point need not be an extremum.</p><p>Steps: f′=3x² is positive on both sides of 0. Nearby negative and positive x give values below and above f(0)=0.</p><p>Answer/check: No. x³ keeps increasing and has neither extremum at 0.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Classify the stationary point of x²−4x+3.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use a derivative sign change or the second derivative.</p><p>Steps: f′=2x−4=0 at x=2; f″=2&gt;0. Signs change from − to +.</p><p>Answer/check: A local minimum at x=2 with value −1. Since f=(x−2)²−1, it is also absolute on the real line.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Can |x| have a minimum at 0 without a derivative there?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Check the function values, not only a derivative formula.</p><p>Steps: |x|≥0 for all real x and |0|=0. Its one-sided slopes are −1 and 1.</p><p>Answer/check: Yes, an absolute minimum 0 at x=0, despite no derivative there.</p></details></div><div class="jee-q"><span class="qn">Q7</span> For f(x)=x⁴, f″(0)=0. Does this rule out a minimum?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Zero second derivative makes this test inconclusive.</p><p>Steps: f′=4x³ changes from negative to positive at 0; also x⁴≥0.</p><p>Answer/check: No. The absolute minimum is 0 at x=0.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Find absolute extrema of x²−4x+3 on [0,5].<details class="jee-sol"><summary>Show answer</summary><p>Rule: Compare endpoints and interior critical points.</p><p>Steps: Candidates 0,2,5 give values 3,−1,8.</p><p>Answer/check: Minimum −1 at x=2; maximum 8 at x=5. The maximum is at an endpoint.</p></details></div><div class="jee-q"><span class="qn">Q9</span> A rectangle has perimeter 20 cm. Find its largest possible area.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use the perimeter constraint and positive side lengths.</p><p>Steps: Sides x and 10−x, 0&lt;x&lt;10. A=x(10−x)=25−(x−5)².</p><p>Answer/check: Maximum 25 cm² at sides 5 cm and 5 cm; perimeter check: 2(5+5)=20 cm.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Two positive numbers have sum 10. Find their largest product.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Reduce to one variable and prove a global bound.</p><p>Steps: Let the numbers be x and 10−x with 0&lt;x&lt;10. Product=25−(x−5)²≤25.</p><p>Answer/check: Largest product 25, attained at 5 and 5. Equality holds only when the square is zero.</p></details></div><div class="tip-box">The completed square is our independent global check, not merely a stationary-point calculation. These notes and ten original questions are selected foundations, not full textbook exercises or full JEE preparation. Tangent/normal equations, approximations, harder related rates, multistage models and long optimisation problems remain outside this pass.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh106.pdf">Textbook Ch 6</a></p></div></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-7/">Integrals</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-7/">Integrals</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
