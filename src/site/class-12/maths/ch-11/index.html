@@ -1,358 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 11 — Three Dimensional Geometry | Class 12 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 12 Maths Chapter 11: Three Dimensional Geometry — long + short notes in Hindi, English, Hinglish. Direction cosines and ratios, equation of a line, angle between lines, shortest distance between skew lines.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 12 Maths Chapter 11: Three Dimensional Geometry — long + short notes in Hindi, English, Hinglish. Direction cosines and ratios, equation of a line, angle between lines, shortest distance between skew lines." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:1rem;line-height:1.75;padding:.75rem;background:#f5f7fb;border:1px solid #d6e1f1;border-radius:4px} #practice .jee-q{overflow-wrap:anywhere} #practice summary{font-size:1rem} #notes .note-sec p{line-height:1.8}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 11</p>
-  <h1>Three Dimensional Geometry</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">त्रिविम ज्यामिति</p>
-  <p style="color:var(--muted);margin-top:6px">3D space me lines — direction cosines, equations, angles aur shortest distance</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video available</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 11</p>
+<h1>Three Dimensional Geometry</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">त्रिविम ज्यामिति</p>
+<p style="color:var(--muted);margin-top:6px">3D space me lines — direction cosines, equations, angles aur shortest distance</p>
+<div class="ch-tags">
+<span class="pill weight-high">JEE Weightage: HIGH</span>
+<span class="pill">Video available</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Three Dimensional Geometry - Class 12 Maths Short - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Three Dimensional Geometry - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/EHaRfgn501k" title="Three Dimensional Geometry - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/EHaRfgn501k" title="Three Dimensional Geometry - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/EHaRfgn501k" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Three Dimensional Geometry - Class 12 Maths Short - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Three Dimensional Geometry - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/EHaRfgn501k" title="Three Dimensional Geometry - Class 12 Maths Short"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/EHaRfgn501k" title="Three Dimensional Geometry - Class 12 Maths Short"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/EHaRfgn501k" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Three Dimensional Geometry - Class 12 Mathematics Short 2 - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Three Dimensional Geometry - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player2" class="yt-embed" src="https://www.youtube.com/embed/MJBDL9dQ6pU" title="Three Dimensional Geometry - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player2" class="yt-embed" src="https://www.youtube.com/embed/MJBDL9dQ6pU" title="Three Dimensional Geometry - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/MJBDL9dQ6pU" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Three Dimensional Geometry - Class 12 Mathematics Short 2 - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Three Dimensional Geometry - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/MJBDL9dQ6pU" title="Three Dimensional Geometry - Class 12 Mathematics Short 2"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/MJBDL9dQ6pU" title="Three Dimensional Geometry - Class 12 Mathematics Short 2"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/MJBDL9dQ6pU" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Three Dimensional Geometry 5 animated scenes mein - DRs-DCs normalizer (rotating 3D!), line builder with lambda dial, angle-between-lines machine, shortest distance calculator, aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Three Dimensional Geometry 5 animated scenes mein - DRs-DCs normalizer (rotating 3D!), line builder with lambda dial, angle-between-lines machine, shortest distance calculator, aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Selected foundations" data-hi="चुनी हुई बुनियादें" data-hinglish="Selected foundations">Selected foundations</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Direction Cosines aur Direction Ratios — Line Ki Disha ⭐⭐</h3>
-    <ul>
-<li><b>Direction cosines (DCs) ⭐⭐:</b> line jo angles α, β, γ axes ke saath banati hai, unke <b>cosines</b> — <b>l = cos α, m = cos β, n = cos γ</b>. Har line ki direction = 3 numbers!</li>
-<li><b>Golden identity ⭐⭐:</b> <b>l² + m² + n² = 1</b> — DCs hamesha ye satisfy karte hain (unit vector ke components hain!).</li>
-<li><b>Direction ratios (DRs) ⭐:</b> DCs ke <b>PROPORTIONAL</b> koi bhi 3 numbers (a, b, c) — a/l = b/m = c/n. DRs infinite hain, DCs unique (sign ke saath)!</li>
-<li><b>DRs → DCs ⭐⭐:</b> l = a/√(a²+b²+c²), m = b/√(a²+b²+c²), n = c/√(a²+b²+c²) — <b>normalize</b> karo!</li>
-<li>Do points P(x₁,y₁,z₁), Q(x₂,y₂,z₂) se guzarne wali line ke DRs: <b>(x₂−x₁, y₂−y₁, z₂−z₁)</b> — coordinates ghatao, bas!</li>
-</ul>
-<p class="small-note">💡 Feel: DRs = recipe ka ratio (2:3:1), DCs = exact measurement (unit vector). Ratio se exact nikalne ke liye √(sum of squares) se divide karo.</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Line Ki Equations — Vector aur Cartesian Form ⭐⭐</h3>
-    <ul>
-<li><b>Line ke liye 2 cheezein chahiye:</b> ek POINT jis se guzre + ek DIRECTION jis taraf jaaye. Dono mile to line fix!</li>
-<li><b>Vector form ⭐⭐:</b> r⃗ = <b>a⃗ + λb⃗</b> — a⃗ = point ka position vector, b⃗ = direction vector, λ = parameter (har λ pe line ka ek point!).</li>
-<li><b>Cartesian form ⭐⭐:</b> <b>(x − x₁)/a = (y − y₁)/b = (z − z₁)/c</b> — (x₁, y₁, z₁) point, (a, b, c) DRs. Dono forms ek hi line hain!</li>
-<li><b>Conversion:</b> vector se cartesian: a⃗ ke components numerator ke saath, b⃗ ke components denominators me. Cartesian se vector: point + λ×DRs.</li>
-<li><b>Do points se line ⭐:</b> r⃗ = a⃗ + λ(b⃗ − a⃗) — direction = doosra point − pehla point. Cartesian: (x−x₁)/(x₂−x₁) = (y−y₁)/(y₂−y₁) = (z−z₁)/(z₂−z₁).</li>
-<li>Denominator me 0 aaye to matlab wo coordinate CONSTANT hai (line us axis ke perpendicular plane me) — panic nahi, special case hai.</li>
-</ul>
-<p class="small-note">🎯 λ = "line pe ghoomne ka dial". λ = 0 pe point a⃗, λ badhao to direction b⃗ me chalte jao!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Do Lines Ke Beech Ka Angle ⭐</h3>
-    <ul>
-<li><b>Formula (DRs se) ⭐⭐:</b> cos θ = <b>(a₁a₂ + b₁b₂ + c₁c₂)/[√(a₁²+b₁²+c₁²)·√(a₂²+b₂²+c₂²)]</b> — direction vectors ka DOT product formula hi hai!</li>
-<li><b>Vector form me:</b> cos θ = |b⃗₁·b⃗₂|/(|b⃗₁||b⃗₂|) — lines ke direction vectors use karo.</li>
-<li><b>Perpendicular ⭐:</b> a₁a₂ + b₁b₂ + c₁c₂ = <b>0</b> — DRs ka "dot" zero! (Lines me ye sabse zyada pucha jaata hai.)</li>
-<li><b>Parallel ⭐:</b> DRs <b>PROPORTIONAL</b> — a₁/a₂ = b₁/b₂ = c₁/c₂. (Vector me: b⃗₁ = λb⃗₂.)</li>
-<li>DCs se bhi chalega: cos θ = l₁l₂ + m₁m₂ + n₁n₂ — kyunki DCs normalized hain, denominator 1!</li>
-<li>Angle hamesha ACUTE lena hai (modulus lagake) — lines ke beech "the" angle wo hota hai.</li>
-</ul>
-<p class="small-note">💡 Lines ka angle = unke direction vectors ka angle. Chapter 10 ka dot product yahan wapas aaya — vectors aur 3D ek hi duniya hai!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Shortest Distance — Skew aur Parallel Lines ⭐⭐</h3>
-    <ul>
-<li><b>Skew lines:</b> do lines jo na parallel hon, na intersect karein (alag-alag planes me) — unke beech ka sabse chhota gap = <b>shortest distance</b> (SD).</li>
-<li><b>SD formula (skew) ⭐⭐:</b> lines r⃗ = a⃗₁ + λb⃗₁ aur r⃗ = a⃗₂ + μb⃗₂ → SD = <b>|(a⃗₂ − a⃗₁)·(b⃗₁×b⃗₂)| / |b⃗₁×b⃗₂|</b> — "points ka difference, cross pe project karo, cross se divide".</li>
-<li><b>Intersect check ⭐:</b> agar SD = 0 → lines <b>INTERSECT</b> karti hain (ya coplanar hain)! Yehi condition hai.</li>
-<li><b>Parallel lines ka SD ⭐:</b> d = <b>|b⃗×(a⃗₂ − a⃗₁)|/|b⃗|</b> — ek line ka direction aur dono ke points ka difference use karo.</li>
-<li><b>Cartesian me:</b> pehle vector form me convert karo (point + DRs nikaal ke) — direct cartesian formula yaad karne ki zaroorat nahi!</li>
-</ul>
-<p class="small-note">🎯 SD ka flow: a⃗₂ − a⃗₁ nikalo → b⃗₁×b⃗₂ nikalo → dot → divide. 5-marker ka fixed recipe — 3-4 baar practice karo to set ho jaayega.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Syllabus Note — Planes Deleted! ⭐</h3>
-    <ul>
-<li><b>Badi khabar ⭐⭐:</b> rationalized NCERT/CBSE me <b>PLANE ke saare topics DELETE</b> — plane ki equations, coplanar lines, angle between planes, line-plane angle, point se plane ki distance — <b>kuch nahi padhna!</b></li>
-<li><b>Chapter ab sirf LINES ka hai:</b> DCs/DRs → line ki equations → do lines ka angle → shortest distance. Bas!</li>
-<li>Pehle ye chapter 3D me sabse lamba tha — ab chapter almost HALF ho gaya hai. Marks wahi (unit ~14 with vectors), kaam aadha!</li>
-<li><b>Vectors (Ch 10) strong rakho:</b> dot, cross, magnitude — har formula unhi pe chalta hai.</li>
-<li>JEE aspirants note: JEE syllabus me planes abhi bhi hain — boards ke liye skip, JEE ke liye separately cover karna hoga.</li>
-</ul>
-<p class="small-note">💡 Boards: sirf lines. JEE: planes bhi. Apne target ke hisaab se padho — dono lists alag hain!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ दिक्-कोज्या और दिक्-अनुपात — रेखा की दिशा ⭐⭐</h3>
-    <ul>
-<li><b>दिक्-कोज्या (DCs) ⭐⭐:</b> रेखा अक्षों से α, β, γ कोण बनाए तो <b>l = cos α, m = cos β, n = cos γ</b>।</li>
-<li><b>स्वर्ण सर्वसमिका ⭐⭐:</b> <b>l² + m² + n² = 1</b> — DCs मात्रक सदिश के घटक हैं!</li>
-<li><b>दिक्-अनुपात (DRs) ⭐:</b> DCs के <b>समानुपाती</b> कोई तीन संख्याएं (a, b, c)। DRs अनंत, DCs अद्वितीय!</li>
-<li><b>DRs → DCs ⭐⭐:</b> l = a/√(a²+b²+c²) आदि — <b>सामान्यीकरण</b> करो!</li>
-<li>बिंदु P(x₁,y₁,z₁), Q(x₂,y₂,z₂) से रेखा के DRs: <b>(x₂−x₁, y₂−y₁, z₂−z₁)</b>।</li>
-</ul>
-<p class="small-note">💡 DRs = अनुपात, DCs = मात्रक रूप। √(वर्गों का योग) से भाग दो।</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ रेखा के समीकरण — सदिश और कार्तीय रूप ⭐⭐</h3>
-    <ul>
-<li><b>रेखा के लिए 2 चीजें:</b> एक <b>बिंदु</b> + एक <b>दिशा</b> — दोनों मिलें तो रेखा निश्चित!</li>
-<li><b>सदिश रूप ⭐⭐:</b> r⃗ = <b>a⃗ + λb⃗</b> — a⃗ बिंदु का स्थिति सदिश, b⃗ दिशा सदिश, λ प्राचल।</li>
-<li><b>कार्तीय रूप ⭐⭐:</b> <b>(x − x₁)/a = (y − y₁)/b = (z − z₁)/c</b>।</li>
-<li><b>दो बिंदुओं से रेखा ⭐:</b> r⃗ = a⃗ + λ(b⃗ − a⃗); कार्तीय: (x−x₁)/(x₂−x₁) = ...</li>
-<li>हर में 0 आए तो वह निर्देशांक <b>अचर</b> है — विशिष्ट स्थिति, घबराओ नहीं!</li>
-</ul>
-<p class="small-note">🎯 λ = "रेखा पर घूमने का डायल" — λ = 0 पर बिंदु a⃗!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ दो रेखाओं के बीच का कोण ⭐</h3>
-    <ul>
-<li><b>सूत्र (DRs से) ⭐⭐:</b> cos θ = <b>(a₁a₂ + b₁b₂ + c₁c₂)/[√(a₁²+b₁²+c₁²)·√(a₂²+b₂²+c₂²)]</b> — दिशा सदिशों का डॉट!</li>
-<li><b>सदिश रूप में:</b> cos θ = |b⃗₁·b⃗₂|/(|b⃗₁||b⃗₂|)।</li>
-<li><b>लंबवत ⭐:</b> a₁a₂ + b₁b₂ + c₁c₂ = <b>0</b>।</li>
-<li><b>समांतर ⭐:</b> DRs <b>समानुपाती</b> — a₁/a₂ = b₁/b₂ = c₁/c₂।</li>
-<li>DCs से: cos θ = l₁l₂ + m₁m₂ + n₁n₂।</li>
-<li>कोण सदैव <b>न्यून</b> (acute) लो — मापांक लगाकर!</li>
-</ul>
-<p class="small-note">💡 रेखाओं का कोण = दिशा सदिशों का कोण।</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ न्यूनतम दूरी — विषमतलीय और समांतर रेखाएं ⭐⭐</h3>
-    <ul>
-<li><b>विषमतलीय रेखाएं (skew):</b> न समांतर, न प्रतिच्छेदी — भिन्न समतलों में। सबसे छोटा अंतर = <b>न्यूनतम दूरी (SD)</b>।</li>
-<li><b>SD सूत्र (skew) ⭐⭐:</b> SD = <b>|(a⃗₂ − a⃗₁)·(b⃗₁×b⃗₂)| / |b⃗₁×b⃗₂|</b>।</li>
-<li><b>प्रतिच्छेद जांच ⭐:</b> SD = 0 → रेखाएं <b>प्रतिच्छेद</b> करती हैं!</li>
-<li><b>समांतर रेखाओं का SD ⭐:</b> d = <b>|b⃗×(a⃗₂ − a⃗₁)|/|b⃗|</b>।</li>
-<li><b>कार्तीय में:</b> पहले सदिश रूप में बदलो — सीधा कार्तीय सूत्र रटने की जरूरत नहीं!</li>
-</ul>
-<p class="small-note">🎯 SD प्रवाह: a⃗₂ − a⃗₁ → b⃗₁×b⃗₂ → डॉट → भाग। निश्चित 5-अंकीय विधि!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ पाठ्यक्रम टिप्पणी — समतल हटाए गए! ⭐</h3>
-    <ul>
-<li><b>बड़ी खबर ⭐⭐:</b> युक्तिसंगत NCERT/CBSE में <b>समतल (plane) के सभी विषय हटाए गए</b> — समतल का समीकरण, समतलीय रेखाएं, समतलों का कोण, रेखा-समतल कोण, बिंदु-समतल दूरी!</li>
-<li><b>अध्याय अब केवल रेखाओं का:</b> DCs/DRs → समीकरण → कोण → न्यूनतम दूरी। बस!</li>
-<li>पहले यह सबसे लंबा अध्याय था — अब लगभग <b>आधा</b> हो गया। अंक वही, काम आधा!</li>
-<li><b>सदिश (अध्याय 10) मजबूत रखो:</b> डॉट, क्रॉस, परिमाण — हर सूत्र इन्हीं पर चलता है।</li>
-<li>JEE विद्यार्थी ध्यान दें: JEE में समतल <b>अभी भी</b> हैं — बोर्ड के लिए छोड़ो, JEE के लिए अलग से पढ़ो।</li>
-</ul>
-<p class="small-note">💡 बोर्ड: केवल रेखाएं। JEE: समतल भी। लक्ष्य के अनुसार पढ़ो!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Direction Cosines and Ratios — A Line's Direction ⭐⭐</h3>
-    <ul>
-<li><b>Direction cosines (DCs) ⭐⭐:</b> if a line makes angles α, β, γ with the axes, its DCs are <b>l = cos α, m = cos β, n = cos γ</b>. A line's direction = 3 numbers!</li>
-<li><b>Golden identity ⭐⭐:</b> <b>l² + m² + n² = 1</b> — DCs always satisfy this (they are the components of a unit vector!).</li>
-<li><b>Direction ratios (DRs) ⭐:</b> any 3 numbers <b>PROPORTIONAL</b> to the DCs — a/l = b/m = c/n. DRs are infinite; DCs are unique (with sign)!</li>
-<li><b>DRs → DCs ⭐⭐:</b> l = a/√(a²+b²+c²), m = b/√(a²+b²+c²), n = c/√(a²+b²+c²) — just <b>normalize</b>!</li>
-<li>DRs of the line through P(x₁,y₁,z₁) and Q(x₂,y₂,z₂): <b>(x₂−x₁, y₂−y₁, z₂−z₁)</b> — subtract the coordinates, done!</li>
-</ul>
-<p class="small-note">💡 Feel: DRs = the recipe's ratio (2:3:1), DCs = the exact measurement (a unit vector). Divide by √(sum of squares) to go from ratio to exact.</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Equations of a Line — Vector and Cartesian Forms ⭐⭐</h3>
-    <ul>
-<li><b>A line needs 2 things:</b> a POINT it passes through + a DIRECTION it runs along. Both fixed → the line is fixed!</li>
-<li><b>Vector form ⭐⭐:</b> r⃗ = <b>a⃗ + λb⃗</b> — a⃗ = position vector of the point, b⃗ = direction vector, λ = parameter (each λ gives one point on the line!).</li>
-<li><b>Cartesian form ⭐⭐:</b> <b>(x − x₁)/a = (y − y₁)/b = (z − z₁)/c</b> — (x₁, y₁, z₁) is the point, (a, b, c) are the DRs. Both forms describe the same line!</li>
-<li><b>Conversion:</b> vector → cartesian: a⃗'s components go with the numerators, b⃗'s into the denominators. Cartesian → vector: point + λ×DRs.</li>
-<li><b>Line through two points ⭐:</b> r⃗ = a⃗ + λ(b⃗ − a⃗) — direction = second point − first point. Cartesian: (x−x₁)/(x₂−x₁) = (y−y₁)/(y₂−y₁) = (z−z₁)/(z₂−z₁).</li>
-<li>A 0 in a denominator just means that coordinate is CONSTANT — a special case, no panic!</li>
-</ul>
-<p class="small-note">🎯 λ = "the dial for moving along the line". At λ = 0 you stand at a⃗; turn the dial and you walk along b⃗!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ The Angle Between Two Lines ⭐</h3>
-    <ul>
-<li><b>Formula (via DRs) ⭐⭐:</b> cos θ = <b>(a₁a₂ + b₁b₂ + c₁c₂)/[√(a₁²+b₁²+c₁²)·√(a₂²+b₂²+c₂²)]</b> — it is just the DOT product formula of the direction vectors!</li>
-<li><b>In vector form:</b> cos θ = |b⃗₁·b⃗₂|/(|b⃗₁||b⃗₂|) — use the direction vectors of the lines.</li>
-<li><b>Perpendicular ⭐:</b> a₁a₂ + b₁b₂ + c₁c₂ = <b>0</b> — the "dot" of the DRs is zero! (The most-asked check for lines.)</li>
-<li><b>Parallel ⭐:</b> DRs are <b>PROPORTIONAL</b> — a₁/a₂ = b₁/b₂ = c₁/c₂. (In vectors: b⃗₁ = λb⃗₂.)</li>
-<li>DCs work too: cos θ = l₁l₂ + m₁m₂ + n₁n₂ — since DCs are normalized, the denominator is 1!</li>
-<li>Always take the ACUTE angle (apply modulus) — "the" angle between lines is that one.</li>
-</ul>
-<p class="small-note">💡 The angle between lines = the angle between their direction vectors. Chapter 10's dot product returns — vectors and 3D are one world!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Shortest Distance — Skew and Parallel Lines ⭐⭐</h3>
-    <ul>
-<li><b>Skew lines:</b> two lines that are neither parallel nor intersecting (they lie in different planes) — the smallest gap between them is the <b>shortest distance</b> (SD).</li>
-<li><b>SD formula (skew) ⭐⭐:</b> for lines r⃗ = a⃗₁ + λb⃗₁ and r⃗ = a⃗₂ + μb⃗₂ → SD = <b>|(a⃗₂ − a⃗₁)·(b⃗₁×b⃗₂)| / |b⃗₁×b⃗₂|</b> — "difference of points, projected on the cross, divided by the cross".</li>
-<li><b>Intersection check ⭐:</b> if SD = 0 → the lines <b>INTERSECT</b> (they are coplanar)! That is the condition.</li>
-<li><b>SD of parallel lines ⭐:</b> d = <b>|b⃗×(a⃗₂ − a⃗₁)|/|b⃗|</b> — use one line's direction and the difference of the two points.</li>
-<li><b>In cartesian form:</b> first convert to vector form (extract the point + DRs) — no need to memorize a direct cartesian formula!</li>
-</ul>
-<p class="small-note">🎯 SD flow: find a⃗₂ − a⃗₁ → find b⃗₁×b⃗₂ → dot → divide. A fixed 5-marker recipe — practise it 3-4 times and it sets.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Syllabus Note — Planes Deleted! ⭐</h3>
-    <ul>
-<li><b>Big news ⭐⭐:</b> in rationalized NCERT/CBSE, ALL <b>PLANE topics are DELETED</b> — the equation of a plane, coplanar lines, angle between planes, line-plane angle, point-to-plane distance — <b>none of it!</b></li>
-<li><b>The chapter is now only about LINES:</b> DCs/DRs → equations of a line → angle between lines → shortest distance. That is all!</li>
-<li>This used to be the longest 3D chapter — now it is almost HALF. Same marks (~14 for the unit with vectors), half the work!</li>
-<li><b>Keep vectors (Ch 10) strong:</b> dot, cross, magnitude — every formula here runs on them.</li>
-<li>JEE aspirants, note: planes are STILL in the JEE syllabus — skip for boards, cover separately for JEE.</li>
-</ul>
-<p class="small-note">💡 Boards: only lines. JEE: planes too. Study by your target — the two lists are different!</p>
-  </div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Direction ratios aur cosines alag hain</h3><p>Line ke liye nonzero direction vector b=(a,b,c) chahiye. Components direction ratios hain; teeno ko ek nonzero number se multiply karne par same undirected line direction milti hai. (0,0,0) direction nahi deta.</p><p>√(a²+b²+c²) se divide karke chosen orientation ke direction cosines l,m,n milte hain. l²+m²+n²=1 hona chahiye. Orientation reverse to teeno signs ek saath reverse, independently nahi.</p><p>Direction (2,−1,−2) ki length 3 hai. Ek oriented set (2/3,−1/3,−2/3), reverse set (−2/3,1/3,2/3). Squared components ka sum 1 hai. Direction ratios ke liye unit length zaroori nahi.</p></div><div class="note-sec"><h3>2. Ek point aur nonzero direction se line</h3><p>r=a+tb, t real likho. a known point ka position vector, b≠0 direction hai. Components x=x₀+tb₁, y=y₀+tb₂, z=z₀+tb₃. Ek hi t teeno mein work kare.</p><p>A=(1,2,3), direction (2,−1,0) se x=1+2t, y=2−t, z=3. t=1 par (3,1,3) milta hai. z fixed hai; zero component par zero se divide nahi karna.</p><p>Saare direction components nonzero hon to (x−x₀)/b₁=(y−y₀)/b₂=(z−z₀)/b₃. Koi zero ho to us coordinate ko fixed equality mein likho aur baaki parameter relations rakho. Distinct A,B se line ki direction B−A lo.</p></div><div class="note-sec"><h3>3. Lines ka angle direction se aata hai</h3><p>Nonzero directions b,d mein undirected lines ka smaller angle θ: cos θ=|b·d|/(|b||d|), 0≤θ≤π/2. Oriented vectors ka angle ho to absolute value hatao aur π tak allow karo.</p><p>Directions (1,0,0), (−1,1,0) ka dot −1 hai. Vector angle 135°, par smaller line angle 45°. Direction same rakhkar line shift karne se angle nahi badalta.</p><p>b·d=0 se perpendicular directions; b×d=0 se parallel directions. Sirf perpendicular directions se spatial lines ka milna prove nahi. Intersecting perpendicular lines maangi hon to intersection bhi check karo.</p></div><div class="note-sec"><h3>4. Intersection mein do alag parameters</h3><p>L₁: r=a+tb, L₂: r=c+sd mein t,s alag rakho. Teeno coordinates equate karo. Do equations solve karke teesri bhi check karo, chhodo mat.</p><p>Example: (t,0,0)=(0,s,1) mein pehle do coordinates t=0,s=0 dete hain; z mein 0=1 chahiye, jo impossible hai. Intersection nahi. Directions parallel nahi, isliye lines skew hain.</p><p>Directions parallel hon to dekho c−a bhi b ke parallel hai ya nahi. Haan to lines coincident, nahi to distinct parallel. Nonparallel lines jo nahi milti, skew hain. Spatial question mein bina check flat picture mat maano.</p></div><div class="note-sec"><h3>5. Nonparallel lines ki shortest distance</h3><p>L₁: r=a+tb, L₂: r=c+sd aur b×d≠0 par distance |(c−a)·(b×d)|/|b×d| hai. Cross common perpendicular direction deta hai. Absolute value distance ko nonnegative rakhti hai.</p><p>a=(0,0,0), b=(1,0,0), c=(0,0,3), d=(0,1,0) lo. b×d=(0,0,1), c−a=(0,0,3), to distance 3. Points (0,0,0), (0,0,3) isse realise karte hain; join dono lines ke perpendicular hai.</p><p>Numerator zero aur directions nonparallel hon to lines coplanar hain aur milti hain, distance 0. b×d=0 par yeh formula mat lagao: denominator zero hai. Parallel case alag lo.</p></div><div class="note-sec"><h3>6. Parallel lines aur point-to-line distance</h3><p>Common nonzero direction b wali parallel lines ki distance |(c−a)×b|/|b| hai. Point c se line r=a+tb ki distance bhi isi formula se milti hai. Yeh area ko base length se divide karta hai.</p><p>x-axis aur (0,3,4) se guzarti parallel line mein b=(1,0,0), c−a=(0,3,4). Cross (0,4,−3) ki length 5; |b|=1 se divide karke distance 5. Yahan offset khud direction ke perpendicular hai.</p><p>Pehle case check karo: intersection par 0; distinct parallel ke liye parallel formula; nonparallel ke liye scalar-triple formula. Distance units do, square units nahi.</p><p>Yeh selected line-geometry foundations aur das original questions hain, poori textbook exercise solutions ya poori JEE preparation nahi. Plane equations, line-plane/plane-plane questions, lambe common-perpendicular constructions aur mixed advanced proofs shamil nahi. Deleted topics ya pakke exam marks ka daava nahi hai.</p></div></div><div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. दिक्-अनुपात और दिक्-कोसाइन अलग हैं</h3><p>रेखा के लिए अशून्य दिशा सदिश b=(a,b,c) चाहिए। इसके घटक दिक्-अनुपात हैं; तीनों को एक अशून्य संख्या से गुणा करने पर वही अदिष्ट रेखा दिशा मिलती है। (0,0,0) दिशा नहीं देता।</p><p>√(a²+b²+c²) से भाग देकर चुने अभिविन्यास के दिक्-कोसाइन l,m,n मिलते हैं। l²+m²+n²=1 होना चाहिए। अभिविन्यास उलटने पर तीनों चिह्न साथ उलटते हैं, स्वतंत्र रूप से नहीं।</p><p>दिशा (2,−1,−2) की लंबाई 3 है। एक अभिविन्यस्त समूह (2/3,−1/3,−2/3), उलटा समूह (−2/3,1/3,2/3)। घटकों के वर्गों का योग 1 है। दिक्-अनुपातों की मात्रक लंबाई जरूरी नहीं।</p></div><div class="note-sec"><h3>2. एक बिंदु और अशून्य दिशा से रेखा</h3><p>r=a+tb, t वास्तविक लिखें। a ज्ञात बिंदु का स्थिति सदिश, b≠0 दिशा है। घटक x=x₀+tb₁, y=y₀+tb₂, z=z₀+tb₃। एक ही t तीनों में काम करे।</p><p>A=(1,2,3), दिशा (2,−1,0) से x=1+2t, y=2−t, z=3। t=1 पर (3,1,3) मिलता है। z स्थिर है; शून्य घटक पर शून्य से भाग न दें।</p><p>सभी दिशा घटक अशून्य हों तो (x−x₀)/b₁=(y−y₀)/b₂=(z−z₀)/b₃। कोई शून्य हो तो उसका निर्देशांक स्थिर समानता में लिखें और बाकी प्राचल संबंध रखें। अलग A,B से रेखा की दिशा B−A लें।</p></div><div class="note-sec"><h3>3. रेखाओं का कोण दिशा से मिलता है</h3><p>अशून्य दिशाओं b,d में अदिष्ट रेखाओं का छोटा कोण θ: cos θ=|b·d|/(|b||d|), 0≤θ≤π/2। अभिविन्यस्त सदिशों का कोण हो तो निरपेक्ष मान हटाएं और π तक लें।</p><p>दिशाओं (1,0,0), (−1,1,0) का अदिश गुणनफल −1 है। सदिश कोण 135°, पर छोटा रेखा कोण 45°। दिशा वही रखकर रेखा खिसकाने से कोण नहीं बदलता।</p><p>b·d=0 से लंबवत दिशाएं; b×d=0 से समांतर दिशाएं। केवल लंबवत दिशाओं से स्थानिक रेखाओं का मिलना सिद्ध नहीं। प्रतिच्छेदी लंब रेखाएं मांगी हों तो प्रतिच्छेद भी जांचें।</p></div><div class="note-sec"><h3>4. प्रतिच्छेद में दो अलग प्राचल</h3><p>L₁: r=a+tb, L₂: r=c+sd में t,s अलग रखें। तीनों निर्देशांक बराबर करें। दो समीकरण हल करके तीसरा भी जांचें, छोड़ें नहीं।</p><p>उदाहरण: (t,0,0)=(0,s,1) में पहले दो निर्देशांक t=0,s=0 देते हैं; z में 0=1 चाहिए, जो असंभव है। प्रतिच्छेद नहीं। दिशाएं समांतर नहीं, इसलिए रेखाएं विषमतलीय हैं।</p><p>दिशाएं समांतर हों तो देखें c−a भी b के समांतर है या नहीं। हां तो रेखाएं संपाती, नहीं तो अलग समांतर। असमांतर रेखाएं जो नहीं मिलतीं, विषमतलीय हैं। स्थानिक प्रश्न में बिना जांच समतल चित्र न मानें।</p></div><div class="note-sec"><h3>5. असमांतर रेखाओं की न्यूनतम दूरी</h3><p>L₁: r=a+tb, L₂: r=c+sd और b×d≠0 पर दूरी |(c−a)·(b×d)|/|b×d| है। सदिश गुणनफल उभयनिष्ठ लंब दिशा देता है। निरपेक्ष मान दूरी अऋणात्मक रखता है।</p><p>a=(0,0,0), b=(1,0,0), c=(0,0,3), d=(0,1,0) लें। b×d=(0,0,1), c−a=(0,0,3), अतः दूरी 3। बिंदु (0,0,0), (0,0,3) इसे प्राप्त करते हैं; उनका जोड़ दोनों रेखाओं के लंब है।</p><p>अंश शून्य और दिशाएं असमांतर हों तो रेखाएं समतलीय हैं और मिलती हैं, दूरी 0। b×d=0 पर यह सूत्र न लगाएं: हर शून्य है। समांतर मामला अलग लें।</p></div><div class="note-sec"><h3>6. समांतर रेखाएं और बिंदु-रेखा दूरी</h3><p>उभयनिष्ठ अशून्य दिशा b वाली समांतर रेखाओं की दूरी |(c−a)×b|/|b| है। बिंदु c से रेखा r=a+tb की दूरी भी इसी सूत्र से मिलती है। यह क्षेत्रफल को आधार लंबाई से भाग देता है।</p><p>x-अक्ष और (0,3,4) से जाती समांतर रेखा में b=(1,0,0), c−a=(0,3,4)। गुणनफल (0,4,−3) की लंबाई 5; |b|=1 से भाग देकर दूरी 5। यहां विस्थापन स्वयं दिशा के लंब है।</p><p>पहले मामला जांचें: प्रतिच्छेद पर 0; अलग समांतर के लिए समांतर सूत्र; असमांतर के लिए अदिश त्रिक सूत्र। दूरी की इकाइयां दें, वर्ग इकाइयां नहीं।</p><p>ये चुनी रेखा-ज्यामिति बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली के हल या पूरी JEE तैयारी नहीं। समतल समीकरण, रेखा-समतल/समतल-समतल प्रश्न, लंबे उभयनिष्ठ लंब निर्माण और मिश्रित उन्नत प्रमाण शामिल नहीं। हटे विषयों या निश्चित परीक्षा अंकों का दावा नहीं है।</p></div></div><div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. Direction ratios are not direction cosines</h3><p>A line needs a nonzero direction vector b=(a,b,c). Its components are direction ratios, and multiplying all three by any nonzero number gives the same undirected line direction. The triple (0,0,0) cannot give a line direction.</p><p>Divide by √(a²+b²+c²) to get direction cosines for the chosen orientation: l,m,n. They satisfy l²+m²+n²=1. Reversing orientation reverses all three signs together, not independently.</p><p>For direction (2,−1,−2), the length is 3. One oriented set is (2/3,−1/3,−2/3); the reversed set is (−2/3,1/3,2/3). Squared components sum to 1. Direction ratios need not have this unit-length property.</p></div><div class="note-sec"><h3>2. A point plus a nonzero direction gives a line</h3><p>Write r=a+tb, t real, where a is the position vector of a known point and b≠0 is the direction. Components are x=x₀+tb₁, y=y₀+tb₂, z=z₀+tb₃. One common parameter t must work in all three.</p><p>Through A=(1,2,3) with direction (2,−1,0): x=1+2t, y=2−t, z=3. At t=1 the point is (3,1,3). The z-coordinate stays fixed; a zero component is not a reason to divide by zero.</p><p>If all direction components are nonzero, use (x−x₀)/b₁=(y−y₀)/b₂=(z−z₀)/b₃. If one is zero, write its coordinate as a fixed equality and keep the other parameter relations. A line through distinct points A,B uses direction B−A.</p></div><div class="note-sec"><h3>3. Angle between lines uses direction, not position</h3><p>For nonzero direction vectors b,d, the smaller angle θ between undirected lines satisfies cos θ=|b·d|/(|b||d|), so 0≤θ≤π/2. For oriented vectors instead, omit the absolute value and allow angles up to π.</p><p>Directions (1,0,0) and (−1,1,0) have dot product −1. Their vector angle is 135°, but the smaller line angle is 45°. Moving a line without changing its direction does not change this angle.</p><p>b·d=0 gives perpendicular directions; b×d=0 gives parallel directions. Perpendicular directions alone do not prove that two spatial lines meet. In a question about intersecting perpendicular lines, also verify intersection.</p></div><div class="note-sec"><h3>4. Intersection needs two independent parameters</h3><p>For L₁: r=a+tb and L₂: r=c+sd, use different parameters t,s. Equate all three coordinates. Solve two equations, then check the third; do not discard it.</p><p>Example: (t,0,0)=(0,s,1) forces t=0,s=0 from the first two coordinates, but then z would require 0=1. There is no intersection. Their directions are not parallel, so these lines are skew.</p><p>If directions are parallel, test whether c−a is also parallel to b. If it is, the two lines coincide; otherwise they are distinct parallel lines. Nonparallel lines that do not meet are skew. These tests prevent using a coplanar picture for a spatial problem.</p></div><div class="note-sec"><h3>5. Shortest distance between nonparallel lines</h3><p>For L₁: r=a+tb and L₂: r=c+sd with b×d≠0, shortest distance is |(c−a)·(b×d)|/|b×d|. The cross product gives a common perpendicular direction. The absolute value makes distance nonnegative.</p><p>Take a=(0,0,0), b=(1,0,0), c=(0,0,3), d=(0,1,0). Then b×d=(0,0,1), c−a=(0,0,3), giving distance 3. Points (0,0,0) and (0,0,3) realise it, with their join perpendicular to both lines.</p><p>If this numerator is zero and the directions are nonparallel, the lines are coplanar and intersect, so distance is 0. If b×d=0, do not use this formula: its denominator is zero. Treat the parallel case separately.</p></div><div class="note-sec"><h3>6. Parallel lines and point-to-line distance</h3><p>For parallel lines with common nonzero direction b, distance is |(c−a)×b|/|b|. The same formula gives distance from a point c to the line r=a+tb. It is an area divided by a base length.</p><p>For the x-axis and the parallel line through (0,3,4), b=(1,0,0) and c−a=(0,3,4). Their cross product is (0,4,−3), length 5; dividing by |b|=1 gives distance 5. The offset itself is perpendicular to the direction here.</p><p>Check the case first: intersection gives 0; distinct parallel lines use the parallel formula; nonparallel lines use the scalar-triple formula. Keep distance units, not square units.</p><p>These are selected line-geometry foundations and ten original questions, not complete textbook exercise solutions or complete JEE preparation. Plane equations, line-plane and plane-plane problems, long common-perpendicular constructions and mixed advanced proofs are not covered here. No deleted-topic or guaranteed exam-mark claim is made.</p></div></div></section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>DCs/DRs ⭐⭐</h4>
-      <ul><li>l=cosα, m=cosβ, n=cosγ</li><li>l²+m²+n²=1</li><li>DRs→DCs: √(a²+b²+c²) se divide</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Line equations ⭐⭐</h4>
-      <ul><li>r⃗ = a⃗ + λb⃗</li><li>(x−x₁)/a = (y−y₁)/b = (z−z₁)/c</li><li>2 points: direction = b⃗−a⃗</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Angle ⭐</h4>
-      <ul><li>cosθ = (b⃗₁·b⃗₂)/(|b⃗₁||b⃗₂|)</li><li>Perpendicular: a₁a₂+b₁b₂+c₁c₂=0</li><li>Parallel: DRs proportional</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Shortest distance ⭐⭐</h4>
-      <ul><li>Skew: |(a₂−a₁)·(b₁×b₂)|/|b₁×b₂|</li><li>SD=0 → intersecting</li><li>Parallel: |b×(a₂−a₁)|/|b|</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Syllabus ⭐⭐</h4>
-      <ul><li>PLANES completely DELETED</li><li>Sirf lines padhni hain</li><li>JEE me planes alag se</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>DCs/DRs ⭐⭐</h4>
-      <ul><li>l=cosα, m=cosβ, n=cosγ</li><li>l²+m²+n²=1</li><li>DRs→DCs: √(a²+b²+c²) से भाग</li></ul>
-    </div>
-    <div class="shorts-card"><h4>रेखा समीकरण ⭐⭐</h4>
-      <ul><li>r⃗ = a⃗ + λb⃗</li><li>(x−x₁)/a = (y−y₁)/b = (z−z₁)/c</li><li>2 बिंदु: दिशा = b⃗−a⃗</li></ul>
-    </div>
-    <div class="shorts-card"><h4>कोण ⭐</h4>
-      <ul><li>cosθ = (b⃗₁·b⃗₂)/(|b⃗₁||b⃗₂|)</li><li>लंबवत: a₁a₂+b₁b₂+c₁c₂=0</li><li>समांतर: DRs समानुपाती</li></ul>
-    </div>
-    <div class="shorts-card"><h4>न्यूनतम दूरी ⭐⭐</h4>
-      <ul><li>Skew: |(a₂−a₁)·(b₁×b₂)|/|b₁×b₂|</li><li>SD=0 → प्रतिच्छेदी</li><li>समांतर: |b×(a₂−a₁)|/|b|</li></ul>
-    </div>
-    <div class="shorts-card"><h4>पाठ्यक्रम ⭐⭐</h4>
-      <ul><li>समतल पूर्णतः हटाए गए</li><li>केवल रेखाएं पढ़नी हैं</li><li>JEE में समतल अलग से</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>DCs/DRs ⭐⭐</h4>
-      <ul><li>l=cosα, m=cosβ, n=cosγ</li><li>l²+m²+n²=1</li><li>DRs→DCs: divide by √(a²+b²+c²)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Line equations ⭐⭐</h4>
-      <ul><li>r⃗ = a⃗ + λb⃗</li><li>(x−x₁)/a = (y−y₁)/b = (z−z₁)/c</li><li>2 points: direction = b⃗−a⃗</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Angle ⭐</h4>
-      <ul><li>cosθ = (b⃗₁·b⃗₂)/(|b⃗₁||b⃗₂|)</li><li>Perpendicular: a₁a₂+b₁b₂+c₁c₂=0</li><li>Parallel: DRs proportional</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Shortest distance ⭐⭐</h4>
-      <ul><li>Skew: |(a₂−a₁)·(b₁×b₂)|/|b₁×b₂|</li><li>SD=0 → intersecting</li><li>Parallel: |b×(a₂−a₁)|/|b|</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Syllabus ⭐⭐</h4>
-      <ul><li>PLANES completely DELETED</li><li>Only lines to study</li><li>Planes separately for JEE</li></ul>
-    </div>
-    </div>
-  </div>
-</section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> DRs (2, −3, 6) ke corresponding DCs?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>√(4+9+36) = 7 → <b>(2/7, −3/7, 6/7)</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> l² + m² + n² ka value hamesha?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>1</b> — DCs unit vector ke components hain.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> P(1, 2, 3), Q(4, 0, 5) se line ke DRs?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>(3, −2, 2)</b> — Q − P.</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> Point (1, 2, 3) se guzarti, direction (2, 1, −1) wali line ka vector equation?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>r⃗ = <b>(î + 2ĵ + 3k̂) + λ(2î + ĵ − k̂)</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> (x−1)/2 = (y−2)/3 = (z+1)/4 me point aur DRs kya hain?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Point <b>(1, 2, −1)</b>, DRs <b>(2, 3, 4)</b> — (z−(−1)) dhyan se!</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> Do lines perpendicular kab hoti hain (DRs se)?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Jab <b>a₁a₂ + b₁b₂ + c₁c₂ = 0</b> — direction vectors ka dot zero.</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> DRs (1, 2, 3) aur (2, 4, 6) wali lines ka relation?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Parallel</b> — DRs proportional hain (1:2 ratio sab me).</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> Skew lines ki shortest distance ka formula?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>SD = <b>|(a⃗₂ − a⃗₁)·(b⃗₁×b⃗₂)| / |b⃗₁×b⃗₂|</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> SD = 0 aane pe lines kaisi hain?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Intersecting (coplanar)</b> — na skew na strictly parallel.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> Plane ka equation ab bhi Class 12 boards me aata hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — plane ke saare topics rationalized syllabus se <b>delete</b> ho chuke hain. Sirf lines! (JEE ke liye planes alag se padho.)</p></details></div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="tip-box">Line ki direction nonzero honi chahiye.</p><p class="tip-box">Direction cosines mein l²+m²+n²=1.</p><p class="tip-box">Line r=a+tb; teeno coordinates mein same t.</p><p class="tip-box">Zero direction component se coordinate fixed hota hai; zero denominator mat banao.</p><p class="tip-box">Smaller line angle: cos θ=|b·d|/(|b||d|).</p><p class="tip-box">Intersection mein alag parameters aur teeno equations check karo.</p><p class="tip-box">Nonparallel distance: |(c−a)·(b×d)|/|b×d|.</p><p class="tip-box">Parallel distance: |(c−a)×b|/|b|, b≠0.</p></div><div class="lang-block" data-lang="hi" hidden=""><p class="tip-box">रेखा की दिशा अशून्य होनी चाहिए।</p><p class="tip-box">दिक्-कोसाइन में l²+m²+n²=1।</p><p class="tip-box">रेखा r=a+tb; तीनों निर्देशांकों में वही t।</p><p class="tip-box">शून्य दिशा घटक से निर्देशांक स्थिर होता है; शून्य हर न बनाएं।</p><p class="tip-box">छोटा रेखा कोण: cos θ=|b·d|/(|b||d|)।</p><p class="tip-box">प्रतिच्छेद में अलग प्राचल और तीनों समीकरण जांचें।</p><p class="tip-box">असमांतर दूरी: |(c−a)·(b×d)|/|b×d|।</p><p class="tip-box">समांतर दूरी: |(c−a)×b|/|b|, b≠0।</p></div><div class="lang-block" data-lang="en" hidden=""><p class="tip-box">A line direction must be nonzero.</p><p class="tip-box">Direction cosines satisfy l²+m²+n²=1.</p><p class="tip-box">Line: r=a+tb; use the same t in all three coordinates.</p><p class="tip-box">A zero direction component fixes that coordinate, not a zero denominator.</p><p class="tip-box">Smaller line angle: cos θ=|b·d|/(|b||d|).</p><p class="tip-box">For intersection, use separate parameters and check all three equations.</p><p class="tip-box">Nonparallel distance: |(c−a)·(b×d)|/|b×d|.</p><p class="tip-box">Parallel distance: |(c−a)×b|/|b|, with b≠0.</p></div></section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> Orientation (2,−1,−2) ke direction cosines?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Nonzero direction ko normalise karo.</p><p>Steps: Length=√(4+1+4)=3; teeno components ko 3 se divide karo.</p><p>Answer/check: (2/3,−1/3,−2/3). Squares ka sum 1 hai.</p></details></div><div class="jee-q"><span class="qn">Q2</span> (1,2,3) se direction (2,−1,0) wali line likho.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Point plus parameter times direction lo.</p><p>Steps: r=(1,2,3)+t(2,−1,0).</p><p>Answer/check: x=1+2t, y=2−t, z=3. Zero z-direction component se divide mat karo.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Kya (3,1,3), x=1+2t, y=2−t, z=3 par hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Ek parameter saare coordinates satisfy kare.</p><p>Steps: x se t=1; phir y=1, z=3 milte hain.</p><p>Answer/check: Haan, t=1 par teeno coordinates match.</p></details></div><div class="jee-q"><span class="qn">Q4</span> A=(1,0,2), B=(3,−1,4) se line?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Direction B−A lo.</p><p>Steps: B−A=(2,−1,2).</p><p>Answer/check: r=(1,0,2)+t(2,−1,2). t=0,1 par A,B milte hain.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Directions (1,0,0), (−1,1,0) ka smaller line angle?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Smaller line angle mein absolute dot lo.</p><p>Steps: cos θ=|−1|/(1×√2)=1/√2.</p><p>Answer/check: 45°. Oriented vector angle 135° hai.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Kya r=(t,0,0), r=(0,s,1) milti hain?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Teeno coordinate equations check karo.</p><p>Steps: x,y se t=s=0, par z mein 0=1 chahiye. Directions parallel nahi.</p><p>Answer/check: Nahi; perpendicular directions ke bawajood lines skew hain.</p></details></div><div class="jee-q"><span class="qn">Q7</span> r=(t,0,0), r=(0,s,0) ka intersection?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Independent t,s lo.</p><p>Steps: x se t=0; y se s=0; z=0 match karta hai.</p><p>Answer/check: Origin (0,0,0). Shortest distance 0 hai.</p></details></div><div class="jee-q"><span class="qn">Q8</span> r=(t,0,0), r=(0,s,3) ki distance?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Nonparallel directions ka cross (0,0,1) hai.</p><p>Steps: Offset=(0,0,3); distance=|3|/1.</p><p>Answer/check: 3 units. (0,0,0) se (0,0,3) ka segment dono ke perpendicular hai.</p></details></div><div class="jee-q"><span class="qn">Q9</span> r=(t,0,0), r=(s,3,4) ki distance?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: b=(1,0,0) se parallel-line formula lo.</p><p>Steps: Offset=(0,3,4); offset×b=(0,4,−3) ki length 5.</p><p>Answer/check: 5 units. b×d=0 se nonparallel formula nahi lagega.</p></details></div><div class="jee-q"><span class="qn">Q10</span> P=(2,3,4) se x-axis ki distance?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Axis wala component hatao; perpendicular remainder lo.</p><p>Steps: Nearest point (2,0,0); joining vector (0,3,4).</p><p>Answer/check: √(9+16)=5 units. (1,0,0) se dot product 0 hai.</p></details></div><div class="tip-box">Yeh selected line-geometry foundations aur das original questions hain, poori textbook exercise solutions ya poori JEE preparation nahi. Plane equations, line-plane/plane-plane questions, lambe common-perpendicular constructions aur mixed advanced proofs shamil nahi. Deleted topics ya pakke exam marks ka daava nahi hai.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh205.pdf">Textbook Ch 11</a></p></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> अभिविन्यास (2,−1,−2) के दिक्-कोसाइन?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अशून्य दिशा को मात्रक बनाएं।</p><p>चरण: लंबाई=√(4+1+4)=3; तीनों घटकों को 3 से भाग दें।</p><p>उत्तर/जांच: (2/3,−1/3,−2/3)। वर्गों का योग 1 है।</p></details></div><div class="jee-q"><span class="qn">Q2</span> (1,2,3) से दिशा (2,−1,0) वाली रेखा लिखें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: बिंदु जोड़ प्राचल गुणा दिशा लें।</p><p>चरण: r=(1,2,3)+t(2,−1,0)।</p><p>उत्तर/जांच: x=1+2t, y=2−t, z=3। शून्य z-दिशा घटक से भाग न दें।</p></details></div><div class="jee-q"><span class="qn">Q3</span> क्या (3,1,3), x=1+2t, y=2−t, z=3 पर है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: एक प्राचल सभी निर्देशांक संतुष्ट करे।</p><p>चरण: x से t=1; फिर y=1, z=3 मिलते हैं।</p><p>उत्तर/जांच: हां, t=1 पर तीनों निर्देशांक मिलते हैं।</p></details></div><div class="jee-q"><span class="qn">Q4</span> A=(1,0,2), B=(3,−1,4) से रेखा?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: दिशा B−A लें।</p><p>चरण: B−A=(2,−1,2)।</p><p>उत्तर/जांच: r=(1,0,2)+t(2,−1,2)। t=0,1 पर A,B मिलते हैं।</p></details></div><div class="jee-q"><span class="qn">Q5</span> दिशाओं (1,0,0), (−1,1,0) का छोटा रेखा कोण?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: छोटे रेखा कोण में निरपेक्ष अदिश गुणनफल लें।</p><p>चरण: cos θ=|−1|/(1×√2)=1/√2।</p><p>उत्तर/जांच: 45°। अभिविन्यस्त सदिश कोण 135° है।</p></details></div><div class="jee-q"><span class="qn">Q6</span> क्या r=(t,0,0), r=(0,s,1) मिलती हैं?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: तीनों निर्देशांक समीकरण जांचें।</p><p>चरण: x,y से t=s=0, पर z में 0=1 चाहिए। दिशाएं समांतर नहीं।</p><p>उत्तर/जांच: नहीं; लंबवत दिशाओं के बावजूद रेखाएं विषमतलीय हैं।</p></details></div><div class="jee-q"><span class="qn">Q7</span> r=(t,0,0), r=(0,s,0) का प्रतिच्छेद?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: स्वतंत्र t,s लें।</p><p>चरण: x से t=0; y से s=0; z=0 मिलता है।</p><p>उत्तर/जांच: मूलबिंदु (0,0,0)। न्यूनतम दूरी 0 है।</p></details></div><div class="jee-q"><span class="qn">Q8</span> r=(t,0,0), r=(0,s,3) की दूरी?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: असमांतर दिशाओं का सदिश गुणनफल (0,0,1) है।</p><p>चरण: विस्थापन=(0,0,3); दूरी=|3|/1।</p><p>उत्तर/जांच: 3 इकाई। (0,0,0) से (0,0,3) का रेखाखंड दोनों के लंब है।</p></details></div><div class="jee-q"><span class="qn">Q9</span> r=(t,0,0), r=(s,3,4) की दूरी?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: b=(1,0,0) से समांतर-रेखा सूत्र लें।</p><p>चरण: विस्थापन=(0,3,4); विस्थापन×b=(0,4,−3) की लंबाई 5।</p><p>उत्तर/जांच: 5 इकाई। b×d=0 से असमांतर सूत्र नहीं लगेगा।</p></details></div><div class="jee-q"><span class="qn">Q10</span> P=(2,3,4) से x-अक्ष की दूरी?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अक्ष वाला घटक हटाएं; लंब शेष लें।</p><p>चरण: निकटतम बिंदु (2,0,0); जोड़ने वाला सदिश (0,3,4)।</p><p>उत्तर/जांच: √(9+16)=5 इकाई। (1,0,0) से अदिश गुणनफल 0 है।</p></details></div><div class="tip-box">ये चुनी रेखा-ज्यामिति बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली के हल या पूरी JEE तैयारी नहीं। समतल समीकरण, रेखा-समतल/समतल-समतल प्रश्न, लंबे उभयनिष्ठ लंब निर्माण और मिश्रित उन्नत प्रमाण शामिल नहीं। हटे विषयों या निश्चित परीक्षा अंकों का दावा नहीं है।</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh205.pdf">Textbook Ch 11</a></p></div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> Find direction cosines for the orientation (2,−1,−2).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Normalise the nonzero direction.</p><p>Steps: Length=√(4+1+4)=3; divide all components by 3.</p><p>Answer/check: (2/3,−1/3,−2/3). Their squares sum to 1.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Write a line through (1,2,3) with direction (2,−1,0).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use point plus parameter times direction.</p><p>Steps: r=(1,2,3)+t(2,−1,0).</p><p>Answer/check: x=1+2t, y=2−t, z=3. Do not write division by a zero z-direction component.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Does (3,1,3) lie on x=1+2t, y=2−t, z=3?<details class="jee-sol"><summary>Show answer</summary><p>Rule: One parameter must satisfy all coordinates.</p><p>Steps: x gives t=1; then y=1 and z=3.</p><p>Answer/check: Yes, at t=1; all three coordinates agree.</p></details></div><div class="jee-q"><span class="qn">Q4</span> Find a line through A=(1,0,2), B=(3,−1,4).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use B−A as the direction.</p><p>Steps: B−A=(2,−1,2).</p><p>Answer/check: r=(1,0,2)+t(2,−1,2). At t=0,1 it passes through A,B.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Find the smaller angle between directions (1,0,0) and (−1,1,0).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use the absolute dot product for the smaller line angle.</p><p>Steps: cos θ=|−1|/(1×√2)=1/√2.</p><p>Answer/check: 45°. The corresponding oriented vector angle is 135°.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Do r=(t,0,0) and r=(0,s,1) intersect?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Check all three coordinate equations.</p><p>Steps: x,y force t=s=0, but z would need 0=1. Directions are not parallel.</p><p>Answer/check: No; the lines are skew, despite perpendicular directions.</p></details></div><div class="jee-q"><span class="qn">Q7</span> Find the intersection of r=(t,0,0) and r=(0,s,0).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use independent parameters t,s.</p><p>Steps: x gives t=0; y gives s=0; z agrees at 0.</p><p>Answer/check: The origin (0,0,0). Shortest distance is 0.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Find the distance between r=(t,0,0) and r=(0,s,3).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Their nonparallel directions have cross product (0,0,1).</p><p>Steps: Offset=(0,0,3); distance=|3|/1.</p><p>Answer/check: 3 units. The segment from (0,0,0) to (0,0,3) is perpendicular to both lines.</p></details></div><div class="jee-q"><span class="qn">Q9</span> Find the distance between r=(t,0,0) and r=(s,3,4).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use the parallel-line formula with b=(1,0,0).</p><p>Steps: Offset=(0,3,4); offset×b=(0,4,−3), whose length is 5.</p><p>Answer/check: 5 units. The nonparallel formula cannot be used because b×d=0.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Find the distance from P=(2,3,4) to the x-axis.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Remove the component along the axis; use the perpendicular remainder.</p><p>Steps: The nearest point is (2,0,0); the joining vector is (0,3,4).</p><p>Answer/check: √(9+16)=5 units. Its dot product with (1,0,0) is 0.</p></details></div><div class="tip-box">These are selected line-geometry foundations and ten original questions, not complete textbook exercise solutions or complete JEE preparation. Plane equations, line-plane and plane-plane problems, long common-perpendicular constructions and mixed advanced proofs are not covered here. No deleted-topic or guaranteed exam-mark claim is made.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh205.pdf">Textbook Ch 11</a></p></div></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-12/">Linear Programming</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-12/">Linear Programming</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
