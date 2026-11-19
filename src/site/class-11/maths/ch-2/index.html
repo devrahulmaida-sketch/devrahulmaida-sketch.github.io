@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>#practice .jee-q,#practice summary,#practice .jee-sol p{font-size:16px;line-height:1.65}</style>
 </head>
 <body>
 <div class="topbar">
@@ -99,7 +100,7 @@
 <li><b>Ordered pair (a, b):</b> order MATTER karta hai — (a, b) ≠ (b, a) jab tak a = b na ho. (Sets se yahi farak — {a,b} = {b,a} par (a,b) ≠ (b,a)!)</li>
 <li><b>Cartesian product ⭐:</b> A × B = {(a, b) : a ∈ A, b ∈ B} — A ke har element ko B ke har element se jodo. Coordinates ka origin yahi hai!</li>
 <li><b>Counting:</b> n(A × B) = n(A) × n(B). A me 3, B me 4 → 12 ordered pairs.</li>
-<li><b>Non-commutative:</b> A × B ≠ B × A (jab A ≠ B). A × φ = φ.</li>
+<li>Cartesian product generally commutative nahi. Dono sets non-empty hon to A × B = B × A tabhi jab A = B. Koi ek empty ho to dono products empty hain.</li>
 <li><b>Real plane:</b> R × R = R² — poora coordinate plane! Har point (x, y) ek ordered pair hai.</li>
 </ul>
 <p class="small-note">💡 Feel: A = {shirts}, B = {pants} — A × B = saare possible outfits! Order matter karta hai: (shirt, pant) outfit hai, (pant, shirt) ulta likhna.</p>
@@ -136,7 +137,7 @@
 <tr><td>Polynomial</td><td>f(x) = x², x³...</td><td>R</td><td>x²: [0, ∞)</td></tr>
 <tr><td>Rational</td><td>f(x) = 1/x</td><td>R − {0}</td><td>R − {0}</td></tr>
 <tr><td>Modulus ⭐</td><td>f(x) = |x|</td><td>R</td><td>[0, ∞)</td></tr>
-<tr><td>Signum</td><td>f(x) = x/|x|</td><td>R − {0}</td><td>{−1, 0, 1}</td></tr>
+<tr><td>Signum</td><td>f(x) = x/|x| (x ≠ 0); f(0) = 0</td><td>R</td><td>{−1, 0, 1}</td></tr>
 <tr><td>Greatest integer ⭐</td><td>f(x) = [x]</td><td>R</td><td>Z</td></tr>
 </table>
 <ul>
@@ -168,7 +169,7 @@
 <li><b>क्रमित युग्म (a, b):</b> क्रम महत्वपूर्ण — (a, b) ≠ (b, a) जब तक a = b न हो।</li>
 <li><b>कार्तीय गुणन ⭐:</b> A × B = {(a, b) : a ∈ A, b ∈ B} — A के प्रत्येक अवयव को B के प्रत्येक से जोड़ो।</li>
 <li><b>गिनती:</b> n(A × B) = n(A) × n(B)।</li>
-<li><b>अक्रमविनिमेय:</b> A × B ≠ B × A (जब A ≠ B)। A × φ = φ।</li>
+<li>कार्तीय गुणन सामान्यतः क्रमविनिमेय नहीं है। A और B दोनों अरिक्त हों तो A × B = B × A तभी जब A = B। कोई एक रिक्त हो तो दोनों गुणन रिक्त हैं।</li>
 <li><b>वास्तविक तल:</b> R × R = R² — पूरा निर्देशांक तल!</li>
 </ul>
 <p class="small-note">💡 A = {शर्ट}, B = {पैंट} — A × B = सभी संभव पोशाकें!</p>
@@ -203,7 +204,7 @@
 <tr><td>अचर</td><td>f(x) = c</td><td>R</td><td>{c}</td></tr>
 <tr><td>परिमेय</td><td>f(x) = 1/x</td><td>R − {0}</td><td>R − {0}</td></tr>
 <tr><td>मापांक ⭐</td><td>f(x) = |x|</td><td>R</td><td>[0, ∞)</td></tr>
-<tr><td>चिह्न (signum)</td><td>f(x) = x/|x|</td><td>R − {0}</td><td>{−1, 0, 1}</td></tr>
+<tr><td>चिह्न (signum)</td><td>f(x) = x/|x| (x ≠ 0); f(0) = 0</td><td>R</td><td>{−1, 0, 1}</td></tr>
 <tr><td>महत्तम पूर्णांक ⭐</td><td>f(x) = [x]</td><td>R</td><td>Z</td></tr>
 </table>
 <ul>
@@ -233,7 +234,7 @@
 <li><b>Ordered pair (a, b):</b> order MATTERS — (a, b) ≠ (b, a) unless a = b. (This is exactly how pairs differ from sets — {a,b} = {b,a} but (a,b) ≠ (b,a)!)</li>
 <li><b>Cartesian product ⭐:</b> A × B = {(a, b) : a ∈ A, b ∈ B} — pair every element of A with every element of B. This is the origin of coordinates!</li>
 <li><b>Counting:</b> n(A × B) = n(A) × n(B). 3 in A, 4 in B → 12 ordered pairs.</li>
-<li><b>Non-commutative:</b> A × B ≠ B × A (when A ≠ B). A × φ = φ.</li>
+<li>Cartesian product is not commutative in general. If A and B are non-empty, A × B = B × A exactly when A = B. If either set is empty, both products are empty.</li>
 <li><b>The real plane:</b> R × R = R² — the whole coordinate plane! Every point (x, y) is an ordered pair.</li>
 </ul>
 <p class="small-note">💡 Feel: A = {shirts}, B = {pants} — A × B = every possible outfit! Order matters: (shirt, pant) is an outfit; (pant, shirt) is writing it backwards.</p>
@@ -270,7 +271,7 @@
 <tr><td>Polynomial</td><td>f(x) = x², x³...</td><td>R</td><td>x²: [0, ∞)</td></tr>
 <tr><td>Rational</td><td>f(x) = 1/x</td><td>R − {0}</td><td>R − {0}</td></tr>
 <tr><td>Modulus ⭐</td><td>f(x) = |x|</td><td>R</td><td>[0, ∞)</td></tr>
-<tr><td>Signum</td><td>f(x) = x/|x|</td><td>R − {0}</td><td>{−1, 0, 1}</td></tr>
+<tr><td>Signum</td><td>f(x) = x/|x| (x ≠ 0); f(0) = 0</td><td>R</td><td>{−1, 0, 1}</td></tr>
 <tr><td>Greatest integer ⭐</td><td>f(x) = [x]</td><td>R</td><td>Z</td></tr>
 </table>
 <ul>
@@ -304,7 +305,7 @@
   <div class="lang-block" data-lang="hinglish" hidden>
 <div class="shorts-grid">
     <div class="shorts-card"><h4>Cartesian ⭐</h4>
-      <ul><li>A×B = {(a,b): a∈A, b∈B}</li><li>n(A×B) = n(A)×n(B)</li><li>A×B ≠ B×A</li></ul>
+      <ul><li>A×B = {(a,b): a∈A, b∈B}</li><li>n(A×B) = n(A)×n(B)</li><li>A×B aur B×A generally alag. Dono non-empty hon to equal tabhi jab A = B. Koi ek empty ho to dono products empty.</li></ul>
     </div>
     <div class="shorts-card"><h4>Relations</h4>
       <ul><li>Relation = A×B ka subset</li><li>Range ⊆ codomain (B)</li><li>Total relations: 2^(mn)</li></ul>
@@ -323,7 +324,7 @@
   <div class="lang-block" data-lang="hi" hidden>
 <div class="shorts-grid">
     <div class="shorts-card"><h4>कार्तीय ⭐</h4>
-      <ul><li>A×B = {(a,b)}</li><li>n(A×B) = n(A)×n(B)</li><li>A×B ≠ B×A</li></ul>
+      <ul><li>A×B = {(a,b)}</li><li>n(A×B) = n(A)×n(B)</li><li>A×B और B×A सामान्यतः अलग हैं। दोनों अरिक्त हों तो समानता तभी जब A = B। कोई एक रिक्त हो तो दोनों रिक्त हैं।</li></ul>
     </div>
     <div class="shorts-card"><h4>संबंध</h4>
       <ul><li>संबंध = A×B का उपसमुच्चय</li><li>परिसर ⊆ सहप्रांत</li><li>कुल संबंध: 2^(mn)</li></ul>
@@ -342,7 +343,7 @@
   <div class="lang-block" data-lang="en" hidden>
 <div class="shorts-grid">
     <div class="shorts-card"><h4>Cartesian ⭐</h4>
-      <ul><li>A×B = {(a,b): a∈A, b∈B}</li><li>n(A×B) = n(A)×n(B)</li><li>A×B ≠ B×A</li></ul>
+      <ul><li>A×B = {(a,b): a∈A, b∈B}</li><li>n(A×B) = n(A)×n(B)</li><li>A×B and B×A differ in general. For non-empty sets, they are equal exactly when A = B. If either set is empty, both products are empty.</li></ul>
     </div>
     <div class="shorts-card"><h4>Relations</h4>
       <ul><li>Relation = subset of A×B</li><li>Range ⊆ codomain (B)</li><li>Total relations: 2^(mn)</li></ul>
@@ -359,31 +360,17 @@
     </div>
   </div>
 </section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> A = {1, 2}, B = {a, b, c}. n(A × B)?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>n(A×B) = 2×3 = <b>6</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> (a, b) = (3, 5) hai to a aur b?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Ordered pair me components match: a = <b>3</b>, b = <b>5</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> R = {(1,2), (2,4), (3,6)} ka domain aur range?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Domain = <b>{1, 2, 3}</b>, Range = <b>{2, 4, 6}</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> Range aur codomain me kya farak?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Codomain = <b>poora target set</b>; range = jo actually images banaye (<b>range ⊆ codomain</b>).</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> R = {(1,2), (1,3), (2,4)} function hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — 1 ke do images (2 aur 3). Har input ka exactly ek output chahiye.</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> f(x) = x² + 1. f(3) aur f(−3)?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Dono <b>10</b> — square sign khaa jaata hai. Do inputs ka same image allowed hai!</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> [−3.7] (greatest integer) kya hoga?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>−4</b> — floor hamesha neeche (left) jaata hai, −3 nahi!</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> f(x) = 1/(x − 2). Domain?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Denominator zero nahi hona chahiye → x ≠ 2 → domain = <b>R − {2}</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> f(x) = √x, g(x) = x². (f+g)(4)?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>f(4) = 2, g(4) = 16 → (f+g)(4) = <b>18</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> Signum function ka range?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>{−1, 0, 1}</b> — negative pe −1, zero pe 0, positive pe 1.</p></details></div>
-  </div>
-</section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-hinglish="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-en="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2><p class="lang-sub" data-hinglish="Wahi 10 basic questions, teen languages mein. Pehle khud karo, phir answer kholo." data-hi="वही 10 बुनियादी प्रश्न तीन भाषाओं में। पहले खुद हल करें, फिर उत्तर खोलें।" data-en="The same 10 basic questions in three languages. Try first, then open the answer.">Wahi 10 basic questions, teen languages mein. Pehle khud karo, phir answer kholo.</p></div><div class="lang-switch" role="group" aria-label="Practice language"><span class="lang-sub lang-label" data-hinglish="Practice language:" data-hi="अभ्यास की भाषा:" data-en="Practice language:">Practice language:</span><button class="lang-btn" data-lang="hinglish" type="button">Hinglish</button><button class="lang-btn" data-lang="hi" type="button">हिंदी</button><button class="lang-btn" data-lang="en" type="button">English</button></div><div class="lang-block practice-block" data-lang="hinglish"><div class="jee-q"><span class="qn">Q1</span> A = {1, 2}, B = {a, b, c}. n(A × B)?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>n(A×B) = 2×3 = <b>6</b>.</p></details></div><div class="jee-q"><span class="qn">Q2</span> (a, b) = (3, 5) hai to a aur b?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>Ordered pair me components match: a = <b>3</b>, b = <b>5</b>.</p></details></div><div class="jee-q"><span class="qn">Q3</span> R = {(1,2), (2,4), (3,6)} ka domain aur range?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>Domain = <b>{1, 2, 3}</b>, Range = <b>{2, 4, 6}</b>.</p></details></div><div class="jee-q"><span class="qn">Q4</span> Range aur codomain me kya farak?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>Codomain = <b>poora target set</b>; range = jo actually images banaye (<b>range ⊆ codomain</b>).</p></details></div><div class="jee-q"><span class="qn">Q5</span> R = {(1,2), (1,3), (2,4)} function hai?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — 1 ke do images (2 aur 3). Har input ka exactly ek output chahiye.</p></details></div><div class="jee-q"><span class="qn">Q6</span> f(x) = x² + 1. f(3) aur f(−3)?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>Dono <b>10</b> — square sign khaa jaata hai. Do inputs ka same image allowed hai!</p></details></div><div class="jee-q"><span class="qn">Q7</span> [−3.7] (greatest integer) kya hoga?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p><b>−4</b> — floor hamesha neeche (left) jaata hai, −3 nahi!</p></details></div><div class="jee-q"><span class="qn">Q8</span> f(x) = 1/(x − 2). Domain?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>Denominator zero nahi hona chahiye → x ≠ 2 → domain = <b>R − {2}</b>.</p></details></div><div class="jee-q"><span class="qn">Q9</span> f(x) = √x, g(x) = x². (f+g)(4)?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>f(4) = 2, g(4) = 16 → (f+g)(4) = <b>18</b>.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Signum function ka range?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p><b>{−1, 0, 1}</b> — negative pe −1, zero pe 0, positive pe 1.</p></details></div></div><div class="lang-block practice-block" data-lang="hi" hidden><div class="jee-q"><span class="qn">Q1</span> A = {1, 2}, B = {a, b, c} हैं। n(A × B) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>A × B में क्रमित युग्म होते हैं: पहला अवयव A से और दूसरा B से। A के हर चयन के लिए B के 3 चयन हैं। उत्तर: 2 × 3 = 6। जांच: (1,a), (1,b), (1,c), (2,a), (2,b), (2,c), कुल 6 युग्म।</p></details></div><div class="jee-q"><span class="qn">Q2</span> (a, b) = (3, 5) है। a और b निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>समान क्रमित युग्मों के संगत अवयव समान होते हैं। पहले से पहला मिलाएं: a = 3। दूसरे से दूसरा मिलाएं: b = 5। उत्तर: a = 3, b = 5। जांच: रखने पर दोनों ओर (3,5) मिलता है। क्रम महत्वपूर्ण है।</p></details></div><div class="jee-q"><span class="qn">Q3</span> R = {(1,2), (2,4), (3,6)} का प्रांत और परिसर निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>प्रांत में सभी पहले अवयव और परिसर में सभी दूसरे अवयव लेते हैं। उत्तर: प्रांत = {1,2,3}, परिसर = {2,4,6}। जांच: हर युग्म का इनपुट और आउटपुट इन सूचियों में है। केवल इन युग्मों से कोई बड़ा सहप्रांत तय नहीं कर सकते।</p></details></div><div class="jee-q"><span class="qn">Q4</span> परिसर और सहप्रांत में क्या अंतर है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>f : A → B में सहप्रांत घोषित लक्ष्य समुच्चय B है। परिसर वे आउटपुट हैं जो वास्तव में मिलते हैं। उत्तर: परिसर ⊆ B; दोनों समान होना जरूरी नहीं। जांच: f : {1,2} → {1,2,3}, f(x) = x में परिसर {1,2} है, लेकिन सहप्रांत {1,2,3} है।</p></details></div><div class="jee-q"><span class="qn">Q5</span> क्या R = {(1,2), (1,3), (2,4)} एक फलन है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>फलन में हर इनपुट का ठीक एक आउटपुट होता है। यहां इनपुट 1 के दो आउटपुट 2 और 3 हैं। उत्तर: नहीं। जांच: एक ही इनपुट के दो आउटपुट मिलना नियम को गलत सिद्ध करने के लिए काफी है। इनपुट 2 का आउटपुट 4 होने से यह कमी नहीं मिटती।</p></details></div><div class="jee-q"><span class="qn">Q6</span> f(x) = x² + 1 के लिए f(3) और f(−3) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>पूरा इनपुट रखें: f(3) = 3² + 1 = 10; f(−3) = (−3)² + 1 = 10। उत्तर: दोनों 10 हैं। जांच: हर इनपुट का एक ही आउटपुट है। अलग इनपुट का समान आउटपुट हो सकता है, इसलिए यह फिर भी फलन है।</p></details></div><div class="jee-q"><span class="qn">Q7</span> [−3.7] निकालें, जहां [x] का अर्थ x से छोटा या बराबर महत्तम पूर्णांक है।<details class="jee-sol"><summary>उत्तर देखें</summary><p>ऐसा सबसे बड़ा पूर्णांक चाहिए जो इनपुट से बड़ा न हो। −4 ≤ −3.7 &lt; −3 है। उत्तर: −4। जांच: −3, इनपुट −3.7 से बड़ा है, इसलिए मान्य नहीं। यह निकटतम पूर्णांक तक सन्निकटन या दशमलव हटाना नहीं है।</p></details></div><div class="jee-q"><span class="qn">Q8</span> f(x) = 1/(x − 2) का अधिकतम वास्तविक प्रांत निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>हर शून्य नहीं हो सकता। x − 2 = 0 से x = 2 मिलता है, इसलिए इसे हटाएं। उत्तर: R − {2}, जहां R वास्तविक संख्याओं का समुच्चय है। जांच: x = 3 पर मान 1 और x = 1 पर −1 है; x = 2 पर शून्य से भाग करना पड़ेगा।</p></details></div><div class="jee-q"><span class="qn">Q9</span> f(x) = √x, g(x) = x² हैं। (f + g)(4) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>फलनों के योग में एक ही इनपुट पर मान जोड़ते हैं, एक फलन को दूसरे के अंदर नहीं रखते। f(4) = 2 और g(4) = 16। उत्तर: 2 + 16 = 18। जांच: 4 दोनों वास्तविक प्रांतों में है। योग का वास्तविक प्रांत [0,∞) है।</p></details></div><div class="jee-q"><span class="qn">Q10</span> R पर परिभाषित चिह्न फलन (signum) का परिसर क्या है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>यह इनपुट का चिह्न बताता है: x &lt; 0 पर −1, x = 0 पर 0, x &gt; 0 पर 1। उत्तर: {−1,0,1}। जांच: इनपुट −2, 0, 2 से तीनों मान मिलते हैं। x/|x| केवल x ≠ 0 पर सही है; शून्य पर मान अलग से 0 परिभाषित करते हैं।</p></details></div></div><div class="lang-block practice-block" data-lang="en" hidden><div class="jee-q"><span class="qn">Q1</span> A = {1, 2}, B = {a, b, c}. Find n(A × B).<details class="jee-sol"><summary>Show answer</summary><p>A × B contains ordered pairs, first from A and second from B. Each of 2 choices has 3 partners: 2 × 3 = 6. Answer: 6. Check: (1,a), (1,b), (1,c), (2,a), (2,b), (2,c).</p></details></div><div class="jee-q"><span class="qn">Q2</span> (a, b) = (3, 5). Find a and b.<details class="jee-sol"><summary>Show answer</summary><p>Equal ordered pairs have equal corresponding components. Match first with first: a = 3. Match second with second: b = 5. Answer: a = 3, b = 5. Check: substitution gives (3,5) on both sides. Order matters.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Find the domain and range of R = {(1,2), (2,4), (3,6)}.<details class="jee-sol"><summary>Show answer</summary><p>The domain collects first components; the range collects second components. Answer: domain = {1,2,3}, range = {2,4,6}. Check: every listed pair uses these inputs and outputs. A larger codomain cannot be recovered from these pairs alone.</p></details></div><div class="jee-q"><span class="qn">Q4</span> What is the difference between range and codomain?<details class="jee-sol"><summary>Show answer</summary><p>For f : A → B, the codomain is the declared target B. The range is the set of outputs actually reached. Answer: range ⊆ B, but equality is not required. Check: f : {1,2} → {1,2,3}, f(x) = x has range {1,2} and codomain {1,2,3}.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Is R = {(1,2), (1,3), (2,4)} a function?<details class="jee-sol"><summary>Show answer</summary><p>A function gives every input exactly one output. Here input 1 has outputs 2 and 3. Answer: no. Check: finding just this one input with two outputs disproves the function rule; output 4 for input 2 does not repair it.</p></details></div><div class="jee-q"><span class="qn">Q6</span> For f(x) = x² + 1, find f(3) and f(−3).<details class="jee-sol"><summary>Show answer</summary><p>Substitute each complete input: f(3) = 3² + 1 = 10; f(−3) = (−3)² + 1 = 10. Answer: both are 10. Check: each input has one output. Different inputs may share an output, so this is still a function.</p></details></div><div class="jee-q"><span class="qn">Q7</span> Find [−3.7], where [x] means the greatest integer not exceeding x.<details class="jee-sol"><summary>Show answer</summary><p>The floor is the greatest integer ≤ the input. Here −4 ≤ −3.7 &lt; −3. Answer: −4. Check: −3 is greater than −3.7, so it is not allowed. This is not rounding to the nearest integer or cutting off the decimal.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Find the largest real domain of f(x) = 1/(x − 2).<details class="jee-sol"><summary>Show answer</summary><p>A denominator cannot be zero. Solve x − 2 = 0 to exclude x = 2. Answer: R − {2}, where R is the set of real numbers. Check: x = 3 gives 1 and x = 1 gives −1; x = 2 would require division by zero.</p></details></div><div class="jee-q"><span class="qn">Q9</span> For f(x) = √x and g(x) = x², find (f + g)(4).<details class="jee-sol"><summary>Show answer</summary><p>Function addition means adding values at the same input, not composition. f(4) = 2 and g(4) = 16. Answer: (f + g)(4) = 2 + 16 = 18. Check: 4 is in both real domains. The sum has real domain [0,∞).</p></details></div><div class="jee-q"><span class="qn">Q10</span> What is the range of the signum function on R?<details class="jee-sol"><summary>Show answer</summary><p>Signum records the sign: −1 for x &lt; 0, 0 for x = 0, and 1 for x &gt; 0. Answer: {−1,0,1}. Check: inputs −2, 0 and 2 attain all three values. The formula x/|x| works only for x ≠ 0; define the value at zero separately.</p></details></div></div><div class="tip-box"><b>Coverage / दायरा</b><p>Our own 10 selected foundation questions, not official NCERT exercise solutions, PYQs or full JEE preparation. Original Hinglish items retained; Hindi and English are our translations with extra checks. Graph practice and a full exercise set are not included here. No new video or diagram.</p><p>Concept reference: <a href="https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep202.pdf">NCERT Class XI Relations and Functions Exemplar, 2025-26, overview sections 2.1.1-2.1.5</a>. R denotes real numbers and Z integers. A real domain is the largest allowed set unless stated otherwise. Signum is defined as 0 at zero; x/|x| alone is not its full definition.</p></div></section>
 <section class="roadmap">
   <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-11/maths/ch-3/">Trigonometric Functions</a> — notes ready hain.</div>
 </section>
