@@ -1,375 +1,111 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 12 — Limits and Derivatives | Class 11 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 11 Maths Chapter 12: Limits and Derivatives — long + short notes in Hindi, English, Hinglish. Limits, standard limits, first principle, derivative rules.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 11 Maths Chapter 12: Limits and Derivatives — long + short notes in Hindi, English, Hinglish. Limits, standard limits, first principle, derivative rules." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:16px;line-height:1.65;margin:8px 0;padding:12px;background:#f5f7fb;border:1px solid #d5deec;border-radius:4px} #practice .jee-sol summary{font-size:16px} #notes .note-sec p{line-height:1.7} #short-notes .small-note{font-size:16px;line-height:1.7}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-11/">Class 11</a> / <a href="/src/site/class-11/maths/">Mathematics</a> / Chapter 12</p>
-  <h1>Limits and Derivatives</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">सीमा और अवकलज</p>
-  <p style="color:var(--muted);margin-top:6px">Calculus ki entry — limits se derivatives tak</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video coming soon</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-11/">Class 11</a> / <a href="/src/site/class-11/maths/">Mathematics</a> / Chapter 12</p>
+<h1>Limits and Derivatives</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">सीमा और अवकलज</p>
+<p style="color:var(--muted);margin-top:6px">Calculus ki entry — limits se derivatives tak</p>
+<div class="ch-tags">
+<span class="pill">Selected foundations</span>
+<span class="pill">Video coming soon</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section style="padding-top:20px">
-  <div class="video-soon">
-    <b>Video jald aa raha hai</b>
-    <p>Is chapter ka video abhi ban raha hai. Tab tak neeche ke notes se padhen.</p>
-  </div>
+<div class="video-soon">
+<b>Video jald aa raha hai</b>
+<p>Is chapter ka video abhi ban raha hai. Tab tak neeche ke notes se padhen.</p>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Calculus ka darwaza 5 animated scenes mein - limit ka hole, secant se tangent, derivative machine.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Calculus ka darwaza 5 animated scenes mein - limit ka hole, secant se tangent, derivative machine.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="concept-shorts" style="padding-top:10px">
-  <div class="sec-head"><h2>Concept Shorts — JEE Advanced</h2></div>
-  <div class="concept-shorts-grid" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
-    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/zS2MCamNHmM" title="0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/zS2MCamNHmM" title="0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/zS2MCamNHmM" target="_blank" rel="noopener">0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced</a></p>
-    </div>    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="Class 11 Maths Ch 12 - Limits ki JEE Family: 3 Standard Limits + First Principles | NCERT (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Class 11 Maths Ch 12 - Limits ki JEE Family: 3 Standard Limits + First Principles | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/A1Ry3s9sfMs" title="Class 11 Maths Ch 12 - Limits ki JEE Family: 3 Standard Limits + First Principles | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/A1Ry3s9sfMs" title="Class 11 Maths Ch 12 - Limits ki JEE Family: 3 Standard Limits + First Principles | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/A1Ry3s9sfMs" target="_blank" rel="noopener">Limits ki JEE Family: 3 Standard Limits + First Principles</a></p>
-    </div>    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="LIMIT ka EK-LINE Answer! x^n - a^n Trick | Class 11 Maths Ch 12 Limits | NCERT (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">LIMIT ka EK-LINE Answer! x^n - a^n Trick | Class 11 Maths Ch 12 Limits | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/VAOcgngM3bo" title="LIMIT ka EK-LINE Answer! x^n - a^n Trick | Class 11 Maths Ch 12 Limits | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/VAOcgngM3bo" title="LIMIT ka EK-LINE Answer! x^n - a^n Trick | Class 11 Maths Ch 12 Limits | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/VAOcgngM3bo" target="_blank" rel="noopener">LIMIT ka EK-LINE Answer! x^n - a^n Trick</a></p>
-    </div>
-
-
-  </div>
+<div class="sec-head"><h2>Concept Shorts — JEE Advanced</h2></div>
+<div class="concept-shorts-grid" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
+<div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zS2MCamNHmM" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zS2MCamNHmM" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/zS2MCamNHmM" rel="noopener" target="_blank">0/0 Trigonometric Limits Solved - Limits and Derivatives JEE Advanced</a></p>
+</div> <div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="Class 11 Maths Ch 12 - Limits ki JEE Family: 3 Standard Limits + First Principles | NCERT (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Class 11 Maths Ch 12 - Limits ki JEE Family: 3 Standard Limits + First Principles | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/A1Ry3s9sfMs" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 12 - Limits ki JEE Family: 3 Standard Limits + First Principles | NCERT (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/A1Ry3s9sfMs" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 12 - Limits ki JEE Family: 3 Standard Limits + First Principles | NCERT (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/A1Ry3s9sfMs" rel="noopener" target="_blank">Limits ki JEE Family: 3 Standard Limits + First Principles</a></p>
+</div> <div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="LIMIT ka EK-LINE Answer! x^n - a^n Trick | Class 11 Maths Ch 12 Limits | NCERT (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">LIMIT ka EK-LINE Answer! x^n - a^n Trick | Class 11 Maths Ch 12 Limits | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/VAOcgngM3bo" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="LIMIT ka EK-LINE Answer! x^n - a^n Trick | Class 11 Maths Ch 12 Limits | NCERT (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/VAOcgngM3bo" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="LIMIT ka EK-LINE Answer! x^n - a^n Trick | Class 11 Maths Ch 12 Limits | NCERT (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/VAOcgngM3bo" rel="noopener" target="_blank">LIMIT ka EK-LINE Answer! x^n - a^n Trick</a></p>
+</div>
+</div>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Long notes - selected foundations" data-hi="विस्तृत नोट्स - चुनी हुई बुनियाद" data-hinglish="Long notes - selected foundations">Long notes - selected foundations</h2><p class="lang-sub" data-en="Definitions, examples and conditions, one step at a time" data-hi="परिभाषाएं, उदाहरण और शर्तें, एक-एक चरण में" data-hinglish="Definitions, examples aur conditions, ek-ek step mein">Definitions, examples and conditions, one step at a time</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Limits — Calculus ka Darwaza</h3>
-    <p><b>Calculus</b> maths ka wo superpower hai jo CHANGE ko measure karta hai — gari ki speed, curve ki slope, population ki growth. Aur calculus ki entry hoti hai <b>limit</b> se. Limit ka matlab: x jab kisi value ke bahut KAREEB jata hai (touch nahi karta!), to function kis value ke kareeb jata hai?</p>
-<ul>
-<li><b>Limit ka idea:</b> lim(x→a) f(x) = L — x, a ke paas aane pe f(x), L ke paas jaata hai.</li>
-<li><b>Feel wala example ⭐:</b> f(x) = (x² − 1)/(x − 1). x = 1 pe 0/0 — undefined! Lekin x = 1.001 daalo to 2.001, x = 0.999 daalo to 1.999 — dono taraf se 2 ke paas. Limit = 2!</li>
-<li><b>Left-hand limit (LHL):</b> chhoti values se approach. <b>Right-hand limit (RHL):</b> badi values se. Limit exist kare ⟺ LHL = RHL ⭐</li>
-<li><b>Limit ≠ value:</b> f(a) defined na bhi ho, limit ho sakti hai (jaise upar wale example me).</li>
-</ul>
-<p class="small-note">💡 Feel: limit = "kis taraf ja raha hai", value = "kahan khada hai" — dono alag cheezein!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Limits ke Rules aur Standard Limits ⭐</h3>
-    <ul>
-<li><b>Algebra of limits:</b> limits add/subtract/multiply/divide ho jaati hain (denominator ki limit 0 na ho divide me).</li>
-<li><b>Polynomial/direct substitution:</b> x = a direct daal do — kaam kar gaya to wahi limit!</li>
-<li><b>0/0 form ⭐:</b> direct daalne pe 0/0 aaye to FACTOR karo aur cancel karo — (x²−1)/(x−1) = (x+1)(x−1)/(x−1) = x+1 → 2.</li>
-<li><b>Standard limit 1 ⭐:</b> lim(x→0) (sin x)/x = 1 (x radians me!).</li>
-<li><b>Standard limit 2 ⭐:</b> lim(x→0) (tan x)/x = 1.</li>
-<li><b>Standard limit 3 ⭐:</b> lim(x→a) (xⁿ − aⁿ)/(x − a) = n·aⁿ⁻¹.</li>
-<li><b>Standard limit 4:</b> lim(x→0) (1 + x)^(1/x) = e; lim(x→0) (eˣ − 1)/x = 1; lim(x→0) log(1+x)/x = 1.</li>
-</ul>
-<p class="small-note">🎯 90% limit problems: direct substitution → 0/0? → factor/cancel ya standard limit pe lao!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Derivatives — Rate of Change ⭐</h3>
-    <p><b>Derivative</b> = instantaneous rate of change = curve ki slope ek exact point pe. Speedometer socho — average speed nahi, ISS PAL ki speed!</p>
-<ul>
-<li><b>First principle (definition) ⭐:</b> f'(x) = lim(h→0) [f(x + h) − f(x)]/h.</li>
-<li><b>Notation:</b> f'(x), dy/dx, D[f(x)] — sab same matlab.</li>
-<li><b>Geometric meaning ⭐:</b> curve pe (x, f(x)) point pe TANGENT ki slope.</li>
-<li><b>Example (first principle):</b> f(x) = x² → f'(x) = lim(h→0) [(x+h)² − x²]/h = lim(h→0) (2x + h) = 2x.</li>
-<li><b>Physical meaning:</b> s(t) position → s'(t) velocity → s''(t) acceleration.</li>
-</ul>
-<p class="small-note">💡 Feel: average speed = puri trip ka slope; derivative = speedometer ka exact reading — ek instant ka slope!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Derivatives ke Rules ⭐</h3>
-    <ul>
-<li><b>Power rule ⭐:</b> d/dx (xⁿ) = n·xⁿ⁻¹. (x³ → 3x², x → 1, constant → 0)</li>
-<li><b>Constant multiple:</b> d/dx [c·f(x)] = c·f'(x).</li>
-<li><b>Sum/difference rule:</b> d/dx [f ± g] = f' ± g' — term by term karo!</li>
-<li><b>Product rule ⭐:</b> d/dx [u·v] = u'v + uv' — "first ka derivative × second + first × second ka derivative".</li>
-<li><b>Quotient rule ⭐:</b> d/dx [u/v] = (u'v − uv')/v² — "neeche wala square, upar: neech-der minus der-neech".</li>
-<li><b>Standard derivatives ⭐:</b> d/dx (sin x) = cos x; d/dx (cos x) = −sin x; d/dx (tan x) = sec²x; d/dx (eˣ) = eˣ; d/dx (log x) = 1/x.</li>
-</ul>
-<p class="small-note">🎯 Quotient rule ka order yaad rakho: (u'v − uv') — MINUS hai, order ulta kar diya to sign galt!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Exam Patterns — Limits & Derivatives ka Paper</h3>
-    <ul>
-<li><b>Direct limits:</b> substitution se — free marks.</li>
-<li><b>0/0 limits ⭐:</b> factorize + cancel, ya rationalization (surds me conjugate multiply).</li>
-<li><b>Trig limits ⭐:</b> (sin ax)/(bx) = a/b type — standard limit pe convert karo.</li>
-<li><b>(xⁿ − aⁿ)/(x − a) limits:</b> formula n·aⁿ⁻¹ — super fast.</li>
-<li><b>First principle se derivative ⭐:</b> board exam me compulsory — definition likhna, limit evaluate karna.</li>
-<li><b>Rules se derivative:</b> power/product/quotient — polynomial + trig mix.</li>
-<li><b>LHL/RHL check:</b> "limit exist karti hai?" — dono sides nikalo.</li>
-</ul>
-<p class="small-note">💡 Derivative ke questions Class 12 calculus ka 70% base hain — abhi pakka kar lo to aage aasaan!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ सीमा (Limit) — कलन का द्वार</h3>
-    <p><b>कलन (Calculus)</b> गणित की वह शक्ति है जो परिवर्तन को मापती है — गति, ढलान, वृद्धि। और कलन की शुरुआत <b>सीमा</b> से होती है। सीमा का अर्थ: x जब किसी मान के बहुत निकट जाता है (छूता नहीं!), तो फलन किस मान के निकट जाता है?</p>
-<ul>
-<li><b>सीमा की अवधारणा:</b> lim(x→a) f(x) = L — x, a के निकट आने पर f(x), L के निकट जाता है।</li>
-<li><b>उदाहरण ⭐:</b> f(x) = (x² − 1)/(x − 1)। x = 1 पर 0/0 — अपरिभाषित! पर x = 1.001 रखो तो 2.001, x = 0.999 रखो तो 1.999 — दोनों ओर से 2 के निकट। सीमा = 2!</li>
-<li><b>वाम सीमा (LHL):</b> छोटे मानों से। <b>दक्षिण सीमा (RHL):</b> बड़े मानों से। सीमा का अस्तित्व ⟺ LHL = RHL ⭐</li>
-<li><b>सीमा ≠ मान:</b> f(a) परिभाषित न भी हो, सीमा हो सकती है।</li>
-</ul>
-<p class="small-note">💡 सीमा = "किस ओर जा रहा है", मान = "कहाँ खड़ा है" — दोनों अलग!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ सीमा के नियम और मानक सीमाएँ ⭐</h3>
-    <ul>
-<li><b>सीमा का बीजगणित:</b> सीमाएँ जुड़/घटा/गुणा/भाग हो सकती हैं (भाग में हर की सीमा 0 न हो)।</li>
-<li><b>बहुपद:</b> x = a सीधे रखो — बन गया तो वही सीमा!</li>
-<li><b>0/0 रूप ⭐:</b> गुणनखंड करके काटो — (x²−1)/(x−1) = x+1 → 2।</li>
-<li><b>मानक सीमा 1 ⭐:</b> lim(x→0) (sin x)/x = 1 (x रेडियन में!)।</li>
-<li><b>मानक सीमा 2 ⭐:</b> lim(x→0) (tan x)/x = 1।</li>
-<li><b>मानक सीमा 3 ⭐:</b> lim(x→a) (xⁿ − aⁿ)/(x − a) = n·aⁿ⁻¹।</li>
-<li><b>मानक सीमा 4:</b> lim(x→0) (eˣ − 1)/x = 1; lim(x→0) log(1+x)/x = 1।</li>
-</ul>
-<p class="small-note">🎯 90% प्रश्न: प्रतिस्थापन → 0/0? → गुणनखंड या मानक सीमा पर लाओ!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ अवकलज (Derivative) — परिवर्तन की दर ⭐</h3>
-    <p><b>अवकलज</b> = तात्क्षणिक परिवर्तन दर = वक्र की ढलान एक निश्चित बिंदु पर। स्पीडोमीटर सोचो — औसत चाल नहीं, इस क्षण की चाल!</p>
-<ul>
-<li><b>प्रथम सिद्धांत (परिभाषा) ⭐:</b> f'(x) = lim(h→0) [f(x + h) − f(x)]/h।</li>
-<li><b>संकेत:</b> f'(x), dy/dx, D[f(x)]।</li>
-<li><b>ज्यामितीय अर्थ ⭐:</b> वक्र पर बिंदु (x, f(x)) पर स्पर्शरेखा की ढलान।</li>
-<li><b>उदाहरण:</b> f(x) = x² → f'(x) = lim(h→0) [(x+h)² − x²]/h = 2x।</li>
-<li><b>भौतिक अर्थ:</b> s(t) स्थिति → s'(t) वेग → s''(t) त्वरण।</li>
-</ul>
-<p class="small-note">💡 औसत चाल = पूरी यात्रा की ढलान; अवकलज = स्पीडोमीटर की क्षणिक रीडिंग!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ अवकलज के नियम ⭐</h3>
-    <ul>
-<li><b>घात नियम ⭐:</b> d/dx (xⁿ) = n·xⁿ⁻¹।</li>
-<li><b>अचर गुणक:</b> d/dx [c·f(x)] = c·f'(x)।</li>
-<li><b>योग/अंतर नियम:</b> d/dx [f ± g] = f' ± g'।</li>
-<li><b>गुणन नियम ⭐:</b> d/dx [u·v] = u'v + uv'।</li>
-<li><b>भाग नियम ⭐:</b> d/dx [u/v] = (u'v − uv')/v²।</li>
-<li><b>मानक अवकलज ⭐:</b> (sin x)' = cos x; (cos x)' = −sin x; (tan x)' = sec²x; (eˣ)' = eˣ; (log x)' = 1/x।</li>
-</ul>
-<p class="small-note">🎯 भाग नियम का क्रम याद रखो: (u'v − uv') — MINUS है, क्रम उल्टा तो चिह्न गलत!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ परीक्षा के पैटर्न</h3>
-    <ul>
-<li><b>सीधी सीमाएँ:</b> प्रतिस्थापन से।</li>
-<li><b>0/0 सीमाएँ ⭐:</b> गुणनखंड + कटौती, या परिमेयकरण।</li>
-<li><b>त्रिकोणमितीय सीमाएँ ⭐:</b> (sin ax)/(bx) = a/b प्रकार।</li>
-<li><b>(xⁿ − aⁿ)/(x − a) सीमाएँ:</b> सूत्र n·aⁿ⁻¹।</li>
-<li><b>प्रथम सिद्धांत से अवकलज ⭐:</b> बोर्ड में अनिवार्य — परिभाषा + सीमा।</li>
-<li><b>नियमों से अवकलज:</b> घात/गुणन/भाग।</li>
-</ul>
-<p class="small-note">💡 ये प्रश्न कक्षा 12 कलन का 70% आधार हैं — अभी पक्का कर लो!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Limits — the Gateway to Calculus</h3>
-    <p><b>Calculus</b> is the mathematical superpower that measures CHANGE — a car's speed, a curve's slope, a population's growth. And calculus begins with the <b>limit</b>. A limit asks: as x gets very CLOSE to some value (without touching it!), what value does the function approach?</p>
-<ul>
-<li><b>The idea:</b> lim(x→a) f(x) = L — as x nears a, f(x) nears L.</li>
-<li><b>Feel-it example ⭐:</b> f(x) = (x² − 1)/(x − 1). At x = 1 it's 0/0 — undefined! But x = 1.001 gives 2.001, x = 0.999 gives 1.999 — both sides approach 2. The limit is 2!</li>
-<li><b>Left-hand limit (LHL):</b> approach from smaller values. <b>Right-hand limit (RHL):</b> from larger values. The limit exists ⟺ LHL = RHL ⭐</li>
-<li><b>Limit ≠ value:</b> f(a) may not even be defined, yet the limit can exist (like the example above).</li>
-</ul>
-<p class="small-note">💡 Feel it: a limit is "where it's heading"; a value is "where it stands" — two different things!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Limit Rules and Standard Limits ⭐</h3>
-    <ul>
-<li><b>Algebra of limits:</b> limits add, subtract, multiply, and divide (as long as the denominator's limit isn't 0).</li>
-<li><b>Polynomials/direct substitution:</b> just plug in x = a — if it works, that's the limit!</li>
-<li><b>0/0 form ⭐:</b> if substitution gives 0/0, FACTOR and cancel — (x²−1)/(x−1) = (x+1)(x−1)/(x−1) = x+1 → 2.</li>
-<li><b>Standard limit 1 ⭐:</b> lim(x→0) (sin x)/x = 1 (x in radians!).</li>
-<li><b>Standard limit 2 ⭐:</b> lim(x→0) (tan x)/x = 1.</li>
-<li><b>Standard limit 3 ⭐:</b> lim(x→a) (xⁿ − aⁿ)/(x − a) = n·aⁿ⁻¹.</li>
-<li><b>Standard limit 4:</b> lim(x→0) (eˣ − 1)/x = 1; lim(x→0) log(1+x)/x = 1.</li>
-</ul>
-<p class="small-note">🎯 90% of limit problems: try substitution → 0/0? → factor/cancel or convert to a standard limit!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Derivatives — the Rate of Change ⭐</h3>
-    <p>A <b>derivative</b> is the instantaneous rate of change — the slope of a curve at one exact point. Think of a speedometer — not average speed, but the speed at THIS instant!</p>
-<ul>
-<li><b>First principle (definition) ⭐:</b> f'(x) = lim(h→0) [f(x + h) − f(x)]/h.</li>
-<li><b>Notation:</b> f'(x), dy/dx, D[f(x)] — all mean the same thing.</li>
-<li><b>Geometric meaning ⭐:</b> the slope of the TANGENT to the curve at (x, f(x)).</li>
-<li><b>Example (first principle):</b> f(x) = x² → f'(x) = lim(h→0) [(x+h)² − x²]/h = lim(h→0) (2x + h) = 2x.</li>
-<li><b>Physical meaning:</b> position s(t) → velocity s'(t) → acceleration s''(t).</li>
-</ul>
-<p class="small-note">💡 Feel it: average speed is the slope of the whole trip; the derivative is the speedometer's exact reading — one instant's slope!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Derivative Rules ⭐</h3>
-    <ul>
-<li><b>Power rule ⭐:</b> d/dx (xⁿ) = n·xⁿ⁻¹. (x³ → 3x², x → 1, constant → 0)</li>
-<li><b>Constant multiple:</b> d/dx [c·f(x)] = c·f'(x).</li>
-<li><b>Sum/difference rule:</b> d/dx [f ± g] = f' ± g' — differentiate term by term!</li>
-<li><b>Product rule ⭐:</b> d/dx [u·v] = u'v + uv' — "derivative of first × second + first × derivative of second".</li>
-<li><b>Quotient rule ⭐:</b> d/dx [u/v] = (u'v − uv')/v² — "square the bottom; on top: bottom-der minus der-bottom".</li>
-<li><b>Standard derivatives ⭐:</b> (sin x)' = cos x; (cos x)' = −sin x; (tan x)' = sec²x; (eˣ)' = eˣ; (log x)' = 1/x.</li>
-</ul>
-<p class="small-note">🎯 Remember the quotient rule's order: (u'v − uv') — it's a MINUS, so swapping the order flips the sign!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Exam Patterns — Limits & Derivatives in Papers</h3>
-    <ul>
-<li><b>Direct limits:</b> by substitution — free marks.</li>
-<li><b>0/0 limits ⭐:</b> factorize + cancel, or rationalize (multiply by the conjugate for surds).</li>
-<li><b>Trig limits ⭐:</b> (sin ax)/(bx) = a/b type — convert to the standard limit.</li>
-<li><b>(xⁿ − aⁿ)/(x − a) limits:</b> use n·aⁿ⁻¹ — super fast.</li>
-<li><b>First-principle derivatives ⭐:</b> compulsory in boards — write the definition, evaluate the limit.</li>
-<li><b>Rule-based derivatives:</b> power/product/quotient — polynomials mixed with trig.</li>
-<li><b>LHL/RHL checks:</b> "does the limit exist?" — compute both sides.</li>
-</ul>
-<p class="small-note">💡 These questions form 70% of the base for Class 12 calculus — lock them in now and cruise later!</p>
-  </div>
-  </div>
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Limit paas ke values batata hai</h3><p>Function allowed input ka output deta hai. Limit poochhta hai: x jab a ke paas aaye, x≠a rakhte hue f(x) kis value ke paas jaata hai? f(a) alag ya undefined ho sakta hai. Limit ka matlab yeh nahi ki function kabhi limit value le hi nahi sakta.</p><p>f(x)=(x²−4)/(x−2) mein x=2 allowed nahi. Paas ke x≠2 par factors cancel karke f(x)=x+2 milta hai, isliye lim(x→2) f(x)=4. Isse original f(2) define nahi hota.</p><p>Left-hand limit x&lt;a se, right-hand limit x&gt;a se aata hai. Interior point par finite two-sided limit ke liye dono limits exist karke ek hi real number honi chahiye. x&lt;0 par f=1 aur x&gt;0 par f=2 ho to 0 par two-sided limit nahi hai, chahe f(0) kuch bhi rakho.</p></div><div class="note-sec"><h3>2. Limit ke liye sahi method chuno</h3><p>Finite lim f=L aur lim g=M hon to f+g, f−g, fg ki limits L+M, L−M, LM hain. f/g ki limit L/M ke liye M≠0 chahiye. Denominator zero ki taraf jaaye to yeh rule seedha mat lagao.</p><p>Polynomial ki a par limit p(a) hai. Rational function p/q mein q(a)≠0 ho to p(a)/q(a) milega. Substitution se 0/0 aaye to yeh indeterminate form hai, answer nahi aur limit na hone ka proof bhi nahi.</p><p>0/0 par factorisation ya conjugate try karo. Sirf common factor cancel karo jo paas ke allowed x par nonzero ho. Example: (√(x+4)−2)/x =1/(√(x+4)+2), x≠0 near 0, to limit 1/4. Positive integer n ke liye lim(x→a)(xⁿ−aⁿ)/(x−a)=n·aⁿ⁻¹. Rational n ke liye bhi formula sahi hai jab a&gt;0 ho.</p></div><div class="note-sec"><h3>3. Trigonometric limits mein radians</h3><p>Angles radians mein hon to lim(x→0) sin x/x=1 aur lim(x→0) cos x=1. Isliye lim(x→0) tan x/x=1, kyunki tan x/x=(sin x/x)/cos x.</p><p>Real constants a aur b≠0 par lim(x→0) sin(ax)/(bx)=a/b. a≠0 ho to (a/b)·sin(ax)/(ax) likho. a=0 ho to paas ke nonzero x par expression 0 hai.</p><p>lim(x→0)(1−cos x)/x² ke liye 1−cos x=2sin²(x/2) lagao. Expression (1/2)[sin(x/2)/(x/2)]² banta hai, to limit 1/2. Ise lim(x→0)(1−cos x)/x=0 se confuse mat karo.</p></div><div class="note-sec"><h3>4. Derivative yani us pal ki rate</h3><p>a se a+h tak average rate [f(a+h)−f(a)]/h hai, h≠0. h→0 par iska finite limit exist kare to woh derivative f′(a) hai. f(a) defined hona chahiye; interior point par dono sides agree karein.</p><p>f(x)=x² mein [(x+h)²−x²]/h=2x+h jab h≠0. Ab h→0 se f′(x)=2x. Pehle quotient simplify karo, phir limit lo. Original denominator mein seedha h=0 mat rakho.</p><p>f′(a) exist kare to woh (a,f(a)) par tangent ki slope hai. s(t) position ho to s′(t) velocity hai, hamesha speed nahi. |x| ke liye 0 par |h|/h left se −1, right se +1 hai, isliye derivative nahi hai.</p></div><div class="note-sec"><h3>5. Derivative rules, shartein aur scope</h3><p>Differentiable u,v aur constant c ke liye: (u±v)′=u′±v′, (cu)′=cu′, (uv)′=u′v+uv′. v≠0 par (u/v)′=(u′v−uv′)/v². Product ka derivative sirf dono derivatives ka product nahi hai.</p><p>Constant ka derivative 0 hai. Positive integer n par (xⁿ)′=nxⁿ⁻¹. Isliye (3x²−2x+1)′=6x−2. Radians mein (sin x)′=cos x, (cos x)′=−sin x. Quotient rule se (tan x)′=sec²x milta hai jahan cos x≠0.</p><p>Yeh notes aur ten original questions selected foundations hain, official exercise solutions, PYQs ya full JEE preparation nahi. Full textbook/Exemplar exercises, detailed limit graphs/proofs, broader piecewise cases, chain rule, exponential/logarithmic calculus aur higher derivatives abhi cover nahi hain.</p></div></div>
+<div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. सीमा पास के मान बताती है</h3><p>फलन किसी स्वीकृत निवेश का निर्गत देता है। सीमा पूछती है: x जब a के पास आए और x≠a हो, तब f(x) किस मान के पास जाता है? f(a) अलग या अपरिभाषित हो सकता है। सीमा का अर्थ यह नहीं कि फलन कभी उस सीमा के बराबर हो ही नहीं सकता।</p><p>f(x)=(x²−4)/(x−2) में x=2 स्वीकृत नहीं है। पास के x≠2 पर गुणनखंड काटकर f(x)=x+2 मिलता है। इसलिए lim(x→2) f(x)=4। इससे मूल फलन में f(2) परिभाषित नहीं हो जाता।</p><p>वाम सीमा x&lt;a से और दक्षिण सीमा x&gt;a से मिलती है। किसी आंतरिक बिंदु पर परिमित द्विपार्श्व सीमा के लिए दोनों सीमाएं मौजूद और एक ही वास्तविक संख्या होनी चाहिए। x&lt;0 पर f=1 और x&gt;0 पर f=2 हो तो 0 पर द्विपार्श्व सीमा नहीं है, चाहे f(0) कुछ भी रखें।</p></div><div class="note-sec"><h3>2. सीमा निकालने की सही विधि</h3><p>परिमित lim f=L और lim g=M हों तो f+g, f−g, fg की सीमाएं L+M, L−M, LM हैं। f/g के लिए L/M तभी लगा सकते हैं जब M≠0 हो। हर शून्य की ओर जाए तो यह नियम सीधे न लगाएं।</p><p>बहुपद की a पर सीमा p(a) है। परिमेय फलन p/q में q(a)≠0 हो तो सीमा p(a)/q(a) है। प्रतिस्थापन से 0/0 मिलना अनिर्धार्य रूप है, उत्तर नहीं और सीमा न होने का प्रमाण भी नहीं।</p><p>0/0 पर गुणनखंड या संयुग्मी का उपयोग करें। केवल वह उभयनिष्ठ गुणनखंड काटें जो पास के स्वीकृत x पर अशून्य हो। जैसे (√(x+4)−2)/x =1/(√(x+4)+2), जब 0 के पास x≠0। सीमा 1/4 है। धन पूर्णांक n के लिए lim(x→a)(xⁿ−aⁿ)/(x−a)=n·aⁿ⁻¹। परिमेय n के लिए भी सूत्र सही है जब a&gt;0 हो।</p></div><div class="note-sec"><h3>3. त्रिकोणमितीय सीमाओं में रेडियन</h3><p>कोण रेडियन में हों तो lim(x→0) sin x/x=1 और lim(x→0) cos x=1। इसलिए lim(x→0) tan x/x=1, क्योंकि tan x/x=(sin x/x)/cos x।</p><p>वास्तविक नियतांक a और b≠0 के लिए lim(x→0) sin(ax)/(bx)=a/b। a≠0 हो तो (a/b)·sin(ax)/(ax) लिखें। a=0 हो तो पास के अशून्य x पर व्यंजक 0 है।</p><p>lim(x→0)(1−cos x)/x² के लिए 1−cos x=2sin²(x/2) लगाएं। व्यंजक (1/2)[sin(x/2)/(x/2)]² बनता है, इसलिए सीमा 1/2 है। इसे lim(x→0)(1−cos x)/x=0 से न मिलाएं।</p></div><div class="note-sec"><h3>4. अवकलज यानी उस क्षण की दर</h3><p>a से a+h तक औसत दर [f(a+h)−f(a)]/h है, जहां h≠0। h→0 पर इसका परिमित सीमा मान मौजूद हो तो वही अवकलज f′(a) है। f(a) परिभाषित होना चाहिए और आंतरिक बिंदु पर दोनों ओर की सीमाएं समान हों।</p><p>f(x)=x² के लिए [(x+h)²−x²]/h=2x+h जब h≠0। अब h→0 से f′(x)=2x। पहले भागफल सरल करें, फिर सीमा लें। मूल हर में सीधे h=0 न रखें।</p><p>f′(a) मौजूद हो तो वह (a,f(a)) पर स्पर्शरेखा की ढाल है। s(t) स्थिति हो तो s′(t) वेग है, हमेशा चाल नहीं। |x| के लिए 0 पर |h|/h बाईं ओर −1 और दाईं ओर +1 है। इसलिए वहां अवकलज नहीं है।</p></div><div class="note-sec"><h3>5. अवकलन नियम, शर्तें और सीमा</h3><p>अवकलनीय u,v और नियतांक c के लिए: (u±v)′=u′±v′, (cu)′=cu′, (uv)′=u′v+uv′। v≠0 पर (u/v)′=(u′v−uv′)/v²। गुणनफल का अवकलज केवल दोनों अवकलजों का गुणनफल नहीं है।</p><p>नियतांक का अवकलज 0 है। धन पूर्णांक n पर (xⁿ)′=nxⁿ⁻¹। इसलिए (3x²−2x+1)′=6x−2। रेडियन में (sin x)′=cos x और (cos x)′=−sin x। भागफल नियम से (tan x)′=sec²x मिलता है जहां cos x≠0।</p><p>ये नोट्स और दस मौलिक प्रश्न चुनी हुई बुनियाद हैं, आधिकारिक प्रश्नावली हल, पिछले वर्षों के प्रश्न या पूरी JEE तैयारी नहीं। पूरी पाठ्यपुस्तक/Exemplar प्रश्नावलियां, विस्तृत सीमा आलेख और प्रमाण, अन्य खंडशः फलन, शृंखला नियम, घातांकीय/लघुगणकीय कलन और उच्च अवकलज अभी शामिल नहीं हैं।</p></div></div>
+<div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. A limit describes nearby values</h3><p>A function gives an output for an allowed input. A limit asks what output f(x) approaches when x approaches a, using x≠a. The value f(a) may be different or undefined. A limit is not a rule that the function can never reach its limiting value.</p><p>For f(x)=(x²−4)/(x−2), x=2 is not allowed. At nearby points x≠2, factorisation gives f(x)=x+2, so lim(x→2) f(x)=4. This does not define the original f(2).</p><p>The left-hand limit uses x&lt;a; the right-hand limit uses x&gt;a. For a finite two-sided limit at an interior point, both must exist and equal the same real number. If f(x)=1 for x&lt;0 and 2 for x&gt;0, the two-sided limit at 0 does not exist, whatever value is assigned at 0.</p></div><div class="note-sec"><h3>2. Choose a valid limit method</h3><p>If lim f=L and lim g=M are finite, the limits of f+g, f−g and fg are L+M, L−M and LM. For f/g, the quotient rule for limits requires M≠0. Do not apply it when the denominator tends to zero.</p><p>A polynomial has limit p(a) at a. A rational function p/q has limit p(a)/q(a) when q(a)≠0. Substitution giving 0/0 is an indeterminate form, not an answer and not proof that no limit exists.</p><p>For 0/0, try factorisation or a conjugate. Cancel only a common factor that is nonzero at nearby allowed x. Example: (√(x+4)−2)/x =1/(√(x+4)+2) for x≠0 near 0, hence the limit is 1/4. For positive integer n, lim(x→a)(xⁿ−aⁿ)/(x−a)=n·aⁿ⁻¹. The same formula holds for rational n when a&gt;0.</p></div><div class="note-sec"><h3>3. Trigonometric limits need radians</h3><p>With angles in radians, lim(x→0) sin x/x=1 and lim(x→0) cos x=1. Therefore lim(x→0) tan x/x=1, because tan x/x=(sin x/x)/cos x.</p><p>For real constants a and b≠0, lim(x→0) sin(ax)/(bx)=a/b. If a≠0, write it as (a/b)·sin(ax)/(ax); if a=0, the expression is 0 at nearby nonzero x.</p><p>For lim(x→0)(1−cos x)/x², use 1−cos x=2sin²(x/2). The expression becomes (1/2)[sin(x/2)/(x/2)]², so the limit is 1/2. Do not confuse it with lim(x→0)(1−cos x)/x=0.</p></div><div class="note-sec"><h3>4. Derivative means an instantaneous rate</h3><p>The average rate from a to a+h is [f(a+h)−f(a)]/h with h≠0. The derivative f′(a) is its finite limit as h→0, if that limit exists. Here f(a) must be defined, and the two sides must agree at an interior point.</p><p>For f(x)=x², [(x+h)²−x²]/h=2x+h for h≠0. Let h→0 to get f′(x)=2x. First simplify the quotient, then take the limit; never put h=0 into the original denominator.</p><p>When it exists, f′(a) is the tangent slope at (a,f(a)). If s(t) is position, s′(t) is velocity, not always speed. For f(x)=|x| at 0, the difference quotient |h|/h is −1 on the left and +1 on the right, so no derivative exists there.</p></div><div class="note-sec"><h3>5. Derivative rules, conditions and scope</h3><p>For differentiable u,v and a constant c: (u±v)′=u′±v′, (cu)′=cu′, (uv)′=u′v+uv′, and (u/v)′=(u′v−uv′)/v² where v≠0. A product is not differentiated by simply multiplying derivatives.</p><p>A constant has derivative 0; (xⁿ)′=nxⁿ⁻¹ for positive integers n. Thus (3x²−2x+1)′=6x−2. With radians, (sin x)′=cos x and (cos x)′=−sin x. Applying the quotient rule gives (tan x)′=sec²x wherever cos x≠0.</p><p>These notes and ten original questions cover selected foundations, not official exercise solutions, PYQs or full JEE preparation. Full textbook/Exemplar exercises, detailed limit graphs and proofs, broader piecewise cases, chain-rule methods, exponential/logarithmic calculus and higher derivatives remain outside this pass.</p></div></div>
 </section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Selected formulas and their conditions" data-hi="चुने हुए सूत्र और उनकी शर्तें" data-hinglish="Selected formulas aur unki conditions">Selected formulas and their conditions</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Limits ⭐</h4>
-      <ul><li>Limit exist ⟺ LHL = RHL</li><li>Direct substitution pehle</li><li>0/0 → factor + cancel</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Standard Limits ⭐</h4>
-      <ul><li>(sin x)/x → 1</li><li>(xⁿ − aⁿ)/(x − a) → n·aⁿ⁻¹</li><li>(eˣ − 1)/x → 1</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Derivative ⭐</h4>
-      <ul><li>f'(x) = lim(h→0) [f(x+h) − f(x)]/h</li><li>= tangent ki slope</li><li>= instantaneous rate of change</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Rules ⭐</h4>
-      <ul><li>(xⁿ)' = n·xⁿ⁻¹</li><li>(uv)' = u'v + uv'</li><li>(u/v)' = (u'v − uv')/v²</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Standard Derivs</h4>
-      <ul><li>(sin x)' = cos x, (cos x)' = −sin x</li><li>(eˣ)' = eˣ, (log x)' = 1/x</li><li>(tan x)' = sec²x</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>सीमा ⭐</h4>
-      <ul><li>अस्तित्व ⟺ LHL = RHL</li><li>पहले प्रतिस्थापन</li><li>0/0 → गुणनखंड + कटौती</li></ul>
-    </div>
-    <div class="shorts-card"><h4>मानक सीमाएँ ⭐</h4>
-      <ul><li>(sin x)/x → 1</li><li>(xⁿ − aⁿ)/(x − a) → n·aⁿ⁻¹</li><li>(eˣ − 1)/x → 1</li></ul>
-    </div>
-    <div class="shorts-card"><h4>अवकलज ⭐</h4>
-      <ul><li>f'(x) = lim(h→0) [f(x+h) − f(x)]/h</li><li>= स्पर्शरेखा की ढलान</li><li>= तात्क्षणिक परिवर्तन दर</li></ul>
-    </div>
-    <div class="shorts-card"><h4>नियम ⭐</h4>
-      <ul><li>(xⁿ)' = n·xⁿ⁻¹</li><li>(uv)' = u'v + uv'</li><li>(u/v)' = (u'v − uv')/v²</li></ul>
-    </div>
-    <div class="shorts-card"><h4>मानक अवकलज</h4>
-      <ul><li>(sin x)' = cos x, (cos x)' = −sin x</li><li>(eˣ)' = eˣ, (log x)' = 1/x</li><li>(tan x)' = sec²x</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Limits ⭐</h4>
-      <ul><li>Limit exists ⟺ LHL = RHL</li><li>Try direct substitution first</li><li>0/0 → factor + cancel</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Standard Limits ⭐</h4>
-      <ul><li>(sin x)/x → 1</li><li>(xⁿ − aⁿ)/(x − a) → n·aⁿ⁻¹</li><li>(eˣ − 1)/x → 1</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Derivative ⭐</h4>
-      <ul><li>f'(x) = lim(h→0) [f(x+h) − f(x)]/h</li><li>= slope of tangent</li><li>= instantaneous rate of change</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Rules ⭐</h4>
-      <ul><li>(xⁿ)' = n·xⁿ⁻¹</li><li>(uv)' = u'v + uv'</li><li>(u/v)' = (u'v − uv')/v²</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Standard Derivs</h4>
-      <ul><li>(sin x)' = cos x, (cos x)' = −sin x</li><li>(eˣ)' = eˣ, (log x)' = 1/x</li><li>(tan x)' = sec²x</li></ul>
-    </div>
-    </div>
-  </div>
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="small-note">Limit paas ke allowed x≠a se hai; f(a) alag ya undefined ho sakta hai.</p><p class="small-note">Interior point par finite two-sided limit: LHL=RHL.</p><p class="small-note">Finite limits add/multiply hoti hain. Quotient ke liye denominator limit ≠0.</p><p class="small-note">0/0 indeterminate hai. Limit se pehle factor ya rationalise karo.</p><p class="small-note">Radians: x→0 par sin x/x→1; tan x/x→1; (1−cos x)/x²→1/2.</p><p class="small-note">Finite limit exist kare to f′(a)=lim(h→0)[f(a+h)−f(a)]/h.</p><p class="small-note">Differentiable u,v: (uv)′=u′v+uv′; (u/v)′=(u′v−uv′)/v², v≠0.</p><p class="small-note">Positive integer n: (xⁿ)′=nxⁿ⁻¹. Constant→0; sin x→cos x; cos x→−sin x, radians mein.</p></div>
+<div class="lang-block" data-lang="hi" hidden=""><p class="small-note">सीमा पास के स्वीकृत x≠a से मिलती है। f(a) अलग या अपरिभाषित हो सकता है।</p><p class="small-note">आंतरिक बिंदु पर परिमित द्विपार्श्व सीमा: वाम सीमा = दक्षिण सीमा।</p><p class="small-note">परिमित सीमाएं जुड़ती और गुणा होती हैं। भाग में हर की सीमा ≠0 चाहिए।</p><p class="small-note">0/0 अनिर्धार्य है। सीमा से पहले गुणनखंड या परिमेयकरण करें।</p><p class="small-note">रेडियन में x→0 पर sin x/x→1; tan x/x→1; (1−cos x)/x²→1/2।</p><p class="small-note">परिमित सीमा मौजूद हो तो f′(a)=lim(h→0)[f(a+h)−f(a)]/h।</p><p class="small-note">अवकलनीय u,v: (uv)′=u′v+uv′; (u/v)′=(u′v−uv′)/v², v≠0।</p><p class="small-note">धन पूर्णांक n: (xⁿ)′=nxⁿ⁻¹। नियतांक→0; sin x→cos x; cos x→−sin x, रेडियन में।</p></div>
+<div class="lang-block" data-lang="en" hidden=""><p class="small-note">Limit uses nearby allowed x≠a; f(a) may differ or be undefined.</p><p class="small-note">Finite two-sided limit at an interior point: LHL=RHL.</p><p class="small-note">Finite limits add/multiply. Quotient of limits requires denominator limit ≠0.</p><p class="small-note">0/0 is indeterminate. Factor or rationalise before taking the limit.</p><p class="small-note">Radians: sin x/x→1; tan x/x→1; (1−cos x)/x²→1/2 as x→0.</p><p class="small-note">f′(a)=lim(h→0)[f(a+h)−f(a)]/h if the finite limit exists.</p><p class="small-note">For differentiable u,v: (uv)′=u′v+uv′; (u/v)′=(u′v−uv′)/v², v≠0.</p><p class="small-note">Positive integer n: (xⁿ)′=nxⁿ⁻¹. Constant→0; sin x→cos x; cos x→−sin x, in radians.</p></div>
 </section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-  </div>
-</section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> Find lim(x→2)(3x²−2x+1).<details class="jee-sol"><summary>Show answer</summary><p>Rule: a polynomial limit is its value at the point.</p><p>Steps: 3·2²−2·2+1=12−4+1.</p><p>Answer/check: 9. The derivative 6x−2 is a different quantity, not this limit.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Find lim(x→2)(x²−4)/(x−2).<details class="jee-sol"><summary>Show answer</summary><p>Rule: factor first when substitution gives 0/0.</p><p>Steps: for x≠2, (x−2)(x+2)/(x−2)=x+2.</p><p>Answer/check: 4. At x=1.99 and 2.01 the values are 3.99 and 4.01; the original expression is still undefined at 2.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Find lim(x→0)(√(x+4)−2)/x.<details class="jee-sol"><summary>Show answer</summary><p>Rule: multiply numerator and denominator by the conjugate.</p><p>Steps: for nearby x≠0, the quotient is x/[x(√(x+4)+2)]=1/(√(x+4)+2).</p><p>Answer/check: 1/4. The simplified denominator tends to 4, not 0.</p></details></div><div class="jee-q"><span class="qn">Q4</span> In radians, find lim(x→0) sin(3x)/(2x).<details class="jee-sol"><summary>Show answer</summary><p>Rule: turn the ratio into sin t/t with t→0.</p><p>Steps: write (3/2)·sin(3x)/(3x), then use the standard limit 1.</p><p>Answer/check: 3/2. The factor 3/2 must remain outside the limit.</p></details></div><div class="jee-q"><span class="qn">Q5</span> In radians, find lim(x→0)(1−cos x)/x².<details class="jee-sol"><summary>Show answer</summary><p>Rule: 1−cos x=2sin²(x/2).</p><p>Steps: the ratio equals (1/2)[sin(x/2)/(x/2)]² for x≠0.</p><p>Answer/check: 1/2. The denominator here is x²; with x instead, the limit would be 0.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Let f(x)=x+1 for x&lt;0, f(0)=7, and f(x)=2x+1 for x&gt;0. Find lim(x→0) f(x).<details class="jee-sol"><summary>Show answer</summary><p>Rule: compare left and right limits, not just f(0).</p><p>Steps: the left limit is 0+1=1 and the right limit is 2·0+1=1.</p><p>Answer/check: the limit is 1, while f(0)=7. Equal nearby limits need not equal the assigned value.</p></details></div><div class="jee-q"><span class="qn">Q7</span> For f(x)=x²+3x, find f′(x) from first principles and f′(2).<details class="jee-sol"><summary>Show answer</summary><p>Rule: use lim(h→0)[f(x+h)−f(x)]/h.</p><p>Steps: the numerator is 2xh+h²+3h; for h≠0 the quotient is 2x+h+3.</p><p>Answer/check: f′(x)=2x+3, hence f′(2)=7. The power and sum rules give the same result.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Differentiate y=(x²+1)sin x, with radians.<details class="jee-sol"><summary>Show answer</summary><p>Rule: (uv)′=u′v+uv′.</p><p>Steps: u=x²+1, u′=2x; v=sin x, v′=cos x.</p><p>Answer/check: y′=2x sin x+(x²+1)cos x. At x=0 the derivative is 1, not the product 2x cos x.</p></details></div><div class="jee-q"><span class="qn">Q9</span> Differentiate y=(x²+1)/(x−1), and find y′(0).<details class="jee-sol"><summary>Show answer</summary><p>Rule: use (u′v−uv′)/v², with x≠1.</p><p>Steps: y′=[2x(x−1)−(x²+1)]/(x−1)²=(x²−2x−1)/(x−1)².</p><p>Answer/check: y′(0)=−1. Independently y=x+1+2/(x−1), giving derivative 1−2/(x−1)².</p></details></div><div class="jee-q"><span class="qn">Q10</span> Does f(x)=|x| have a derivative at 0?<details class="jee-sol"><summary>Show answer</summary><p>Rule: the two one-sided difference-quotient limits must agree.</p><p>Steps: [f(h)−f(0)]/h=|h|/h, which is −1 for h&lt;0 and +1 for h&gt;0.</p><p>Answer/check: no derivative at 0. The function itself and its limit at 0 are both 0; that does not guarantee a derivative.</p></details></div><div class="tip-box">These notes and ten original questions cover selected foundations, not official exercise solutions, PYQs or full JEE preparation. Full textbook/Exemplar exercises, detailed limit graphs and proofs, broader piecewise cases, chain-rule methods, exponential/logarithmic calculus and higher derivatives remain outside this pass.</div></div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> lim(x→2)(3x²−2x+1) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: polynomial ki limit point par uski value hai.</p><p>Steps: 3·2²−2·2+1=12−4+1.</p><p>Answer/check: 9. Derivative 6x−2 alag quantity hai, yeh limit nahi.</p></details></div><div class="jee-q"><span class="qn">Q2</span> lim(x→2)(x²−4)/(x−2) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: substitution se 0/0 aaye to pehle factor karo.</p><p>Steps: x≠2 par (x−2)(x+2)/(x−2)=x+2.</p><p>Answer/check: 4. x=1.99 aur 2.01 par values 3.99 aur 4.01 hain. Original expression 2 par undefined hi hai.</p></details></div><div class="jee-q"><span class="qn">Q3</span> lim(x→0)(√(x+4)−2)/x nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: numerator aur denominator ko conjugate se multiply karo.</p><p>Steps: paas ke x≠0 par x/[x(√(x+4)+2)]=1/(√(x+4)+2).</p><p>Answer/check: 1/4. Naya denominator 4 ki taraf jaata hai, 0 ki taraf nahi.</p></details></div><div class="jee-q"><span class="qn">Q4</span> Radians mein lim(x→0) sin(3x)/(2x) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: ratio ko sin t/t banao, jahan t→0.</p><p>Steps: (3/2)·sin(3x)/(3x) likho; standard limit 1 lagao.</p><p>Answer/check: 3/2. Bahar ka factor 3/2 mat chhodo.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Radians mein lim(x→0)(1−cos x)/x² nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: 1−cos x=2sin²(x/2).</p><p>Steps: x≠0 par ratio (1/2)[sin(x/2)/(x/2)]² hai.</p><p>Answer/check: 1/2. Yahan denominator x² hai. Sirf x hota to limit 0 hoti.</p></details></div><div class="jee-q"><span class="qn">Q6</span> f(x)=x+1 jab x&lt;0, f(0)=7, aur f(x)=2x+1 jab x&gt;0. lim(x→0) f(x) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: left aur right limits compare karo, sirf f(0) nahi.</p><p>Steps: left limit 0+1=1; right limit 2·0+1=1.</p><p>Answer/check: limit 1 hai, jabki f(0)=7. Paas ke equal limits assigned value se alag ho sakte hain.</p></details></div><div class="jee-q"><span class="qn">Q7</span> f(x)=x²+3x ka first principles se f′(x), phir f′(2) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: lim(h→0)[f(x+h)−f(x)]/h lo.</p><p>Steps: numerator 2xh+h²+3h hai; h≠0 par quotient 2x+h+3 hai.</p><p>Answer/check: f′(x)=2x+3, to f′(2)=7. Power aur sum rules se bhi yahi aata hai.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Radians mein y=(x²+1)sin x ka derivative nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: (uv)′=u′v+uv′.</p><p>Steps: u=x²+1, u′=2x; v=sin x, v′=cos x.</p><p>Answer/check: y′=2x sin x+(x²+1)cos x. x=0 par derivative 1 hai; sirf product 2x cos x galat hai.</p></details></div><div class="jee-q"><span class="qn">Q9</span> y=(x²+1)/(x−1) ka derivative aur y′(0) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: (u′v−uv′)/v² lagao; x≠1.</p><p>Steps: y′=[2x(x−1)−(x²+1)]/(x−1)²=(x²−2x−1)/(x−1)².</p><p>Answer/check: y′(0)=−1. Alag check: y=x+1+2/(x−1), to derivative 1−2/(x−1)².</p></details></div><div class="jee-q"><span class="qn">Q10</span> Kya f(x)=|x| ka 0 par derivative hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: difference quotient ki left aur right limits same honi chahiye.</p><p>Steps: [f(h)−f(0)]/h=|h|/h; h&lt;0 par −1, h&gt;0 par +1.</p><p>Answer/check: 0 par derivative nahi. Function aur uski limit dono 0 hain, lekin isse derivative ki guarantee nahi milti.</p></details></div><div class="tip-box">Yeh notes aur ten original questions selected foundations hain, official exercise solutions, PYQs ya full JEE preparation nahi. Full textbook/Exemplar exercises, detailed limit graphs/proofs, broader piecewise cases, chain rule, exponential/logarithmic calculus aur higher derivatives abhi cover nahi hain.</div></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> lim(x→2)(3x²−2x+1) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: बहुपद की सीमा उस बिंदु पर उसका मान है।</p><p>चरण: 3·2²−2·2+1=12−4+1।</p><p>उत्तर/जांच: 9। अवकलज 6x−2 अलग राशि है, यह सीमा नहीं।</p></details></div><div class="jee-q"><span class="qn">Q2</span> lim(x→2)(x²−4)/(x−2) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: प्रतिस्थापन से 0/0 मिले तो पहले गुणनखंड करें।</p><p>चरण: x≠2 पर (x−2)(x+2)/(x−2)=x+2।</p><p>उत्तर/जांच: 4। x=1.99 और 2.01 पर मान 3.99 और 4.01 हैं। मूल व्यंजक 2 पर फिर भी अपरिभाषित है।</p></details></div><div class="jee-q"><span class="qn">Q3</span> lim(x→0)(√(x+4)−2)/x निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अंश और हर को संयुग्मी से गुणा करें।</p><p>चरण: पास के x≠0 पर x/[x(√(x+4)+2)]=1/(√(x+4)+2)।</p><p>उत्तर/जांच: 1/4। नया हर 4 की ओर जाता है, 0 की ओर नहीं।</p></details></div><div class="jee-q"><span class="qn">Q4</span> रेडियन में lim(x→0) sin(3x)/(2x) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अनुपात को sin t/t बनाएं जहां t→0।</p><p>चरण: (3/2)·sin(3x)/(3x) लिखें। मानक सीमा 1 लगाएं।</p><p>उत्तर/जांच: 3/2। बाहर का गुणक 3/2 न छोड़ें।</p></details></div><div class="jee-q"><span class="qn">Q5</span> रेडियन में lim(x→0)(1−cos x)/x² निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: 1−cos x=2sin²(x/2)।</p><p>चरण: x≠0 पर अनुपात (1/2)[sin(x/2)/(x/2)]² है।</p><p>उत्तर/जांच: 1/2। यहां हर x² है। केवल x होता तो सीमा 0 होती।</p></details></div><div class="jee-q"><span class="qn">Q6</span> f(x)=x+1 जब x&lt;0, f(0)=7 और f(x)=2x+1 जब x&gt;0। lim(x→0) f(x) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: वाम और दक्षिण सीमा मिलाएं, केवल f(0) न देखें।</p><p>चरण: वाम सीमा 0+1=1 और दक्षिण सीमा 2·0+1=1।</p><p>उत्तर/जांच: सीमा 1 है, जबकि f(0)=7। पास के समान सीमा मान दिए हुए बिंदु मान से अलग हो सकते हैं।</p></details></div><div class="jee-q"><span class="qn">Q7</span> f(x)=x²+3x का प्रथम सिद्धांत से f′(x), फिर f′(2) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: lim(h→0)[f(x+h)−f(x)]/h लें।</p><p>चरण: अंश 2xh+h²+3h है। h≠0 पर भागफल 2x+h+3 है।</p><p>उत्तर/जांच: f′(x)=2x+3, इसलिए f′(2)=7। घात और योग नियम से भी यही मिलता है।</p></details></div><div class="jee-q"><span class="qn">Q8</span> रेडियन में y=(x²+1)sin x का अवकलज निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: (uv)′=u′v+uv′।</p><p>चरण: u=x²+1, u′=2x; v=sin x, v′=cos x।</p><p>उत्तर/जांच: y′=2x sin x+(x²+1)cos x। x=0 पर अवकलज 1 है। केवल गुणनफल 2x cos x गलत है।</p></details></div><div class="jee-q"><span class="qn">Q9</span> y=(x²+1)/(x−1) का अवकलज और y′(0) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: (u′v−uv′)/v² लगाएं, जहां x≠1।</p><p>चरण: y′=[2x(x−1)−(x²+1)]/(x−1)²=(x²−2x−1)/(x−1)²।</p><p>उत्तर/जांच: y′(0)=−1। अलग जांच: y=x+1+2/(x−1) से अवकलज 1−2/(x−1)² मिलता है।</p></details></div><div class="jee-q"><span class="qn">Q10</span> क्या f(x)=|x| का 0 पर अवकलज है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अंतर भागफल की वाम और दक्षिण सीमाएं समान होनी चाहिए।</p><p>चरण: [f(h)−f(0)]/h=|h|/h; h&lt;0 पर −1 और h&gt;0 पर +1।</p><p>उत्तर/जांच: 0 पर अवकलज नहीं है। फलन और उसकी सीमा दोनों 0 हैं, पर इससे अवकलज की गारंटी नहीं मिलती।</p></details></div><div class="tip-box">ये नोट्स और दस मौलिक प्रश्न चुनी हुई बुनियाद हैं, आधिकारिक प्रश्नावली हल, पिछले वर्षों के प्रश्न या पूरी JEE तैयारी नहीं। पूरी पाठ्यपुस्तक/Exemplar प्रश्नावलियां, विस्तृत सीमा आलेख और प्रमाण, अन्य खंडशः फलन, शृंखला नियम, घातांकीय/लघुगणकीय कलन और उच्च अवकलज अभी शामिल नहीं हैं।</div></div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/kemh112.pdf">Textbook Ch12</a> <a href="https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep213.pdf">Exemplar Ch13</a> </p></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-11/maths/ch-13/">Statistics</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-11/maths/ch-13/">Statistics</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
