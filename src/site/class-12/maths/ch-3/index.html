@@ -1,352 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 3 — Matrices | Class 12 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 12 Maths Chapter 3: Matrices — long + short notes in Hindi, English, Hinglish. Matrix operations, multiplication, transpose, symmetric and skew-symmetric matrices, invertible matrices.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 12 Maths Chapter 3: Matrices — long + short notes in Hindi, English, Hinglish. Matrix operations, multiplication, transpose, symmetric and skew-symmetric matrices, invertible matrices." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:1rem;line-height:1.75;padding:.75rem;background:#f5f7fb;border:1px solid #d6e1f1;border-radius:4px} #practice .jee-q{overflow-wrap:anywhere} #practice summary{font-size:1rem} #notes .note-sec p{line-height:1.8}</style><style>.matrix-example{width:100%;border-collapse:collapse;font-size:1rem;margin:1rem 0}.matrix-example td,.matrix-example th{border:1px solid #d6e1f1;padding:.5rem;text-align:center}.matrix-example caption{font-size:1rem;color:#1d437e;margin:.5rem 0} #notes p{overflow-wrap:anywhere}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 3</p>
-  <h1>Matrices</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">आव्यूह</p>
-  <p style="color:var(--muted);margin-top:6px">Grids ka ganit — operations, transpose, symmetric matrices aur inverse</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video available</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 3</p>
+<h1>Matrices</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">आव्यूह</p>
+<p style="color:var(--muted);margin-top:6px">Grids ka ganit — operations, transpose, symmetric matrices aur inverse</p>
+<div class="ch-tags">
+<span class="pill weight-high">JEE Weightage: HIGH</span>
+<span class="pill">Video available</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Matrices - Class 12 Maths Short - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Matrices - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/G-Edl0DDRMU" title="Matrices - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/G-Edl0DDRMU" title="Matrices - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/G-Edl0DDRMU" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Matrices - Class 12 Maths Short - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Matrices - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/G-Edl0DDRMU" title="Matrices - Class 12 Maths Short"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/G-Edl0DDRMU" title="Matrices - Class 12 Maths Short"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/G-Edl0DDRMU" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Matrices - Class 12 Mathematics Short 2 - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Matrices - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player2" class="yt-embed" src="https://www.youtube.com/embed/KmzmwT9wSzE" title="Matrices - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player2" class="yt-embed" src="https://www.youtube.com/embed/KmzmwT9wSzE" title="Matrices - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/KmzmwT9wSzE" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Matrices - Class 12 Mathematics Short 2 - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Matrices - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KmzmwT9wSzE" title="Matrices - Class 12 Mathematics Short 2"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/KmzmwT9wSzE" title="Matrices - Class 12 Mathematics Short 2"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/KmzmwT9wSzE" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Matrices 5 animated scenes mein - order explorer, operations lab, multiplication machine (row × column LIVE!), transpose + symmetric lab with decomposition, aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Matrices 5 animated scenes mein - order explorer, operations lab, multiplication machine (row × column LIVE!), transpose + symmetric lab with decomposition, aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Selected foundations" data-hi="चुनी हुई बुनियादें" data-hinglish="Selected foundations">Selected foundations</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Matrix Kya Hai — Numbers Ka Grid</h3>
-    <ul>
-<li><b>Matrix:</b> numbers/symbols ka rectangular arrangement rows aur columns me — data ko organize karne ka super-tool (marks tables, images, networks sab matrices hain!).</li>
-<li><b>Order ⭐:</b> m × n matlab m rows, n columns. 3 × 2 matrix = 3 rows, 2 columns, total <b>6 elements</b>.</li>
-<li><b>Element aᵢⱼ:</b> i-th row, j-th column wala number. Pehle ROW, phir COLUMN — "row pehle, column baad me".</li>
-<li>Do matrices <b>equal</b> tab: same order AUR har corresponding element same.</li>
-<li>Example: A = [2 3; 1 −4] (2×2), a₁₂ = 3, a₂₁ = 1.</li>
-</ul>
-<p class="small-note">💡 Feel: matrix = Excel sheet of numbers. Address system bilkul spreadsheet jaisa — (row, column).</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Matrices Ke Types ⭐</h3>
-    <ul>
-<li><b>Row matrix:</b> 1 × n. <b>Column matrix:</b> m × 1. <b>Square matrix:</b> m = n (order n).</li>
-<li><b>Zero matrix (O):</b> saare elements 0. <b>Diagonal matrix:</b> square matrix jisme non-diagonal elements 0 — sirf a₁₁, a₂₂, ... non-zero ho sakte hain.</li>
-<li><b>Scalar matrix:</b> diagonal + saare diagonal elements EQUAL (k, k, k...). <b>Identity matrix (I) ⭐:</b> diagonal pe 1, baaki 0 — multiplication ka "1" (AI = IA = A).</li>
-<li><b>Upper triangular:</b> diagonal ke NEECHE sab 0. <b>Lower triangular:</b> diagonal ke UPAR sab 0.</li>
-<li><b>Equal matrices:</b> same order + same elements, element-by-element.</li>
-</ul>
-<p class="small-note">🎯 Identity matrix = matrix duniya ka 1. Har square matrix A ke liye AI = IA = A. Isse inverse ka concept banta hai!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Operations — Add, Subtract, Multiply ⭐⭐</h3>
-    <ul>
-<li><b>Addition/Subtraction:</b> SIRF same-order matrices — corresponding elements add/subtract karo. A + B = B + A (commutative hai!).</li>
-<li><b>Scalar multiplication:</b> kA = har element ko k se multiply — har element pe kaam karta hai, sirf ek pe nahi!</li>
-<li><b>Matrix multiplication ⭐⭐:</b> A(m×n) × B(n×p) possible SIRF jab A ke columns = B ki rows → result m×p. Element (i,j) = <b>row i of A · column j of B</b> (dot product).</li>
-<li><b>AB ≠ BA generally! ⭐⭐</b> Matrix multiplication commutative NAHI hota — order matter karta hai. Kabhi-kabhi AB possible ho aur BA possible hi na ho!</li>
-<li>AB = O ka matlab A = O ya B = O <b>NAHI</b> hai — non-zero matrices ka product bhi zero aa sakta hai!</li>
-<li>Associative: (AB)C = A(BC). Distributive: A(B + C) = AB + AC.</li>
-</ul>
-<p class="small-note">💡 Multiplication = "row ko column se milao". Pehla element: pehli row × pehli column, phir slide karte jao.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Transpose aur Symmetric/Skew-Symmetric ⭐</h3>
-    <ul>
-<li><b>Transpose (A′ ya Aᵀ):</b> rows ko columns bana do — (A′)ᵢⱼ = aⱼᵢ. m×n → n×m ho jaati hai.</li>
-<li><b>Transpose ke rules ⭐:</b> (A′)′ = A; (A + B)′ = A′ + B′; (kA)′ = kA′; <b>(AB)′ = B′A′</b> — ORDER ULAT JAATA HAI!</li>
-<li><b>Symmetric matrix ⭐:</b> A′ = A — diagonal ke across mirror image. (aᵢⱼ = aⱼᵢ)</li>
-<li><b>Skew-symmetric matrix ⭐:</b> A′ = −A — diagonal elements ZAROOR 0 hote hain (aᵢᵢ = −aᵢᵢ → 0)!</li>
-<li><b>Power move ⭐⭐:</b> HAR square matrix = symmetric + skew-symmetric ka sum: <b>A = ½(A + A′) + ½(A − A′)</b> — pehla part symmetric, doosra skew-symmetric. Direct 3-marker!</li>
-</ul>
-<p class="small-note">🎯 (AB)′ = B′A′ — "ulti taraf se transpose karo". Sabse zyada test hone wala rule!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Invertible Matrices aur Syllabus Note</h3>
-    <ul>
-<li><b>Invertible matrix:</b> square matrix A invertible hai agar koi B mile jisse AB = BA = I — wo B hai <b>A⁻¹</b> (inverse). Inverse UNIQUE hota hai.</li>
-<li><b>(AB)⁻¹ = B⁻¹A⁻¹ ⭐</b> — transpose jaisa hi order-flip rule!</li>
-<li>Inverse nikalne ka tareeqa (adjoint method) <b>Chapter 4 (Determinants)</b> me aata hai — pehle determinant seekhna zaroori hai.</li>
-<li><b>Rationalized syllabus ⭐:</b> <b>elementary row/column operations</b> (aur unse inverse nikalna) NCERT se <b>DELETE</b> ho gaye — ab inverse sirf adjoint method se.</li>
-<li>Word problems: matrices se data organize + multiply karna (price × quantity type) — boards me aata rehta hai.</li>
-</ul>
-<p class="small-note">💡 Inverse = "undo" matrix. Number me jaise ×3 ka undo ÷3, waise matrix me A ka undo A⁻¹.</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ आव्यूह क्या है — संख्याओं का ग्रिड</h3>
-    <ul>
-<li><b>आव्यूह (matrix):</b> संख्याओं/प्रतीकों का आयताकार विन्यास पंक्तियों और स्तंभों में।</li>
-<li><b>कोटि (order) ⭐:</b> m × n यानी m पंक्तियां, n स्तंभ — कुल <b>mn अवयव</b>।</li>
-<li><b>अवयव aᵢⱼ:</b> i-वीं पंक्ति, j-वां स्तंभ। पहले पंक्ति, फिर स्तंभ!</li>
-<li>दो आव्यूह <b>समान</b> तब: समान कोटि और प्रत्येक संगत अवयव समान।</li>
-</ul>
-<p class="small-note">💡 आव्यूह = संख्याओं की स्प्रेडशीट। पता: (पंक्ति, स्तंभ)।</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ आव्यूहों के प्रकार ⭐</h3>
-    <ul>
-<li><b>पंक्ति आव्यूह:</b> 1 × n। <b>स्तंभ आव्यूह:</b> m × 1। <b>वर्ग आव्यूह:</b> m = n।</li>
-<li><b>शून्य आव्यूह:</b> सभी अवयव 0। <b>विकर्ण आव्यूह:</b> अविकर्ण अवयव 0।</li>
-<li><b>अदिश आव्यूह:</b> विकर्ण पर सभी समान। <b>तत्समक आव्यूह (I) ⭐:</b> विकर्ण पर 1, शेष 0 — AI = IA = A।</li>
-<li><b>उपरि-त्रिभुजीय:</b> विकर्ण के नीचे सब 0। <b>अधो-त्रिभुजीय:</b> ऊपर सब 0।</li>
-</ul>
-<p class="small-note">🎯 तत्समक आव्यूह = आव्यूह संसार का 1।</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ संक्रियाएं — जोड़, घटाव, गुणन ⭐⭐</h3>
-    <ul>
-<li><b>योग/व्यवकलन:</b> केवल समान-कोटि आव्यूह — संगत अवयव जोड़ो/घटाओ। A + B = B + A।</li>
-<li><b>अदिश गुणन:</b> kA = प्रत्येक अवयव × k।</li>
-<li><b>आव्यूह गुणन ⭐⭐:</b> A(m×n) × B(n×p) केवल तब जब A के स्तंभ = B की पंक्तियां → परिणाम m×p। अवयव (i,j) = <b>A की पंक्ति i · B का स्तंभ j</b>।</li>
-<li><b>सामान्यतः AB ≠ BA! ⭐⭐</b> गुणन क्रमविनिमेय <b>नहीं</b>।</li>
-<li>AB = O का अर्थ A = O या B = O <b>नहीं</b>!</li>
-<li>साहचर्य: (AB)C = A(BC)। वितरण: A(B + C) = AB + AC।</li>
-</ul>
-<p class="small-note">💡 गुणन = "पंक्ति को स्तंभ से मिलाओ"।</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ परिवर्त और सममित/विषम-सममित ⭐</h3>
-    <ul>
-<li><b>परिवर्त (A′):</b> पंक्तियों को स्तंभ बना दो — (A′)ᵢⱼ = aⱼᵢ।</li>
-<li><b>नियम ⭐:</b> (A′)′ = A; (A + B)′ = A′ + B′; <b>(AB)′ = B′A′</b> — क्रम उलट जाता है!</li>
-<li><b>सममित ⭐:</b> A′ = A। <b>विषम-सममित ⭐:</b> A′ = −A — विकर्ण अवयव अनिवार्य रूप से <b>0</b>!</li>
-<li><b>महत्वपूर्ण ⭐⭐:</b> प्रत्येक वर्ग आव्यूह = सममित + विषम-सममित: <b>A = ½(A + A′) + ½(A − A′)</b>।</li>
-</ul>
-<p class="small-note">🎯 (AB)′ = B′A′ — सबसे अधिक परीक्षित नियम!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ व्युत्क्रमणीय आव्यूह और पाठ्यक्रम टिप्पणी</h3>
-    <ul>
-<li><b>व्युत्क्रमणीय आव्यूह:</b> यदि AB = BA = I हो तो B = <b>A⁻¹</b>। व्युत्क्रम अद्वितीय होता है।</li>
-<li><b>(AB)⁻¹ = B⁻¹A⁻¹ ⭐</b> — क्रम उलटने का नियम!</li>
-<li>व्युत्क्रम की विधि (सहखंडज) <b>अध्याय 4 (सारणिक)</b> में आती है।</li>
-<li><b>युक्तिसंगत पाठ्यक्रम ⭐:</b> <b>प्रारंभिक पंक्ति/स्तंभ संक्रियाएं</b> NCERT से <b>हटाई गईं</b> — व्युत्क्रम अब केवल सहखंडज विधि से।</li>
-</ul>
-<p class="small-note">💡 व्युत्क्रम = "पूर्ववत" आव्यूह।</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ What Is a Matrix — A Grid of Numbers</h3>
-    <ul>
-<li><b>Matrix:</b> a rectangular arrangement of numbers/symbols in rows and columns — a super-tool for organizing data (marks tables, images, networks are all matrices!).</li>
-<li><b>Order ⭐:</b> m × n means m rows, n columns. A 3 × 2 matrix has 3 rows, 2 columns, <b>6 elements</b> total.</li>
-<li><b>Element aᵢⱼ:</b> the number in the i-th row, j-th column. ROW first, COLUMN second.</li>
-<li>Two matrices are <b>equal</b> only when: same order AND every corresponding element matches.</li>
-<li>Example: A = [2 3; 1 −4] (2×2), a₁₂ = 3, a₂₁ = 1.</li>
-</ul>
-<p class="small-note">💡 Feel: a matrix is an Excel sheet of numbers. The address system works exactly like a spreadsheet — (row, column).</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Types of Matrices ⭐</h3>
-    <ul>
-<li><b>Row matrix:</b> 1 × n. <b>Column matrix:</b> m × 1. <b>Square matrix:</b> m = n (order n).</li>
-<li><b>Zero matrix (O):</b> every element is 0. <b>Diagonal matrix:</b> a square matrix whose non-diagonal elements are 0.</li>
-<li><b>Scalar matrix:</b> diagonal + all diagonal entries EQUAL (k, k, k...). <b>Identity matrix (I) ⭐:</b> 1s on the diagonal, 0 elsewhere — the "1" of multiplication (AI = IA = A).</li>
-<li><b>Upper triangular:</b> everything BELOW the diagonal is 0. <b>Lower triangular:</b> everything ABOVE the diagonal is 0.</li>
-<li><b>Equal matrices:</b> same order + same elements, element by element.</li>
-</ul>
-<p class="small-note">🎯 The identity matrix is the matrix world's 1. For every square matrix A, AI = IA = A. This is where the idea of an inverse comes from!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Operations — Add, Subtract, Multiply ⭐⭐</h3>
-    <ul>
-<li><b>Addition/Subtraction:</b> ONLY same-order matrices — add/subtract corresponding elements. A + B = B + A (commutative!).</li>
-<li><b>Scalar multiplication:</b> kA = multiply EVERY element by k — it hits all elements, not just one!</li>
-<li><b>Matrix multiplication ⭐⭐:</b> A(m×n) × B(n×p) works ONLY when A's columns = B's rows → result is m×p. Element (i,j) = <b>row i of A · column j of B</b> (a dot product).</li>
-<li><b>AB ≠ BA in general! ⭐⭐</b> Matrix multiplication is NOT commutative — order matters. Sometimes AB exists and BA does not!</li>
-<li>AB = O does NOT mean A = O or B = O — non-zero matrices can multiply to zero!</li>
-<li>Associative: (AB)C = A(BC). Distributive: A(B + C) = AB + AC.</li>
-</ul>
-<p class="small-note">💡 Multiplication = "marry a row with a column". First element: first row × first column, then keep sliding.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Transpose and Symmetric/Skew-Symmetric ⭐</h3>
-    <ul>
-<li><b>Transpose (A′ or Aᵀ):</b> turn rows into columns — (A′)ᵢⱼ = aⱼᵢ. An m×n matrix becomes n×m.</li>
-<li><b>Transpose rules ⭐:</b> (A′)′ = A; (A + B)′ = A′ + B′; (kA)′ = kA′; <b>(AB)′ = B′A′</b> — the ORDER FLIPS!</li>
-<li><b>Symmetric matrix ⭐:</b> A′ = A — a mirror image across the diagonal (aᵢⱼ = aⱼᵢ).</li>
-<li><b>Skew-symmetric matrix ⭐:</b> A′ = −A — diagonal entries MUST be 0 (aᵢᵢ = −aᵢᵢ → 0)!</li>
-<li><b>Power move ⭐⭐:</b> EVERY square matrix = symmetric + skew-symmetric: <b>A = ½(A + A′) + ½(A − A′)</b> — the first part is symmetric, the second skew-symmetric. A direct 3-marker!</li>
-</ul>
-<p class="small-note">🎯 (AB)′ = B′A′ — "transpose from the back". The most-tested rule of the chapter!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Invertible Matrices and Syllabus Note</h3>
-    <ul>
-<li><b>Invertible matrix:</b> a square matrix A is invertible if some B exists with AB = BA = I — that B is <b>A⁻¹</b> (the inverse). The inverse is UNIQUE.</li>
-<li><b>(AB)⁻¹ = B⁻¹A⁻¹ ⭐</b> — the same order-flip rule as transpose!</li>
-<li>The method to find an inverse (adjoint method) comes in <b>Chapter 4 (Determinants)</b> — you need determinants first.</li>
-<li><b>Rationalized syllabus ⭐:</b> <b>elementary row/column operations</b> (and finding inverses with them) are <b>DELETED</b> from NCERT — inverse now comes only through the adjoint method.</li>
-<li>Word problems: organizing data with matrices and multiplying (price × quantity type) — keeps appearing in boards.</li>
-</ul>
-<p class="small-note">💡 Inverse = the "undo" matrix. Like ×3 is undone by ÷3 in numbers, A is undone by A⁻¹ in matrices.</p>
-  </div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Pehle row, phir column</h3><p>Matrix entries ka rectangular arrangement hai. Order m × n ka matlab m rows, n columns aur mn entries. aᵢⱼ, row i aur column j ki entry hai.</p><p>Neeche hamari example table A ki first row (1,2), second row (3,4) dikhati hai. a₁₂=2, a₂₁=3. Compact text A=[[1,2],[3,4]] mein har andar wala bracket ek row hai, column nahi.</p><p>Equality ke liye orders aur corresponding entries dono same hon. Same numbers ko alag order mein rakhne se matrices zaroori nahi equal hon.</p><table class="matrix-example"><caption>Our example: entries of A</caption><thead><tr><th scope="col">Row / column</th><th scope="col">Column 1</th><th scope="col">Column 2</th></tr></thead><tbody><tr><th scope="row">Row 1</th><td>1</td><td>2</td></tr><tr><th scope="row">Row 2</th><td>3</td><td>4</td></tr></tbody></table></div><div class="note-sec"><h3>2. Types aur entrywise operations</h3><p>Row matrix mein ek row, column matrix mein ek column hota hai. Square matrix mein rows aur columns ki count equal hai. Zero matrix O ki sab entries zero hain. Diagonal matrix square hota hai aur off-diagonal entries zero hoti hain; diagonal par bhi zero ho sakta hai.</p><p>Scalar matrix diagonal hai aur diagonal entries equal hain. Identity Iₙ ke diagonal par 1, baaki jagah 0 hain. A ka order m × n ho to IₘA=A, AIₙ=A. Rectangular A ke liye dono identities ke sizes alag hain.</p><p>Addition/subtraction sirf same-order matrices mein hoti hai: corresponding entries jodo/ghatao. Scalar multiplication mein har entry multiply karo. Example: 2[[1,2],[3,4]]=[[2,4],[6,8]].</p></div><div class="note-sec"><h3>3. Multiplication mein row aur column milao</h3><p>A ka order m × n aur B ka n × p ho to AB exists aur order m × p hai. Andar ki dimensions equal chahiye. Entry (i,j) ke liye A ki row i aur B ki column j ki matching entries multiply karke jodo.</p><p>A=[[1,2],[3,4]], B=[[0,1],[1,0]] lo. AB=[[2,1],[4,3]]: first row se 1×0+2×1=2 aur 1×1+2×0=1; second row se 3×0+4×1=4 aur 3×1+4×0=3.</p><p>Par BA=[[3,4],[1,2]], isliye AB≠BA. Matlab equality guaranteed nahi; aisa nahi ki kabhi equal nahi honge. Allowed orders par multiplication associative aur distributive hai.</p></div><div class="note-sec"><h3>4. Transpose product ka order ulat ta hai</h3><p>Transpose Aᵀ mein rows columns banti hain. Order m × n se n × m hota hai. A=[[1,2],[3,4]] ka Aᵀ=[[1,3],[2,4]].</p><p>Compatible matrices ke rules: (Aᵀ)ᵀ=A, (A+B)ᵀ=Aᵀ+Bᵀ, (kA)ᵀ=kAᵀ, (AB)ᵀ=BᵀAᵀ. Product mein factors ka order reverse karo.</p><p>Upar wale A,B ke liye (AB)ᵀ=[[2,4],[1,3]]. BᵀAᵀ se bhi yahi milta hai. Dimension check: Bᵀ ka p × n, Aᵀ ka n × m, result p × m hai.</p></div><div class="note-sec"><h3>5. Symmetric aur skew-symmetric parts</h3><p>Real square matrix mein symmetric ka matlab Aᵀ=A; skew-symmetric ka Aᵀ=−A. Skew-symmetric mein diagonal aᵢᵢ=−aᵢᵢ se 0 hota hai. Sirf zero diagonal kaafi nahi: [[0,1],[2,0]] skew-symmetric nahi.</p><p>Har real square A ko S=(A+Aᵀ)/2 aur K=(A−Aᵀ)/2 mein baant sakte hain; A=S+K. S symmetric, K skew-symmetric hai.</p><p>A=[[1,2],[3,4]] par S=[[1,5/2],[5/2,4]], K=[[0,−1/2],[1/2,0]]. Sᵀ=S aur Kᵀ=−K check karo; corresponding entries jodkar A wapas milta hai.</p></div><div class="note-sec"><h3>6. Inverse ka identity check zaroor karo</h3><p>Square A invertible hai agar same-order B se AB=BA=I mile. Tab B=A⁻¹. A=[[1,1],[0,1]], B=[[1,−1],[0,1]] mein dono products I₂ hain. Inverse ka matlab har entry ka reciprocal nahi.</p><p>A,B same-order invertible hon tab (AB)⁻¹=B⁻¹A⁻¹. Invertibility check kiye bina formula mat likho. A invertible ho to AB=AC mein left se A⁻¹ lagakar B=C milta hai. Bina is condition cancellation fail ho sakti hai.</p><p>Nonzero matrices ka product zero ho sakta hai: P=[[1,0],[0,0]], Q=[[0,0],[0,1]] se PQ=O. Yeh selected foundations aur das original questions hain, full textbook/Exemplar exercises, past papers ya full JEE preparation nahi. Bade products, matrix equations, word problems, proofs aur systematic inverse methods abhi cover nahi hain.</p></div></div><div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. पहले पंक्ति, फिर स्तंभ</h3><p>आव्यूह प्रविष्टियों का आयताकार विन्यास है। कोटि m × n का अर्थ m पंक्तियां, n स्तंभ और mn प्रविष्टियां है। aᵢⱼ, पंक्ति i और स्तंभ j की प्रविष्टि है।</p><p>नीचे हमारी उदाहरण सारणी A की पहली पंक्ति (1,2), दूसरी (3,4) दिखाती है। a₁₂=2, a₂₁=3। संक्षिप्त लेखन A=[[1,2],[3,4]] में हर अंदर का कोष्ठक एक पंक्ति है, स्तंभ नहीं।</p><p>समानता के लिए कोटियां और संगत प्रविष्टियां दोनों समान हों। वही संख्याएं अलग क्रम में रखने से आव्यूह आवश्यक नहीं समान हों।</p><table class="matrix-example"><caption>हमारा उदाहरण: A की प्रविष्टियां</caption><thead><tr><th scope="col">पंक्ति / स्तंभ</th><th scope="col">स्तंभ 1</th><th scope="col">स्तंभ 2</th></tr></thead><tbody><tr><th scope="row">पंक्ति 1</th><td>1</td><td>2</td></tr><tr><th scope="row">पंक्ति 2</th><td>3</td><td>4</td></tr></tbody></table></div><div class="note-sec"><h3>2. प्रकार और प्रविष्टिवार संक्रियाएं</h3><p>पंक्ति आव्यूह में एक पंक्ति, स्तंभ आव्यूह में एक स्तंभ होता है। वर्ग आव्यूह में पंक्तियों और स्तंभों की संख्याएं समान हैं। शून्य आव्यूह O की सभी प्रविष्टियां शून्य हैं। विकर्ण आव्यूह वर्ग होता है और विकर्णेतर प्रविष्टियां शून्य होती हैं; विकर्ण पर भी शून्य हो सकता है।</p><p>अदिश आव्यूह विकर्ण होता है और विकर्ण प्रविष्टियां समान होती हैं। तत्समक Iₙ के विकर्ण पर 1, शेष स्थानों पर 0 हैं। A की कोटि m × n हो तो IₘA=A, AIₙ=A। आयताकार A में दोनों तत्समकों के आकार अलग हैं।</p><p>जोड़/घटाव केवल समान कोटि के आव्यूहों में करें: संगत प्रविष्टियां जोड़ें/घटाएं। अदिश गुणन में हर प्रविष्टि गुणा करें। उदाहरण: 2[[1,2],[3,4]]=[[2,4],[6,8]]।</p></div><div class="note-sec"><h3>3. गुणन में पंक्ति और स्तंभ मिलाएं</h3><p>A की कोटि m × n और B की n × p हो तो AB परिभाषित है और कोटि m × p है। अंदर की विमाएं समान चाहिए। प्रविष्टि (i,j) के लिए A की पंक्ति i और B के स्तंभ j की संगत प्रविष्टियां गुणा करके जोड़ें।</p><p>A=[[1,2],[3,4]], B=[[0,1],[1,0]] लें। AB=[[2,1],[4,3]]: पहली पंक्ति से 1×0+2×1=2 और 1×1+2×0=1; दूसरी से 3×0+4×1=4 और 3×1+4×0=3।</p><p>पर BA=[[3,4],[1,2]], इसलिए AB≠BA। अर्थ यह कि समानता निश्चित नहीं; ऐसा नहीं कि कभी समान नहीं होंगे। अनुमत कोटियों पर गुणन साहचर्य और वितरण नियम मानता है।</p></div><div class="note-sec"><h3>4. परिवर्त गुणन का क्रम उलटता है</h3><p>परिवर्त Aᵀ में पंक्तियां स्तंभ बनती हैं। कोटि m × n से n × m होती है। A=[[1,2],[3,4]] का Aᵀ=[[1,3],[2,4]] है।</p><p>संगत आव्यूहों के नियम: (Aᵀ)ᵀ=A, (A+B)ᵀ=Aᵀ+Bᵀ, (kA)ᵀ=kAᵀ, (AB)ᵀ=BᵀAᵀ। गुणन में गुणनखंडों का क्रम उलटें।</p><p>ऊपर के A,B के लिए (AB)ᵀ=[[2,4],[1,3]]। BᵀAᵀ से भी यही मिलता है। विमा जांच: Bᵀ की p × n, Aᵀ की n × m, परिणाम की p × m है।</p></div><div class="note-sec"><h3>5. सममित और विषम-सममित भाग</h3><p>वास्तविक वर्ग आव्यूह में सममित का अर्थ Aᵀ=A; विषम-सममित का Aᵀ=−A है। विषम-सममित में विकर्ण aᵢᵢ=−aᵢᵢ से 0 है। केवल शून्य विकर्ण पर्याप्त नहीं: [[0,1],[2,0]] विषम-सममित नहीं है।</p><p>हर वास्तविक वर्ग A को S=(A+Aᵀ)/2 और K=(A−Aᵀ)/2 में बांट सकते हैं; A=S+K। S सममित, K विषम-सममित है।</p><p>A=[[1,2],[3,4]] पर S=[[1,5/2],[5/2,4]], K=[[0,−1/2],[1/2,0]]। Sᵀ=S और Kᵀ=−K जांचें; संगत प्रविष्टियां जोड़ने से A लौटता है।</p></div><div class="note-sec"><h3>6. प्रतिलोम की तत्समक जांच करें</h3><p>वर्ग A व्युत्क्रमणीय है यदि समान कोटि के B से AB=BA=I मिले। तब B=A⁻¹। A=[[1,1],[0,1]], B=[[1,−1],[0,1]] में दोनों गुणनफल I₂ हैं। प्रतिलोम का अर्थ हर प्रविष्टि का व्युत्क्रम नहीं।</p><p>A,B समान कोटि के व्युत्क्रमणीय हों तभी (AB)⁻¹=B⁻¹A⁻¹। व्युत्क्रमणीयता जांचे बिना सूत्र न लिखें। A व्युत्क्रमणीय हो तो AB=AC में बाईं ओर A⁻¹ से गुणा करके B=C मिलता है। इस शर्त के बिना निरसन असफल हो सकता है।</p><p>अशून्य आव्यूहों का गुणनफल शून्य हो सकता है: P=[[1,0],[0,0]], Q=[[0,0],[0,1]] से PQ=O। ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक/Exemplar प्रश्नावली, पिछले वर्षों के प्रश्न या पूरी JEE तैयारी नहीं। बड़े गुणनफल, आव्यूह समीकरण, शब्द प्रश्न, प्रमाण और व्यवस्थित प्रतिलोम विधियां अभी शामिल नहीं हैं।</p></div></div><div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. Rows first, columns second</h3><p>A matrix is a rectangular arrangement of entries. Order m × n means m rows and n columns, with mn entries. The entry aᵢⱼ is in row i, column j.</p><p>Our example table below represents A with first row (1,2) and second row (3,4). Thus a₁₂=2 and a₂₁=3. In compact text we write A=[[1,2],[3,4]]: each inner bracket is one row, not a column.</p><p>Equality requires equal orders and equal corresponding entries. Having the same entries in a different order does not guarantee equal matrices.</p><table class="matrix-example"><caption>Our example: entries of A</caption><thead><tr><th scope="col">Row / column</th><th scope="col">Column 1</th><th scope="col">Column 2</th></tr></thead><tbody><tr><th scope="row">Row 1</th><td>1</td><td>2</td></tr><tr><th scope="row">Row 2</th><td>3</td><td>4</td></tr></tbody></table></div><div class="note-sec"><h3>2. Types and entrywise operations</h3><p>A row matrix has one row; a column matrix has one column. A square matrix has the same number of rows and columns. A zero matrix O has only zero entries. A diagonal matrix is square with all off-diagonal entries zero; its diagonal entries may include zero.</p><p>A scalar matrix is diagonal with all diagonal entries equal. The identity Iₙ has diagonal entries 1 and other entries 0. For A of order m × n, IₘA=A and AIₙ=A. The identities have different sizes when A is rectangular.</p><p>Add or subtract matrices only when their orders match; combine corresponding entries. Multiply every entry for scalar multiplication. Example: 2[[1,2],[3,4]]=[[2,4],[6,8]].</p></div><div class="note-sec"><h3>3. Multiplication uses a row and a column</h3><p>For A of order m × n and B of order n × p, AB exists and has order m × p. The inner dimensions must match. To get entry (i,j), multiply matching entries of row i of A and column j of B, then add.</p><p>Take A=[[1,2],[3,4]], B=[[0,1],[1,0]]. Then AB=[[2,1],[4,3]]: first row gives 1×0+2×1=2 and 1×1+2×0=1; second row gives 3×0+4×1=4 and 3×1+4×0=3.</p><p>But BA=[[3,4],[1,2]], so AB≠BA. This means equality is not guaranteed, not that products are never equal. Multiplication is associative and distributive whenever the matrix orders allow the operations.</p></div><div class="note-sec"><h3>4. Transpose reverses a product order</h3><p>The transpose Aᵀ turns rows into columns. Its order changes from m × n to n × m. For A=[[1,2],[3,4]], Aᵀ=[[1,3],[2,4]].</p><p>Rules for compatible matrices: (Aᵀ)ᵀ=A, (A+B)ᵀ=Aᵀ+Bᵀ, (kA)ᵀ=kAᵀ, and (AB)ᵀ=BᵀAᵀ. Reverse the factors in the product rule.</p><p>For the preceding A,B, (AB)ᵀ=[[2,4],[1,3]]. Multiplying BᵀAᵀ gives the same result. Also check dimensions: Bᵀ is p × n and Aᵀ is n × m, so the result is p × m.</p></div><div class="note-sec"><h3>5. Symmetric and skew-symmetric parts</h3><p>For real square matrices, symmetric means Aᵀ=A; skew-symmetric means Aᵀ=−A. A skew-symmetric diagonal entry satisfies aᵢᵢ=−aᵢᵢ, so it is 0. Zero diagonal alone is not enough: [[0,1],[2,0]] is not skew-symmetric.</p><p>Every real square A splits as S=(A+Aᵀ)/2 and K=(A−Aᵀ)/2, with A=S+K. S is symmetric and K is skew-symmetric.</p><p>For A=[[1,2],[3,4]], S=[[1,5/2],[5/2,4]], K=[[0,−1/2],[1/2,0]]. Check Sᵀ=S, Kᵀ=−K, and add corresponding entries to recover A.</p></div><div class="note-sec"><h3>6. An inverse must pass the identity check</h3><p>A square matrix A is invertible if a matrix B of the same order satisfies AB=BA=I. Then B=A⁻¹. For A=[[1,1],[0,1]], B=[[1,−1],[0,1]], both products equal I₂. Inverse does not mean taking the reciprocal of each entry.</p><p>If A and B are invertible of the same order, (AB)⁻¹=B⁻¹A⁻¹. Do not write this formula before checking invertibility. If A is invertible, AB=AC implies B=C by multiplying on the left by A⁻¹. Without that condition cancellation can fail.</p><p>Nonzero matrices can have zero product: P=[[1,0],[0,0]], Q=[[0,0],[0,1]] give PQ=O. These notes and ten original questions are selected foundations, not full textbook/Exemplar exercises, past papers or full JEE preparation. Larger products, matrix equations, word problems, proofs and systematic inverse-finding methods remain outside this pass.</p></div></div></section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics</h4>
-      <ul><li>Matrix = rows × columns grid</li><li>Order m×n: m rows, n columns</li><li>aᵢⱼ = row i, column j</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Types ⭐</h4>
-      <ul><li>Square: m=n; Diagonal: sirf diagonal</li><li>Identity I: diagonal 1, baaki 0</li><li>Scalar: diagonal sab equal</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Operations ⭐⭐</h4>
-      <ul><li>Add: same order only</li><li>AB: A.cols = B.rows, result m×p</li><li>AB ≠ BA generally!</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Transpose ⭐</h4>
-      <ul><li>A′: rows ↔ columns</li><li>(AB)′ = B′A′ (order flip!)</li><li>Symmetric A′=A; skew A′=−A</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Inverse ⭐</h4>
-      <ul><li>AB = BA = I → B = A⁻¹</li><li>(AB)⁻¹ = B⁻¹A⁻¹</li><li>Elementary operations DELETED</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>मूल</h4>
-      <ul><li>आव्यूह = पंक्ति × स्तंभ ग्रिड</li><li>कोटि m×n</li><li>aᵢⱼ = पंक्ति i, स्तंभ j</li></ul>
-    </div>
-    <div class="shorts-card"><h4>प्रकार ⭐</h4>
-      <ul><li>वर्ग: m=n; विकर्ण</li><li>तत्समक I: विकर्ण 1</li><li>अदिश: विकर्ण सभी समान</li></ul>
-    </div>
-    <div class="shorts-card"><h4>संक्रियाएं ⭐⭐</h4>
-      <ul><li>योग: समान कोटि</li><li>AB: A.स्तंभ = B.पंक्तियां</li><li>AB ≠ BA सामान्यतः!</li></ul>
-    </div>
-    <div class="shorts-card"><h4>परिवर्त ⭐</h4>
-      <ul><li>A′: पंक्ति ↔ स्तंभ</li><li>(AB)′ = B′A′</li><li>सममित A′=A; विषम A′=−A</li></ul>
-    </div>
-    <div class="shorts-card"><h4>व्युत्क्रम ⭐</h4>
-      <ul><li>AB = BA = I → B = A⁻¹</li><li>(AB)⁻¹ = B⁻¹A⁻¹</li><li>प्रारंभिक संक्रियाएं हटाई गईं</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics</h4>
-      <ul><li>Matrix = rows × columns grid</li><li>Order m×n: m rows, n columns</li><li>aᵢⱼ = row i, column j</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Types ⭐</h4>
-      <ul><li>Square: m=n; Diagonal: only diagonal</li><li>Identity I: 1s on diagonal</li><li>Scalar: diagonal entries equal</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Operations ⭐⭐</h4>
-      <ul><li>Add: same order only</li><li>AB: A.cols = B.rows, result m×p</li><li>AB ≠ BA in general!</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Transpose ⭐</h4>
-      <ul><li>A′: rows ↔ columns</li><li>(AB)′ = B′A′ (order flips!)</li><li>Symmetric A′=A; skew A′=−A</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Inverse ⭐</h4>
-      <ul><li>AB = BA = I → B = A⁻¹</li><li>(AB)⁻¹ = B⁻¹A⁻¹</li><li>Elementary operations DELETED</li></ul>
-    </div>
-    </div>
-  </div>
-</section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> A = [2 −1; 3 4] hai. a₂₁ kitna hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Row 2, column 1 → <b>3</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> A 2×3 hai, B 3×4 hai. AB ka order?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>A ke columns (3) = B ki rows (3) → possible hai, result <b>2×4</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> kya matrix multiplication commutative hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — generally AB ≠ BA. Kabhi-kabhi barabar ho jaaye (jaise I ke saath), par rule nahi hai.</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> A = [1 2; 3 4], B = [0 1; 1 0]. (AB)′ kya hoga?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>AB = [2 1; 4 3] → (AB)′ = <b>[2 4; 1 3]</b>. Check: B′A′ bhi wahi aata hai — order flip rule!</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> Skew-symmetric matrix ke diagonal elements kya hote hain?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>0</b> — kyunki aᵢᵢ = −aᵢᵢ ⇒ 2aᵢᵢ = 0.</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> A′ = A ho to matrix kaisi hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Symmetric</b> — diagonal ke across mirror image.</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> Har square matrix ko symmetric + skew-symmetric me kaise todo?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>A = <b>½(A + A′) + ½(A − A′)</b> — pehla symmetric, doosra skew-symmetric.</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> A = [2 0; 0 2] kaunsi matrix hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Scalar matrix</b> — diagonal hai aur diagonal elements equal (2, 2).</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> AB = O ho to kya A = O ya B = O zaroor hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — non-zero matrices ka product bhi zero matrix aa sakta hai. Numbers jaisa rule yahan nahi chalta!</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> (AB)⁻¹ kiske barabar hota hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>B⁻¹A⁻¹</b> — inverse me bhi order flip hota hai, transpose ki tarah.</p></details></div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="tip-box">Order m × n: pehle rows, phir columns. aᵢⱼ row i, column j hai.</p><p class="tip-box">Equality mein orders aur corresponding entries same chahiye.</p><p class="tip-box">Addition/subtraction mein same order; kA mein har entry ko k se multiply karo.</p><p class="tip-box">(m × n)(n × p) ka result m × p. Row aur column ko multiply karke jodo.</p><p class="tip-box">AB aur BA zaroori nahi equal hon. Nonzero matrices ka product zero ho sakta hai.</p><p class="tip-box">(AB)ᵀ=BᵀAᵀ. Symmetric: Aᵀ=A. Skew-symmetric: Aᵀ=−A.</p><p class="tip-box">Real square A: S=(A+Aᵀ)/2, K=(A−Aᵀ)/2, A=S+K.</p><p class="tip-box">Inverse: AA⁻¹=A⁻¹A=I. Same-order invertible A,B ke liye (AB)⁻¹=B⁻¹A⁻¹.</p></div><div class="lang-block" data-lang="hi" hidden=""><p class="tip-box">कोटि m × n: पहले पंक्तियां, फिर स्तंभ। aᵢⱼ पंक्ति i, स्तंभ j है।</p><p class="tip-box">समानता में कोटियां और संगत प्रविष्टियां समान चाहिए।</p><p class="tip-box">जोड़/घटाव में समान कोटि; kA में हर प्रविष्टि को k से गुणा करें।</p><p class="tip-box">(m × n)(n × p) का परिणाम m × p। पंक्ति और स्तंभ गुणा करके जोड़ें।</p><p class="tip-box">AB और BA आवश्यक नहीं समान हों। अशून्य आव्यूहों का गुणनफल शून्य हो सकता है।</p><p class="tip-box">(AB)ᵀ=BᵀAᵀ। सममित: Aᵀ=A। विषम-सममित: Aᵀ=−A।</p><p class="tip-box">वास्तविक वर्ग A: S=(A+Aᵀ)/2, K=(A−Aᵀ)/2, A=S+K।</p><p class="tip-box">प्रतिलोम: AA⁻¹=A⁻¹A=I। समान कोटि के व्युत्क्रमणीय A,B के लिए (AB)⁻¹=B⁻¹A⁻¹।</p></div><div class="lang-block" data-lang="en" hidden=""><p class="tip-box">Order m × n: rows first, columns second. Entry aᵢⱼ is row i, column j.</p><p class="tip-box">Equal matrices have equal orders and corresponding entries.</p><p class="tip-box">Addition/subtraction need equal orders; kA multiplies every entry by k.</p><p class="tip-box">(m × n)(n × p) gives m × p. Multiply row by column and add.</p><p class="tip-box">AB need not equal BA. Nonzero matrices can have zero product.</p><p class="tip-box">(AB)ᵀ=BᵀAᵀ. Symmetric: Aᵀ=A. Skew-symmetric: Aᵀ=−A.</p><p class="tip-box">For real square A: S=(A+Aᵀ)/2, K=(A−Aᵀ)/2, A=S+K.</p><p class="tip-box">Inverse: AA⁻¹=A⁻¹A=I. For invertible A,B of the same order: (AB)⁻¹=B⁻¹A⁻¹.</p></div></section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> A=[[2,−1,5],[3,4,0]] ka order aur a₂₁ nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Pehle rows, phir columns padho.</p><p>Steps: 2 rows, 3 columns hain; row 2 ki first entry 3 hai.</p><p>Answer/check: Order 2 × 3; a₂₁=3. Total entries 2×3=6.</p></details></div><div class="jee-q"><span class="qn">Q2</span> A ka 2 × 3 aur B ka 3 × 4 order hai. AB ka order? Kya BA exists?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Andar ki dimensions same chahiye.</p><p>Steps: AB: (2 × 3)(3 × 4). BA: (3 × 4)(2 × 3).</p><p>Answer/check: AB ka 2 × 4. BA defined nahi kyunki 4≠2.</p></details></div><div class="jee-q"><span class="qn">Q3</span> A=[[1,2],[3,4]], B=[[0,1],[1,0]] par A+2B nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Scalar har entry ko multiply karta hai.</p><p>Steps: 2B=[[0,2],[2,0]]; corresponding entries jodo.</p><p>Answer/check: A+2B=[[1,4],[5,4]]. Lower-left entry check: 3+2=5.</p></details></div><div class="jee-q"><span class="qn">Q4</span> A=[[1,2],[3,4]], B=[[0,1],[1,0]] par AB aur BA nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Row-column multiply karo, entrywise nahi.</p><p>Steps: AB ki rows (2,1),(4,3); BA ki rows (3,4),(1,2).</p><p>Answer/check: AB=[[2,1],[4,3]], BA=[[3,4],[1,2]]. Entry (1,1) par hi alag hain.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Upar ke A,B se (AB)ᵀ=BᵀAᵀ verify karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Transpose mein factors ka order reverse hota hai.</p><p>Steps: (AB)ᵀ=[[2,4],[1,3]]; Bᵀ=B, Aᵀ=[[1,3],[2,4]].</p><p>Answer/check: BᵀAᵀ=[[2,4],[1,3]], same result.</p></details></div><div class="jee-q"><span class="qn">Q6</span> [[2,t],[5,3]] symmetric ho to t nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Opposite off-diagonal entries same honi chahiye.</p><p>Steps: Entry (1,2) aur (2,1) equal: t=5.</p><p>Answer/check: t=5. Ab transpose aur matrix equal hain.</p></details></div><div class="jee-q"><span class="qn">Q7</span> Kya [[0,1],[2,0]] skew-symmetric hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Zero diagonal zaroori hai, par akela kaafi nahi.</p><p>Steps: Transpose [[0,2],[1,0]], par negative [[0,−1],[−2,0]] hai.</p><p>Answer/check: Nahi. Dono alag hain; off-diagonal entries ek doosre ki negative honi chahiye.</p></details></div><div class="jee-q"><span class="qn">Q8</span> A=[[1,2],[3,4]] ke symmetric aur skew-symmetric parts nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Aᵀ ke saath sum ka half aur difference ka half lo.</p><p>Steps: S=[[1,5/2],[5/2,4]], K=[[0,−1/2],[1/2,0]].</p><p>Answer/check: S+K=A, Sᵀ=S, Kᵀ=−K. Entry (1,2) mein 5/2−1/2=2.</p></details></div><div class="jee-q"><span class="qn">Q9</span> A=[[1,1],[0,1]] ka inverse B=[[1,−1],[0,1]] verify karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Dono products I₂ se match karo.</p><p>Steps: AB=[[1,0],[0,1]], BA=[[1,0],[0,1]].</p><p>Answer/check: B=A⁻¹. Upper-right entry cancel karne ke liye −1 zaroori hai.</p></details></div><div class="jee-q"><span class="qn">Q10</span> P=[[1,0],[0,0]], Q=[[0,0],[0,1]]. PQ=O se koi factor zero hona zaroori hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Real numbers ka zero-product rule har matrix par nahi lagta.</p><p>Steps: PQ ki har row-column entry 0 hai. P ki (1,1) aur Q ki (2,2) entry 1 hai.</p><p>Answer/check: Nahi. PQ=O, par P aur Q dono nonzero hain.</p></details></div><div class="tip-box">Nonzero matrices ka product zero ho sakta hai: P=[[1,0],[0,0]], Q=[[0,0],[0,1]] se PQ=O. Yeh selected foundations aur das original questions hain, full textbook/Exemplar exercises, past papers ya full JEE preparation nahi. Bade products, matrix equations, word problems, proofs aur systematic inverse methods abhi cover nahi hain.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh103.pdf">Textbook Ch 3</a> | <a href="https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep203.pdf">Exemplar Ch 3</a></p></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> A=[[2,−1,5],[3,4,0]] की कोटि और a₂₁ निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: पहले पंक्तियां, फिर स्तंभ पढ़ें।</p><p>चरण: 2 पंक्तियां, 3 स्तंभ हैं; पंक्ति 2 की पहली प्रविष्टि 3 है।</p><p>उत्तर/जांच: कोटि 2 × 3; a₂₁=3। कुल प्रविष्टियां 2×3=6।</p></details></div><div class="jee-q"><span class="qn">Q2</span> A की कोटि 2 × 3, B की 3 × 4 है। AB की कोटि? क्या BA परिभाषित है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अंदर की विमाएं समान चाहिए।</p><p>चरण: AB: (2 × 3)(3 × 4)। BA: (3 × 4)(2 × 3)।</p><p>उत्तर/जांच: AB की कोटि 2 × 4। BA परिभाषित नहीं क्योंकि 4≠2।</p></details></div><div class="jee-q"><span class="qn">Q3</span> A=[[1,2],[3,4]], B=[[0,1],[1,0]] पर A+2B निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अदिश हर प्रविष्टि को गुणा करता है।</p><p>चरण: 2B=[[0,2],[2,0]]; संगत प्रविष्टियां जोड़ें।</p><p>उत्तर/जांच: A+2B=[[1,4],[5,4]]। नीचे-बाईं प्रविष्टि जांचें: 3+2=5।</p></details></div><div class="jee-q"><span class="qn">Q4</span> A=[[1,2],[3,4]], B=[[0,1],[1,0]] पर AB और BA निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: पंक्ति-स्तंभ गुणन करें, प्रविष्टिवार नहीं।</p><p>चरण: AB की पंक्तियां (2,1),(4,3); BA की (3,4),(1,2)।</p><p>उत्तर/जांच: AB=[[2,1],[4,3]], BA=[[3,4],[1,2]]। प्रविष्टि (1,1) पर ही अलग हैं।</p></details></div><div class="jee-q"><span class="qn">Q5</span> ऊपर के A,B से (AB)ᵀ=BᵀAᵀ सत्यापित करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: परिवर्त में गुणनखंडों का क्रम उलटता है।</p><p>चरण: (AB)ᵀ=[[2,4],[1,3]]; Bᵀ=B, Aᵀ=[[1,3],[2,4]]।</p><p>उत्तर/जांच: BᵀAᵀ=[[2,4],[1,3]], वही परिणाम।</p></details></div><div class="jee-q"><span class="qn">Q6</span> [[2,t],[5,3]] सममित हो तो t निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: सामने की विकर्णेतर प्रविष्टियां समान हों।</p><p>चरण: प्रविष्टि (1,2) और (2,1) समान: t=5।</p><p>उत्तर/जांच: t=5। अब परिवर्त और आव्यूह समान हैं।</p></details></div><div class="jee-q"><span class="qn">Q7</span> क्या [[0,1],[2,0]] विषम-सममित है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: शून्य विकर्ण आवश्यक है, पर अकेला पर्याप्त नहीं।</p><p>चरण: परिवर्त [[0,2],[1,0]], पर ऋणात्मक [[0,−1],[−2,0]] है।</p><p>उत्तर/जांच: नहीं। दोनों अलग हैं; विकर्णेतर प्रविष्टियां एक-दूसरे की ऋणात्मक होनी चाहिए।</p></details></div><div class="jee-q"><span class="qn">Q8</span> A=[[1,2],[3,4]] के सममित और विषम-सममित भाग निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: Aᵀ के साथ योग का आधा और अंतर का आधा लें।</p><p>चरण: S=[[1,5/2],[5/2,4]], K=[[0,−1/2],[1/2,0]]।</p><p>उत्तर/जांच: S+K=A, Sᵀ=S, Kᵀ=−K। प्रविष्टि (1,2) में 5/2−1/2=2।</p></details></div><div class="jee-q"><span class="qn">Q9</span> A=[[1,1],[0,1]] का प्रतिलोम B=[[1,−1],[0,1]] सत्यापित करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: दोनों गुणनफल I₂ से मिलाएं।</p><p>चरण: AB=[[1,0],[0,1]], BA=[[1,0],[0,1]]।</p><p>उत्तर/जांच: B=A⁻¹। ऊपर-दाईं प्रविष्टि काटने के लिए −1 आवश्यक है।</p></details></div><div class="jee-q"><span class="qn">Q10</span> P=[[1,0],[0,0]], Q=[[0,0],[0,1]]। PQ=O से कोई गुणनखंड शून्य होना आवश्यक है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: वास्तविक संख्याओं का शून्य-गुणनफल नियम हर आव्यूह पर नहीं लगता।</p><p>चरण: PQ की हर पंक्ति-स्तंभ प्रविष्टि 0 है। P की (1,1) और Q की (2,2) प्रविष्टि 1 है।</p><p>उत्तर/जांच: नहीं। PQ=O, पर P और Q दोनों अशून्य हैं।</p></details></div><div class="tip-box">अशून्य आव्यूहों का गुणनफल शून्य हो सकता है: P=[[1,0],[0,0]], Q=[[0,0],[0,1]] से PQ=O। ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक/Exemplar प्रश्नावली, पिछले वर्षों के प्रश्न या पूरी JEE तैयारी नहीं। बड़े गुणनफल, आव्यूह समीकरण, शब्द प्रश्न, प्रमाण और व्यवस्थित प्रतिलोम विधियां अभी शामिल नहीं हैं।</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh103.pdf">Textbook Ch 3</a> | <a href="https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep203.pdf">Exemplar Ch 3</a></p></div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> A=[[2,−1,5],[3,4,0]]. Find its order and a₂₁.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Read rows before columns.</p><p>Steps: There are 2 rows and 3 columns; row 2 begins with 3.</p><p>Answer/check: Order 2 × 3; a₂₁=3. Total entries 2×3=6.</p></details></div><div class="jee-q"><span class="qn">Q2</span> A is 2 × 3 and B is 3 × 4. Find the order of AB; does BA exist?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Inner dimensions must match.</p><p>Steps: AB: (2 × 3)(3 × 4). BA: (3 × 4)(2 × 3).</p><p>Answer/check: AB is 2 × 4. BA does not exist because 4≠2.</p></details></div><div class="jee-q"><span class="qn">Q3</span> For A=[[1,2],[3,4]], B=[[0,1],[1,0]], find A+2B.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Scalar multiplication acts on every entry.</p><p>Steps: 2B=[[0,2],[2,0]]; add corresponding entries.</p><p>Answer/check: A+2B=[[1,4],[5,4]]. Check the lower-left entry: 3+2=5.</p></details></div><div class="jee-q"><span class="qn">Q4</span> For A=[[1,2],[3,4]], B=[[0,1],[1,0]], find AB and BA.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use row-column multiplication, not entrywise multiplication.</p><p>Steps: AB rows are (2,1),(4,3); BA rows are (3,4),(1,2).</p><p>Answer/check: AB=[[2,1],[4,3]], BA=[[3,4],[1,2]]. They differ, for example at entry (1,1).</p></details></div><div class="jee-q"><span class="qn">Q5</span> Using the preceding A,B, verify (AB)ᵀ=BᵀAᵀ.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Reverse factor order in the transpose rule.</p><p>Steps: (AB)ᵀ=[[2,4],[1,3]]; Bᵀ=B and Aᵀ=[[1,3],[2,4]].</p><p>Answer/check: BᵀAᵀ=[[2,4],[1,3]], the same result.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Find t so [[2,t],[5,3]] is symmetric.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Opposite off-diagonal entries must match.</p><p>Steps: Entry (1,2) must equal entry (2,1): t=5.</p><p>Answer/check: t=5. The resulting transpose equals the matrix.</p></details></div><div class="jee-q"><span class="qn">Q7</span> Is [[0,1],[2,0]] skew-symmetric?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Zero diagonal is necessary but not sufficient.</p><p>Steps: Its transpose is [[0,2],[1,0]], but its negative is [[0,−1],[−2,0]].</p><p>Answer/check: No. The two matrices are different; off-diagonal entries must be negatives of each other.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Split A=[[1,2],[3,4]] into symmetric and skew-symmetric parts.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use half the sum and half the difference with Aᵀ.</p><p>Steps: S=[[1,5/2],[5/2,4]], K=[[0,−1/2],[1/2,0]].</p><p>Answer/check: S+K=A, Sᵀ=S and Kᵀ=−K. In entry (1,2), 5/2−1/2=2.</p></details></div><div class="jee-q"><span class="qn">Q9</span> Verify B=[[1,−1],[0,1]] is the inverse of A=[[1,1],[0,1]].<details class="jee-sol"><summary>Show answer</summary><p>Rule: Check both products against I₂.</p><p>Steps: AB=[[1,0],[0,1]] and BA=[[1,0],[0,1]].</p><p>Answer/check: B=A⁻¹. The entry −1 is needed to cancel the upper-right entry.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Let P=[[1,0],[0,0]], Q=[[0,0],[0,1]]. Does PQ=O force one factor to be zero?<details class="jee-sol"><summary>Show answer</summary><p>Rule: The zero-product rule for real numbers does not apply to all matrices.</p><p>Steps: Each row-column product in PQ is 0. P has entry 1 at (1,1); Q has entry 1 at (2,2).</p><p>Answer/check: No. PQ=O although P and Q are both nonzero.</p></details></div><div class="tip-box">Nonzero matrices can have zero product: P=[[1,0],[0,0]], Q=[[0,0],[0,1]] give PQ=O. These notes and ten original questions are selected foundations, not full textbook/Exemplar exercises, past papers or full JEE preparation. Larger products, matrix equations, word problems, proofs and systematic inverse-finding methods remain outside this pass.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh103.pdf">Textbook Ch 3</a> | <a href="https://ncert.nic.in/pdf/publication/exemplarproblem/classXII/mathematics/leep203.pdf">Exemplar Ch 3</a></p></div></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-4/">Determinants</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-4/">Determinants</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
