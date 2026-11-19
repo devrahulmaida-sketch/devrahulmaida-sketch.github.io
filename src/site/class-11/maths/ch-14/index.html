@@ -1,369 +1,113 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 14 — Probability | Class 11 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 11 Maths Chapter 14: Probability — long + short notes in Hindi, English, Hinglish. Random experiments, sample space, events, classical probability, addition rule.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 11 Maths Chapter 14: Probability — long + short notes in Hindi, English, Hinglish. Random experiments, sample space, events, classical probability, addition rule." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:16px;line-height:1.65;margin:8px 0;padding:12px;background:#f5f7fb;border:1px solid #d5deec;border-radius:4px} #practice .jee-sol summary{font-size:16px} #notes .note-sec p{line-height:1.7} #short-notes .small-note{font-size:16px;line-height:1.7} #notes table{width:100%;border-collapse:collapse;font-size:16px} #notes td,#notes th{padding:8px;border:1px solid #d5deec;text-align:center} #notes caption{font-size:16px;padding:8px;color:#173d70}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-11/">Class 11</a> / <a href="/src/site/class-11/maths/">Mathematics</a> / Chapter 14</p>
-  <h1>Probability</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">प्रायिकता</p>
-  <p style="color:var(--muted);margin-top:6px">Chance ka hisaab — sample space, events aur addition rule</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video coming soon</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-11/">Class 11</a> / <a href="/src/site/class-11/maths/">Mathematics</a> / Chapter 14</p>
+<h1>Probability</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">प्रायिकता</p>
+<p style="color:var(--muted);margin-top:6px">Chance ka hisaab — sample space, events aur addition rule</p>
+<div class="ch-tags">
+<span class="pill">Selected foundations</span>
+<span class="pill">Video coming soon</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section style="padding-top:20px">
-  <div class="video-soon">
-    <b>Video jald aa raha hai</b>
-    <p>Is chapter ka video abhi ban raha hai. Tab tak neeche ke notes se padhen.</p>
-  </div>
+<div class="video-soon">
+<b>Video jald aa raha hai</b>
+<p>Is chapter ka video abhi ban raha hai. Tab tak neeche ke notes se padhen.</p>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Probability 5 animated scenes mein - outcomes GINO, events aur complement, addition rule machine (double-count trap!), 'at least one' ka 1-P(none) jadoo, aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Probability 5 animated scenes mein - outcomes GINO, events aur complement, addition rule machine (double-count trap!), 'at least one' ka 1-P(none) jadoo, aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="concept-shorts" style="padding-top:10px">
-  <div class="sec-head"><h2>Concept Shorts - Foundation and JEE Advanced</h2></div>
-  <div class="concept-shorts-grid" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
-    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="At Least One Probability Complement Trick - Class 11 Probability (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">At Least One Probability Complement Trick - Class 11 Probability (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/4XLQX_Grpkk" title="At Least One Probability Complement Trick - Class 11 Probability (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/4XLQX_Grpkk" title="At Least One Probability Complement Trick - Class 11 Probability (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/4XLQX_Grpkk" target="_blank" rel="noopener">Foundation: At Least One Probability Complement Trick</a></p>
-    </div>
-    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="Exactly One Consecutive Pair Probability - JEE Advanced (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Exactly One Consecutive Pair Probability - JEE Advanced (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/ukbfAdn01Cc" title="Exactly One Consecutive Pair Probability - JEE Advanced (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/ukbfAdn01Cc" title="Exactly One Consecutive Pair Probability - JEE Advanced (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/ukbfAdn01Cc" target="_blank" rel="noopener">Advanced: Exactly One Consecutive Pair Probability</a></p>
-    </div>
-    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="60% + 50% = 110%?! Inclusion-Exclusion Trick | Class 11 Maths Ch 14 Probability (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">60% + 50% = 110%?! Inclusion-Exclusion Trick | Class 11 Maths Ch 14 Probability (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/gzNAkrqNRRs" title="60% + 50% = 110%?! Inclusion-Exclusion Trick | Class 11 Maths Ch 14 Probability (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/gzNAkrqNRRs" title="60% + 50% = 110%?! Inclusion-Exclusion Trick | Class 11 Maths Ch 14 Probability (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/gzNAkrqNRRs" target="_blank" rel="noopener">60% + 50% = 110%?! Inclusion-Exclusion Trick</a></p>
-    </div>
-
-  </div>
+<div class="sec-head"><h2>Concept Shorts - Foundation and JEE Advanced</h2></div>
+<div class="concept-shorts-grid" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
+<div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="At Least One Probability Complement Trick - Class 11 Probability (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">At Least One Probability Complement Trick - Class 11 Probability (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/4XLQX_Grpkk" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="At Least One Probability Complement Trick - Class 11 Probability (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/4XLQX_Grpkk" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="At Least One Probability Complement Trick - Class 11 Probability (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/4XLQX_Grpkk" rel="noopener" target="_blank">Foundation: At Least One Probability Complement Trick</a></p>
+</div>
+<div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="Exactly One Consecutive Pair Probability - JEE Advanced (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Exactly One Consecutive Pair Probability - JEE Advanced (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/ukbfAdn01Cc" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Exactly One Consecutive Pair Probability - JEE Advanced (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/ukbfAdn01Cc" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Exactly One Consecutive Pair Probability - JEE Advanced (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/ukbfAdn01Cc" rel="noopener" target="_blank">Advanced: Exactly One Consecutive Pair Probability</a></p>
+</div>
+<div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="60% + 50% = 110%?! Inclusion-Exclusion Trick | Class 11 Maths Ch 14 Probability (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">60% + 50% = 110%?! Inclusion-Exclusion Trick | Class 11 Maths Ch 14 Probability (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/gzNAkrqNRRs" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="60% + 50% = 110%?! Inclusion-Exclusion Trick | Class 11 Maths Ch 14 Probability (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/gzNAkrqNRRs" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="60% + 50% = 110%?! Inclusion-Exclusion Trick | Class 11 Maths Ch 14 Probability (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/gzNAkrqNRRs" rel="noopener" target="_blank">60% + 50% = 110%?! Inclusion-Exclusion Trick</a></p>
+</div>
+</div>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Long notes - selected foundations" data-hi="विस्तृत नोट्स - चुनी हुई बुनियाद" data-hinglish="Long notes - selected foundations">Long notes - selected foundations</h2><p class="lang-sub" data-en="Outcomes, event words and small checked examples" data-hi="परिणाम, घटना के शब्द और छोटे जांचे हुए उदाहरण" data-hinglish="Outcomes, event words aur chhote checked examples">Outcomes, event words and small checked examples</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Probability — Uncertainty Ka Measurement</h3>
-    <p>Coin uchhalo — heads ya tails? Dice fenko — 1 se 6 kuch bhi? Life uncertain hai, lekin <b>probability</b> us uncertainty ko NUMBER deta hai: 0 (impossible) se 1 (certain) tak. Ye chapter sochne ka tareeka hai — cards, dice, coins ke through hum real life ke "chance" ko samajhte hain. JEE me probability + permutations ka combo sabse zyada aata hai.</p>
-<ul>
-<li><b>Random experiment:</b> jiska result pehle se pakka na ho — coin toss, dice roll, card nikalna.</li>
-<li><b>Outcome:</b> ek possible result — coin pe H ya T.</li>
-<li><b>Sample space (S) ⭐:</b> SAARE possible outcomes ka set — dice ke liye S = {1, 2, 3, 4, 5, 6}.</li>
-<li><b>Event:</b> sample space ka koi subset — "even number aana" = {2, 4, 6}.</li>
-</ul>
-<p class="small-note">💡 Feel: sample space = pura menu, event = tumhara order — order menu ka hi hissa ho sakta hai!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Events ke Types ⭐</h3>
-    <ul>
-<li><b>Simple event:</b> sirf ek outcome — {5} dice pe.</li>
-<li><b>Compound event:</b> multiple outcomes — {2, 4, 6}.</li>
-<li><b>Sure event:</b> pura sample space — probability 1.</li>
-<li><b>Impossible event (φ):</b> koi outcome nahi — probability 0. (Dice pe 7 aana!)</li>
-<li><b>Complementary event (A′) ⭐:</b> A na hona — "even na aana" = odd aana = {1, 3, 5}.</li>
-<li><b>Mutually exclusive ⭐:</b> dono saath nahi ho sakte — A ∩ B = φ (coin pe H aur T ek saath?).</li>
-<li><b>Exhaustive events:</b> milke pura sample space cover karein — {even}, {odd} dice pe.</li>
-</ul>
-<p class="small-note">🎯 Mutually exclusive vs independent ALAG cheezein hain (independent 12th me) — abhi sirf exclusive yaad rakho: overlap zero!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Classical Probability — Basic Formula ⭐</h3>
-    <ul>
-<li><b>Formula ⭐:</b> P(E) = n(E)/n(S) = favourable outcomes ÷ total outcomes — jab sab outcomes EQUALLY likely hon (fair coin, fair dice, well-shuffled cards).</li>
-<li><b>Coin:</b> P(H) = 1/2. <b>Dice:</b> P(3) = 1/6, P(even) = 3/6 = 1/2.</li>
-<li><b>Cards (52) ⭐:</b> P(king) = 4/52 = 1/13, P(heart) = 13/52 = 1/4, P(red) = 26/52 = 1/2.</li>
-<li><b>Range:</b> 0 ≤ P(E) ≤ 1 — iske bahar kabhi nahi!</li>
-<li><b>Complement rule ⭐:</b> P(A′) = 1 − P(A) — "na hone" ki probability = 1 minus "hone" ki. Bahut kaam aata hai!</li>
-<li><b>Odds:</b> P(E) = 3/4 to odds in favour = 3:1 (favourable : unfavourable).</li>
-</ul>
-<p class="small-note">💡 Cards yaad karo: 52 total, 4 suits (13 each), 26 red + 26 black, 12 face cards (J, Q, K × 4), 4 aces!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Addition Rule — A Ya B Ki Probability ⭐</h3>
-    <ul>
-<li><b>General rule ⭐:</b> P(A ∪ B) = P(A) + P(B) − P(A ∩ B) — overlap double-count ho jaata hai, isliye minus!</li>
-<li><b>Mutually exclusive hon to ⭐:</b> P(A ∪ B) = P(A) + P(B) (overlap zero hai hi).</li>
-<li><b>Three events:</b> P(A∪B∪C) = P(A) + P(B) + P(C) − P(A∩B) − P(B∩C) − P(C∩A) + P(A∩B∩C).</li>
-<li><b>A but not B:</b> P(A − B) = P(A) − P(A ∩ B).</li>
-<li><b>Complement se jodo ⭐:</b> P(A ∪ B) = 1 − P(A′ ∩ B′) — "kam se kam ek" wale questions me super useful!</li>
-</ul>
-<p class="small-note">🎯 "At least one" dekhte hi complement socho: P(kam se kam ek) = 1 − P(koi bhi nahi) — calculation aadhi!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Exam Patterns — Probability ka Paper</h3>
-    <ul>
-<li><b>Sample space likho:</b> 2 coins, 2 dice, coin + dice — tabular form fastest (2 dice = 36 outcomes!).</li>
-<li><b>Direct P(E) = n(E)/n(S) ⭐:</b> count favourable, divide by total — counting chapter yahin kaam aata hai.</li>
-<li><b>Cards/coins/dice classics:</b> "dono dice pe sum 8", "ek card king ya heart" — addition rule.</li>
-<li><b>At least one ⭐:</b> complement method.</li>
-<li><b>Balls from a bag ⭐:</b> "3 red, 4 blue me se 2 balls" — C(n,r) se count karo dono side.</li>
-<li><b>Letters/digits:</b> "word ke letters arrange, vowels saath" — permutations + probability combo.</li>
-</ul>
-<p class="small-note">💡 Probability = counting ÷ counting. P&amp;C chapter strong hai to ye chapter FREE marks hai!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ प्रायिकता — अनिश्चितता का माप</h3>
-    <p>सिक्का उछालो — चित या पट? जीवन अनिश्चित है, पर <b>प्रायिकता (probability)</b> उस अनिश्चितता को संख्या देती है: 0 (असंभव) से 1 (निश्चित) तक। JEE में प्रायिकता + क्रमचय-संचय का संयोजन सर्वाधिक आता है।</p>
-<ul>
-<li><b>यादृच्छिक प्रयोग:</b> जिसका परिणाम पूर्वनिश्चित न हो — सिक्का, पासा, ताश।</li>
-<li><b>परिणाम (outcome):</b> एक संभव परिणाम।</li>
-<li><b>प्रतिदर्श समष्टि (S) ⭐:</b> सभी संभव परिणामों का समुच्चय — पासे के लिए S = {1,2,3,4,5,6}।</li>
-<li><b>घटना (event):</b> प्रतिदर्श समष्टि का उपसमुच्चय — "सम संख्या" = {2,4,6}।</li>
-</ul>
-<p class="small-note">💡 प्रतिदर्श समष्टि = पूरा मेन्यू, घटना = आपका ऑर्डर!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ घटनाओं के प्रकार ⭐</h3>
-    <ul>
-<li><b>सरल घटना:</b> एक परिणाम — {5}।</li>
-<li><b>मिश्र घटना:</b> अनेक परिणाम — {2,4,6}।</li>
-<li><b>निश्चित घटना:</b> पूरी समष्टि — P = 1। <b>असंभव (φ):</b> P = 0 (पासे पर 7!)।</li>
-<li><b>पूरक घटना (A′) ⭐:</b> A न होना — "सम न आना" = विषम = {1,3,5}।</li>
-<li><b>परस्पर अपवर्जी ⭐:</b> साथ नहीं हो सकतीं — A ∩ B = φ।</li>
-<li><b>संपूर्ण घटनाएँ:</b> मिलकर पूरी समष्टि — {सम}, {विषम}।</li>
-</ul>
-<p class="small-note">🎯 अपवर्जी = overlap शून्य — बस यही याद रखो!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ परंपरागत प्रायिकता — मूल सूत्र ⭐</h3>
-    <ul>
-<li><b>सूत्र ⭐:</b> P(E) = n(E)/n(S) = अनुकूल परिणाम ÷ कुल परिणाम — जब सभी परिणाम समसंभाव्य हों।</li>
-<li><b>सिक्का:</b> P(H) = 1/2। <b>पासा:</b> P(सम) = 1/2।</li>
-<li><b>ताश (52) ⭐:</b> P(बादशाह) = 1/13, P(पान) = 1/4, P(लाल) = 1/2।</li>
-<li><b>परिसर:</b> 0 ≤ P(E) ≤ 1।</li>
-<li><b>पूरक नियम ⭐:</b> P(A′) = 1 − P(A)।</li>
-<li><b>संयोग (odds):</b> P(E) = 3/4 → पक्ष में 3:1।</li>
-</ul>
-<p class="small-note">💡 ताश याद रखो: 52, 4 suits × 13, 26 लाल + 26 काले, 12 चेहरा पत्ते, 4 इक्के!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ योग नियम — A या B की प्रायिकता ⭐</h3>
-    <ul>
-<li><b>सामान्य नियम ⭐:</b> P(A ∪ B) = P(A) + P(B) − P(A ∩ B) — overlap दोबारा जुड़ जाता है, इसलिए घटाओ!</li>
-<li><b>अपवर्जी हों तो ⭐:</b> P(A ∪ B) = P(A) + P(B)।</li>
-<li><b>तीन घटनाएँ:</b> P(A∪B∪C) = P(A)+P(B)+P(C) − P(A∩B) − P(B∩C) − P(C∩A) + P(A∩B∩C)।</li>
-<li><b>A पर B नहीं:</b> P(A − B) = P(A) − P(A ∩ B)।</li>
-<li><b>पूरक से ⭐:</b> P(A ∪ B) = 1 − P(A′ ∩ B′) — "कम से कम एक" प्रश्नों में!</li>
-</ul>
-<p class="small-note">🎯 "कम से कम एक" देखते ही पूरक सोचो: 1 − P(कोई नहीं) — गणना आधी!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ परीक्षा के पैटर्न</h3>
-    <ul>
-<li><b>प्रतिदर्श समष्टि:</b> 2 सिक्के, 2 पासे — सारणी सबसे तेज़ (2 पासे = 36)।</li>
-<li><b>सीधा P(E) = n(E)/n(S) ⭐:</b> अनुकूल गिनो, कुल से भाग।</li>
-<li><b>ताश/सिक्का/पासा क्लासिक:</b> "दोनों पासों पर योग 8", "बादशाह या पान"।</li>
-<li><b>कम से कम एक ⭐:</b> पूरक विधि।</li>
-<li><b>थैली से गेंदें ⭐:</b> "3 लाल, 4 नीली में से 2" — C(n,r) से गिनती।</li>
-</ul>
-<p class="small-note">💡 प्रायिकता = गिनती ÷ गिनती। P&amp;C पक्की तो यह अध्याय मुफ्त अंक!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Probability — Measuring Uncertainty</h3>
-    <p>Toss a coin — heads or tails? Roll a die — anything from 1 to 6? Life is uncertain, but <b>probability</b> turns that uncertainty into a NUMBER: from 0 (impossible) to 1 (certain). This chapter is a way of thinking — through cards, dice, and coins we learn to understand "chance" in real life. JEE loves the probability + permutations combo.</p>
-<ul>
-<li><b>Random experiment:</b> one whose result isn't fixed in advance — coin toss, dice roll, drawing a card.</li>
-<li><b>Outcome:</b> a single possible result — H or T on a coin.</li>
-<li><b>Sample space (S) ⭐:</b> the set of ALL possible outcomes — for a die, S = {1, 2, 3, 4, 5, 6}.</li>
-<li><b>Event:</b> any subset of the sample space — "getting an even number" = {2, 4, 6}.</li>
-</ul>
-<p class="small-note">💡 Feel it: the sample space is the full menu; an event is your order — your order can only come from the menu!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Types of Events ⭐</h3>
-    <ul>
-<li><b>Simple event:</b> a single outcome — {5} on a die.</li>
-<li><b>Compound event:</b> multiple outcomes — {2, 4, 6}.</li>
-<li><b>Sure event:</b> the whole sample space — probability 1.</li>
-<li><b>Impossible event (φ):</b> no outcomes — probability 0. (Rolling a 7 on a die!)</li>
-<li><b>Complementary event (A′) ⭐:</b> A not happening — "not even" = odd = {1, 3, 5}.</li>
-<li><b>Mutually exclusive ⭐:</b> can't happen together — A ∩ B = φ (H and T on one coin toss?).</li>
-<li><b>Exhaustive events:</b> together they cover the whole sample space — {even}, {odd} on a die.</li>
-</ul>
-<p class="small-note">🎯 Mutually exclusive ≠ independent (that's Class 12) — for now: exclusive means zero overlap!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Classical Probability — the Basic Formula ⭐</h3>
-    <ul>
-<li><b>Formula ⭐:</b> P(E) = n(E)/n(S) = favourable outcomes ÷ total outcomes — valid when all outcomes are EQUALLY likely (fair coin, fair die, well-shuffled cards).</li>
-<li><b>Coin:</b> P(H) = 1/2. <b>Die:</b> P(3) = 1/6, P(even) = 3/6 = 1/2.</li>
-<li><b>Cards (52) ⭐:</b> P(king) = 4/52 = 1/13, P(heart) = 13/52 = 1/4, P(red) = 26/52 = 1/2.</li>
-<li><b>Range:</b> 0 ≤ P(E) ≤ 1 — never outside this!</li>
-<li><b>Complement rule ⭐:</b> P(A′) = 1 − P(A) — "not happening" = 1 minus "happening". Hugely useful!</li>
-<li><b>Odds:</b> if P(E) = 3/4, odds in favour are 3:1 (favourable : unfavourable).</li>
-</ul>
-<p class="small-note">💡 Memorise the deck: 52 total, 4 suits (13 each), 26 red + 26 black, 12 face cards (J, Q, K × 4), 4 aces!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Addition Rule — Probability of A or B ⭐</h3>
-    <ul>
-<li><b>General rule ⭐:</b> P(A ∪ B) = P(A) + P(B) − P(A ∩ B) — the overlap gets double-counted, so subtract it!</li>
-<li><b>If mutually exclusive ⭐:</b> P(A ∪ B) = P(A) + P(B) (overlap is zero anyway).</li>
-<li><b>Three events:</b> P(A∪B∪C) = P(A) + P(B) + P(C) − P(A∩B) − P(B∩C) − P(C∩A) + P(A∩B∩C).</li>
-<li><b>A but not B:</b> P(A − B) = P(A) − P(A ∩ B).</li>
-<li><b>Complement trick ⭐:</b> P(A ∪ B) = 1 − P(A′ ∩ B′) — super useful for "at least one" questions!</li>
-</ul>
-<p class="small-note">🎯 The moment you see "at least one", think complement: P(at least one) = 1 − P(none) — half the calculation!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Exam Patterns — Probability in Papers</h3>
-    <ul>
-<li><b>Write the sample space:</b> 2 coins, 2 dice, coin + die — tabular form is fastest (2 dice = 36 outcomes!).</li>
-<li><b>Direct P(E) = n(E)/n(S) ⭐:</b> count favourable, divide by total — the counting chapter pays off here.</li>
-<li><b>Cards/coins/dice classics:</b> "sum of 8 on two dice", "a king or a heart" — addition rule.</li>
-<li><b>At least one ⭐:</b> complement method.</li>
-<li><b>Balls from a bag ⭐:</b> "2 balls from 3 red, 4 blue" — count both sides with C(n,r).</li>
-<li><b>Letters/digits:</b> "letters of a word arranged with vowels together" — permutations + probability combo.</li>
-</ul>
-<p class="small-note">💡 Probability = counting ÷ counting. If P&amp;C is strong, this chapter is FREE marks!</p>
-  </div>
-  </div>
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Outcome aur sample space se shuru karo</h3><p>Random experiment ka exact result pehle certainty se nahi pata hota. Outcome ek result hai. Sample space S model ke saare possible results ka set hai. Event E, S ka koi subset hai; observed outcome E mein ho to event hota hai.</p><p>Do ordered coin tosses mein S={HH,HT,TH,TT}. H=head, T=tail; first letter toss 1 ka result hai. HT aur TH alag outcomes hain. Exactly one head ka event {HT,TH} hai.</p><p>Fair ka matlab H aur T ki chance 1/2-1/2 hai. Independent tosses mein ek toss ka result jaanne se doosre ki chances nahi badalti.</p><p>Neeche hamara khud ka two-toss model hai. Fair coin ke independent tosses par chaaron ordered outcomes ki probability 1/4 hai. Sirf list bana dene se outcomes equally likely prove nahi hote.</p><table><caption>Hamara two independent fair-toss model</caption><thead><tr><th scope="col">Outcome</th><th scope="col">Heads count</th><th scope="col">P</th></tr></thead><tbody><tr><td>HH</td><td>2</td><td>1/4</td></tr><tr><td>HT</td><td>1</td><td>1/4</td></tr><tr><td>TH</td><td>1</td><td>1/4</td></tr><tr><td>TT</td><td>0</td><td>1/4</td></tr></tbody></table></div><div class="note-sec"><h3>2. Event ke words ko sets mein badlo</h3><p>A∪B ka matlab A ya B ya dono, exactly one nahi. A∩B matlab dono. A−B=A∩B′ matlab A lekin B nahi. A′=S−A complement hai, yani A nahi. Empty event ∅ impossible hai; S sure event hai.</p><p>Mutually exclusive: A∩B=∅, yani saath nahi ho sakte. Exhaustive: union S ho, yani milkar saare outcomes cover hon. Exhaustive events overlap kar sakte hain; exclusive events ka S cover karna zaroori nahi.</p><p>Ek die par A={1,2,3,4}, B={4,5,6} exhaustive hain, exclusive nahi kyunki 4 common hai. A={1}, B={2} exclusive hain par exhaustive nahi. Single-outcome event simple; multiple-outcome event compound hai.</p></div><div class="note-sec"><h3>3. Probability weight hai, hamesha count nahi</h3><p>Finite model mein har outcome ko nonnegative probability do; sab probabilities ka total 1 ho. Event probability uske outcomes ke weights ka sum hai. Isliye 0≤P(E)≤1, P(S)=1, P(∅)=0. Disjoint events ki probabilities add hoti hain.</p><p>Sirf finite sample space ke equally likely outcomes par P(E)=n(E)/n(S) lagao. n(E) event ke outcomes ka count hai. Fairness, independence ya uniform selection se equal likelihood justify karo; chhoti list dekhkar assume mat karo.</p><p>S={a,b,c} ke weights 1/2,1/3,1/6 hon. E={b,c} par P(E)=1/3+1/6=1/2, 2/3 nahi. Valid model mein nonnegative probabilities aur total 1 dono chahiye.</p></div><div class="note-sec"><h3>4. Addition aur complement se double counting bacho</h3><p>Kisi bhi A,B par P(A∪B)=P(A)+P(B)−P(A∩B). Overlap do baar count hua tha. Mutually exclusive hon to overlap empty hai aur formula P(A)+P(B) ho jaata hai.</p><p>P(A′)=1−P(A). Isliye P(at least one success)=1−P(no successes). Exactly one alag hai: P(exactly one of A,B)=P(A)+P(B)−2 P(A∩B). P(A but not B)=P(A)−P(A∩B).</p><p>Fair die par prime={2,3,5}, even={2,4,6}. Union mein five values hain: P(prime or even)=3/6+3/6−1/6=5/6. Neither ka event {1}, probability 1/6 hai.</p></div><div class="note-sec"><h3>5. Counting ka model same rakho</h3><p>Do independent fair dice mein ordered pairs(first die,second die) lo:36 equally likely outcomes. Sums 2 se 12 ki eleven values equally likely nahi. Sum 8 ke five pairs (2,6),(3,5),(4,4),(5,3),(6,2) hain, to probability 5/36 hai.</p><p>Bina replacement do distinct objects uniformly choose karo to numerator aur denominator dono mein unordered pairs lo, ya dono mein ordered selections. 3 red,2 blue labelled balls par C(5,2)=10 pairs; all-red C(3,2)=3. At least one blue ki probability 1−3/10=7/10. C(n,r) n objects se r ko bina order select karne ka count hai.</p><p>Yeh notes aur ten original questions selected foundations hain, full textbook/Exemplar exercises, PYQs ya full JEE preparation nahi. Detailed Venn diagrams, three-event inclusion-exclusion, long digit/card/arrangement questions, conditional probability, Bayes theorem aur random variables abhi cover nahi hain.</p></div></div>
+<div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. परिणाम और प्रतिदर्श समष्टि से शुरुआत</h3><p>यादृच्छिक प्रयोग का ठीक परिणाम पहले निश्चित नहीं होता। परिणाम एक निष्कर्ष है। प्रतिदर्श समष्टि S मॉडल के सभी संभव परिणामों का समुच्चय है। घटना E, S का कोई उपसमुच्चय है। देखा गया परिणाम E में हो तो घटना घटती है।</p><p>दो क्रमित सिक्का उछालों में S={HH,HT,TH,TT}। H=चित, T=पट; पहला अक्षर पहले उछाल का परिणाम है। HT और TH अलग परिणाम हैं। ठीक एक चित की घटना {HT,TH} है।</p><p>निष्पक्ष का अर्थ चित और पट की प्रायिकता1/2-1/2 है। स्वतंत्र उछालों में एक का परिणाम जानने से दूसरे की संभावनाएं नहीं बदलतीं।</p><p>नीचे हमारा अपना दो-उछाल मॉडल है। निष्पक्ष सिक्के के स्वतंत्र उछालों पर चारों क्रमित परिणामों की प्रायिकता1/4 है। केवल सूची बनाने से परिणाम समसंभाव्य सिद्ध नहीं होते।</p><table><caption>हमारा दो स्वतंत्र निष्पक्ष उछालों का मॉडल</caption><thead><tr><th scope="col">परिणाम</th><th scope="col">चित की संख्या</th><th scope="col">P</th></tr></thead><tbody><tr><td>HH</td><td>2</td><td>1/4</td></tr><tr><td>HT</td><td>1</td><td>1/4</td></tr><tr><td>TH</td><td>1</td><td>1/4</td></tr><tr><td>TT</td><td>0</td><td>1/4</td></tr></tbody></table></div><div class="note-sec"><h3>2. घटना के शब्दों को समुच्चयों में बदलें</h3><p>A∪B का अर्थ A या B या दोनों है, ठीक एक नहीं। A∩B का अर्थ दोनों है। A−B=A∩B′ का अर्थ A पर B नहीं। A′=S−A पूरक है, यानी A नहीं। रिक्त घटना ∅ असंभव है; S निश्चित घटना है।</p><p>परस्पर अपवर्जी: A∩B=∅, यानी साथ नहीं हो सकतीं। संपूर्ण: उनका संघ S हो, यानी मिलकर सभी परिणाम ढकें। संपूर्ण घटनाओं में साझा परिणाम हो सकते हैं; अपवर्जी घटनाओं का S को ढकना जरूरी नहीं।</p><p>एक पासे पर A={1,2,3,4}, B={4,5,6} संपूर्ण हैं पर अपवर्जी नहीं, क्योंकि4 साझा है। A={1}, B={2} अपवर्जी हैं पर संपूर्ण नहीं। एक परिणाम वाली घटना सरल; कई परिणाम वाली घटना मिश्र है।</p></div><div class="note-sec"><h3>3. प्रायिकता भार है, हमेशा गिनती नहीं</h3><p>परिमित मॉडल में हर परिणाम को अऋण प्रायिकता दें और सभी प्रायिकताओं का योग1 हो। घटना की प्रायिकता उसके परिणामों के भारों का योग है। इसलिए 0≤P(E)≤1, P(S)=1, P(∅)=0। असंयुक्त घटनाओं की प्रायिकताएं जुड़ती हैं।</p><p>केवल परिमित प्रतिदर्श समष्टि के समसंभाव्य परिणामों पर P(E)=n(E)/n(S) लगाएं। n(E) घटना के परिणामों की संख्या है। निष्पक्षता, स्वतंत्रता या समान रूप से चयन से समसंभाव्यता का आधार दें; छोटी सूची देखकर न मान लें।</p><p>S={a,b,c} के भार1/2,1/3,1/6 हों। E={b,c} पर P(E)=1/3+1/6=1/2, 2/3 नहीं। वैध मॉडल में अऋण प्रायिकताएं और कुल योग1 दोनों चाहिए।</p></div><div class="note-sec"><h3>4. योग और पूरक से दोहरी गिनती रोकें</h3><p>किसी भी A,B के लिए P(A∪B)=P(A)+P(B)−P(A∩B)। साझा भाग दो बार गिना गया था। अपवर्जी होने पर साझा भाग रिक्त है और सूत्र P(A)+P(B) बनता है।</p><p>P(A′)=1−P(A)। इसलिए P(कम से कम एक सफलता)=1−P(कोई सफलता नहीं)। ठीक एक अलग है: P(A,B में ठीक एक)=P(A)+P(B)−2 P(A∩B)। P(A पर B नहीं)=P(A)−P(A∩B)।</p><p>निष्पक्ष पासे पर अभाज्य={2,3,5}, सम={2,4,6}। संघ में पांच मान हैं: P(अभाज्य या सम)=3/6+3/6−1/6=5/6। दोनों में से कोई नहीं की घटना {1}, प्रायिकता1/6 है।</p></div><div class="note-sec"><h3>5. गिनती का मॉडल समान रखें</h3><p>दो स्वतंत्र निष्पक्ष पासों में क्रमित युग्म(पहला पासा,दूसरा पासा) लें:36 समसंभाव्य परिणाम हैं। योग2 से12 के ग्यारह मान समसंभाव्य नहीं हैं। योग8 के पांच युग्म (2,6),(3,5),(4,4),(5,3),(6,2) हैं, इसलिए प्रायिकता5/36 है।</p><p>बिना प्रतिस्थापन दो अलग वस्तुएं समान रूप से चुनें तो अंश और हर दोनों में अक्रमित युग्म लें या दोनों में क्रमित चयन। 3लाल,2नीली चिन्हित गेंदों के C(5,2)=10 युग्म; सभी लाल के C(3,2)=3 हैं। कम से कम एक नीली की प्रायिकता1−3/10=7/10। C(n,r), n वस्तुओं से r को बिना क्रम चुनने की संख्या है।</p><p>ये नोट्स और दस मौलिक प्रश्न चुनी हुई बुनियाद हैं, पूरी पाठ्यपुस्तक/Exemplar प्रश्नावलियां, पिछले वर्षों के प्रश्न या पूरी JEE तैयारी नहीं। विस्तृत वेन आरेख, तीन घटनाओं का समावेशन-बहिष्करण, लंबे अंक/ताश/व्यवस्था प्रश्न, सप्रतिबंध प्रायिकता, बेयस प्रमेय और यादृच्छिक चर अभी शामिल नहीं हैं।</p></div></div>
+<div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. Start with an outcome and a sample space</h3><p>A random experiment has an outcome that is not known with certainty beforehand. An outcome is one result; the sample space S contains all possible results in the model. An event E is any subset of S and occurs when the observed outcome belongs to E.</p><p>For two ordered coin tosses, S={HH,HT,TH,TT}. H means head and T means tail; the first letter records toss 1. HT and TH are different outcomes. Exactly one head is the event {HT,TH}.</p><p>Fair means H and T each have chance 1/2. Independent tosses mean knowing one toss does not change the chances on the other.</p><p>The table below is our own two-toss model. For independent tosses of a fair coin, each of the four ordered outcomes has probability 1/4. Merely listing outcomes does not prove that they are equally likely.</p><table><caption>Our two independent fair-toss model</caption><thead><tr><th scope="col">Outcome</th><th scope="col">Heads</th><th scope="col">P</th></tr></thead><tbody><tr><td>HH</td><td>2</td><td>1/4</td></tr><tr><td>HT</td><td>1</td><td>1/4</td></tr><tr><td>TH</td><td>1</td><td>1/4</td></tr><tr><td>TT</td><td>0</td><td>1/4</td></tr></tbody></table></div><div class="note-sec"><h3>2. Translate event words into sets</h3><p>A∪B means A or B or both, not exactly one. A∩B means both. A−B=A∩B′ means A but not B. A′=S−A is the complement, meaning not A. The empty event ∅ is impossible; S is the sure event.</p><p>Mutually exclusive means A∩B=∅: the events cannot happen together. Exhaustive means their union is S: together they cover every outcome. Exhaustive events may overlap; exclusive events need not cover S.</p><p>For one die roll, A={1,2,3,4} and B={4,5,6} are exhaustive but not exclusive because 4 is shared. A={1} and B={2} are exclusive but not exhaustive. A single-outcome event is simple; one with several outcomes is compound.</p></div><div class="note-sec"><h3>3. Probability is a weight, not always a count</h3><p>In a finite model assign each outcome a nonnegative probability, with all outcome probabilities summing to 1. An event probability is the sum of the weights of its outcomes. Thus 0≤P(E)≤1, P(S)=1 and P(∅)=0. For disjoint events, probabilities add.</p><p>Only when the finite sample space has equally likely outcomes may we use P(E)=n(E)/n(S). The notation n(E) means the number of outcomes in E. Fairness, independence or uniform selection must justify equal likelihood; do not assume it from a short list.</p><p>Example: S={a,b,c} has weights 1/2,1/3,1/6. For E={b,c}, P(E)=1/3+1/6=1/2, not 2/3. A probability model must satisfy both nonnegativity and total 1.</p></div><div class="note-sec"><h3>4. Addition and complement prevent double counting</h3><p>For any two events, P(A∪B)=P(A)+P(B)−P(A∩B). The overlap was included twice. If they are mutually exclusive, the overlap is empty and the formula reduces to P(A)+P(B).</p><p>P(A′)=1−P(A). Hence P(at least one success)=1−P(no successes). Exactly one is different: P(exactly one of A,B)=P(A)+P(B)−2 P(A∩B). Also P(A but not B)=P(A)−P(A∩B).</p><p>For a fair die, prime={2,3,5}, even={2,4,6}. Their union has five values, so P(prime or even)=3/6+3/6−1/6=5/6. The event neither is {1}, with probability 1/6.</p></div><div class="note-sec"><h3>5. Keep the counting model consistent</h3><p>For two independent fair dice, record ordered pairs (first die,second die): there are 36 equally likely outcomes. The eleven possible sums 2 to 12 are not equally likely. Sum 8 has five pairs: (2,6),(3,5),(4,4),(5,3),(6,2), so its probability is 5/36.</p><p>For uniform sampling of two distinct objects without replacement, count unordered pairs in both numerator and denominator, or ordered selections in both. Example: 3 red and 2 blue labelled balls give C(5,2)=10 equally likely pairs; all-red pairs=C(3,2)=3. At least one blue has probability 1−3/10=7/10. C(n,r) counts selections of r objects from n without order.</p><p>These notes and ten original questions cover selected foundations, not full textbook/Exemplar exercises, PYQs or full JEE preparation. Detailed Venn diagrams, three-event inclusion-exclusion, long digit/card/arrangement questions, conditional probability, Bayes theorem and random variables remain outside this pass.</p></div></div>
 </section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Selected formulas and their conditions" data-hi="चुने हुए सूत्र और उनकी शर्तें" data-hinglish="Selected formulas aur unki conditions">Selected formulas and their conditions</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>P(E) = n(E)/n(S)</li><li>0 ≤ P ≤ 1</li><li>S = saare outcomes, E = subset</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Events ⭐</h4>
-      <ul><li>Impossible: φ, P=0; Sure: S, P=1</li><li>Mutually exclusive: A∩B = φ</li><li>Complement: P(A′) = 1 − P(A)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Addition ⭐</h4>
-      <ul><li>P(A∪B) = P(A)+P(B)−P(A∩B)</li><li>Exclusive: P(A∪B) = P(A)+P(B)</li><li>A−B: P(A) − P(A∩B)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Cards (52) ⭐</h4>
-      <ul><li>4 suits × 13</li><li>12 face cards, 4 aces</li><li>26 red + 26 black</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Tricks</h4>
-      <ul><li>'At least one' → 1 − P(none)</li><li>2 dice → 36 outcomes table</li><li>P&C se counting</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>आधार ⭐</h4>
-      <ul><li>P(E) = n(E)/n(S)</li><li>0 ≤ P ≤ 1</li><li>S = सभी परिणाम, E = उपसमुच्चय</li></ul>
-    </div>
-    <div class="shorts-card"><h4>घटनाएँ ⭐</h4>
-      <ul><li>असंभव: P=0; निश्चित: P=1</li><li>अपवर्जी: A∩B = φ</li><li>पूरक: P(A′) = 1 − P(A)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>योग ⭐</h4>
-      <ul><li>P(A∪B) = P(A)+P(B)−P(A∩B)</li><li>अपवर्जी: P(A∪B) = P(A)+P(B)</li><li>A−B: P(A) − P(A∩B)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>ताश (52) ⭐</h4>
-      <ul><li>4 suits × 13</li><li>12 चेहरा, 4 इक्के</li><li>26 लाल + 26 काले</li></ul>
-    </div>
-    <div class="shorts-card"><h4>तरकीबें</h4>
-      <ul><li>'कम से कम एक' → 1 − P(कोई नहीं)</li><li>2 पासे → 36 परिणाम</li><li>P&C से गिनती</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>P(E) = n(E)/n(S)</li><li>0 ≤ P ≤ 1</li><li>S = all outcomes, E = subset</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Events ⭐</h4>
-      <ul><li>Impossible: φ, P=0; Sure: S, P=1</li><li>Mutually exclusive: A∩B = φ</li><li>Complement: P(A′) = 1 − P(A)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Addition ⭐</h4>
-      <ul><li>P(A∪B) = P(A)+P(B)−P(A∩B)</li><li>Exclusive: P(A∪B) = P(A)+P(B)</li><li>A−B: P(A) − P(A∩B)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Cards (52) ⭐</h4>
-      <ul><li>4 suits × 13</li><li>12 face cards, 4 aces</li><li>26 red + 26 black</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Tricks</h4>
-      <ul><li>'At least one' → 1 − P(none)</li><li>2 dice → 36-outcome table</li><li>Count via P&C</li></ul>
-    </div>
-    </div>
-  </div>
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="small-note">Event E, sample space S ka subset hai; outcome E mein ho to event hota hai.</p><p class="small-note">A∪B: A ya B ya dono. A∩B: dono. A−B: A lekin B nahi.</p><p class="small-note">Exclusive: A∩B=∅. Exhaustive: union=S. Dono alag tests hain.</p><p class="small-note">Finite model: outcome weights≥0, total 1; P(E) uske weights ka sum hai.</p><p class="small-note">Sirf finite equally likely outcomes par P(E)=n(E)/n(S).</p><p class="small-note">P(A∪B)=P(A)+P(B)−P(A∩B).</p><p class="small-note">P(A′)=1−P(A); P(at least one)=1−P(none).</p><p class="small-note">A,B mein exactly one: P(A)+P(B)−2 P(A∩B). Ordered/unordered counting same rakho.</p></div>
+<div class="lang-block" data-lang="hi" hidden=""><p class="small-note">घटना E, प्रतिदर्श समष्टि S का उपसमुच्चय है। परिणाम E में हो तो घटना घटती है।</p><p class="small-note">A∪B: A या B या दोनों। A∩B: दोनों। A−B: A पर B नहीं।</p><p class="small-note">अपवर्जी: A∩B=∅। संपूर्ण: संघ=S। दोनों अलग जांच हैं।</p><p class="small-note">परिमित मॉडल: परिणाम भार≥0, कुल योग1; P(E) उसके भारों का योग है।</p><p class="small-note">केवल परिमित समसंभाव्य परिणामों पर P(E)=n(E)/n(S)।</p><p class="small-note">P(A∪B)=P(A)+P(B)−P(A∩B)।</p><p class="small-note">P(A′)=1−P(A); P(कम से कम एक)=1−P(कोई नहीं)।</p><p class="small-note">A,B में ठीक एक: P(A)+P(B)−2 P(A∩B)। क्रमित/अक्रमित गिनती समान रखें।</p></div>
+<div class="lang-block" data-lang="en" hidden=""><p class="small-note">An event E is a subset of sample space S; it occurs when the outcome lies in E.</p><p class="small-note">A∪B: A or B or both. A∩B: both. A−B: A but not B.</p><p class="small-note">Exclusive: A∩B=∅. Exhaustive: union=S. These are different tests.</p><p class="small-note">Finite model: outcome weights≥0 and total 1; P(E) is their sum over E.</p><p class="small-note">Only for finite equally likely outcomes: P(E)=n(E)/n(S).</p><p class="small-note">P(A∪B)=P(A)+P(B)−P(A∩B).</p><p class="small-note">P(A′)=1−P(A); P(at least one)=1−P(none).</p><p class="small-note">Exactly one of A,B: P(A)+P(B)−2 P(A∩B). Keep ordered/unordered counting consistent.</p></div>
 </section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-  </div>
-</section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q 1</span> A fair coin is tossed twice independently. List S and find P(exactly one head).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use ordered outcomes; HT and TH are different.</p><p>Steps: S={HH,HT,TH,TT}; all four have probability 1/4. Event={HT,TH}.</p><p>Answer/check: P=2/4=1/2. Do not treat the three head counts 0,1,2 as equally likely.</p></details></div><div class="jee-q"><span class="qn">Q 2</span> A fair coin is tossed three times independently. Find P(at least one head).<details class="jee-sol"><summary>Show answer</summary><p>Rule: The complement is no heads, not exactly one head.</p><p>Steps: There are 8 equally likely sequences; only TTT has no heads.</p><p>Answer/check: P=1−1/8=7/8. Exactly one head would have probability 3/8.</p></details></div><div class="jee-q"><span class="qn">Q 3</span> A fair die is rolled once. Find P(prime or even).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Subtract the overlap when adding event probabilities.</p><p>Steps: A={2,3,5}, B={2,4,6}; A∩B={2}; union={2,3,4,5,6}.</p><p>Answer/check: P=3/6+3/6−1/6=5/6. The only excluded outcome is 1.</p></details></div><div class="jee-q"><span class="qn">Q 4</span> On S={1,2,3,4,5,6}, let A={1,2}, B={3,4}. Are they exclusive and exhaustive?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Exclusive checks intersection; exhaustive checks union.</p><p>Steps: A∩B=∅; A∪B={1,2,3,4}≠S.</p><p>Answer/check: Exclusive yes, exhaustive no. Outcomes 5 and 6 are not covered.</p></details></div><div class="jee-q"><span class="qn">Q 5</span> S={a,b,c} has probabilities 1/2,1/3,1/6. Find P({b,c}).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Add outcome weights; do not count equally when weights differ.</p><p>Steps: 1/3+1/6=2/6+1/6.</p><p>Answer/check: P=1/2, not 2/3. Check: all three weights sum to 1.</p></details></div><div class="jee-q"><span class="qn">Q 6</span> Two independent fair dice are rolled. Find P(sum 8).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use 36 equally likely ordered pairs, not eleven equally likely sums.</p><p>Steps: Sum 8 pairs: (2,6),(3,5),(4,4),(5,3),(6,2).</p><p>Answer/check: P=5/36. Reversing unequal entries gives a different ordered outcome.</p></details></div><div class="jee-q"><span class="qn">Q 7</span> One card is drawn uniformly from a standard 52-card deck with no jokers. Find P(king or heart).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use union and subtract the king of hearts once.</p><p>Steps: There are 4 kings,13 hearts and 1 shared card: 4+13−1=16.</p><p>Answer/check: P=16/52=4/13. It is not 17/52, because the shared card was counted twice.</p></details></div><div class="jee-q"><span class="qn">Q 8</span> A bag has 3 red and 2 blue distinct balls. A two-ball subset is chosen uniformly without replacement. Find P(at least one blue).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Complement: both balls red. Count unordered pairs throughout.</p><p>Steps: Total C(5,2)=10; all-red C(3,2)=3.</p><p>Answer/check: P=1−3/10=7/10. Direct check: one blue gives 2·3=6 pairs; two blue gives 1, total 7.</p></details></div><div class="jee-q"><span class="qn">Q 9</span> Given P(A)=0.6, P(B)=0.5, P(A∩B)=0.2, find P(neither) and P(exactly one).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Neither is the complement of the union; exactly one removes both twice.</p><p>Steps: Union=0.6+0.5−0.2=0.9. Exactly one=0.6+0.5−2·0.2.</p><p>Answer/check: Neither=0.1; exactly one=0.7. Check: A only 0.4, B only 0.3, both 0.2, neither 0.1 sum to 1.</p></details></div><div class="jee-q"><span class="qn">Q 10</span> Four outcomes have assigned probabilities 0.2,0.3,0.1,0.5. Is the assignment valid?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Every weight must be nonnegative and the total must equal 1.</p><p>Steps: All four numbers are nonnegative, but their sum is 1.1.</p><p>Answer/check: Invalid. Being between 0 and 1 individually is necessary but not sufficient.</p></details></div><div class="tip-box">These notes and ten original questions cover selected foundations, not full textbook/Exemplar exercises, PYQs or full JEE preparation. Detailed Venn diagrams, three-event inclusion-exclusion, long digit/card/arrangement questions, conditional probability, Bayes theorem and random variables remain outside this pass.</div></div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q 1</span> Fair coin ke do independent tosses par S aur P(exactly one head) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Ordered outcomes lo; HT aur TH alag hain.</p><p>Steps: S={HH,HT,TH,TT}; har outcome probability 1/4. Event={HT,TH}.</p><p>Answer/check: P=2/4=1/2. Head counts 0,1,2 ko equally likely mat lo.</p></details></div><div class="jee-q"><span class="qn">Q 2</span> Fair coin ke three independent tosses mein P(at least one head) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Complement no heads hai, exactly one head nahi.</p><p>Steps: 8 equally likely sequences hain; sirf TTT mein head nahi.</p><p>Answer/check: P=1−1/8=7/8. Exactly one head ki probability 3/8 hoti.</p></details></div><div class="jee-q"><span class="qn">Q 3</span> Fair die ko ek baar roll kiya. P(prime or even) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Probabilities add karte waqt overlap minus karo.</p><p>Steps: A={2,3,5}, B={2,4,6}; A∩B={2}; union={2,3,4,5,6}.</p><p>Answer/check: P=3/6+3/6−1/6=5/6. Sirf outcome 1 bahar hai.</p></details></div><div class="jee-q"><span class="qn">Q 4</span> S={1,2,3,4,5,6} par A={1,2}, B={3,4}. Exclusive aur exhaustive hain?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Exclusive ke liye intersection, exhaustive ke liye union dekho.</p><p>Steps: A∩B=∅; A∪B={1,2,3,4}≠S.</p><p>Answer/check: Exclusive haan, exhaustive nahi. Outcomes 5,6 cover nahi hue.</p></details></div><div class="jee-q"><span class="qn">Q 5</span> S={a,b,c} ki probabilities 1/2,1/3,1/6 hain. P({b,c}) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Outcome weights add karo; unequal weights par simple counting mat karo.</p><p>Steps: 1/3+1/6=2/6+1/6.</p><p>Answer/check: P=1/2, 2/3 nahi. Check: saare weights ka total 1 hai.</p></details></div><div class="jee-q"><span class="qn">Q 6</span> Do independent fair dice roll hue. P(sum 8) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: 36 equally likely ordered pairs lo, eleven equally likely sums nahi.</p><p>Steps: Pairs: (2,6),(3,5),(4,4),(5,3),(6,2).</p><p>Answer/check: P=5/36. Unequal entries reverse karne par alag ordered outcome milta hai.</p></details></div><div class="jee-q"><span class="qn">Q 7</span> Standard 52-card deck se, no jokers, ek card uniformly nikala. P(king or heart) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Union lo, king of hearts ko ek baar minus karo.</p><p>Steps: 4 kings,13 hearts,1 shared card: 4+13−1=16.</p><p>Answer/check: P=16/52=4/13. 17/52 nahi, shared card do baar count hua tha.</p></details></div><div class="jee-q"><span class="qn">Q 8</span> Bag mein 3 red,2 blue distinct balls hain. Bina replacement two-ball subset uniformly choose hua. P(at least one blue)?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Complement both red hai. Har jagah unordered pairs gino.</p><p>Steps: Total C(5,2)=10; all-red C(3,2)=3.</p><p>Answer/check: P=1−3/10=7/10. Direct check: one blue ke 2·3=6 pairs; two blue ka 1, total 7.</p></details></div><div class="jee-q"><span class="qn">Q 9</span> P(A)=0.6, P(B)=0.5, P(A∩B)=0.2. P(neither) aur P(exactly one) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Neither union ka complement hai; exactly one mein both ko twice hatao.</p><p>Steps: Union=0.6+0.5−0.2=0.9. Exactly one=0.6+0.5−2·0.2.</p><p>Answer/check: Neither=0.1; exactly one=0.7. Check: A only 0.4, B only 0.3, both 0.2, neither 0.1 ka total 1.</p></details></div><div class="jee-q"><span class="qn">Q 10</span> Four outcomes ko probabilities 0.2,0.3,0.1,0.5 di hain. Assignment valid hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Har weight nonnegative aur total 1 hona chahiye.</p><p>Steps: Chaaron nonnegative hain par sum 1.1 hai.</p><p>Answer/check: Invalid. Har value 0 se 1 ke beech hona zaroori hai par akela kaafi nahi.</p></details></div><div class="tip-box">Yeh notes aur ten original questions selected foundations hain, full textbook/Exemplar exercises, PYQs ya full JEE preparation nahi. Detailed Venn diagrams, three-event inclusion-exclusion, long digit/card/arrangement questions, conditional probability, Bayes theorem aur random variables abhi cover nahi hain.</div></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q 1</span> निष्पक्ष सिक्के के दो स्वतंत्र उछालों पर S और P(ठीक एक चित) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: क्रमित परिणाम लें; HT और TH अलग हैं।</p><p>चरण: S={HH,HT,TH,TT}; हर परिणाम की प्रायिकता1/4। घटना={HT,TH}।</p><p>उत्तर/जांच: P=2/4=1/2। चित की संख्याओं0,1,2 को समसंभाव्य न मानें।</p></details></div><div class="jee-q"><span class="qn">Q 2</span> निष्पक्ष सिक्के के तीन स्वतंत्र उछालों में P(कम से कम एक चित) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: पूरक कोई चित नहीं है, ठीक एक चित नहीं।</p><p>चरण: 8 समसंभाव्य क्रम हैं। केवल TTT में कोई चित नहीं।</p><p>उत्तर/जांच: P=1−1/8=7/8। ठीक एक चित की प्रायिकता3/8 होती।</p></details></div><div class="jee-q"><span class="qn">Q 3</span> निष्पक्ष पासा एक बार फेंका। P(अभाज्य या सम) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: प्रायिकताएं जोड़ते समय साझा भाग घटाएं।</p><p>चरण: A={2,3,5}, B={2,4,6}; A∩B={2}; संघ={2,3,4,5,6}।</p><p>उत्तर/जांच: P=3/6+3/6−1/6=5/6। केवल परिणाम1 बाहर है।</p></details></div><div class="jee-q"><span class="qn">Q 4</span> S={1,2,3,4,5,6} पर A={1,2}, B={3,4} हैं। क्या अपवर्जी और संपूर्ण हैं?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अपवर्जी के लिए प्रतिच्छेद, संपूर्ण के लिए संघ देखें।</p><p>चरण: A∩B=∅; A∪B={1,2,3,4}≠S।</p><p>उत्तर/जांच: अपवर्जी हां, संपूर्ण नहीं। परिणाम5,6 शामिल नहीं हुए।</p></details></div><div class="jee-q"><span class="qn">Q 5</span> S={a,b,c} की प्रायिकताएं1/2,1/3,1/6 हैं। P({b,c}) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: परिणामों के भार जोड़ें; असमान भारों पर केवल गिनती न करें।</p><p>चरण: 1/3+1/6=2/6+1/6।</p><p>उत्तर/जांच: P=1/2, 2/3 नहीं। जांच: सभी भारों का योग1 है।</p></details></div><div class="jee-q"><span class="qn">Q 6</span> दो स्वतंत्र निष्पक्ष पासे फेंके। P(योग8) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: 36 समसंभाव्य क्रमित युग्म लें, ग्यारह समसंभाव्य योग नहीं।</p><p>चरण: युग्म: (2,6),(3,5),(4,4),(5,3),(6,2)।</p><p>उत्तर/जांच: P=5/36। असमान प्रविष्टियों को उलटने से अलग क्रमित परिणाम मिलता है।</p></details></div><div class="jee-q"><span class="qn">Q 7</span> बिना जोकर की मानक52-पत्तों की गड्डी से एक पत्ता समान रूप से चुनें। P(बादशाह या पान) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: संघ लें और पान के बादशाह को एक बार घटाएं।</p><p>चरण: 4 बादशाह,13 पान,1 साझा पत्ता: 4+13−1=16।</p><p>उत्तर/जांच: P=16/52=4/13। 17/52 नहीं, साझा पत्ता दो बार गिना था।</p></details></div><div class="jee-q"><span class="qn">Q 8</span> थैली में3लाल,2नीली अलग गेंदें हैं। बिना प्रतिस्थापन दो गेंदों का उपसमुच्चय समान रूप से चुनें। P(कम से कम एक नीली)?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: पूरक दोनों लाल है। हर जगह अक्रमित युग्म गिनें।</p><p>चरण: कुल C(5,2)=10; सभी लाल C(3,2)=3।</p><p>उत्तर/जांच: P=1−3/10=7/10। सीधी जांच: एक नीली के2·3=6 युग्म; दोनों नीली का1, कुल7।</p></details></div><div class="jee-q"><span class="qn">Q 9</span> P(A)=0.6, P(B)=0.5, P(A∩B)=0.2 हैं। P(कोई नहीं) और P(ठीक एक) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: कोई नहीं संघ का पूरक है। ठीक एक में साझा भाग दो बार हटाएं।</p><p>चरण: संघ=0.6+0.5−0.2=0.9। ठीक एक=0.6+0.5−2·0.2।</p><p>उत्तर/जांच: कोई नहीं=0.1; ठीक एक=0.7। जांच: केवल A 0.4, केवल B 0.3, दोनों0.2, कोई नहीं0.1 का योग1।</p></details></div><div class="jee-q"><span class="qn">Q 10</span> चार परिणामों की प्रायिकताएं0.2,0.3,0.1,0.5 दी हैं। क्या आवंटन वैध है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: हर भार अऋण और कुल योग1 होना चाहिए।</p><p>चरण: चारों अऋण हैं पर योग1.1 है।</p><p>उत्तर/जांच: अवैध। हर मान0 से1 के बीच होना जरूरी है, पर अकेले पर्याप्त नहीं।</p></details></div><div class="tip-box">ये नोट्स और दस मौलिक प्रश्न चुनी हुई बुनियाद हैं, पूरी पाठ्यपुस्तक/Exemplar प्रश्नावलियां, पिछले वर्षों के प्रश्न या पूरी JEE तैयारी नहीं। विस्तृत वेन आरेख, तीन घटनाओं का समावेशन-बहिष्करण, लंबे अंक/ताश/व्यवस्था प्रश्न, सप्रतिबंध प्रायिकता, बेयस प्रमेय और यादृच्छिक चर अभी शामिल नहीं हैं।</div></div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/kemh114.pdf">Textbook Ch 14</a> <a href="https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep216.pdf">Exemplar Ch 16</a> </p></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Class 11 Mathematics complete.</b> Revision ke liye short notes aur practice dohrao.</div>
+<div class="tip-box"><b>Class 11 Maths chapter list ends here.</b> These pages contain selected foundations. Use the textbook for full exercises.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
