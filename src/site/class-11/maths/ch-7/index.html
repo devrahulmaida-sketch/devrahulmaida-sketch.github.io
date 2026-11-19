@@ -1,400 +1,113 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 7 — Binomial Theorem | Class 11 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 11 Maths Chapter 7: Binomial Theorem — long + short notes in Hindi, English, Hinglish. Expansion, general term, middle term, greatest coefficient, remainder tricks.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 11 Maths Chapter 7: Binomial Theorem — long + short notes in Hindi, English, Hinglish. Expansion, general term, middle term, greatest coefficient, remainder tricks." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:16px;line-height:1.65;margin:8px 0;padding:12px;background:#f5f7fb;border:1px solid #d5deec;border-radius:4px} #notes .note-sec p{line-height:1.7} #practice .jee-sol summary{font-size:16px} #short-notes .small-note{font-size:16px;line-height:1.7}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-11/">Class 11</a> / <a href="/src/site/class-11/maths/">Mathematics</a> / Chapter 7</p>
-  <h1>Binomial Theorem</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">द्विपद प्रमेय</p>
-  <p style="color:var(--muted);margin-top:6px">(a+b)ⁿ ka superpower — general term, middle term aur coefficient tricks</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video: 1 min 24 sec</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-11/">Class 11</a> / <a href="/src/site/class-11/maths/">Mathematics</a> / Chapter 7</p>
+<h1>Binomial Theorem</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">द्विपद प्रमेय</p>
+<p style="color:var(--muted);margin-top:6px">(a+b)ⁿ ka superpower — general term, middle term aur coefficient tricks</p>
+<div class="ch-tags">
+<span class="pill weight-high">Selected foundation material</span>
+<span class="pill">Video: 1 min 24 sec</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Chapter video - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Chapter video</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/8yzRUcZebVw" title="Chapter video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/8yzRUcZebVw" title="Chapter video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/watch?v=8yzRUcZebVw" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#short-notes">Short Notes</a>
-    <a class='btn btn-primary' href='#practice'>JEE Practice</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Chapter video - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Chapter video</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/8yzRUcZebVw" title="Chapter video"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/8yzRUcZebVw" title="Chapter video"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/watch?v=8yzRUcZebVw" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#short-notes">Short Notes</a>
+<a class="btn btn-primary" href="#practice">Foundation Practice</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Binomial Theorem 5 animated scenes mein - Pascal triangle ka live builder (click karke parents dekho), (a+b)ⁿ expansion machine, general term T(r+1) finder (off-by-one trap!), middle term aur greatest coefficient ka live bar chart, aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Binomial Theorem 5 animated scenes mein - Pascal triangle ka live builder (click karke parents dekho), (a+b)ⁿ expansion machine, general term T(r+1) finder (off-by-one trap!), middle term aur greatest coefficient ka live bar chart, aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="concept-shorts" style="padding-top:10px">
-  <div class="sec-head"><h2>Concept Shorts — JEE Advanced</h2></div>
-  <div class="concept-shorts-grid" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
-    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/xePfBtRIgng" title="Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/xePfBtRIgng" title="Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/xePfBtRIgng" target="_blank" rel="noopener">Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced</a></p>
-    </div>    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="Class 11 Maths Ch 7 - Binomial Ka GREATEST Term: Bina Expand Kiye | NCERT (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Class 11 Maths Ch 7 - Binomial Ka GREATEST Term: Bina Expand Kiye | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/VZemWJwXqM8" title="Class 11 Maths Ch 7 - Binomial Ka GREATEST Term: Bina Expand Kiye | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/VZemWJwXqM8" title="Class 11 Maths Ch 7 - Binomial Ka GREATEST Term: Bina Expand Kiye | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/VZemWJwXqM8" target="_blank" rel="noopener">Binomial Ka GREATEST Term: Bina Expand Kiye</a></p>
-    </div>    <div class="concept-short" style="width:300px;max-width:100%">
-      <div class="m-video m-video-portrait"><button class="m-video-load" type="button" aria-label="Class 11 Maths Ch 7 - Coefficients Ka SUM in 5 Seconds Binomial Trick | NCERT (Hinglish) - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Class 11 Maths Ch 7 - Coefficients Ka SUM in 5 Seconds Binomial Trick | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe class="yt-embed" src="https://www.youtube.com/embed/YUWb-FO4ldA" title="Class 11 Maths Ch 7 - Coefficients Ka SUM in 5 Seconds Binomial Trick | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></template><noscript><iframe loading="lazy" class="yt-embed" src="https://www.youtube.com/embed/YUWb-FO4ldA" title="Class 11 Maths Ch 7 - Coefficients Ka SUM in 5 Seconds Binomial Trick | NCERT (Hinglish)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px"></iframe></noscript></div>
-      <p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/YUWb-FO4ldA" target="_blank" rel="noopener">Coefficients Ka SUM in 5 Seconds Binomial Trick</a></p>
-    </div>
-
-
-  </div>
+<div class="sec-head"><h2>Concept Shorts — JEE Advanced</h2></div>
+<div class="concept-shorts-grid" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
+<div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/xePfBtRIgng" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/xePfBtRIgng" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/xePfBtRIgng" rel="noopener" target="_blank">Constant Term in Binomial Expansion - Binomial Theorem JEE Advanced</a></p>
+</div> <div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="Class 11 Maths Ch 7 - Binomial Ka GREATEST Term: Bina Expand Kiye | NCERT (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Class 11 Maths Ch 7 - Binomial Ka GREATEST Term: Bina Expand Kiye | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/VZemWJwXqM8" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 7 - Binomial Ka GREATEST Term: Bina Expand Kiye | NCERT (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/VZemWJwXqM8" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 7 - Binomial Ka GREATEST Term: Bina Expand Kiye | NCERT (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/VZemWJwXqM8" rel="noopener" target="_blank">Binomial Ka GREATEST Term: Bina Expand Kiye</a></p>
+</div> <div class="concept-short" style="width:300px;max-width:100%">
+<div class="m-video m-video-portrait"><button aria-label="Class 11 Maths Ch 7 - Coefficients Ka SUM in 5 Seconds Binomial Trick | NCERT (Hinglish) - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Class 11 Maths Ch 7 - Coefficients Ka SUM in 5 Seconds Binomial Trick | NCERT (Hinglish)</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/YUWb-FO4ldA" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 7 - Coefficients Ka SUM in 5 Seconds Binomial Trick | NCERT (Hinglish)"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/YUWb-FO4ldA" style="width:100%;aspect-ratio:9/16;border:0;border-radius:12px" title="Class 11 Maths Ch 7 - Coefficients Ka SUM in 5 Seconds Binomial Trick | NCERT (Hinglish)"></iframe></noscript></div>
+<p style="margin:6px 0 0;font-size:.9em"><a class="m-video-caption-link" href="https://www.youtube.com/embed/YUWb-FO4ldA" rel="noopener" target="_blank">Coefficients Ka SUM in 5 Seconds Binomial Trick</a></p>
+</div>
+</div>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Long Notes - Selected concepts" data-hi="विस्तृत नोट्स - चुनी हुई अवधारणाएं" data-hinglish="Long Notes - Selected concepts">Long Notes - Selected concepts</h2><p class="lang-sub" data-en="Read slowly — this builds the concept solidly" data-hi="Concept pakka karne ke liye — aaram se padho" data-hinglish="Concept pakka karne ke liye — aaram se padho">Concept pakka karne ke liye — aaram se padho</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Binomial Theorem Kyun — (a+b)ⁿ ka Shortcut</h3>
-    <p>(a + b)² = a² + 2ab + b² toh sabko yaad hai. Lekin exam mein (a + b)¹⁰ ya (x + 2y)¹⁵ aa jaye toh multiply karte raho ge? Kabhi nahi — time hi nahi milega. <b>Binomial Theorem</b> ek direct formula deta hai kisi bhi power ke expansion ka.</p>
-<ul>
-<li><b>Binomial expression:</b> do terms wala expression — (a + b), (x − 3y), (1 + 2x).</li>
-<li>Pattern dekho: (a+b)² = a² + 2ab + b² — powers a ki ghat rahi (2→1→0), b ki badh rahi (0→1→2). Har term me powers ka SUM = 2.</li>
-<li>Coefficients 1, 2, 1 — ye <b>combinatorics</b> se aate hain: C(2,0), C(2,1), C(2,2). Permutations &amp; Combinations chapter yahin kaam aata hai! ⭐</li>
-<li><b>Pascal's triangle:</b> har number upar ke do numbers ka sum — 1 / 1 1 / 1 2 1 / 1 3 3 1 / 1 4 6 4 1... n-th row = (a+b)ⁿ ke coefficients.</li>
-</ul>
-<p class="small-note">💡 India mein isse <b>Meru Prastara</b> kehte the — 10th century ke mathematician Halayudha ne describe kiya tha, Pascal se sadiyon pehle!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Binomial Theorem — Statement ⭐</h3>
-    <p>Kisi bhi positive integer n ke liye:</p>
-<ul>
-<li><b>(a + b)ⁿ = C(n,0)aⁿ + C(n,1)aⁿ⁻¹b + C(n,2)aⁿ⁻²b² + ... + C(n,n)bⁿ</b></li>
-<li>Compact form: (a + b)ⁿ = Σ (r = 0 to n) C(n,r) aⁿ⁻ʳ bʳ</li>
-<li><b>Terms ka count ⭐:</b> expansion me hamesha <b>n + 1 terms</b> hote hain. (a+b)⁸ → 9 terms.</li>
-<li>Har term me powers ka sum = n. a ki power n se 0 tak, b ki 0 se n tak.</li>
-<li>Coefficients symmetric hain: C(n,0) = C(n,n), C(n,1) = C(n,n−1)... pehla aur aakhri same, doosra aur second-last same.</li>
-</ul>
-<p class="small-note">🎯 Example: (a+b)⁴ = a⁴ + 4a³b + 6a²b² + 4ab³ + b⁴ — coefficients 1,4,6,4,1 = Pascal ki 5th row!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ General Term T(r+1) — Sabse Important Formula ⭐</h3>
-    <p><b>T(r+1) = C(n,r) × aⁿ⁻ʳ × bʳ</b> — ye ek formula hi 80% exam questions solve karta hai.</p>
-<ul>
-<li><b>Dhyan rakho:</b> T(r+1) me r use hota hai — matlab pehli term T₁ ke liye r = 0, paanchvi term T₅ ke liye r = 4. Off-by-one galti sabse common hai! ⭐</li>
-<li><b>'x ki koi specific power ka coefficient' nikalna:</b> general term likho, x ki power ko required value ke equal rakho, r nikalo, phir coefficient compute karo.</li>
-<li><b>Constant term (x-independent):</b> x ki power = 0 rakhke r nikalo. Agar r integer nahi aaya to constant term exist hi nahi karta.</li>
-<li><b>Term from the end:</b> (a+b)ⁿ me end se k-th term = beginning se (n − k + 2)-th term.</li>
-</ul>
-<p class="small-note">💡 Feel: general term = Google Maps — seedha usi term pe pahunchao jo chahiye, pura expansion likhne ki zaroorat nahi!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Middle Term(s) ⭐</h3>
-    <ul>
-<li><b>n even:</b> sirf EK middle term — <b>T(n/2 + 1)</b>. Example: (a+b)⁸ (9 terms) → middle = T₅.</li>
-<li><b>n odd:</b> DO middle terms — <b>T((n+1)/2) aur T((n+3)/2)</b>. Example: (a+b)⁷ (8 terms) → middles = T₄ aur T₅.</li>
-<li>Middle term ka coefficient hi <b>greatest coefficient</b> hota hai — C(n, n/2) jab n even.</li>
-<li>n odd ho to greatest coefficients do hain: C(n, (n−1)/2) = C(n, (n+1)/2) — dono equal.</li>
-</ul>
-<p class="small-note">🎯 Coefficients pehle badhte hain, middle pe peak, phir ghat te hain — bilkul mountain shape!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Binomial Coefficients ki Properties ⭐</h3>
-    <ul>
-<li><b>Sum of all coefficients:</b> C(n,0) + C(n,1) + ... + C(n,n) = <b>2ⁿ</b> (a = b = 1 rakhne par).</li>
-<li><b>Alternating sum:</b> C(n,0) − C(n,1) + C(n,2) − ... = <b>0</b> (a = 1, b = −1 par).</li>
-<li><b>Odd/even positions ka sum barabar:</b> C(n,0) + C(n,2) + ... = C(n,1) + C(n,3) + ... = 2ⁿ⁻¹.</li>
-<li><b>Number tricks:</b> 7¹⁰³ ka remainder? 7 = (8 − 1) likhke expand karo — (8−1)¹⁰³ me aakhri term (−1)¹⁰³ = −1 ke alawa sab 8 se divisible!</li>
-<li><b>Divisibility proofs:</b> 6ⁿ − 5n − 1 hamesha 25 se divisible (n ≥ 2) — (1+5)ⁿ expand karke dekho.</li>
-</ul>
-<p class="small-note">💡 Remainder/divisibility problems ka master key: base ko (multiple ± 1) ki form me todo!</p>
-  </div>
-  <div class="note-sec">
-    <h3>6️⃣ Exam Patterns — Kaise Aata Hai Paper Me</h3>
-    <ul>
-<li><b>Direct expansion:</b> (2x + 3)⁴ type — formula lagao, 5 terms likho.</li>
-<li><b>Coefficient hunting ⭐:</b> (x + 1/x)¹⁰ me x⁴ ka coefficient — T(r+1) me x ki power 10−2r, barabar 4, r = 3.</li>
-<li><b>Constant term:</b> power zero set karo — JEE favourite.</li>
-<li><b>Middle term nikalo:</b> n even/odd check, formula lagao.</li>
-<li><b>Greatest coefficient / greatest term:</b> middle term concept use karo.</li>
-<li><b>Remainder problems:</b> 49ⁿ − 16n − 1 ÷ 64 type — (multiple ± 1) trick.</li>
-<li><b>Digits problems:</b> 2¹⁰⁰ ke last two digits — cyclicity + binomial.</li>
-</ul>
-<p class="small-note">💡 90% questions sirf 3 formulas pe: (a+b)ⁿ expansion, T(r+1), middle term. Inhe ratta nahi, PATTERN samjho!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ द्विपद प्रमेय क्यों — (a+b)ⁿ का शॉर्टकट</h3>
-    <p>(a + b)² = a² + 2ab + b² सबको याद है। पर (a + b)¹⁰ या (x + 2y)¹⁵ को गुणा करते बैठोगे? परीक्षा में समय नहीं मिलेगा। <b>द्विपद प्रमेय</b> किसी भी घात के विस्तार का सीधा सूत्र देती है।</p>
-<ul>
-<li><b>द्विपद व्यंजक:</b> दो पदों वाला व्यंजक — (a + b), (x − 3y), (1 + 2x)।</li>
-<li>पैटर्न: (a+b)² = a² + 2ab + b² — a की घात घटती (2→1→0), b की बढ़ती (0→1→2)। हर पद में घातों का योग = 2।</li>
-<li>गुणांक 1, 2, 1 — ये <b>संचय (combinatorics)</b> से आते हैं: C(2,0), C(2,1), C(2,2)। ⭐</li>
-<li><b>पास्कल त्रिभुज (मेरु प्रस्तार):</b> हर संख्या ऊपर की दो संख्याओं का योग — n-वीं पंक्ति = (a+b)ⁿ के गुणांक।</li>
-</ul>
-<p class="small-note">💡 भारत में इसे <b>मेरु प्रस्तार</b> कहते थे — 10वीं सदी के गणितज्ञ हलायुध ने इसका वर्णन किया था, पास्कल से सदियों पहले!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ द्विपद प्रमेय — कथन ⭐</h3>
-    <p>किसी भी धनात्मक पूर्णांक n के लिए:</p>
-<ul>
-<li><b>(a + b)ⁿ = C(n,0)aⁿ + C(n,1)aⁿ⁻¹b + C(n,2)aⁿ⁻²b² + ... + C(n,n)bⁿ</b></li>
-<li>संक्षिप्त रूप: (a + b)ⁿ = Σ (r = 0 से n) C(n,r) aⁿ⁻ʳ bʳ</li>
-<li><b>पदों की संख्या ⭐:</b> विस्तार में सदैव <b>n + 1 पद</b> होते हैं। (a+b)⁸ → 9 पद।</li>
-<li>हर पद में घातों का योग = n। a की घात n से 0 तक, b की 0 से n तक।</li>
-<li>गुणांक सममित होते हैं: C(n,0) = C(n,n), C(n,1) = C(n,n−1)... पहला और अंतिम समान।</li>
-</ul>
-<p class="small-note">🎯 उदाहरण: (a+b)⁴ = a⁴ + 4a³b + 6a²b² + 4ab³ + b⁴ — गुणांक 1,4,6,4,1 = पास्कल त्रिभुज की 5वीं पंक्ति!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ व्यापक पद T(r+1) — सबसे महत्वपूर्ण सूत्र ⭐</h3>
-    <p><b>T(r+1) = C(n,r) × aⁿ⁻ʳ × bʳ</b> — यही एक सूत्र 80% परीक्षा प्रश्न हल करता है।</p>
-<ul>
-<li><b>ध्यान रखें:</b> T(r+1) में r प्रयोग होता है — पहले पद T₁ के लिए r = 0, पाँचवें पद T₅ के लिए r = 4। यही सबसे आम गलती है! ⭐</li>
-<li><b>'x की किसी विशिष्ट घात का गुणांक':</b> व्यापक पद लिखो, x की घात को अभीष्ट मान के बराबर रखो, r निकालो, फिर गुणांक निकालो।</li>
-<li><b>अचर पद (x-मुक्त):</b> x की घात = 0 रखकर r निकालो। r पूर्णांक न आए तो अचर पद है ही नहीं।</li>
-<li><b>अंत से पद:</b> (a+b)ⁿ में अंत से k-वाँ पद = आरंभ से (n − k + 2)-वाँ पद।</li>
-</ul>
-<p class="small-note">💡 व्यापक पद = सीधा रास्ता — पूरा विस्तार लिखे बिना चाहिए वाले पद पर पहुँचो!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ मध्य पद ⭐</h3>
-    <ul>
-<li><b>n सम:</b> केवल एक मध्य पद — <b>T(n/2 + 1)</b>। उदाहरण: (a+b)⁸ (9 पद) → मध्य = T₅।</li>
-<li><b>n विषम:</b> दो मध्य पद — <b>T((n+1)/2) और T((n+3)/2)</b>। उदाहरण: (a+b)⁷ (8 पद) → मध्य = T₄ और T₅।</li>
-<li>मध्य पद का गुणांक ही <b>महत्तम गुणांक</b> होता है — C(n, n/2) जब n सम।</li>
-<li>n विषम हो तो महत्तम गुणांक दो: C(n, (n−1)/2) = C(n, (n+1)/2)।</li>
-</ul>
-<p class="small-note">🎯 गुणांक पहले बढ़ते हैं, मध्य में शिखर, फिर घटते हैं — पर्वत जैसा आकार!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ द्विपद गुणांकों के गुण ⭐</h3>
-    <ul>
-<li><b>सभी गुणांकों का योग:</b> C(n,0) + C(n,1) + ... + C(n,n) = <b>2ⁿ</b> (a = b = 1 रखने पर)।</li>
-<li><b>एकांतर योग:</b> C(n,0) − C(n,1) + C(n,2) − ... = <b>0</b> (a = 1, b = −1 पर)।</li>
-<li><b>सम/विषम स्थानों का योग बराबर:</b> C(n,0) + C(n,2) + ... = C(n,1) + C(n,3) + ... = 2ⁿ⁻¹।</li>
-<li><b>शेषफल तरकीब:</b> 7¹⁰³ का शेषफल? 7 = (8 − 1) लिखकर विस्तार करो — अंतिम पद (−1)¹⁰³ = −1 के अलावा सब 8 से विभाज्य!</li>
-<li><b>विभाज्यता प्रमाण:</b> 6ⁿ − 5n − 1 सदैव 25 से विभाज्य (n ≥ 2) — (1+5)ⁿ विस्तार से।</li>
-</ul>
-<p class="small-note">💡 शेषफल/विभाज्यता की मास्टर कुंजी: आधार को (गुणज ± 1) के रूप में तोड़ो!</p>
-  </div>
-  <div class="note-sec">
-    <h3>6️⃣ परीक्षा के पैटर्न</h3>
-    <ul>
-<li><b>सीधा विस्तार:</b> (2x + 3)⁴ प्रकार — सूत्र लगाओ, 5 पद लिखो।</li>
-<li><b>गुणांक खोज ⭐:</b> (x + 1/x)¹⁰ में x⁴ का गुणांक — T(r+1) में x की घात 10−2r, बराबर 4, r = 3।</li>
-<li><b>अचर पद:</b> घात शून्य रखो — JEE का पसंदीदा।</li>
-<li><b>मध्य पद:</b> n सम/विषम जाँचो, सूत्र लगाओ।</li>
-<li><b>महत्तम गुणांक/पद:</b> मध्य पद अवधारणा प्रयोग करो।</li>
-<li><b>शेषफल प्रश्न:</b> 49ⁿ − 16n − 1 ÷ 64 प्रकार — (गुणज ± 1) तरकीब।</li>
-</ul>
-<p class="small-note">💡 90% प्रश्न सिर्फ 3 सूत्रों पर: विस्तार, T(r+1), मध्य पद। पैटर्न समझो, रटो मत!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Why the Binomial Theorem — a Shortcut for (a+b)ⁿ</h3>
-    <p>Everyone remembers (a + b)² = a² + 2ab + b². But if an exam throws (a + b)¹⁰ or (x + 2y)¹⁵ at you, multiplying it out will eat all your time. The <b>Binomial Theorem</b> gives a direct formula for expanding any power.</p>
-<ul>
-<li><b>Binomial expression:</b> an expression with two terms — (a + b), (x − 3y), (1 + 2x).</li>
-<li>Spot the pattern: (a+b)² = a² + 2ab + b² — powers of a fall (2→1→0), powers of b rise (0→1→2). In every term the powers SUM to 2.</li>
-<li>The coefficients 1, 2, 1 come from <b>combinatorics</b>: C(2,0), C(2,1), C(2,2). This is where Permutations &amp; Combinations pays off! ⭐</li>
-<li><b>Pascal's triangle:</b> each number is the sum of the two above it — 1 / 1 1 / 1 2 1 / 1 3 3 1... The n-th row gives the coefficients of (a+b)ⁿ.</li>
-</ul>
-<p class="small-note">💡 In India this was called <b>Meru Prastara</b> — described by the 10th-century mathematician Halayudha, centuries before Pascal!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ The Binomial Theorem — Statement ⭐</h3>
-    <p>For any positive integer n:</p>
-<ul>
-<li><b>(a + b)ⁿ = C(n,0)aⁿ + C(n,1)aⁿ⁻¹b + C(n,2)aⁿ⁻²b² + ... + C(n,n)bⁿ</b></li>
-<li>Compact form: (a + b)ⁿ = Σ (r = 0 to n) C(n,r) aⁿ⁻ʳ bʳ</li>
-<li><b>Number of terms ⭐:</b> the expansion always has <b>n + 1 terms</b>. (a+b)⁸ → 9 terms.</li>
-<li>In every term the powers sum to n. The power of a runs n down to 0, and b runs 0 up to n.</li>
-<li>Coefficients are symmetric: C(n,0) = C(n,n), C(n,1) = C(n,n−1)... first equals last, second equals second-last.</li>
-</ul>
-<p class="small-note">🎯 Example: (a+b)⁴ = a⁴ + 4a³b + 6a²b² + 4ab³ + b⁴ — coefficients 1,4,6,4,1 = the 5th row of Pascal's triangle!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ General Term T(r+1) — the Most Important Formula ⭐</h3>
-    <p><b>T(r+1) = C(n,r) × aⁿ⁻ʳ × bʳ</b> — this single formula solves 80% of exam questions.</p>
-<ul>
-<li><b>Watch out:</b> T(r+1) uses r — so T₁ needs r = 0, T₅ needs r = 4. The off-by-one slip is the most common mistake! ⭐</li>
-<li><b>'Coefficient of a specific power of x':</b> write the general term, set the power of x equal to the required value, solve for r, then compute the coefficient.</li>
-<li><b>Constant term (x-independent):</b> set the power of x = 0 and find r. If r is not an integer, no constant term exists.</li>
-<li><b>Term from the end:</b> in (a+b)ⁿ, the k-th term from the end = the (n − k + 2)-th term from the beginning.</li>
-</ul>
-<p class="small-note">💡 The general term is a direct route — jump straight to the term you need without writing the whole expansion!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Middle Term(s) ⭐</h3>
-    <ul>
-<li><b>n even:</b> exactly ONE middle term — <b>T(n/2 + 1)</b>. Example: (a+b)⁸ (9 terms) → middle = T₅.</li>
-<li><b>n odd:</b> TWO middle terms — <b>T((n+1)/2) and T((n+3)/2)</b>. Example: (a+b)⁷ (8 terms) → middles = T₄ and T₅.</li>
-<li>The middle term's coefficient is the <b>greatest coefficient</b> — C(n, n/2) when n is even.</li>
-<li>If n is odd, there are two greatest coefficients: C(n, (n−1)/2) = C(n, (n+1)/2) — equal values.</li>
-</ul>
-<p class="small-note">🎯 Coefficients rise, peak in the middle, then fall — a perfect mountain shape!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Properties of Binomial Coefficients ⭐</h3>
-    <ul>
-<li><b>Sum of all coefficients:</b> C(n,0) + C(n,1) + ... + C(n,n) = <b>2ⁿ</b> (set a = b = 1).</li>
-<li><b>Alternating sum:</b> C(n,0) − C(n,1) + C(n,2) − ... = <b>0</b> (set a = 1, b = −1).</li>
-<li><b>Odd/even position sums are equal:</b> C(n,0) + C(n,2) + ... = C(n,1) + C(n,3) + ... = 2ⁿ⁻¹.</li>
-<li><b>Remainder trick:</b> remainder of 7¹⁰³? Write 7 = (8 − 1) and expand — in (8−1)¹⁰³ everything except the last term (−1)¹⁰³ = −1 is divisible by 8!</li>
-<li><b>Divisibility proofs:</b> 6ⁿ − 5n − 1 is always divisible by 25 (n ≥ 2) — expand (1+5)ⁿ and see.</li>
-</ul>
-<p class="small-note">💡 Master key for remainder/divisibility problems: break the base into (multiple ± 1) form!</p>
-  </div>
-  <div class="note-sec">
-    <h3>6️⃣ Exam Patterns — How It Appears in Papers</h3>
-    <ul>
-<li><b>Direct expansion:</b> like (2x + 3)⁴ — apply the formula, write 5 terms.</li>
-<li><b>Coefficient hunting ⭐:</b> coefficient of x⁴ in (x + 1/x)¹⁰ — in T(r+1) the power of x is 10−2r, set equal to 4, r = 3.</li>
-<li><b>Constant term:</b> set the power to zero — a JEE favourite.</li>
-<li><b>Find the middle term:</b> check n even/odd, apply the formula.</li>
-<li><b>Greatest coefficient / greatest term:</b> use the middle-term concept.</li>
-<li><b>Remainder problems:</b> like 49ⁿ − 16n − 1 ÷ 64 — the (multiple ± 1) trick.</li>
-<li><b>Digit problems:</b> last two digits of 2¹⁰⁰ — cyclicity plus binomial.</li>
-</ul>
-<p class="small-note">💡 90% of questions rest on just 3 formulas: the expansion, T(r+1), and the middle term. Learn the PATTERN, not by rote!</p>
-  </div>
-  </div>
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Do terms aur ek useful pattern</h3><p>Binomial mein do terms hote hain, jaise a+b ya x−2. Example: (a+b)²=a²+2ab+b².</p><p>Yahan finite binomial theorem positive integer n ke liye hai. n=0 par base nonzero ho to value 1 hai. Fractional aur negative powers ki alag expansion yahan cover nahi hai.</p><p>Pascal rows zero se count karo: row 0: 1; row 1: 1,1; row 2: 1,2,1. Andar ka number upar ke do numbers ka sum; dono edges 1.</p></div><div class="note-sec"><h3>2. Expansion ka rule</h3><p>(a+b)ⁿ = Σᵣ₌₀ⁿ C(n,r)aⁿ⁻ʳbʳ; n positive integer aur C(n,r)=n!/[r!(n−r)!].</p><p>Like powers collect karne se pehle n+1 indexed terms hain. a,b ki jagah expressions rakhne par terms combine ya zero ho sakte hain.</p><p>Example: (x+2)³=x³+6x²+12x+8. Binomial coefficients 1,3,3,1 hain; x ke coefficients 1,6,12,8 hain. Dono alag hain.</p><p>(a−b)ⁿ mein second term −b rakho, sign ke saath: (x−1)³=x³−3x²+3x−1.</p></div><div class="note-sec"><h3>3. Bina poora expand kiye term nikalo</h3><p>Tᵣ₊₁=C(n,r)aⁿ⁻ʳbʳ, integer 0≤r≤n. First term ka r=0, isliye fifth term ka r=4.</p><p>xᵏ ka coefficient chahiye to general term mein x ki power k ke equal rakho. r integer aur [0,n] mein hona chahiye. Same power ke kai contributions hon to add karo.</p><p>Example: (x+1/x)¹⁰ mein x≠0 aur power 10−2r. x⁴ ke liye r=3, coefficient C(10,3)=120.</p><p>Constant term ki power zero hai. Valid r ke baad coefficient bhi nonzero check karo. Koi valid zero-power term na ho to constant coefficient zero hai.</p></div><div class="note-sec"><h3>4. Middle term ek position hai</h3><p>n even ho to ek middle term T(n/2+1). n=8 par T₅.</p><p>n odd ho to do middle terms T((n+1)/2) aur T((n+3)/2). n=7 par T₄,T₅.</p><p>Middle binomial coefficients C(n,r) largest hote hain. Values substitute karne ke baad middle numerical term zaroori nahi greatest ho.</p><p>Counterexample: (1+10)² ke terms 1,20,100. Middle 20 hai, greatest 100. Positive terms ke greatest term ke liye adjacent-term ratios compare karo.</p></div><div class="note-sec"><h3>5. Sums aur easy checks</h3><p>Binomial coefficients ka sum Σ C(n,r)=2ⁿ. Theorem mein a=b=1 rakho.</p><p>Positive integer n par Σ (−1)ʳC(n,r)=0. Even r aur odd r ke sums dono 2ⁿ⁻¹ hain. r zero se start hota hai.</p><p>Polynomial P(x) ke coefficients ka sum P(1), alternating sum P(−1). (2x+3)⁴ ka sum 5⁴=625 hai, 2⁴ nahi.</p><p>Hamari check: 7¹⁰³ modulo 8 mein (−1)¹⁰³ aata hai. Least nonnegative remainder 7 hai, −1 nahi.</p></div><div class="note-sec"><h3>6. Safe solving routine</h3><p>a,b aur integer n pehchano. Negative second term ko brackets mein rakho.</p><p>Term, coefficient, constant aur middle position alag requests hain. Pehle decide karo kya chahiye.</p><p>Tᵣ₊₁ likho, power condition solve karo, r ka integer aur range check karo. Reciprocal ho to x≠0 likho.</p><p>Chhota expansion ya simple value se check karo. Yeh notes aur neeche ke ten questions selected foundation hain, full textbook exercises ya full JEE preparation nahi.</p></div></div>
+<div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. दो पद और एक उपयोगी पैटर्न</h3><p>द्विपद में दो पद होते हैं, जैसे a+b या x−2। उदाहरण: (a+b)²=a²+2ab+b²।</p><p>यहां सीमित द्विपद प्रमेय धन पूर्णांक n के लिए है। n=0 पर आधार अशून्य हो तो मान 1 है। ऋण और भिन्न घातों का अलग विस्तार यहां शामिल नहीं है।</p><p>पास्कल की पंक्तियां शून्य से गिनें: पंक्ति 0: 1; पंक्ति 1: 1,1; पंक्ति 2: 1,2,1। अंदर की संख्या ऊपर की दो संख्याओं का योग है; दोनों किनारे 1 हैं।</p></div><div class="note-sec"><h3>2. विस्तार का नियम</h3><p>(a+b)ⁿ = Σᵣ₌₀ⁿ C(n,r)aⁿ⁻ʳbʳ; n धन पूर्णांक और C(n,r)=n!/[r!(n−r)!] है।</p><p>समान घातों को जोड़ने से पहले n+1 क्रमांकित पद होते हैं। a,b के स्थान पर व्यंजक रखने से पद जुड़ सकते हैं या शून्य हो सकते हैं।</p><p>उदाहरण: (x+2)³=x³+6x²+12x+8। द्विपद गुणांक 1,3,3,1 हैं, लेकिन x की घातों के गुणांक 1,6,12,8 हैं। दोनों अलग हैं।</p><p>(a−b)ⁿ में दूसरा पद चिह्न सहित −b लें: (x−1)³=x³−3x²+3x−1।</p></div><div class="note-sec"><h3>3. पूरा विस्तार किए बिना पद खोजें</h3><p>Tᵣ₊₁=C(n,r)aⁿ⁻ʳbʳ, जहां पूर्णांक 0≤r≤n है। पहले पद के लिए r=0, इसलिए पांचवें के लिए r=4 है।</p><p>xᵏ का गुणांक चाहिए तो व्यापक पद में x की घात को k के बराबर रखें। r पूर्णांक और [0,n] में होना चाहिए। एक ही घात के कई योगदान हों तो जोड़ें।</p><p>उदाहरण: (x+1/x)¹⁰ में x≠0 और घात 10−2r है। x⁴ के लिए r=3, इसलिए गुणांक C(10,3)=120 है।</p><p>अचर पद की घात शून्य है। मान्य r मिलने पर गुणांक भी अशून्य जांचें। कोई मान्य शून्य-घात पद न हो तो अचर गुणांक शून्य है।</p></div><div class="note-sec"><h3>4. मध्य पद एक स्थान है</h3><p>n सम हो तो एक मध्य पद T(n/2+1) है। n=8 पर T₅।</p><p>n विषम हो तो दो मध्य पद T((n+1)/2) और T((n+3)/2) हैं। n=7 पर T₄,T₅।</p><p>मध्य द्विपद गुणांक C(n,r) सबसे बड़े होते हैं। मान रखने के बाद मध्य संख्यात्मक पद जरूरी नहीं सबसे बड़ा हो।</p><p>प्रतिउदाहरण: (1+10)² के पद 1,20,100 हैं। मध्य 20 है, सबसे बड़ा 100। धन पदों में सबसे बड़ा पद खोजने के लिए पास के पदों के अनुपात की तुलना करें।</p></div><div class="note-sec"><h3>5. योग और सरल जांच</h3><p>द्विपद गुणांकों का योग Σ C(n,r)=2ⁿ है। प्रमेय में a=b=1 रखें।</p><p>धन पूर्णांक n के लिए Σ (−1)ʳC(n,r)=0 है। इसलिए सम r और विषम r के योग दोनों 2ⁿ⁻¹ हैं। r शून्य से शुरू है।</p><p>बहुपद P(x) के गुणांकों का योग P(1), एकांतर योग P(−1) है। (2x+3)⁴ के गुणांकों का योग 5⁴=625 है, 2⁴ नहीं।</p><p>हमारी जांच: 7¹⁰³ को 8 से भाग देने पर (−1)¹⁰³ के तुल्य मान मिलता है। सबसे छोटा अऋण शेषफल 7 है, −1 नहीं।</p></div><div class="note-sec"><h3>6. हल करने का सुरक्षित क्रम</h3><p>a,b और पूर्णांक n पहचानें। ऋण दूसरे पद को कोष्ठक में रखें।</p><p>पद, गुणांक, अचर और मध्य स्थान अलग सवाल हैं। पहले तय करें क्या चाहिए।</p><p>Tᵣ₊₁ लिखें, घात की शर्त हल करें, फिर r का पूर्णांक होना और सीमा जांचें। व्युत्क्रम हो तो x≠0 लिखें।</p><p>छोटा विस्तार या सरल मान रखकर जांचें। ये नोट्स और नीचे के दस प्रश्न चुनी हुई बुनियादी सामग्री हैं, पूरी पाठ्यपुस्तक की प्रश्नावली या पूरी JEE तैयारी नहीं।</p></div></div>
+<div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. Two terms, one useful pattern</h3><p>A binomial has two terms, such as a+b or x−2. For example, (a+b)² = a²+2ab+b².</p><p>This page uses the finite binomial theorem for positive integer n. For n=0 the value is 1 when the base is nonzero. Fractional and negative powers need a different expansion and are not covered here.</p><p>Count Pascal rows from zero: row 0 is 1; row 1 is 1,1; row 2 is 1,2,1. Add the two entries above to get an inside entry; each edge is 1.</p></div><div class="note-sec"><h3>2. The expansion rule</h3><p>(a+b)ⁿ = Σᵣ₌₀ⁿ C(n,r)aⁿ⁻ʳbʳ, where n is a positive integer and C(n,r)=n!/[r!(n−r)!].</p><p>There are n+1 indexed terms before collecting like powers. After substituting expressions for a and b, terms may combine or vanish.</p><p>Example: (x+2)³ = x³+6x²+12x+8. The binomial coefficients are 1,3,3,1, but the coefficients in powers of x are 1,6,12,8. Do not confuse them.</p><p>For (a−b)ⁿ use −b as the second term, including its sign: (x−1)³=x³−3x²+3x−1.</p></div><div class="note-sec"><h3>3. Find a term without expanding everything</h3><p>The term indexed by r is Tᵣ₊₁=C(n,r)aⁿ⁻ʳbʳ, for integer 0≤r≤n. The first term uses r=0, so the fifth uses r=4.</p><p>For the coefficient of xᵏ, write the power of x in the general term, set it equal to k and solve for r. Check r is an integer in [0,n]. Add contributions if more than one term has the same power.</p><p>Example: in (x+1/x)¹⁰, x≠0, the power is 10−2r. For x⁴, r=3, so the coefficient is C(10,3)=120.</p><p>A constant term has power zero. A valid r is necessary, and its resulting coefficient must be nonzero. If no valid term has power zero, the constant coefficient is zero.</p></div><div class="note-sec"><h3>4. Middle terms are positions</h3><p>If n is even, the n+1 indexed terms have one middle term: T(n/2+1). For n=8 this is T₅.</p><p>If n is odd, there are two: T((n+1)/2) and T((n+3)/2). For n=7 these are T₄ and T₅.</p><p>The middle binomial coefficients C(n,r) are largest. This does not mean the middle numerical term is always greatest after values are substituted.</p><p>Counterexample: (1+10)² has terms 1,20,100. The middle term is 20, but 100 is greatest. For positive terms, compare adjacent-term ratios if finding the greatest term.</p></div><div class="note-sec"><h3>5. Sums and simple checks</h3><p>For the binomial coefficients, Σ C(n,r)=2ⁿ. Substitute a=b=1 in the theorem.</p><p>For positive integer n, Σ (−1)ʳC(n,r)=0. Hence the sums for even r and odd r are both 2ⁿ⁻¹. Here r starts at zero.</p><p>For any polynomial P(x), the sum of its coefficients is P(1); the alternating coefficient sum is P(−1). Example: for (2x+3)⁴ the coefficient sum is 5⁴=625, not 2⁴.</p><p>Our check: 7¹⁰³ modulo 8 is (−1)¹⁰³, so its least nonnegative remainder is 7, not −1.</p></div><div class="note-sec"><h3>6. A safe solving routine</h3><p>Identify a, b and the integer n. Keep brackets around a negative second term.</p><p>Decide whether the question asks for a term, a coefficient, a constant or middle positions. These are different requests.</p><p>Write Tᵣ₊₁, solve the exponent condition, then check the range and integer condition on r. State x≠0 when a reciprocal occurs.</p><p>Check a small expansion or substitute a simple value. These notes and the ten questions below are selected foundation material, not full textbook exercises or full JEE preparation.</p></div></div>
 </section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-hinglish="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-en="Revise just this before the exam" data-hi="Exam se pehle sirf yeh dohrao" data-hinglish="Exam se pehle sirf yeh dohrao">Exam se pehle sirf yeh dohrao</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Theorem ⭐</h4>
-      <ul><li>(a+b)ⁿ = Σ C(n,r) aⁿ⁻ʳ bʳ</li><li>Terms: n+1</li><li>Powers ka sum hamesha n</li></ul>
-    </div>
-    <div class="shorts-card"><h4>General Term ⭐</h4>
-      <ul><li>T(r+1) = C(n,r) aⁿ⁻ʳ bʳ</li><li>T₅ ke liye r=4 (off-by-one trap!)</li><li>Constant term: x power = 0</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Middle Term ⭐</h4>
-      <ul><li>n even → T(n/2+1)</li><li>n odd → T((n+1)/2), T((n+3)/2)</li><li>Middle = greatest coefficient</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Properties ⭐</h4>
-      <ul><li>Σ coefficients = 2ⁿ</li><li>Alternating sum = 0</li><li>Odd sum = even sum = 2ⁿ⁻¹</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Tricks</h4>
-      <ul><li>Remainder: base = multiple ± 1</li><li>Pascal's triangle = coefficients</li><li>End se k-th = start se (n−k+2)-th</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>प्रमेय ⭐</h4>
-      <ul><li>(a+b)ⁿ = Σ C(n,r) aⁿ⁻ʳ bʳ</li><li>पद: n+1</li><li>घातों का योग सदैव n</li></ul>
-    </div>
-    <div class="shorts-card"><h4>व्यापक पद ⭐</h4>
-      <ul><li>T(r+1) = C(n,r) aⁿ⁻ʳ bʳ</li><li>T₅ के लिए r=4</li><li>अचर पद: x घात = 0</li></ul>
-    </div>
-    <div class="shorts-card"><h4>मध्य पद ⭐</h4>
-      <ul><li>n सम → T(n/2+1)</li><li>n विषम → T((n+1)/2), T((n+3)/2)</li><li>मध्य = महत्तम गुणांक</li></ul>
-    </div>
-    <div class="shorts-card"><h4>गुण ⭐</h4>
-      <ul><li>Σ गुणांक = 2ⁿ</li><li>एकांतर योग = 0</li><li>सम योग = विषम योग = 2ⁿ⁻¹</li></ul>
-    </div>
-    <div class="shorts-card"><h4>तरकीबें</h4>
-      <ul><li>शेषफल: आधार = गुणज ± 1</li><li>पास्कल त्रिभुज = गुणांक</li><li>अंत से k-वाँ = आरंभ से (n−k+2)-वाँ</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Theorem ⭐</h4>
-      <ul><li>(a+b)ⁿ = Σ C(n,r) aⁿ⁻ʳ bʳ</li><li>Terms: n+1</li><li>Powers always sum to n</li></ul>
-    </div>
-    <div class="shorts-card"><h4>General Term ⭐</h4>
-      <ul><li>T(r+1) = C(n,r) aⁿ⁻ʳ bʳ</li><li>T₅ needs r=4 (off-by-one trap!)</li><li>Constant term: x power = 0</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Middle Term ⭐</h4>
-      <ul><li>n even → T(n/2+1)</li><li>n odd → T((n+1)/2), T((n+3)/2)</li><li>Middle = greatest coefficient</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Properties ⭐</h4>
-      <ul><li>Σ coefficients = 2ⁿ</li><li>Alternating sum = 0</li><li>Odd sum = even sum = 2ⁿ⁻¹</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Tricks</h4>
-      <ul><li>Remainder: base = multiple ± 1</li><li>Pascal's triangle = coefficients</li><li>k-th from end = (n−k+2)-th from start</li></ul>
-    </div>
-    </div>
-  </div>
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="small-note">n positive integer; like powers collect karne se pehle n+1 indexed terms.</p><p class="small-note">Tᵣ₊₁=C(n,r)aⁿ⁻ʳbʳ; integer 0≤r≤n.</p><p class="small-note">Middle positions: even n → n/2+1; odd n → (n+1)/2, (n+3)/2.</p><p class="small-note">Coefficient sum P(1); alternating sum P(−1).</p><p class="small-note">Greatest binomial coefficient aur greatest numerical term alag hain.</p></div>
+<div class="lang-block" data-lang="hi" hidden=""><p class="small-note">n धन पूर्णांक; समान घात जोड़ने से पहले n+1 क्रमांकित पद।</p><p class="small-note">Tᵣ₊₁=C(n,r)aⁿ⁻ʳbʳ; पूर्णांक 0≤r≤n।</p><p class="small-note">मध्य स्थान: सम n → n/2+1; विषम n → (n+1)/2, (n+3)/2।</p><p class="small-note">गुणांक योग P(1); एकांतर योग P(−1)।</p><p class="small-note">सबसे बड़ा द्विपद गुणांक जरूरी नहीं सबसे बड़ा संख्यात्मक पद हो।</p></div>
+<div class="lang-block" data-lang="en" hidden=""><p class="small-note">Positive integer n; n+1 indexed terms before collecting.</p><p class="small-note">Tᵣ₊₁=C(n,r)aⁿ⁻ʳbʳ; integer 0≤r≤n.</p><p class="small-note">Middle positions: even n → n/2+1; odd n → (n+1)/2, (n+3)/2.</p><p class="small-note">Coefficient sum P(1); alternating sum P(−1).</p><p class="small-note">Greatest binomial coefficient is not always the greatest numerical term.</p></div>
 </section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> q<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a</p></details></div>
-  </div>
-</section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Practice language" class="lang-switch" role="group"><button class="lang-btn" data-lang="hinglish" type="button">Hinglish</button><button class="lang-btn" data-lang="hi" type="button">हिंदी</button><button class="lang-btn" data-lang="en" type="button">English</button></div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> Expand (x+2)³.<details class="jee-sol"><summary>Show answer</summary><p>Rule: use the coefficients 1,3,3,1.</p><p>Steps: x³+3x²(2)+3x(2²)+2³.</p><p>Answer: x³+6x²+12x+8. Check at x=1: 27=1+6+12+8.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Find the fourth term of (a+b)⁷, in descending powers of a.<details class="jee-sol"><summary>Show answer</summary><p>Rule: the fourth term has r=3, not r=4.</p><p>Steps: T₄=C(7,3)a⁴b³ and C(7,3)=35.</p><p>Answer: 35a⁴b³. Check: the exponents add to 7.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Find the coefficient of x³ in (1+2x)⁵.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Tᵣ₊₁=C(5,r)(2x)ʳ.</p><p>Steps: r=3 gives C(5,3)2³=10×8.</p><p>Answer: 80. Check: the term is 80x³, but its coefficient is 80.</p></details></div><div class="jee-q"><span class="qn">Q4</span> Find the constant term in (x+1/x)⁶, x≠0.<details class="jee-sol"><summary>Show answer</summary><p>Rule: the power of x is 6−2r.</p><p>Steps: set 6−2r=0, so r=3, an allowed integer.</p><p>Answer: C(6,3)=20. Check: x³×x⁻³=1.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Find the constant coefficient in (x²+1/x)⁵, x≠0.<details class="jee-sol"><summary>Show answer</summary><p>Rule: the general power is 2(5−r)−r=10−3r.</p><p>Steps: zero power would need r=10/3, not an integer.</p><p>Answer: 0; no constant term appears. Check: powers are 10,7,4,1,−2,−5.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Find the middle term of (a+b)⁸.<details class="jee-sol"><summary>Show answer</summary><p>Rule: there are 9 indexed terms, so the middle is T₅.</p><p>Steps: r=4 gives C(8,4)a⁴b⁴.</p><p>Answer: 70a⁴b⁴. Check: four terms occur on either side.</p></details></div><div class="jee-q"><span class="qn">Q7</span> Find both middle terms of (a+b)⁷.<details class="jee-sol"><summary>Show answer</summary><p>Rule: 8 indexed terms have middle positions 4 and 5.</p><p>Steps: use r=3 and r=4; C(7,3)=C(7,4)=35.</p><p>Answer: 35a⁴b³ and 35a³b⁴. Check: the exponents in each term sum to 7.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Find the sum of the coefficients of P(x)=(2x+3)⁴.<details class="jee-sol"><summary>Show answer</summary><p>Rule: the coefficient sum is P(1).</p><p>Steps: substitute x=1: (2+3)⁴=5⁴.</p><p>Answer: 625. Check: at x=0, P(0)=81 is only the constant coefficient, not the sum.</p></details></div><div class="jee-q"><span class="qn">Q9</span> Find the coefficient of x² in (x−2)⁴.<details class="jee-sol"><summary>Show answer</summary><p>Rule: retain the sign in the second term −2.</p><p>Steps: 4−r=2 gives r=2; C(4,2)(−2)²=6×4.</p><p>Answer: 24. Check: the full expansion is x⁴−8x³+24x²−32x+16.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Find the least nonnegative remainder when 7¹⁰³ is divided by 8.<details class="jee-sol"><summary>Show answer</summary><p>Rule: 7 is congruent to −1 modulo 8.</p><p>Steps: 7¹⁰³ is congruent to (−1)¹⁰³=−1; add 8.</p><p>Answer: 7. Check: the remainder must lie from 0 to 7.</p></details></div><div class="tip-box">Our own selected foundation questions and checks, not official exercise answers, PYQs or full JEE preparation. Full textbook exercises and advanced greatest-term/divisibility problems remain outside this pass.</div></div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> (x+2)³ expand karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: coefficients 1,3,3,1 use karo.</p><p>Steps: x³+3x²(2)+3x(2²)+2³.</p><p>Answer: x³+6x²+12x+8. Check x=1 par: 27=1+6+12+8.</p></details></div><div class="jee-q"><span class="qn">Q2</span> (a+b)⁷ ka fourth term, a ki descending powers mein, nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: fourth term ka r=3 hai, r=4 nahi.</p><p>Steps: T₄=C(7,3)a⁴b³ aur C(7,3)=35.</p><p>Answer: 35a⁴b³. Check: powers ka sum 7 hai.</p></details></div><div class="jee-q"><span class="qn">Q3</span> (1+2x)⁵ mein x³ ka coefficient nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Tᵣ₊₁=C(5,r)(2x)ʳ.</p><p>Steps: r=3 par C(5,3)2³=10×8.</p><p>Answer: 80. Check: term 80x³ hai; coefficient sirf 80.</p></details></div><div class="jee-q"><span class="qn">Q4</span> (x+1/x)⁶ ka constant term nikalo, x≠0.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: x ki power 6−2r hai.</p><p>Steps: 6−2r=0 se r=3, jo allowed integer hai.</p><p>Answer: C(6,3)=20. Check: x³×x⁻³=1.</p></details></div><div class="jee-q"><span class="qn">Q5</span> (x²+1/x)⁵ ka constant coefficient nikalo, x≠0.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: general power 2(5−r)−r=10−3r hai.</p><p>Steps: zero power ke liye r=10/3 chahiye, integer nahi.</p><p>Answer: 0; constant term nahi hai. Check: powers 10,7,4,1,−2,−5 hain.</p></details></div><div class="jee-q"><span class="qn">Q6</span> (a+b)⁸ ka middle term nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: 9 indexed terms hain; middle T₅ hai.</p><p>Steps: r=4 par C(8,4)a⁴b⁴.</p><p>Answer: 70a⁴b⁴. Check: iske dono taraf four terms hain.</p></details></div><div class="jee-q"><span class="qn">Q7</span> (a+b)⁷ ke dono middle terms nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: 8 terms ke middle positions 4 aur 5 hain.</p><p>Steps: r=3 aur r=4 lo; C(7,3)=C(7,4)=35.</p><p>Answer: 35a⁴b³ aur 35a³b⁴. Check: har term mein powers ka sum 7 hai.</p></details></div><div class="jee-q"><span class="qn">Q8</span> P(x)=(2x+3)⁴ ke coefficients ka sum nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: coefficient sum P(1) hai.</p><p>Steps: x=1 rakho: (2+3)⁴=5⁴.</p><p>Answer: 625. Check: P(0)=81 sirf constant coefficient hai, sum nahi.</p></details></div><div class="jee-q"><span class="qn">Q9</span> (x−2)⁴ mein x² ka coefficient nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: second term −2 ka sign saath rakho.</p><p>Steps: 4−r=2 se r=2; C(4,2)(−2)²=6×4.</p><p>Answer: 24. Check: full expansion x⁴−8x³+24x²−32x+16 hai.</p></details></div><div class="jee-q"><span class="qn">Q10</span> 7¹⁰³ ko 8 se divide karne par least nonnegative remainder nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: modulo 8 mein 7 aur −1 congruent hain.</p><p>Steps: 7¹⁰³ ka congruent value (−1)¹⁰³=−1 hai; 8 add karo.</p><p>Answer: 7. Check: remainder 0 se 7 ke beech hona chahiye.</p></details></div><div class="tip-box">Yeh hamare selected foundation questions aur checks hain, official exercise answers, PYQs ya full JEE preparation nahi. Full textbook exercises aur advanced greatest-term/divisibility problems abhi cover nahi hain.</div></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> (x+2)³ का विस्तार करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: गुणांक 1,3,3,1 लें।</p><p>चरण: x³+3x²(2)+3x(2²)+2³।</p><p>उत्तर: x³+6x²+12x+8। जांच: x=1 पर 27=1+6+12+8।</p></details></div><div class="jee-q"><span class="qn">Q2</span> (a+b)⁷ का चौथा पद a की घटती घातों में निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: चौथे पद के लिए r=3 है, r=4 नहीं।</p><p>चरण: T₄=C(7,3)a⁴b³ और C(7,3)=35।</p><p>उत्तर: 35a⁴b³। जांच: घातों का योग 7 है।</p></details></div><div class="jee-q"><span class="qn">Q3</span> (1+2x)⁵ में x³ का गुणांक निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: Tᵣ₊₁=C(5,r)(2x)ʳ।</p><p>चरण: r=3 पर C(5,3)2³=10×8।</p><p>उत्तर: 80। जांच: पद 80x³ है, लेकिन गुणांक केवल 80 है।</p></details></div><div class="jee-q"><span class="qn">Q4</span> (x+1/x)⁶ में अचर पद निकालें, x≠0।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: x की घात 6−2r है।</p><p>चरण: 6−2r=0 से r=3, जो मान्य पूर्णांक है।</p><p>उत्तर: C(6,3)=20। जांच: x³×x⁻³=1।</p></details></div><div class="jee-q"><span class="qn">Q5</span> (x²+1/x)⁵ का अचर गुणांक निकालें, x≠0।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: सामान्य घात 2(5−r)−r=10−3r है।</p><p>चरण: शून्य घात के लिए r=10/3 चाहिए, जो पूर्णांक नहीं है।</p><p>उत्तर: 0; अचर पद नहीं है। जांच: घातें 10,7,4,1,−2,−5 हैं।</p></details></div><div class="jee-q"><span class="qn">Q6</span> (a+b)⁸ का मध्य पद निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: 9 क्रमांकित पद हैं; मध्य T₅ है।</p><p>चरण: r=4 पर C(8,4)a⁴b⁴।</p><p>उत्तर: 70a⁴b⁴। जांच: इसके दोनों ओर चार पद हैं।</p></details></div><div class="jee-q"><span class="qn">Q7</span> (a+b)⁷ के दोनों मध्य पद निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: 8 पदों के मध्य स्थान 4 और 5 हैं।</p><p>चरण: r=3 और r=4 लें; C(7,3)=C(7,4)=35।</p><p>उत्तर: 35a⁴b³ और 35a³b⁴। जांच: हर पद में घातों का योग 7 है।</p></details></div><div class="jee-q"><span class="qn">Q8</span> P(x)=(2x+3)⁴ के गुणांकों का योग निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: गुणांकों का योग P(1) है।</p><p>चरण: x=1 रखें: (2+3)⁴=5⁴।</p><p>उत्तर: 625। जांच: P(0)=81 केवल अचर गुणांक है, योग नहीं।</p></details></div><div class="jee-q"><span class="qn">Q9</span> (x−2)⁴ में x² का गुणांक निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: दूसरे पद −2 का चिह्न साथ रखें।</p><p>चरण: 4−r=2 से r=2; C(4,2)(−2)²=6×4।</p><p>उत्तर: 24। जांच: पूरा विस्तार x⁴−8x³+24x²−32x+16 है।</p></details></div><div class="jee-q"><span class="qn">Q10</span> 7¹⁰³ को 8 से भाग देने पर सबसे छोटा अऋण शेषफल निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: मापांक 8 में 7 और −1 सर्वांगसम हैं।</p><p>चरण: 7¹⁰³ का तुल्य मान (−1)¹⁰³=−1 है; इसमें 8 जोड़ें।</p><p>उत्तर: 7। जांच: शेषफल 0 से 7 के बीच होना चाहिए।</p></details></div><div class="tip-box">ये हमारे चुने हुए बुनियादी प्रश्न और जांच हैं, आधिकारिक प्रश्नावली के उत्तर, पिछले वर्षों के प्रश्न या पूरी JEE तैयारी नहीं। पूरी पाठ्यपुस्तक की प्रश्नावलियां और सबसे बड़े पद/विभाज्यता के कठिन प्रश्न अभी शामिल नहीं हैं।</div></div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/kemh107.pdf">Textbook Ch7</a> <a href="https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep208.pdf">Exemplar Ch8</a> </p></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-11/maths/ch-8/">Sequences and Series</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-11/maths/ch-8/">Sequences and Series</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
