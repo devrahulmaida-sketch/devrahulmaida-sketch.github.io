@@ -1,395 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 7 — Integrals | Class 12 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 12 Maths Chapter 7: Integrals — long + short notes in Hindi, English, Hinglish. Indefinite integrals, substitution, integration by parts, partial fractions, definite integrals and properties.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 12 Maths Chapter 7: Integrals — long + short notes in Hindi, English, Hinglish. Indefinite integrals, substitution, integration by parts, partial fractions, definite integrals and properties." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:1rem;line-height:1.75;padding:.75rem;background:#f5f7fb;border:1px solid #d6e1f1;border-radius:4px} #practice .jee-q{overflow-wrap:anywhere} #practice summary{font-size:1rem} #notes .note-sec p{line-height:1.8}</style><style>#notes p,#short-notes p{overflow-wrap:anywhere}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 7</p>
-  <h1>Integrals</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">समाकलन</p>
-  <p style="color:var(--muted);margin-top:6px">Substitution, by parts, partial fractions aur definite integral properties — calculus ka sabse bada chapter</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video available</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 7</p>
+<h1>Integrals</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">समाकलन</p>
+<p style="color:var(--muted);margin-top:6px">Substitution, by parts, partial fractions aur definite integral properties — calculus ka sabse bada chapter</p>
+<div class="ch-tags">
+<span class="pill weight-high">JEE Weightage: HIGH</span>
+<span class="pill">Video available</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Integrals - Class 12 Maths Short - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Integrals - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/cEmYygCDm6A" title="Integrals - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/cEmYygCDm6A" title="Integrals - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/cEmYygCDm6A" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Integrals - Class 12 Maths Short - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Integrals - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/cEmYygCDm6A" title="Integrals - Class 12 Maths Short"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/cEmYygCDm6A" title="Integrals - Class 12 Maths Short"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/cEmYygCDm6A" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Integrals - Class 12 Mathematics Short 2 - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Integrals - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player2" class="yt-embed" src="https://www.youtube.com/embed/8M-oXJVpJcU" title="Integrals - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player2" class="yt-embed" src="https://www.youtube.com/embed/8M-oXJVpJcU" title="Integrals - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/8M-oXJVpJcU" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Integrals - Class 12 Mathematics Short 2 - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Integrals - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/8M-oXJVpJcU" title="Integrals - Class 12 Mathematics Short 2"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/8M-oXJVpJcU" title="Integrals - Class 12 Mathematics Short 2"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/8M-oXJVpJcU" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Integrals 5 animated scenes mein - differentiation ka ULTA (+C family), substitution signal, ILATE by-parts rounds, definite area with KING property, aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Integrals 5 animated scenes mein - differentiation ka ULTA (+C family), substitution signal, ILATE by-parts rounds, definite area with KING property, aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Selected foundations" data-hi="चुनी हुई बुनियादें" data-hinglish="Selected foundations">Selected foundations</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Integration Ka Concept — Differentiation Ka Ulta ⭐</h3>
-    <ul>
-<li><b>Antiderivative:</b> integration = differentiation ka REVERSE. d/dx(x²) = 2x, to ∫2x dx = x². ∫ f(x) dx ka matlab: wo function jiska derivative f(x) hai.</li>
-<li><b>+C kyun? ⭐</b> x², x² + 5, x² − 100 — sabka derivative 2x hai! Constant ka derivative 0 hota hai, isliye answer me hamesha <b>arbitrary constant C</b> jodo.</li>
-<li><b>Power rule ⭐⭐:</b> ∫ xⁿ dx = <b>xⁿ⁺¹/(n+1) + C</b> (n ≠ −1). Power ek badhao, naye power se divide!</li>
-<li><b>Exception:</b> ∫ (1/x) dx = <b>ln|x| + C</b> — power rule n = −1 pe fail hota hai, yahan log aata hai.</li>
-<li><b>Must-know formulas:</b> ∫ eˣ dx = eˣ; ∫ aˣ dx = aˣ/ln a; ∫ sin x dx = −cos x; ∫ cos x dx = sin x; ∫ sec²x dx = tan x; ∫ cosec²x dx = −cot x; ∫ sec x tan x dx = sec x; ∫ cosec x cot x dx = −cosec x. (Sab + C!)</li>
-<li>Sum/difference rule: ∫(f ± g) = ∫f ± ∫g; constant bahar: ∫kf = k∫f.</li>
-</ul>
-<p class="small-note">💡 Feel: differentiation neeche ki taraf (break karna), integration upar ki taraf (jodna). Answer ka check: derivative karke wapas f(x) aa jaana chahiye!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Substitution Method — Change Kardo, Easy Banado ⭐⭐</h3>
-    <ul>
-<li><b>Idea:</b> andar wali complicated cheez ko <b>t</b> maan lo — uska derivative dx ke saath adjust karke integral simple form me aa jaata hai.</li>
-<li><b>Signal ⭐:</b> integrand me ek function AUR uska derivative dono dikhe (derivative × dx wala pair) → substitution lagao!</li>
-<li>Example: ∫ 2x·cos(x²) dx → t = x², dt = 2x dx → ∫ cos t dt = sin t = <b>sin(x²) + C</b>.</li>
-<li><b>Common patterns ⭐:</b> ∫ f′(x)/f(x) dx = <b>ln|f(x)| + C</b> (numerator = denominator ka derivative!); ∫ f′(x)·√f(x) dx = (2/3)f(x)^(3/2); ∫ f′(x)·e^(f(x)) dx = e^(f(x)) + C.</li>
-<li>Trig identities bhi substitution ke saath milke kaam karti hain — sin 2x = 2 sin x cos x type pehle simplify karo.</li>
-<li>Definite integral me substitution: <b>limits bhi badlo</b> t ke hisaab se (ya wapas x me aao) — dono tarike sahi, par limits mat bhoolo!</li>
-</ul>
-<p class="small-note">🎯 Golden eye: "kya numerator/second factor pehle wale ka derivative hai?" Haan → substitution = 2 line me answer.</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Integration by Parts — Product Ka Ilaj ⭐⭐</h3>
-    <ul>
-<li><b>Formula ⭐⭐:</b> ∫ u·v dx = <b>u∫v dx − ∫(u′·∫v dx) dx</b> — "pehla function × doosre ka integral − derivative × integral ka integral".</li>
-<li><b>ILATE ⭐:</b> pehla function (u) kaun? priority order: <b>I</b>nverse trig → <b>L</b>og → <b>A</b>lgebraic → <b>T</b>rig → <b>E</b>xponential. Jo pehle aaye, wo u!</li>
-<li>Example: ∫ x·eˣ dx → u = x (algebraic), v = eˣ → x·eˣ − ∫1·eˣ dx = <b>eˣ(x − 1) + C</b>.</li>
-<li><b>ln x akela ho to ⭐:</b> ∫ ln x dx = ∫ ln x · 1 dx → u = ln x, v = 1 → x ln x − x + C. (1 ko second function maano!)</li>
-<li><b>Loop trick:</b> ∫ eˣ sin x dx jaise me do baar parts lagao — original integral wapas aata hai, phir usse solve karo (algebra!): answer = eˣ(sin x − cos x)/2 + C.</li>
-</ul>
-<p class="small-note">💡 ILATE yaad rakho — u galat choose kiya to integral aur complicated ho jaata hai. Sahi u = half battle won.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Partial Fractions — Rational Functions Todna ⭐</h3>
-    <ul>
-<li><b>Kab:</b> integrand P(x)/Q(x) ho (polynomial ÷ polynomial) aur degree of P &lt; degree of Q. Pehle factors todo, phir fractions me baanto.</li>
-<li><b>Linear factors ⭐:</b> 1/[(x−a)(x−b)] = A/(x−a) + B/(x−b) — A, B nikalo (values daal ke ya compare karke), phir har part ka integral ln ban jaata hai!</li>
-<li><b>Repeated factor:</b> 1/[(x−a)²(x−b)] = A/(x−a) + B/(x−a)² + C/(x−b) — har power ke liye ek term.</li>
-<li><b>Quadratic factor (irreducible):</b> (px + q)/(ax² + bx + c) wala numerator rakho.</li>
-<li>Degree of P ≥ Q ho to pehle <b>long division</b> karo — quotient + remainder/Q, phir partial fractions.</li>
-<li>Example: ∫ dx/[(x−1)(x−2)] = ∫[−1/(x−1) + 1/(x−2)] dx = <b>ln|x−2| − ln|x−1| + C</b>.</li>
-</ul>
-<p class="small-note">🎯 Partial fractions = "badi fraction ko chhoti fractions me todo" — har tukda standard ln/1/x² form ban jaata hai.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Special Integrals — Standard Forms ⭐⭐</h3>
-    <ul>
-<li><b>∫ dx/(x² + a²) = (1/a) tan⁻¹(x/a) + C</b>; <b>∫ dx/(x² − a²) = (1/2a) ln|(x−a)/(x+a)| + C</b>; <b>∫ dx/(a² − x²) = (1/2a) ln|(a+x)/(a−x)| + C</b>.</li>
-<li><b>∫ dx/√(a² − x²) = sin⁻¹(x/a) + C</b>; <b>∫ dx/√(x² + a²) = ln|x + √(x² + a²)| + C</b>; <b>∫ dx/√(x² − a²) = ln|x + √(x² − a²)| + C</b>.</li>
-<li><b>√ ke upar wale ⭐:</b> ∫ √(a² − x²) dx = (x/2)√(a² − x²) + (a²/2) sin⁻¹(x/a) + C; ∫ √(x² ± a²) dx = (x/2)√(x² ± a²) ± (a²/2) ln|x + √(x² ± a²)| + C.</li>
-<li><b>Quadratic denominator me ⭐:</b> complete the square! x² + 4x + 5 = (x+2)² + 1 → tan⁻¹ form. Ye move 80% questions me chahiye.</li>
-<li>Numerator = derivative of denominator ka linear combo banake split karo (px + q = A·d(denominator)/dx + B) — quadratic wale integrals ka master key.</li>
-</ul>
-<p class="small-note">💡 Ye 8-9 formulas rattne padte hain — par pattern ek: tan⁻¹/sin⁻¹/ln. Square complete karna aaya to sab apply hoga.</p>
-  </div>
-  <div class="note-sec">
-    <h3>6️⃣ Definite Integrals aur Properties ⭐⭐</h3>
-    <ul>
-<li><b>Definite integral:</b> ∫ₐᵇ f(x) dx = F(b) − F(a) — antiderivative F nikalo, upper limit daalo, lower limit ka minus. <b>No +C needed!</b> (C cancel ho jaata hai.)</li>
-<li><b>Meaning ⭐:</b> curve ke NEECHE ka area (x-axis ke saath), a se b tak. Negative area bhi possible (axis ke neeche wala part).</li>
-<li><b>Basic properties:</b> ∫ₐᵇ f = −∫ᵦₐ f (limits swap → sign flip); ∫ₐᵇ f = ∫ₐᶜ f + ∫cᵦ f (tod sakte ho); ∫ₐᵇ kf = k∫ₐᵇ f.</li>
-<li><b>King property ⭐⭐:</b> ∫₀ᵃ f(x) dx = <b>∫₀ᵃ f(a − x) dx</b> — x ko (a − x) se replace kar sakte ho! Trig integrals me magic karta hai. General: ∫ₐᵇ f(x) dx = ∫ₐᵇ f(a + b − x) dx.</li>
-<li><b>Even/odd ⭐:</b> ∫₋ₐᵃ f(x) dx = <b>2∫₀ᵃ f(x) dx agar f EVEN</b>; <b>0 agar f ODD</b>. Symmetric limits pe pehle even/odd check karo!</li>
-<li><b>Syllabus note:</b> definite integral as <b>limit of a sum</b> NCERT se DELETE — properties + evaluation pe focus.</li>
-</ul>
-<p class="small-note">🎯 King property use karke ∫₀^(π/2) sinⁿx/(sinⁿx + cosⁿx) dx = π/4 jaisa "impossible-looking" integral 30 seconds me solve hota hai — seekh ke jao!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ समाकलन की अवधारणा — अवकलन का उल्टा ⭐</h3>
-    <ul>
-<li><b>प्रतिअवकलज:</b> समाकलन = अवकलन का <b>विपरीत</b>। d/dx(x²) = 2x, तो ∫2x dx = x²।</li>
-<li><b>+C क्यों? ⭐</b> x², x² + 5 — सबका अवकलज 2x है! इसलिए उत्तर में सदैव <b>अचर C</b> जोड़ो।</li>
-<li><b>घात नियम ⭐⭐:</b> ∫ xⁿ dx = <b>xⁿ⁺¹/(n+1) + C</b> (n ≠ −1)।</li>
-<li><b>अपवाद:</b> ∫ (1/x) dx = <b>ln|x| + C</b>।</li>
-<li><b>आवश्यक सूत्र:</b> ∫ eˣ dx = eˣ; ∫ sin x dx = −cos x; ∫ cos x dx = sin x; ∫ sec²x dx = tan x (सब + C!)।</li>
-</ul>
-<p class="small-note">💡 जांच: उत्तर का अवकलन करके f(x) वापस आना चाहिए!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ प्रतिस्थापन विधि — बदलो, सरल बनाओ ⭐⭐</h3>
-    <ul>
-<li><b>विचार:</b> जटिल भाग को <b>t</b> मानो — उसका अवकलज dx के साथ मिलाकर समाकलन सरल हो जाता है।</li>
-<li><b>संकेत ⭐:</b> एक फलन <b>और</b> उसका अवकलज दोनों दिखें → प्रतिस्थापन!</li>
-<li>उदाहरण: ∫ 2x·cos(x²) dx → t = x² → ∫ cos t dt = <b>sin(x²) + C</b>।</li>
-<li><b>सामान्य पैटर्न ⭐:</b> ∫ f′(x)/f(x) dx = <b>ln|f(x)| + C</b>; ∫ f′(x)·e^(f(x)) dx = e^(f(x)) + C।</li>
-<li>निश्चित समाकलन में प्रतिस्थापन: <b>सीमाएं भी बदलो</b>!</li>
-</ul>
-<p class="small-note">🎯 "क्या अंश हर का अवकलज है?" हां → ln|f(x)| सीधे!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ खंडश: समाकलन — गुणनफल का इलाज ⭐⭐</h3>
-    <ul>
-<li><b>सूत्र ⭐⭐:</b> ∫ u·v dx = <b>u∫v dx − ∫(u′·∫v dx) dx</b>।</li>
-<li><b>ILATE ⭐:</b> u की प्राथमिकता: प्रतिलोम त्रिकोणमितीय → लघुगणक → बीजीय → त्रिकोणमितीय → चरघातांकी।</li>
-<li>उदाहरण: ∫ x·eˣ dx = x·eˣ − ∫eˣ dx = <b>eˣ(x − 1) + C</b>।</li>
-<li><b>ln x अकेला हो तो ⭐:</b> ∫ ln x dx = <b>x ln x − x + C</b> (1 को दूसरा फलन मानो)।</li>
-<li><b>चक्र तरकीब:</b> ∫ eˣ sin x dx में दो बार खंडश: — मूल समाकलन लौटता है, बीजगणित से हल: eˣ(sin x − cos x)/2 + C।</li>
-</ul>
-<p class="small-note">💡 ILATE याद रखो — सही u = आधी जीत।</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ आंशिक भिन्नें — परिमेय फलन तोड़ना ⭐</h3>
-    <ul>
-<li><b>कब:</b> P(x)/Q(x) हो और P की घात &lt; Q की घात। पहले गुणनखंड, फिर भिन्नों में बांटो।</li>
-<li><b>रैखिक गुणनखंड ⭐:</b> 1/[(x−a)(x−b)] = A/(x−a) + B/(x−b) — प्रत्येक भाग का समाकलन ln बनता है!</li>
-<li><b>दोहराया गुणनखंड:</b> प्रत्येक घात के लिए एक पद: A/(x−a) + B/(x−a)² + ...</li>
-<li>घात P ≥ Q हो तो पहले <b>भाग</b> दो।</li>
-<li>उदाहरण: ∫ dx/[(x−1)(x−2)] = <b>ln|x−2| − ln|x−1| + C</b>।</li>
-</ul>
-<p class="small-note">🎯 बड़ी भिन्न → छोटी भिन्नें → प्रत्येक मानक रूप।</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ विशिष्ट समाकलन — मानक रूप ⭐⭐</h3>
-    <ul>
-<li><b>∫ dx/(x² + a²) = (1/a) tan⁻¹(x/a)</b>; <b>∫ dx/(x² − a²) = (1/2a) ln|(x−a)/(x+a)|</b>।</li>
-<li><b>∫ dx/√(a² − x²) = sin⁻¹(x/a)</b>; <b>∫ dx/√(x² ± a²) = ln|x + √(x² ± a²)|</b>।</li>
-<li><b>∫ √(a² − x²) dx = (x/2)√(a² − x²) + (a²/2) sin⁻¹(x/a) + C</b>।</li>
-<li><b>द्विघात हर में ⭐:</b> वर्ग पूर्ण करो! x² + 4x + 5 = (x+2)² + 1 → tan⁻¹ रूप।</li>
-<li>अंश को हर के अवकलज के रैखिक संयोजन में तोड़ो — द्विघात समाकलनों की कुंजी।</li>
-</ul>
-<p class="small-note">💡 8-9 सूत्र कंठस्थ करने ही पड़ते हैं — पैटर्न एक: tan⁻¹/sin⁻¹/ln।</p>
-  </div>
-  <div class="note-sec">
-    <h3>6️⃣ निश्चित समाकलन और गुणधर्म ⭐⭐</h3>
-    <ul>
-<li><b>निश्चित समाकलन:</b> ∫ₐᵇ f(x) dx = F(b) − F(a) — <b>+C नहीं!</b></li>
-<li><b>अर्थ ⭐:</b> a से b तक वक्र के <b>नीचे का क्षेत्रफल</b>।</li>
-<li><b>मूल गुणधर्म:</b> ∫ₐᵇ f = −∫ᵦₐ f; ∫ₐᵇ f = ∫ₐᶜ f + ∫cᵦ f।</li>
-<li><b>राजा गुणधर्म ⭐⭐:</b> ∫₀ᵃ f(x) dx = <b>∫₀ᵃ f(a − x) dx</b>; सामान्यतः ∫ₐᵇ f(x) dx = ∫ₐᵇ f(a + b − x) dx।</li>
-<li><b>सम/विषम ⭐:</b> ∫₋ₐᵃ f = <b>2∫₀ᵃ f (सम फलन)</b>; <b>0 (विषम फलन)</b>।</li>
-<li><b>पाठ्यक्रम टिप्पणी:</b> योग की सीमा के रूप में निश्चित समाकलन NCERT से <b>हटाया गया</b>।</li>
-</ul>
-<p class="small-note">🎯 राजा गुणधर्म से "असंभव-लगने वाले" त्रिकोणमितीय समाकलन सेकंडों में हल!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ The Concept of Integration — Differentiation in Reverse ⭐</h3>
-    <ul>
-<li><b>Antiderivative:</b> integration is the REVERSE of differentiation. d/dx(x²) = 2x, so ∫2x dx = x². ∫ f(x) dx means: the function whose derivative is f(x).</li>
-<li><b>Why +C? ⭐</b> x², x² + 5, x² − 100 — all have derivative 2x! The derivative of a constant is 0, so always attach an <b>arbitrary constant C</b>.</li>
-<li><b>Power rule ⭐⭐:</b> ∫ xⁿ dx = <b>xⁿ⁺¹/(n+1) + C</b> (n ≠ −1). Raise the power by one, divide by the new power!</li>
-<li><b>Exception:</b> ∫ (1/x) dx = <b>ln|x| + C</b> — the power rule fails at n = −1; log steps in.</li>
-<li><b>Must-know formulas:</b> ∫ eˣ dx = eˣ; ∫ aˣ dx = aˣ/ln a; ∫ sin x dx = −cos x; ∫ cos x dx = sin x; ∫ sec²x dx = tan x; ∫ cosec²x dx = −cot x; ∫ sec x tan x dx = sec x; ∫ cosec x cot x dx = −cosec x. (All + C!)</li>
-<li>Sum/difference rule: ∫(f ± g) = ∫f ± ∫g; constants pull out: ∫kf = k∫f.</li>
-</ul>
-<p class="small-note">💡 Feel: differentiation breaks down, integration builds up. Check your answer: its derivative must give back f(x)!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Substitution — Change It, Simplify It ⭐⭐</h3>
-    <ul>
-<li><b>Idea:</b> call the complicated inner piece <b>t</b> — once its derivative pairs with dx, the integral collapses into a simple form.</li>
-<li><b>Signal ⭐:</b> you see a function AND its derivative together (derivative × dx pair) → substitute!</li>
-<li>Example: ∫ 2x·cos(x²) dx → t = x², dt = 2x dx → ∫ cos t dt = sin t = <b>sin(x²) + C</b>.</li>
-<li><b>Common patterns ⭐:</b> ∫ f′(x)/f(x) dx = <b>ln|f(x)| + C</b> (numerator = derivative of the denominator!); ∫ f′(x)·√f(x) dx = (2/3)f(x)^(3/2); ∫ f′(x)·e^(f(x)) dx = e^(f(x)) + C.</li>
-<li>Trig identities team up with substitution — simplify first with things like sin 2x = 2 sin x cos x.</li>
-<li>Substitution in a definite integral: <b>change the limits too</b> into t (or convert back to x) — both fine, but never forget the limits!</li>
-</ul>
-<p class="small-note">🎯 Golden eye: "is the numerator/second factor the derivative of the first?" Yes → substitution solves it in 2 lines.</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Integration by Parts — Handling Products ⭐⭐</h3>
-    <ul>
-<li><b>Formula ⭐⭐:</b> ∫ u·v dx = <b>u∫v dx − ∫(u′·∫v dx) dx</b> — "first function × integral of the second − integral of (derivative × integral)".</li>
-<li><b>ILATE ⭐:</b> which function is u? Priority order: <b>I</b>nverse trig → <b>L</b>og → <b>A</b>lgebraic → <b>T</b>rig → <b>E</b>xponential. Whichever comes first is u!</li>
-<li>Example: ∫ x·eˣ dx → u = x (algebraic), v = eˣ → x·eˣ − ∫1·eˣ dx = <b>eˣ(x − 1) + C</b>.</li>
-<li><b>When ln x stands alone ⭐:</b> ∫ ln x dx = ∫ ln x · 1 dx → u = ln x, v = 1 → x ln x − x + C. (Treat 1 as the second function!)</li>
-<li><b>Loop trick:</b> for ∫ eˣ sin x dx apply parts twice — the original integral returns, then solve it algebraically: eˣ(sin x − cos x)/2 + C.</li>
-</ul>
-<p class="small-note">💡 Remember ILATE — a wrong choice of u makes the integral worse. The right u wins half the battle.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Partial Fractions — Breaking Rational Functions ⭐</h3>
-    <ul>
-<li><b>When:</b> the integrand is P(x)/Q(x) (polynomial ÷ polynomial) with degree of P &lt; degree of Q. Factor first, then split into fractions.</li>
-<li><b>Linear factors ⭐:</b> 1/[(x−a)(x−b)] = A/(x−a) + B/(x−b) — find A, B (plug values or compare), and each part integrates into ln!</li>
-<li><b>Repeated factor:</b> 1/[(x−a)²(x−b)] = A/(x−a) + B/(x−a)² + C/(x−b) — one term per power.</li>
-<li><b>Irreducible quadratic factor:</b> use a numerator of the form (px + q).</li>
-<li>If degree of P ≥ Q, do <b>long division</b> first — quotient + remainder/Q, then partial fractions.</li>
-<li>Example: ∫ dx/[(x−1)(x−2)] = ∫[−1/(x−1) + 1/(x−2)] dx = <b>ln|x−2| − ln|x−1| + C</b>.</li>
-</ul>
-<p class="small-note">🎯 Partial fractions = "break a big fraction into small ones" — each piece becomes a standard ln/1/x² form.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Special Integrals — Standard Forms ⭐⭐</h3>
-    <ul>
-<li><b>∫ dx/(x² + a²) = (1/a) tan⁻¹(x/a) + C</b>; <b>∫ dx/(x² − a²) = (1/2a) ln|(x−a)/(x+a)| + C</b>; <b>∫ dx/(a² − x²) = (1/2a) ln|(a+x)/(a−x)| + C</b>.</li>
-<li><b>∫ dx/√(a² − x²) = sin⁻¹(x/a) + C</b>; <b>∫ dx/√(x² + a²) = ln|x + √(x² + a²)| + C</b>; <b>∫ dx/√(x² − a²) = ln|x + √(x² − a²)| + C</b>.</li>
-<li><b>Root-on-top forms ⭐:</b> ∫ √(a² − x²) dx = (x/2)√(a² − x²) + (a²/2) sin⁻¹(x/a) + C; ∫ √(x² ± a²) dx = (x/2)√(x² ± a²) ± (a²/2) ln|x + √(x² ± a²)| + C.</li>
-<li><b>Quadratic denominators ⭐:</b> complete the square! x² + 4x + 5 = (x+2)² + 1 → tan⁻¹ form. This move is needed in 80% of questions.</li>
-<li>Split the numerator as a linear combo of the denominator's derivative (px + q = A·d(denominator)/dx + B) — the master key for quadratic integrals.</li>
-</ul>
-<p class="small-note">💡 These 8-9 formulas must be memorized — but the pattern is one: tan⁻¹/sin⁻¹/ln. Learn to complete the square and everything applies.</p>
-  </div>
-  <div class="note-sec">
-    <h3>6️⃣ Definite Integrals and Their Properties ⭐⭐</h3>
-    <ul>
-<li><b>Definite integral:</b> ∫ₐᵇ f(x) dx = F(b) − F(a) — find the antiderivative F, plug the upper limit, subtract the lower. <b>No +C needed!</b> (C cancels out.)</li>
-<li><b>Meaning ⭐:</b> the AREA under the curve (with the x-axis) from a to b. Negative areas exist too (parts below the axis).</li>
-<li><b>Basic properties:</b> ∫ₐᵇ f = −∫ᵦₐ f (swapping limits flips the sign); ∫ₐᵇ f = ∫ₐᶜ f + ∫cᵦ f (you can split); ∫ₐᵇ kf = k∫ₐᵇ f.</li>
-<li><b>King property ⭐⭐:</b> ∫₀ᵃ f(x) dx = <b>∫₀ᵃ f(a − x) dx</b> — replace x by (a − x)! Works magic on trig integrals. General: ∫ₐᵇ f(x) dx = ∫ₐᵇ f(a + b − x) dx.</li>
-<li><b>Even/odd ⭐:</b> ∫₋ₐᵃ f(x) dx = <b>2∫₀ᵃ f(x) dx if f is EVEN</b>; <b>0 if f is ODD</b>. With symmetric limits, check even/odd first!</li>
-<li><b>Syllabus note:</b> the definite integral as a <b>limit of a sum</b> is DELETED from NCERT — focus on properties + evaluation.</li>
-</ul>
-<p class="small-note">🎯 With the king property, scary integrals like ∫₀^(π/2) sinⁿx/(sinⁿx + cosⁿx) dx = π/4 solve in 30 seconds — learn it!</p>
-  </div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Indefinite integral ek family hai</h3><p>Interval par F′=f ho to F, f ka antiderivative hai. ∫f(x) dx se family F(x)+C milti hai, jahan C arbitrary constant hai. Example: ∫2x dx=x²+C.</p><p>Power rule: ∫xⁿ dx=xⁿ⁺¹/(n+1)+C, n≠−1, us interval par jahan expressions real aur differentiable hon. Exception ∫dx/x=ln|x|+C hai, aise interval par jisme 0 na ho. Separate domain intervals ke constants alag ho sakte hain.</p><p>Sum ko termwise integrate karo; constant factor bahar lao. Jaise ∫(3x²−4) dx=x³−4x+C. Indefinite answer ko differentiate karke zaroor check karo.</p></div><div class="note-sec"><h3>2. Familiar derivatives ko dhyan se ulta karo</h3><p>Basic pairs: ∫eˣ dx=eˣ+C; ∫sin x dx=−cos x+C; ∫cos x dx=sin x+C. Trig angles radians mein hain. Sine integral ka minus sign mat bhoolo.</p><p>a&gt;0, a≠1 par ∫aˣ dx=aˣ/ln a+C. a=1 ho to integrand 1 hai, integral x+C; ln 1=0 se divide mat karo.</p><p>Useful pairs: ∫sec²x dx=tan x+C aur ∫dx/(1+x²)=tan⁻¹x+C, relevant domains par. Yahan sin⁻¹, tan⁻¹ inverse functions hain, reciprocals nahi.</p></div><div class="note-sec"><h3>3. Substitution chain rule ko reverse karta hai</h3><p>Inner function aur uska derivative factor dhoondo. ∫2x cos(x²) dx mein u=x², du=2x dx lo. ∫cos u du=sin u+C=sin(x²)+C.</p><p>Ek aur pattern: ∫f′(x)/f(x) dx=ln|f(x)|+C, jahan interval par f differentiable aur nonzero ho. Example: ∫2x/(x²+1) dx=ln(x²+1)+C; denominator hamesha positive hai.</p><p>Definite integral mein bounds bhi u mein badlo, ya original bounds se pehle poora answer x mein lao. u mein likhe antiderivative par x-bounds mat lagao.</p></div><div class="note-sec"><h3>4. Parts aur partial fractions alag tools</h3><p>Parts formula: ∫u dv=uv−∫v du. u,dv aise chuno ki bacha integral easy ho. u choose karne ka memory aid ek heuristic hai, har baar best route dene wala theorem nahi.</p><p>∫x eˣ dx mein u=x, dv=eˣ dx lo. du=dx, v=eˣ, isliye x eˣ−eˣ+C=eˣ(x−1)+C. Differentiate karne par x eˣ wapas aata hai.</p><p>Rational function mein numerator degree denominator se kam na ho to pehle division karo. Denominator factor karo. 1/[(x−1)(x−2)]=−1/(x−1)+1/(x−2), isliye integral ln|x−2|−ln|x−1|+C, har aise interval par jo 1,2 avoid kare.</p></div><div class="note-sec"><h3>5. Standard form ki conditions bhi lo</h3><p>a&gt;0 par ∫dx/(x²+a²)=(1/a)tan⁻¹(x/a)+C. Aur ∫dx/√(a²−x²)=sin⁻¹(x/a)+C jab −a&lt;x&lt;a. a&gt;0 aur real domain batana zaroori hai; symbols ko unrestricted mat maano.</p><p>Pehle complete square: x²+4x+5=(x+2)²+1. u=x+2 se ∫dx/(x²+4x+5)=tan⁻¹(x+2)+C, har real x par.</p><p>Scaling factor answer ka part hai: ∫dx/(4+x²)=(1/2)tan⁻¹(x/2)+C. Differentiate: (1/2)(1/2)/(1+x²/4)=1/(4+x²).</p></div><div class="note-sec"><h3>6. Definite integral signed accumulation hai</h3><p>f, [a,b] par continuous aur F′=f ho to fundamental theorem ∫ₐᵇf(x) dx=F(b)−F(a) deta hai. Constant cancel hota hai. Definite integral ek number hai, functions ki family nahi.</p><p>a&lt;b par axis ke upar positive, neeche negative contribution aata hai. Geometric area nonnegative hai: ∫ₐᵇ|f(x)| dx, zaroorat par sign changes pe split karo. ∫₋₁¹x dx=0, par y=x aur axis ke beech area 1 hai.</p><p>Integrable f par bounds reverse karne se sign badalta hai. [−a,a] par odd integrable function ka integral 0; even ka [0,a] wale integral ka double hai. Singularity ke paar cancellation mat lagao: [−1,1] par 1/x ordinary definite integral nahi. Yeh selected foundations aur das original questions hain, full textbook exercises ya full JEE preparation nahi. Repeated-factor partial fractions, lambe root/trig forms, general symmetry substitutions aur advanced integrals abhi cover nahi hain.</p></div></div><div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. अनिश्चित समाकल एक परिवार है</h3><p>अंतराल पर F′=f हो तो F, f का प्रतिअवकलज है। ∫f(x) dx से परिवार F(x)+C मिलता है, जहां C स्वेच्छ अचर है। उदाहरण: ∫2x dx=x²+C।</p><p>घात नियम: ∫xⁿ dx=xⁿ⁺¹/(n+1)+C, n≠−1, उस अंतराल पर जहां व्यंजक वास्तविक और अवकलनीय हों। अपवाद ∫dx/x=ln|x|+C है, ऐसे अंतराल पर जिसमें 0 न हो। अलग प्रांत अंतरालों के अचर अलग हो सकते हैं।</p><p>योग को पदवार समाकलित करें; अचर गुणक बाहर लाएं। जैसे ∫(3x²−4) dx=x³−4x+C। अनिश्चित उत्तर को अवकलित करके अवश्य जांचें।</p></div><div class="note-sec"><h3>2. परिचित अवकलज सावधानी से उलटें</h3><p>मूल जोड़े: ∫eˣ dx=eˣ+C; ∫sin x dx=−cos x+C; ∫cos x dx=sin x+C। त्रिकोणमितीय कोण रेडियन में हैं। ज्या समाकल का ऋण चिह्न न भूलें।</p><p>a&gt;0, a≠1 पर ∫aˣ dx=aˣ/ln a+C। a=1 हो तो समाकल्य 1 है, समाकल x+C; ln 1=0 से भाग न दें।</p><p>उपयोगी जोड़े: ∫sec²x dx=tan x+C और ∫dx/(1+x²)=tan⁻¹x+C, संबंधित प्रांतों पर। यहां sin⁻¹, tan⁻¹ प्रतिलोम फलन हैं, व्युत्क्रम नहीं।</p></div><div class="note-sec"><h3>3. प्रतिस्थापन शृंखला नियम उलटता है</h3><p>भीतरी फलन और उसका अवकलज गुणक ढूंढें। ∫2x cos(x²) dx में u=x², du=2x dx लें। ∫cos u du=sin u+C=sin(x²)+C।</p><p>एक और रूप: ∫f′(x)/f(x) dx=ln|f(x)|+C, जहां अंतराल पर f अवकलनीय और अशून्य हो। उदाहरण: ∫2x/(x²+1) dx=ln(x²+1)+C; हर सदा धनात्मक है।</p><p>निश्चित समाकल में सीमाएं भी u में बदलें, या मूल सीमाओं से पहले पूरा उत्तर x में लाएं। u में लिखे प्रतिअवकलज पर x-सीमाएं न लगाएं।</p></div><div class="note-sec"><h3>4. खंडशः और आंशिक भिन्न अलग विधियां</h3><p>खंडशः सूत्र: ∫u dv=uv−∫v du। u,dv ऐसे चुनें कि शेष समाकल सरल हो। u चुनने का स्मृति संकेत एक सुझाव है, हर बार सर्वोत्तम रास्ता देने वाला प्रमेय नहीं।</p><p>∫x eˣ dx में u=x, dv=eˣ dx लें। du=dx, v=eˣ, इसलिए x eˣ−eˣ+C=eˣ(x−1)+C। अवकलित करने पर x eˣ लौटता है।</p><p>परिमेय फलन में अंश की घात हर से कम न हो तो पहले भाग करें। हर का गुणनखंडन करें। 1/[(x−1)(x−2)]=−1/(x−1)+1/(x−2), इसलिए समाकल ln|x−2|−ln|x−1|+C, हर ऐसे अंतराल पर जो 1,2 को छोड़े।</p></div><div class="note-sec"><h3>5. मानक रूप की शर्तें भी लें</h3><p>a&gt;0 पर ∫dx/(x²+a²)=(1/a)tan⁻¹(x/a)+C। और ∫dx/√(a²−x²)=sin⁻¹(x/a)+C जब −a&lt;x&lt;a। a&gt;0 और वास्तविक प्रांत बताएं; प्रतीकों को बिना शर्त न लें।</p><p>पहले पूर्ण वर्ग: x²+4x+5=(x+2)²+1। u=x+2 से ∫dx/(x²+4x+5)=tan⁻¹(x+2)+C, हर वास्तविक x पर।</p><p>गुणक उत्तर का हिस्सा है: ∫dx/(4+x²)=(1/2)tan⁻¹(x/2)+C। अवकलन: (1/2)(1/2)/(1+x²/4)=1/(4+x²)।</p></div><div class="note-sec"><h3>6. निश्चित समाकल चिह्नयुक्त संचय है</h3><p>f, [a,b] पर संतत और F′=f हो तो मूल प्रमेय ∫ₐᵇf(x) dx=F(b)−F(a) देता है। अचर कट जाता है। निश्चित समाकल संख्या है, फलनों का परिवार नहीं।</p><p>a&lt;b पर अक्ष के ऊपर धनात्मक, नीचे ऋणात्मक योगदान है। ज्यामितीय क्षेत्रफल अऋणात्मक है: ∫ₐᵇ|f(x)| dx, आवश्यकता पर चिह्न बदलावों पर बांटें। ∫₋₁¹x dx=0, पर y=x और अक्ष के बीच क्षेत्रफल 1 है।</p><p>समाकलनीय f पर सीमाएं उलटने से चिह्न बदलता है। [−a,a] पर विषम समाकलनीय फलन का समाकल 0; सम का [0,a] वाले समाकल का दुगुना है। विलक्षण बिंदु के पार निरसन न लगाएं: [−1,1] पर 1/x साधारण निश्चित समाकल नहीं। ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली या पूरी JEE तैयारी नहीं। आवृत्त गुणनखंड वाले आंशिक भिन्न, लंबे मूल/त्रिकोणमितीय रूप, सामान्य सममिति प्रतिस्थापन और उन्नत समाकल अभी शामिल नहीं हैं।</p></div></div><div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. An indefinite integral is a family</h3><p>An antiderivative F of f on an interval satisfies F′=f. The indefinite integral ∫f(x) dx denotes the family F(x)+C, where C is an arbitrary constant. Example: ∫2x dx=x²+C.</p><p>Power rule: ∫xⁿ dx=xⁿ⁺¹/(n+1)+C for n≠−1, on an interval where the expressions are real and differentiable. The exception is ∫dx/x=ln|x|+C on an interval not containing 0. Constants may differ on separate domain intervals.</p><p>Integrate sums term by term and pull out constant factors. For example ∫(3x²−4) dx=x³−4x+C. Always check an indefinite answer by differentiating it.</p></div><div class="note-sec"><h3>2. Reverse familiar derivatives carefully</h3><p>Basic pairs: ∫eˣ dx=eˣ+C; ∫sin x dx=−cos x+C; ∫cos x dx=sin x+C. Trigonometric angles use radians. The minus sign in the sine integral matters.</p><p>For a&gt;0 and a≠1, ∫aˣ dx=aˣ/ln a+C. If a=1, the integrand is 1 and the integral is x+C; do not divide by ln 1=0.</p><p>Other useful pairs are ∫sec²x dx=tan x+C and ∫dx/(1+x²)=tan⁻¹x+C, on their relevant domains. sin⁻¹ and tan⁻¹ denote inverse functions here, not reciprocals.</p></div><div class="note-sec"><h3>3. Substitution reverses the chain rule</h3><p>Look for an inner function and its derivative factor. For ∫2x cos(x²) dx, set u=x² and du=2x dx. Then ∫cos u du=sin u+C=sin(x²)+C.</p><p>Another pattern is ∫f′(x)/f(x) dx=ln|f(x)|+C on an interval where f is differentiable and nonzero. Example: ∫2x/(x²+1) dx=ln(x²+1)+C; the denominator is always positive.</p><p>For definite integrals change the bounds into u as well, or return fully to x before using the original bounds. Never put x-bounds onto an antiderivative still written in u.</p></div><div class="note-sec"><h3>4. Parts and partial fractions are different tools</h3><p>Integration by parts: ∫u dv=uv−∫v du. Choose u and dv to make the remaining integral easier. A memory aid for choosing u is a heuristic, not a theorem that always selects the best route.</p><p>For ∫x eˣ dx, choose u=x, dv=eˣ dx. Then du=dx, v=eˣ, giving x eˣ−eˣ+C=eˣ(x−1)+C. Differentiate to recover x eˣ.</p><p>For rational functions, do polynomial division first if the numerator degree is at least the denominator degree. Factor the denominator. Example: 1/[(x−1)(x−2)]=−1/(x−1)+1/(x−2), so its integral is ln|x−2|−ln|x−1|+C on each interval avoiding 1 and 2.</p></div><div class="note-sec"><h3>5. Match a standard form with its conditions</h3><p>For a&gt;0, ∫dx/(x²+a²)=(1/a)tan⁻¹(x/a)+C. Also ∫dx/√(a²−x²)=sin⁻¹(x/a)+C for −a&lt;x&lt;a. State a&gt;0 and the real-domain condition instead of treating these as unrestricted symbols.</p><p>Complete the square first: x²+4x+5=(x+2)²+1. With u=x+2, ∫dx/(x²+4x+5)=tan⁻¹(x+2)+C, valid for all real x.</p><p>The scaling factor is part of the answer: ∫dx/(4+x²)=(1/2)tan⁻¹(x/2)+C. Differentiation gives (1/2)(1/2)/(1+x²/4)=1/(4+x²).</p></div><div class="note-sec"><h3>6. A definite integral is signed accumulation</h3><p>If f is continuous on [a,b] and F′=f there, the fundamental theorem gives ∫ₐᵇf(x) dx=F(b)−F(a). The constant cancels. A definite integral is a number, not a family of functions.</p><p>For a&lt;b, the integral counts regions above the x-axis positively and below negatively. Geometric area is nonnegative and is ∫ₐᵇ|f(x)| dx, splitting at sign changes when needed. Example: ∫₋₁¹x dx=0 but the area between y=x and the axis is 1.</p><p>For integrable f, reversing bounds changes the sign. On symmetric [−a,a], an odd integrable function has integral 0; an even one has twice the integral on [0,a]. Do not apply cancellation across a singularity: 1/x is not an ordinary definite integral on [−1,1]. These notes and ten original questions are selected foundations, not full textbook exercises or full JEE preparation. Repeated-factor partial fractions, longer root/trig forms, general symmetry substitutions and advanced integrals remain outside this pass.</p></div></div></section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>∫ = differentiation ka ulta</li><li>+C hamesha (indefinite)</li><li>∫xⁿdx = xⁿ⁺¹/(n+1); ∫1/x = ln|x|</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Substitution ⭐⭐</h4>
-      <ul><li>Andar wale ko t maano</li><li>Signal: function + uska derivative</li><li>f′/f → ln|f|</li></ul>
-    </div>
-    <div class="shorts-card"><h4>By parts ⭐⭐</h4>
-      <ul><li>∫uv = u∫v − ∫(u′∫v)</li><li>u choose: ILATE order</li><li>∫ln x = x ln x − x</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Special forms ⭐</h4>
-      <ul><li>1/(x²+a²) → (1/a)tan⁻¹</li><li>1/√(a²−x²) → sin⁻¹</li><li>Quadratic: complete the square</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Definite ⭐⭐</h4>
-      <ul><li>F(b) − F(a), no +C</li><li>King: ∫₀ᵃf(x) = ∫₀ᵃf(a−x)</li><li>Even: 2×half; Odd: 0</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>मूल ⭐</h4>
-      <ul><li>∫ = अवकलन का उल्टा</li><li>+C सदैव (अनिश्चित)</li><li>∫xⁿdx = xⁿ⁺¹/(n+1); ∫1/x = ln|x|</li></ul>
-    </div>
-    <div class="shorts-card"><h4>प्रतिस्थापन ⭐⭐</h4>
-      <ul><li>भीतरी भाग को t</li><li>संकेत: फलन + उसका अवकलज</li><li>f′/f → ln|f|</li></ul>
-    </div>
-    <div class="shorts-card"><h4>खंडश: ⭐⭐</h4>
-      <ul><li>∫uv = u∫v − ∫(u′∫v)</li><li>u: ILATE क्रम</li><li>∫ln x = x ln x − x</li></ul>
-    </div>
-    <div class="shorts-card"><h4>मानक रूप ⭐</h4>
-      <ul><li>1/(x²+a²) → (1/a)tan⁻¹</li><li>1/√(a²−x²) → sin⁻¹</li><li>द्विघात: वर्ग पूर्ण करो</li></ul>
-    </div>
-    <div class="shorts-card"><h4>निश्चित ⭐⭐</h4>
-      <ul><li>F(b) − F(a), +C नहीं</li><li>राजा: ∫₀ᵃf(x) = ∫₀ᵃf(a−x)</li><li>सम: 2×आधा; विषम: 0</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>∫ = reverse of differentiation</li><li>Always +C (indefinite)</li><li>∫xⁿdx = xⁿ⁺¹/(n+1); ∫1/x = ln|x|</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Substitution ⭐⭐</h4>
-      <ul><li>Set the inner piece = t</li><li>Signal: function + its derivative</li><li>f′/f → ln|f|</li></ul>
-    </div>
-    <div class="shorts-card"><h4>By parts ⭐⭐</h4>
-      <ul><li>∫uv = u∫v − ∫(u′∫v)</li><li>Choose u by ILATE</li><li>∫ln x = x ln x − x</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Special forms ⭐</h4>
-      <ul><li>1/(x²+a²) → (1/a)tan⁻¹</li><li>1/√(a²−x²) → sin⁻¹</li><li>Quadratic: complete the square</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Definite ⭐⭐</h4>
-      <ul><li>F(b) − F(a), no +C</li><li>King: ∫₀ᵃf(x) = ∫₀ᵃf(a−x)</li><li>Even: 2×half; Odd: 0</li></ul>
-    </div>
-    </div>
-  </div>
-</section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> ∫ x⁵ dx nikalo.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>x⁶/6 <b>+ C</b> — power ek badhao, naye power se divide.</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> ∫ (1/x) dx kya hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>ln|x| + C</b> — power rule n = −1 pe kaam nahi karta.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> ∫ 2x·sin(x²) dx kaise karein?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>t = x² → dt = 2x dx → ∫ sin t dt = −cos t = <b>−cos(x²) + C</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> ∫ f′(x)/f(x) dx ka direct formula?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>ln|f(x)| + C</b> — numerator denominator ka derivative hai.</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> ∫ x·eˣ dx nikalo (by parts).<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>u = x, v = eˣ → x·eˣ − ∫eˣ dx = <b>eˣ(x − 1) + C</b> (ILATE: algebraic pehle).</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> ∫ ln x dx ka answer?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>x ln x − x + C</b> — 1 ko second function maan ke by parts.</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> ∫ dx/(x² + 9) kya hoga?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>a = 3 → (1/3) <b>tan⁻¹(x/3) + C</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> ∫₀¹ x² dx ka value?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>F(x) = x³/3 → F(1) − F(0) = 1/3 − 0 = <b>1/3</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> ∫₋₂² x³ dx kya hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>x³ <b>odd</b> function hai, symmetric limits → <b>0</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> King property bolo.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>∫₀ᵃ f(x) dx = <b>∫₀ᵃ f(a − x) dx</b> — x ki jagah (a − x) rakh sakte ho, value same.</p></details></div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="tip-box">Antiderivative F mein interval par F′=f; ∫f dx=F+C.</p><p class="tip-box">Power rule mein n≠−1. 1/x ke liye ln|x|+C, 0 avoid karne wale intervals par.</p><p class="tip-box">∫sin x dx=−cos x+C; ∫cos x dx=sin x+C; angles radians mein.</p><p class="tip-box">Substitution chain rule ko reverse karta hai. Definite integral mein bounds bhi badlo.</p><p class="tip-box">Parts: ∫u dv=uv−∫v du. Final answer differentiate karke check karo.</p><p class="tip-box">Partial fractions: zaroorat par divide, factor, coefficients solve, domain exclusions rakho.</p><p class="tip-box">a&gt;0 par ∫dx/(x²+a²)=(1/a)tan⁻¹(x/a)+C.</p><p class="tip-box">[a,b] par continuous f: ∫ₐᵇf dx=F(b)−F(a). Signed integral hamesha geometric area nahi.</p></div><div class="lang-block" data-lang="hi" hidden=""><p class="tip-box">प्रतिअवकलज F में अंतराल पर F′=f; ∫f dx=F+C।</p><p class="tip-box">घात नियम में n≠−1। 1/x के लिए ln|x|+C, 0 छोड़ने वाले अंतरालों पर।</p><p class="tip-box">∫sin x dx=−cos x+C; ∫cos x dx=sin x+C; कोण रेडियन में।</p><p class="tip-box">प्रतिस्थापन शृंखला नियम उलटता है। निश्चित समाकल में सीमाएं भी बदलें।</p><p class="tip-box">खंडशः: ∫u dv=uv−∫v du। अंतिम उत्तर अवकलित करके जांचें।</p><p class="tip-box">आंशिक भिन्न: आवश्यकता पर भाग, गुणनखंडन, गुणांक हल, प्रांत अपवर्जन रखें।</p><p class="tip-box">a&gt;0 पर ∫dx/(x²+a²)=(1/a)tan⁻¹(x/a)+C।</p><p class="tip-box">[a,b] पर संतत f: ∫ₐᵇf dx=F(b)−F(a)। चिह्नयुक्त समाकल सदा ज्यामितीय क्षेत्रफल नहीं।</p></div><div class="lang-block" data-lang="en" hidden=""><p class="tip-box">An antiderivative F satisfies F′=f on an interval; ∫f dx=F+C.</p><p class="tip-box">Power rule needs n≠−1. For 1/x use ln|x|+C on intervals avoiding 0.</p><p class="tip-box">∫sin x dx=−cos x+C; ∫cos x dx=sin x+C; angles in radians.</p><p class="tip-box">Substitution reverses the chain rule. In definite integrals transform the bounds too.</p><p class="tip-box">Parts: ∫u dv=uv−∫v du. Differentiate your final answer to check it.</p><p class="tip-box">Partial fractions: divide if needed, factor, solve coefficients, and keep domain exclusions.</p><p class="tip-box">For a&gt;0: ∫dx/(x²+a²)=(1/a)tan⁻¹(x/a)+C.</p><p class="tip-box">Continuous f on [a,b]: ∫ₐᵇf dx=F(b)−F(a). Signed integral is not always geometric area.</p></div></section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> ∫(3x²−4) dx nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Linearity aur power rule lagao.</p><p>Steps: ∫3x² dx=x³; ∫(−4) dx=−4x.</p><p>Answer/check: x³−4x+C. Derivative 3x²−4 hai.</p></details></div><div class="jee-q"><span class="qn">Q2</span> ∫dx/x nikalo aur domain condition batao.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Exponent −1 power rule ka exception hai.</p><p>Steps: x≠0 par d(ln|x|)/dx=1/x.</p><p>Answer/check: ln|x|+C, aise interval par jisme 0 na ho. Separate intervals ke constants alag ho sakte hain.</p></details></div><div class="jee-q"><span class="qn">Q3</span> ∫2ˣ dx nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Positive base jo 1 nahi hai, uske ln se divide karo.</p><p>Steps: 2ˣ ka derivative 2ˣln 2 hai.</p><p>Answer/check: 2ˣ/ln 2+C. Differentiate karne par ln 2 cancel hota hai.</p></details></div><div class="jee-q"><span class="qn">Q4</span> ∫(sin x+cos x) dx nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Har derivative ko separately reverse karo, radians mein.</p><p>Steps: Sine integral −cos x; cosine integral sin x hai.</p><p>Answer/check: −cos x+sin x+C. Derivative sin x+cos x hai.</p></details></div><div class="jee-q"><span class="qn">Q5</span> ∫2x cos(x²) dx nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: u=x² lo.</p><p>Steps: du=2x dx, isliye ∫cos u du=sin u+C.</p><p>Answer/check: sin(x²)+C. Derivative 2x cos(x²) hai.</p></details></div><div class="jee-q"><span class="qn">Q6</span> ∫x eˣ dx nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Parts mein u=x, dv=eˣ dx lo.</p><p>Steps: du=dx, v=eˣ. Integral=x eˣ−∫eˣ dx.</p><p>Answer/check: eˣ(x−1)+C. Product-rule check: eˣ(x−1)+eˣ=x eˣ.</p></details></div><div class="jee-q"><span class="qn">Q7</span> ∫dx/[(x−1)(x−2)] nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Proper rational function ko partial fractions mein todo.</p><p>Steps: 1/[(x−1)(x−2)]=−1/(x−1)+1/(x−2).</p><p>Answer/check: ln|x−2|−ln|x−1|+C, 1 aur 2 avoid karne wale intervals par. Derivative original fraction deta hai.</p></details></div><div class="jee-q"><span class="qn">Q8</span> ∫dx/(x²+4x+5) nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Complete square karo.</p><p>Steps: x²+4x+5=(x+2)²+1. u=x+2, du=dx.</p><p>Answer/check: tan⁻¹(x+2)+C, har real x par. Derivative 1/[1+(x+2)²] hai.</p></details></div><div class="jee-q"><span class="qn">Q9</span> ∫₀¹2x cos(x²) dx nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: u=x² ke saath bounds badlo.</p><p>Steps: x=0 se u=0; x=1 se u=1. Integral=∫₀¹cos u du.</p><p>Answer/check: sin 1. Angle 1 radian hai. Direct check: [sin(x²)]₀¹=sin 1.</p></details></div><div class="jee-q"><span class="qn">Q10</span> ∫₋₁¹x dx aur wahan y=x, x-axis ke beech geometric area compare karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Signed contributions cancel ho sakte hain, area negative nahi.</p><p>Steps: Integral=[x²/2]₋₁¹=0. Area=∫₋₁⁰(−x) dx+∫₀¹x dx=1/2+1/2.</p><p>Answer/check: Signed integral 0; geometric area 1 square unit.</p></details></div><div class="tip-box">Integrable f par bounds reverse karne se sign badalta hai. [−a,a] par odd integrable function ka integral 0; even ka [0,a] wale integral ka double hai. Singularity ke paar cancellation mat lagao: [−1,1] par 1/x ordinary definite integral nahi. Yeh selected foundations aur das original questions hain, full textbook exercises ya full JEE preparation nahi. Repeated-factor partial fractions, lambe root/trig forms, general symmetry substitutions aur advanced integrals abhi cover nahi hain.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh201.pdf">Textbook Ch 7</a></p></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> ∫(3x²−4) dx निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: रैखिकता और घात नियम लगाएं।</p><p>चरण: ∫3x² dx=x³; ∫(−4) dx=−4x।</p><p>उत्तर/जांच: x³−4x+C। अवकलज 3x²−4 है।</p></details></div><div class="jee-q"><span class="qn">Q2</span> ∫dx/x निकालें और प्रांत की शर्त बताएं।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: घात −1 घात-नियम का अपवाद है।</p><p>चरण: x≠0 पर d(ln|x|)/dx=1/x।</p><p>उत्तर/जांच: ln|x|+C, ऐसे अंतराल पर जिसमें 0 न हो। अलग अंतरालों के अचर अलग हो सकते हैं।</p></details></div><div class="jee-q"><span class="qn">Q3</span> ∫2ˣ dx निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: धनात्मक आधार जो 1 नहीं है, उसके ln से भाग दें।</p><p>चरण: 2ˣ का अवकलज 2ˣln 2 है।</p><p>उत्तर/जांच: 2ˣ/ln 2+C। अवकलित करने पर ln 2 कटता है।</p></details></div><div class="jee-q"><span class="qn">Q4</span> ∫(sin x+cos x) dx निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: हर अवकलज अलग उलटें, रेडियन में।</p><p>चरण: ज्या समाकल −cos x; कोज्या समाकल sin x है।</p><p>उत्तर/जांच: −cos x+sin x+C। अवकलज sin x+cos x है।</p></details></div><div class="jee-q"><span class="qn">Q5</span> ∫2x cos(x²) dx निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: u=x² लें।</p><p>चरण: du=2x dx, इसलिए ∫cos u du=sin u+C।</p><p>उत्तर/जांच: sin(x²)+C। अवकलज 2x cos(x²) है।</p></details></div><div class="jee-q"><span class="qn">Q6</span> ∫x eˣ dx निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: खंडशः में u=x, dv=eˣ dx लें।</p><p>चरण: du=dx, v=eˣ। समाकल=x eˣ−∫eˣ dx।</p><p>उत्तर/जांच: eˣ(x−1)+C। गुणनफल-नियम जांच: eˣ(x−1)+eˣ=x eˣ।</p></details></div><div class="jee-q"><span class="qn">Q7</span> ∫dx/[(x−1)(x−2)] निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: उचित परिमेय फलन को आंशिक भिन्नों में बांटें।</p><p>चरण: 1/[(x−1)(x−2)]=−1/(x−1)+1/(x−2)।</p><p>उत्तर/जांच: ln|x−2|−ln|x−1|+C, 1 और 2 छोड़ने वाले अंतरालों पर। अवकलज मूल भिन्न देता है।</p></details></div><div class="jee-q"><span class="qn">Q8</span> ∫dx/(x²+4x+5) निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: पूर्ण वर्ग बनाएं।</p><p>चरण: x²+4x+5=(x+2)²+1। u=x+2, du=dx।</p><p>उत्तर/जांच: tan⁻¹(x+2)+C, हर वास्तविक x पर। अवकलज 1/[1+(x+2)²] है।</p></details></div><div class="jee-q"><span class="qn">Q9</span> ∫₀¹2x cos(x²) dx निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: u=x² के साथ सीमाएं बदलें।</p><p>चरण: x=0 से u=0; x=1 से u=1। समाकल=∫₀¹cos u du।</p><p>उत्तर/जांच: sin 1। कोण 1 रेडियन है। सीधी जांच: [sin(x²)]₀¹=sin 1।</p></details></div><div class="jee-q"><span class="qn">Q10</span> ∫₋₁¹x dx और वहां y=x, x-अक्ष के बीच ज्यामितीय क्षेत्रफल की तुलना करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: चिह्नयुक्त योगदान कट सकते हैं, क्षेत्रफल ऋणात्मक नहीं।</p><p>चरण: समाकल=[x²/2]₋₁¹=0। क्षेत्रफल=∫₋₁⁰(−x) dx+∫₀¹x dx=1/2+1/2।</p><p>उत्तर/जांच: चिह्नयुक्त समाकल 0; ज्यामितीय क्षेत्रफल 1 वर्ग इकाई।</p></details></div><div class="tip-box">समाकलनीय f पर सीमाएं उलटने से चिह्न बदलता है। [−a,a] पर विषम समाकलनीय फलन का समाकल 0; सम का [0,a] वाले समाकल का दुगुना है। विलक्षण बिंदु के पार निरसन न लगाएं: [−1,1] पर 1/x साधारण निश्चित समाकल नहीं। ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली या पूरी JEE तैयारी नहीं। आवृत्त गुणनखंड वाले आंशिक भिन्न, लंबे मूल/त्रिकोणमितीय रूप, सामान्य सममिति प्रतिस्थापन और उन्नत समाकल अभी शामिल नहीं हैं।</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh201.pdf">Textbook Ch 7</a></p></div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> Evaluate ∫(3x²−4) dx.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use linearity and the power rule.</p><p>Steps: ∫3x² dx=x³; ∫(−4) dx=−4x.</p><p>Answer/check: x³−4x+C. Its derivative is 3x²−4.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Evaluate ∫dx/x and state a domain condition.<details class="jee-sol"><summary>Show answer</summary><p>Rule: The exponent −1 is the power-rule exception.</p><p>Steps: d(ln|x|)/dx=1/x for x≠0.</p><p>Answer/check: ln|x|+C on any interval not containing 0. Separate intervals may use different constants.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Evaluate ∫2ˣ dx.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Divide by ln of the positive base, which is not 1.</p><p>Steps: The derivative of 2ˣ is 2ˣln 2.</p><p>Answer/check: 2ˣ/ln 2+C. Differentiation cancels ln 2.</p></details></div><div class="jee-q"><span class="qn">Q4</span> Evaluate ∫(sin x+cos x) dx.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Reverse each derivative separately, in radians.</p><p>Steps: The sine integral is −cos x; the cosine integral is sin x.</p><p>Answer/check: −cos x+sin x+C. Differentiation gives sin x+cos x.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Evaluate ∫2x cos(x²) dx.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Let u=x².</p><p>Steps: du=2x dx, so the integral becomes ∫cos u du=sin u+C.</p><p>Answer/check: sin(x²)+C. Its derivative is 2x cos(x²).</p></details></div><div class="jee-q"><span class="qn">Q6</span> Evaluate ∫x eˣ dx.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use parts with u=x, dv=eˣ dx.</p><p>Steps: du=dx, v=eˣ. Integral=x eˣ−∫eˣ dx.</p><p>Answer/check: eˣ(x−1)+C. Product-rule check: eˣ(x−1)+eˣ=x eˣ.</p></details></div><div class="jee-q"><span class="qn">Q7</span> Evaluate ∫dx/[(x−1)(x−2)].<details class="jee-sol"><summary>Show answer</summary><p>Rule: Split the proper rational function into partial fractions.</p><p>Steps: 1/[(x−1)(x−2)]=−1/(x−1)+1/(x−2).</p><p>Answer/check: ln|x−2|−ln|x−1|+C on intervals avoiding 1 and 2. The derivative recombines to the original fraction.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Evaluate ∫dx/(x²+4x+5).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Complete the square.</p><p>Steps: x²+4x+5=(x+2)²+1. Set u=x+2, du=dx.</p><p>Answer/check: tan⁻¹(x+2)+C, for every real x. Its derivative is 1/[1+(x+2)²].</p></details></div><div class="jee-q"><span class="qn">Q9</span> Evaluate ∫₀¹2x cos(x²) dx.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Change the bounds with u=x².</p><p>Steps: x=0 gives u=0; x=1 gives u=1. Integral=∫₀¹cos u du.</p><p>Answer/check: sin 1. The angle 1 is in radians. Direct check: [sin(x²)]₀¹=sin 1.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Compare ∫₋₁¹x dx with the geometric area between y=x and the x-axis there.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Signed contributions can cancel; area cannot be negative.</p><p>Steps: Integral=[x²/2]₋₁¹=0. Area=∫₋₁⁰(−x) dx+∫₀¹x dx=1/2+1/2.</p><p>Answer/check: Signed integral 0; geometric area 1 square unit.</p></details></div><div class="tip-box">For integrable f, reversing bounds changes the sign. On symmetric [−a,a], an odd integrable function has integral 0; an even one has twice the integral on [0,a]. Do not apply cancellation across a singularity: 1/x is not an ordinary definite integral on [−1,1]. These notes and ten original questions are selected foundations, not full textbook exercises or full JEE preparation. Repeated-factor partial fractions, longer root/trig forms, general symmetry substitutions and advanced integrals remain outside this pass.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh201.pdf">Textbook Ch 7</a></p></div></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-8/">Application of Integrals</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-8/">Application of Integrals</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
