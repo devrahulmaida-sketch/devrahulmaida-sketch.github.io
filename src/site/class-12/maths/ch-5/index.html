@@ -1,354 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 5 — Continuity and Differentiability | Class 12 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 12 Maths Chapter 5: Continuity and Differentiability — long + short notes in Hindi, English, Hinglish. Continuity, differentiability, chain rule, implicit, logarithmic, parametric differentiation, second order derivatives.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 12 Maths Chapter 5: Continuity and Differentiability — long + short notes in Hindi, English, Hinglish. Continuity, differentiability, chain rule, implicit, logarithmic, parametric differentiation, second order derivatives." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:1rem;line-height:1.75;padding:.75rem;background:#f5f7fb;border:1px solid #d6e1f1;border-radius:4px} #practice .jee-q{overflow-wrap:anywhere} #practice summary{font-size:1rem} #notes .note-sec p{line-height:1.8}</style><style>#notes p,#short-notes p{overflow-wrap:anywhere}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 5</p>
-  <h1>Continuity and Differentiability</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">संतत्य तथा अवकलनीयता</p>
-  <p style="color:var(--muted);margin-top:6px">LHL-RHL se lekar chain rule aur second derivatives tak — calculus ka engine</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video available</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 5</p>
+<h1>Continuity and Differentiability</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">संतत्य तथा अवकलनीयता</p>
+<p style="color:var(--muted);margin-top:6px">LHL-RHL se lekar chain rule aur second derivatives tak — calculus ka engine</p>
+<div class="ch-tags">
+<span class="pill weight-high">JEE Weightage: HIGH</span>
+<span class="pill">Video available</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Continuity and Differentiability - Class 12 Maths Short - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Continuity and Differentiability - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/dvRyhHpmeGs" title="Continuity and Differentiability - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/dvRyhHpmeGs" title="Continuity and Differentiability - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/dvRyhHpmeGs" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Continuity and Differentiability - Class 12 Maths Short - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Continuity and Differentiability - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/dvRyhHpmeGs" title="Continuity and Differentiability - Class 12 Maths Short"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/dvRyhHpmeGs" title="Continuity and Differentiability - Class 12 Maths Short"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/dvRyhHpmeGs" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Continuity and Differentiability - Class 12 Mathematics Short 2 - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Continuity and Differentiability - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player2" class="yt-embed" src="https://www.youtube.com/embed/QSLMJ2tXJQE" title="Continuity and Differentiability - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player2" class="yt-embed" src="https://www.youtube.com/embed/QSLMJ2tXJQE" title="Continuity and Differentiability - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/QSLMJ2tXJQE" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Continuity and Differentiability - Class 12 Mathematics Short 2 - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Continuity and Differentiability - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QSLMJ2tXJQE" title="Continuity and Differentiability - Class 12 Mathematics Short 2"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QSLMJ2tXJQE" title="Continuity and Differentiability - Class 12 Mathematics Short 2"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/QSLMJ2tXJQE" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Continuity and Differentiability 5 animated scenes mein - continuity tester (pen-lift!), differentiability vs continuity corner machine, chain rule onion peeler, log+implicit lab, aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Continuity and Differentiability 5 animated scenes mein - continuity tester (pen-lift!), differentiability vs continuity corner machine, chain rule onion peeler, log+implicit lab, aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Selected foundations" data-hi="चुनी हुई बुनियादें" data-hinglish="Selected foundations">Selected foundations</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Continuity — Bina Break Ka Function ⭐⭐</h3>
-    <ul>
-<li><b>Intuition:</b> graph bina pen uthaye ban jaaye to function continuous hai — koi jump, hole ya break nahi.</li>
-<li><b>Definition ⭐⭐:</b> f, x = a pe <b>continuous</b> hai agar <b>lim(x→a) f(x) = f(a)</b> — limit ka value = function ka value. Teen cheezein chahiye: limit EXISTS, f(a) DEFINED, dono EQUAL.</li>
-<li><b>LHL = RHL check ⭐:</b> limit exist karne ke liye Left Hand Limit = Right Hand Limit hona chahiye. Dono nikalo, compare karo!</li>
-<li>Example: f(x) = |x| at x = 0: LHL = RHL = 0 = f(0) → <b>continuous</b>. (Par differentiable nahi — aage dekho!)</li>
-<li>Polynomials, sin x, cos x, eˣ HAR JAGAH continuous hain — ye standard results free me use karo.</li>
-</ul>
-<p class="small-note">💡 Feel: continuous = road bina speed-breaker. Pen uthaana pada to wahan discontinuity hai!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Discontinuity Ke Types aur Continuous Functions Ka Algebra</h3>
-    <ul>
-<li><b>Jump discontinuity:</b> LHL ≠ RHL — graph ek level se doosre pe "kood" jaata hai (greatest integer function [x] har integer pe!).</li>
-<li><b>Missing point:</b> limit exists par f(a) defined nahi ya alag — graph me ek chhota hole.</li>
-<li><b>Infinite discontinuity:</b> function point ke paas ±∞ ko udd jaata hai (1/x at x = 0).</li>
-<li><b>Algebra ⭐:</b> continuous functions ka sum, difference, product, scalar multiple sab continuous. Quotient bhi — jahan denominator ≠ 0.</li>
-<li><b>Composite:</b> g continuous at a + f continuous at g(a) → fog continuous at a.</li>
-<li>Interval pe continuous = us interval ke HAR point pe continuous.</li>
-</ul>
-<p class="small-note">🎯 [x] (greatest integer) har integer pe discontinuous; {x} (fractional part) bhi. Boards ka favourite example!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Differentiability — Slope Har Jagah ⭐⭐</h3>
-    <ul>
-<li><b>Definition ⭐:</b> f′(a) = lim(h→0) [f(a+h) − f(a)]/h — ye limit EXIST kare to f, a pe differentiable hai. Matlab us point pe unique tangent/slope hai.</li>
-<li><b>Differentiable ⟹ Continuous ⭐⭐:</b> differentiable hai to continuous ZAROOR hai. Par ULTA TRUE NAHI — continuous hai to differentiable ho, ye guarantee nahi!</li>
-<li><b>|x| at x = 0 ⭐:</b> continuous HAI (LHL = RHL = 0), par differentiable NAHI — left slope −1, right slope +1, dono alag → sharp corner!</li>
-<li>Corner, cusp, vertical tangent ya break — in sab points pe differentiability fail hoti hai.</li>
-<li>Standard: polynomials, sin x, cos x, eˣ har jagah differentiable. |x|, [x] apne break/corner points pe nahi.</li>
-</ul>
-<p class="small-note">🎯 Yaad rakhne ka flow: Differentiable → Continuous → (ulta galat!). |x| at 0 = classic counterexample, exam me pakka aata hai.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Differentiation Ke Rules — Chain, Implicit, Log ⭐⭐</h3>
-    <ul>
-<li><b>Chain rule ⭐⭐:</b> d/dx[f(g(x))] = f′(g(x))·g′(x) — bahar wale ka derivative × andar wale ka derivative. Example: d/dx sin(x²) = cos(x²)·2x.</li>
-<li><b>Implicit differentiation ⭐:</b> jab y alag na ho sake (x² + y² = 25), dono taraf x ke respect me differentiate karo, y ke terms me dy/dx lagao, phir solve karo.</li>
-<li><b>Exponential/Log ⭐:</b> d/dx eˣ = eˣ; d/dx aˣ = aˣ·ln a; d/dx ln x = 1/x; d/dx logₐx = 1/(x ln a).</li>
-<li><b>Logarithmic differentiation ⭐⭐:</b> jab power me bhi x ho (xˣ, (sin x)^(cos x)) — dono taraf ln lo, power neeche utaro, phir differentiate karo. y = xˣ → dy/dx = xˣ(1 + ln x).</li>
-<li><b>Parametric ⭐:</b> x = f(t), y = g(t) → dy/dx = (dy/dt)/(dx/dt).</li>
-</ul>
-<p class="small-note">💡 Chain rule = "peel the onion" — sabse bahar wala layer pehle, andar tak ek-ek layer.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Second Order Derivatives aur Syllabus Note</h3>
-    <ul>
-<li><b>Second derivative ⭐:</b> derivative ka derivative — d²y/dx² = d/dx(dy/dx). Pehla slope batata hai, doosra slope ki CHANGE RATE (concavity!).</li>
-<li>Parametric me d²y/dx² = d/dx(dy/dx) — dy/dx ko phir se x ke respect me differentiate karo (dy/dt, dx/dt use karke), common mistake: sirf t ke respect me kar dena!</li>
-<li><b>Syllabus note ⭐:</b> <b>Rolle's Theorem aur Lagrange's Mean Value Theorem</b> rationalized NCERT se <b>DELETE</b> ho chuke hain — unke statements/proofs ab nahi padhne.</li>
-<li>Inverse trig functions ke derivatives (d/dx sin⁻¹x = 1/√(1−x²) etc.) chapter me hain — integration me bhi yahi reuse hote hain.</li>
-<li>Board pattern: ek chain-rule 2-marker, ek implicit/log-differentiation 3-marker, ek second-order/parametric 5-marker — ye trio fixed hai.</li>
-</ul>
-<p class="small-note">🎯 d²y/dx² me galati 90% students karte hain parametric case me — formula: d/dt(dy/dx) ÷ dx/dt. Practice se pakka karo!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ संतत्य — बिना ब्रेक का फलन ⭐⭐</h3>
-    <ul>
-<li><b>अंतर्ज्ञान:</b> आलेख बिना कलम उठाए बन जाए तो फलन <b>संतत (continuous)</b> है — कोई छलांग या छिद्र नहीं।</li>
-<li><b>परिभाषा ⭐⭐:</b> f, x = a पर संतत है यदि <b>lim(x→a) f(x) = f(a)</b> — तीन शर्तें: सीमा का अस्तित्व, f(a) परिभाषित, दोनों बराबर।</li>
-<li><b>LHL = RHL जांच ⭐:</b> सीमा के लिए बायीं और दायीं सीमा बराबर होनी चाहिए।</li>
-<li>उदाहरण: f(x) = |x|, x = 0 पर: LHL = RHL = 0 = f(0) → <b>संतत</b>।</li>
-<li>बहुपद, sin x, cos x, eˣ <b>सर्वत्र</b> संतत हैं।</li>
-</ul>
-<p class="small-note">💡 संतत = बिना उभार की सड़क। कलम उठानी पड़ी तो असंतत्य!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ असंतत्य के प्रकार और संतत फलनों का बीजगणित</h3>
-    <ul>
-<li><b>छलांग असंतत्य:</b> LHL ≠ RHL — आलेख "कूद" जाता है (महत्तम पूर्णांक फलन [x] प्रत्येक पूर्णांक पर!)।</li>
-<li><b>छिद्र:</b> सीमा है पर f(a) परिभाषित नहीं या भिन्न।</li>
-<li><b>अनंत असंतत्य:</b> बिंदु के पास फलन ±∞ की ओर (1/x, x = 0 पर)।</li>
-<li><b>बीजगणित ⭐:</b> संतत फलनों का योग, अंतर, गुणनफल, अदिश गुणक सब संतत। भागफल भी — जहां हर ≠ 0।</li>
-<li><b>संयुक्त फलन:</b> g, a पर संतत + f, g(a) पर संतत → fog, a पर संतत।</li>
-</ul>
-<p class="small-note">🎯 [x] और {x} प्रत्येक पूर्णांक पर असंतत — बोर्ड का प्रिय उदाहरण!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ अवकलनीयता — हर जगह ढलान ⭐⭐</h3>
-    <ul>
-<li><b>परिभाषा ⭐:</b> f′(a) = lim(h→0) [f(a+h) − f(a)]/h — यह सीमा <b>मौजूद</b> हो तो f, a पर अवकलनीय।</li>
-<li><b>अवकलनीय ⟹ संतत ⭐⭐:</b> अवकलनीय है तो संतत <b>अवश्य</b>। पर उल्टा सत्य <b>नहीं</b>!</li>
-<li><b>|x|, x = 0 पर ⭐:</b> संतत <b>है</b>, पर अवकलनीय <b>नहीं</b> — बायां ढलान −1, दायां +1 → तीखा कोना!</li>
-<li>कोना, शिखर (cusp), ऊर्ध्व स्पर्शरेखा या ब्रेक — सभी पर अवकलनीयता विफल।</li>
-<li>बहुपद, sin x, cos x, eˣ सर्वत्र अवकलनीय।</li>
-</ul>
-<p class="small-note">🎯 प्रवाह: अवकलनीय → संतत → (उल्टा गलत!)। |x|, 0 पर = क्लासिक प्रत्युदाहरण।</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ अवकलन के नियम — श्रृंखला, अप्रत्यक्ष, लघुगणक ⭐⭐</h3>
-    <ul>
-<li><b>श्रृंखला नियम ⭐⭐:</b> d/dx[f(g(x))] = f′(g(x))·g′(x)। उदाहरण: d/dx sin(x²) = cos(x²)·2x।</li>
-<li><b>अप्रत्यक्ष अवकलन ⭐:</b> y अलग न हो सके (x² + y² = 25) तो दोनों ओर x के सापेक्ष अवकलन करो, फिर dy/dx निकालो।</li>
-<li><b>चरघातांकी/लघुगणक ⭐:</b> d/dx eˣ = eˣ; d/dx aˣ = aˣ·ln a; d/dx ln x = 1/x।</li>
-<li><b>लघुगणकीय अवकलन ⭐⭐:</b> घात में x हो (xˣ) तो दोनों ओर ln लो। y = xˣ → dy/dx = <b>xˣ(1 + ln x)</b>।</li>
-<li><b>प्राचलिक ⭐:</b> x = f(t), y = g(t) → dy/dx = (dy/dt)/(dx/dt)।</li>
-</ul>
-<p class="small-note">💡 श्रृंखला नियम = "प्याज छीलो" — बाहरी परत पहले, फिर अंदर एक-एक परत।</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ द्वितीय-कोटि अवकलज और पाठ्यक्रम टिप्पणी</h3>
-    <ul>
-<li><b>द्वितीय अवकलज ⭐:</b> अवकलज का अवकलज — d²y/dx² = d/dx(dy/dx)। ढलान की <b>परिवर्तन दर</b> बताता है।</li>
-<li>प्राचलिक में d²y/dx² = d/dt(dy/dx) ÷ dx/dt — सामान्य गलती: केवल t के सापेक्ष कर देना!</li>
-<li><b>पाठ्यक्रम टिप्पणी ⭐:</b> <b>रोले का प्रमेय और लाग्रांज का मध्यमान प्रमेय</b> NCERT से <b>हटाए गए</b> हैं।</li>
-<li>प्रतिलोम त्रिकोणमितीय फलनों के अवकलज (d/dx sin⁻¹x = 1/√(1−x²)) समाकलन में भी काम आते हैं।</li>
-</ul>
-<p class="small-note">🎯 प्राचलिक द्वितीय अवकलज में 90% गलती — सूत्र अभ्यास से पक्का करो!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Continuity — A Function Without Breaks ⭐⭐</h3>
-    <ul>
-<li><b>Intuition:</b> if you can draw the graph without lifting your pen, the function is continuous — no jumps, holes or breaks.</li>
-<li><b>Definition ⭐⭐:</b> f is <b>continuous</b> at x = a if <b>lim(x→a) f(x) = f(a)</b> — three things must hold: the limit EXISTS, f(a) is DEFINED, and the two are EQUAL.</li>
-<li><b>LHL = RHL check ⭐:</b> for the limit to exist, the Left Hand Limit must equal the Right Hand Limit. Compute both, compare!</li>
-<li>Example: f(x) = |x| at x = 0: LHL = RHL = 0 = f(0) → <b>continuous</b>. (But not differentiable — see ahead!)</li>
-<li>Polynomials, sin x, cos x, eˣ are continuous EVERYWHERE — use these standard results freely.</li>
-</ul>
-<p class="small-note">💡 Feel: continuous = a road without speed-breakers. If you had to lift the pen, there is a discontinuity there!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Types of Discontinuity and the Algebra of Continuous Functions</h3>
-    <ul>
-<li><b>Jump discontinuity:</b> LHL ≠ RHL — the graph "jumps" from one level to another (the greatest integer function [x] at every integer!).</li>
-<li><b>Missing point:</b> the limit exists but f(a) is undefined or different — a small hole in the graph.</li>
-<li><b>Infinite discontinuity:</b> the function shoots to ±∞ near the point (1/x at x = 0).</li>
-<li><b>Algebra ⭐:</b> sums, differences, products and scalar multiples of continuous functions are continuous. Quotients too — wherever the denominator ≠ 0.</li>
-<li><b>Composite:</b> g continuous at a + f continuous at g(a) → fog continuous at a.</li>
-<li>Continuous on an interval = continuous at EVERY point of that interval.</li>
-</ul>
-<p class="small-note">🎯 [x] (greatest integer) is discontinuous at every integer; {x} (fractional part) too. A board favourite!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Differentiability — A Slope Everywhere ⭐⭐</h3>
-    <ul>
-<li><b>Definition ⭐:</b> f′(a) = lim(h→0) [f(a+h) − f(a)]/h — if this limit EXISTS, f is differentiable at a. It means a unique tangent/slope exists there.</li>
-<li><b>Differentiable ⟹ Continuous ⭐⭐:</b> differentiability forces continuity. The CONVERSE is NOT true — continuity alone guarantees nothing!</li>
-<li><b>|x| at x = 0 ⭐:</b> continuous YES (LHL = RHL = 0), differentiable NO — left slope −1, right slope +1, a sharp corner!</li>
-<li>Corner, cusp, vertical tangent or break — differentiability fails at all such points.</li>
-<li>Standard: polynomials, sin x, cos x, eˣ are differentiable everywhere. |x|, [x] fail at their break/corner points.</li>
-</ul>
-<p class="small-note">🎯 Flow to remember: Differentiable → Continuous → (reverse is false!). |x| at 0 is the classic counterexample, guaranteed in exams.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Differentiation Rules — Chain, Implicit, Log ⭐⭐</h3>
-    <ul>
-<li><b>Chain rule ⭐⭐:</b> d/dx[f(g(x))] = f′(g(x))·g′(x) — derivative of the outer × derivative of the inner. Example: d/dx sin(x²) = cos(x²)·2x.</li>
-<li><b>Implicit differentiation ⭐:</b> when y cannot be isolated (x² + y² = 25), differentiate both sides with respect to x, attach dy/dx to y-terms, then solve.</li>
-<li><b>Exponential/Log ⭐:</b> d/dx eˣ = eˣ; d/dx aˣ = aˣ·ln a; d/dx ln x = 1/x; d/dx logₐx = 1/(x ln a).</li>
-<li><b>Logarithmic differentiation ⭐⭐:</b> when x sits in the power (xˣ, (sin x)^(cos x)) — take ln on both sides, bring the power down, then differentiate. y = xˣ → dy/dx = xˣ(1 + ln x).</li>
-<li><b>Parametric ⭐:</b> x = f(t), y = g(t) → dy/dx = (dy/dt)/(dx/dt).</li>
-</ul>
-<p class="small-note">💡 Chain rule = "peel the onion" — outermost layer first, then one layer at a time inward.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Second Order Derivatives and Syllabus Note</h3>
-    <ul>
-<li><b>Second derivative ⭐:</b> the derivative of the derivative — d²y/dx² = d/dx(dy/dx). The first gives the slope; the second gives the slope's RATE OF CHANGE (concavity!).</li>
-<li>In parametric form d²y/dx² = d/dx(dy/dx) — differentiate dy/dx with respect to x again (using dy/dt, dx/dt); common mistake: differentiating only with respect to t!</li>
-<li><b>Syllabus note ⭐:</b> <b>Rolle's Theorem and Lagrange's Mean Value Theorem</b> are <b>DELETED</b> from rationalized NCERT — skip their statements and proofs.</li>
-<li>Derivatives of inverse trig functions (d/dx sin⁻¹x = 1/√(1−x²) etc.) are in the chapter — the same results get reused in integration.</li>
-<li>Board pattern: one chain-rule 2-marker, one implicit/log-differentiation 3-marker, one second-order/parametric 5-marker — this trio is fixed.</li>
-</ul>
-<p class="small-note">🎯 90% of mistakes in d²y/dx² happen in the parametric case — the formula is d/dt(dy/dx) ÷ dx/dt. Drill it!</p>
-  </div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Continuity mein limit aur value milao</h3><p>Interval domain ke interior point a par continuity ka matlab LHL, RHL aur f(a) teeno exist karein aur equal hon. LHL/RHL nearby values hain; f(a) point ki actual value hai.</p><p>Example: x≠1 par f(x)=(x²−1)/(x−1), aur f(1)=k. Paas ke x≠1 par f(x)=x+1, isliye 1 par dono limits 2 hain. Continuity ke liye k=2. Cancel karne se original quotient 1 par defined nahi ho jata.</p><p>Closed interval ke endpoint par interval ke andar se limit lo. Jaise √x, [0,∞) par 0 mein right-hand limit se continuous hai. Left mein real values zaroori nahi.</p></div><div class="note-sec"><h3>2. Limit rule se pehle domain check</h3><p>Polynomials real line par continuous hain. Rational functions wahan continuous hain jahan denominator nonzero hai; ln x ka domain x&gt;0 hai. Formula apne domain par continuous ho sakta hai bina har real number par defined hue.</p><p>Sum, difference aur product common point par continuity preserve karte hain. Quotient mein wahan denominator nonzero bhi chahiye. f(g(x)) ke liye g, a par continuous ho aur f, g(a) par continuous ho.</p><p>Jump mein one-sided limits alag hain. Removable break mein limit exist karti hai, par point value missing ya alag hai. Pen na uthana wali picture se domain aur limits ki actual check replace mat karo.</p></div><div class="note-sec"><h3>3. Differentiability zyada strong condition hai</h3><p>Interior point a par f′(a)=h→0 ki limit [f(a+h)−f(a)]/h hai, jab limit finite real number ho. Left aur right difference-quotient limits equal chahiye.</p><p>Differentiable hone se continuous hona milta hai; ulta zaroori nahi. f(x)=|x| ke liye 0 par function limits aur f(0) sab 0 hain; left derivative −1, right derivative 1 hai.</p><p>Isliye |x|, 0 par continuous hai par differentiable nahi. Vertical tangent bhi finite derivative nahi deta. Function values ki limit aur difference quotients ki limit alag checks hain.</p></div><div class="note-sec"><h3>4. Chain, implicit aur logarithmic rules</h3><p>Chain rule: [f(g(x))]′=f′(g(x))g′(x), jab required derivatives exist karein. Example: [sin(x²)]′=2x cos(x²). Yahan trig derivative formulas radians mein hain.</p><p>x²+y²=25 ko differentiable branch y(x) par differentiate karo: 2x+2y y′=0. y≠0 par y′=−x/y. (3,4) par slope −3/4 hai. y=0 par divide mat karo.</p><p>x&gt;0 par y=xˣ positive hai, isliye ln y=x ln x. Differentiate: y′/y=ln x+1, yani y′=xˣ(ln x+1). (aˣ)′=aˣln a ke liye a&gt;0; (logₐx)′=1/(x ln a) ke liye x&gt;0, a&gt;0, a≠1.</p></div><div class="note-sec"><h3>5. Inverse-trig derivative ka domain</h3><p>−1&lt;x&lt;1 par (sin⁻¹x)′=1/√(1−x²), (cos⁻¹x)′=−1/√(1−x²). Har real x par (tan⁻¹x)′=1/(1+x²). sin⁻¹ inverse sine hai, 1/sin nahi.</p><p>Inner function par chain rule lagao. y=sin⁻¹(2x) ka y′=2/√(1−4x²), valid jab −1/2&lt;x&lt;1/2. Function endpoints par bhi defined hai, par yeh finite derivative formula nahi.</p><p>y=tan⁻¹(x²) ka y′=2x/(1+x⁴), har real x par valid. Inner derivative mat bhoolo aur final expression ki valid range batao.</p></div><div class="note-sec"><h3>6. Parametric aur second derivatives</h3><p>x=f(t), y=g(t) par dy/dx=g′(t)/f′(t), jab f′(t)≠0. dx/dt=0 ho to quotient use nahi kar sakte; curve ko aur check kiye bina value mat bolo.</p><p>Phir x ke respect mein differentiate karo: d²y/dx²=[d/dt(dy/dx)]/(dx/dt), jab derivatives exist hon aur dx/dt≠0. x=t², y=t³, t≠0 par dy/dx=3t/2 aur d²y/dx²=3/(4t).</p><p>Ordinary y=x³ ka y′=3x², y″=6x hai. Yeh selected foundations aur das original questions hain, full textbook exercises ya full JEE preparation nahi. Formal proofs, baaki inverse-trig derivatives, lambe piecewise cases aur wider theorem applications abhi cover nahi hain.</p></div></div><div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. सांतत्य में सीमा और मान मिलाएं</h3><p>अंतराल प्रांत के आंतरिक बिंदु a पर सांतत्य का अर्थ बाईं सीमा, दाईं सीमा और f(a) तीनों विद्यमान तथा समान हों। सीमाएं पास के मान बताती हैं; f(a) बिंदु का वास्तविक मान है।</p><p>उदाहरण: x≠1 पर f(x)=(x²−1)/(x−1), और f(1)=k। पास के x≠1 पर f(x)=x+1, इसलिए 1 पर दोनों सीमाएं 2 हैं। सांतत्य के लिए k=2। काटने से मूल भागफल 1 पर परिभाषित नहीं हो जाता।</p><p>बंद अंतराल के सिरे पर अंतराल के अंदर से सीमा लें। जैसे √x, [0,∞) पर 0 में दाईं सीमा से संतत है। बाईं ओर वास्तविक मान आवश्यक नहीं हैं।</p></div><div class="note-sec"><h3>2. सीमा नियम से पहले प्रांत जांचें</h3><p>बहुपद वास्तविक रेखा पर संतत हैं। परिमेय फलन वहां संतत हैं जहां हर अशून्य है; ln x का प्रांत x&gt;0 है। सूत्र अपने प्रांत पर संतत हो सकता है बिना हर वास्तविक संख्या पर परिभाषित हुए।</p><p>योग, अंतर और गुणनफल उभयनिष्ठ बिंदु पर सांतत्य बनाए रखते हैं। भागफल में वहां हर अशून्य भी चाहिए। f(g(x)) के लिए g, a पर संतत हो और f, g(a) पर संतत हो।</p><p>कूद में एकपक्षीय सीमाएं अलग होती हैं। हट सकने वाले असांतत्य में सीमा है, पर बिंदु मान अनुपस्थित या अलग है। कलम न उठाने की तस्वीर से प्रांत और सीमाओं की वास्तविक जांच न बदलें।</p></div><div class="note-sec"><h3>3. अवकलनीयता अधिक मजबूत शर्त है</h3><p>आंतरिक बिंदु a पर f′(a)=h→0 की सीमा [f(a+h)−f(a)]/h है, जब सीमा परिमित वास्तविक संख्या हो। बाएं और दाएं अंतर-भागफल की सीमाएं समान चाहिए।</p><p>अवकलनीयता से सांतत्य मिलता है; उलटा आवश्यक नहीं। f(x)=|x| के लिए 0 पर फलन सीमाएं और f(0) सभी 0 हैं; बायां अवकलज −1, दायां अवकलज 1 है।</p><p>इसलिए |x|, 0 पर संतत है पर अवकलनीय नहीं। ऊर्ध्वाधर स्पर्शरेखा भी परिमित अवकलज नहीं देती। फलन मानों की सीमा और अंतर-भागफलों की सीमा अलग जांच हैं।</p></div><div class="note-sec"><h3>4. शृंखला, अप्रत्यक्ष और लघुगणकीय नियम</h3><p>शृंखला नियम: [f(g(x))]′=f′(g(x))g′(x), जब आवश्यक अवकलज हों। उदाहरण: [sin(x²)]′=2x cos(x²)। यहां त्रिकोणमितीय अवकलज सूत्र रेडियन में हैं।</p><p>x²+y²=25 को अवकलनीय शाखा y(x) पर अवकलित करें: 2x+2y y′=0। y≠0 पर y′=−x/y। (3,4) पर ढाल −3/4 है। y=0 पर भाग न दें।</p><p>x&gt;0 पर y=xˣ धनात्मक है, इसलिए ln y=x ln x। अवकलन: y′/y=ln x+1, अर्थात y′=xˣ(ln x+1)। (aˣ)′=aˣln a के लिए a&gt;0; (logₐx)′=1/(x ln a) के लिए x&gt;0, a&gt;0, a≠1।</p></div><div class="note-sec"><h3>5. प्रतिलोम त्रिकोणमितीय अवकलज का प्रांत</h3><p>−1&lt;x&lt;1 पर (sin⁻¹x)′=1/√(1−x²), (cos⁻¹x)′=−1/√(1−x²)। हर वास्तविक x पर (tan⁻¹x)′=1/(1+x²)। sin⁻¹ प्रतिलोम ज्या है, 1/sin नहीं।</p><p>भीतरी फलन पर शृंखला नियम लगाएं। y=sin⁻¹(2x) का y′=2/√(1−4x²), मान्य जब −1/2&lt;x&lt;1/2। फलन सिरों पर भी परिभाषित है, पर यह परिमित अवकलज सूत्र नहीं।</p><p>y=tan⁻¹(x²) का y′=2x/(1+x⁴), हर वास्तविक x पर मान्य। भीतरी अवकलज न भूलें और अंतिम व्यंजक का मान्य प्रांत बताएं।</p></div><div class="note-sec"><h3>6. प्राचलिक और द्वितीय अवकलज</h3><p>x=f(t), y=g(t) पर dy/dx=g′(t)/f′(t), जब f′(t)≠0। dx/dt=0 हो तो भागफल नहीं लगा सकते; वक्र को और जांचे बिना मान न बताएं।</p><p>फिर x के सापेक्ष अवकलित करें: d²y/dx²=[d/dt(dy/dx)]/(dx/dt), जब अवकलज हों और dx/dt≠0। x=t², y=t³, t≠0 पर dy/dx=3t/2 और d²y/dx²=3/(4t)।</p><p>सामान्य y=x³ का y′=3x², y″=6x है। ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली या पूरी JEE तैयारी नहीं। औपचारिक प्रमाण, शेष प्रतिलोम त्रिकोणमितीय अवकलज, लंबे खंडवार मामले और व्यापक प्रमेय अनुप्रयोग अभी शामिल नहीं हैं।</p></div></div><div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. Continuity compares a limit with a value</h3><p>At an interior point a of an interval domain, continuity means the left-hand limit, right-hand limit and f(a) all exist and are equal. LHL and RHL describe nearby values; f(a) is the actual value at the point.</p><p>Example: f(x)=(x²−1)/(x−1) for x≠1 and f(1)=k. For nearby x≠1, f(x)=x+1, so both limits at 1 are 2. Continuity requires k=2. Cancelling does not itself define the original quotient at 1.</p><p>At a closed-interval endpoint use the limit from inside the interval. For example √x is continuous at 0 on [0,∞) using its right-hand limit. No real values to the left are required.</p></div><div class="note-sec"><h3>2. Domain checks come before limit rules</h3><p>Polynomials are continuous on the real line. Rational functions are continuous wherever their denominator is nonzero; ln x is continuous for x&gt;0. A formula may be continuous on its domain even if it is not defined at every real number.</p><p>Sums, differences and products preserve continuity at a common point. Quotients also need a nonzero denominator there. Composition f(g(x)) is continuous at a when g is continuous at a and f is continuous at g(a).</p><p>A jump has unequal one-sided limits. A removable break has an existing limit but a missing or different point value. Do not use the informal no-pen-lift picture instead of checking the actual domain and limits.</p></div><div class="note-sec"><h3>3. Differentiability is a stronger condition</h3><p>At an interior point a, f′(a)=lim as h→0 of [f(a+h)−f(a)]/h, when this limit is a finite real number. Left and right difference-quotient limits must agree.</p><p>Differentiability at a implies continuity at a, but continuity does not imply differentiability. For f(x)=|x| at 0, both function limits and f(0) are 0; left derivative is −1 and right derivative is 1.</p><p>So |x| is continuous but not differentiable at 0. A vertical tangent does not give a finite derivative either. Always distinguish a limit of function values from a limit of difference quotients.</p></div><div class="note-sec"><h3>4. Chain, implicit and logarithmic rules</h3><p>Chain rule: [f(g(x))]′=f′(g(x))g′(x), when the needed derivatives exist. Example: [sin(x²)]′=2x cos(x²). Trigonometric derivative formulas here use radians.</p><p>For x²+y²=25, differentiating along a differentiable branch y(x) gives 2x+2y y′=0. Thus y′=−x/y where y≠0. At (3,4), the slope is −3/4. Do not divide by y at y=0.</p><p>For x&gt;0, y=xˣ is positive, so ln y=x ln x. Differentiate: y′/y=ln x+1, hence y′=xˣ(ln x+1). Also (aˣ)′=aˣln a for a&gt;0; (logₐx)′=1/(x ln a) requires x&gt;0, a&gt;0, a≠1.</p></div><div class="note-sec"><h3>5. Inverse-trig derivatives have domains</h3><p>For −1&lt;x&lt;1, (sin⁻¹x)′=1/√(1−x²) and (cos⁻¹x)′=−1/√(1−x²). For every real x, (tan⁻¹x)′=1/(1+x²). sin⁻¹ means inverse sine, not 1/sin.</p><p>Apply the chain rule to an inner function. For y=sin⁻¹(2x), y′=2/√(1−4x²), valid for −1/2&lt;x&lt;1/2. The function itself also exists at the endpoints, but this finite derivative formula does not.</p><p>For y=tan⁻¹(x²), y′=2x/(1+x⁴), valid for all real x. Keep the inner derivative and state where the final expression applies.</p></div><div class="note-sec"><h3>6. Parametric and second derivatives</h3><p>For x=f(t), y=g(t), dy/dx=g′(t)/f′(t) where f′(t)≠0. If dx/dt=0, this quotient is unavailable; do not conclude a value without examining the curve further.</p><p>Differentiate again with respect to x: d²y/dx²=[d/dt(dy/dx)]/(dx/dt), where these derivatives exist and dx/dt≠0. For x=t², y=t³ and t≠0, dy/dx=3t/2 and d²y/dx²=3/(4t).</p><p>For an ordinary function y=x³, y′=3x² and y″=6x. These notes and ten original questions are selected foundations, not full textbook exercises or full JEE preparation. Formal proofs, the remaining inverse-trig derivatives, long piecewise cases and wider theorem applications remain outside this pass.</p></div></div></section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Continuity ⭐⭐</h4>
-      <ul><li>lim f(x) = f(a) at a</li><li>LHL = RHL = f(a)</li><li>Polynomial, sin, cos, eˣ sab continuous</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Discontinuity</h4>
-      <ul><li>Jump: LHL ≠ RHL</li><li>Hole: limit hai, value nahi</li><li>[x] har integer pe discontinuous</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Differentiability ⭐⭐</h4>
-      <ul><li>f′(a) ka limit exist kare</li><li>Differentiable ⟹ Continuous</li><li>|x| at 0: cont. HAI, diff NAHI</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Rules ⭐⭐</h4>
-      <ul><li>Chain: f′(g)·g′</li><li>Log diff: xˣ type pe ln lo</li><li>Parametric: dy/dx = (dy/dt)/(dx/dt)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Second order ⭐</h4>
-      <ul><li>d²y/dx² = slope ki change rate</li><li>Parametric: d/dt(dy/dx) ÷ dx/dt</li><li>Rolle's & MVT DELETED</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>संतत्य ⭐⭐</h4>
-      <ul><li>lim f(x) = f(a)</li><li>LHL = RHL = f(a)</li><li>बहुपद, sin, cos, eˣ सर्वत्र संतत</li></ul>
-    </div>
-    <div class="shorts-card"><h4>असंतत्य</h4>
-      <ul><li>छलांग: LHL ≠ RHL</li><li>छिद्र: सीमा है, मान नहीं</li><li>[x] प्रत्येक पूर्णांक पर असंतत</li></ul>
-    </div>
-    <div class="shorts-card"><h4>अवकलनीयता ⭐⭐</h4>
-      <ul><li>f′(a) की सीमा मौजूद हो</li><li>अवकलनीय ⟹ संतत</li><li>|x|, 0 पर: संतत हां, अवकलनीय नहीं</li></ul>
-    </div>
-    <div class="shorts-card"><h4>नियम ⭐⭐</h4>
-      <ul><li>श्रृंखला: f′(g)·g′</li><li>लघुगणकीय: xˣ पर ln लो</li><li>प्राचलिक: dy/dx = (dy/dt)/(dx/dt)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>द्वितीय ⭐</h4>
-      <ul><li>d²y/dx² = ढलान की परिवर्तन दर</li><li>प्राचलिक: d/dt(dy/dx) ÷ dx/dt</li><li>रोले व मध्यमान प्रमेय हटाए गए</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Continuity ⭐⭐</h4>
-      <ul><li>lim f(x) = f(a) at a</li><li>LHL = RHL = f(a)</li><li>Polynomials, sin, cos, eˣ all continuous</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Discontinuity</h4>
-      <ul><li>Jump: LHL ≠ RHL</li><li>Hole: limit exists, value missing</li><li>[x] discontinuous at every integer</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Differentiability ⭐⭐</h4>
-      <ul><li>The limit for f′(a) must exist</li><li>Differentiable ⟹ Continuous</li><li>|x| at 0: continuous YES, differentiable NO</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Rules ⭐⭐</h4>
-      <ul><li>Chain: f′(g)·g′</li><li>Log diff: take ln for xˣ type</li><li>Parametric: dy/dx = (dy/dt)/(dx/dt)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Second order ⭐</h4>
-      <ul><li>d²y/dx² = rate of change of slope</li><li>Parametric: d/dt(dy/dx) ÷ dx/dt</li><li>Rolle's & MVT DELETED</li></ul>
-    </div>
-    </div>
-  </div>
-</section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> f(x) = |x|, x = 0 pe continuous hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Haan</b> — LHL = RHL = 0 = f(0). Limit = function value, to continuous.</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> f(x) = |x|, x = 0 pe differentiable hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — left slope −1, right slope +1. Corner point pe unique tangent nahi banti.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> 'Continuous ⟹ differentiable' — sahi hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Galat</b> — ulta sahi hai: differentiable ⟹ continuous. |x| at 0 iska counterexample hai.</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> f(x) = [x] (greatest integer), x = 2 pe continuous?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — LHL = 1, RHL = 2, dono alag → jump discontinuity.</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> d/dx [sin(x²)] nikalo.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Chain rule: <b>cos(x²)·2x</b> — bahar sin ka derivative, andar x² ka.</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> y = xˣ ka dy/dx?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>ln y = x ln x → (1/y)y′ = 1 + ln x → dy/dx = <b>xˣ(1 + ln x)</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> x = 2t, y = t² ho to dy/dx?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>dy/dt = 2t, dx/dt = 2 → dy/dx = 2t/2 = <b>t</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> d/dx (eˣ) aur d/dx (ln x)?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>d/dx eˣ = <b>eˣ</b>; d/dx ln x = <b>1/x</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> x² + y² = 25 pe dy/dx nikalo.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>2x + 2y(dy/dx) = 0 → dy/dx = <b>−x/y</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> Rolle's Theorem ab bhi Class 12 syllabus me hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — Rolle's aur Lagrange's MVT dono rationalized NCERT se <b>delete</b> ho chuke hain.</p></details></div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="tip-box">Interior continuity: LHL=RHL=f(a). Endpoint par domain ke andar se limit lo.</p><p class="tip-box">Pehle domain check karo. Continuous quotient mein denominator nonzero chahiye.</p><p class="tip-box">Finite derivative se continuity milti hai; |x| at 0 se ulta galat hai.</p><p class="tip-box">Chain rule: [f(g(x))]′=f′(g(x))g′(x). Trig angles radians mein hain.</p><p class="tip-box">x&gt;0 par (ln x)′=1/x, (xˣ)′=xˣ(ln x+1).</p><p class="tip-box">|x|&lt;1 par (sin⁻¹x)′=1/√(1−x²), (cos⁻¹x)′=−1/√(1−x²).</p><p class="tip-box">Real x par (tan⁻¹x)′=1/(1+x²). Inner derivative bhi lagao.</p><p class="tip-box">Parametric: dy/dx=yₜ/xₜ; d²y/dx²=[d/dt(dy/dx)]/xₜ, jab xₜ≠0. Yahan xₜ=dx/dt.</p></div><div class="lang-block" data-lang="hi" hidden=""><p class="tip-box">आंतरिक सांतत्य: बाईं सीमा=दाईं सीमा=f(a)। सिरे पर प्रांत के अंदर से सीमा लें।</p><p class="tip-box">पहले प्रांत जांचें। संतत भागफल में हर अशून्य चाहिए।</p><p class="tip-box">परिमित अवकलज से सांतत्य मिलता है; |x| at 0 में उलटा गलत है।</p><p class="tip-box">शृंखला नियम: [f(g(x))]′=f′(g(x))g′(x)। त्रिकोणमितीय कोण रेडियन में हैं।</p><p class="tip-box">x&gt;0 पर (ln x)′=1/x, (xˣ)′=xˣ(ln x+1)।</p><p class="tip-box">|x|&lt;1 पर (sin⁻¹x)′=1/√(1−x²), (cos⁻¹x)′=−1/√(1−x²)।</p><p class="tip-box">वास्तविक x पर (tan⁻¹x)′=1/(1+x²)। भीतरी अवकलज भी लगाएं।</p><p class="tip-box">प्राचलिक: dy/dx=yₜ/xₜ; d²y/dx²=[d/dt(dy/dx)]/xₜ, जब xₜ≠0। यहां xₜ=dx/dt।</p></div><div class="lang-block" data-lang="en" hidden=""><p class="tip-box">Interior continuity: LHL=RHL=f(a). At an endpoint use the limit from inside the domain.</p><p class="tip-box">Check the domain first. A continuous quotient needs a nonzero denominator.</p><p class="tip-box">A finite derivative implies continuity; the converse fails for |x| at 0.</p><p class="tip-box">Chain rule: [f(g(x))]′=f′(g(x))g′(x). Trig angles are in radians.</p><p class="tip-box">For x&gt;0: (ln x)′=1/x and (xˣ)′=xˣ(ln x+1).</p><p class="tip-box">For |x|&lt;1: (sin⁻¹x)′=1/√(1−x²), (cos⁻¹x)′=−1/√(1−x²).</p><p class="tip-box">For real x: (tan⁻¹x)′=1/(1+x²). Apply the inner derivative too.</p><p class="tip-box">Parametric: dy/dx=yₜ/xₜ; d²y/dx²=[d/dt(dy/dx)]/xₜ, with xₜ≠0. Here xₜ=dx/dt.</p></div></section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> x≠1 par f(x)=(x²−1)/(x−1), f(1)=k hai. Continuity ke liye k?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Dono nearby limits ko point value se milao.</p><p>Steps: x≠1 par f(x)=x+1. LHL=RHL=2.</p><p>Answer/check: k=2. Yeh 1 par separately assigned value hai.</p></details></div><div class="jee-q"><span class="qn">Q2</span> x&lt;0 par f(x)=1, x≥0 par f(x)=2. Kya 0 par continuous?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Two-sided continuity mein one-sided limits equal chahiye.</p><p>Steps: LHL=1, RHL=2, f(0)=2.</p><p>Answer/check: Nahi. Is interior point par sirf right-hand limit match hona kaafi nahi.</p></details></div><div class="jee-q"><span class="qn">Q3</span> |x| ko 0 par continuity aur differentiability ke liye check karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Continuity mein function limits, derivative mein difference quotients lo.</p><p>Steps: LHL=RHL=f(0)=0. h&lt;0 par |h|/h=−1; h&gt;0 par 1 hai.</p><p>Answer/check: Continuous hai, differentiable nahi, kyunki slopes alag hain.</p></details></div><div class="jee-q"><span class="qn">Q4</span> sin(x²) differentiate karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Outer derivative × inner derivative.</p><p>Steps: Outer derivative cos(x²), inner derivative 2x hai.</p><p>Answer/check: 2x cos(x²), har real x par.</p></details></div><div class="jee-q"><span class="qn">Q5</span> x²+y²=25 par (3,4) mein dy/dx nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: y-terms mein chain rule lagao.</p><p>Steps: 2x+2y y′=0 se y′=−x/y jab y≠0.</p><p>Answer/check: −3/4. Point check: 3²+4²=25 aur y=4≠0.</p></details></div><div class="jee-q"><span class="qn">Q6</span> x&gt;0 par xˣ differentiate karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Positive function ka natural logarithm lo.</p><p>Steps: ln y=x ln x se y′/y=ln x+1.</p><p>Answer/check: y′=xˣ(ln x+1). x=1 par value 1 milti hai.</p></details></div><div class="jee-q"><span class="qn">Q7</span> sin⁻¹(2x) differentiate karo; finite derivative ka open interval batao.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Inverse-sine formula aur chain rule lagao.</p><p>Steps: y′=2/√(1−4x²). Denominator positive jab |2x|&lt;1.</p><p>Answer/check: −1/2&lt;x&lt;1/2. Function endpoints par hai, par yeh finite derivative nahi.</p></details></div><div class="jee-q"><span class="qn">Q8</span> tan⁻¹(x²) differentiate karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: tan⁻¹u ka derivative u′/(1+u²) hai.</p><p>Steps: u=x², u′=2x, isliye 1+u²=1+x⁴.</p><p>Answer/check: 2x/(1+x⁴), har real x par; denominator hamesha positive hai.</p></details></div><div class="jee-q"><span class="qn">Q9</span> x=t², y=t³ mein t≠0 par dy/dx aur d²y/dx² nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Har x-derivative ke liye dx/dt se divide karo.</p><p>Steps: dx/dt=2t, dy/dt=3t². First derivative=3t/2. Iska t-derivative 3/2 hai, phir 2t se divide karo.</p><p>Answer/check: dy/dx=3t/2; d²y/dx²=3/(4t). t=1 par 3/2 aur 3/4.</p></details></div><div class="jee-q"><span class="qn">Q10</span> y=x³ ho to x=−1 par y″ nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: x ke respect mein do baar differentiate karo.</p><p>Steps: y′=3x²; y″=6x.</p><p>Answer/check: y″(−1)=−6. Wahan first derivative 3 hai, jo alag quantity hai.</p></details></div><div class="tip-box">Ordinary y=x³ ka y′=3x², y″=6x hai. Yeh selected foundations aur das original questions hain, full textbook exercises ya full JEE preparation nahi. Formal proofs, baaki inverse-trig derivatives, lambe piecewise cases aur wider theorem applications abhi cover nahi hain.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh105.pdf">Textbook Ch 5</a></p></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> x≠1 पर f(x)=(x²−1)/(x−1), f(1)=k है। सांतत्य के लिए k?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: दोनों पास की सीमाएं बिंदु मान से मिलाएं।</p><p>चरण: x≠1 पर f(x)=x+1। बाईं सीमा=दाईं सीमा=2।</p><p>उत्तर/जांच: k=2। यह 1 पर अलग दिया गया मान है।</p></details></div><div class="jee-q"><span class="qn">Q2</span> x&lt;0 पर f(x)=1, x≥0 पर f(x)=2। क्या 0 पर संतत है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: द्विपक्षीय सांतत्य में एकपक्षीय सीमाएं समान चाहिए।</p><p>चरण: बाईं सीमा=1, दाईं सीमा=2, f(0)=2।</p><p>उत्तर/जांच: नहीं। इस आंतरिक बिंदु पर केवल दाईं सीमा मिलना पर्याप्त नहीं।</p></details></div><div class="jee-q"><span class="qn">Q3</span> |x| को 0 पर सांतत्य और अवकलनीयता के लिए जांचें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: सांतत्य में फलन सीमाएं, अवकलज में अंतर-भागफल लें।</p><p>चरण: बाईं सीमा=दाईं सीमा=f(0)=0। h&lt;0 पर |h|/h=−1; h&gt;0 पर 1 है।</p><p>उत्तर/जांच: संतत है, अवकलनीय नहीं, क्योंकि ढालें अलग हैं।</p></details></div><div class="jee-q"><span class="qn">Q4</span> sin(x²) का अवकलज निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: बाहरी अवकलज × भीतरी अवकलज।</p><p>चरण: बाहरी अवकलज cos(x²), भीतरी अवकलज 2x है।</p><p>उत्तर/जांच: 2x cos(x²), हर वास्तविक x पर।</p></details></div><div class="jee-q"><span class="qn">Q5</span> x²+y²=25 पर (3,4) में dy/dx निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: y वाले पदों में शृंखला नियम लगाएं।</p><p>चरण: 2x+2y y′=0 से y′=−x/y जब y≠0।</p><p>उत्तर/जांच: −3/4। बिंदु जांच: 3²+4²=25 तथा y=4≠0।</p></details></div><div class="jee-q"><span class="qn">Q6</span> x&gt;0 पर xˣ का अवकलज निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: धनात्मक फलन का प्राकृतिक लघुगणक लें।</p><p>चरण: ln y=x ln x से y′/y=ln x+1।</p><p>उत्तर/जांच: y′=xˣ(ln x+1)। x=1 पर मान 1 मिलता है।</p></details></div><div class="jee-q"><span class="qn">Q7</span> sin⁻¹(2x) का अवकलज और परिमित अवकलज का खुला अंतराल बताएं।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: प्रतिलोम ज्या सूत्र और शृंखला नियम लगाएं।</p><p>चरण: y′=2/√(1−4x²)। हर धनात्मक है जब |2x|&lt;1।</p><p>उत्तर/जांच: −1/2&lt;x&lt;1/2। फलन सिरों पर है, पर यह परिमित अवकलज नहीं।</p></details></div><div class="jee-q"><span class="qn">Q8</span> tan⁻¹(x²) का अवकलज निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: tan⁻¹u का अवकलज u′/(1+u²) है।</p><p>चरण: u=x², u′=2x, इसलिए 1+u²=1+x⁴।</p><p>उत्तर/जांच: 2x/(1+x⁴), हर वास्तविक x पर; हर सदा धनात्मक है।</p></details></div><div class="jee-q"><span class="qn">Q9</span> x=t², y=t³ में t≠0 पर dy/dx और d²y/dx² निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: हर x-अवकलज के लिए dx/dt से भाग दें।</p><p>चरण: dx/dt=2t, dy/dt=3t²। प्रथम अवकलज=3t/2। इसका t-अवकलज 3/2 है, फिर 2t से भाग दें।</p><p>उत्तर/जांच: dy/dx=3t/2; d²y/dx²=3/(4t)। t=1 पर 3/2 और 3/4।</p></details></div><div class="jee-q"><span class="qn">Q10</span> y=x³ हो तो x=−1 पर y″ निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: x के सापेक्ष दो बार अवकलित करें।</p><p>चरण: y′=3x²; y″=6x।</p><p>उत्तर/जांच: y″(−1)=−6। वहां प्रथम अवकलज 3 है, जो अलग राशि है।</p></details></div><div class="tip-box">सामान्य y=x³ का y′=3x², y″=6x है। ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली या पूरी JEE तैयारी नहीं। औपचारिक प्रमाण, शेष प्रतिलोम त्रिकोणमितीय अवकलज, लंबे खंडवार मामले और व्यापक प्रमेय अनुप्रयोग अभी शामिल नहीं हैं।</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh105.pdf">Textbook Ch 5</a></p></div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> For x≠1 let f(x)=(x²−1)/(x−1), with f(1)=k. Find k for continuity.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Compare both nearby limits with the point value.</p><p>Steps: For x≠1, f(x)=x+1. LHL=RHL=2.</p><p>Answer/check: k=2. This is the separately assigned value at 1.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Is f(x)=1 for x&lt;0 and f(x)=2 for x≥0 continuous at 0?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Two-sided continuity requires equal one-sided limits.</p><p>Steps: LHL=1, RHL=2 and f(0)=2.</p><p>Answer/check: No. Matching only the right-hand limit is not enough at this interior point.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Check continuity and differentiability of |x| at 0.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use function limits for continuity and difference quotients for the derivative.</p><p>Steps: LHL=RHL=f(0)=0. For h&lt;0, |h|/h=−1; for h&gt;0, it is 1.</p><p>Answer/check: Continuous, but not differentiable because the slopes disagree.</p></details></div><div class="jee-q"><span class="qn">Q4</span> Differentiate sin(x²).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Outer derivative times inner derivative.</p><p>Steps: The outer derivative is cos(x²); the inner derivative is 2x.</p><p>Answer/check: 2x cos(x²), for every real x.</p></details></div><div class="jee-q"><span class="qn">Q5</span> On x²+y²=25, find dy/dx at (3,4).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Differentiate y-terms using the chain rule.</p><p>Steps: 2x+2y y′=0, so y′=−x/y when y≠0.</p><p>Answer/check: −3/4. The point satisfies 3²+4²=25, and y=4≠0.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Differentiate xˣ for x&gt;0.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Take the natural logarithm of the positive function.</p><p>Steps: ln y=x ln x gives y′/y=ln x+1.</p><p>Answer/check: y′=xˣ(ln x+1). At x=1 this gives 1.</p></details></div><div class="jee-q"><span class="qn">Q7</span> Differentiate sin⁻¹(2x) and give the open interval for a finite derivative.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use the inverse-sine formula and the chain rule.</p><p>Steps: y′=2/√(1−4x²). The denominator is positive when |2x|&lt;1.</p><p>Answer/check: −1/2&lt;x&lt;1/2. The function exists at the endpoints, but this finite derivative does not.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Differentiate tan⁻¹(x²).<details class="jee-sol"><summary>Show answer</summary><p>Rule: The derivative of tan⁻¹u is u′/(1+u²).</p><p>Steps: u=x², u′=2x, so 1+u²=1+x⁴.</p><p>Answer/check: 2x/(1+x⁴), for every real x; the denominator is always positive.</p></details></div><div class="jee-q"><span class="qn">Q9</span> For x=t², y=t³, find dy/dx and d²y/dx² when t≠0.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Divide by dx/dt for each x-derivative.</p><p>Steps: dx/dt=2t, dy/dt=3t². First derivative=3t/2. Differentiate this in t to get 3/2, then divide by 2t.</p><p>Answer/check: dy/dx=3t/2; d²y/dx²=3/(4t). At t=1 they are 3/2 and 3/4.</p></details></div><div class="jee-q"><span class="qn">Q10</span> If y=x³, find y″ at x=−1.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Differentiate twice with respect to x.</p><p>Steps: y′=3x²; y″=6x.</p><p>Answer/check: y″(−1)=−6. The first derivative there is 3, a different quantity.</p></details></div><div class="tip-box">For an ordinary function y=x³, y′=3x² and y″=6x. These notes and ten original questions are selected foundations, not full textbook exercises or full JEE preparation. Formal proofs, the remaining inverse-trig derivatives, long piecewise cases and wider theorem applications remain outside this pass.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh105.pdf">Textbook Ch 5</a></p></div></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-6/">Application of Derivatives</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-6/">Application of Derivatives</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
