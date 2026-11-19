@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>#practice .jee-q,#practice summary,#practice .jee-sol p{font-size:16px;line-height:1.65}</style>
 </head>
 <body>
 <div class="topbar">
@@ -94,9 +95,9 @@
     <ul>
 <li><b>Equation (=):</b> exact balance — 2x = 6 → x = 3 (ek answer). <b>Inequality (&lt;, &gt;, ≤, ≥):</b> comparison — 2x &lt; 6 → x &lt; 3 (poora RANGE of answers!).</li>
 <li><b>Symbols:</b> &lt; chhota, &gt; bada, ≤ chhota-ya-barabar, ≥ bada-ya-barabar.</li>
-<li><b>Solution set:</b> inequality ko TRUE banane wale saare values — infinite answers ko interval/graph se likhte hain.</li>
+<li>Solution set: diye hue domain ke saare values jo inequality ko true banayein. Pehle batao values real, integer ya whole numbers hain. System ka koi solution na bhi ho sakta hai; common region assume mat karo.</li>
 <li><b>Real life:</b> "exam me kam se kam 40 marks chahiye" → x ≥ 40. "lift me max 10 log" → x ≤ 10. Inequalities har jagah!</li>
-<li><b>Linear inequality:</b> variable ki power 1 — ax + b &lt; 0, 3x − 5 ≥ 7 jaisi. (Is chapter me yahi padhenge.)</li>
+<li>Ek variable mein linear inequality: ax + b &lt; 0, ya &gt;, ≤, ≥ wala form, jahan a, b real aur a ≠ 0 hain. Variable sirf first power mein aata hai.</li>
 </ul>
 <p class="small-note">💡 Feel: equation = exact address ("house no. 3"), inequality = poora area code ("sector 3 ke andar kahin bhi")!</p>
   </div>
@@ -107,7 +108,7 @@
 <li><b>Rule 2:</b> dono taraf POSITIVE number se multiply/divide → sign SAME. (2x &lt; 6 → x &lt; 3 ✓)</li>
 <li><b>Rule 3 ⭐⭐:</b> NEGATIVE number se multiply/divide → sign <b>FLIP</b>! (−2x &lt; 6 → x &gt; −3 — sign palat gaya!) Sabse zyada galti yahi hoti hai!</li>
 <li><b>Kyun flip?:</b> number line pe negative se multiply = mirror image! 2 &lt; 3 hai, par −2 &gt; −3 (mirror me ulta!).</li>
-<li><b>Reciprocal:</b> dono taraf same sign ke numbers hon to reciprocal lene pe sign flip (2 &lt; 3 → 1/2 &gt; 1/3).</li>
+<li>Reciprocal: nonzero real a &lt; b ka sign same ho to 1/a &gt; 1/b. Zero ke aar-paar rule mat lagao: −2 &lt; 3 lekin −1/2 &lt; 1/3 hai. Unknown sign ho to pehle cases banao.</li>
 <li><b>Safe trick:</b> variable ko LEFT pe laao positive coefficient ke saath — flip mistakes bachte hain.</li>
 </ul>
 <p class="small-note">🎯 Golden rule: minus se multiply/divide = sign palto. Har baar, bina exception. Isi ek rule pe aadhe questions atakte hain!</p>
@@ -126,11 +127,11 @@
   <div class="note-sec">
     <h3>4️⃣ Graphical Solutions — Do Variables ⭐</h3>
     <ul>
-<li><b>Linear inequality in x, y:</b> ax + by &lt; c jaisi — solution ek REGION hota hai plane me, ek line nahi!</li>
-<li><b>Steps ⭐:</b> (1) Inequality ko equation banao (ax + by = c) — LINE draw karo. (2) &lt; ya &gt; ho to DASHED line (line excluded), ≤ ya ≥ ho to SOLID (included). (3) Test point daalo (origin (0,0) easiest!) — satisfy kare to us side shade, nahi to doosri side.</li>
+<li>Linear inequality in x, y: ax + by &lt; c, real coefficients aur a, b dono ek saath zero nahi. Solution half-plane hai. System ka common set empty, unbounded ya bina corners ka bhi ho sakta hai.</li>
+<li>Graph steps: ax + by = c draw karo. &lt; ya &gt; par dashed, ≤ ya ≥ par solid line. Test point boundary line par NAHI hona chahiye. (0, 0) tabhi lo jab line par na ho; x + y = 0 ke liye (1, 0) lo. Inequality true ho to uski side, warna opposite side shade karo.</li>
 <li><b>Example:</b> x + y &lt; 4 → line x + y = 4 dashed; origin (0+0 &lt; 4 ✓) → origin wali side shade.</li>
 <li><b>System of inequalities ⭐:</b> do-teen inequalities ka COMMON region — sabki shading jo overlap kare wahi solution. (LPP ka foundation — 12th me Linear Programming isi pe!)</li>
-<li><b>Feasible region:</b> common shaded area — corners (vertices) important hote hain optimization ke liye.</li>
+<li>Feasible region: common solution set. Empty, unbounded ya bina corners ka bhi ho sakta hai. Vertices hon to suitable optimization problems mein kaam aate hain.</li>
 </ul>
 <p class="small-note">💡 Feel: line plane ka border hai. Test point = spy jo check karta hai border ke kaunse side solution ka territory hai!</p>
   </div>
@@ -138,7 +139,7 @@
     <h3>5️⃣ Word Problems — Real Life Inequalities</h3>
     <ul>
 <li><b>Translation key ⭐:</b> "kam se kam/at least" = ≥; "zyada se zyada/at most" = ≤; "se zyada/more than" = &gt;; "se kam/less than" = &lt;.</li>
-<li><b>Example 1:</b> Ravi ke paas ₹120 se kam paise hain, book ₹30 ki hai. x books: 30x &lt; 120 → x &lt; 4 → max 3 books (whole number!).</li>
+<li>Example 1, spending limit: book ₹30 ki hai aur total spending ₹120 se kam rakhni hai. Paise kaafi available hon to 30x &lt; 120 aur x non-negative integer se x ∈ {0, 1, 2, 3}; max 3 books. Sirf paise ₹120 se kam kehne se 3 books afford karna guaranteed nahi hai.</li>
 <li><b>Example 2 (marks):</b> 3 tests ka average ≥ 60 chahiye, do tests me 55, 70 aaye. (55 + 70 + x)/3 ≥ 60 → 125 + x ≥ 180 → x ≥ 55.</li>
 <li><b>Example 3 (temperature conversion):</b> Celsius-Fahrenheit range problems — C ko F me convert karke inequality solve karo.</li>
 <li><b>Domain wale questions ⭐:</b> √(x − 3) real kab? → x − 3 ≥ 0 → x ≥ 3. 1/(x − 2) defined kab? → x ≠ 2.</li>
@@ -153,9 +154,9 @@
     <ul>
 <li><b>समीकरण (=):</b> सटीक संतुलन — 2x = 6 → x = 3 (एक उत्तर)। <b>असमिका (&lt;, &gt;, ≤, ≥):</b> तुलना — 2x &lt; 6 → x &lt; 3 (उत्तरों की पूरी श्रेणी!)।</li>
 <li><b>प्रतीक:</b> &lt; छोटा, &gt; बड़ा, ≤ छोटा-या-बराबर, ≥ बड़ा-या-बराबर।</li>
-<li><b>हल समुच्चय:</b> असमिका को सत्य बनाने वाले सभी मान — अनंत उत्तर अंतराल/आलेख से लिखते हैं।</li>
+<li>हल समुच्चय: दिए गए प्रांत के वे सभी मान जो असमिका को सही बनाते हैं। पहले बताएं कि मान वास्तविक, पूर्णांक या पूर्ण संख्याएं हैं। निकाय का कोई हल न भी हो सकता है; उभयनिष्ठ क्षेत्र मानकर न चलें।</li>
 <li><b>वास्तविक जीवन:</b> "कम से कम 40 अंक" → x ≥ 40। "अधिकतम 10 लोग" → x ≤ 10।</li>
-<li><b>रैखिक असमिका:</b> चर की घात 1 — ax + b &lt; 0, 3x − 5 ≥ 7 जैसी।</li>
+<li>एक चर में रैखिक असमिका: ax + b &lt; 0, या &gt;, ≤, ≥ वाला रूप, जहां a, b वास्तविक और a ≠ 0 हैं। चर केवल पहली घात में आता है।</li>
 </ul>
 <p class="small-note">💡 समीकरण = सटीक पता, असमिका = पूरा क्षेत्र!</p>
   </div>
@@ -166,7 +167,7 @@
 <li><b>नियम 2:</b> धनात्मक से गुणा/भाग → चिह्न समान।</li>
 <li><b>नियम 3 ⭐⭐:</b> ऋणात्मक से गुणा/भाग → चिह्न <b>पलटता है</b>! (−2x &lt; 6 → x &gt; −3!) सबसे अधिक गलती यहीं!</li>
 <li><b>क्यों?:</b> संख्या रेखा पर ऋण से गुणा = दर्पण प्रतिबिंब! 2 &lt; 3, परंतु −2 &gt; −3।</li>
-<li><b>व्युत्क्रम:</b> समान चिह्न की संख्याओं के व्युत्क्रम पर चिह्न पलटता है (2 &lt; 3 → 1/2 &gt; 1/3)।</li>
+<li>व्युत्क्रम: समान चिह्न वाली अशून्य वास्तविक संख्याओं a &lt; b के लिए 1/a &gt; 1/b है। शून्य के आर-पार यह नियम न लगाएं: −2 &lt; 3 लेकिन −1/2 &lt; 1/3 है। अज्ञात चिह्न हो तो अलग मामले बनाएं।</li>
 <li><b>सुरक्षित युक्ति:</b> चर को बाएं लाओ धन गुणांक के साथ।</li>
 </ul>
 <p class="small-note">🎯 स्वर्ण नियम: ऋण से गुणा/भाग = चिह्न पलटो। हर बार, बिना अपवाद!</p>
@@ -185,11 +186,11 @@
   <div class="note-sec">
     <h3>4️⃣ आलेखीय हल — दो चर ⭐</h3>
     <ul>
-<li><b>दो चरों में रैखिक असमिका:</b> ax + by &lt; c — हल तल में एक क्षेत्र होता है!</li>
-<li><b>चरण ⭐:</b> (1) असमिका को समीकरण बनाओ — रेखा खींचो। (2) &lt; या &gt; → बिंदुरेखा (dashed), ≤ या ≥ → ठोस (solid)। (3) परीक्षण बिंदु (0,0) डालो — संतुष्ट करे तो उस ओर छाया, नहीं तो दूसरी ओर।</li>
+<li>दो चर में रैखिक असमिका: ax + by &lt; c, जहां गुणांक वास्तविक और a, b दोनों एक साथ शून्य नहीं हैं। हल एक अर्धतल है। निकाय का उभयनिष्ठ हल खाली, असीमित या बिना शीर्षों वाला भी हो सकता है।</li>
+<li>आलेख के चरण: ax + by = c बनाएं। &lt; या &gt; के लिए बिंदुरेखा और ≤ या ≥ के लिए ठोस रेखा लें। परीक्षण बिंदु सीमा रेखा पर नहीं होना चाहिए। (0, 0) तभी लें जब वह रेखा पर न हो; x + y = 0 के लिए (1, 0) लें। असमिका सही हो तो उस ओर, नहीं तो दूसरी ओर छाया करें।</li>
 <li><b>उदाहरण:</b> x + y &lt; 4 → रेखा x + y = 4 dashed; मूलबिंदु संतुष्ट ✓ → मूलबिंदु वाली ओर छाया।</li>
 <li><b>असमिकाओं का निकाय ⭐:</b> उभयनिष्ठ क्षेत्र — सभी छायाओं का अतिव्यापन। (LPP की नींव — 12वीं में काम आएगा!)</li>
-<li><b>सुसंगत क्षेत्र (feasible region):</b> उभयनिष्ठ छायांकित क्षेत्र — शीर्ष (vertices) महत्वपूर्ण।</li>
+<li>सुसंगत क्षेत्र: उभयनिष्ठ हल समुच्चय। वह खाली, असीमित या बिना शीर्षों वाला हो सकता है। शीर्ष मौजूद हों तो उपयुक्त इष्टतमीकरण समस्याओं में काम आते हैं।</li>
 </ul>
 <p class="small-note">💡 रेखा सीमा है। परीक्षण बिंदु = जासूस जो बताता है किस ओर हल का क्षेत्र है!</p>
   </div>
@@ -197,7 +198,7 @@
     <h3>5️⃣ शब्द समस्याएं — वास्तविक जीवन असमिकाएं</h3>
     <ul>
 <li><b>अनुवाद कुंजी ⭐:</b> "कम से कम" = ≥; "अधिक से अधिक" = ≤; "से अधिक" = &gt;; "से कम" = &lt;।</li>
-<li><b>उदाहरण 1:</b> रवि के पास ₹120 से कम, पुस्तक ₹30 की। 30x &lt; 120 → x &lt; 4 → अधिकतम 3 पुस्तकें!</li>
+<li>उदाहरण 1, खर्च की सीमा: पुस्तक ₹30 की है और कुल खर्च ₹120 से कम रखना है। पर्याप्त पैसे उपलब्ध हों तो 30x &lt; 120 तथा x ऋणेत्तर पूर्णांक होने से x ∈ {0, 1, 2, 3}, अर्थात अधिकतम 3 पुस्तकें। केवल इतना कहना कि पैसे ₹120 से कम हैं, 3 पुस्तकें खरीद पाने की गारंटी नहीं है।</li>
 <li><b>उदाहरण 2 (अंक):</b> 3 परीक्षाओं का औसत ≥ 60, दो में 55, 70। (55 + 70 + x)/3 ≥ 60 → x ≥ 55।</li>
 <li><b>प्रांत प्रश्न ⭐:</b> √(x − 3) वास्तविक कब? → x ≥ 3। 1/(x − 2) परिभाषित कब? → x ≠ 2।</li>
 <li><b>जांच:</b> उत्तर संदर्भ में सोचो — पुस्तकें 3.9 नहीं, 3 ही!</li>
@@ -211,9 +212,9 @@
     <ul>
 <li><b>Equation (=):</b> an exact balance — 2x = 6 → x = 3 (one answer). <b>Inequality (&lt;, &gt;, ≤, ≥):</b> a comparison — 2x &lt; 6 → x &lt; 3 (a whole RANGE of answers!).</li>
 <li><b>Symbols:</b> &lt; less than, &gt; greater than, ≤ less than or equal, ≥ greater than or equal.</li>
-<li><b>Solution set:</b> all the values that make the inequality TRUE — written as intervals or graphs.</li>
+<li>Solution set: all values in the stated domain that make the inequality true. State whether values are real, integer or whole numbers. A system may have no solution; do not assume the common region exists.</li>
 <li><b>Real life:</b> "need at least 40 marks" → x ≥ 40. "lift holds at most 10 people" → x ≤ 10. Inequalities are everywhere!</li>
-<li><b>Linear inequality:</b> the variable has power 1 — like ax + b &lt; 0, 3x − 5 ≥ 7. (This chapter's focus.)</li>
+<li>Linear inequality in one variable: ax + b &lt; 0, or the corresponding &gt;, ≤, ≥ form, with real a, b and a ≠ 0. The variable occurs only to the first power.</li>
 </ul>
 <p class="small-note">💡 Feel: an equation is an exact address ("house no. 3"); an inequality is a whole area code ("anywhere in sector 3")!</p>
   </div>
@@ -224,7 +225,7 @@
 <li><b>Rule 2:</b> multiply/divide by a POSITIVE number → sign stays. (2x &lt; 6 → x &lt; 3 ✓)</li>
 <li><b>Rule 3 ⭐⭐:</b> multiply/divide by a NEGATIVE number → the sign <b>FLIPS</b>! (−2x &lt; 6 → x &gt; −3 — flipped!) This is where most mistakes happen!</li>
 <li><b>Why the flip?:</b> multiplying by a negative is a mirror image on the number line! 2 &lt; 3, but −2 &gt; −3 (the mirror reverses it!).</li>
-<li><b>Reciprocals:</b> taking reciprocals of same-signed numbers flips the sign (2 &lt; 3 → 1/2 &gt; 1/3).</li>
+<li>Reciprocals: for nonzero real numbers a &lt; b with the same sign, 1/a &gt; 1/b. Do not use this rule across zero: −2 &lt; 3 but −1/2 &lt; 1/3. For an unknown sign, split into cases first.</li>
 <li><b>Safe trick:</b> bring the variable to the LEFT with a positive coefficient — flip mistakes disappear.</li>
 </ul>
 <p class="small-note">🎯 Golden rule: multiply/divide by a negative = flip the sign. Every time, no exceptions. Half the questions in this chapter hinge on this one rule!</p>
@@ -243,11 +244,11 @@
   <div class="note-sec">
     <h3>4️⃣ Graphical Solutions — Two Variables ⭐</h3>
     <ul>
-<li><b>Linear inequality in x, y:</b> like ax + by &lt; c — the solution is a whole REGION of the plane, not a line!</li>
-<li><b>Steps ⭐:</b> (1) Turn the inequality into an equation (ax + by = c) — draw the LINE. (2) &lt; or &gt; → DASHED line (line excluded); ≤ or ≥ → SOLID (included). (3) Plug in a test point (the origin (0,0) is easiest!) — if it satisfies the inequality, shade its side; otherwise the other side.</li>
+<li>Linear inequality in x, y: ax + by &lt; c, with real coefficients and a, b not both zero. Its solution is a half-plane. For a system, the common set may be empty, unbounded, or have no corners.</li>
+<li>Graph steps: draw ax + by = c. Use a dashed line for &lt; or &gt; and a solid line for ≤ or ≥. Choose a test point NOT on the boundary. Use (0, 0) only if it is off the line; for x + y = 0, use (1, 0) instead. Shade its side if it satisfies the inequality, otherwise the opposite side.</li>
 <li><b>Example:</b> x + y &lt; 4 → draw x + y = 4 dashed; the origin works (0+0 &lt; 4 ✓) → shade the origin's side.</li>
 <li><b>System of inequalities ⭐:</b> the COMMON region of two or three inequalities — wherever all the shadings overlap. (The foundation of Linear Programming in Class 12!)</li>
-<li><b>Feasible region:</b> the common shaded area — its corners (vertices) matter for optimization.</li>
+<li>Feasible region: the common solution set. It need not have corners and may be empty or unbounded. If vertices exist, they matter in suitable optimization problems.</li>
 </ul>
 <p class="small-note">💡 Feel: the line is a border. The test point is a spy checking which side of the border holds the solution territory!</p>
   </div>
@@ -255,7 +256,7 @@
     <h3>5️⃣ Word Problems — Real-Life Inequalities</h3>
     <ul>
 <li><b>Translation key ⭐:</b> "at least" = ≥; "at most" = ≤; "more than" = &gt;; "less than" = &lt;.</li>
-<li><b>Example 1:</b> Ravi has less than ₹120; a book costs ₹30. 30x &lt; 120 → x &lt; 4 → at most 3 books (whole numbers only!).</li>
+<li>Example 1, spending limit: books cost ₹30 each and total spending must be less than ₹120. With enough money available, 30x &lt; 120 and x a non-negative integer give x ∈ {0, 1, 2, 3}; at most 3 books. Having an unspecified amount below ₹120 alone does not guarantee you can afford 3.</li>
 <li><b>Example 2 (marks):</b> needs an average ≥ 60 across 3 tests; scored 55 and 70 in two. (55 + 70 + x)/3 ≥ 60 → 125 + x ≥ 180 → x ≥ 55.</li>
 <li><b>Example 3 (temperature):</b> Celsius-Fahrenheit range problems — convert and solve the inequality.</li>
 <li><b>Domain questions ⭐:</b> when is √(x − 3) real? → x − 3 ≥ 0 → x ≥ 3. When is 1/(x − 2) defined? → x ≠ 2.</li>
@@ -273,7 +274,7 @@
   <div class="lang-block" data-lang="hinglish" hidden>
 <div class="shorts-grid">
     <div class="shorts-card"><h4>Basics</h4>
-      <ul><li>Inequality = range of answers</li><li>≥ = at least, ≤ = at most</li><li>Linear: power 1</li></ul>
+      <ul><li>Solution set: domain dekho; empty bhi ho sakta hai.</li><li>≥ = at least, ≤ = at most</li><li>Linear: power 1</li></ul>
     </div>
     <div class="shorts-card"><h4>Rules ⭐⭐</h4>
       <ul><li>Add/subtract: sign same</li><li>×/÷ positive: sign same</li><li>×/÷ NEGATIVE: sign FLIP!</li></ul>
@@ -282,7 +283,7 @@
       <ul><li>&lt;, > = open circle ○</li><li>≤, ≥ = closed ●</li><li>AND = overlap, OR = union</li></ul>
     </div>
     <div class="shorts-card"><h4>Graphs ⭐</h4>
-      <ul><li>Pehle line draw (&lt; dashed, ≤ solid)</li><li>Test point (0,0) se side chuno</li><li>System = common shaded region</li></ul>
+      <ul><li>Pehle line draw (&lt; dashed, ≤ solid)</li><li>Test point line par na ho; origin bhi tabhi lo.</li><li>System = common shaded region</li></ul>
     </div>
     <div class="shorts-card"><h4>Word Problems</h4>
       <ul><li>'at least' → ≥, 'at most' → ≤</li><li>Answer context me (whole numbers?)</li><li>√ ke andar ≥ 0</li></ul>
@@ -292,7 +293,7 @@
   <div class="lang-block" data-lang="hi" hidden>
 <div class="shorts-grid">
     <div class="shorts-card"><h4>मूल</h4>
-      <ul><li>असमिका = उत्तरों की श्रेणी</li><li>≥ = कम से कम, ≤ = अधिकतम</li><li>रैखिक: घात 1</li></ul>
+      <ul><li>हल समुच्चय: प्रांत देखें; खाली भी हो सकता है।</li><li>≥ = कम से कम, ≤ = अधिकतम</li><li>रैखिक: घात 1</li></ul>
     </div>
     <div class="shorts-card"><h4>नियम ⭐⭐</h4>
       <ul><li>जोड़/घटाव: चिह्न समान</li><li>×/÷ धनात्मक: समान</li><li>×/÷ ऋणात्मक: चिह्न पलटता!</li></ul>
@@ -301,7 +302,7 @@
       <ul><li>&lt;, > = खुला ○</li><li>≤, ≥ = भरा ●</li><li>AND = अतिव्यापन, OR = संघ</li></ul>
     </div>
     <div class="shorts-card"><h4>आलेख ⭐</h4>
-      <ul><li>पहले रेखा (&lt; dashed, ≤ solid)</li><li>परीक्षण बिंदु से पक्ष चुनो</li><li>निकाय = उभयनिष्ठ क्षेत्र</li></ul>
+      <ul><li>पहले रेखा (&lt; dashed, ≤ solid)</li><li>परीक्षण बिंदु सीमा पर न हो; मूलबिंदु भी तभी लें।</li><li>निकाय = उभयनिष्ठ क्षेत्र</li></ul>
     </div>
     <div class="shorts-card"><h4>शब्द समस्याएं</h4>
       <ul><li>'कम से कम' → ≥</li><li>उत्तर संदर्भ में</li><li>√ के अंदर ≥ 0</li></ul>
@@ -311,7 +312,7 @@
   <div class="lang-block" data-lang="en" hidden>
 <div class="shorts-grid">
     <div class="shorts-card"><h4>Basics</h4>
-      <ul><li>Inequality = range of answers</li><li>≥ = at least, ≤ = at most</li><li>Linear: power 1</li></ul>
+      <ul><li>Solution set: domain matters; may be empty.</li><li>≥ = at least, ≤ = at most</li><li>Linear: power 1</li></ul>
     </div>
     <div class="shorts-card"><h4>Rules ⭐⭐</h4>
       <ul><li>Add/subtract: sign same</li><li>×/÷ positive: sign same</li><li>×/÷ NEGATIVE: sign FLIPS!</li></ul>
@@ -320,7 +321,7 @@
       <ul><li>&lt;, > = open circle ○</li><li>≤, ≥ = closed ●</li><li>AND = overlap, OR = union</li></ul>
     </div>
     <div class="shorts-card"><h4>Graphs ⭐</h4>
-      <ul><li>Draw line first (&lt; dashed, ≤ solid)</li><li>Test point (0,0) picks the side</li><li>System = common shaded region</li></ul>
+      <ul><li>Draw line first (&lt; dashed, ≤ solid)</li><li>Test point must be off the boundary; origin only if off it.</li><li>System = common shaded region</li></ul>
     </div>
     <div class="shorts-card"><h4>Word Problems</h4>
       <ul><li>'at least' → ≥, 'at most' → ≤</li><li>Answer in context (whole numbers?)</li><li>Inside √ must be ≥ 0</li></ul>
@@ -328,31 +329,17 @@
     </div>
   </div>
 </section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> Solve: 3x − 7 &lt; 8.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>3x &lt; 15 → x &lt; <b>5</b> = (−∞, 5).</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> Solve: −2x ≥ 10.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Negative se divide → sign FLIP: x ≤ <b>−5</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> −4 &lt; 3x − 1 ≤ 8 solve karo.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Sab parts me +1: −3 &lt; 3x ≤ 9 → ÷3: <b>−1 &lt; x ≤ 3</b> = (−1, 3].</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> x &lt; 2 ko number line pe kaise dikhayenge?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Open circle (○)</b> at 2, left side shade — 2 included nahi.</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> [3, 7) interval me 7 included hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — round bracket = open. 3 included, 7 nahi.</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> x + y ≤ 6 ke graph me line kaisi hogi?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Solid</b> (kyunki ≤ me barabar hai — line included), phir test point (0,0) wali side shade.</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> System of inequalities ka solution kya hota hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Saari inequalities ki shading ka <b>common (overlapping) region</b> — feasible region.</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> 'Kam se kam 50 marks chahiye' — inequality?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>x <b>≥</b> 50 ('kam se kam' = at least).</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> √(2x − 6) real kab hoga?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Andar wala ≥ 0 → 2x − 6 ≥ 0 → x ≥ <b>3</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> Do numbers ka sum 30 se zyada, pehla number 12 hai. Dusre ke liye inequality?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>12 + y > 30 → y > <b>18</b>.</p></details></div>
-  </div>
-</section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-hinglish="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-en="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2><p class="lang-sub" data-hinglish="Pehle khud try karo, phir steps aur answer dekho." data-hi="पहले खुद हल करें, फिर चरण और उत्तर देखें।" data-en="Try first, then open the steps and answer.">Pehle khud try karo, phir steps aur answer dekho.</p></div><div class="lang-switch" role="group" aria-label="Practice language"><span class="lang-sub lang-label" data-hinglish="Practice language:" data-hi="अभ्यास की भाषा:" data-en="Practice language:">Practice language:</span><button class="lang-btn" data-lang="hinglish" type="button">Hinglish</button><button class="lang-btn" data-lang="hi" type="button">हिंदी</button><button class="lang-btn" data-lang="en" type="button">English</button></div><div class="lang-block practice-block" data-lang="hinglish"><div class="jee-q"><span class="qn">Q1</span> Solve: 3x − 7 &lt; 8.<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>3x &lt; 15 → x &lt; <b>5</b> = (−∞, 5).</p></details></div><div class="jee-q"><span class="qn">Q2</span> Solve: −2x ≥ 10.<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>Negative se divide → sign FLIP: x ≤ <b>−5</b>.</p></details></div><div class="jee-q"><span class="qn">Q3</span> −4 &lt; 3x − 1 ≤ 8 solve karo.<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>Sab parts me +1: −3 &lt; 3x ≤ 9 → ÷3: <b>−1 &lt; x ≤ 3</b> = (−1, 3].</p></details></div><div class="jee-q"><span class="qn">Q4</span> x &lt; 2 ko number line pe kaise dikhayenge?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p><b>Open circle (○)</b> at 2, left side shade — 2 included nahi.</p></details></div><div class="jee-q"><span class="qn">Q5</span> [3, 7) interval me 7 included hai?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — round bracket = open. 3 included, 7 nahi.</p></details></div><div class="jee-q"><span class="qn">Q6</span> x + y ≤ 6 ke graph me line kaisi hogi?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p><b>Solid</b> (kyunki ≤ me barabar hai — line included), phir test point (0,0) wali side shade.</p></details></div><div class="jee-q"><span class="qn">Q7</span> System of inequalities ka solution kya hota hai?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>Saari inequalities ki shading ka <b>common (overlapping) region</b> — feasible region.</p></details></div><div class="jee-q"><span class="qn">Q8</span> 'Kam se kam 50 marks chahiye' — inequality?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>x <b>≥</b> 50 ('kam se kam' = at least).</p></details></div><div class="jee-q"><span class="qn">Q9</span> √(2x − 6) real kab hoga?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>Andar wala ≥ 0 → 2x − 6 ≥ 0 → x ≥ <b>3</b>.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Do numbers ka sum 30 se zyada, pehla number 12 hai. Dusre ke liye inequality?<br/>
+<details class="jee-sol"><summary>Answer dekho</summary><p>12 + y &gt; 30 → y &gt; <b>18</b>.</p></details></div></div><div class="lang-block practice-block" data-lang="hi" hidden><div class="jee-q"><span class="qn">Q1</span> वास्तविक x के लिए 3x − 7 &lt; 8 हल करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: दोनों ओर समान संख्या जोड़ने से असमिका का चिह्न नहीं बदलता।</p><p>चरण: दोनों ओर 7 जोड़ें: 3x &lt; 15। धनात्मक 3 से भाग दें: x &lt; 5।</p><p>उत्तर: (−∞, 5)। जांच: x = 4 पर 5 &lt; 8 सही है, लेकिन x = 5 पर 8 &lt; 8 गलत है।</p></details></div><div class="jee-q"><span class="qn">Q2</span> वास्तविक x के लिए −2x ≥ 10 हल करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: ऋणात्मक संख्या से भाग देने पर असमिका का चिह्न पलटता है।</p><p>चरण: दोनों ओर −2 से भाग दें। ≥ की जगह ≤ आएगा।</p><p>उत्तर: x ≤ −5, अर्थात (−∞, −5]। जांच: x = −5 पर 10 ≥ 10 और x = −6 पर 12 ≥ 10 सही हैं।</p></details></div><div class="jee-q"><span class="qn">Q3</span> वास्तविक x के लिए −4 &lt; 3x − 1 ≤ 8 हल करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>अर्थ: दोनों असमिकाएं एक साथ सही होनी चाहिए।</p><p>चरण: तीनों भागों में 1 जोड़ें: −3 &lt; 3x ≤ 9। धनात्मक 3 से भाग दें: −1 &lt; x ≤ 3।</p><p>उत्तर: (−1, 3]। जांच: −1 पर −4 &lt; −4 गलत है, इसलिए वह शामिल नहीं। 3 पर −4 &lt; 8 ≤ 8 सही है, इसलिए वह शामिल है।</p></details></div><div class="jee-q"><span class="qn">Q4</span> x &lt; 2 को संख्या रेखा पर कैसे दिखाएंगे?<details class="jee-sol"><summary>उत्तर देखें</summary><p>अर्थ: 2 से छोटी सभी वास्तविक संख्याएं हल हैं, लेकिन 2 स्वयं हल नहीं है।</p><p>चरण: 2 पर खुला वृत्त बनाएं और बाईं ओर की किरण पर छाया करें।</p><p>उत्तर: 2 पर खुला वृत्त, बाईं ओर छाया; अंतराल (−∞, 2)। जांच: 1 हल है, लेकिन 2 और 3 नहीं।</p></details></div><div class="jee-q"><span class="qn">Q5</span> क्या अंतराल [3, 7) में 7 शामिल है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: वर्ग कोष्ठक में सिरा शामिल होता है; गोल कोष्ठक में नहीं।</p><p>चरण: [3, 7) का अर्थ 3 ≤ x &lt; 7 है।</p><p>उत्तर: नहीं। 3 शामिल है, 7 नहीं। जांच: 6 भीतर है, लेकिन 7 के लिए x &lt; 7 गलत है।</p></details></div><div class="jee-q"><span class="qn">Q6</span> x + y ≤ 6 के आलेख में सीमा रेखा और छाया कैसी होगी?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: ≤ में बराबरी शामिल है, इसलिए सीमा रेखा के बिंदु भी हल हैं।</p><p>चरण: (6, 0) और (0, 6) से गुजरती ठोस रेखा x + y = 6 बनाएं। परीक्षण बिंदु (0, 0) रेखा पर नहीं है और 0 ≤ 6 को सही बनाता है।</p><p>उत्तर: ठोस सीमा रेखा और मूलबिंदु वाला अर्धतल छायांकित करें। जांच: (3, 3) शामिल सीमा पर है; (4, 4) हल नहीं है।</p></details></div><div class="jee-q"><span class="qn">Q7</span> असमिकाओं के निकाय का हल क्या होता है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>अर्थ: निकाय की सभी असमिकाएं एक साथ सही होनी चाहिए।</p><p>चरण: हर असमिका हल करें, फिर केवल उभयनिष्ठ भाग, अर्थात प्रतिच्छेद लें।</p><p>उत्तर: सभी का उभयनिष्ठ हल समुच्चय। आलेख में इसे सुसंगत क्षेत्र भी कहते हैं। जांच: x ≥ 1 और x &lt; 3 से [1, 3) मिलता है; x &lt; 0 और x ≥ 1 का कोई उभयनिष्ठ हल नहीं है।</p></details></div><div class="jee-q"><span class="qn">Q8</span> कम से कम 50 अंक चाहिए, इसकी असमिका लिखें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>अर्थ: प्राप्त अंकों को x मानें। कम से कम का अर्थ 50 या उससे अधिक है।</p><p>चरण: ठीक 50 अंक भी स्वीकार हैं, इसलिए बराबरी शामिल करें।</p><p>उत्तर: x ≥ 50। जांच: 50 और 51 शर्त पूरी करते हैं, 49 नहीं। अधिकतम अंक या पूर्णांक की शर्त वास्तविक परीक्षा से मिलेगी।</p></details></div><div class="jee-q"><span class="qn">Q9</span> √(2x − 6) कब वास्तविक होगा?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: वास्तविक वर्गमूल के लिए भीतर का व्यंजक शून्य या धनात्मक होना चाहिए।</p><p>चरण: 2x − 6 ≥ 0 ⇒ 2x ≥ 6 ⇒ x ≥ 3।</p><p>उत्तर: [3, ∞)। जांच: x = 3 पर √0 = 0 है। x = 2 पर √(−2) चाहिए, जो वास्तविक नहीं है।</p></details></div><div class="jee-q"><span class="qn">Q10</span> दो संख्याओं का योग 30 से अधिक है। पहली 12 है। दूसरी संख्या y के लिए क्या शर्त होगी?<details class="jee-sol"><summary>उत्तर देखें</summary><p>अर्थ: से अधिक में बराबरी शामिल नहीं है।</p><p>चरण: 12 + y &gt; 30। दोनों ओर 12 घटाएं।</p><p>उत्तर: y &gt; 18। जांच: y = 19 पर 31 &gt; 30 सही है। y = 18 पर 30 &gt; 30 गलत है।</p></details></div></div><div class="lang-block practice-block" data-lang="en" hidden><div class="jee-q"><span class="qn">Q1</span> Solve 3x − 7 &lt; 8 for real x.<details class="jee-sol"><summary>Show answer</summary><p>Rule: adding the same number on both sides keeps the inequality direction.</p><p>Steps: add 7 to get 3x &lt; 15. Divide by positive 3 to get x &lt; 5.</p><p>Answer: (−∞, 5). Check: x = 4 gives 5 &lt; 8, but x = 5 gives 8 &lt; 8, which is false.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Solve −2x ≥ 10 for real x.<details class="jee-sol"><summary>Show answer</summary><p>Rule: dividing by a negative number reverses the inequality.</p><p>Steps: divide both sides by −2; ≥ changes to ≤.</p><p>Answer: x ≤ −5, or (−∞, −5]. Check: x = −5 gives 10 ≥ 10; x = −6 gives 12 ≥ 10.</p></details></div><div class="jee-q"><span class="qn">Q3</span> Solve −4 &lt; 3x − 1 ≤ 8 for real x.<details class="jee-sol"><summary>Show answer</summary><p>Meaning: both inequalities must hold at the same time.</p><p>Steps: add 1 to all three parts: −3 &lt; 3x ≤ 9. Divide all parts by positive 3: −1 &lt; x ≤ 3.</p><p>Answer: (−1, 3]. Check: −1 is excluded because it gives −4 &lt; −4; 3 is included because it gives −4 &lt; 8 ≤ 8.</p></details></div><div class="jee-q"><span class="qn">Q4</span> How do you show x &lt; 2 on a number line?<details class="jee-sol"><summary>Show answer</summary><p>Meaning: all real numbers smaller than 2 are solutions; 2 itself is not.</p><p>Steps: mark 2 with an open circle. Shade the ray to the left.</p><p>Answer: open at 2, shade left; interval (−∞, 2). Check: 1 is a solution, while 2 and 3 are not.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Does the interval [3, 7) include 7?<details class="jee-sol"><summary>Show answer</summary><p>Rule: a square bracket includes an endpoint; a round bracket excludes it.</p><p>Steps: read [3, 7) as 3 ≤ x &lt; 7.</p><p>Answer: no. It includes 3 but not 7. Check: 6 lies inside; 7 fails x &lt; 7.</p></details></div><div class="jee-q"><span class="qn">Q6</span> What boundary line and shading represent x + y ≤ 6?<details class="jee-sol"><summary>Show answer</summary><p>Rule: ≤ includes equality, so points on the boundary belong to the solution.</p><p>Steps: draw the solid line x + y = 6 through (6, 0) and (0, 6). The test point (0, 0) is off the line and satisfies 0 ≤ 6.</p><p>Answer: solid boundary, shade the half-plane containing the origin. Check: (3, 3) is on the included boundary; (4, 4) is outside.</p></details></div><div class="jee-q"><span class="qn">Q7</span> What is the solution of a system of inequalities?<details class="jee-sol"><summary>Show answer</summary><p>Meaning: a system requires all its inequalities to hold together.</p><p>Steps: solve each one, then keep only their common part, the intersection.</p><p>Answer: the common solution set, also called the feasible region in a graph. Check: x ≥ 1 and x &lt; 3 give [1, 3); x &lt; 0 and x ≥ 1 have no common solution.</p></details></div><div class="jee-q"><span class="qn">Q8</span> Write an inequality for needing at least 50 marks.<details class="jee-sol"><summary>Show answer</summary><p>Meaning: let x be the marks obtained. At least means 50 or more.</p><p>Steps: include equality because exactly 50 is allowed.</p><p>Answer: x ≥ 50. Check: 50 and 51 meet this condition; 49 does not. Any maximum or whole-mark restriction comes from the actual test.</p></details></div><div class="jee-q"><span class="qn">Q9</span> When is √(2x − 6) real?<details class="jee-sol"><summary>Show answer</summary><p>Rule: for a real square root, the expression inside must be non-negative.</p><p>Steps: 2x − 6 ≥ 0 ⇒ 2x ≥ 6 ⇒ x ≥ 3.</p><p>Answer: [3, ∞). Check: x = 3 gives √0 = 0; x = 2 would require √(−2), which is not real.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Two numbers have sum greater than 30. If the first is 12, what can the second number y be?<details class="jee-sol"><summary>Show answer</summary><p>Meaning: greater than is strict, so equality is not allowed.</p><p>Steps: 12 + y &gt; 30. Subtract 12 from both sides.</p><p>Answer: y &gt; 18. Check: y = 19 gives 31 &gt; 30, while y = 18 gives 30 &gt; 30, which is false.</p></details></div></div><div class="tip-box"><b>Coverage / दायरा</b><p>Our own 10 selected foundation questions, not official exercise solutions, PYQs or full JEE preparation. Hindi and English add easy steps and checks. Original Hinglish items retained. Full exercise coverage and advanced systems are not included. No new diagram or video.</p><p>Concept reference: <a href="https://ncert.nic.in/pdf/publication/exemplarproblem/classXI/mathematics/keep206.pdf">NCERT Class XI Linear Inequalities Exemplar, 2025-26, overview 6.1</a>. Its chapter number is 6; this site places the topic at chapter 5.</p></div></section>
 <section class="roadmap">
   <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-11/maths/ch-6/">Permutations and Combinations</a> — notes ready hain.</div>
 </section>
