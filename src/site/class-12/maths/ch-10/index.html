@@ -1,359 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 10 — Vector Algebra | Class 12 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 12 Maths Chapter 10: Vector Algebra — long + short notes in Hindi, English, Hinglish. Vectors, types, addition, section formula, dot product, cross product, applications.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 12 Maths Chapter 10: Vector Algebra — long + short notes in Hindi, English, Hinglish. Vectors, types, addition, section formula, dot product, cross product, applications." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:1rem;line-height:1.75;padding:.75rem;background:#f5f7fb;border:1px solid #d6e1f1;border-radius:4px} #practice .jee-q{overflow-wrap:anywhere} #practice summary{font-size:1rem} #notes .note-sec p{line-height:1.8}</style><style>.product-table{border-collapse:collapse;width:100%;font-size:1rem;margin:1rem 0}.product-table th,.product-table td{border:1px solid #d6e1f1;padding:.5rem;text-align:center;overflow-wrap:anywhere}.product-table caption{padding:.5rem;color:#1d437e}#notes p,#short-notes p{overflow-wrap:anywhere}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 10</p>
-  <h1>Vector Algebra</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">सदिश बीजगणित</p>
-  <p style="color:var(--muted);margin-top:6px">Arrows ka ganit — dot product, cross product aur unke tests</p>
-  <div class="ch-tags">
-    <span class="pill weight-high">JEE Weightage: HIGH</span>
-    <span class="pill">Video available</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 10</p>
+<h1>Vector Algebra</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">सदिश बीजगणित</p>
+<p style="color:var(--muted);margin-top:6px">Arrows ka ganit — dot product, cross product aur unke tests</p>
+<div class="ch-tags">
+<span class="pill weight-high">JEE Weightage: HIGH</span>
+<span class="pill">Video available</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Vector Algebra - Class 12 Maths Short - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Vector Algebra - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/3KECq5lhkBw" title="Vector Algebra - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/3KECq5lhkBw" title="Vector Algebra - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/3KECq5lhkBw" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Vector Algebra - Class 12 Maths Short - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Vector Algebra - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3KECq5lhkBw" title="Vector Algebra - Class 12 Maths Short"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3KECq5lhkBw" title="Vector Algebra - Class 12 Maths Short"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/3KECq5lhkBw" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Vector Algebra - Class 12 Mathematics Short 2 - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Vector Algebra - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player2" class="yt-embed" src="https://www.youtube.com/embed/-qYQC-dyDBY" title="Vector Algebra - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player2" class="yt-embed" src="https://www.youtube.com/embed/-qYQC-dyDBY" title="Vector Algebra - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/-qYQC-dyDBY" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Vector Algebra - Class 12 Mathematics Short 2 - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Vector Algebra - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-qYQC-dyDBY" title="Vector Algebra - Class 12 Mathematics Short 2"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/-qYQC-dyDBY" title="Vector Algebra - Class 12 Mathematics Short 2"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/-qYQC-dyDBY" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Vector Algebra 5 animated scenes mein - addition machine (triangle law!), section formula divider, dot product lab with projection, cross product + area (rotating 3D), aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Vector Algebra 5 animated scenes mein - addition machine (triangle law!), section formula divider, dot product lab with projection, cross product + area (rotating 3D), aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Selected foundations" data-hi="चुनी हुई बुनियादें" data-hinglish="Selected foundations">Selected foundations</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ Vector Kya Hai — Direction Wala Quantity ⭐</h3>
-    <ul>
-<li><b>Scalar vs Vector:</b> scalar = sirf MAGNITUDE (mass, speed, temperature). Vector = magnitude + DIRECTION dono (velocity, force, displacement).</li>
-<li><b>Notation:</b> a⃗ ya AB⃗ (A = tail/initial point, B = head/terminal). Magnitude: |a⃗| — hamesha non-negative number.</li>
-<li><b>Types ⭐:</b> <b>Zero vector</b> (0⃗, magnitude 0, direction undefined); <b>unit vector</b> (magnitude 1: â = a⃗/|a⃗|); <b>equal vectors</b> (same magnitude + same direction); <b>negative</b> −a⃗ (same magnitude, opposite direction); <b>collinear</b> (same/parallel line); <b>coplanar</b> (same plane me).</li>
-<li><b>Position vector:</b> origin se point tak ka vector — P(x, y, z) ka p.v. = <b>xî + yĵ + zk̂</b>.</li>
-<li><b>î, ĵ, k̂:</b> x, y, z axes ke unit vectors — 3D ka foundation trio!</li>
-</ul>
-<p class="small-note">💡 Feel: scalar batata hai "kitna", vector batata hai "kitna + kidhar". Arrow hi vector hai — lambai = magnitude, nok = direction.</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Addition, Components aur Section Formula ⭐</h3>
-    <ul>
-<li><b>Triangle law ⭐:</b> a⃗ + b⃗ = pehle vector ka head doosre ki tail se jodo → tail-to-head resultant. <b>Parallelogram law:</b> same tail se start → diagonal = a⃗ + b⃗.</li>
-<li><b>Component form me add ⭐:</b> (a₁î + a₂ĵ + a₃k̂) + (b₁î + b₂ĵ + b₃k̂) = (a₁+b₁)î + (a₂+b₂)ĵ + (a₃+b₃)k̂ — components alag-alag add!</li>
-<li><b>Scalar multiplication:</b> λa⃗ = magnitude |λ| guna; direction same (λ &gt; 0) ya opposite (λ &lt; 0). Components sab λ se multiply.</li>
-<li><b>Magnitude ⭐:</b> |a⃗| = <b>√(a₁² + a₂² + a₃²)</b>. Unit vector: â = a⃗/|a⃗|.</li>
-<li><b>AB⃗ = B ke p.v. − A ke p.v. ⭐</b> (head − tail). Section formula: P, AB ko m:n me divide kare → p⃗ = <b>(mb⃗ + na⃗)/(m + n)</b> (internal).</li>
-</ul>
-<p class="small-note">🎯 Section formula yaad rakho: "cross-multiply and add" — m wale ko b se, n wale ko a se (ulti taraf ke weight!).</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Dot Product — Scalar Wala Product ⭐⭐</h3>
-    <ul>
-<li><b>Definition ⭐⭐:</b> a⃗·b⃗ = <b>|a⃗||b⃗|cos θ</b> — answer ek SCALAR (number) aata hai, vector nahi!</li>
-<li><b>Component form ⭐⭐:</b> a⃗·b⃗ = <b>a₁b₁ + a₂b₂ + a₃b₃</b> — corresponding components multiply karke add. Super easy!</li>
-<li><b>Perpendicular test ⭐⭐:</b> a⃗·b⃗ = 0 ⟺ vectors <b>PERPENDICULAR</b> (non-zero vectors ke liye). Sabse zyada use hone wala test!</li>
-<li><b>Angle nikalna ⭐:</b> cos θ = (a⃗·b⃗)/(|a⃗||b⃗|) — dot product aur magnitudes se angle!</li>
-<li>Properties: a⃗·b⃗ = b⃗·a⃗ (commutative ✓); a⃗·a⃗ = |a⃗|²; î·î = 1, î·ĵ = 0 (axes perpendicular!).</li>
-<li><b>Projection:</b> a⃗ ka b⃗ pe projection = (a⃗·b⃗)/|b⃗| — shadow ki length.</li>
-</ul>
-<p class="small-note">💡 Dot product = "kitna saath chal rahe hain". Same direction → max positive; perpendicular → 0; opposite → max negative.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Cross Product — Vector Wala Product ⭐⭐</h3>
-    <ul>
-<li><b>Definition ⭐⭐:</b> a⃗×b⃗ = <b>|a⃗||b⃗|sin θ · n̂</b> — answer ek VECTOR jo dono ke PERPENDICULAR hota hai (right-hand rule se direction!).</li>
-<li><b>Determinant form ⭐⭐:</b> a⃗×b⃗ = |î ĵ k̂; a₁ a₂ a₃; b₁ b₂ b₃| — pehli row me î ĵ k̂, phir a⃗, phir b⃗ ke components. Determinant expand karo!</li>
-<li><b>ANTI-commutative ⭐⭐:</b> a⃗×b⃗ = <b>−(b⃗×a⃗)</b> — order ulta kiya to sign ulta! (Dot product me aisa nahi tha!)</li>
-<li><b>Parallel test ⭐:</b> a⃗×b⃗ = 0⃗ ⟺ vectors <b>PARALLEL/collinear</b> (ya components proportional: a₁/b₁ = a₂/b₂ = a₃/b₃).</li>
-<li><b>Area ⭐⭐:</b> |a⃗×b⃗| = <b>parallelogram ka area</b> (sides a⃗, b⃗). Triangle ka area = <b>½|a⃗×b⃗|</b>.</li>
-<li>î×ĵ = k̂, ĵ×k̂ = î, k̂×î = ĵ (cyclic!); par ĵ×î = −k̂ (ulta = minus).</li>
-</ul>
-<p class="small-note">💡 Cross product = "perpendicular nikalo + area do". Right hand: fingers a⃗ se b⃗ curl karo, thumb = a⃗×b⃗ ki direction.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Applications aur Syllabus Note</h3>
-    <ul>
-<li><b>Collinearity of 3 points ⭐:</b> AB⃗ aur AC⃗ parallel (ya AB⃗ = λAC⃗) → A, B, C collinear.</li>
-<li><b>Work done (physics link):</b> W = F⃗·d⃗ — dot product. Torque: τ⃗ = r⃗×F⃗ — cross product.</li>
-<li><b>Perpendicular vector banana ⭐:</b> do vectors ke common perpendicular chahiye? a⃗×b⃗ hi wo vector hai — normalize karke unit: ±(a⃗×b⃗)/|a⃗×b⃗|.</li>
-<li><b>Syllabus note ⭐:</b> <b>scalar triple product</b> (a⃗·(b⃗×c⃗)) rationalized NCERT se <b>DELETE</b> ho chuka hai — sirf dot aur cross products pe focus.</li>
-<li>Chapter 11 (3D Geometry) me vectors hi use hote hain — lines ki equations, angles sab inhi operations se bante hain.</li>
-</ul>
-<p class="small-note">🎯 Dot = perpendicular test + angle + work. Cross = parallel test + area + perpendicular vector. Ye mapping clear hai to chapter sorted!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ सदिश क्या है — दिशा वाली राशि ⭐</h3>
-    <ul>
-<li><b>अदिश बनाम सदिश:</b> अदिश = केवल <b>परिमाण</b> (द्रव्यमान, चाल)। सदिश = परिमाण + <b>दिशा</b> दोनों (वेग, बल, विस्थापन)।</li>
-<li><b>संकेत:</b> a⃗ या AB⃗ (A = पूंछ, B = शीर्ष)। परिमाण: |a⃗| — सदैव अऋणात्मक।</li>
-<li><b>प्रकार ⭐:</b> <b>शून्य सदिश</b> (परिमाण 0); <b>मात्रक सदिश</b> (परिमाण 1: â = a⃗/|a⃗|); <b>समान सदिश</b> (समान परिमाण + दिशा); <b>ऋणात्मक</b> −a⃗; <b>संरेख</b> (समांतर); <b>समतलीय</b>।</li>
-<li><b>स्थिति सदिश:</b> मूल बिंदु से बिंदु तक — P(x, y, z) का = <b>xî + yĵ + zk̂</b>।</li>
-<li><b>î, ĵ, k̂:</b> x, y, z अक्षों के मात्रक सदिश।</li>
-</ul>
-<p class="small-note">💡 अदिश बताता है "कितना", सदिश "कितना + किधर"। तीर ही सदिश है!</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ योग, घटक और अनुभाग सूत्र ⭐</h3>
-    <ul>
-<li><b>त्रिभुज नियम ⭐:</b> a⃗ + b⃗ = पहले का शीर्ष दूसरे की पूंछ से → पूंछ-से-शीर्ष परिणामी। <b>समांतर चतुर्भुज नियम:</b> विकर्ण = योग।</li>
-<li><b>घटक रूप में योग ⭐:</b> संगत घटक अलग-अलग जोड़ो: (a₁+b₁)î + (a₂+b₂)ĵ + (a₃+b₃)k̂।</li>
-<li><b>अदिश गुणन:</b> λa⃗ = परिमाण |λ| गुना; दिशा समान (λ &gt; 0) या विपरीत (λ &lt; 0)।</li>
-<li><b>परिमाण ⭐:</b> |a⃗| = <b>√(a₁² + a₂² + a₃²)</b>। मात्रक: â = a⃗/|a⃗|।</li>
-<li><b>AB⃗ = B का स्थिति सदिश − A का ⭐</b>। अनुभाग सूत्र: p⃗ = <b>(mb⃗ + na⃗)/(m + n)</b> (आंतरिक)।</li>
-</ul>
-<p class="small-note">🎯 अनुभाग सूत्र: "उल्टी ओर के भार" — m वाले को b से!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ अदिश गुणनफल — डॉट प्रोडक्ट ⭐⭐</h3>
-    <ul>
-<li><b>परिभाषा ⭐⭐:</b> a⃗·b⃗ = <b>|a⃗||b⃗|cos θ</b> — उत्तर एक <b>अदिश</b> (संख्या)!</li>
-<li><b>घटक रूप ⭐⭐:</b> a⃗·b⃗ = <b>a₁b₁ + a₂b₂ + a₃b₃</b>।</li>
-<li><b>लंबवत परीक्षण ⭐⭐:</b> a⃗·b⃗ = 0 ⟺ सदिश <b>लंबवत</b> (अशून्य सदिशों के लिए)।</li>
-<li><b>कोण ⭐:</b> cos θ = (a⃗·b⃗)/(|a⃗||b⃗|)।</li>
-<li>गुण: a⃗·b⃗ = b⃗·a⃗ (क्रमविनिमेय); a⃗·a⃗ = |a⃗|²; î·ĵ = 0।</li>
-<li><b>प्रक्षेप:</b> a⃗ का b⃗ पर = (a⃗·b⃗)/|b⃗|।</li>
-</ul>
-<p class="small-note">💡 डॉट = "कितना साथ चल रहे हैं"। लंबवत → 0!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ सदिश गुणनफल — क्रॉस प्रोडक्ट ⭐⭐</h3>
-    <ul>
-<li><b>परिभाषा ⭐⭐:</b> a⃗×b⃗ = <b>|a⃗||b⃗|sin θ · n̂</b> — उत्तर एक <b>सदिश</b>, दोनों के लंबवत (दाएं-हाथ का नियम!)।</li>
-<li><b>सारणिक रूप ⭐⭐:</b> a⃗×b⃗ = |î ĵ k̂; a₁ a₂ a₃; b₁ b₂ b₃| — सारणिक प्रसार करो!</li>
-<li><b>प्रति-क्रमविनिमेय ⭐⭐:</b> a⃗×b⃗ = <b>−(b⃗×a⃗)</b> — क्रम उलटा तो चिह्न उलटा!</li>
-<li><b>समांतर परीक्षण ⭐:</b> a⃗×b⃗ = 0⃗ ⟺ सदिश <b>समांतर</b> (या घटक समानुपाती)।</li>
-<li><b>क्षेत्रफल ⭐⭐:</b> |a⃗×b⃗| = <b>समांतर चतुर्भुज का क्षेत्रफल</b>; त्रिभुज = <b>½|a⃗×b⃗|</b>।</li>
-<li>î×ĵ = k̂, ĵ×k̂ = î, k̂×î = ĵ (चक्रीय!); उल्टा = ऋण।</li>
-</ul>
-<p class="small-note">💡 क्रॉस = "लंबवत निकालो + क्षेत्रफल दो"।</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ अनुप्रयोग और पाठ्यक्रम टिप्पणी</h3>
-    <ul>
-<li><b>3 बिंदुओं की संरेखता ⭐:</b> AB⃗ = λAC⃗ → A, B, C संरेख।</li>
-<li><b>भौतिकी लिंक:</b> कार्य W = F⃗·d⃗ (डॉट); बलाघूर्ण τ⃗ = r⃗×F⃗ (क्रॉस)।</li>
-<li><b>लंबवत सदिश बनाना ⭐:</b> दोनों के उभयनिष्ठ लंबवत = a⃗×b⃗; मात्रक: ±(a⃗×b⃗)/|a⃗×b⃗|।</li>
-<li><b>पाठ्यक्रम टिप्पणी ⭐:</b> <b>अदिश त्रिगुणनफल</b> (a⃗·(b⃗×c⃗)) NCERT से <b>हटाया गया</b> — केवल डॉट और क्रॉस पर ध्यान दो।</li>
-<li>अध्याय 11 (त्रिविम ज्यामिति) में यही संक्रियाएं चलती हैं।</li>
-</ul>
-<p class="small-note">🎯 डॉट = लंबवत परीक्षण + कोण। क्रॉस = समांतर परीक्षण + क्षेत्रफल। यह मैपिंग स्पष्ट तो अध्याय सॉर्टेड!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ What Is a Vector — A Quantity with Direction ⭐</h3>
-    <ul>
-<li><b>Scalar vs Vector:</b> a scalar has only MAGNITUDE (mass, speed, temperature). A vector has magnitude AND DIRECTION both (velocity, force, displacement).</li>
-<li><b>Notation:</b> a⃗ or AB⃗ (A = tail/initial point, B = head/terminal). Magnitude: |a⃗| — always a non-negative number.</li>
-<li><b>Types ⭐:</b> <b>zero vector</b> (0⃗, magnitude 0, direction undefined); <b>unit vector</b> (magnitude 1: â = a⃗/|a⃗|); <b>equal vectors</b> (same magnitude + same direction); <b>negative</b> −a⃗ (same magnitude, opposite direction); <b>collinear</b> (on the same/parallel line); <b>coplanar</b> (in one plane).</li>
-<li><b>Position vector:</b> the vector from the origin to a point — P(x, y, z) has p.v. <b>xî + yĵ + zk̂</b>.</li>
-<li><b>î, ĵ, k̂:</b> the unit vectors along the x, y, z axes — the foundation trio of 3D!</li>
-</ul>
-<p class="small-note">💡 Feel: a scalar says "how much", a vector says "how much + which way". An arrow IS a vector — length = magnitude, tip = direction.</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Addition, Components and the Section Formula ⭐</h3>
-    <ul>
-<li><b>Triangle law ⭐:</b> a⃗ + b⃗ = join the head of the first vector to the tail of the second → the tail-to-head resultant. <b>Parallelogram law:</b> starting from the same tail → the diagonal = a⃗ + b⃗.</li>
-<li><b>Adding in components ⭐:</b> (a₁î + a₂ĵ + a₃k̂) + (b₁î + b₂ĵ + b₃k̂) = (a₁+b₁)î + (a₂+b₂)ĵ + (a₃+b₃)k̂ — add components separately!</li>
-<li><b>Scalar multiplication:</b> λa⃗ = magnitude × |λ|; direction same (λ &gt; 0) or opposite (λ &lt; 0). Every component gets multiplied.</li>
-<li><b>Magnitude ⭐:</b> |a⃗| = <b>√(a₁² + a₂² + a₃²)</b>. Unit vector: â = a⃗/|a⃗|.</li>
-<li><b>AB⃗ = p.v. of B − p.v. of A ⭐</b> (head − tail). Section formula: if P divides AB in m:n, p⃗ = <b>(mb⃗ + na⃗)/(m + n)</b> (internal).</li>
-</ul>
-<p class="small-note">🎯 Section formula memory: "cross the weights" — the m-part pairs with b (the opposite end)!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Dot Product — The Scalar Product ⭐⭐</h3>
-    <ul>
-<li><b>Definition ⭐⭐:</b> a⃗·b⃗ = <b>|a⃗||b⃗|cos θ</b> — the answer is a SCALAR (a number), not a vector!</li>
-<li><b>Component form ⭐⭐:</b> a⃗·b⃗ = <b>a₁b₁ + a₂b₂ + a₃b₃</b> — multiply corresponding components and add. Super easy!</li>
-<li><b>Perpendicularity test ⭐⭐:</b> a⃗·b⃗ = 0 ⟺ the vectors are <b>PERPENDICULAR</b> (for non-zero vectors). The most-used test in the chapter!</li>
-<li><b>Finding the angle ⭐:</b> cos θ = (a⃗·b⃗)/(|a⃗||b⃗|) — angle from the dot product and the magnitudes!</li>
-<li>Properties: a⃗·b⃗ = b⃗·a⃗ (commutative ✓); a⃗·a⃗ = |a⃗|²; î·î = 1, î·ĵ = 0 (the axes are perpendicular!).</li>
-<li><b>Projection:</b> the projection of a⃗ on b⃗ = (a⃗·b⃗)/|b⃗| — the shadow's length.</li>
-</ul>
-<p class="small-note">💡 Dot product = "how much are they moving together". Same direction → max positive; perpendicular → 0; opposite → max negative.</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Cross Product — The Vector Product ⭐⭐</h3>
-    <ul>
-<li><b>Definition ⭐⭐:</b> a⃗×b⃗ = <b>|a⃗||b⃗|sin θ · n̂</b> — the answer is a VECTOR PERPENDICULAR to both (direction by the right-hand rule!).</li>
-<li><b>Determinant form ⭐⭐:</b> a⃗×b⃗ = |î ĵ k̂; a₁ a₂ a₃; b₁ b₂ b₃| — first row î ĵ k̂, then the components of a⃗, then b⃗. Expand the determinant!</li>
-<li><b>ANTI-commutative ⭐⭐:</b> a⃗×b⃗ = <b>−(b⃗×a⃗)</b> — flip the order and the sign flips! (The dot product had no such rule!)</li>
-<li><b>Parallel test ⭐:</b> a⃗×b⃗ = 0⃗ ⟺ the vectors are <b>PARALLEL/collinear</b> (or components are proportional: a₁/b₁ = a₂/b₂ = a₃/b₃).</li>
-<li><b>Area ⭐⭐:</b> |a⃗×b⃗| = <b>area of the parallelogram</b> (with sides a⃗, b⃗). Triangle's area = <b>½|a⃗×b⃗|</b>.</li>
-<li>î×ĵ = k̂, ĵ×k̂ = î, k̂×î = ĵ (cyclic!); but ĵ×î = −k̂ (reversed = minus).</li>
-</ul>
-<p class="small-note">💡 Cross product = "find the perpendicular + get the area". Right hand: curl fingers from a⃗ to b⃗; the thumb points along a⃗×b⃗.</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Applications and Syllabus Note</h3>
-    <ul>
-<li><b>Collinearity of 3 points ⭐:</b> AB⃗ and AC⃗ parallel (or AB⃗ = λAC⃗) → A, B, C are collinear.</li>
-<li><b>Physics link:</b> work done W = F⃗·d⃗ — the dot product. Torque: τ⃗ = r⃗×F⃗ — the cross product.</li>
-<li><b>Building a perpendicular vector ⭐:</b> need a common perpendicular to two vectors? a⃗×b⃗ is exactly that — normalize it for the unit vector: ±(a⃗×b⃗)/|a⃗×b⃗|.</li>
-<li><b>Syllabus note ⭐:</b> the <b>scalar triple product</b> (a⃗·(b⃗×c⃗)) is <b>DELETED</b> from rationalized NCERT — focus only on dot and cross products.</li>
-<li>Chapter 11 (3D Geometry) runs on vectors — line equations and angles all come from these operations.</li>
-</ul>
-<p class="small-note">🎯 Dot = perpendicular test + angle + work. Cross = parallel test + area + perpendicular vector. Clear this mapping and the chapter is sorted!</p>
-  </div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Vector mein magnitude aur direction dono hain</h3><p>In notes mein a,b vectors aur |a|, a ki nonnegative length hai. Scalar ki direction nahi hoti, jaise mass ya speed. Displacement aur velocity vectors hain. Components negative ho sakte hain, lengths nahi.</p><p>Equal vectors ka magnitude aur direction same hota hai, starting point same hona zaroori nahi. Zero vector 0 ki length 0 aur unique direction nahi. Unit vector ki length 1 hoti hai; nonzero a ki direction mein a/|a| lo. |0| se divide kabhi nahi.</p><p>a=(3,4,0) mein |a|=√(9+16)=5, isliye uski direction ka unit vector (3/5,4/5,0). Squared length 9/25+16/25=1 hai. Opposite direction ka unit vector iska negative hai.</p></div><div class="note-sec"><h3>2. Components se arrows ki arithmetic karo</h3><p>a=(a₁,a₂,a₃)=a₁i+a₂j+a₃k likho, jahan axis directions perpendicular unit vectors hain. Matching components add/subtract karo. a=(1,2,−1), b=(2,−1,3) se a+b=(3,1,2). Yeh ek vector ke components hain, teen lengths nahi.</p><p>Scalar λ ke liye |λa|=|λ||a|. a≠0 ho to positive λ direction same aur negative λ reverse karta hai. λ=0 se zero vector milta hai, unique direction nahi. Addition mein triangle ya parallelogram law lagta hai.</p><p>Directed vector AB=B−A: terminal minus initial. A=(1,−2,3), B=(4,2,3) se AB=(3,4,0), BA=(−3,−4,0). Dono lengths 5. Endpoints reverse karne se vector ka sign badalta hai, distance nahi.</p></div><div class="note-sec"><h3>3. Section formula mein ratio endpoints se milao</h3><p>a,b, A,B ke position vectors hon; AP:PB=m:n aur m,n&gt;0. Internal division p=(na+mb)/(m+n) hai. Endpoint A ko opposite weight n, B ko m milta hai. m=n ho to midpoint (a+b)/2.</p><p>A=(0,0,0), B=(6,3,0), AP:PB=1:2 se P=(2,1,0). Yeh A se B tak one-third distance par hai, two-thirds nahi. Check: AP=(2,1,0), PB=(4,2,0); lengths ka ratio 1:2 hai.</p><p>External division p=(mb−na)/(m−n), m≠n hai. Equal-ratio external formula ka denominator zero hota hai; distinct endpoints ke liye finite point nahi deta. Formula se pehle dekho point segment ke andar chahiye ya bahar.</p></div><div class="note-sec"><h3>4. Dot product scalar deta hai</h3><p>a·b=a₁b₁+a₂b₂+a₃b₃. Nonzero vectors ke liye a·b=|a||b|cos θ, 0≤θ≤π. Isliye cos θ=(a·b)/(|a||b|). Dono magnitudes nonzero hone chahiye.</p><p>a=(1,2,−1), b=(2,−1,3) mein a·b=2−2−3=−3. Negative sign se angle obtuse hai. Dono vectors nonzero hon to dot product zero ka matlab perpendicular. Zero vector ka dot sabke saath zero hai, par unique angle nahi.</p><p>a·a=|a|², a·b=b·a aur a·(b+c)=a·b+a·c. a·b number hai, a+b vector, dono mat milao. Sirf equal lengths se equal ya perpendicular vectors prove nahi hote.</p></div><div class="note-sec"><h3>5. Projection: signed scalar aur vector alag hain</h3><p>b≠0 par a ka directed b ke along signed scalar component (a·b)/|b| hai. Yeh negative ho sakta hai. Projection vector [(a·b)/|b|²]b hai. Uski length |a·b|/|b| nonnegative hai.</p><p>Example: a=(−3,4,0), b=(2,0,0). Dot −6 se signed scalar component −3, projection vector (−3,0,0), projection length 3. Yeh alag type ke answers hain; jo manga ho uska label do.</p><p>b=0 projection ki direction define nahi karta. Nonzero b ki direction par zero vector ka projection zero vector, signed scalar component 0 hai.</p></div><div class="note-sec"><h3>6. Cross product vector aur area deta hai</h3><p>a×b=(a₂b₃−a₃b₂, a₃b₁−a₁b₃, a₁b₂−a₂b₁). Middle component ka order dhyan se dekho. Angle θ wale nonzero vectors ke liye |a×b|=|a||b|sin θ. Nonzero cross ki direction right-hand rule se aati hai.</p><p>i×j=k, par j×i=−k. General rule b×a=−(a×b), dot jaisa nahi. a=(1,0,0), b=(0,2,0) se a×b=(0,0,2). Parallelogram area 2, triangle area 1.</p><p>Nonzero vectors mein a×b=0 ka matlab parallel, opposite bhi ho sakte hain. Koi vector zero ho tab bhi cross zero, par unique angle nahi. Area |a×b| ya uska half hai, cross ka signed component nahi.</p><p>Yeh selected foundations aur das original questions hain, poori textbook exercise solutions ya poori JEE preparation nahi. Lambe vector proofs, extended identities, mixed multi-step geometry aur detailed applications shamil nahi. Deleted topics ya pakke exam marks ka daava nahi hai.</p><table class="product-table"><caption>Products ka farq</caption><thead><tr><th scope="col">Operation</th><th scope="col">Result type</th><th scope="col">Swap order</th></tr></thead><tbody><tr><th scope="row">a·b</th><td>Scalar</td><td>b·a=a·b</td></tr><tr><th scope="row">a×b</th><td>Vector</td><td>b×a=−(a×b)</td></tr></tbody></table></div></div><div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. सदिश में परिमाण और दिशा दोनों हैं</h3><p>इन नोट्स में a,b सदिश और |a|, a की अऋणात्मक लंबाई है। अदिश की दिशा नहीं होती, जैसे द्रव्यमान या चाल। विस्थापन और वेग सदिश हैं। घटक ऋणात्मक हो सकते हैं, लंबाइयां नहीं।</p><p>समान सदिशों का परिमाण और दिशा समान है, प्रारंभिक बिंदु समान होना जरूरी नहीं। शून्य सदिश 0 की लंबाई 0 है और कोई अद्वितीय दिशा नहीं। मात्रक सदिश की लंबाई 1 है; अशून्य a की दिशा में a/|a| लें। |0| से भाग कभी न दें।</p><p>a=(3,4,0) में |a|=√(9+16)=5, अतः उसकी दिशा का मात्रक सदिश (3/5,4/5,0)। वर्ग लंबाई 9/25+16/25=1 है। विपरीत दिशा का मात्रक सदिश इसका ऋण है।</p></div><div class="note-sec"><h3>2. घटकों से तीरों की गणना करें</h3><p>a=(a₁,a₂,a₃)=a₁i+a₂j+a₃k लिखें, जहां अक्ष दिशाएं परस्पर लंब मात्रक सदिश हैं। समान स्थान के घटक जोड़ें/घटाएं। a=(1,2,−1), b=(2,−1,3) से a+b=(3,1,2)। ये एक सदिश के घटक हैं, तीन लंबाइयां नहीं।</p><p>अदिश λ के लिए |λa|=|λ||a|। a≠0 हो तो धनात्मक λ दिशा वही और ऋणात्मक λ उलटी करता है। λ=0 से शून्य सदिश मिलता है, अद्वितीय दिशा नहीं। योग में त्रिभुज या समांतर चतुर्भुज नियम लगता है।</p><p>दिष्ट सदिश AB=B−A: अंतिम घटा प्रारंभिक बिंदु। A=(1,−2,3), B=(4,2,3) से AB=(3,4,0), BA=(−3,−4,0)। दोनों लंबाइयां 5। सिरे उलटने से सदिश का चिह्न बदलता है, दूरी नहीं।</p></div><div class="note-sec"><h3>3. विभाजन सूत्र में अनुपात सिरों से मिलाएं</h3><p>a,b, बिंदु A,B के स्थिति सदिश हों; AP:PB=m:n और m,n&gt;0। अंतःविभाजन p=(na+mb)/(m+n) है। सिरे A को विपरीत भार n और B को m मिलता है। m=n पर मध्यबिंदु (a+b)/2।</p><p>A=(0,0,0), B=(6,3,0), AP:PB=1:2 से P=(2,1,0)। यह A से B तक एक तिहाई दूरी पर है, दो तिहाई नहीं। जांच: AP=(2,1,0), PB=(4,2,0); लंबाइयों का अनुपात 1:2 है।</p><p>बाह्य विभाजन p=(mb−na)/(m−n), m≠n है। समान अनुपात वाले बाह्य सूत्र का हर शून्य है; अलग सिरों के लिए परिमित बिंदु नहीं देता। सूत्र से पहले देखें कि बिंदु रेखाखंड के अंदर चाहिए या बाहर।</p></div><div class="note-sec"><h3>4. अदिश गुणनफल एक अदिश देता है</h3><p>a·b=a₁b₁+a₂b₂+a₃b₃। अशून्य सदिशों के लिए a·b=|a||b|cos θ, 0≤θ≤π। अतः cos θ=(a·b)/(|a||b|)। दोनों परिमाण अशून्य होने चाहिए।</p><p>a=(1,2,−1), b=(2,−1,3) में a·b=2−2−3=−3। ऋण चिह्न से कोण समकोण से बड़ा है। दोनों सदिश अशून्य हों तो अदिश गुणनफल शून्य होने का अर्थ लंबवत है। शून्य सदिश का गुणनफल सबसे शून्य है, पर अद्वितीय कोण नहीं।</p><p>a·a=|a|², a·b=b·a और a·(b+c)=a·b+a·c। a·b संख्या है, a+b सदिश; दोनों न मिलाएं। केवल समान लंबाइयों से समान या लंबवत सदिश सिद्ध नहीं होते।</p></div><div class="note-sec"><h3>5. प्रक्षेप: चिह्नयुक्त अदिश और सदिश अलग हैं</h3><p>b≠0 पर a का दिष्ट b के अनुदिश चिह्नयुक्त अदिश घटक (a·b)/|b| है। यह ऋणात्मक हो सकता है। प्रक्षेप सदिश [(a·b)/|b|²]b है। उसकी लंबाई |a·b|/|b| अऋणात्मक है।</p><p>उदाहरण: a=(−3,4,0), b=(2,0,0)। अदिश गुणनफल −6 से चिह्नयुक्त अदिश घटक −3, प्रक्षेप सदिश (−3,0,0), प्रक्षेप लंबाई 3। ये अलग प्रकार के उत्तर हैं; जो मांगा हो उसका नाम लिखें।</p><p>b=0 प्रक्षेप की दिशा तय नहीं करता। अशून्य b की दिशा पर शून्य सदिश का प्रक्षेप शून्य सदिश और चिह्नयुक्त अदिश घटक 0 है।</p></div><div class="note-sec"><h3>6. सदिश गुणनफल से सदिश और क्षेत्रफल</h3><p>a×b=(a₂b₃−a₃b₂, a₃b₁−a₁b₃, a₁b₂−a₂b₁)। मध्य घटक का क्रम ध्यान से देखें। कोण θ वाले अशून्य सदिशों के लिए |a×b|=|a||b|sin θ। अशून्य गुणनफल की दिशा दाएं हाथ के नियम से मिलती है।</p><p>i×j=k, पर j×i=−k। सामान्य नियम b×a=−(a×b), अदिश गुणनफल जैसा नहीं। a=(1,0,0), b=(0,2,0) से a×b=(0,0,2)। समांतर चतुर्भुज का क्षेत्रफल 2, त्रिभुज का 1।</p><p>अशून्य सदिशों में a×b=0 का अर्थ समांतर है, विपरीत भी हो सकते हैं। कोई सदिश शून्य हो तब भी गुणनफल शून्य, पर अद्वितीय कोण नहीं। क्षेत्रफल |a×b| या उसका आधा है, गुणनफल का चिह्नयुक्त घटक नहीं।</p><p>ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली के हल या पूरी JEE तैयारी नहीं। लंबे सदिश प्रमाण, विस्तृत सर्वसमिकाएं, मिश्रित बहुचरणीय ज्यामिति और विस्तृत अनुप्रयोग शामिल नहीं। हटे विषयों या निश्चित परीक्षा अंकों का दावा नहीं है।</p><table class="product-table"><caption>गुणनफल तुलना</caption><thead><tr><th scope="col">क्रिया</th><th scope="col">उत्तर का प्रकार</th><th scope="col">क्रम बदलना</th></tr></thead><tbody><tr><th scope="row">a·b</th><td>अदिश</td><td>b·a=a·b</td></tr><tr><th scope="row">a×b</th><td>सदिश</td><td>b×a=−(a×b)</td></tr></tbody></table></div></div><div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. A vector has magnitude and direction</h3><p>In these notes, a,b denote vectors and |a| denotes the nonnegative length of a. A scalar has no direction, such as mass or speed. Displacement and velocity are vectors. Their components can be negative even though their lengths cannot.</p><p>Equal vectors have the same magnitude and direction, not necessarily the same starting point. The zero vector 0 has length 0 and no unique direction. A unit vector has length 1; in the direction of a nonzero a it is a/|a|. Never divide by |0|.</p><p>For a=(3,4,0), |a|=√(9+16)=5 and a unit vector along it is (3/5,4/5,0). Its squared length is 9/25+16/25=1. The unit vector in the opposite direction is the negative of this vector.</p></div><div class="note-sec"><h3>2. Components turn arrows into arithmetic</h3><p>Write a=(a₁,a₂,a₃)=a₁i+a₂j+a₃k in perpendicular unit-axis directions. Add or subtract matching components. For a=(1,2,−1), b=(2,−1,3), a+b=(3,1,2). These are components of one vector, not three vector lengths.</p><p>For a scalar λ, |λa|=|λ||a|. Positive λ preserves direction; negative λ reverses it, provided a≠0. λ=0 gives the zero vector, without a unique direction. Vector addition follows the triangle or parallelogram law.</p><p>The directed vector AB=B−A: terminal point minus initial point. A=(1,−2,3), B=(4,2,3) gives AB=(3,4,0), while BA=(−3,−4,0). Both lengths are 5. Reversing endpoints changes the vector sign, not the distance.</p></div><div class="note-sec"><h3>3. Section formula: match the ratio to endpoints</h3><p>Let a,b be position vectors of A,B, and let AP:PB=m:n with m,n&gt;0. Internal division gives p=(na+mb)/(m+n). The endpoint A gets the opposite weight n; endpoint B gets m. For m=n, this is the midpoint (a+b)/2.</p><p>For A=(0,0,0), B=(6,3,0), AP:PB=1:2 gives P=(2,1,0). This is one third of the way from A to B, not two thirds. Check AP=(2,1,0) and PB=(4,2,0), so their lengths have ratio 1:2.</p><p>External division uses p=(mb−na)/(m−n), with m≠n. The equal-ratio external formula has zero denominator and does not give a finite point for distinct endpoints. Check whether the point must lie inside or outside the segment before choosing a formula.</p></div><div class="note-sec"><h3>4. Dot product gives a scalar</h3><p>a·b=a₁b₁+a₂b₂+a₃b₃. For nonzero vectors, a·b=|a||b|cos θ, where 0≤θ≤π. Hence cos θ=(a·b)/(|a||b|). The formula needs both magnitudes nonzero.</p><p>For a=(1,2,−1), b=(2,−1,3), a·b=2−2−3=−3. The negative sign tells us their angle is obtuse. For two nonzero vectors, dot product zero means perpendicular. The zero vector also has zero dot product with everything, but no unique angle.</p><p>a·a=|a|², a·b=b·a, and a·(b+c)=a·b+a·c. Do not confuse a·b, a number, with a+b, a vector. Equal lengths alone do not imply equal vectors or perpendicular vectors.</p></div><div class="note-sec"><h3>5. Projection: signed scalar versus vector</h3><p>For b≠0, the signed scalar component of a along the directed vector b is (a·b)/|b|. It may be negative. The projection vector is [(a·b)/|b|²]b. Its length is |a·b|/|b| and is nonnegative.</p><p>Example: a=(−3,4,0), b=(2,0,0). Dot product −6 gives signed scalar component −3, projection vector (−3,0,0), and projection length 3. They are different kinds of answer, so label which one is requested.</p><p>A direction vector b=0 cannot define a projection direction. For a nonzero direction b, projection of the zero vector is the zero vector, and its signed scalar component is 0.</p></div><div class="note-sec"><h3>6. Cross product gives a vector and an area</h3><p>a×b=(a₂b₃−a₃b₂, a₃b₁−a₁b₃, a₁b₂−a₂b₁). The middle component has the reversed order shown here. For nonzero vectors at angle θ, |a×b|=|a||b|sin θ. Its direction, when nonzero, follows the right-hand rule.</p><p>i×j=k, but j×i=−k. In general b×a=−(a×b), unlike the dot product. For a=(1,0,0), b=(0,2,0), a×b=(0,0,2). The parallelogram area is 2 and the triangle area is 1.</p><p>For nonzero vectors, a×b=0 means parallel, possibly opposite. If either vector is zero, the cross product is also zero, but a unique angle is not defined. Area is |a×b| or half of it, never a signed component of the cross product.</p><p>These are selected foundations and ten original questions, not complete textbook exercise solutions or complete JEE preparation. Longer vector proofs, extended identities, mixed multi-step geometry and detailed applications are not covered. No deleted-topic or guaranteed exam-mark claim is made.</p><table class="product-table"><caption>Product comparison</caption><thead><tr><th scope="col">Operation</th><th scope="col">Result type</th><th scope="col">Swap order</th></tr></thead><tbody><tr><th scope="row">a·b</th><td>Scalar</td><td>b·a=a·b</td></tr><tr><th scope="row">a×b</th><td>Vector</td><td>b×a=−(a×b)</td></tr></tbody></table></div></div></section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>Vector = magnitude + direction</li><li>â = a⃗/|a⃗| (unit vector)</li><li>|a⃗| = √(a₁²+a₂²+a₃²)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Operations ⭐</h4>
-      <ul><li>Add: components alag-alag</li><li>AB⃗ = b⃗ − a⃗ (head − tail)</li><li>Section: (mb⃗+na⃗)/(m+n)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Dot product ⭐⭐</h4>
-      <ul><li>a⃗·b⃗ = |a||b|cosθ = a₁b₁+a₂b₂+a₃b₃</li><li>Perpendicular ⟺ dot = 0</li><li>cosθ = (a⃗·b⃗)/(|a||b|)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Cross product ⭐⭐</h4>
-      <ul><li>|a×b| = |a||b|sinθ, direction ⊥</li><li>Determinant form (î ĵ k̂ row)</li><li>a⃗×b⃗ = −(b⃗×a⃗)!</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Uses ⭐</h4>
-      <ul><li>½|a⃗×b⃗| = triangle area</li><li>Parallel ⟺ cross = 0⃗</li><li>Scalar triple product DELETED</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>मूल ⭐</h4>
-      <ul><li>सदिश = परिमाण + दिशा</li><li>â = a⃗/|a⃗|</li><li>|a⃗| = √(a₁²+a₂²+a₃²)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>संक्रियाएं ⭐</h4>
-      <ul><li>योग: घटक अलग-अलग</li><li>AB⃗ = b⃗ − a⃗</li><li>अनुभाग: (mb⃗+na⃗)/(m+n)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>डॉट ⭐⭐</h4>
-      <ul><li>a⃗·b⃗ = |a||b|cosθ = a₁b₁+a₂b₂+a₃b₃</li><li>लंबवत ⟺ डॉट = 0</li><li>cosθ = (a⃗·b⃗)/(|a||b|)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>क्रॉस ⭐⭐</h4>
-      <ul><li>|a×b| = |a||b|sinθ, दिशा ⊥</li><li>सारणिक रूप</li><li>a⃗×b⃗ = −(b⃗×a⃗)!</li></ul>
-    </div>
-    <div class="shorts-card"><h4>उपयोग ⭐</h4>
-      <ul><li>½|a⃗×b⃗| = त्रिभुज क्षेत्रफल</li><li>समांतर ⟺ क्रॉस = 0⃗</li><li>अदिश त्रिगुणनफल हटाया गया</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>Vector = magnitude + direction</li><li>â = a⃗/|a⃗| (unit vector)</li><li>|a⃗| = √(a₁²+a₂²+a₃²)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Operations ⭐</h4>
-      <ul><li>Add: components separately</li><li>AB⃗ = b⃗ − a⃗ (head − tail)</li><li>Section: (mb⃗+na⃗)/(m+n)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Dot product ⭐⭐</h4>
-      <ul><li>a⃗·b⃗ = |a||b|cosθ = a₁b₁+a₂b₂+a₃b₃</li><li>Perpendicular ⟺ dot = 0</li><li>cosθ = (a⃗·b⃗)/(|a||b|)</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Cross product ⭐⭐</h4>
-      <ul><li>|a×b| = |a||b|sinθ, direction ⊥</li><li>Determinant form (î ĵ k̂ row)</li><li>a⃗×b⃗ = −(b⃗×a⃗)!</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Uses ⭐</h4>
-      <ul><li>½|a⃗×b⃗| = triangle area</li><li>Parallel ⟺ cross = 0⃗</li><li>Scalar triple product DELETED</li></ul>
-    </div>
-    </div>
-  </div>
-</section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> a⃗ = 2î + 3ĵ − k̂ ka magnitude?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>|a⃗| = √(4 + 9 + 1) = <b>√14</b>.</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> a⃗ = 3î + 4ĵ ka unit vector?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>|a⃗| = 5 → â = <b>(3/5)î + (4/5)ĵ</b> — vector ko uske magnitude se divide karo.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> A(1, 2, 3), B(4, 5, 6). AB⃗ kya hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>AB⃗ = b⃗ − a⃗ = <b>3î + 3ĵ + 3k̂</b> (head − tail).</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> a⃗·b⃗ = 0 ka kya matlab (non-zero vectors)?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Vectors <b>perpendicular</b> hain — cos θ = 0, θ = 90°.</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> a⃗ = î + ĵ, b⃗ = î − ĵ. a⃗·b⃗ nikalo.<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>1·1 + 1·(−1) + 0 = <b>0</b> — perpendicular hain!</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> a⃗×b⃗ = −(b⃗×a⃗) kyun important hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Cross product <b>anti-commutative</b> hai — <b>order badla to sign badla</b>. Dot product commutative tha, cross nahi!</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> Do vectors ke sides wale parallelogram ka area?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>|a⃗×b⃗|</b> — cross product ka magnitude. (Triangle ka: ½|a⃗×b⃗|.)</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> î × ĵ kya hai? Aur ĵ × î?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>î × ĵ = <b>k̂</b>; ĵ × î = <b>−k̂</b> — cyclic order positive, reverse negative.</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> A, B, C collinear hain kaise check karein (vectors se)?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>AB⃗ aur AC⃗ <b>parallel</b> hone chahiye — AB⃗ = λAC⃗ ya AB⃗ × AC⃗ = 0⃗.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> Scalar triple product a⃗·(b⃗×c⃗) syllabus me hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — rationalized NCERT se <b>delete</b> ho chuka hai. Sirf dot aur cross products padhne hain.</p></details></div>
-  </div>
-</section>
+
+
+
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="tip-box">|a| nonnegative hai; a/|a| ke liye a≠0.</p><p class="tip-box">AB=B−A; endpoints reverse to vector reverse.</p><p class="tip-box">|λa|=|λ||a|; negative scalar nonzero vector ki direction reverse karta hai.</p><p class="tip-box">Internal AP:PB=m:n mein p=(na+mb)/(m+n).</p><p class="tip-box">a·b scalar hai; nonzero vectors mein zero dot se perpendicular.</p><p class="tip-box">b≠0 ke along signed scalar component: (a·b)/|b|.</p><p class="tip-box">a×b vector hai; order swap se sign reverse.</p><p class="tip-box">Parallelogram area |a×b|; triangle area |a×b|/2.</p></div><div class="lang-block" data-lang="hi" hidden=""><p class="tip-box">|a| अऋणात्मक है; a/|a| के लिए a≠0।</p><p class="tip-box">AB=B−A; सिरे उलटने से सदिश उलटता है।</p><p class="tip-box">|λa|=|λ||a|; ऋण अदिश अशून्य सदिश की दिशा उलटता है।</p><p class="tip-box">अंतःविभाजन AP:PB=m:n में p=(na+mb)/(m+n)।</p><p class="tip-box">a·b अदिश है; अशून्य सदिशों में शून्य गुणनफल से लंबवत।</p><p class="tip-box">b≠0 के अनुदिश चिह्नयुक्त अदिश घटक: (a·b)/|b|।</p><p class="tip-box">a×b सदिश है; क्रम बदलने से चिह्न उलटता है।</p><p class="tip-box">समांतर चतुर्भुज क्षेत्रफल |a×b|; त्रिभुज क्षेत्रफल |a×b|/2।</p></div><div class="lang-block" data-lang="en" hidden=""><p class="tip-box">|a| is nonnegative; a/|a| needs a≠0.</p><p class="tip-box">AB=B−A; reversing endpoints reverses the vector.</p><p class="tip-box">|λa|=|λ||a|; a negative scalar reverses a nonzero vector.</p><p class="tip-box">AP:PB=m:n internally: p=(na+mb)/(m+n).</p><p class="tip-box">a·b is a scalar; for nonzero vectors, zero dot means perpendicular.</p><p class="tip-box">Signed scalar component along b≠0: (a·b)/|b|.</p><p class="tip-box">a×b is a vector; swapping order changes its sign.</p><p class="tip-box">Parallelogram area |a×b|; triangle area |a×b|/2.</p></div></section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> a=(3,4,0) ki direction mein unit vector?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Magnitude se divide karo, sirf a≠0 par.</p><p>Steps: |a|=5; a/|a|=(3/5,4/5,0).</p><p>Answer/check: (3/5,4/5,0). Squared length 1 hai.</p></details></div><div class="jee-q"><span class="qn">Q2</span> A=(1,−2,3), B=(4,2,3). AB aur length nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Terminal minus initial point lo.</p><p>Steps: AB=(4−1,2−(−2),3−3)=(3,4,0).</p><p>Answer/check: AB=(3,4,0), length 5. BA ka sign opposite, length same.</p></details></div><div class="jee-q"><span class="qn">Q3</span> a=(1,−2,2) ke liye −2a aur magnitude?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Har component scale karo; length mein absolute scalar lo.</p><p>Steps: −2a=(−2,4,−4); |a|=3, to |−2a|=2×3.</p><p>Answer/check: (−2,4,−4), magnitude 6, direction a ke opposite.</p></details></div><div class="jee-q"><span class="qn">Q4</span> a=(1,2,−1), b=(2,−1,3) add karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Matching components jodo.</p><p>Steps: a+b=(1+2,2−1,−1+3).</p><p>Answer/check: (3,1,2). Length √14 hai, |a|+|b| nahi.</p></details></div><div class="jee-q"><span class="qn">Q5</span> A=(0,0,0), B=(6,3,0) ko internal AP:PB=1:2 mein divide karne wala P?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Opposite endpoint weights se p=(2a+b)/3 lo.</p><p>Steps: P=((0+6)/3,(0+3)/3,0).</p><p>Answer/check: (2,1,0). AP aur PB ki lengths √5, 2√5 hain.</p></details></div><div class="jee-q"><span class="qn">Q6</span> a=(1,2,−1), b=(2,−1,3) ke liye a·b?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Matching components multiply karke jodo.</p><p>Steps: a·b=1×2+2×(−1)+(−1)×3.</p><p>Answer/check: −3, ek scalar. Dono nonzero hain, isliye angle obtuse hai.</p></details></div><div class="jee-q"><span class="qn">Q7</span> a=(1,0,0), b=(1,1,0) ka angle?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Nonzero vectors mein cos θ=(a·b)/(|a||b|) lo.</p><p>Steps: a·b=1, |a|=1, |b|=√2; cos θ=1/√2.</p><p>Answer/check: θ=π/4=45°. Dono vectors nonzero hain.</p></details></div><div class="jee-q"><span class="qn">Q8</span> a=(−3,4,0), b=(2,0,0) mein b ke along signed scalar component aur projection vector?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: (a·b)/|b| aur [(a·b)/|b|²]b ko alag rakho.</p><p>Steps: a·b=−6, |b|=2; scalar=−3, vector=(−6/4)(2,0,0).</p><p>Answer/check: Scalar −3; vector (−3,0,0). Projection length 3 hai.</p></details></div><div class="jee-q"><span class="qn">Q9</span> a=(1,0,0), b=(0,2,0) ka a×b aur in adjacent sides ka triangle area?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Cross vector hai; triangle area uski magnitude ka half.</p><p>Steps: a×b=(0,0,2), isliye |a×b|=2.</p><p>Answer/check: Cross (0,0,2); triangle area 1 square unit. Reverse cross (0,0,−2), area same.</p></details></div><div class="jee-q"><span class="qn">Q10</span> a×b=0 ho to kya angle zaroor 0 hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Nonzero parallel aur zero-vector cases alag dekho.</p><p>Steps: a=(1,0,0), b=(−2,0,0) ka cross zero, angle π hai. Zero vector ke saath bhi cross zero.</p><p>Answer/check: Nahi. Nonzero vectors ka angle 0 ya π ho sakta hai; zero vector ho to unique angle defined nahi.</p></details></div><div class="tip-box">Yeh selected foundations aur das original questions hain, poori textbook exercise solutions ya poori JEE preparation nahi. Lambe vector proofs, extended identities, mixed multi-step geometry aur detailed applications shamil nahi. Deleted topics ya pakke exam marks ka daava nahi hai.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh204.pdf">Textbook Ch 10</a></p></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> a=(3,4,0) की दिशा का मात्रक सदिश?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: परिमाण से भाग दें, केवल a≠0 पर।</p><p>चरण: |a|=5; a/|a|=(3/5,4/5,0)।</p><p>उत्तर/जांच: (3/5,4/5,0)। वर्ग लंबाई 1 है।</p></details></div><div class="jee-q"><span class="qn">Q2</span> A=(1,−2,3), B=(4,2,3)। AB और लंबाई निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अंतिम घटा प्रारंभिक बिंदु लें।</p><p>चरण: AB=(4−1,2−(−2),3−3)=(3,4,0)।</p><p>उत्तर/जांच: AB=(3,4,0), लंबाई 5। BA का चिह्न उलटा, लंबाई समान।</p></details></div><div class="jee-q"><span class="qn">Q3</span> a=(1,−2,2) के लिए −2a और परिमाण?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: हर घटक गुणा करें; लंबाई में अदिश का निरपेक्ष मान लें।</p><p>चरण: −2a=(−2,4,−4); |a|=3, अतः |−2a|=2×3।</p><p>उत्तर/जांच: (−2,4,−4), परिमाण 6, दिशा a के विपरीत।</p></details></div><div class="jee-q"><span class="qn">Q4</span> a=(1,2,−1), b=(2,−1,3) जोड़ें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: समान स्थान के घटक जोड़ें।</p><p>चरण: a+b=(1+2,2−1,−1+3)।</p><p>उत्तर/जांच: (3,1,2)। लंबाई √14 है, |a|+|b| नहीं।</p></details></div><div class="jee-q"><span class="qn">Q5</span> A=(0,0,0), B=(6,3,0) का अंतःविभाजन AP:PB=1:2 करने वाला P?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: विपरीत सिरों के भार से p=(2a+b)/3 लें।</p><p>चरण: P=((0+6)/3,(0+3)/3,0)।</p><p>उत्तर/जांच: (2,1,0)। AP और PB की लंबाइयां √5, 2√5 हैं।</p></details></div><div class="jee-q"><span class="qn">Q6</span> a=(1,2,−1), b=(2,−1,3) के लिए a·b?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: समान स्थान के घटक गुणा करके जोड़ें।</p><p>चरण: a·b=1×2+2×(−1)+(−1)×3।</p><p>उत्तर/जांच: −3, एक अदिश। दोनों अशून्य हैं, इसलिए कोण समकोण से बड़ा है।</p></details></div><div class="jee-q"><span class="qn">Q7</span> a=(1,0,0), b=(1,1,0) के बीच कोण?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अशून्य सदिशों में cos θ=(a·b)/(|a||b|) लें।</p><p>चरण: a·b=1, |a|=1, |b|=√2; cos θ=1/√2।</p><p>उत्तर/जांच: θ=π/4=45°। दोनों सदिश अशून्य हैं।</p></details></div><div class="jee-q"><span class="qn">Q8</span> a=(−3,4,0), b=(2,0,0) में b के अनुदिश चिह्नयुक्त अदिश घटक और प्रक्षेप सदिश?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: (a·b)/|b| और [(a·b)/|b|²]b अलग रखें।</p><p>चरण: a·b=−6, |b|=2; अदिश=−3, सदिश=(−6/4)(2,0,0)।</p><p>उत्तर/जांच: अदिश −3; सदिश (−3,0,0)। प्रक्षेप लंबाई 3 है।</p></details></div><div class="jee-q"><span class="qn">Q9</span> a=(1,0,0), b=(0,2,0) का a×b और इन आसन्न भुजाओं का त्रिभुज क्षेत्रफल?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: गुणनफल सदिश है; त्रिभुज क्षेत्रफल उसके परिमाण का आधा।</p><p>चरण: a×b=(0,0,2), अतः |a×b|=2।</p><p>उत्तर/जांच: गुणनफल (0,0,2); त्रिभुज क्षेत्रफल 1 वर्ग इकाई। उलटा गुणनफल (0,0,−2), क्षेत्रफल वही।</p></details></div><div class="jee-q"><span class="qn">Q10</span> a×b=0 हो तो क्या कोण जरूर 0 है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अशून्य समांतर और शून्य-सदिश के मामले अलग देखें।</p><p>चरण: a=(1,0,0), b=(−2,0,0) का गुणनफल शून्य, कोण π है। शून्य सदिश के साथ भी गुणनफल शून्य।</p><p>उत्तर/जांच: नहीं। अशून्य सदिशों का कोण 0 या π हो सकता है; शून्य सदिश हो तो अद्वितीय कोण परिभाषित नहीं।</p></details></div><div class="tip-box">ये चुनी बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली के हल या पूरी JEE तैयारी नहीं। लंबे सदिश प्रमाण, विस्तृत सर्वसमिकाएं, मिश्रित बहुचरणीय ज्यामिति और विस्तृत अनुप्रयोग शामिल नहीं। हटे विषयों या निश्चित परीक्षा अंकों का दावा नहीं है।</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh204.pdf">Textbook Ch 10</a></p></div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> Find a unit vector along a=(3,4,0).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Divide by the magnitude, only for a≠0.</p><p>Steps: |a|=5; a/|a|=(3/5,4/5,0).</p><p>Answer/check: (3/5,4/5,0). Its squared length is 1.</p></details></div><div class="jee-q"><span class="qn">Q2</span> A=(1,−2,3), B=(4,2,3). Find AB and its length.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Terminal point minus initial point.</p><p>Steps: AB=(4−1,2−(−2),3−3)=(3,4,0).</p><p>Answer/check: AB=(3,4,0), length 5. BA has the opposite sign but the same length.</p></details></div><div class="jee-q"><span class="qn">Q3</span> For a=(1,−2,2), find −2a and its magnitude.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Scale each component; length uses the absolute scalar.</p><p>Steps: −2a=(−2,4,−4); |a|=3, so |−2a|=2×3.</p><p>Answer/check: (−2,4,−4), magnitude 6, opposite direction to a.</p></details></div><div class="jee-q"><span class="qn">Q4</span> Add a=(1,2,−1) and b=(2,−1,3).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Add matching components.</p><p>Steps: a+b=(1+2,2−1,−1+3).</p><p>Answer/check: (3,1,2). Its length is √14, not |a|+|b|.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Find P dividing A=(0,0,0), B=(6,3,0) internally in AP:PB=1:2.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Use p=(2a+b)/3, with opposite endpoint weights.</p><p>Steps: P=((0+6)/3,(0+3)/3,0).</p><p>Answer/check: (2,1,0). AP and PB have lengths √5 and 2√5.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Find a·b for a=(1,2,−1), b=(2,−1,3).<details class="jee-sol"><summary>Show answer</summary><p>Rule: Multiply matching components and add.</p><p>Steps: a·b=1×2+2×(−1)+(−1)×3.</p><p>Answer/check: −3, a scalar. Both vectors are nonzero, so the angle is obtuse.</p></details></div><div class="jee-q"><span class="qn">Q7</span> Find the angle between a=(1,0,0), b=(1,1,0).<details class="jee-sol"><summary>Show answer</summary><p>Rule: For nonzero vectors use cos θ=(a·b)/(|a||b|).</p><p>Steps: a·b=1, |a|=1, |b|=√2; cos θ=1/√2.</p><p>Answer/check: θ=π/4=45°. Both vectors are nonzero.</p></details></div><div class="jee-q"><span class="qn">Q8</span> For a=(−3,4,0), b=(2,0,0), find the signed scalar component along b and the projection vector.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Distinguish (a·b)/|b| from [(a·b)/|b|²]b.</p><p>Steps: a·b=−6, |b|=2; scalar=−3, vector=(−6/4)(2,0,0).</p><p>Answer/check: Scalar −3; vector (−3,0,0). The projection length is 3.</p></details></div><div class="jee-q"><span class="qn">Q9</span> For a=(1,0,0), b=(0,2,0), find a×b and the triangle area on these adjacent sides.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Cross gives a vector; triangle area is half its magnitude.</p><p>Steps: a×b=(0,0,2), so |a×b|=2.</p><p>Answer/check: Cross (0,0,2); triangle area 1 square unit. Reversed cross is (0,0,−2), with the same area.</p></details></div><div class="jee-q"><span class="qn">Q10</span> If a×b=0, must two vectors have angle 0?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Separate nonzero parallel vectors from the zero-vector case.</p><p>Steps: a=(1,0,0), b=(−2,0,0) gives zero cross but angle π. A zero vector also gives zero cross.</p><p>Answer/check: No. For nonzero vectors the angle may be 0 or π; with a zero vector no unique angle is defined.</p></details></div><div class="tip-box">These are selected foundations and ten original questions, not complete textbook exercise solutions or complete JEE preparation. Longer vector proofs, extended identities, mixed multi-step geometry and detailed applications are not covered. No deleted-topic or guaranteed exam-mark claim is made.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh204.pdf">Textbook Ch 10</a></p></div></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-11/">Three Dimensional Geometry</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-11/">Three Dimensional Geometry</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
