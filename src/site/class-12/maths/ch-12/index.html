@@ -1,349 +1,102 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="robots" content="noindex,follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/><meta content="noindex,follow" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ch 12 — Linear Programming | Class 12 Mathematics | मईडा Maida</title>
-<meta name="description" content="Class 12 Maths Chapter 12: Linear Programming — long + short notes in Hindi, English, Hinglish. Objective function, constraints, feasible region, corner point method, bounded and unbounded regions.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="/assets/css/style.css?v=opt-2026-11-11">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<meta content="Class 12 Maths Chapter 12: Linear Programming — long + short notes in Hindi, English, Hinglish. Objective function, constraints, feasible region, corner point method, bounded and unbounded regions." name="description"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%231a4480'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E" rel="icon"/>
+<link href="/assets/css/style.css?v=opt-2026-11-11" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>#practice .jee-sol p{font-size:1rem;line-height:1.75;padding:.75rem;background:#f5f7fb;border:1px solid #d6e1f1;border-radius:4px} #practice .jee-q{overflow-wrap:anywhere} #practice summary{font-size:1rem} #notes .note-sec p{line-height:1.8}</style><style>.lp-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:1rem}.lp-table th,.lp-table td{border:1px solid #d6e1f1;padding:.5rem;text-align:center}.lp-table caption{padding:.5rem}#notes p,#short-notes p{overflow-wrap:anywhere}</style></head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
-    <span>Video Lectures + Notes — Hindi, English, Hinglish</span>
-  </div>
+<div class="topbar-inner">
+<span><b>Free NCERT/CBSE Learning Resources</b> — Class 6-12</span>
+<span>Video Lectures + Notes — Hindi, English, Hinglish</span>
+</div>
 </div>
 <div class="masthead">
-  <div class="masthead-inner">
-    <span class="emblem">म</span>
-    <a href="/src/site/" class="logo"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
-    <span class="tagline">NCERT/CBSE aligned study material<br>Class 6-12 • Free forever</span>
-  </div>
+<div class="masthead-inner">
+<span class="emblem">म</span>
+<a class="logo" href="/src/site/"><span class="logo-deva">मईडा</span> <span class="logo-en">Maida Learning Portal</span></a>
+<span class="tagline">NCERT/CBSE aligned study material<br/>Class 6-12 • Free forever</span>
+</div>
 </div>
 <header class="nav">
-  <div class="nav-inner">
-    <nav>
-      <a href="/src/site/">Home</a>
-      <a href="/src/site/class-11/">Class 11</a>
-      <a href="/src/site/class-12/">Class 12</a>
-      <a href="/src/site/#classes">All Classes</a>
-      <a href="/src/site/#about">About</a>
-    </nav>
-  </div>
+<div class="nav-inner">
+<nav>
+<a href="/src/site/">Home</a>
+<a href="/src/site/class-11/">Class 11</a>
+<a href="/src/site/class-12/">Class 12</a>
+<a href="/src/site/#classes">All Classes</a>
+<a href="/src/site/#about">About</a>
+</nav>
+</div>
 </header>
-
 <section class="ch-hero">
-  <p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 12</p>
-  <h1>Linear Programming</h1>
-  <p style="color:var(--saffron);margin-top:4px;font-weight:600">रैखिक प्रोग्रामन</p>
-  <p style="color:var(--muted);margin-top:6px">Graph banao, corners dhundo, best answer pao — sabse scoring chapter</p>
-  <div class="ch-tags">
-    <span class="pill weight-medium">JEE Weightage: MEDIUM</span>
-    <span class="pill">Video available</span>
-    <span class="pill">Long + Short notes</span>
-    <span class="pill">Hindi • English • Hinglish</span>
-  </div>
+<p class="crumb"><a href="/src/site/">Home</a> / <a href="/src/site/class-12/">Class 12</a> / <a href="/src/site/class-12/maths/">Mathematics</a> / Chapter 12</p>
+<h1>Linear Programming</h1>
+<p style="color:var(--saffron);margin-top:4px;font-weight:600">रैखिक प्रोग्रामन</p>
+<p style="color:var(--muted);margin-top:6px">Graph banao, corners dhundo, best answer pao — sabse scoring chapter</p>
+<div class="ch-tags">
+<span class="pill weight-medium">JEE Weightage: MEDIUM</span>
+<span class="pill">Video available</span>
+<span class="pill">Long + Short notes</span>
+<span class="pill">Hindi • English • Hinglish</span>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Linear Programming - Class 12 Maths Short - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Linear Programming - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player" class="yt-embed" src="https://www.youtube.com/embed/hciVSG3sUbA" title="Linear Programming - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player" class="yt-embed" src="https://www.youtube.com/embed/hciVSG3sUbA" title="Linear Programming - Class 12 Maths Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/hciVSG3sUbA" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Linear Programming - Class 12 Maths Short - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Linear Programming - Class 12 Maths Short</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/hciVSG3sUbA" title="Linear Programming - Class 12 Maths Short"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/hciVSG3sUbA" title="Linear Programming - Class 12 Maths Short"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/hciVSG3sUbA" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
 <section class="featured" style="padding-top:20px">
-  <div class="player-wrap">
-    <div class="m-video"><button class="m-video-load" type="button" aria-label="Linear Programming - Class 12 Mathematics Short 2 - player kholo"><span class="m-video-icon" aria-hidden="true">▶</span><span class="m-video-title">Linear Programming - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe id="player2" class="yt-embed" src="https://www.youtube.com/embed/MFPK1NTjXfE" title="Linear Programming - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></template><noscript><iframe loading="lazy" id="player2" class="yt-embed" src="https://www.youtube.com/embed/MFPK1NTjXfE" title="Linear Programming - Class 12 Mathematics Short 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></noscript></div>
-  </div>
-  <div class="featured-actions">
-    <a class="btn btn-ghost" href="https://www.youtube.com/shorts/MFPK1NTjXfE" target="_blank" rel="noopener">Watch on YouTube</a>
-    <a class="btn btn-ghost" href="#notes">Notes</a>
-  </div>
+<div class="player-wrap">
+<div class="m-video"><button aria-label="Linear Programming - Class 12 Mathematics Short 2 - player kholo" class="m-video-load" type="button"><span aria-hidden="true" class="m-video-icon">▶</span><span class="m-video-title">Linear Programming - Class 12 Mathematics Short 2</span><span class="m-video-hint">Video player kholo</span><small>YouTube sirf tap karne par load hoga</small></button><template><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/MFPK1NTjXfE" title="Linear Programming - Class 12 Mathematics Short 2"></iframe></template><noscript><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" class="yt-embed" frameborder="0" id="player2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/MFPK1NTjXfE" title="Linear Programming - Class 12 Mathematics Short 2"></iframe></noscript></div>
+</div>
+<div class="featured-actions">
+<a class="btn btn-ghost" href="https://www.youtube.com/shorts/MFPK1NTjXfE" rel="noopener" target="_blank">Watch on YouTube</a>
+<a class="btn btn-ghost" href="#notes">Notes</a>
+</div>
 </section>
-
 <section id="walkthrough" style="margin:14px 0;padding:16px;border:1px solid #22d3ee55;border-radius:12px;background:#0a0a12;text-align:center">
-  <h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
-  <p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Linear Programming 5 animated scenes mein - feasible region builder, corner point method, unbounded trap lab, 5-marker step solver, aur quiz.</p>
-  <a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
+<h2 style="margin:0 0 6px;color:#7dd3fc">Interactive Visual Walkthrough</h2>
+<p style="margin:0 0 10px;font-size:.95em;color:#c9c9e0">Linear Programming 5 animated scenes mein - feasible region builder, corner point method, unbounded trap lab, 5-marker step solver, aur quiz.</p>
+<a href="walkthrough/index.html" style="display:inline-block;padding:10px 22px;background:#22d3ee;color:#06202a;font-weight:700;border-radius:999px;text-decoration:none">Walkthrough Kholo →</a>
 </section>
 <section id="notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Long Notes — Full Explanation" data-hi="Long Notes — पूरा Explanation" data-en="Long Notes — Full Explanation">Long Notes — Full Explanation</h2><p class="lang-sub" data-hinglish="Concept pakka karne ke liye — aaram se padho" data-hi="Concept pakka karne ke liye — aaram se padho" data-en="Read slowly — this builds the concept solidly">Concept pakka karne ke liye — aaram se padho</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Selected foundations" data-hi="चुनी हुई बुनियादें" data-hinglish="Selected foundations">Selected foundations</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ LPP Kya Hai — Best Possible Answer Nikalna ⭐</h3>
-    <ul>
-<li><b>Linear Programming Problem (LPP):</b> kisi cheez ko <b>MAXIMIZE ya MINIMIZE</b> karna (profit, cost, output) jab conditions LINEAR inequalities me di ho — "limited resources me best result".</li>
-<li><b>Objective function ⭐:</b> jo maximize/minimize karna hai — <b>Z = ax + by</b> form me (jaise Z = 50x + 40y = total profit).</li>
-<li><b>Constraints ⭐:</b> linear inequalities jo x aur y pe limits lagati hain — resources, time, capacity (2x + 3y ≤ 120 type).</li>
-<li><b>Non-negativity ⭐:</b> <b>x ≥ 0, y ≥ 0</b> hamesha add hoti hai — cheezein negative me ban hi nahi sakti!</li>
-<li>"Linear" isliye — saari equations/inequalities FIRST DEGREE ki hain (koi x², xy nahi).</li>
-</ul>
-<p class="small-note">💡 Feel: factory me 2 products, limited material/time — kitna-kya banaye ki profit MAX? Yehi LPP solve karta hai.</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Inequalities Ka Graph — Feasible Region Banana ⭐⭐</h3>
-    <ul>
-<li><b>Step 1:</b> har inequality ko pehle EQUATION ki tarah plot karo — line banao (2 points se: x = 0 aur y = 0 rakhke intercepts nikal lo!).</li>
-<li><b>Step 2 ⭐:</b> kaunsa SIDE shade karna hai? Test point (0, 0) daalo — inequality TRUE → origin wala side; FALSE → doosra side. (Line origin se guzre to (1, 0) try karo.)</li>
-<li><b>≤ type:</b> line + uske neeche/origin side. <b>≥ type:</b> line + upar/door wala side. Line SOLID banti hai (= included hai na!).</li>
-<li><b>Feasible region ⭐⭐:</b> SAARI inequalities ka <b>COMMON region</b> — jahan sab conditions ek saath satisfy hoti hain. x ≥ 0, y ≥ 0 ki wajah se FIRST QUADRANT me hi rahega.</li>
-<li>Feasible region ke andar/par har point ek <b>feasible solution</b> hai; bahar koi bhi point constraints tod deta hai.</li>
-</ul>
-<p class="small-note">🎯 Drawing tip: scale sahi lo, har line label karo, feasible region dark shade karo — boards me graph ke marks hote hain!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ Corner Point Method — Answer Corners Pe! ⭐⭐</h3>
-    <ul>
-<li><b>Fundamental theorem ⭐⭐:</b> bounded feasible region me objective function ka MAX/MIN hamesha kisi <b>CORNER POINT (vertex)</b> pe milta hai — andar kahin nahi!</li>
-<li><b>Method ⭐⭐:</b> (1) Feasible region banao. (2) Saare <b>corner points</b> nikalo (lines ki pairwise intersections solve karke!). (3) Har corner pe Z ka value nikalo. (4) Sabse bada = maximum, sabse chhota = minimum.</li>
-<li>Corner points nikalne ke liye do-do lines ki equations SIMULTANEOUSLY solve karo — (x, y) intersection aa jaayega.</li>
-<li>Example: Z = 3x + 4y, corners (0,0), (4,0), (2,3), (0,5) → Z: 0, 12, 18, 20 → <b>max 20 at (0, 5), min 0 at (0, 0)</b>.</li>
-<li><b>Table banao ⭐:</b> corner | Z-value — examiner ko clean presentation chahiye, aur tumhe confusion se bachav.</li>
-</ul>
-<p class="small-note">💡 Kyun corners pe? Z = ax + by lines ke parallel family hai — Z badhate jao to line slide hoti hai, region chhodne se PEHLE corner pe rukti hai!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Bounded vs Unbounded Regions ⭐</h3>
-    <ul>
-<li><b>Bounded region ⭐:</b> feasible region ek CLOSED polygon (har taraf se ghera hua) — max AUR min dono exist karte hain, corners pe.</li>
-<li><b>Unbounded region ⭐:</b> region ek ya zyada direction me OPEN jaata hai (infinity tak) — max/min exist kar sakte hain ya nahi, CAREFULLY check karo!</li>
-<li><b>Unbounded me rule ⭐⭐:</b> corners pe Z ke extreme value ke baad EK EXTRA STEP: Z &gt; M (max ke liye) ya Z &lt; m (min ke liye) wali line ka <b>open half-plane</b> feasible region ko kaate ya nahi — kaate to max/min EXIST NAHI karta!</li>
-<li>Example: minimize Z = 3x + 5y, unbounded region, min corner pe m = 26 → check: 3x + 5y &lt; 26 ka half-plane region se overlap? Nahi → min = 26 confirmed.</li>
-<li>Boards me ZYADATAR bounded region hi aata hai — par unbounded wala extra-check wala question 5-marker me pucha gaya hai, taiyaar raho.</li>
-</ul>
-<p class="small-note">🎯 Unbounded = "region khula hai" — answer confirm karne se pehle half-plane overlap test ZAROORI hai. Ye step marks ka deciding factor hai!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Syllabus Note aur Exam Pattern</h3>
-    <ul>
-<li><b>Rationalized syllabus ⭐:</b> LPP ki <b>mathematical formulation</b> (word problem se constraints khud banana — diet problem, manufacturing problem types) NCERT se <b>DELETE</b> ho gaya hai.</li>
-<li><b>Ab kya aata hai ⭐:</b> constraints AUR objective function <b>ready-made diye hote hain</b> — tumhe sirf graph bana ke solve karna hai (graphical method, 2 variables).</li>
-<li><b>Weightage:</b> ~5 marks — ek fixed 5-marker: "Solve graphically: Maximize Z = ... subject to ...".</li>
-<li><b>Steps recap:</b> lines plot → shade → feasible region → corners → Z table → answer (value + point dono likho!).</li>
-<li><b>Common mistakes:</b> feasible region galat shade karna; corner points adhoore nikalna; answer me point (x, y) mention na karna — sirf Z ka value nahi, KAHAN milta hai wo bhi chahiye!</li>
-</ul>
-<p class="small-note">💡 LPP ab "graph padhna + corners pe arithmetic" — chapter chhota aur scoring hai, pakka 5 marks!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ रैखिक प्रोग्रामन क्या है — सर्वोत्तम उत्तर निकालना ⭐</h3>
-    <ul>
-<li><b>रैखिक प्रोग्रामन समस्या (LPP):</b> किसी राशि को <b>अधिकतम या न्यूनतम</b> करना (लाभ, लागत) जबकि शर्तें रैखिक असमिकाओं में हों।</li>
-<li><b>उद्देश्य फलन ⭐:</b> जिसे अधिकतम/न्यूनतम करना है — <b>Z = ax + by</b>।</li>
-<li><b>प्रतिबंध ⭐:</b> रैखिक असमिकाएं — संसाधन, समय, क्षमता की सीमाएं।</li>
-<li><b>अऋणात्मकता ⭐:</b> <b>x ≥ 0, y ≥ 0</b> सदैव जुड़ती है!</li>
-<li>"रैखिक" क्योंकि सभी समीकरण <b>प्रथम घात</b> के हैं।</li>
-</ul>
-<p class="small-note">💡 सीमित संसाधनों में सर्वोत्तम परिणाम — यही LPP है।</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ असमिकाओं का आलेख — सुसंगत क्षेत्र बनाना ⭐⭐</h3>
-    <ul>
-<li><b>चरण 1:</b> प्रत्येक असमिका को पहले <b>समीकरण</b> की तरह खींचो (x = 0 और y = 0 रखकर अंतःखंड निकालो)।</li>
-<li><b>चरण 2 ⭐:</b> कौन-सा पक्ष छायांकित करें? परीक्षण बिंदु (0, 0) डालो — सत्य → मूल बिंदु वाला पक्ष; असत्य → दूसरा।</li>
-<li><b>सुसंगत क्षेत्र ⭐⭐:</b> सभी असमिकाओं का <b>उभयनिष्ठ क्षेत्र</b> — x ≥ 0, y ≥ 0 से <b>प्रथम चतुर्थांश</b> में।</li>
-<li>क्षेत्र के अंदर/पर प्रत्येक बिंदु एक <b>सुसंगत हल</b> है।</li>
-</ul>
-<p class="small-note">🎯 पैमाना सही लो, रेखाएं लेबल करो, क्षेत्र गहरा छायांकित करो — आलेख के अंक हैं!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ कोना-बिंदु विधि — उत्तर कोनों पर! ⭐⭐</h3>
-    <ul>
-<li><b>मूल प्रमेय ⭐⭐:</b> परिबद्ध सुसंगत क्षेत्र में अधिकतम/न्यूनतम सदैव किसी <b>कोना-बिंदु (शीर्ष)</b> पर मिलता है!</li>
-<li><b>विधि ⭐⭐:</b> (1) क्षेत्र बनाओ। (2) सभी <b>कोना-बिंदु</b> निकालो (रेखाओं के प्रतिच्छेदन से)। (3) प्रत्येक पर Z निकालो। (4) सबसे बड़ा = अधिकतम, सबसे छोटा = न्यूनतम।</li>
-<li>उदाहरण: Z = 3x + 4y, कोने (0,0), (4,0), (2,3), (0,5) → Z: 0, 12, 18, 20 → <b>अधिकतम 20, (0, 5) पर</b>।</li>
-<li><b>तालिका बनाओ ⭐:</b> कोना | Z-मान — स्पष्ट प्रस्तुति = पूर्ण अंक।</li>
-</ul>
-<p class="small-note">💡 Z = ax + by समांतर रेखाओं का परिवार है — रेखा क्षेत्र छोड़ने से पहले कोने पर रुकती है!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ परिबद्ध बनाम अपरिबद्ध क्षेत्र ⭐</h3>
-    <ul>
-<li><b>परिबद्ध क्षेत्र ⭐:</b> बंद बहुभुज — अधिकतम और न्यूनतम <b>दोनों</b> मौजूद।</li>
-<li><b>अपरिबद्ध क्षेत्र ⭐:</b> क्षेत्र किसी दिशा में <b>खुला</b> — अधिकतम/न्यूनतम हो भी सकता है, नहीं भी!</li>
-<li><b>अपरिबद्ध में नियम ⭐⭐:</b> कोनों के बाद एक अतिरिक्त जांच: Z &lt; m (न्यूनतम के लिए) के अर्ध-समतल का क्षेत्र से <b>अतिव्यापन</b> — हो तो न्यूनतम मौजूद <b>नहीं</b>!</li>
-<li>बोर्ड में अधिकतर परिबद्ध क्षेत्र आता है — पर अपरिबद्ध वाला प्रश्न भी पूछा गया है।</li>
-</ul>
-<p class="small-note">🎯 अपरिबद्ध = अतिरिक्त अर्ध-समतल जांच अनिवार्य — यही अंकों का निर्णायक चरण!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ पाठ्यक्रम टिप्पणी और परीक्षा पैटर्न</h3>
-    <ul>
-<li><b>युक्तिसंगत पाठ्यक्रम ⭐:</b> LPP का <b>गणितीय सूत्रीकरण</b> (शाब्दिक प्रश्न से प्रतिबंध बनाना) NCERT से <b>हटाया गया</b>।</li>
-<li><b>अब क्या आता है ⭐:</b> प्रतिबंध और उद्देश्य फलन <b>तैयार दिए होते हैं</b> — केवल आलेखीय विधि से हल करना है (2 चर)।</li>
-<li><b>अंक:</b> ~5 — निश्चित 5-अंकीय: "आलेखीय विधि से हल करो..."।</li>
-<li><b>सामान्य गलतियां:</b> क्षेत्र गलत छायांकित करना; कोने अधूरे; उत्तर में बिंदु (x, y) न लिखना।</li>
-</ul>
-<p class="small-note">💡 LPP = "आलेख + कोनों की अंकगणित" — छोटा और स्कोरिंग अध्याय!</p>
-  </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-  <div class="note-sec">
-    <h3>1️⃣ What Is an LPP — Finding the Best Possible Answer ⭐</h3>
-    <ul>
-<li><b>Linear Programming Problem (LPP):</b> <b>MAXIMIZING or MINIMIZING</b> something (profit, cost, output) when the conditions are given as LINEAR inequalities — "the best result within limited resources".</li>
-<li><b>Objective function ⭐:</b> what you maximize/minimize — in the form <b>Z = ax + by</b> (like Z = 50x + 40y = total profit).</li>
-<li><b>Constraints ⭐:</b> the linear inequalities that limit x and y — resources, time, capacity (like 2x + 3y ≤ 120).</li>
-<li><b>Non-negativity ⭐:</b> <b>x ≥ 0, y ≥ 0</b> is always added — you cannot make a negative number of things!</li>
-<li>"Linear" because every equation/inequality is of the FIRST DEGREE (no x², no xy).</li>
-</ul>
-<p class="small-note">💡 Feel: a factory with 2 products and limited material/time — how much of each should it make for MAX profit? That is what an LPP solves.</p>
-  </div>
-  <div class="note-sec">
-    <h3>2️⃣ Graphing Inequalities — Building the Feasible Region ⭐⭐</h3>
-    <ul>
-<li><b>Step 1:</b> first plot each inequality as an EQUATION — draw the line (use the intercepts: set x = 0, then y = 0!).</li>
-<li><b>Step 2 ⭐:</b> which SIDE to shade? Plug the test point (0, 0) — inequality TRUE → the origin side; FALSE → the other side. (If the line passes through the origin, try (1, 0).)</li>
-<li><b>≤ type:</b> the line plus the side below/toward the origin. <b>≥ type:</b> the line plus the side above/away. The line stays SOLID (equality is included!).</li>
-<li><b>Feasible region ⭐⭐:</b> the region COMMON to ALL the inequalities — where every condition holds at once. Thanks to x ≥ 0, y ≥ 0, it lies in the FIRST QUADRANT.</li>
-<li>Every point inside/on the feasible region is a <b>feasible solution</b>; any point outside breaks a constraint.</li>
-</ul>
-<p class="small-note">🎯 Drawing tip: use a proper scale, label every line, shade the feasible region dark — boards award marks for the graph!</p>
-  </div>
-  <div class="note-sec">
-    <h3>3️⃣ The Corner Point Method — Answers Live at Corners! ⭐⭐</h3>
-    <ul>
-<li><b>Fundamental theorem ⭐⭐:</b> in a bounded feasible region, the MAX/MIN of the objective function is ALWAYS attained at a <b>CORNER POINT (vertex)</b> — never inside!</li>
-<li><b>Method ⭐⭐:</b> (1) Draw the feasible region. (2) Find ALL the <b>corner points</b> (solve the lines' pairwise intersections!). (3) Evaluate Z at each corner. (4) The largest = maximum, the smallest = minimum.</li>
-<li>To get corner points, solve the pairs of line equations SIMULTANEOUSLY — the intersection (x, y) comes out.</li>
-<li>Example: Z = 3x + 4y with corners (0,0), (4,0), (2,3), (0,5) → Z: 0, 12, 18, 20 → <b>max 20 at (0, 5), min 0 at (0, 0)</b>.</li>
-<li><b>Make a table ⭐:</b> corner | Z-value — the examiner wants a clean presentation, and it saves you from confusion.</li>
-</ul>
-<p class="small-note">💡 Why corners? Z = ax + by is a family of parallel lines — as Z grows the line slides, and it stops at a corner JUST before leaving the region!</p>
-  </div>
-  <div class="note-sec">
-    <h3>4️⃣ Bounded vs Unbounded Regions ⭐</h3>
-    <ul>
-<li><b>Bounded region ⭐:</b> the feasible region is a CLOSED polygon (fenced on all sides) — both max AND min exist, at corners.</li>
-<li><b>Unbounded region ⭐:</b> the region stays OPEN in one or more directions (runs to infinity) — a max/min may or may not exist; check CAREFULLY!</li>
-<li><b>Rule for unbounded regions ⭐⭐:</b> after computing the extreme corner value, ONE EXTRA STEP: check whether the open half-plane Z &gt; M (for max) or Z &lt; m (for min) <b>overlaps</b> the feasible region — if it does, the max/min DOES NOT exist!</li>
-<li>Example: minimize Z = 3x + 5y on an unbounded region, corner min m = 26 → check: does 3x + 5y &lt; 26 overlap the region? No → min = 26 confirmed.</li>
-<li>Boards mostly give bounded regions — but the unbounded extra-check question HAS appeared as a 5-marker; stay prepared.</li>
-</ul>
-<p class="small-note">🎯 Unbounded = "the region is open" — the half-plane overlap test is MANDATORY before confirming the answer. This step decides your marks!</p>
-  </div>
-  <div class="note-sec">
-    <h3>5️⃣ Syllabus Note and Exam Pattern</h3>
-    <ul>
-<li><b>Rationalized syllabus ⭐:</b> the <b>mathematical formulation</b> of LPPs (building constraints yourself from a word problem — diet problems, manufacturing problems) is <b>DELETED</b> from NCERT.</li>
-<li><b>What comes now ⭐:</b> constraints AND the objective function are given <b>ready-made</b> — you only solve graphically (the graphical method, 2 variables).</li>
-<li><b>Weightage:</b> ~5 marks — one fixed 5-marker: "Solve graphically: Maximize Z = ... subject to ...".</li>
-<li><b>Steps recap:</b> plot lines → shade → feasible region → corners → Z table → answer (write BOTH the value and the point!).</li>
-<li><b>Common mistakes:</b> shading the wrong region; missing corner points; not stating WHERE the optimum occurs — the point (x, y) matters, not just Z!</li>
-</ul>
-<p class="small-note">💡 LPP is now "read a graph + corner arithmetic" — a small, high-scoring chapter. A guaranteed 5 marks!</p>
-  </div>
-  </div>
-</section>
+<div class="lang-block" data-lang="hinglish" hidden=""><div class="note-sec"><h3>1. Model se pehle variables ka meaning likho</h3><p>Linear programming mein linear objective ka maximum ya minimum chunte hain, linear constraints ke andar. Decision variable woh quantity hai jo hum choose karte hain. Pehle meaning aur units likho. Constraint ek limit hai jo har allowed choice ko satisfy karni hai.</p><p>Hamara apna example: x,y do blends ke kilograms hain. Profit Z=3x+2y rupees hai. Limits x+y≤4, x≤3, y≤2 aur x≥0,y≥0 hain. Yahan quantities real ho sakti hain, sirf whole numbers nahi. Indivisible objects mein integer restriction alag hoti hai; fractional optimum ko chupke round mat karo.</p></div><div class="note-sec"><h3>2. Half-plane boundary line ka ek side hai</h3><p>x+y≤4 ke liye pehle (4,0),(0,4) se x+y=4 draw karo. (0,0) test karo: 0≤4 true, to uska side line samet lo. ≤ ya ≥ mein boundary included hai. Test point line par ho to line se bahar doosra point lo.</p><p>Feasible region saare constraints ka common part hai. Hamare example mein first quadrant, x=3 ke left, y=2 ke neeche aur x+y=4 ke neeche wala part lo. Included boundary ka point allowed hai. (3,2) par 3+2&gt;4, isliye separate x,y limits satisfy karke bhi yeh feasible nahi.</p></div><div class="note-sec"><h3>3. Corners nikalo, galat intersections hatao</h3><p>Corner boundary lines ka feasible meeting point hai. Boundary equations ko pair mein solve karo, phir har candidate ko saare constraints mein check karo. Har pairwise intersection feasible region ka corner nahi hota.</p><p>Hamare model ke corners order mein (0,0),(3,0),(3,1),(2,2),(0,2) hain. x=3 aur x+y=4 se y=1. y=2 aur x+y=4 se x=2. (3,2) ka sum 5, isliye reject. Region nonempty aur bounded hai: ek finite rectangle ke andar fit hota hai.</p><figure style="margin:1rem 0"><svg aria-label="Hamara apna graph, textbook figure nahi. Blue shading saare five constraints satisfy karti hai. Coordinates kilograms mein hain." role="img" style="width:100%;max-width:390px;height:auto;background:#fff" viewbox="0 0 290 280"><title>Hamara apna graph, textbook figure nahi. Blue shading saare five constraints satisfy karti hai. Coordinates kilograms mein hain.</title><g stroke-width="2"><polygon fill="#d7e8ff" points="40,220 175,220 175,175 130,130 40,130" stroke="#1e5790"></polygon><path d="M40 20V220H265" fill="none" stroke="#333"></path><path d="M40 40L220 220" fill="none" stroke="#b34b00"></path><path d="M175 30V220" stroke="#497046"></path><path d="M40 130H255" stroke="#7350a2"></path></g><g fill="#1d3552" font-family="Arial,sans-serif" font-size="16"><text x="21" y="235">0</text><text x="81" y="238">1</text><text x="126" y="238">2</text><text x="171" y="238">3</text><text x="216" y="238">4</text><text x="23" y="179">1</text><text x="23" y="134">2</text><text x="23" y="89">3</text><text x="23" y="44">4</text><text x="268" y="224">x</text><text x="35" y="16">y</text><text fill="#497046" x="186" y="49">x=3</text><text fill="#7350a2" x="201" y="119">y=2</text><text fill="#b34b00" x="49" y="36">x+y=4</text><text x="53" y="190">Feasible region</text><text x="181" y="173">(3,1)</text><text x="92" y="118">(2,2)</text></g><g fill="#1e5790"><circle cx="40" cy="220" r="3"></circle><circle cx="175" cy="220" r="3"></circle><circle cx="175" cy="175" r="3"></circle><circle cx="130" cy="130" r="3"></circle><circle cx="40" cy="130" r="3"></circle></g></svg><figcaption style="font-size:1rem;line-height:1.65">Hamara apna graph, textbook figure nahi. Blue shading saare five constraints satisfy karti hai. Coordinates kilograms mein hain.</figcaption></figure></div><div class="note-sec"><h3>4. Bounded region mein corners compare karo</h3><p>Yahan included boundaries wala nonempty bounded feasible polygon ho to linear objective ka maximum aur minimum dono milte hain. Har value kam se kam ek corner par milti hai. Iska matlab yeh NAHI ki sirf corners optimal ho sakte hain.</p><p>Z=3x+2y ki listed corners par values 0,9,11,10,4 hain. Maximum 11 at (3,1), minimum 0 at (0,0). Maximum point ko original constraints mein check karo: 3+1=4, 3≤3, 1≤2. Value aur uska point dono do.</p><table class="lp-table"><caption>Hamara corner-value check: Z=3x+2y</caption><thead><tr><th scope="col">Corner (x,y)</th><th scope="col">Z</th></tr></thead><tbody><tr><th scope="row">(0,0)</th><td>0</td></tr><tr><th scope="row">(3,0)</th><td>9</td></tr><tr><th scope="row">(3,1)</th><td>11</td></tr><tr><th scope="row">(2,2)</th><td>10</td></tr><tr><th scope="row">(0,2)</th><td>4</td></tr></tbody></table></div><div class="note-sec"><h3>5. Tie se poora optimal edge mil sakta hai</h3><p>Same region par Z=x+y lo. Corners par values 0,3,4,4,2 hain. (3,1),(2,2) dono maximum dete hain. Inke beech segment ka har point feasible hai aur x+y=4 deta hai, to poora segment optimal hai.</p><p>Sahi answer: maximum 4 us segment par, sirf do isolated solutions nahi. Jaise (2.5,1.5) bhi 4 deta hai aur saare constraints satisfy karta hai. Multiple optimal points se maximum value unclear nahi hoti.</p></div><div class="note-sec"><h3>6. Unbounded se optimum ka na hona prove nahi</h3><p>Unbounded region bina limit extend hota hai. Objective ki direction ke hisaab se minimum, maximum, dono ya koi bhi nahi ho sakta. x,y≥0 aur x+y≥2 par Z=x+y ka minimum 2, (2,0) se (0,2) wale segment par hai. Maximum nahi: (t,0), t≥2 se Z jitna chaaho bada karo.</p><p>Unbounded region mein sirf corners compare karke optimum confirm nahi hota. Minimum candidate m ke liye koi feasible Z&lt;m na ho; maximum M ke liye feasible Z&gt;M rule out karo. Pehle feasibility bhi: x+y≤1 aur x+y≥3 saath possible nahi, to feasible solution aur optimum dono nahi.</p><p>Yeh selected graphical foundations aur das original questions hain, poori textbook exercise solutions ya poori JEE preparation nahi. Lambe diet/transport word problems, integer optimisation, two-variable graphs se aage algorithms aur mixed advanced proofs shamil nahi. Deleted topics ya pakke exam marks ka daava nahi hai.</p></div></div><div class="lang-block" data-lang="hi" hidden=""><div class="note-sec"><h3>1. मॉडल से पहले चरों का अर्थ लिखें</h3><p>रैखिक प्रोग्रामन में रैखिक प्रतिबंधों के भीतर रैखिक उद्देश्य का अधिकतम या न्यूनतम चुनते हैं। निर्णय चर वह राशि है जिसे हम चुन सकते हैं। पहले अर्थ और इकाइयां लिखें। प्रतिबंध वह सीमा है जिसे हर अनुमत चयन को संतुष्ट करना है।</p><p>हमारा मौलिक उदाहरण: x,y दो मिश्रणों के किलोग्राम हैं। लाभ Z=3x+2y रुपये है। सीमाएं x+y≤4, x≤3, y≤2 और x≥0,y≥0 हैं। यहां राशियां वास्तविक हो सकती हैं, केवल पूर्णांक नहीं। अविभाज्य वस्तुओं के लिए पूर्णांक होना अतिरिक्त प्रतिबंध है; भिन्नात्मक इष्टतम को चुपचाप पूर्णांक में न बदलें।</p></div><div class="note-sec"><h3>2. अर्ध-समतल सीमा रेखा का एक ओर का भाग है</h3><p>x+y≤4 के लिए पहले (4,0),(0,4) से x+y=4 खींचें। (0,0) जांचें: 0≤4 सही है, अतः उस ओर का भाग रेखा सहित लें। ≤ या ≥ में सीमा शामिल है। जांच बिंदु रेखा पर हो तो रेखा से बाहर दूसरा बिंदु लें।</p><p>सुसंगत क्षेत्र सभी प्रतिबंधों का उभयनिष्ठ भाग है। हमारे उदाहरण में प्रथम चतुर्थांश, x=3 के बाएं, y=2 के नीचे और x+y=4 के नीचे का भाग लें। शामिल सीमा का बिंदु अनुमत है। (3,2) पर 3+2&gt;4, इसलिए अलग x,y सीमाएं मानकर भी यह सुसंगत नहीं।</p></div><div class="note-sec"><h3>3. कोने निकालें, असुसंगत प्रतिच्छेद हटाएं</h3><p>कोना सीमा रेखाओं का सुसंगत मिलन बिंदु है। सीमा समीकरणों को जोड़ों में हल करें, फिर हर संभावित बिंदु को सभी प्रतिबंधों में जांचें। हर जोड़ी का प्रतिच्छेद सुसंगत क्षेत्र का कोना नहीं होता।</p><p>हमारे मॉडल के क्रमवार कोने (0,0),(3,0),(3,1),(2,2),(0,2) हैं। x=3 और x+y=4 से y=1। y=2 और x+y=4 से x=2। (3,2) का योग 5, इसलिए अस्वीकार। क्षेत्र अरिक्त और परिबद्ध है: एक सीमित आयत के भीतर समा सकता है।</p><figure style="margin:1rem 0"><svg aria-label="हमारा मौलिक आलेख, पुस्तक का चित्र नहीं। नीला भाग सभी पांच प्रतिबंध मानता है। निर्देशांक किलोग्राम में हैं।" role="img" style="width:100%;max-width:390px;height:auto;background:#fff" viewbox="0 0 290 280"><title>हमारा मौलिक आलेख, पुस्तक का चित्र नहीं। नीला भाग सभी पांच प्रतिबंध मानता है। निर्देशांक किलोग्राम में हैं।</title><g stroke-width="2"><polygon fill="#d7e8ff" points="40,220 175,220 175,175 130,130 40,130" stroke="#1e5790"></polygon><path d="M40 20V220H265" fill="none" stroke="#333"></path><path d="M40 40L220 220" fill="none" stroke="#b34b00"></path><path d="M175 30V220" stroke="#497046"></path><path d="M40 130H255" stroke="#7350a2"></path></g><g fill="#1d3552" font-family="Arial,sans-serif" font-size="16"><text x="21" y="235">0</text><text x="81" y="238">1</text><text x="126" y="238">2</text><text x="171" y="238">3</text><text x="216" y="238">4</text><text x="23" y="179">1</text><text x="23" y="134">2</text><text x="23" y="89">3</text><text x="23" y="44">4</text><text x="268" y="224">x</text><text x="35" y="16">y</text><text fill="#497046" x="186" y="49">x=3</text><text fill="#7350a2" x="201" y="119">y=2</text><text fill="#b34b00" x="49" y="36">x+y=4</text><text x="53" y="190">सुसंगत क्षेत्र</text><text x="181" y="173">(3,1)</text><text x="92" y="118">(2,2)</text></g><g fill="#1e5790"><circle cx="40" cy="220" r="3"></circle><circle cx="175" cy="220" r="3"></circle><circle cx="175" cy="175" r="3"></circle><circle cx="130" cy="130" r="3"></circle><circle cx="40" cy="130" r="3"></circle></g></svg><figcaption style="font-size:1rem;line-height:1.65">हमारा मौलिक आलेख, पुस्तक का चित्र नहीं। नीला भाग सभी पांच प्रतिबंध मानता है। निर्देशांक किलोग्राम में हैं।</figcaption></figure></div><div class="note-sec"><h3>4. परिबद्ध क्षेत्र में कोनों की तुलना करें</h3><p>यहां शामिल सीमाओं वाला अरिक्त परिबद्ध सुसंगत बहुभुज हो तो रैखिक उद्देश्य का अधिकतम और न्यूनतम दोनों मिलते हैं। प्रत्येक मान कम से कम एक कोने पर मिलता है। इसका अर्थ यह नहीं कि केवल कोने इष्टतम हो सकते हैं।</p><p>Z=3x+2y के दिए कोनों पर मान 0,9,11,10,4 हैं। अधिकतम 11 बिंदु (3,1) पर, न्यूनतम 0 बिंदु (0,0) पर है। अधिकतम बिंदु मूल प्रतिबंधों में जांचें: 3+1=4, 3≤3, 1≤2। मान और उसका बिंदु दोनों दें।</p><table class="lp-table"><caption>हमारी कोना-मान जांच: Z=3x+2y</caption><thead><tr><th scope="col">कोना (x,y)</th><th scope="col">Z</th></tr></thead><tbody><tr><th scope="row">(0,0)</th><td>0</td></tr><tr><th scope="row">(3,0)</th><td>9</td></tr><tr><th scope="row">(3,1)</th><td>11</td></tr><tr><th scope="row">(2,2)</th><td>10</td></tr><tr><th scope="row">(0,2)</th><td>4</td></tr></tbody></table></div><div class="note-sec"><h3>5. बराबरी से पूरी इष्टतम भुजा मिल सकती है</h3><p>उसी क्षेत्र पर Z=x+y लें। कोनों पर मान 0,3,4,4,2 हैं। (3,1),(2,2) दोनों अधिकतम देते हैं। इनके बीच रेखाखंड का हर बिंदु सुसंगत है और x+y=4 देता है, इसलिए पूरा रेखाखंड इष्टतम है।</p><p>सही निष्कर्ष: उस रेखाखंड पर अधिकतम 4, केवल दो अलग हल नहीं। जैसे (2.5,1.5) भी 4 देता है और सभी प्रतिबंध मानता है। अनेक इष्टतम बिंदुओं से अधिकतम मान अस्पष्ट नहीं होता।</p></div><div class="note-sec"><h3>6. अपरिबद्ध होने से इष्टतम का अभाव सिद्ध नहीं</h3><p>अपरिबद्ध क्षेत्र बिना सीमा फैलता है। उद्देश्य की दिशा के अनुसार न्यूनतम, अधिकतम, दोनों या कोई नहीं हो सकता है। x,y≥0 और x+y≥2 पर Z=x+y का न्यूनतम 2, (2,0) से (0,2) के रेखाखंड पर है। अधिकतम नहीं: (t,0), t≥2 से Z मनचाहा बड़ा करें।</p><p>अपरिबद्ध क्षेत्र में केवल कोनों की तुलना इष्टतम सिद्ध नहीं करती। न्यूनतम प्रत्याशी m के लिए कोई सुसंगत Z&lt;m न हो; अधिकतम M के लिए सुसंगत Z&gt;M न हो। पहले सुसंगतता भी जांचें: x+y≤1 और x+y≥3 साथ संभव नहीं, इसलिए सुसंगत हल और इष्टतम दोनों नहीं।</p><p>ये चुनी आलेखीय बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली के हल या पूरी JEE तैयारी नहीं। लंबे आहार/परिवहन शब्द प्रश्न, पूर्णांक अनुकूलन, दो-चर आलेखों से आगे के एल्गोरिदम और मिश्रित उन्नत प्रमाण शामिल नहीं। हटे विषयों या निश्चित परीक्षा अंकों का दावा नहीं है।</p></div></div><div class="lang-block" data-lang="en" hidden=""><div class="note-sec"><h3>1. Name the variables before building a model</h3><p>Linear programming chooses the maximum or minimum of a linear objective, subject to linear constraints. A decision variable is a quantity we can choose. State its meaning and units first. A constraint is a limit that every allowed choice must satisfy.</p><p>Example of our own: x and y are kilograms of two blends. Profit is Z=3x+2y, in rupees. Limits are x+y≤4, x≤3, y≤2, with x≥0,y≥0. Here quantities may be real, not only whole numbers. For indivisible objects, an integer requirement is an extra restriction; do not silently round a fractional optimum.</p></div><div class="note-sec"><h3>2. A half-plane is one side of a boundary line</h3><p>To draw x+y≤4, first draw x+y=4 through (4,0),(0,4). Test (0,0): 0≤4 is true, so take its side, including the line. For ≤ or ≥ the boundary is included. If a chosen test point is on the line, choose another point not on it.</p><p>The feasible region is the common part satisfying ALL constraints. In our example it is in the first quadrant, left of x=3, below y=2 and below x+y=4. A point on an included boundary is allowed. Test (3,2): 3+2&gt;4, so it is not feasible even though it satisfies the separate x,y limits.</p></div><div class="note-sec"><h3>3. Find corners, then reject infeasible intersections</h3><p>A corner is a feasible meeting point of boundary lines. Solve pairs of boundary equations, and check each candidate against every constraint. Not every pairwise intersection is a corner of the feasible region.</p><p>For our model, the corners in order are (0,0),(3,0),(3,1),(2,2),(0,2). At x=3 with x+y=4, y=1. At y=2 with x+y=4, x=2. The intersection (3,2) is rejected because its sum is 5. The region is nonempty and bounded: it fits inside a finite rectangle.</p><figure style="margin:1rem 0"><svg aria-label="Our own graph, not a textbook figure. Blue shading satisfies all five constraints. Coordinates are in kilograms." role="img" style="width:100%;max-width:390px;height:auto;background:#fff" viewbox="0 0 290 280"><title>Our own graph, not a textbook figure. Blue shading satisfies all five constraints. Coordinates are in kilograms.</title><g stroke-width="2"><polygon fill="#d7e8ff" points="40,220 175,220 175,175 130,130 40,130" stroke="#1e5790"></polygon><path d="M40 20V220H265" fill="none" stroke="#333"></path><path d="M40 40L220 220" fill="none" stroke="#b34b00"></path><path d="M175 30V220" stroke="#497046"></path><path d="M40 130H255" stroke="#7350a2"></path></g><g fill="#1d3552" font-family="Arial,sans-serif" font-size="16"><text x="21" y="235">0</text><text x="81" y="238">1</text><text x="126" y="238">2</text><text x="171" y="238">3</text><text x="216" y="238">4</text><text x="23" y="179">1</text><text x="23" y="134">2</text><text x="23" y="89">3</text><text x="23" y="44">4</text><text x="268" y="224">x</text><text x="35" y="16">y</text><text fill="#497046" x="186" y="49">x=3</text><text fill="#7350a2" x="201" y="119">y=2</text><text fill="#b34b00" x="49" y="36">x+y=4</text><text x="53" y="190">Feasible region</text><text x="181" y="173">(3,1)</text><text x="92" y="118">(2,2)</text></g><g fill="#1e5790"><circle cx="40" cy="220" r="3"></circle><circle cx="175" cy="220" r="3"></circle><circle cx="175" cy="175" r="3"></circle><circle cx="130" cy="130" r="3"></circle><circle cx="40" cy="130" r="3"></circle></g></svg><figcaption style="font-size:1rem;line-height:1.65">Our own graph, not a textbook figure. Blue shading satisfies all five constraints. Coordinates are in kilograms.</figcaption></figure></div><div class="note-sec"><h3>4. A bounded region makes the corner comparison safe</h3><p>For a nonempty bounded feasible polygon with the included boundaries used here, a linear objective has both a maximum and a minimum. At least one corner attains each. This does NOT mean only corners can be optimal.</p><p>For Z=3x+2y at the five listed corners, the values are 0,9,11,10,4. Thus maximum 11 occurs at (3,1), minimum 0 at (0,0). Check the chosen maximum in the original constraints: 3+1=4, 3≤3, 1≤2. Give both the value and where it is attained.</p><table class="lp-table"><caption>Our corner-value check: Z=3x+2y</caption><thead><tr><th scope="col">Corner (x,y)</th><th scope="col">Z</th></tr></thead><tbody><tr><th scope="row">(0,0)</th><td>0</td></tr><tr><th scope="row">(3,0)</th><td>9</td></tr><tr><th scope="row">(3,1)</th><td>11</td></tr><tr><th scope="row">(2,2)</th><td>10</td></tr><tr><th scope="row">(0,2)</th><td>4</td></tr></tbody></table></div><div class="note-sec"><h3>5. A tie can give a whole optimal edge</h3><p>Keep the same region but use Z=x+y. Values at the five corners are 0,3,4,4,2. Both (3,1) and (2,2) maximise Z. Every point of the segment joining them is feasible and has x+y=4, so the entire segment is optimal.</p><p>A correct conclusion is maximum 4 along that segment, not just two isolated solutions. For example (2.5,1.5) also gives 4 and meets all the constraints. Multiple optimal points do not make the maximum value ambiguous.</p></div><div class="note-sec"><h3>6. Unbounded does not mean no optimum</h3><p>An unbounded feasible region extends without limit. The objective may still have a minimum, a maximum, both, or neither, depending on its direction. For x,y≥0 and x+y≥2, Z=x+y has minimum 2 along the segment from (2,0) to (0,2), but no maximum: (t,0), t≥2, makes Z arbitrarily large.</p><p>For an unbounded region, corner values alone do not prove an optimum. A candidate minimum m is confirmed only if no feasible point has Z&lt;m; for a maximum M, rule out feasible Z&gt;M. Also check feasibility first: x+y≤1 and x+y≥3 cannot both hold, so that model has no feasible solution and no optimum.</p><p>These are selected graphical foundations and ten original questions, not complete textbook exercise solutions or complete JEE preparation. Long diet/transport word problems, integer optimisation, algorithms beyond two-variable graphs and mixed advanced proofs are not covered. No deleted-topic or guaranteed exam-mark claim is made.</p></div></div></section>
 <section id="short-notes">
-  <div class="sec-head"><h2 class="lang-title" data-hinglish="Short Notes — Quick Revision" data-hi="Short Notes — Quick Revision" data-en="Short Notes — Quick Revision">Short Notes — Quick Revision</h2><p class="lang-sub" data-hinglish="Exam se pehle sirf yeh dohrao" data-hi="Exam se pehle sirf yeh dohrao" data-en="Revise just this before the exam">Exam se pehle sirf yeh dohrao</p></div>
-  <div class="lang-switch" role="group" aria-label="Notes language">
-  <span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+<div class="sec-head"><h2 class="lang-title" data-en="Quick revision" data-hi="झटपट दोहराई" data-hinglish="Quick revision">Quick revision</h2><p class="lang-sub" data-en="Definitions, examples and checks" data-hi="परिभाषाएं, उदाहरण और जांच" data-hinglish="Definitions, examples aur checks">Definitions, examples aur checks</p></div>
+<div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
 </div>
-  <div class="lang-block" data-lang="hinglish" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>Z = ax + by optimize karo</li><li>Constraints = linear inequalities</li><li>x ≥ 0, y ≥ 0 hamesha</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Graph ⭐⭐</h4>
-      <ul><li>Line banao, (0,0) test karo</li><li>Feasible region = common area</li><li>First quadrant me hoga</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Corner method ⭐⭐</h4>
-      <ul><li>Max/min corners pe hi</li><li>Har corner pe Z nikalo</li><li>Table: corner | Z</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Unbounded ⭐</h4>
-      <ul><li>Region open ho to extra check</li><li>Half-plane overlap test</li><li>Overlap → max/min exist nahi</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Syllabus ⭐</h4>
-      <ul><li>Formulation DELETED</li><li>Ready-made problems solve karo</li><li>Fixed 5-marker</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="hi" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>मूल ⭐</h4>
-      <ul><li>Z = ax + by अनुकूलित करो</li><li>प्रतिबंध = रैखिक असमिकाएं</li><li>x ≥ 0, y ≥ 0 सदैव</li></ul>
-    </div>
-    <div class="shorts-card"><h4>आलेख ⭐⭐</h4>
-      <ul><li>रेखा खींचो, (0,0) जांचो</li><li>सुसंगत क्षेत्र = उभयनिष्ठ</li><li>प्रथम चतुर्थांश में</li></ul>
-    </div>
-    <div class="shorts-card"><h4>कोना विधि ⭐⭐</h4>
-      <ul><li>अधिकतम/न्यूनतम कोनों पर</li><li>प्रत्येक कोने पर Z</li><li>तालिका: कोना | Z</li></ul>
-    </div>
-    <div class="shorts-card"><h4>अपरिबद्ध ⭐</h4>
-      <ul><li>क्षेत्र खुला → अतिरिक्त जांच</li><li>अर्ध-समतल अतिव्यापन परीक्षण</li><li>अतिव्यापन → हल मौजूद नहीं</li></ul>
-    </div>
-    <div class="shorts-card"><h4>पाठ्यक्रम ⭐</h4>
-      <ul><li>सूत्रीकरण हटाया गया</li><li>तैयार प्रश्न हल करो</li><li>निश्चित 5-अंकीय</li></ul>
-    </div>
-    </div>
-  </div>
-  <div class="lang-block" data-lang="en" hidden>
-<div class="shorts-grid">
-    <div class="shorts-card"><h4>Basics ⭐</h4>
-      <ul><li>Optimize Z = ax + by</li><li>Constraints = linear inequalities</li><li>x ≥ 0, y ≥ 0 always</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Graph ⭐⭐</h4>
-      <ul><li>Draw line, test (0,0)</li><li>Feasible region = common area</li><li>Stays in the first quadrant</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Corner method ⭐⭐</h4>
-      <ul><li>Max/min only at corners</li><li>Evaluate Z at each corner</li><li>Table: corner | Z</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Unbounded ⭐</h4>
-      <ul><li>Open region → extra check</li><li>Half-plane overlap test</li><li>Overlap → max/min does not exist</li></ul>
-    </div>
-    <div class="shorts-card"><h4>Syllabus ⭐</h4>
-      <ul><li>Formulation DELETED</li><li>Solve ready-made problems</li><li>Fixed 5-marker</li></ul>
-    </div>
-    </div>
-  </div>
-</section>
-<section id="practice">
-  <div class="sec-head"><h2>JEE Practice — 10 Questions</h2><p>Pehle khud solve karo, phir answer dekho.</p></div>
-  <div>
-    <div class="jee-q"><span class="qn">Q1</span> LPP me objective function kya hota hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Z = ax + by</b> — jo cheez maximize/minimize karni hai (profit, cost...).</p></details></div>
-    <div class="jee-q"><span class="qn">Q2</span> x ≥ 0, y ≥ 0 kyun likhte hain?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Non-negativity constraints</b> — real life me cheezein negative nahi ban sakti. Isse region first quadrant me aata hai.</p></details></div>
-    <div class="jee-q"><span class="qn">Q3</span> Inequality ka kaunsa side shade karein kaise pata?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Test point <b>(0, 0)</b> inequality me daalo — true → origin side, false → opposite side.</p></details></div>
-    <div class="jee-q"><span class="qn">Q4</span> Feasible region kya hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>SAARI constraints (inequalities) ka <b>common region</b> — jahan sab conditions ek saath satisfy hoti hain.</p></details></div>
-    <div class="jee-q"><span class="qn">Q5</span> Bounded region me max/min kahan milta hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Hamesha kisi <b>corner point</b> pe — feasible region ke vertices pe Z check karo.</p></details></div>
-    <div class="jee-q"><span class="qn">Q6</span> Z = 4x + 3y ke corners (0,0), (5,0), (0,6) pe values?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Z: 0, 20, 18 → <b>max = 20 at (5, 0)</b>; min = 0 at (0, 0).</p></details></div>
-    <div class="jee-q"><span class="qn">Q7</span> Corner points kaise nikalte hain?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Do-do boundary lines ki equations <b>simultaneously solve</b> karke — intersections hi corners hain.</p></details></div>
-    <div class="jee-q"><span class="qn">Q8</span> Unbounded region me minimum confirm karne ka extra step?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p>Z &lt; m wala <b>half-plane</b> feasible region ko overlap karta hai ya nahi — <b>overlap nahi</b> to min confirmed.</p></details></div>
-    <div class="jee-q"><span class="qn">Q9</span> Answer me sirf Z ka value likhna kaafi hai?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — point (x, y) bhi likhna zaroori hai jahan optimum milta hai.</p></details></div>
-    <div class="jee-q"><span class="qn">Q10</span> Diet problem type formulation questions ab aate hain?<br>
-      <details class="jee-sol"><summary>Answer dekho</summary><p><b>Nahi</b> — mathematical formulation of LPP rationalized syllabus se <b>delete</b> ho gaya. Ready-made problems solve karne hain.</p></details></div>
-  </div>
-</section>
+<div class="lang-block" data-lang="hinglish" hidden=""><p class="tip-box">Pehle variables aur units define karo.</p><p class="tip-box">Objective: linear function jiska maximum/minimum chahiye.</p><p class="tip-box">Feasible point har constraint satisfy kare.</p><p class="tip-box">≤ ya ≥ mein boundary line included hai.</p><p class="tip-box">Test point boundary line par nahi hona chahiye.</p><p class="tip-box">Koi bhi constraint fail kare to intersection reject.</p><p class="tip-box">Nonempty bounded polygon mein extrema corners par, kabhi poore edge par bhi.</p><p class="tip-box">Unbounded region mein objective ki direction ka extra check karo.</p></div><div class="lang-block" data-lang="hi" hidden=""><p class="tip-box">पहले चर और इकाइयां परिभाषित करें।</p><p class="tip-box">उद्देश्य: रैखिक फलन जिसका अधिकतम/न्यूनतम चाहिए।</p><p class="tip-box">सुसंगत बिंदु हर प्रतिबंध माने।</p><p class="tip-box">≤ या ≥ में सीमा रेखा शामिल है।</p><p class="tip-box">जांच बिंदु सीमा रेखा पर नहीं होना चाहिए।</p><p class="tip-box">कोई भी प्रतिबंध टूटे तो प्रतिच्छेद अस्वीकार करें।</p><p class="tip-box">अरिक्त परिबद्ध बहुभुज में चरम मान कोनों पर, कभी पूरी भुजा पर भी।</p><p class="tip-box">अपरिबद्ध क्षेत्र में उद्देश्य की दिशा की अतिरिक्त जांच करें।</p></div><div class="lang-block" data-lang="en" hidden=""><p class="tip-box">Define variables and units first.</p><p class="tip-box">Objective: a linear function to maximise or minimise.</p><p class="tip-box">A feasible point satisfies every constraint.</p><p class="tip-box">For ≤ or ≥ include the boundary line.</p><p class="tip-box">A test point must not lie on the boundary line.</p><p class="tip-box">Reject intersections that fail any constraint.</p><p class="tip-box">A nonempty bounded polygon has corner-attained extrema, possibly along an edge too.</p><p class="tip-box">An unbounded region needs an extra objective-direction check.</p></div></section>
+<section id="practice"><div class="sec-head"><h2 class="lang-title" data-en="Foundation practice - 10 selected questions" data-hi="बुनियादी अभ्यास - 10 चुने हुए प्रश्न" data-hinglish="Foundation practice - 10 selected questions">Foundation practice - 10 selected questions</h2></div><div aria-label="Notes language" class="lang-switch" role="group">
+<span class="lang-label">Notes language:</span><button class="lang-btn" data-lang="hinglish">Hinglish</button><button class="lang-btn" data-lang="hi">हिंदी</button><button class="lang-btn" data-lang="en">English</button>
+</div><div class="lang-block practice-block" data-lang="hinglish" hidden=""><div class="jee-q"><span class="qn">Q1</span> A,B blends ka profit Rs 3, Rs 2 per kg. Total≤4 kg, A≤3 kg, B≤2 kg. Continuous model banao.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Quantities aur nonnegative constraints define karo.</p><p>Steps: x,y ko A,B ke kg lo. Z=3x+2y maximise karo.</p><p>Answer/check: x+y≤4, x≤3, y≤2, x,y≥0. Profit rupees mein; x,y real ho sakte hain.</p></details></div><div class="jee-q"><span class="qn">Q2</span> x+y=4 ka kaunsa side x+y≤4 hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Line se bahar test point lo.</p><p>Steps: (0,0) par 0≤4 true hai.</p><p>Answer/check: Origin wala side, line samet; (3,2) bahar hai.</p></details></div><div class="jee-q"><span class="qn">Q3</span> y≥x mein kya (0,0) side decide karega?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Boundary par test point side nahi batata.</p><p>Steps: (0,0) par y=x. (0,1) try karo: 1≥0 true.</p><p>Answer/check: (0,1) wala side lo, y=x boundary samet.</p></details></div><div class="jee-q"><span class="qn">Q4</span> x,y≥0, x≤3, y≤2, x+y≤4 mein (3,2) feasible hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Har constraint check karo.</p><p>Steps: Separate bounds true hain, par x+y=5&gt;4.</p><p>Answer/check: Nahi. Ek constraint fail hona kaafi hai.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Isi model ke corners nikalo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Boundaries intersect karke sirf feasible points rakho.</p><p>Steps: x=3 aur x+y=4 se (3,1); y=2 aur us line se (2,2). Axis corners bhi lo.</p><p>Answer/check: Order: (0,0),(3,0),(3,1),(2,2),(0,2). (3,2) reject hai.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Us polygon par Z=3x+2y maximise karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Nonempty bounded polygon mein corner comparison safe hai.</p><p>Steps: Order wale five corners par Z=0,9,11,10,4.</p><p>Answer/check: Maximum 11 at (3,1). Saare constraints true; minimum 0 at (0,0).</p></details></div><div class="jee-q"><span class="qn">Q7</span> Same polygon par Z=x+y maximise karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Equal optimal corners ke beech poora edge optimal ho sakta hai.</p><p>Steps: Corner values 0,3,4,4,2; joining segment par x+y=4.</p><p>Answer/check: Maximum 4, (3,1) se (2,2) tak har point par, endpoints samet.</p></details></div><div class="jee-q"><span class="qn">Q8</span> x,y≥0, x+y≥2 par Z=x+y minimise karo.<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Koi smaller feasible value na ho, yeh dikhao.</p><p>Steps: Constraint se Z≥2; equality possible hai.</p><p>Answer/check: Minimum 2, (2,0),(0,2) ko jodne wale segment par. Region unbounded hoke bhi minimum hai.</p></details></div><div class="jee-q"><span class="qn">Q9</span> Pichhle objective ka maximum hai?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Arbitrarily bade feasible values dhoondho.</p><p>Steps: (t,0), t≥2 lo; Z=t.</p><p>Answer/check: Maximum nahi. Kisi bhi proposed bound se bada t lo.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Kya x,y≥0 par x+y≤1 aur x+y≥3 saath possible hain?<details class="jee-sol"><summary>Answer dekho</summary><p>Rule: Optimisation se pehle feasibility check karo.</p><p>Steps: Same sum ko ≤1 aur ≥3 dono hona padega.</p><p>Answer/check: Feasible solution nahi; is empty region par kisi objective ka maximum/minimum nahi.</p></details></div><div class="tip-box">Yeh selected graphical foundations aur das original questions hain, poori textbook exercise solutions ya poori JEE preparation nahi. Lambe diet/transport word problems, integer optimisation, two-variable graphs se aage algorithms aur mixed advanced proofs shamil nahi. Deleted topics ya pakke exam marks ka daava nahi hai.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh206.pdf">Textbook Ch 12</a></p></div><div class="lang-block practice-block" data-lang="hi" hidden=""><div class="jee-q"><span class="qn">Q1</span> A,B मिश्रणों का लाभ Rs 3, Rs 2 प्रति kg है। कुल≤4 kg, A≤3 kg, B≤2 kg। सतत मॉडल बनाएं।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: राशियां और अऋणात्मक प्रतिबंध परिभाषित करें।</p><p>चरण: x,y को A,B के kg लें। Z=3x+2y अधिकतम करें।</p><p>उत्तर/जांच: x+y≤4, x≤3, y≤2, x,y≥0। लाभ रुपये में; x,y वास्तविक हो सकते हैं।</p></details></div><div class="jee-q"><span class="qn">Q2</span> x+y=4 का कौन सा ओर x+y≤4 है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: रेखा से बाहर जांच बिंदु लें।</p><p>चरण: (0,0) पर 0≤4 सही है।</p><p>उत्तर/जांच: मूलबिंदु वाला ओर, रेखा सहित; (3,2) बाहर है।</p></details></div><div class="jee-q"><span class="qn">Q3</span> y≥x में क्या (0,0) ओर तय करेगा?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: सीमा का जांच बिंदु ओर नहीं बताता।</p><p>चरण: (0,0) पर y=x। (0,1) जांचें: 1≥0 सही।</p><p>उत्तर/जांच: (0,1) वाला ओर लें, y=x सीमा सहित।</p></details></div><div class="jee-q"><span class="qn">Q4</span> x,y≥0, x≤3, y≤2, x+y≤4 में (3,2) सुसंगत है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: हर प्रतिबंध जांचें।</p><p>चरण: अलग सीमाएं सही, पर x+y=5&gt;4।</p><p>उत्तर/जांच: नहीं। एक प्रतिबंध टूटना पर्याप्त है।</p></details></div><div class="jee-q"><span class="qn">Q5</span> उसी मॉडल के कोने निकालें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: सीमाओं के प्रतिच्छेद में केवल सुसंगत बिंदु रखें।</p><p>चरण: x=3 और x+y=4 से (3,1); y=2 और उस रेखा से (2,2)। अक्षों के कोने भी लें।</p><p>उत्तर/जांच: क्रम: (0,0),(3,0),(3,1),(2,2),(0,2)। (3,2) अस्वीकार है।</p></details></div><div class="jee-q"><span class="qn">Q6</span> उस बहुभुज पर Z=3x+2y अधिकतम करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अरिक्त परिबद्ध बहुभुज में कोनों की तुलना करें।</p><p>चरण: क्रमवार पांच कोनों पर Z=0,9,11,10,4।</p><p>उत्तर/जांच: अधिकतम 11 बिंदु (3,1) पर। सभी प्रतिबंध सही; न्यूनतम 0 बिंदु (0,0) पर।</p></details></div><div class="jee-q"><span class="qn">Q7</span> उसी बहुभुज पर Z=x+y अधिकतम करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: समान इष्टतम कोनों के बीच पूरी भुजा इष्टतम हो सकती है।</p><p>चरण: कोने मान 0,3,4,4,2; जोड़ने वाले रेखाखंड पर x+y=4।</p><p>उत्तर/जांच: अधिकतम 4, (3,1) से (2,2) तक हर बिंदु पर, सिरों सहित।</p></details></div><div class="jee-q"><span class="qn">Q8</span> x,y≥0, x+y≥2 पर Z=x+y न्यूनतम करें।<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: कोई छोटा सुसंगत मान न हो, यह दिखाएं।</p><p>चरण: प्रतिबंध से Z≥2; समानता संभव है।</p><p>उत्तर/जांच: न्यूनतम 2, (2,0),(0,2) को जोड़ने वाले रेखाखंड पर। क्षेत्र अपरिबद्ध है फिर भी न्यूनतम है।</p></details></div><div class="jee-q"><span class="qn">Q9</span> पिछले उद्देश्य का अधिकतम है?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: मनचाहे बड़े सुसंगत मान खोजें।</p><p>चरण: (t,0), t≥2 लें; Z=t।</p><p>उत्तर/जांच: अधिकतम नहीं। किसी भी प्रस्तावित सीमा से बड़ा t लें।</p></details></div><div class="jee-q"><span class="qn">Q10</span> क्या x,y≥0 पर x+y≤1 और x+y≥3 साथ संभव हैं?<details class="jee-sol"><summary>उत्तर देखें</summary><p>नियम: अनुकूलन से पहले सुसंगतता जांचें।</p><p>चरण: उसी योग को ≤1 और ≥3 दोनों होना पड़ेगा।</p><p>उत्तर/जांच: सुसंगत हल नहीं; इस रिक्त क्षेत्र पर किसी उद्देश्य का अधिकतम/न्यूनतम नहीं।</p></details></div><div class="tip-box">ये चुनी आलेखीय बुनियादें और दस मौलिक प्रश्न हैं, पूरी पाठ्यपुस्तक प्रश्नावली के हल या पूरी JEE तैयारी नहीं। लंबे आहार/परिवहन शब्द प्रश्न, पूर्णांक अनुकूलन, दो-चर आलेखों से आगे के एल्गोरिदम और मिश्रित उन्नत प्रमाण शामिल नहीं। हटे विषयों या निश्चित परीक्षा अंकों का दावा नहीं है।</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh206.pdf">Textbook Ch 12</a></p></div><div class="lang-block practice-block" data-lang="en" hidden=""><div class="jee-q"><span class="qn">Q1</span> Profit per kg is Rs 3 for blend A and Rs 2 for B. Total ≤4 kg, A≤3 kg, B≤2 kg. Formulate the continuous model.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Define quantities and nonnegative constraints.</p><p>Steps: Let x,y be kg of A,B. Maximise Z=3x+2y.</p><p>Answer/check: x+y≤4, x≤3, y≤2, x,y≥0. Profit is in rupees; x,y may be real.</p></details></div><div class="jee-q"><span class="qn">Q2</span> Which side of x+y=4 represents x+y≤4?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Choose a test point not on the line.</p><p>Steps: At (0,0), 0≤4 is true.</p><p>Answer/check: The origin side, including the line; (3,2) is outside.</p></details></div><div class="jee-q"><span class="qn">Q3</span> For y≥x, can (0,0) decide the side?<details class="jee-sol"><summary>Show answer</summary><p>Rule: A test point on the boundary cannot decide the side.</p><p>Steps: At (0,0), y=x. Try (0,1): 1≥0 is true.</p><p>Answer/check: Use the side containing (0,1), with y=x included.</p></details></div><div class="jee-q"><span class="qn">Q4</span> Under x,y≥0, x≤3, y≤2, x+y≤4, is (3,2) feasible?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Check every constraint.</p><p>Steps: The separate bounds hold, but x+y=5&gt;4.</p><p>Answer/check: No. One failed constraint is enough.</p></details></div><div class="jee-q"><span class="qn">Q5</span> Find the corners for the same model.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Intersect boundaries and keep only feasible points.</p><p>Steps: x=3 with x+y=4 gives (3,1); y=2 with that line gives (2,2). Include axis corners.</p><p>Answer/check: In order: (0,0),(3,0),(3,1),(2,2),(0,2). (3,2) is rejected.</p></details></div><div class="jee-q"><span class="qn">Q6</span> Maximise Z=3x+2y on that polygon.<details class="jee-sol"><summary>Show answer</summary><p>Rule: A nonempty bounded feasible polygon allows corner comparison.</p><p>Steps: At the five corners in order, Z=0,9,11,10,4.</p><p>Answer/check: Maximum 11 at (3,1). All constraints hold; minimum is 0 at (0,0).</p></details></div><div class="jee-q"><span class="qn">Q7</span> Maximise Z=x+y on that same polygon.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Equal optimal corner values can extend along an edge.</p><p>Steps: Corner values are 0,3,4,4,2; the joining segment satisfies x+y=4.</p><p>Answer/check: Maximum 4 at every point between (3,1) and (2,2), endpoints included.</p></details></div><div class="jee-q"><span class="qn">Q8</span> For x,y≥0, x+y≥2, minimise Z=x+y.<details class="jee-sol"><summary>Show answer</summary><p>Rule: Rule out any smaller feasible value.</p><p>Steps: The constraint itself gives Z≥2; equality is possible.</p><p>Answer/check: Minimum 2 along the segment joining (2,0),(0,2). The region is unbounded but a minimum exists.</p></details></div><div class="jee-q"><span class="qn">Q9</span> Does the previous objective have a maximum?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Look for feasible points with arbitrarily large values.</p><p>Steps: Take (t,0) with t≥2; Z=t.</p><p>Answer/check: No maximum. For any proposed bound choose a larger t.</p></details></div><div class="jee-q"><span class="qn">Q10</span> Can x,y≥0 satisfy both x+y≤1 and x+y≥3?<details class="jee-sol"><summary>Show answer</summary><p>Rule: Feasibility must come before optimisation.</p><p>Steps: The same sum would need to be at most 1 and at least 3.</p><p>Answer/check: No feasible solution, hence no maximum or minimum for any objective on this empty region.</p></details></div><div class="tip-box">These are selected graphical foundations and ten original questions, not complete textbook exercise solutions or complete JEE preparation. Long diet/transport word problems, integer optimisation, algorithms beyond two-variable graphs and mixed advanced proofs are not covered. No deleted-topic or guaranteed exam-mark claim is made.</div><p class="small-note">NCERT: <a href="https://ncert.nic.in/textbook/pdf/lemh206.pdf">Textbook Ch 12</a></p></div></section>
 <section class="roadmap">
-  <div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-13/">Probability</a> — notes ready hain.</div>
+<div class="tip-box"><b>Agla chapter:</b> <a href="/src/site/class-12/maths/ch-13/">Probability</a> — notes ready hain.</div>
 </section>
 <footer class="foot">
-  <div class="foot-inner">
-    <div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
-    <p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
-    <p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
-    <p class="foot-note">Made for students • Free forever</p>
-  </div>
+<div class="foot-inner">
+<div class="logo"><span class="logo-deva">मईडा</span><span class="logo-en">MAIDA</span></div>
+<p>Free NCERT/CBSE Learning Resources — Class 6-12</p>
+<p>Video lectures, long notes aur short notes — Hindi, English, Hinglish mein.</p>
+<p class="foot-note">Made for students • Free forever</p>
+</div>
 </footer>
 <script src="/assets/js/main.js?v=opt-2026-11-11"></script>
 </body>
